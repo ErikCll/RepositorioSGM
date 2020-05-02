@@ -75,7 +75,7 @@
               <p>
                Responsabilidad de dirección
 
-                <i class="right fas fa-angle-left"style="margin-right:-10px"></i>
+                <i class="right fas fa-angle-left"style="margin-right:-9px"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
@@ -112,7 +112,7 @@
               <i class="nav-icon fas fa-circle" ></i>
               <p>
                Gestión de los recursos
-                <i class="right fas fa-angle-left" style="margin-right:-10px"></i>
+                <i class="right fas fa-angle-left" style="margin-right:-9px"></i>
               </p>
             </a>
             <ul class="nav nav-treeview" style="display: none;">
@@ -214,7 +214,7 @@
               <i class="nav-icon fas fa-circle" ></i>
               <p>
                Confirmación metrológica
-                <i class="right fas fa-angle-left" style="margin-right:-10px"></i>
+                <i class="right fas fa-angle-left" style="margin-right:-9px"></i>
               </p>
             </a>
             <ul class="nav nav-treeview" style="display: none;">
@@ -325,7 +325,7 @@
               <i class="nav-icon fas fa-circle" ></i>
               <p>
                Análisis y mejora
-                <i class="right fas fa-angle-left" style="margin-right:-10px"></i>
+                <i class="right fas fa-angle-left" style="margin-right:-9px"></i>
               </p>
             </a>
             <ul class="nav nav-treeview" style="display: none;">
