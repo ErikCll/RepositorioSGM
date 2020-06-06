@@ -89,29 +89,19 @@
                 </a>
               </li>
                  <li class="nav-item">
-                <a href="../Inicio.aspx" class="nav-link ">
+                <a  href="../Area/Index.aspx" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Inicio</p>
+                  <p>Área</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
+                  <li class="nav-item">
+                <a  href="../Empleado/Index.aspx" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Enfoque al cliente</p>
+                  <p>Empleado</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Objetivos de la calidad</p>
-                </a>
-              </li>
-                 <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Revisión por la dirección</p>
-                </a>
-              </li>
+            
+              
             </ul>
           </li>
          
