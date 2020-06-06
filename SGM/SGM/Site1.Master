@@ -24,10 +24,13 @@
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
-<body class="sidebar-mini layout-fixed sidebar-collapse" style="height: auto;">
+<body class="sidebar-mini  " style="height: auto;">
 <form runat="server">
+                            <asp:ScriptManager runat="server"></asp:ScriptManager>
+    
     <div class="wrapper">
   <!-- Navbar -->
+
 <%--  <nav class="main-header navbar navbar-expand navbar-white navbar-light ">--%>
           <nav class="main-header navbar navbar-expand navbar-dark ">
 
@@ -49,7 +52,7 @@
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <aside class="main-sidebar sidebar-dark-primary elevation-4  ">
     <!-- Brand Logo -->
     <a href="#" class="brand-link">
       <img src="../../dist/img/S.jpg" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
@@ -57,7 +60,7 @@
     </a>
 
     <!-- Sidebar -->
-    <div class="sidebar">
+    <div class="sidebar ">
   
       
 
@@ -66,6 +69,52 @@
         <ul class="nav nav-pills nav-sidebar flex-column  text-sm " data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
+
+              <li class="nav-item has-treeview">
+             
+            <a href="#" class="nav-link ">
+                <i class="nav-icon fas fa-circle"></i>
+
+              <p>
+               Catálogo
+
+                <i class="right fas fa-angle-left"style="margin-right:-9px"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a  href="../Instalacion/Index.aspx" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Instalación</p>
+                </a>
+              </li>
+                 <li class="nav-item">
+                <a href="../Inicio.aspx" class="nav-link ">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Inicio</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Enfoque al cliente</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Objetivos de la calidad</p>
+                </a>
+              </li>
+                 <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Revisión por la dirección</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+         
 
           <li class="nav-item has-treeview">
              
@@ -455,7 +504,7 @@
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Inicio</a></li>
+                <asp:ContentPlaceHolder runat="server" id="mapeo"></asp:ContentPlaceHolder>
 <%--              <li class="breadcrumb-item active">Blank Page</li>--%>
             </ol>
           </div>
@@ -483,24 +532,25 @@
 <!-- ./wrapper -->
 
 <!-- jQuery -->
-<script src="plugins/jquery/jquery.min.js"></script>
+<script src="../plugins/jquery/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
-<script src="plugins/jquery-ui/jquery-ui.min.js"></script>
+<script src="../plugins/jquery-ui/jquery-ui.min.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
   $.widget.bridge('uibutton', $.ui.button)
 </script>
 <!-- Bootstrap 4 -->
-<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 
 <!-- overlayScrollbars -->
-<script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<script src="../plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 <!-- AdminLTE App -->
-<script src="dist/js/adminlte.js"></script>
+<script src="../dist/js/adminlte.js"></script>
 
 <!-- AdminLTE for demo purposes -->
-<script src="dist/js/demo.js"></script>
-
+<script src="../dist/js/demo.js"></script>
+ 
+ 
     </body>
 </html>
