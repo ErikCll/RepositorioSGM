@@ -12,6 +12,40 @@ namespace SGM.Master
         protected void Page_Load(object sender, EventArgs e)
         {
 
+
+            if (!IsPostBack)
+            {
+                string activepage = Request.RawUrl;
+
+                if (activepage.Contains("/Catalogo/Instalacion/Index.aspx") || activepage.Contains("/Catalogo/Instalacion/Crear.aspx") || activepage.Contains("/Catalogo/Instalacion/Detalle.aspx") || activepage.Contains("/Catalogo/Instalacion/Editar.aspx"))
+                {
+                    menu_catalogo.Attributes.Add("class", "  nav-item has-treeview menu-open");
+                    catalogo.Attributes.Add("class", "nav-link active");
+                    instalacion.Attributes.Add("class", "nav-link active");
+
+
+
+                }
+
+                else if (activepage.Contains("/Catalogo/Area/Index.aspx") || activepage.Contains("/Catalogo/Area/Crear.aspx") || activepage.Contains("/Catalogo/Area/Detalle.aspx") || activepage.Contains("/Catalogo/Area/Editar.aspx"))
+                {
+                    menu_catalogo.Attributes.Add("class", "  nav-item has-treeview menu-open");
+                    catalogo.Attributes.Add("class", "nav-link active");
+                    area.Attributes.Add("class", "nav-link active");
+
+                }
+
+                else if (activepage.Contains("/Catalogo/Empleado/Index.aspx") || activepage.Contains("/Catalogo/Empleado/Crear.aspx") || activepage.Contains("/Catalogo/Empleado/Detalle.aspx") || activepage.Contains("/Catalogo/Empleado/Editar.aspx"))
+                {
+                    menu_catalogo.Attributes.Add("class", "  nav-item has-treeview menu-open");
+                    catalogo.Attributes.Add("class", "nav-link active");
+                    empleado.Attributes.Add("class", "nav-link active");
+
+                }
+            }
+
         }
+     
+
     }
 }

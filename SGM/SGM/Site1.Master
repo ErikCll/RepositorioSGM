@@ -10,21 +10,23 @@
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Font Awesome -->
-    <link href="../plugins/fontawesome-free/css/all.min.css" rel="stylesheet" />
+    <link href="../../plugins/fontawesome-free/css/all.min.css" rel="stylesheet" />
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Tempusdominus Bbootstrap 4 -->
-    <link href="../plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+    <link href="../../plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
   <!-- Theme style -->
-    <link href="../dist/css/adminlte.min.css" rel="stylesheet" />
+    <link href="../../dist/css/adminlte.min.css" rel="stylesheet" />
 
   <!-- overlayScrollbars -->
-    <link href="../plugins/overlayScrollbars/css/OverlayScrollbars.min.css" rel="stylesheet" />
+    <link href="../../plugins/overlayScrollbars/css/OverlayScrollbars.min.css" rel="stylesheet" />
 
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
 </head>
-<body class="sidebar-mini  " style="height: auto;">
+<%--    hold-transition sidebar-mini layout-fixed--%>
+<body class="sidebar-mini layout-fixed sidebar-collapse" style="height: auto;">
 <form runat="server">
                             <asp:ScriptManager runat="server"></asp:ScriptManager>
     
@@ -66,13 +68,13 @@
 
       <!-- Sidebar Menu -->
       <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column  text-sm " data-widget="treeview" role="menu" data-accordion="false">
+        <ul class="nav nav-pills nav-sidebar flex-column  text-sm " data-widget="treeview" role="menu" data-accordion="true">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
 
-              <li class="nav-item has-treeview">
+              <li class="nav-item has-treeview" id="menu_catalogo" runat="server">
              
-            <a href="#" class="nav-link ">
+            <a href="#" class="nav-link" id="catalogo" runat="server">
                 <i class="nav-icon fas fa-circle"></i>
 
               <p>
@@ -83,19 +85,19 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a  href="../Instalacion/Index.aspx" class="nav-link">
+                <a href="/Catalogo/Instalacion/Index.aspx" class="nav-link" id="instalacion" runat="server">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Instalación</p>
                 </a>
               </li>
                  <li class="nav-item">
-                <a  href="../Area/Index.aspx" class="nav-link">
+                <a  href="/Catalogo/Area/Index.aspx" class="nav-link" id="area" runat="server">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Área</p>
                 </a>
               </li>
                   <li class="nav-item">
-                <a  href="../Empleado/Index.aspx" class="nav-link">
+                <a  href="/Catalogo/Empleado/Index.aspx" class="nav-link" id="empleado" runat="server">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Empleado</p>
                 </a>
@@ -517,30 +519,34 @@
     <!-- Control sidebar content goes here -->
 </aside>
   <!-- /.control-sidebar -->
-<div id="sidebar-overlay"></div></div>
+
+    </div>
 </form>
 <!-- ./wrapper -->
 
 <!-- jQuery -->
-<script src="../plugins/jquery/jquery.min.js"></script>
+<script src="../../plugins/jquery/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
-<script src="../plugins/jquery-ui/jquery-ui.min.js"></script>
+<script src="../../plugins/jquery-ui/jquery-ui.min.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
   $.widget.bridge('uibutton', $.ui.button)
 </script>
 <!-- Bootstrap 4 -->
-<script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 
 <!-- overlayScrollbars -->
-<script src="../plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<script src="../../plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 <!-- AdminLTE App -->
-<script src="../dist/js/adminlte.js"></script>
+<script src="../../dist/js/adminlte.js"></script>
 
 <!-- AdminLTE for demo purposes -->
-<script src="../dist/js/demo.js"></script>
+<script src="../../dist/js/demo.js"></script>
  
- 
+    <script type="text/javascript">
+
+    </script>
     </body>
 </html>
+
