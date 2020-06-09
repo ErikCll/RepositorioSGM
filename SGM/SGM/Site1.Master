@@ -104,6 +104,13 @@
                 </a>
               </li>
 
+                <li class="nav-item">
+                <a  href="/Catalogo/Actividad/Index.aspx" class="nav-link" id="actividad" runat="server">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Actividad</p>
+                </a>
+              </li>
+
                   <li class="nav-item">
                 <a  href="/Catalogo/Empleado/Index.aspx" class="nav-link" id="empleado" runat="server">
                   <i class="far fa-circle nav-icon"></i>

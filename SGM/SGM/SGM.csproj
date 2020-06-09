@@ -70,6 +70,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Catalogo\Actividad\Crear.aspx" />
+    <Content Include="Catalogo\Actividad\Detalle.aspx" />
     <Content Include="Catalogo\Actividad\Editar.aspx" />
     <Content Include="Catalogo\Actividad\Index.aspx" />
     <Content Include="Catalogo\Area\Crear.aspx" />
@@ -1710,6 +1711,13 @@
     </Compile>
     <Compile Include="Catalogo\Actividad\Crear.aspx.designer.cs">
       <DependentUpon>Crear.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogo\Actividad\Detalle.aspx.cs">
+      <DependentUpon>Detalle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogo\Actividad\Detalle.aspx.designer.cs">
+      <DependentUpon>Detalle.aspx</DependentUpon>
     </Compile>
     <Compile Include="Catalogo\Actividad\Editar.aspx.cs">
       <DependentUpon>Editar.aspx</DependentUpon>

@@ -49,6 +49,14 @@ namespace SGM.Master
                     categoria.Attributes.Add("class", "nav-link active");
 
                 }
+
+                else if (activepage.Contains("/Catalogo/Actividad/Index.aspx") || activepage.Contains("/Catalogo/Actividad/Crear.aspx") || activepage.Contains("/Catalogo/Actividad/Detalle.aspx") || activepage.Contains("/Catalogo/Actividad/Editar.aspx"))
+                {
+                    menu_catalogo.Attributes.Add("class", "  nav-item has-treeview menu-open");
+                    catalogo.Attributes.Add("class", "nav-link active");
+                    actividad.Attributes.Add("class", "nav-link active");
+
+                }
             }
 
         }
