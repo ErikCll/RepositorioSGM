@@ -24,9 +24,9 @@ namespace SGM.Clase
         public DataTable Mostrar(string txtSearch)
         {
 
-            string query= "SELECT TOP(20)ins.Id_Instalacion,ins.Nombre,ins.Localizacion,reg.Nombre 'Region'FROM Cat_Instalacion ins JOIN Cat_Region reg on ins.Id_region = reg.Id_region WHERE ins.Activado IS NULL ORDER BY ins.Id_instalacion DESC";
+            string query= "SELECT TOP(40)ins.Id_Instalacion,ins.Nombre,ins.Localizacion,reg.Nombre 'Region'FROM Cat_Instalacion ins JOIN Cat_Region reg on ins.Id_region = reg.Id_region WHERE ins.Activado IS NULL ORDER BY ins.Id_instalacion DESC";
             if (!String.IsNullOrEmpty(txtSearch.Trim())){
-                query = "SELECT TOP(20)ins.Id_Instalacion,ins.Nombre,ins.Localizacion,reg.Nombre 'Region'FROM Cat_Instalacion ins JOIN Cat_Region reg on ins.Id_region = reg.Id_region WHERE ins.Activado IS NULL AND ins.Nombre LIKE '%'+@txtSearch+'%'  ORDER BY ins.Id_instalacion DESC";
+                query = "SELECT TOP(40)ins.Id_Instalacion,ins.Nombre,ins.Localizacion,reg.Nombre 'Region'FROM Cat_Instalacion ins JOIN Cat_Region reg on ins.Id_region = reg.Id_region WHERE ins.Activado IS NULL AND ins.Nombre LIKE '%'+@txtSearch+'%'  ORDER BY ins.Id_instalacion DESC";
             }
 
             comm.Connection = conexion.AbrirConexion();

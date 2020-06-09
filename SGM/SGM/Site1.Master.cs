@@ -42,6 +42,13 @@ namespace SGM.Master
                     empleado.Attributes.Add("class", "nav-link active");
 
                 }
+                else if (activepage.Contains("/Catalogo/Categoria/Index.aspx") || activepage.Contains("/Catalogo/Categoria/Crear.aspx") || activepage.Contains("/Catalogo/Categoria/Detalle.aspx") || activepage.Contains("/Catalogo/Categoria/Editar.aspx"))
+                {
+                    menu_catalogo.Attributes.Add("class", "  nav-item has-treeview menu-open");
+                    catalogo.Attributes.Add("class", "nav-link active");
+                    categoria.Attributes.Add("class", "nav-link active");
+
+                }
             }
 
         }

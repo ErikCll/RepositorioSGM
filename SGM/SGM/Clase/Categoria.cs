@@ -4,17 +4,16 @@ using System.Linq;
 using System.Web;
 using System.Data.SqlClient;
 using System.Data;
+
 namespace SGM.Clase
 {
-    public class Actividad
+    public class Categoria
     {
         private Conexion conexion = new Conexion();
         SqlCommand comm = new SqlCommand();
         DataTable dt = new DataTable();
-        SqlDataAdapter da;
         SqlDataReader dr;
         public string Nombre { get; set; }
-        public string Codigo { get; set; }
         public string IdArea { get; set; }
         public string Area { get; set; }
 
@@ -22,10 +21,10 @@ namespace SGM.Clase
         public DataTable Mostrar(string txtSearch)
         {
 
-            string query = "SELECT act.Id_Actividades 'Id_Actividad',act.Nombre,act.Codigo,area.Nombre 'Area' FROM Cat_Actividades act JOIN Cat_Area area on act.Id_Area = area.Id_area WHERE act.Activado IS NULL ORDER BY act.Id_Actividades DESC";
+            string query = "SELECT cat.Id_Categoria,cat.Nombre,area.Nombre 'Area' FROM Cat_Categoria cat JOIN Cat_Area area on cat.Id_Area = area.Id_area WHERE cat.Activado IS NULL ORDER BY cat.Id_Categoria DESC";
             if (!String.IsNullOrEmpty(txtSearch.Trim()))
             {
-                query = " SELECT act.Id_Actividades 'Id_Actividad',act.Nombre,act.Codigo,area.Nombre 'Area' FROM Cat_Actividades act JOIN Cat_Area area on act.Id_Area = area.Id_area WHERE act.Activado IS NULL AND act.Nombre LIKE '%'+@txtSearch+'%' ORDER BY act.Id_Actividades DESC";
+                query = "SELECT cat.Id_Categoria,cat.Nombre,area.Nombre 'Area' FROM Cat_Categoria cat JOIN Cat_Area area on cat.Id_Area = area.Id_area WHERE cat.Activado IS NULL AND cat.Nombre LIKE '%'+@txtSearch+'%' ORDER BY cat.Id_Categoria DESC";
             }
 
             comm.Connection = conexion.AbrirConexion();
@@ -53,14 +52,13 @@ namespace SGM.Clase
 
         }
 
-        public bool Insertar(int IdArea, string Nombre, string Codigo)
+        public bool Insertar(int IdArea, string Nombre)
         {
             comm.Connection = conexion.AbrirConexion();
-            comm.CommandText = "INSERT INTO [Cat_Actividades] (Id_Area,Nombre,Codigo) VALUES(@Id_Area,@Nombre,@Codigo)";
+            comm.CommandText = "INSERT INTO [Cat_Categoria] (Id_Area,Nombre) VALUES(@Id_Area,@Nombre)";
             comm.CommandType = CommandType.Text;
             comm.Parameters.AddWithValue("@Id_Area", IdArea);
             comm.Parameters.AddWithValue("@Nombre", Nombre);
-            comm.Parameters.AddWithValue("@Codigo", Codigo);
             int i = comm.ExecuteNonQuery();
             comm.Parameters.Clear();
             conexion.CerrarConexion();
@@ -77,14 +75,13 @@ namespace SGM.Clase
 
         }
 
-        public bool Editar(int IdActividad, string Nombre, string Codigo, int IdArea)
+        public bool Editar(int IdCategoria, string Nombre, int IdArea)
         {
             comm.Connection = conexion.AbrirConexion();
-            comm.CommandText = "UPDATE Cat_Actividades SET Nombre = @Nombre, Codigo = @Codigo, Id_Area = @Id_Area WHERE Id_Actividades = @Id_Actividades";
+            comm.CommandText = "UPDATE Cat_Categoria SET Nombre = @Nombre, Id_Area = @Id_Area WHERE Id_Categoria = @Id_Categoria";
             comm.CommandType = CommandType.Text;
-            comm.Parameters.AddWithValue("@Id_Actividades", IdArea);
+            comm.Parameters.AddWithValue("@Id_Categoria", IdCategoria);
             comm.Parameters.AddWithValue("@Nombre", Nombre);
-            comm.Parameters.AddWithValue("@Codigo", Codigo);
             comm.Parameters.AddWithValue("@Id_Area", IdArea);
 
             int i = comm.ExecuteNonQuery();
@@ -103,14 +100,13 @@ namespace SGM.Clase
 
         }
 
-
-        public bool Eliminar(int IdActividad)
+        public bool Eliminar(int IdArea)
         {
             comm.Connection = conexion.AbrirConexion();
-            comm.CommandText = "UPDATE Cat_Actividades SET Activado=1  WHERE Id_Actividades = @Id_Actividades";
+            comm.CommandText = "UPDATE Cat_Categoria SET Activado=1  WHERE Id_Categoria = @Id_Categoria";
             comm.CommandType = CommandType.Text;
 
-            comm.Parameters.AddWithValue("@Id_Actividades", IdArea);
+            comm.Parameters.AddWithValue("@Id_Categoria", IdArea);
             int i = comm.ExecuteNonQuery();
             comm.Parameters.Clear();
             conexion.CerrarConexion();
@@ -127,17 +123,17 @@ namespace SGM.Clase
 
         }
 
-        public void LeerDatos(int IdActividad)
+
+        public void LeerDatos(int IdCategoria)
         {
             comm.Connection = conexion.AbrirConexion();
-            comm.CommandText = "SELECT act.Id_Actividades 'Id_Actividad',act.Nombre,act.Codigo,area.Id_area, area.Nombre 'Area' FROM Cat_Actividades act JOIN Cat_Area area on act.Id_Area = area.Id_area WHERE act.Id_Actvidades=@Id_Actividades";
+            comm.CommandText = "SELECT cat.Id_Categoria,cat.Nombre,area.Id_area, area.Nombre 'Area' FROM Cat_Categoria cat JOIN Cat_Area area on cat.Id_Area=area.Id_area WHERE cat.Id_Categoria=@Id_Categoria";
             comm.CommandType = CommandType.Text;
-            comm.Parameters.AddWithValue("@Id_Actividades", IdActividad);
+            comm.Parameters.AddWithValue("@Id_Categoria", IdCategoria);
 
             dr = comm.ExecuteReader();
             dr.Read();
             Nombre = dr["Nombre"].ToString();
-            Codigo = dr["Codigo"].ToString();
             IdArea = dr["Id_Area"].ToString();
             Area = dr["Area"].ToString();
             dr.Close();
@@ -146,6 +142,7 @@ namespace SGM.Clase
 
 
         }
-
     }
+
+
 }

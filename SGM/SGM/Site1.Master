@@ -96,6 +96,14 @@
                   <p>Área</p>
                 </a>
               </li>
+
+                   <li class="nav-item">
+                <a  href="/Catalogo/Categoria/Index.aspx" class="nav-link" id="categoria" runat="server">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Categoría</p>
+                </a>
+              </li>
+
                   <li class="nav-item">
                 <a  href="/Catalogo/Empleado/Index.aspx" class="nav-link" id="empleado" runat="server">
                   <i class="far fa-circle nav-icon"></i>

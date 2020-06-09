@@ -1,23 +1,18 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Index.aspx.cs" Inherits="SGM.Catalogo.Instalacion.Index" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Index.aspx.cs" Inherits="SGM.Catalogo.Actividad.Index" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    Instalación        
-
+    Actividad
 </asp:Content>
-<asp:Content runat="server" ID="Content3" ContentPlaceHolderID="mapeo">
-
+<asp:Content ID="Content2" ContentPlaceHolderID="mapeo" runat="server">
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="Content" runat="server">
-
-    <asp:UpdatePanel runat="server" UpdateMode="Conditional">
-
+<asp:Content ID="Content3" ContentPlaceHolderID="Content" runat="server">
+      <asp:UpdatePanel runat="server">
         <ContentTemplate>
-                                    <asp:Literal ID="litControl" runat="server"></asp:Literal>
-
-            <div class="col-lg-12">
+            <asp:Literal runat="server" ID="litControl"></asp:Literal>
+               <div class="col-lg-12">
                 <div class="row">
                     <div class="container col-12">
                         
-                       <asp:LinkButton runat="server" CssClass="text-sm" PostBackUrl="~/Catalogo/Instalacion/Crear.aspx"><span class=" ion-plus" ></span>Agregar</asp:LinkButton>
+                       <asp:LinkButton runat="server" CssClass="text-sm" PostBackUrl="~/Catalogo/Actividad/Crear.aspx"><span class=" ion-plus" ></span>Agregar</asp:LinkButton>
                           <div class="input-group float-right col-sm-4 col-md-4 col-lg-4">
                 <div class="input-group btn">
                    <asp:TextBox ID="txtSearch" runat="server" CssClass="form-control form-control-sm"></asp:TextBox>
@@ -29,14 +24,14 @@
                                 <asp:GridView runat="server" 
                                  CssClass=" table table-striped table-sm"
                                    GridLines="Vertical"
-                                   id="gridInstalacion"
+                                   id="gridActividad"
                                     AutoGenerateColumns="false"
-                                     EmptyDataText="Sin registro de instalaciones."
+                                     EmptyDataText="Sin registro de actividades."
                                      PageSize="10"
-                                     OnPageIndexChanging="gridInstalacion_PageIndexChanging"
+                                     OnPageIndexChanging="gridActividad_PageIndexChanging"
                                      AllowPaging="true"
-                                 DataKeyNames="Id_Instalacion"
-                                     OnRowCommand="gridInstalacion_RowCommand"
+                                 DataKeyNames="Id_Actividad"
+                                     OnRowCommand="gridActividad_RowCommand"
                                     >
                                     <Columns>
                                         <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="260px" ItemStyle-Width="260px" ControlStyle-Width="76px">
@@ -49,10 +44,11 @@
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                         <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
-                                        <asp:BoundField HeaderText="Localización" DataField="Localizacion" />
-                                        <asp:BoundField HeaderText="Región" DataField="Region" />
+                                        <asp:BoundField HeaderText="Código" DataField="Codigo" />
+                                        <asp:BoundField HeaderText="Área" DataField="Area" />
                                     </Columns>
                                             <PagerStyle HorizontalAlign = "Center" CssClass="" />
+                                  
                                 </asp:GridView>
                             </div>
                         </div>

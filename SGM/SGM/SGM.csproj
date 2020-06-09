@@ -69,10 +69,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Catalogo\Actividad\Crear.aspx" />
+    <Content Include="Catalogo\Actividad\Editar.aspx" />
+    <Content Include="Catalogo\Actividad\Index.aspx" />
     <Content Include="Catalogo\Area\Crear.aspx" />
     <Content Include="Catalogo\Area\Detalle.aspx" />
     <Content Include="Catalogo\Area\Editar.aspx" />
     <Content Include="Catalogo\Area\Index.aspx" />
+    <Content Include="Catalogo\Categoria\Crear.aspx" />
+    <Content Include="Catalogo\Categoria\Detalle.aspx" />
+    <Content Include="Catalogo\Categoria\Editar.aspx" />
+    <Content Include="Catalogo\Categoria\Index.aspx" />
     <Content Include="dist\css\adminlte.css" />
     <Content Include="dist\css\adminlte.min.css" />
     <Content Include="dist\css\alt\adminlte.components.css" />
@@ -135,6 +142,7 @@
     <Content Include="Catalogo\Instalacion\Detalle.aspx" />
     <Content Include="Catalogo\Instalacion\Editar.aspx" />
     <Content Include="Catalogo\Instalacion\Index.aspx" />
+    <Content Include="Login.aspx" />
     <Content Include="plugins\bootstrap-colorpicker\css\bootstrap-colorpicker.css" />
     <Content Include="plugins\bootstrap-colorpicker\css\bootstrap-colorpicker.min.css" />
     <Content Include="plugins\bootstrap-colorpicker\js\bootstrap-colorpicker.js" />
@@ -1696,6 +1704,27 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Catalogo\Actividad\Crear.aspx.cs">
+      <DependentUpon>Crear.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogo\Actividad\Crear.aspx.designer.cs">
+      <DependentUpon>Crear.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogo\Actividad\Editar.aspx.cs">
+      <DependentUpon>Editar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogo\Actividad\Editar.aspx.designer.cs">
+      <DependentUpon>Editar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogo\Actividad\Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogo\Actividad\Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Catalogo\Area\Crear.aspx.cs">
       <DependentUpon>Crear.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1724,8 +1753,37 @@
     <Compile Include="Catalogo\Area\Index.aspx.designer.cs">
       <DependentUpon>Index.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Catalogo\Categoria\Crear.aspx.cs">
+      <DependentUpon>Crear.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogo\Categoria\Crear.aspx.designer.cs">
+      <DependentUpon>Crear.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogo\Categoria\Detalle.aspx.cs">
+      <DependentUpon>Detalle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogo\Categoria\Detalle.aspx.designer.cs">
+      <DependentUpon>Detalle.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogo\Categoria\Editar.aspx.cs">
+      <DependentUpon>Editar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogo\Categoria\Editar.aspx.designer.cs">
+      <DependentUpon>Editar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogo\Categoria\Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogo\Categoria\Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Clase\Actividad.cs" />
     <Compile Include="Clase\Area.cs" />
+    <Compile Include="Clase\Categoria.cs" />
     <Compile Include="Clase\Empleado.cs" />
     <Compile Include="Conexion.cs" />
     <Compile Include="Catalogo\Empleado\Crear.aspx.cs">
@@ -1794,6 +1852,13 @@
     </Compile>
     <Compile Include="Catalogo\Instalacion\Index.aspx.designer.cs">
       <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Site1.Master.cs">
       <DependentUpon>Site1.Master</DependentUpon>
