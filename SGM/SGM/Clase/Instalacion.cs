@@ -33,8 +33,9 @@ namespace SGM.Clase
             comm.CommandText = query;
             comm.CommandType = CommandType.Text;
             comm.Parameters.AddWithValue("@txtSearch", txtSearch);
-            dr = comm.ExecuteReader();
-            dt.Load(dr);
+            da = new SqlDataAdapter(comm);
+            dt = new DataTable();
+            da.Fill(dt);
             conexion.CerrarConexion();
             return dt;
 
@@ -47,8 +48,9 @@ namespace SGM.Clase
             comm.Connection = conexion.AbrirConexion();
             comm.CommandText = "SELECT Id_Region,Nombre FROM Cat_Region WHERE Activado IS NULL";
             comm.CommandType = CommandType.Text;
-            dr = comm.ExecuteReader();
-            dt.Load(dr);
+            da = new SqlDataAdapter(comm);
+            dt = new DataTable();
+            da.Fill(dt);
             conexion.CerrarConexion();
             return dt;
 

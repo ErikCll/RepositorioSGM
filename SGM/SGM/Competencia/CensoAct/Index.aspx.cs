@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace SGM.Catalogo.Actividad
+namespace SGM.Competencia.CensoAct
 {
     public partial class Index : System.Web.UI.Page
     {
@@ -81,6 +81,15 @@ namespace SGM.Catalogo.Actividad
                 string encodedString = (Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(IdActividad.ToString())));
 
                 Response.Redirect("Detalle.aspx?id=" + encodedString + "");
+            }
+
+            else if (e.CommandName == "AgregarVer")
+            {
+                GridViewRow row = ((LinkButton)e.CommandSource).Parent.Parent as GridViewRow;
+                int IdActividad = (int)gridActividad.DataKeys[row.RowIndex].Value;
+                string encodedString = (Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(IdActividad.ToString())));
+
+                Response.Redirect("Control.aspx?id=" + encodedString + "");
             }
         }
     }

@@ -50,10 +50,10 @@ namespace SGM.Master
 
                 }
 
-                else if (activepage.Contains("/Catalogo/Actividad/Index.aspx") || activepage.Contains("/Catalogo/Actividad/Crear.aspx") || activepage.Contains("/Catalogo/Actividad/Detalle.aspx") || activepage.Contains("/Catalogo/Actividad/Editar.aspx"))
+                else if (activepage.Contains("/Competencia/CensoAct/Index.aspx") || activepage.Contains("/Competencia/CensoAct/Crear.aspx") || activepage.Contains("/Competencia/CensoAct/Detalle.aspx") || activepage.Contains("/Competencia/CensoAct/Editar.aspx"))
                 {
-                    menu_catalogo.Attributes.Add("class", "  nav-item has-treeview menu-open");
-                    catalogo.Attributes.Add("class", "nav-link active");
+                    menu_competencia.Attributes.Add("class", "  nav-item has-treeview menu-open");
+                    competencia.Attributes.Add("class", "nav-link active");
                     actividad.Attributes.Add("class", "nav-link active");
 
                 }

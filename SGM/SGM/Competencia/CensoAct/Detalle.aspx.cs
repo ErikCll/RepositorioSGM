@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace SGM.Catalogo.Actividad
+namespace SGM.Competencia.CensoAct
 {
     public partial class Detalle : System.Web.UI.Page
     {
@@ -20,7 +20,6 @@ namespace SGM.Catalogo.Actividad
                 actividad.LeerDatos(IdActividad);
                 lblNombre.Text = actividad.Nombre.ToString();
                 lblArea.Text = actividad.Area.ToString();
-                lblCodigo.Text = actividad.Codigo.ToString();
             }
         }
     }

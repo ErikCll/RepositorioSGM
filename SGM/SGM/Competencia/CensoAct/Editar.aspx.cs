@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace SGM.Catalogo.Actividad
+namespace SGM.Competencia.CensoAct
 {
     public partial class Editar : System.Web.UI.Page
     {
@@ -15,21 +15,33 @@ namespace SGM.Catalogo.Actividad
         {
             if (!IsPostBack)
             {
-                LlenarDrop();
+                LlenarDropInstalacion();
                 string decodedString = System.Text.ASCIIEncoding.ASCII.GetString(Convert.FromBase64String(Request.QueryString["id"]));
                 int IdActividad = Convert.ToInt32(decodedString);
                 actividad.LeerDatos(IdActividad);
                 txtNombre.Text = actividad.Nombre;
-                txtCodigo.Text = actividad.Codigo;
+                ddl_Instalacion.SelectedValue = actividad.IdInstalacion;
+                LlenarDropArea();
                 ddl_Area.SelectedValue = actividad.IdArea;
             }
         }
 
-        public void LlenarDrop()
+        public void LlenarDropInstalacion()
+
         {
-            ddl_Area.DataSource = actividad.MostrarArea();
+            ddl_Instalacion.DataSource = actividad.MostrarInstalacion();
+            ddl_Instalacion.DataBind();
+            ddl_Instalacion.Items.Insert(0, new ListItem("[Seleccionar]","0"));
+
+        }
+
+        public void LlenarDropArea()
+
+        {
+            int IdInstalacion = Convert.ToInt32(ddl_Instalacion.SelectedValue);
+            ddl_Area.DataSource = actividad.MostrarArea(IdInstalacion);
             ddl_Area.DataBind();
-            ddl_Area.Items.Insert(0, new ListItem("[Seleccionar]"));
+            ddl_Area.Items.Insert(0, new ListItem("[Seleccionar]", "0"));
 
         }
 
@@ -38,14 +50,18 @@ namespace SGM.Catalogo.Actividad
             string decodedString = System.Text.ASCIIEncoding.ASCII.GetString(Convert.FromBase64String(Request.QueryString["id"]));
             int IdActividad = Convert.ToInt32(decodedString);
             string Nombre = txtNombre.Text;
-            string Codigo = txtCodigo.Text;
             int IdArea = Convert.ToInt32(ddl_Area.SelectedValue);
-            if (actividad.Editar(IdActividad, Nombre, Codigo, IdArea))
+            if (actividad.Editar(IdActividad, Nombre, IdArea))
             {
                 string txtJS = String.Format("<script>alert('{0}');</script>", "Se actualizaron correctamente los datos.");
                 ScriptManager.RegisterClientScriptBlock(litControl, litControl.GetType(), "script", txtJS, false);
             }
 
+        }
+
+        protected void ddl_Instalacion_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LlenarDropArea();
         }
     }
 }

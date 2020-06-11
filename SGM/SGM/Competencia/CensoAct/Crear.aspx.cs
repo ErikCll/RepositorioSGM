@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace SGM.Catalogo.Actividad
+namespace SGM.Competencia.CensoAct
 {
     public partial class Crear : System.Web.UI.Page
     {
@@ -16,16 +16,15 @@ namespace SGM.Catalogo.Actividad
         {
             if (!IsPostBack)
             {
-                LlenarDrop();
+                LlenarDropInstalacion();
             }
         }
 
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
             string Nombre = txtNombre.Text;
-            string Codigo = txtCodigo.Text;
             int IdArea = Convert.ToInt32(ddl_Area.SelectedValue);
-            if (objIns.Insertar(IdArea, Nombre, Codigo))
+            if (objIns.Insertar(IdArea, Nombre))
             {
                 string script = "alert('Registro creado exitosamente.'); window.location.href= 'Index.aspx';";
 
@@ -33,12 +32,24 @@ namespace SGM.Catalogo.Actividad
             }
         }
 
-        public void LlenarDrop()
+        public void LlenarDropInstalacion()
         {
-            ddl_Area.DataSource = objIns.MostrarArea();
+            ddl_Instalacion.DataSource = objIns.MostrarInstalacion();
+            ddl_Instalacion.DataBind();
+            ddl_Instalacion.Items.Insert(0, new ListItem("[Seleccionar]","0"));
+        }
+
+        public void LlenarDropArea()
+        {
+            int IdInstalacion = Convert.ToInt32(ddl_Instalacion.SelectedValue);
+            ddl_Area.DataSource = objIns.MostrarArea(IdInstalacion);
             ddl_Area.DataBind();
             ddl_Area.Items.Insert(0, new ListItem("[Seleccionar]"));
+        }
 
+        protected void ddl_Instalacion_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LlenarDropArea();
         }
     }
 }

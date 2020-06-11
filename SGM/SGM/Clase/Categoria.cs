@@ -12,6 +12,7 @@ namespace SGM.Clase
         private Conexion conexion = new Conexion();
         SqlCommand comm = new SqlCommand();
         DataTable dt = new DataTable();
+        SqlDataAdapter da = new SqlDataAdapter();
         SqlDataReader dr;
         public string Nombre { get; set; }
         public string IdArea { get; set; }
@@ -31,8 +32,9 @@ namespace SGM.Clase
             comm.CommandText = query;
             comm.CommandType = CommandType.Text;
             comm.Parameters.AddWithValue("@txtSearch", txtSearch);
-            dr = comm.ExecuteReader();
-            dt.Load(dr);
+            da = new SqlDataAdapter(comm);
+            dt = new DataTable();
+            da.Fill(dt);
             conexion.CerrarConexion();
             return dt;
 
@@ -45,8 +47,9 @@ namespace SGM.Clase
             comm.Connection = conexion.AbrirConexion();
             comm.CommandText = "SELECT Id_Area, Nombre FROM Cat_Area WHERE Activado IS NULL ORDER BY Id_area DESC";
             comm.CommandType = CommandType.Text;
-            dr = comm.ExecuteReader();
-            dt.Load(dr);
+            da = new SqlDataAdapter(comm);
+            dt = new DataTable();
+            da.Fill(dt);
             conexion.CerrarConexion();
             return dt;
 

@@ -1,6 +1,6 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Index.aspx.cs" Inherits="SGM.Catalogo.Actividad.Index" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Index.aspx.cs" Inherits="SGM.Competencia.CensoAct.Index" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    Actividad
+    Censo de actividad
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="mapeo" runat="server">
 </asp:Content>
@@ -12,7 +12,7 @@
                 <div class="row">
                     <div class="container col-12">
                         
-                       <asp:LinkButton runat="server" CssClass="text-sm" PostBackUrl="~/Catalogo/Actividad/Crear.aspx"><span class=" ion-plus" ></span>Agregar</asp:LinkButton>
+                       <asp:LinkButton runat="server" CssClass="text-sm" PostBackUrl="~/Competencia/CensoAct/Crear.aspx"><span class=" ion-plus" ></span>Agregar</asp:LinkButton>
                           <div class="input-group float-right col-sm-4 col-md-4 col-lg-4">
                 <div class="input-group btn">
                    <asp:TextBox ID="txtSearch" runat="server" CssClass="form-control form-control-sm"></asp:TextBox>
@@ -43,9 +43,13 @@
 
                                             </ItemTemplate>
                                         </asp:TemplateField>
-                                        <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
-                                        <asp:BoundField HeaderText="Código" DataField="Codigo" />
+                                        <asp:TemplateField HeaderText="Nombre">
+                                            <ItemTemplate>
+                                                <asp:LinkButton runat="server" ID="lnkNombre" Text='<%# Eval("Nombre") %>' CommandName="AgregarVer"></asp:LinkButton>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
                                         <asp:BoundField HeaderText="Área" DataField="Area" />
+                                        <asp:BoundField HeaderText="Instalación" DataField="Instalacion" />
                                     </Columns>
                                             <PagerStyle HorizontalAlign = "Center" CssClass="" />
                                   
