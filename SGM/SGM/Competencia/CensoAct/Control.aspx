@@ -13,10 +13,10 @@
                                     <asp:Literal ID="litControl" runat="server"></asp:Literal>
              <ul class="nav nav-tabs ml-1">
       <li class="nav-item" runat="server" id="itemCaptura">
-        <a data-toggle="tab" class="nav-link active" href="#<%= captura.ClientID %>">Evidencia</a>
+        <a data-toggle="tab" class="nav-link active" href="#<%= captura.ClientID %>">Carga</a>
       </li>
       <li class="nav-item" runat="server" id="itemConsulta">
-        <a data-toggle="tab" class="nav-link" href="#<%= consulta.ClientID %>">Aprobación de Evidencia</a>
+        <a data-toggle="tab" class="nav-link" href="#<%= consulta.ClientID %>">Consulta</a>
       </li>
    
     </ul>
