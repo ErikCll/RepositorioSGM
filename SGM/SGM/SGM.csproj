@@ -130,6 +130,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Competencia\CensoAct\Control.aspx" />
+    <Content Include="Competencia\CensoAct\ControlEditar.aspx" />
     <Content Include="Competencia\CensoAct\Crear.aspx" />
     <Content Include="Competencia\CensoAct\Detalle.aspx" />
     <Content Include="Competencia\CensoAct\Editar.aspx" />
@@ -1740,6 +1741,13 @@
     </Compile>
     <Compile Include="Competencia\CensoAct\Control.aspx.designer.cs">
       <DependentUpon>Control.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Competencia\CensoAct\ControlEditar.aspx.cs">
+      <DependentUpon>ControlEditar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Competencia\CensoAct\ControlEditar.aspx.designer.cs">
+      <DependentUpon>ControlEditar.aspx</DependentUpon>
     </Compile>
     <Compile Include="Competencia\CensoAct\Crear.aspx.cs">
       <DependentUpon>Crear.aspx</DependentUpon>

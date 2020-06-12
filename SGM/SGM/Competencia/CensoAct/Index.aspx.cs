@@ -46,7 +46,7 @@ namespace SGM.Competencia.CensoAct
             if (e.CommandName == "Eliminar")
             {
                 //GridViewRow row = (GridViewRow)(((LinkButton)e.CommandSource).NamingContainer);
-                GridViewRow row = ((Control)e.CommandSource).Parent.Parent as GridViewRow;
+                GridViewRow row = ((Button)e.CommandSource).Parent.Parent as GridViewRow;
 
                 int IdActividad = (int)gridActividad.DataKeys[row.RowIndex].Value;
                 if (actividad.Eliminar(IdActividad))
@@ -55,17 +55,13 @@ namespace SGM.Competencia.CensoAct
                     string txtJS = String.Format("<script>alert('{0}');</script>", "Se eliminó correctamente el dato.");
                     ScriptManager.RegisterClientScriptBlock(litControl, litControl.GetType(), "script", txtJS, false);
                 }
-                else
-                {
-                    string txtJS = String.Format("<script>alert('{0}');</script>", "ocurrio un error.");
-                    ScriptManager.RegisterClientScriptBlock(litControl, litControl.GetType(), "script", txtJS, false);
-                }
+              
 
 
             }
             else if (e.CommandName == "Editar")
             {
-                GridViewRow row = ((Control)e.CommandSource).Parent.Parent as GridViewRow;
+                GridViewRow row = ((Button)e.CommandSource).Parent.Parent as GridViewRow;
 
                 int IdActividad = (int)gridActividad.DataKeys[row.RowIndex].Value;
                 string encodedString = (Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(IdActividad.ToString())));
@@ -73,15 +69,7 @@ namespace SGM.Competencia.CensoAct
                 Response.Redirect("Editar.aspx?id=" + encodedString + "");
             }
 
-            else if (e.CommandName == "Ver")
-            {
-                GridViewRow row = ((Control)e.CommandSource).Parent.Parent as GridViewRow;
-
-                int IdActividad = (int)gridActividad.DataKeys[row.RowIndex].Value;
-                string encodedString = (Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(IdActividad.ToString())));
-
-                Response.Redirect("Detalle.aspx?id=" + encodedString + "");
-            }
+      
 
             else if (e.CommandName == "AgregarVer")
             {

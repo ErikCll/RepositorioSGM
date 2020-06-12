@@ -60,8 +60,53 @@ namespace SGM.Clase
 
 
         }
+        public bool Editar(int IdControl, string Codigo)
+        {
+            comm.Connection = conexion.AbrirConexion();
+            comm.CommandText = "UPDATE Cat_ActividadControl SET Codigo = @Codigo WHERE Id_Control = @Id_Control";
+            comm.CommandType = CommandType.Text;
+            comm.Parameters.AddWithValue("@Id_Control", IdControl);
+            comm.Parameters.AddWithValue("@Codigo", Codigo);
+    
+            int i = comm.ExecuteNonQuery();
+            comm.Parameters.Clear();
+            conexion.CerrarConexion();
 
-        public void LeerDatos(int IdActividad)
+            if (i > 0)
+            {
+                return true;
+
+
+            }
+            else
+                return false;
+
+
+        }
+
+        public bool Eliminar(int IdControl)
+        {
+            comm.Connection = conexion.AbrirConexion();
+            comm.CommandText = "UPDATE Cat_ActividadControl SET Activado=1  WHERE Id_Control = @Id_Control";
+            comm.CommandType = CommandType.Text;
+
+            comm.Parameters.AddWithValue("@Id_Control", IdControl);
+            int i = comm.ExecuteNonQuery();
+            comm.Parameters.Clear();
+            conexion.CerrarConexion();
+
+            if (i > 0)
+            {
+                return true;
+
+
+            }
+            else
+                return false;
+
+
+        }
+        public void LeerDatosActividad(int IdActividad)
         {
             comm.Connection = conexion.AbrirConexion();
             comm.CommandText = "SELECT Nombre FROM Cat_Actividades WHERE Id_Actividades=@Id_Actividades";
@@ -81,13 +126,29 @@ namespace SGM.Clase
         public void LeerId(int IdActividad)
         {
             comm.Connection = conexion.AbrirConexion();
-            comm.CommandText = "SELECT TOP 1 Id_Control FROM Cat_ActividadControl WHERE Id_Actividad=@Id_Control ORDER BY Id_Control DESC";
+            comm.CommandText = "SELECT TOP 1 Id_Control FROM Cat_ActividadControl WHERE Id_Actividad=@Id_Actividad ORDER BY Id_Control DESC";
             comm.CommandType = CommandType.Text;
-            comm.Parameters.AddWithValue("@Id_Control", IdActividad);
+            comm.Parameters.AddWithValue("@Id_Actividad", IdActividad);
 
             dr = comm.ExecuteReader();
             dr.Read();
             IdControl = dr["Id_Control"].ToString();
+            dr.Close();
+            comm.Connection = conexion.CerrarConexion();
+
+
+
+        }
+        public void LeerDatosControl(int Id_Control)
+        {
+            comm.Connection = conexion.AbrirConexion();
+            comm.CommandText = "SELECT Codigo FROM Cat_ActividadControl WHERE Id_Control=@Id_Control";
+            comm.CommandType = CommandType.Text;
+            comm.Parameters.AddWithValue("@Id_Control", Id_Control);
+
+            dr = comm.ExecuteReader();
+            dr.Read();
+            Codigo = dr["Codigo"].ToString();
             dr.Close();
             comm.Connection = conexion.CerrarConexion();
 

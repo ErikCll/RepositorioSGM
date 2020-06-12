@@ -18,7 +18,7 @@
       <li class="nav-item" runat="server" id="itemConsulta">
         <a data-toggle="tab" class="nav-link" href="#<%= consulta.ClientID %>">Consulta</a>
       </li>
-   
+
     </ul>
             <div class="col-lg-12">
                     <div class="tab-content">
@@ -37,7 +37,7 @@
                             </div>
                                <asp:RequiredFieldValidator runat="server" ID="reqFile" ControlToValidate="File1"
                                     ErrorMessage="Debe seleccionar un archivo PDF." ForeColor="Red" ValidationGroup="btnGuardar" Enabled="false"></asp:RequiredFieldValidator>
-                              <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="Solo PDF." ForeColor="Red"
+                              <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="" ForeColor="Red"
                                                         ValidationExpression="^(([a-zA-Z]:)|(\\{2}\w+)\$?)(\\(\w[\w].*))+(.pdf)$" ControlToValidate="File1" ValidationGroup="btnGuardar">
                                                     </asp:RegularExpressionValidator>
                                   
@@ -64,8 +64,8 @@
                           
                             <div class="form-group">
                                 <asp:Button class="btn btn-primary" id="btnGuardar" runat="server" Text="Guardar" ValidationGroup="btnGuardar" OnClick="btnGuardar_Click"/>
-                                <a id="btn_ClearButton" class="btn btn-default" role="button">Limpiar</a>
-                                        <a id="btnCerrar" class="btn btn-default " runat="server">Cerrar</a>
+                                <a class="btn btn-default" href="Index.aspx">Regresar</a>
+
 
                             </div>
                         </div>
@@ -105,9 +105,17 @@
                          AllowCustomPaging="false"
                           AllowPaging="true"
                           OnRowDataBound="gridControl_RowDataBound"
+                         OnRowCommand="gridControl_RowCommand"
                      >
                     <Columns>
+                           <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="260px" ItemStyle-Width="260px" ControlStyle-Width="76px">
+                                            <ItemTemplate>
+                                               <asp:Button runat="server" Text="Editar" CssClass="btn btn-outline-secondary" CommandName="Editar" />
 
+                                               <asp:Button runat="server" Text="Eliminar" CssClass="btn btn-outline-danger" CommandName="Eliminar" OnClientClick="javascript:if(!confirm('¿Desea borrar el registro?'))return false" />
+
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
                          <asp:BoundField HeaderText="Código"  DataField="Codigo"/>
                         <asp:BoundField HeaderText="Fecha de creación" DataField="FechaCreacion" />
                     <asp:TemplateField HeaderText="Archivo" ItemStyle-HorizontalAlign="Center">
