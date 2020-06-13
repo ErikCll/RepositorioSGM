@@ -98,7 +98,7 @@
                     AutoGenerateColumns="false" 
                      CssClass=" table table-striped table-sm"
                                    GridLines="Vertical"
-                    EmptyDataText="Sin registro de control de veriones"
+                    EmptyDataText="Sin registro de control de veriones."
                  PageSize="10"
                     DataKeyNames="Id_Control" 
                           OnPageIndexChanging="gridControl_PageIndexChanging"

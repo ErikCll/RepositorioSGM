@@ -143,6 +143,8 @@
     <Content Include="Catalogo\Categoria\Detalle.aspx" />
     <Content Include="Catalogo\Categoria\Editar.aspx" />
     <Content Include="Catalogo\Categoria\Index.aspx" />
+    <Content Include="Competencia\MatrizCatAct\Agregar.aspx" />
+    <Content Include="Competencia\MatrizCatAct\Index.aspx" />
     <Content Include="dist\css\adminlte.css" />
     <Content Include="dist\css\adminlte.min.css" />
     <Content Include="dist\css\alt\adminlte.components.css" />
@@ -1735,6 +1737,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Clase\ActividadControl.cs" />
+    <Compile Include="Clase\CategoriaActividad.cs" />
     <Compile Include="Competencia\CensoAct\Control.aspx.cs">
       <DependentUpon>Control.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1837,6 +1840,20 @@
     <Compile Include="Clase\Area.cs" />
     <Compile Include="Clase\Categoria.cs" />
     <Compile Include="Clase\Empleado.cs" />
+    <Compile Include="Competencia\MatrizCatAct\Agregar.aspx.cs">
+      <DependentUpon>Agregar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Competencia\MatrizCatAct\Agregar.aspx.designer.cs">
+      <DependentUpon>Agregar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Competencia\MatrizCatAct\Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Competencia\MatrizCatAct\Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Conexion.cs" />
     <Compile Include="Catalogo\Empleado\Crear.aspx.cs">
       <DependentUpon>Crear.aspx</DependentUpon>

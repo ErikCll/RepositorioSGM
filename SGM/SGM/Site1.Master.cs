@@ -57,6 +57,13 @@ namespace SGM.Master
                     actividad.Attributes.Add("class", "nav-link active");
 
                 }
+                else if (activepage.Contains("/Competencia/MatrizCatAct/Index.aspx") || activepage.Contains("/Competencia/MatrizCatAct/Agregar.aspx"))
+                {
+                    menu_competencia.Attributes.Add("class", "  nav-item has-treeview menu-open");
+                    competencia.Attributes.Add("class", "nav-link active");
+                    catact.Attributes.Add("class", "nav-link active");
+
+                }
             }
 
         }
