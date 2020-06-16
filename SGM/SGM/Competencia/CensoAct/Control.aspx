@@ -1,17 +1,72 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Control.aspx.cs" Inherits="SGM.Competencia.CensoAct.Control" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     Control de versiones<br />
-    <label class="font-weight-normal text small">Censo de actividad: </label> <asp:Label runat="server" ID="lblCensoAct" CssClass=" font-weight-bold text small"></asp:Label>
+    <label class="font-weight-normal text small">Censo de actividad: </label>
+    <asp:Label runat="server" ID="lblCensoAct" CssClass=" font-weight-bold text small"></asp:Label>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="mapeo" runat="server">
-      <li class="breadcrumb-item active"><a href="Index.aspx">Censo de actividad</a></li>
-                  <li class="breadcrumb-item "><a>Control de versiones</a></li>
+    <li class="breadcrumb-item active"><a href="Index.aspx">Censo de actividad</a></li>
+    <li class="breadcrumb-item "><a>Control de versiones</a></li>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Content" runat="server">
-     <asp:UpdatePanel runat="server" UpdateMode="Conditional" >
+    <asp:UpdatePanel runat="server" UpdateMode="Conditional">
         <ContentTemplate>
-                                    <asp:Literal ID="litControl" runat="server"></asp:Literal>
-             <ul class="nav nav-tabs ml-1">
+            <asp:Literal ID="litControl" runat="server"></asp:Literal>
+            <div class="col-lg-12">
+                <div class="row">
+                    <div class="container col-12">
+                        <asp:LinkButton runat="server" CssClass="text-sm"  OnClick="CrearVersion"><span class=" ion-plus" ></span>Agregar</asp:LinkButton>
+                        <br />
+                        <br />
+          
+                        <div class=" table-responsive">
+                            <div style="overflow: auto; height: auto">
+                                <asp:GridView ID="gridControl"
+                                    runat="server"
+                                    AutoGenerateColumns="false"
+                                    CssClass=" table table-striped table-sm"
+                                    GridLines="Vertical"
+                                    EmptyDataText="Sin registro de control de veriones."
+                                    PageSize="10"
+                                    DataKeyNames="Id_Control"
+                                    OnPageIndexChanging="gridControl_PageIndexChanging"
+                                    AllowCustomPaging="false"
+                                    AllowPaging="true"
+                                    OnRowDataBound="gridControl_RowDataBound"
+                                    OnRowCommand="gridControl_RowCommand">
+                                    <Columns>
+                                        <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="260px" ItemStyle-Width="260px" ControlStyle-Width="76px">
+                                            <ItemTemplate>
+                                                <asp:Button runat="server" Text="Editar" CssClass="btn btn-outline-secondary" CommandName="Editar" />
+
+                                                <asp:Button runat="server" Text="Eliminar" CssClass="btn btn-outline-danger" CommandName="Eliminar" OnClientClick="javascript:if(!confirm('¿Desea borrar el registro?'))return false" />
+
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                        <asp:BoundField HeaderText="Código" DataField="Codigo" />
+                                        <asp:BoundField HeaderText="Fecha de creación" DataField="FechaCreacion" />
+                                        <asp:TemplateField HeaderText="Archivo" ItemStyle-HorizontalAlign="Center">
+                                            <ItemTemplate>
+                                                <asp:HyperLink runat="server" ID="lnk" CssClass="ion-android-document" Target="_blank"></asp:HyperLink>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+
+
+                                    </Columns>
+                                    <PagerStyle HorizontalAlign="Center" CssClass="" />
+
+                                </asp:GridView>
+                                   <a class="btn btn-default" href="Index.aspx">Regresar</a>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <%--   <ul class="nav nav-tabs ml-1">
       <li class="nav-item" runat="server" id="itemCaptura">
         <a data-toggle="tab" class="nav-link active" href="#<%= captura.ClientID %>">Carga</a>
       </li>
@@ -93,7 +148,7 @@
                          <div class="container col-12 ">
         <div class="table-reponsive">
             <div style="overflow: auto; height: auto">
-                     <asp:GridView ID="gridControl"
+                     <asp:GridView ID="GridView1"
                     runat="server"
                     AutoGenerateColumns="false" 
                      CssClass=" table table-striped table-sm"
@@ -150,12 +205,9 @@
              </div>
                         </div>
                     </div>
-                  
-              
+            --%>
         </ContentTemplate>
-               <Triggers>
-                   <asp:PostBackTrigger ControlID="btnGuardar" />
-   </Triggers>
+      
     </asp:UpdatePanel>
 
 </asp:Content>

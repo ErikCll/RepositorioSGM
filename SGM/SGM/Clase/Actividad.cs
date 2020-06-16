@@ -24,10 +24,10 @@ namespace SGM.Clase
         public DataTable Mostrar(string txtSearch)
         {
 
-            string query = "SELECT act.Id_Actividades 'Id_Actividad',act.Nombre,area.Nombre 'Area',ins.Nombre 'Instalacion' FROM Cat_Actividades act JOIN Cat_Area area on act.Id_Area = area.Id_area JOIN Cat_Instalacion ins on area.Id_instalacion=ins.Id_instalacion WHERE act.Activado IS NULL ORDER BY act.Id_Actividades DESC";
+            string query = "SELECT act.Id_Actividades 'Id_Actividad',act.Nombre,area.Nombre 'Area',ins.Nombre 'Instalacion', ISNULL(r.max_score, '0') 'Archivo' FROM Cat_Actividades act LEFT JOIN(SELECT Id_Actividad, MAX(Id_Control) max_score FROM Cat_ActividadControl WHERE Activado IS NULL  GROUP BY Id_Actividad) r on act.Id_Actividades = r.Id_Actividad JOIN Cat_Area area on act.Id_Area = area.Id_area JOIN Cat_Instalacion ins on area.Id_instalacion = ins.Id_instalacion WHERE act.Activado IS NULL ORDER BY act.Id_Actividades DESC";
             if (!String.IsNullOrEmpty(txtSearch.Trim()))
             {
-                query = " SELECT act.Id_Actividades 'Id_Actividad',act.Nombre,area.Nombre 'Area',ins.Nombre 'Instalacion' FROM Cat_Actividades act JOIN Cat_Area area on act.Id_Area = area.Id_area JOIN Cat_Instalacion ins on area.Id_instalacion=ins.Id_instalacion WHERE act.Activado IS NULL AND act.Nombre LIKE '%'+@txtSearch+'%' ORDER BY act.Id_Actividades DESC";
+                query = "SELECT act.Id_Actividades 'Id_Actividad',act.Nombre,area.Nombre 'Area',ins.Nombre 'Instalacion', ISNULL(r.max_score, '0') 'Archivo' FROM Cat_Actividades act LEFT JOIN(SELECT Id_Actividad, MAX(Id_Control) max_score FROM Cat_ActividadControl WHERE Activado IS NULL  GROUP BY Id_Actividad) r on act.Id_Actividades = r.Id_Actividad JOIN Cat_Area area on act.Id_Area = area.Id_area JOIN Cat_Instalacion ins on area.Id_instalacion = ins.Id_instalacion WHERE act.Activado IS NULL AND ct.Nombre LIKE '%' + @txtSearch + '%' ORDER BY act.Id_Actividades DESC";
             }
 
             comm.Connection = conexion.AbrirConexion();

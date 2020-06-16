@@ -23,6 +23,7 @@
 
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+                  <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
 
 </head>
 <%--    hold-transition sidebar-mini layout-fixed--%>
@@ -585,7 +586,8 @@
 
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
- 
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
     <script type="text/javascript">
 
     </script>

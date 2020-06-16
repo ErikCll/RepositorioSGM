@@ -80,5 +80,21 @@ namespace SGM.Competencia.CensoAct
                 Response.Redirect("Control.aspx?id=" + encodedString + "");
             }
         }
+
+        protected void gridActividad_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                Label IdArchivo = e.Row.FindControl("lblArchivo") as Label;
+
+                HyperLink lnk = e.Row.FindControl("lnkArchivo") as HyperLink;
+                if (Convert.ToInt32(IdArchivo.Text) == 0)
+                {
+                    lnk.Visible = false;
+                }
+                lnk.NavigateUrl = "https://er2020.blob.core.windows.net/controlvers/" + IdArchivo.Text.ToString() + ".pdf";
+
+            }
+        }
     }
 }

@@ -38,13 +38,39 @@ namespace SGM.Clase
         }
 
 
-        public bool Insertar(int IdActividad, string Codigo)
+        public bool Insertar(int IdActividad, string Codigo,string FechaEmision,int VigenciaMeses)
         {
             comm.Connection = conexion.AbrirConexion();
-            comm.CommandText = "INSERT INTO [Cat_ActividadControl] (Id_Actividad,Codigo,FechaCreacion) VALUES(@Id_Actividad,@Codigo,GETDATE())";
+            comm.CommandText = "INSERT INTO [Cat_ActividadControl] (Id_Actividad,Codigo,FechaCreacion,FechaEmision,VigenciaMeses,TieneVigencia) VALUES(@Id_Actividad,@Codigo,GETDATE(),CONVERT(date,@FechaEmision,103),@VigenciaMeses,1)";
             comm.CommandType = CommandType.Text;
             comm.Parameters.AddWithValue("@Id_Actividad", IdActividad);
             comm.Parameters.AddWithValue("@Codigo", Codigo);
+            comm.Parameters.AddWithValue("@FechaEmision", FechaEmision);
+            comm.Parameters.AddWithValue("@VigenciaMeses", VigenciaMeses);
+            int i = comm.ExecuteNonQuery();
+            comm.Parameters.Clear();
+            conexion.CerrarConexion();
+
+            if (i > 0)
+            {
+                return true;
+
+
+            }
+            else
+                return false;
+
+
+        }
+
+        public bool InsertarSinVigencia(int IdActividad, string Codigo, string FechaEmision)
+        {
+            comm.Connection = conexion.AbrirConexion();
+            comm.CommandText = "INSERT INTO [Cat_ActividadControl] (Id_Actividad,Codigo,FechaCreacion,FechaEmision) VALUES(@Id_Actividad,@Codigo,GETDATE(),CONVERT(date,@FechaEmision,103))";
+            comm.CommandType = CommandType.Text;
+            comm.Parameters.AddWithValue("@Id_Actividad", IdActividad);
+            comm.Parameters.AddWithValue("@Codigo", Codigo);
+            comm.Parameters.AddWithValue("@FechaEmision", FechaEmision);
             int i = comm.ExecuteNonQuery();
             comm.Parameters.Clear();
             conexion.CerrarConexion();

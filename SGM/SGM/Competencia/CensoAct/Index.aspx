@@ -32,6 +32,7 @@
                                      AllowPaging="true"
                                  DataKeyNames="Id_Actividad"
                                      OnRowCommand="gridActividad_RowCommand"
+                                     OnRowDataBound="gridActividad_RowDataBound"
                                     >
                                     <Columns>
                                         <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="260px" ItemStyle-Width="260px" ControlStyle-Width="76px">
@@ -49,6 +50,12 @@
                                         </asp:TemplateField>
                                         <asp:BoundField HeaderText="Área" DataField="Area" />
                                         <asp:BoundField HeaderText="Instalación" DataField="Instalacion" />
+                                        <asp:TemplateField HeaderText="Última versión" ItemStyle-HorizontalAlign="Center">
+                                            <ItemTemplate>
+                                                <asp:Label runat="server" ID="lblArchivo" Text='<%# Eval("Archivo") %>' Visible="false" ></asp:Label>
+                                                <asp:HyperLink runat="server" CssClass="ion-android-document" ID="lnkArchivo" Target="_blank" ></asp:HyperLink>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
                                     </Columns>
                                             <PagerStyle HorizontalAlign = "Center" CssClass="" />
                                   

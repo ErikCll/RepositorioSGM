@@ -132,6 +132,7 @@
     <Content Include="Competencia\CensoAct\Control.aspx" />
     <Content Include="Competencia\CensoAct\ControlEditar.aspx" />
     <Content Include="Competencia\CensoAct\Crear.aspx" />
+    <Content Include="Competencia\CensoAct\CrearControl.aspx" />
     <Content Include="Competencia\CensoAct\Detalle.aspx" />
     <Content Include="Competencia\CensoAct\Editar.aspx" />
     <Content Include="Competencia\CensoAct\Index.aspx" />
@@ -1758,6 +1759,13 @@
     </Compile>
     <Compile Include="Competencia\CensoAct\Crear.aspx.designer.cs">
       <DependentUpon>Crear.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Competencia\CensoAct\CrearControl.aspx.cs">
+      <DependentUpon>CrearControl.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Competencia\CensoAct\CrearControl.aspx.designer.cs">
+      <DependentUpon>CrearControl.aspx</DependentUpon>
     </Compile>
     <Compile Include="Competencia\CensoAct\Detalle.aspx.cs">
       <DependentUpon>Detalle.aspx</DependentUpon>
