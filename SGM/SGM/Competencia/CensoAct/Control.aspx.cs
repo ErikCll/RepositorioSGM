@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 
 
@@ -50,9 +51,31 @@ namespace SGM.Competencia.CensoAct
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
                 int IdControl = (int)gridControl.DataKeys[e.Row.RowIndex].Value;
-
+                Label FechaEmision = e.Row.FindControl("lblFechaEmision") as Label;
+                Label FechaVigencia = e.Row.FindControl("lblFechaVigencia") as Label;
+                Label Meses = e.Row.FindControl("lblMeses") as Label;
+                Label TieneVigencia= e.Row.FindControl("lblTieneVigencia") as Label;
                 HyperLink lnk = e.Row.FindControl("lnk") as HyperLink;
                 lnk.NavigateUrl = "https://er2020.blob.core.windows.net/controlvers/" + IdControl.ToString() + ".pdf";
+
+                if (TieneVigencia.Text == "1")
+                {
+                    HtmlControl Vig = e.Row.FindControl("Vigente") as HtmlControl;
+                    HtmlControl Ven = e.Row.FindControl("Vencido") as HtmlControl;
+
+                    DateTime FechaActual = DateTime.ParseExact(DateTime.Now.AddHours(-5).ToString("dd-MM-yyyy"), "dd-MM-yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                    DateTime Fecha_Emision = DateTime.ParseExact(FechaEmision.Text, "dd-MM-yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                    DateTime Fecha_Vigencia = Fecha_Emision.AddMonths(Convert.ToInt32(Meses.Text));
+                    FechaVigencia.Text = Fecha_Vigencia.ToString("dd-MM-yyyy");
+                    if (FechaActual < Fecha_Vigencia)
+                    {
+                        Vig.Visible = true;
+                    }
+                    else if (FechaActual >= Fecha_Vigencia)
+                    {
+                        Ven.Visible = true;
+                    }
+                }
 
             }
         }

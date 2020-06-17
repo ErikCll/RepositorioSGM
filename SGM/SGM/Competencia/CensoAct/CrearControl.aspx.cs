@@ -15,7 +15,10 @@ namespace SGM.Competencia.CensoAct
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                checkSin.Checked = true;
+            }
         }
 
         protected void Regresar(Object sender, EventArgs e)
@@ -76,35 +79,45 @@ namespace SGM.Competencia.CensoAct
                     {
                         int Cantidad = Convert.ToInt32(txtCantidad.Text) * 12;
 
-                        if (control.Insertar(IdActividad, Codigo,FechaEmision,Cantidad))
+                        if (Cantidad == 0)
                         {
-                            control.LeerId(IdActividad);
-
-                            StorageCredentials creds = new StorageCredentials(AccountName, AccountKey);
-                            var account = CloudStorageAccount.Parse("DefaultEndpointsProtocol=https;AccountName=" + AccountName + ";AccountKey=" + AccountKey);
-                            CloudBlobClient client = account.CreateCloudBlobClient();
-                            CloudBlobContainer sampleContainer = client.GetContainerReference("controlvers");
-                            sampleContainer.CreateIfNotExists();
-
-
-                            CloudBlockBlob blob = sampleContainer.GetBlockBlobReference("" + control.IdControl + ".pdf");
-                            blob.Properties.ContentType = "application/pdf";
-
-                            using (File1.PostedFile.InputStream)
-                            {
-                                blob.UploadFromStream(File1.PostedFile.InputStream);
-
-                            }
-                            string script = "alert('Se creó correctamente el registro.'); window.location.href= 'Control.aspx? id = "+ Request.QueryString["id"] + "';";
-
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", script, true);
-
+                            checkCon.Checked = false;
+                            string txtJS = String.Format("<script>alert('{0}');</script>", "La cantidad debe ser mayor a 0.");
+                            ScriptManager.RegisterClientScriptBlock(litControl, litControl.GetType(), "script", txtJS, false);
                         }
                         else
                         {
-                            string script = "alert('Ocurrió un error al crear el registro.'); window.location.href= '" + Request.UrlReferrer.ToString() + "';";
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", script, true);
+                            if (control.Insertar(IdActividad, Codigo, FechaEmision, Cantidad))
+                            {
+                                control.LeerId(IdActividad);
+
+                                StorageCredentials creds = new StorageCredentials(AccountName, AccountKey);
+                                var account = CloudStorageAccount.Parse("DefaultEndpointsProtocol=https;AccountName=" + AccountName + ";AccountKey=" + AccountKey);
+                                CloudBlobClient client = account.CreateCloudBlobClient();
+                                CloudBlobContainer sampleContainer = client.GetContainerReference("controlvers");
+                                sampleContainer.CreateIfNotExists();
+
+
+                                CloudBlockBlob blob = sampleContainer.GetBlockBlobReference("" + control.IdControl + ".pdf");
+                                blob.Properties.ContentType = "application/pdf";
+
+                                using (File1.PostedFile.InputStream)
+                                {
+                                    blob.UploadFromStream(File1.PostedFile.InputStream);
+
+                                }
+                                string script = "alert('Se creó correctamente el registro.'); window.location.href= 'Control.aspx?id=" + Request.QueryString["id"] + "';";
+
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", script, true);
+
+                            }
+                            else
+                            {
+                                string script = "alert('Ocurrió un error al crear el registro.'); window.location.href= '" + Request.UrlReferrer.ToString() + "';";
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", script, true);
+                            }
                         }
+
                     }
                         
 

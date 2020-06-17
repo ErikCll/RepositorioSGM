@@ -67,4 +67,11 @@
             </div>
         </ContentTemplate>
     </asp:UpdatePanel>
+          <script type="text/javascript">
+               Sys.WebForms.PageRequestManager.getInstance().add_beginRequest(BeginRequestHandler);
+          function BeginRequestHandler(sender, args) { var oControl = args.get_postBackElement(); oControl.disabled = true; }
+
+         
+                  </script>  
+
 </asp:Content>

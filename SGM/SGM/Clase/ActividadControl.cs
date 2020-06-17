@@ -16,13 +16,18 @@ namespace SGM.Clase
 
         public string IdControl { get; set; }
         public string Codigo { get; set; }
+        public string FechaEmision { get; set; }
+        public string Meses { get; set; }
+
+
+
         public string Actividad { get; set; }
 
 
         public DataTable Mostrar(int IdActividad)
         {
 
-            string query = "SELECT Id_Control,Codigo,CONVERT(nvarchar,FechaCreacion, 105) 'FechaCreacion' FROM Cat_ActividadControl WHERE id_Actividad = @Id_Actividad AND Activado IS NULL ORDER BY Id_Control DESC";
+            string query = "SELECT Id_Control,Codigo,CONVERT(nvarchar,FechaEmision, 105) 'FechaEmision',VigenciaMeses,CASE WHEN TieneVigencia=1 THEN '1' ELSE '' END 'Tienevigencia' FROM Cat_ActividadControl WHERE id_Actividad =@Id_Actividad AND Activado IS NULL ORDER BY FechaEmision DESC";
 
 
             comm.Connection = conexion.AbrirConexion();
@@ -86,14 +91,43 @@ namespace SGM.Clase
 
 
         }
-        public bool Editar(int IdControl, string Codigo)
+        public bool Editar(int IdControl, string Codigo,string FechaEmision,int VigenciaMeses)
         {
             comm.Connection = conexion.AbrirConexion();
-            comm.CommandText = "UPDATE Cat_ActividadControl SET Codigo = @Codigo WHERE Id_Control = @Id_Control";
+            comm.CommandText = "UPDATE Cat_ActividadControl SET Codigo = @Codigo,FechaEmision=CONVERT(date,@FechaEmision,103),VigenciaMeses=@VigenciaMeses WHERE Id_Control = @IdControl";
             comm.CommandType = CommandType.Text;
-            comm.Parameters.AddWithValue("@Id_Control", IdControl);
+            comm.Parameters.AddWithValue("@IdControl", IdControl);
             comm.Parameters.AddWithValue("@Codigo", Codigo);
-    
+            comm.Parameters.AddWithValue("@FechaEmision", FechaEmision);
+            comm.Parameters.AddWithValue("@VigenciaMeses", VigenciaMeses);
+
+
+
+            int i = comm.ExecuteNonQuery();
+            comm.Parameters.Clear();
+            conexion.CerrarConexion();
+
+            if (i > 0)
+            {
+                return true;
+
+
+            }
+            else
+                return false;
+
+
+        }
+        public bool EditarSinVigencia(int IdControl, string Codigo, string FechaEmision)
+        {
+            comm.Connection = conexion.AbrirConexion();
+            comm.CommandText = "UPDATE Cat_ActividadControl SET Codigo = @Codigo,FechaEmision=CONVERT(date,@FechaEmision,103) WHERE Id_Control = @IdControl";
+            comm.CommandType = CommandType.Text;
+            comm.Parameters.AddWithValue("@IdControl", IdControl);
+            comm.Parameters.AddWithValue("@Codigo", Codigo);
+            comm.Parameters.AddWithValue("@FechaEmision", FechaEmision);
+
+
             int i = comm.ExecuteNonQuery();
             comm.Parameters.Clear();
             conexion.CerrarConexion();
@@ -168,13 +202,17 @@ namespace SGM.Clase
         public void LeerDatosControl(int Id_Control)
         {
             comm.Connection = conexion.AbrirConexion();
-            comm.CommandText = "SELECT Codigo FROM Cat_ActividadControl WHERE Id_Control=@Id_Control";
+            comm.CommandText = "SELECT Codigo,CONVERT(nvarchar,FechaEmision, 105) 'FechaEmision',ISNULL(VigenciaMeses/12,'0')'VigenciaMeses' FROM Cat_ActividadControl WHERE Id_Control=@Id_Control";
             comm.CommandType = CommandType.Text;
             comm.Parameters.AddWithValue("@Id_Control", Id_Control);
 
             dr = comm.ExecuteReader();
             dr.Read();
             Codigo = dr["Codigo"].ToString();
+            FechaEmision = dr["FechaEmision"].ToString();
+            Meses = dr["VigenciaMeses"].ToString();
+
+
             dr.Close();
             comm.Connection = conexion.CerrarConexion();
 

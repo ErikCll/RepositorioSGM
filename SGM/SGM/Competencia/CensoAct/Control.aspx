@@ -45,7 +45,35 @@
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                         <asp:BoundField HeaderText="Código" DataField="Codigo" />
-                                        <asp:BoundField HeaderText="Fecha de creación" DataField="FechaCreacion" />
+                                        <asp:TemplateField HeaderText="Fecha de emisión">
+                                            <ItemTemplate>
+                                                <asp:Label runat="server" ID="lblFechaEmision" Text='<%# Eval("FechaEmision") %>'></asp:Label>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                        <asp:TemplateField HeaderText="Fecha de vigencia">
+                                            <ItemTemplate>
+                                                <asp:Label runat="server" ID="lblFechaVigencia"></asp:Label>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                        <asp:TemplateField Visible="false">
+                                            <ItemTemplate>
+                                                <asp:Label runat="server" ID="lblMeses" Text='<%# Eval("VigenciaMeses") %>'></asp:Label>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                        <asp:TemplateField Visible="false">
+                                            <ItemTemplate>
+                                                <asp:Label runat="server" ID="lblTieneVigencia" Text='<%# Eval("TieneVigencia")%>' ></asp:Label>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                        
+                                     <asp:TemplateField HeaderText="Estatus de la vigencia" ItemStyle-HorizontalAlign="Center">
+                                   <ItemTemplate>
+                                          
+                                        <i class=" ion-record text-green" runat="server" id="Vigente" visible="false"></i>
+                                           <i class=" ion-record text-red" runat="server" id="Vencido" visible="false"></i>
+
+                                   </ItemTemplate>
+                               </asp:TemplateField>
                                         <asp:TemplateField HeaderText="Archivo" ItemStyle-HorizontalAlign="Center">
                                             <ItemTemplate>
                                                 <asp:HyperLink runat="server" ID="lnk" CssClass="ion-android-document" Target="_blank"></asp:HyperLink>
@@ -209,5 +237,10 @@
         </ContentTemplate>
       
     </asp:UpdatePanel>
+              <script type="text/javascript">
+                       Sys.WebForms.PageRequestManager.getInstance().add_beginRequest(BeginRequestHandler);
+            function BeginRequestHandler(sender, args) { var oControl = args.get_postBackElement(); oControl.disabled = true; }
+  
 
+              </script>     
 </asp:Content>

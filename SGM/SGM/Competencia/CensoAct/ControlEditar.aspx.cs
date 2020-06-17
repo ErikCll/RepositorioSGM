@@ -20,6 +20,16 @@ namespace SGM.Competencia.CensoAct
                 int IdControl = Convert.ToInt32(decodedString);
                 control.LeerDatosControl(IdControl);
                 txtCodigo.Text = control.Codigo;
+                txtFecha.Text = control.FechaEmision;
+                if (control.Meses == "0")
+                {
+                    DivCantidad.Visible = false;
+                }
+                else
+                {
+                    DivCantidad.Visible = true;
+                    txtCantidad.Text = control.Meses;
+                }
 
             }
         }
@@ -30,15 +40,41 @@ namespace SGM.Competencia.CensoAct
             string decodedString = System.Text.ASCIIEncoding.ASCII.GetString(Convert.FromBase64String(Request.QueryString["id"]));
             int IdControl = Convert.ToInt32(decodedString);
             string Codigo = txtCodigo.Text;
+            string FechaEmision = txtFecha.Text;
+            control.LeerDatosControl(IdControl);
 
-
-            if (control.Editar(IdControl, Codigo))
+            if (control.Meses == "0")
             {
+                if (control.EditarSinVigencia(IdControl, Codigo, FechaEmision))
+                {
 
-                string txtJS = String.Format("<script>alert('{0}');</script>", "Se actualizaron correctamente los datos.");
-                ScriptManager.RegisterClientScriptBlock(litControl, litControl.GetType(), "script", txtJS, false);
+                    string txtJS = String.Format("<script>alert('{0}');</script>", "Se actualizaron correctamente los datos.");
+                    ScriptManager.RegisterClientScriptBlock(litControl, litControl.GetType(), "script", txtJS, false);
 
+                }
             }
+            else
+            {
+                int Cantidad = Convert.ToInt32(txtCantidad.Text) * 12;
+                if (Cantidad == 0)
+                {
+
+                    string txtJS = String.Format("<script>alert('{0}');</script>", "La cantidad debe ser mayor a 0.");
+                    ScriptManager.RegisterClientScriptBlock(litControl, litControl.GetType(), "script", txtJS, false);
+                }
+                else{
+                    if (control.Editar(IdControl, Codigo,FechaEmision,Cantidad))
+                    {
+
+                        string txtJS = String.Format("<script>alert('{0}');</script>", "Se actualizaron correctamente los datos.");
+                        ScriptManager.RegisterClientScriptBlock(litControl, litControl.GetType(), "script", txtJS, false);
+
+                    }
+                }
+              
+            }
+
+         
 
 
 
