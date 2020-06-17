@@ -50,14 +50,39 @@
                                         </asp:TemplateField>
                                         <asp:BoundField HeaderText="Área" DataField="Area" />
                                         <asp:BoundField HeaderText="Instalación" DataField="Instalacion" />
-                                        <asp:TemplateField HeaderText="Última versión" ItemStyle-HorizontalAlign="Center">
+                                     
+                                         <asp:BoundField HeaderText="Código" DataField="Codigo" />
+                                            <asp:TemplateField Visible="false">
+                                            <ItemTemplate>
+                                                <asp:Label runat="server" ID="lblFechaEmision" Text='<%# Eval("FechaEmision") %>'></asp:Label>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                        <asp:TemplateField HeaderText="Fecha de vigencia">
+                                            <ItemTemplate>
+                                                <asp:Label runat="server" ID="lblFechaVigencia"></asp:Label>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                        <asp:TemplateField Visible="false">
+                                            <ItemTemplate>
+                                                <asp:Label runat="server" ID="lblMeses" Text='<%# Eval("VigenciaMeses") %>'></asp:Label>
+                                            </ItemTemplate>
+                                            </asp:TemplateField>
+                                           <asp:TemplateField HeaderText="Estatus de la vigencia" ItemStyle-HorizontalAlign="Center">
+                                   <ItemTemplate>
+                                          
+                                        <i class=" ion-record text-green" runat="server" id="Vigente" visible="false"></i>
+                                           <i class=" ion-record text-red" runat="server" id="Vencido" visible="false"></i>
+
+                                   </ItemTemplate>
+                               </asp:TemplateField>
+                                           <asp:TemplateField HeaderText="Archivo" ItemStyle-HorizontalAlign="Center">
                                             <ItemTemplate>
                                                 <asp:Label runat="server" ID="lblArchivo" Text='<%# Eval("Archivo") %>' Visible="false" ></asp:Label>
                                                 <asp:HyperLink runat="server" CssClass="ion-android-document" ID="lnkArchivo" Target="_blank" ></asp:HyperLink>
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                     </Columns>
-                                            <PagerStyle HorizontalAlign = "Center" CssClass="" />
+                                            <PagerStyle HorizontalAlign ="Center" CssClass="" />
                                   
                                 </asp:GridView>
                             </div>

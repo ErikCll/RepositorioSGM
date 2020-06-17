@@ -27,14 +27,14 @@
                                                              GridLines="Vertical"
                                                             EmptyDataText="Sin registro de actividades."
                                                             DataKeyNames="Id_Actividad"
-                                                                    >                                                                     
+                                                              OnRowDataBound="gridActividad_RowDataBound"  >                                                                     
                                                             <Columns>
                                                                 
                                                                 <asp:TemplateField HeaderStyle-Width="15px" HeaderText="Agregar" ItemStyle-HorizontalAlign="Center" HeaderStyle-CssClass="header-center">
-                                                                   <%-- <HeaderTemplate>
+                                                                    <HeaderTemplate>
                                                                        <asp:CheckBox runat="server" ID="checkall" CssClass="chkHeader"/>
 
-                                                                    </HeaderTemplate>--%>
+                                                                    </HeaderTemplate>
                                                                     <ItemTemplate>
 
                                                                         <asp:CheckBox runat="server" ID="chckAct"  Checked='<%#Eval("Id_registro") %>'    />
@@ -79,4 +79,48 @@
             </div>
         </ContentTemplate>
     </asp:UpdatePanel>
+     <script type="text/javascript">
+
+              Sys.WebForms.PageRequestManager.getInstance().add_beginRequest(BeginRequestHandler);
+         function BeginRequestHandler(sender, args) { var oControl = args.get_postBackElement(); oControl.disabled = true; }
+
+         function DisableButton() {
+                document.getElementById("<%= btnGuardar.ClientID %>").disabled = true;
+                document.getElementById("<%= btnGuardar.ClientID %>").value = "Cargando...";
+
+
+  }
+         window.onbeforeunload = DisableButton;
+
+             function SelectAll(id)
+        {
+            //get reference of GridView control
+            var grid = document.getElementById("<%= gridActividad.ClientID %>");
+            //variable to contain the cell of the grid
+            var cell;
+            
+            if (grid.rows.length > 0)
+            {
+                //loop starts from 1. rows[0] points to the header.
+                for (i=1; i<grid.rows.length; i++)
+                {
+                    //get the reference of first column
+                    cell = grid.rows[i].cells[0];
+                    
+                    //loop according to the number of childNodes in the cell
+                    for (j=0; j<cell.childNodes.length; j++)
+                    {           
+                        //if childNode type is CheckBox                 
+                        if (cell.childNodes[j].type =="checkbox")
+                        {
+                        //assign the status of the Select All checkbox to the cell 
+                        //checkbox within the grid
+                            cell.childNodes[j].checked = document.getElementById(id).checked;
+                        }
+                    }
+                }
+            }
+        }
+                     </script>  
+
 </asp:Content>

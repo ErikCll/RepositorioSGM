@@ -72,5 +72,14 @@ namespace SGM.Competencia.MatrizCatAct
             MostrarGrid();
         }
 
+        protected void gridActividad_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.Header)
+            {
+                ((CheckBox)e.Row.FindControl("checkall") as CheckBox).Attributes.Add("onclick", "javascript:SelectAll('" + ((CheckBox)e.Row.FindControl("checkall") as CheckBox).ClientID + "')");
+            }
+
+     
+        }
     }
 }

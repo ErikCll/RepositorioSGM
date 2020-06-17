@@ -27,7 +27,7 @@ namespace SGM.Clase
         public DataTable Mostrar(int IdActividad)
         {
 
-            string query = "SELECT Id_Control,Codigo,CONVERT(nvarchar,FechaEmision, 105) 'FechaEmision',VigenciaMeses,CASE WHEN TieneVigencia=1 THEN '1' ELSE '' END 'Tienevigencia' FROM Cat_ActividadControl WHERE id_Actividad =@Id_Actividad AND Activado IS NULL ORDER BY FechaEmision DESC";
+            string query = "SELECT Id_Control,Codigo,CONVERT(nvarchar,FechaEmision, 105) 'FechaEmision',VigenciaMeses,CASE WHEN TieneVigencia=1 THEN '1' ELSE '' END 'Tienevigencia' FROM Cat_ActividadControl WHERE id_Actividad =@Id_Actividad AND Activado IS NULL ORDER BY CONVERT(datetime,FechaEmision, 105) DESC";
 
 
             comm.Connection = conexion.AbrirConexion();
