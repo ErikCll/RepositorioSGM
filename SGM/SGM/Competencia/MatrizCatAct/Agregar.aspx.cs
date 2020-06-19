@@ -21,8 +21,8 @@ namespace SGM.Competencia.MatrizCatAct
                 int IdCategoria = Convert.ToInt32(decodedString);
                 categoriaAct.LeerDatos(IdCategoria);
                 lblCategoría.Text = categoriaAct.Nombre;
+                LlenarDropArea();
                 MostrarGrid();
-
             }
         }
 
@@ -30,9 +30,19 @@ namespace SGM.Competencia.MatrizCatAct
         {
             string decodedString = System.Text.ASCIIEncoding.ASCII.GetString(Convert.FromBase64String(Request.QueryString["id"]));
             int IdCategoria = Convert.ToInt32(decodedString);
-            gridActividad.DataSource = categoriaAct.MostrarActividades(IdCategoria);
+            int IdArea = Convert.ToInt32(ddl_Area.SelectedValue);
+            gridActividad.DataSource = categoriaAct.MostrarActividades(IdCategoria,IdArea);
             gridActividad.DataBind();
         }
+
+        public void LlenarDropArea()
+        {
+            int IdInstalacion = Convert.ToInt32((this.Master as SGM.Master.Site1).IdInstalacion.ToString());
+            ddl_Area.DataSource = categoriaAct.MostrarArea(IdInstalacion);
+            ddl_Area.DataBind();
+            ddl_Area.Items.Insert(0, new ListItem("[Seleccionar]","0"));
+        }
+
 
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
@@ -83,6 +93,11 @@ namespace SGM.Competencia.MatrizCatAct
             }
 
      
+        }
+
+        protected void ddl_Area_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            MostrarGrid();
         }
     }
 }

@@ -14,6 +14,8 @@ namespace SGM.Catalogo.Area
         {
             if (!IsPostBack)
             {
+                (this.Master as SGM.Master.Site1).OcultarDrop = false;
+                (this.Master as SGM.Master.Site1).OcultarLabel = false;
                 string decodedString = System.Text.ASCIIEncoding.ASCII.GetString(Convert.FromBase64String(Request.QueryString["id"]));
                 int IdArea = Convert.ToInt32(decodedString);
                 area.LeerDatos(IdArea);

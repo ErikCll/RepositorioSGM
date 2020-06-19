@@ -14,6 +14,8 @@ namespace SGM.Catalogo.Categoria
         {
             if (!IsPostBack)
             {
+                (this.Master as SGM.Master.Site1).OcultarDrop = false;
+                (this.Master as SGM.Master.Site1).OcultarLabel = false;
                 string decodedString = System.Text.ASCIIEncoding.ASCII.GetString(Convert.FromBase64String(Request.QueryString["id"]));
                 int IdCategoria = Convert.ToInt32(decodedString);
                 categoria.LeerDatos(IdCategoria);

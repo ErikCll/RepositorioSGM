@@ -16,7 +16,9 @@ namespace SGM.Catalogo.Area
             Page.Form.DefaultButton = btnBuscar.UniqueID;
             if (!IsPostBack)
             {
-                   
+                (this.Master as SGM.Master.Site1).OcultarDrop = false;
+                (this.Master as SGM.Master.Site1).OcultarLabel = false;
+
                 MostrarGrid();
             }
         }

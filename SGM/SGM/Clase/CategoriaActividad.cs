@@ -39,16 +39,34 @@ namespace SGM.Clase
 
         }
 
-        public DataTable MostrarActividades(int IdCategoria)
+        public DataTable MostrarActividades(int IdCategoria,int IdArea)
         {
 
-            string query = "SELECT act.Id_Actividades 'Id_Actividad', act.Nombre, area.Nombre 'Area', CAST(CASE WHEN CatAct.Id_Actividad IS NULL THEN 0 else CatAct.Id_Actividad END as bit) 'Id_registro',CASE WHEN CatAct.Id_Actividad IS NULL THEN 0 else CatAct.Id_Actividad END 'Id_registro2' FROM Cat_Actividades act LEFT JOIN(SELECT Id_Actividad FROM Op_Cat_Act WHERE Id_Categoria =@Id_Categoria) CatAct on act.Id_Actividades = CatAct.Id_Actividad JOIN Cat_Area area on act.Id_Area = area.Id_Area WHERE act.Activado IS NULL ORDER BY Id_registro DESC,act.Id_Actividades DESC";
+            string query = "SELECT act.Id_Actividades 'Id_Actividad', act.Nombre, area.Nombre 'Area', CAST(CASE WHEN CatAct.Id_Actividad IS NULL THEN 0 else CatAct.Id_Actividad END as bit) 'Id_registro',CASE WHEN CatAct.Id_Actividad IS NULL THEN 0 else CatAct.Id_Actividad END 'Id_registro2' FROM Cat_Actividades act LEFT JOIN(SELECT Id_Actividad FROM Op_Cat_Act WHERE Id_Categoria =@Id_Categoria) CatAct on act.Id_Actividades = CatAct.Id_Actividad JOIN Cat_Area area on act.Id_Area = area.Id_Area WHERE act.Activado IS NULL AND area.Id_Area=@IdArea ORDER BY Id_registro DESC,act.Id_Actividades DESC";
        
 
             comm.Connection = conexion.AbrirConexion();
             comm.CommandText = query;
             comm.CommandType = CommandType.Text;
             comm.Parameters.AddWithValue("@Id_Categoria", IdCategoria);
+            comm.Parameters.AddWithValue("@IdArea", IdArea);
+
+            da = new SqlDataAdapter(comm);
+            dt = new DataTable();
+            da.Fill(dt);
+            conexion.CerrarConexion();
+            return dt;
+
+        }
+
+        public DataTable MostrarArea(int IdInstalacion)
+        {
+
+
+            comm.Connection = conexion.AbrirConexion();
+            comm.CommandText = "SELECT Id_Area, Nombre FROM Cat_Area WHERE Activado IS NULL AND Id_Instalacion=@Id_Instalacion ORDER BY Id_area DESC";
+            comm.CommandType = CommandType.Text;
+            comm.Parameters.AddWithValue("@Id_Instalacion", IdInstalacion);
             da = new SqlDataAdapter(comm);
             dt = new DataTable();
             da.Fill(dt);

@@ -55,7 +55,7 @@
 
              <telerik:RadComboBox runat="server" InputCssClass="font-weight-bold" AutoPostBack="true" ID="RadInstalacion" OnSelectedIndexChanged="RadInstalacion_SelectedIndexChanged"
                  MarkFirstMatch="true"  EmptyMessage="[Seleccionar]" DataTextField="Nombre" DataValueField="Id_Instalacion" RenderMode="Lightweight" Filter="StartsWith"></telerik:RadComboBox>
-             <asp:Label runat="server" ID="lblIDInstalacion" ForeColor="White"></asp:Label>
+             <asp:Label runat="server" ID="lblIDInstalacion" ForeColor="White" Visible="false"></asp:Label>
       </li>
 
       <li class="nav-item d-none d-sm-inline-block">

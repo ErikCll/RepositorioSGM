@@ -15,6 +15,8 @@ namespace SGM.Catalogo.Area
         {
             if (!IsPostBack)
             {
+                (this.Master as SGM.Master.Site1).OcultarDrop = false;
+                (this.Master as SGM.Master.Site1).OcultarLabel = false;
                 LlenarDrop();
             }
         }
