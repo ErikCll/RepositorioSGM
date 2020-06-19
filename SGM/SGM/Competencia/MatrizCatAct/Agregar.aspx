@@ -16,8 +16,15 @@
                   <div class="card shadow-none border-top border-dark" >
                 <div class="card-body">
                     <div class="row">
+                        
                            <div class="col-sm-12 col-md-12 col-lg-12">
                             <h4>Censo de actividad:</h4>
+                        </div>
+                        <div class="col-sm-12 col-md-3 col-lg-3">
+                            <div class="form-group">
+                               <label>Área:</label>
+                                <asp:DropDownList runat="server" ID="ddl_Area" DataTextField="Nombre" DataValueField="Id_Area" CssClass="form-control"></asp:DropDownList>
+                            </div>
                         </div>
                                    <div class="table-responsive">
                                                                             <div style="overflow: auto; height: 400px">

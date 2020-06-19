@@ -13,8 +13,11 @@ namespace SGM.Competencia.CensoAct
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            if (!IsPostBack)                     
             {
+                (this.Master as SGM.Master.Site1).OcultarDrop = false;
+                (this.Master as SGM.Master.Site1).OcultarLabel = false;
+
                 LlenarDropInstalacion();
                 string decodedString = System.Text.ASCIIEncoding.ASCII.GetString(Convert.FromBase64String(Request.QueryString["id"]));
                 int IdActividad = Convert.ToInt32(decodedString);

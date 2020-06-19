@@ -10,7 +10,6 @@ namespace SGM.Competencia.CensoAct
 {
     public partial class Index : System.Web.UI.Page
     {
-
         Clase.Actividad actividad = new Clase.Actividad();
 
         protected void Page_Load(object sender, EventArgs e)
@@ -25,7 +24,8 @@ namespace SGM.Competencia.CensoAct
 
         public void MostrarGrid()
         {
-            gridActividad.DataSource = actividad.Mostrar(txtSearch.Text.Trim());
+            int IdInstalacion = Convert.ToInt32((this.Master as SGM.Master.Site1).IdInstalacion.ToString());
+            gridActividad.DataSource = actividad.Mostrar(txtSearch.Text.Trim(),IdInstalacion);
             gridActividad.DataBind();
         }
 

@@ -14,8 +14,14 @@ namespace SGM.Competencia.CensoAct
 
         protected void Page_Load(object sender, EventArgs e)
         {
+
             if (!IsPostBack)
             {
+                (this.Master as SGM.Master.Site1).OcultarDrop = false;
+                (this.Master as SGM.Master.Site1).OcultarLabel = false;
+
+
+
                 LlenarDropInstalacion();
             }
         }

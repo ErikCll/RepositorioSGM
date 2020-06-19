@@ -15,6 +15,8 @@ namespace SGM.Clase
         SqlDataAdapter da = new SqlDataAdapter();
         SqlDataReader dr;
         public string Nombre { get; set; }
+        public string IdInstalacion { get; set; }
+        public string Instalacion { get; set; }
         public string IdArea { get; set; }
         public string Area { get; set; }
 
@@ -22,10 +24,10 @@ namespace SGM.Clase
         public DataTable Mostrar(string txtSearch)
         {
 
-            string query = "SELECT cat.Id_Categoria,cat.Nombre,area.Nombre 'Area' FROM Cat_Categoria cat JOIN Cat_Area area on cat.Id_Area = area.Id_area WHERE cat.Activado IS NULL ORDER BY cat.Id_Categoria DESC";
+            string query = "SELECT cat.Id_Categoria,cat.Nombre,area.Nombre 'Area',ins.Nombre 'Instalacion' FROM Cat_Categoria cat JOIN Cat_Area area on cat.Id_Area = area.Id_area JOIN Cat_Instalacion ins on area.Id_instalacion = ins.Id_instalacion WHERE cat.Activado IS NULL ORDER BY cat.Id_Categoria DESC";
             if (!String.IsNullOrEmpty(txtSearch.Trim()))
             {
-                query = "SELECT cat.Id_Categoria,cat.Nombre,area.Nombre 'Area' FROM Cat_Categoria cat JOIN Cat_Area area on cat.Id_Area = area.Id_area WHERE cat.Activado IS NULL AND cat.Nombre LIKE '%'+@txtSearch+'%' ORDER BY cat.Id_Categoria DESC";
+                query = "SELECT cat.Id_Categoria,cat.Nombre,area.Nombre 'Area',ins.Nombre 'Instalacion' FROM Cat_Categoria cat JOIN Cat_Area area on cat.Id_Area = area.Id_area JOIN Cat_Instalacion ins on area.Id_instalacion = ins.Id_instalacion WHERE cat.Activado IS NULL AND cat.Nombre LIKE '%'+@txtSearch+'%' ORDER BY cat.Id_Categoria DESC";
             }
 
             comm.Connection = conexion.AbrirConexion();
@@ -40,19 +42,33 @@ namespace SGM.Clase
 
         }
 
-        public DataTable MostrarArea()
+        public DataTable MostrarArea(int IdInstalacion)
         {
 
 
             comm.Connection = conexion.AbrirConexion();
-            comm.CommandText = "SELECT Id_Area, Nombre FROM Cat_Area WHERE Activado IS NULL ORDER BY Id_area DESC";
+            comm.CommandText = "SELECT Id_Area, Nombre FROM Cat_Area WHERE Activado IS NULL AND Id_Instalacion=@Id_Instalacion ORDER BY Id_area DESC";
             comm.CommandType = CommandType.Text;
+            comm.Parameters.AddWithValue("@Id_Instalacion", IdInstalacion);
             da = new SqlDataAdapter(comm);
             dt = new DataTable();
             da.Fill(dt);
             conexion.CerrarConexion();
             return dt;
 
+        }
+
+        public DataTable MostrarInstalacion()
+        {
+
+            comm.Connection = conexion.AbrirConexion();
+            comm.CommandText = "SELECT TOP(40) Id_Instalacion, Nombre FROM Cat_Instalacion WHERE Activado IS NULL ORDER BY Id_Instalacion DESC";
+            comm.CommandType = CommandType.Text;
+            da = new SqlDataAdapter(comm);
+            dt = new DataTable();
+            da.Fill(dt);
+            conexion.CerrarConexion();
+            return dt;
         }
 
         public bool Insertar(int IdArea, string Nombre)
@@ -130,16 +146,18 @@ namespace SGM.Clase
         public void LeerDatos(int IdCategoria)
         {
             comm.Connection = conexion.AbrirConexion();
-            comm.CommandText = "SELECT cat.Id_Categoria,cat.Nombre,area.Id_area, area.Nombre 'Area' FROM Cat_Categoria cat JOIN Cat_Area area on cat.Id_Area=area.Id_area WHERE cat.Id_Categoria=@Id_Categoria";
+            comm.CommandText = "SELECT cat.Id_Categoria,cat.Nombre,area.Id_area, area.Nombre 'Area',ins.Id_Instalacion,ins.Nombre 'Instalacion' FROM Cat_Categoria cat JOIN Cat_Area area on cat.Id_Area=area.Id_area JOIN Cat_Instalacion ins on area.Id_Instalacion=ins.Id_Instalacion WHERE cat.Id_Categoria=@Id_Categoria";
             comm.CommandType = CommandType.Text;
             comm.Parameters.AddWithValue("@Id_Categoria", IdCategoria);
 
             dr = comm.ExecuteReader();
             dr.Read();
             Nombre = dr["Nombre"].ToString();
+            IdInstalacion = dr["Id_Instalacion"].ToString();
+            Instalacion = dr["Instalacion"].ToString();
             IdArea = dr["Id_Area"].ToString();
             Area = dr["Area"].ToString();
-            dr.Close();
+            //dr.Close();
             comm.Connection = conexion.CerrarConexion();
 
 

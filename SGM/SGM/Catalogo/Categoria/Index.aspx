@@ -48,6 +48,7 @@
                                         </asp:TemplateField>
                                         <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
                                         <asp:BoundField HeaderText="Área" DataField="Area" />
+                                        <asp:BoundField HeaderText="Instalación" DataField="Instalacion" />
                                     </Columns>
                                             <PagerStyle HorizontalAlign = "Center" CssClass="" />
                                 </asp:GridView>

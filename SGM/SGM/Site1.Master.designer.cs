@@ -13,6 +13,33 @@ namespace SGM.Master {
     public partial class Site1 {
         
         /// <summary>
+        /// Control lblInstalacion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblInstalacion;
+        
+        /// <summary>
+        /// Control RadInstalacion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadComboBox RadInstalacion;
+        
+        /// <summary>
+        /// Control lblIDInstalacion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblIDInstalacion;
+        
+        /// <summary>
         /// Control menu_catalogo.
         /// </summary>
         /// <remarks>

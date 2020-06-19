@@ -7,16 +7,16 @@ using System.Web.UI.WebControls;
 
 namespace SGM.Catalogo.Area
 {
+    
     public partial class Index : System.Web.UI.Page
     {
-       
         Clase.Area area = new Clase.Area();
         protected void Page_Load(object sender, EventArgs e)
         {
             Page.Form.DefaultButton = btnBuscar.UniqueID;
-
             if (!IsPostBack)
             {
+                   
                 MostrarGrid();
             }
         }

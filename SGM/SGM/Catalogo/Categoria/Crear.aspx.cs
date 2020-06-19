@@ -16,7 +16,7 @@ namespace SGM.Catalogo.Categoria
         {
             if (!IsPostBack)
             {
-                LlenarDrop();
+                LlenarDropInstalacion();
             }
         }
 
@@ -31,13 +31,24 @@ namespace SGM.Catalogo.Categoria
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", script, true);
             }
         }
-
-        public void LlenarDrop()
+        public void LlenarDropInstalacion()
         {
-            ddl_Area.DataSource = categoria.MostrarArea();
+            ddl_Instalacion.DataSource = categoria.MostrarInstalacion();
+            ddl_Instalacion.DataBind();
+            ddl_Instalacion.Items.Insert(0, new ListItem("[Seleccionar]", "0"));
+        }
+
+        public void LlenarDropArea()
+        {
+            int IdInstalacion = Convert.ToInt32(ddl_Instalacion.SelectedValue);
+            ddl_Area.DataSource = categoria.MostrarArea(IdInstalacion);
             ddl_Area.DataBind();
             ddl_Area.Items.Insert(0, new ListItem("[Seleccionar]"));
+        }
 
+        protected void ddl_Instalacion_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LlenarDropArea();
         }
     }
 }

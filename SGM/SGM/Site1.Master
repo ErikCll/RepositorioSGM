@@ -1,4 +1,6 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="SGM.Master.Site1" %>
+<%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
+<%--    <%@ MasterType VirtualPath="~/Site1.Master" %>--%>
 
 <!DOCTYPE html>
 
@@ -45,6 +47,17 @@
       <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link">Inicio</a>
       </li>
+         <li class=" mt-2">
+             <label class="text-white" runat="server" id="lblInstalacion">Instalación:</label>
+  <%--       <telerik:RadComboBox InputCssClass="font-weight-bold" Visible="true" AutoPostBack="true" OnSelectedIndexChanged="RadComboBox1_SelectedIndexChanged" ID="RadComboBox1"
+             runat="server" DataTextField="Nombre" DataValueField="Id_Instalacion" RenderMode="Lightweight" Filter="StartsWith"
+             MarkFirstMatch="true" EmptyMessage="[Seleccionar]" CausesValidation="false"></telerik:RadComboBox>--%>
+
+             <telerik:RadComboBox runat="server" InputCssClass="font-weight-bold" AutoPostBack="true" ID="RadInstalacion" OnSelectedIndexChanged="RadInstalacion_SelectedIndexChanged"
+                 MarkFirstMatch="true"  EmptyMessage="[Seleccionar]" DataTextField="Nombre" DataValueField="Id_Instalacion" RenderMode="Lightweight" Filter="StartsWith"></telerik:RadComboBox>
+             <asp:Label runat="server" ID="lblIDInstalacion" ForeColor="White"></asp:Label>
+      </li>
+
       <li class="nav-item d-none d-sm-inline-block">
 <%--        <a href="#" class="nav-link">Contact</a>--%>
       </li>

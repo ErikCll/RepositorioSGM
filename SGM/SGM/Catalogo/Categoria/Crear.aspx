@@ -25,6 +25,11 @@
                             </div>
                         </div>
                      
+                            <div class="col-sm-12 col-md-4 col-lg-4">
+                          <label>Instalación:</label>
+                             <asp:DropDownList runat="server" ID="ddl_Instalacion" DataTextField="Nombre" DataValueField="Id_Instalacion" CssClass="form-control" AutoPostBack="true"
+                                 OnSelectedIndexChanged="ddl_Instalacion_SelectedIndexChanged" ></asp:DropDownList>
+                        </div>
                          <div class="col-sm-12 col-md-4 col-lg-4">
                             <div class="form-group">
                               
@@ -34,10 +39,7 @@
                                     ErrorMessage="Área requerida." ForeColor="Red" InitialValue="[Seleccionar]" ValidationGroup="btnGuardar"></asp:RequiredFieldValidator>
                             </div>
                         </div>
-                        <div class="col-sm-12 col-md-12 col-lg-4">
-
-                        </div>
-                  
+                       
                   
                         <div class="col-sm-12 col-md-12 col-lg-6">
                             <div class="form-group">
