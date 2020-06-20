@@ -38,6 +38,24 @@ namespace SGM.Clase
             return dt;
 
         }
+        public DataTable MostrarGeneral(int IdInstalacion)
+        {
+
+            string query = "DECLARE @cols AS NVARCHAR(MAX), @query AS NVARCHAR(MAX)  DECLARE	@Id_Instalacion as NVARCHAR(MAX) set @Id_Instalacion =@IdInstalacion select @cols = STUFF((SELECT ',' + QUOTENAME(cat.Nombre) FROM Cat_Categoria cat JOIN Cat_Area area on cat.Id_Area = area.Id_area JOIN Cat_Instalacion ins on area.Id_instalacion = ins.Id_instalacion WHERE ins.Id_instalacion = 487 AND cat.Activado IS NULL FOR XML PATH(''), TYPE).value('.', 'NVARCHAR(MAX)'),1,1,'') set @query = 'SELECT Actividad,' + @cols + ' from (select actividad, Categoria FROM(SELECT act.Nombre Actividad, cat.Nombre Categoria FROM Op_Cat_Act catact LEFT JOIN Cat_Categoria cat on catact.Id_Categoria = cat.Id_Categoria RIGHT JOIN Cat_Actividades act on catact.Id_Actividad = act.Id_Actividades JOIN Cat_Area area on act.Id_Area = area.Id_area JOIN Cat_Instalacion ins on area.Id_instalacion = ins.Id_instalacion WHERE act.Activado Is null AND cat.Activado IS NULL AND ins.Id_instalacion ='+@Id_Instalacion+' ) as tabla) x pivot ( MAX(Categoria) for Categoria in (' + @cols + ') ) p 'execute(@query);";
+
+
+            comm.Connection = conexion.AbrirConexion();
+            comm.CommandText = query;
+            comm.CommandType = CommandType.Text;
+            comm.Parameters.AddWithValue("@IdInstalacion", IdInstalacion);
+
+            da = new SqlDataAdapter(comm);
+            dt = new DataTable();
+            da.Fill(dt);
+            conexion.CerrarConexion();
+            return dt;
+
+        }
 
         public DataTable MostrarActividades(int IdCategoria,int IdArea)
         {

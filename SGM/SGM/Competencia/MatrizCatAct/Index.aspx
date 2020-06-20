@@ -12,7 +12,8 @@
             <div class="col-lg-12">
                 <div class="row">
                     <div class="container col-12">
-                        
+                                            <a href="Detalle.aspx" class="float-left">Detalle general</a>
+
                           <div class="input-group float-right col-sm-4 col-md-4 col-lg-4">
                 <div class="input-group btn">
                    <asp:TextBox ID="txtSearch" runat="server" CssClass="form-control form-control-sm"></asp:TextBox>

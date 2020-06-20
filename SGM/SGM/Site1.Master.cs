@@ -85,7 +85,7 @@ namespace SGM.Master
                     actividad.Attributes.Add("class", "nav-link active");
 
                 }
-                else if (activepage.Contains("/Competencia/MatrizCatAct/Index.aspx") || activepage.Contains("/Competencia/MatrizCatAct/Agregar.aspx"))
+                else if (activepage.Contains("/Competencia/MatrizCatAct/Index.aspx") || activepage.Contains("/Competencia/MatrizCatAct/Agregar.aspx") || activepage.Contains("/Competencia/MatrizCatAct/Detalle.aspx"))
                 {
                     menu_competencia.Attributes.Add("class", "  nav-item has-treeview menu-open");
                     competencia.Attributes.Add("class", "nav-link active");

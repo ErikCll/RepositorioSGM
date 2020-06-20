@@ -26,6 +26,8 @@ namespace SGM.Competencia.MatrizCatAct
 
             gridCategoria.DataSource = categoriaAct.Mostrar(txtSearch.Text.Trim(),IdInstalacion);
             gridCategoria.DataBind();
+
+          
         }
 
 
