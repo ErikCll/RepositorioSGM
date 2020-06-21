@@ -96,8 +96,6 @@
          function DisableButton() {
                 document.getElementById("<%= btnGuardar.ClientID %>").disabled = true;
                 document.getElementById("<%= btnGuardar.ClientID %>").value = "Cargando...";
-
-
   }
          window.onbeforeunload = DisableButton;
 
