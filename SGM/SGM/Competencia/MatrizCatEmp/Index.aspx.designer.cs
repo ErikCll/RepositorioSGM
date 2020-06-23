@@ -7,10 +7,10 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace SGM.Competencia.MatrizCatAct {
+namespace SGM.Competencia.MatrizCatEmp {
     
     
-    public partial class Consulta {
+    public partial class Index {
         
         /// <summary>
         /// Control gridMatriz.

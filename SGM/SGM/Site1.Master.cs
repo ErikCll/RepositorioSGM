@@ -92,6 +92,13 @@ namespace SGM.Master
                     catact.Attributes.Add("class", "nav-link active");
                   
                 }
+                else if (activepage.Contains("/Competencia/MatrizCatEmp/Index.aspx") || activepage.Contains("/Competencia/MatrizCatEmp/Agregar.aspx") || activepage.Contains("/Competencia/MatrizCatEmp/Detalle.aspx"))
+                {
+                    menu_competencia.Attributes.Add("class", "  nav-item has-treeview menu-open");
+                    competencia.Attributes.Add("class", "nav-link active");
+                    catemp.Attributes.Add("class", "nav-link active");
+
+                }
             }
 
         }

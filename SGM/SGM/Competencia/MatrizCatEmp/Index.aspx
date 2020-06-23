@@ -1,17 +1,15 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Index.aspx.cs" Inherits="SGM.Competencia.MatrizCatAct.Consulta" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Index.aspx.cs" Inherits="SGM.Competencia.MatrizCatEmp.Index" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    Matriz Categoría-Actividad
+        Matriz Categoría-Empleado
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="mapeo" runat="server">
-    
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Content" runat="server">
-
-      <div class="col-lg-12">
+          <div class="col-lg-12">
                 <div class="row">
                     <div class="container col-12">
-                    <a href="Detalle.aspx" class="float-left">Detalle Matriz Categoría-Actividad
+                    <a href="Detalle.aspx" class="float-left">Detalle Matriz Categoría-Empleado
 </a>
 
                    
@@ -33,4 +31,5 @@
                     </div>
                 </div>
             </div>
+
 </asp:Content>

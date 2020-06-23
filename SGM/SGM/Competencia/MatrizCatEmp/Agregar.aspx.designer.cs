@@ -7,7 +7,7 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace SGM.Competencia.MatrizCatAct {
+namespace SGM.Competencia.MatrizCatEmp {
     
     
     public partial class Agregar {
@@ -31,15 +31,6 @@ namespace SGM.Competencia.MatrizCatAct {
         protected global::System.Web.UI.WebControls.Literal litControl;
         
         /// <summary>
-        /// Control ddl_Area.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddl_Area;
-        
-        /// <summary>
         /// Control btnGuardar.
         /// </summary>
         /// <remarks>
@@ -49,12 +40,12 @@ namespace SGM.Competencia.MatrizCatAct {
         protected global::System.Web.UI.WebControls.Button btnGuardar;
         
         /// <summary>
-        /// Control gridActividad.
+        /// Control gridEmpleado.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gridActividad;
+        protected global::System.Web.UI.WebControls.GridView gridEmpleado;
     }
 }

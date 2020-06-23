@@ -130,6 +130,15 @@ namespace SGM.Master {
         protected global::System.Web.UI.HtmlControls.HtmlAnchor catact;
         
         /// <summary>
+        /// Control catemp.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor catemp;
+        
+        /// <summary>
         /// Control head.
         /// </summary>
         /// <remarks>

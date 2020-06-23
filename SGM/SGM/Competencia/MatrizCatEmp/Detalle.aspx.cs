@@ -5,11 +5,12 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace SGM.Competencia.MatrizCatAct
+namespace SGM.Competencia.MatrizCatEmp
 {
-    public partial class Index : System.Web.UI.Page
+    public partial class Detalle : System.Web.UI.Page
     {
-        Clase.CategoriaActividad categoriaAct = new Clase.CategoriaActividad();
+        Clase.CategoriaEmpleado categoriaEmp = new Clase.CategoriaEmpleado();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             Page.Form.DefaultButton = btnBuscar.UniqueID;
@@ -19,17 +20,15 @@ namespace SGM.Competencia.MatrizCatAct
                 MostrarGrid();
             }
         }
-
         public void MostrarGrid()
         {
             int IdInstalacion = Convert.ToInt32((this.Master as SGM.Master.Site1).IdInstalacion.ToString());
 
-            gridCategoria.DataSource = categoriaAct.Mostrar(txtSearch.Text.Trim(),IdInstalacion);
+            gridCategoria.DataSource = categoriaEmp.Mostrar(txtSearch.Text.Trim(), IdInstalacion);
             gridCategoria.DataBind();
 
-          
-        }
 
+        }
 
         protected void gridCategoria_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
@@ -46,7 +45,7 @@ namespace SGM.Competencia.MatrizCatAct
         protected void gridCategoria_RowCommand(object sender, GridViewCommandEventArgs e)
         {
 
-             if (e.CommandName == "AgregarAct")
+            if (e.CommandName == "AgregarAct")
             {
                 GridViewRow row = ((LinkButton)e.CommandSource).Parent.Parent as GridViewRow;
 
@@ -56,6 +55,5 @@ namespace SGM.Competencia.MatrizCatAct
                 Response.Redirect("Agregar.aspx?id=" + encodedString + "");
             }
         }
-
     }
 }

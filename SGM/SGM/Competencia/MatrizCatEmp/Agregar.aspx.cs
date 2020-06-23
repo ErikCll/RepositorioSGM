@@ -5,11 +5,12 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace SGM.Competencia.MatrizCatAct
+namespace SGM.Competencia.MatrizCatEmp
 {
     public partial class Agregar : System.Web.UI.Page
     {
-        Clase.CategoriaActividad categoriaAct = new Clase.CategoriaActividad();
+        Clase.CategoriaEmpleado categoriaEmp = new Clase.CategoriaEmpleado();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -19,9 +20,8 @@ namespace SGM.Competencia.MatrizCatAct
 
                 string decodedString = System.Text.ASCIIEncoding.ASCII.GetString(Convert.FromBase64String(Request.QueryString["id"]));
                 int IdCategoria = Convert.ToInt32(decodedString);
-                categoriaAct.LeerDatos(IdCategoria);
-                lblCategoría.Text = categoriaAct.Nombre;
-                LlenarDropArea();
+                categoriaEmp.LeerDatos(IdCategoria);
+                lblCategoría.Text = categoriaEmp.Nombre;
                 MostrarGrid();
             }
         }
@@ -30,35 +30,19 @@ namespace SGM.Competencia.MatrizCatAct
         {
             string decodedString = System.Text.ASCIIEncoding.ASCII.GetString(Convert.FromBase64String(Request.QueryString["id"]));
             int IdCategoria = Convert.ToInt32(decodedString);
-            int IdArea = Convert.ToInt32(ddl_Area.SelectedValue);
-            if (IdArea == 0)
-            {
-                gridActividad.DataSource = categoriaAct.MostrarTodasActividades(IdCategoria);
-                gridActividad.DataBind();
-
-            }
-            else
-            {
-                gridActividad.DataSource = categoriaAct.MostrarActividades(IdCategoria, IdArea);
-                gridActividad.DataBind();
-            }
-        
-        }
-
-        public void LlenarDropArea()
-        {
             int IdInstalacion = Convert.ToInt32((this.Master as SGM.Master.Site1).IdInstalacion.ToString());
-            ddl_Area.DataSource = categoriaAct.MostrarArea(IdInstalacion);
-            ddl_Area.DataBind();
-            ddl_Area.Items.Insert(0, new ListItem("[Todas]","0"));
-        }
 
+            gridEmpleado.DataSource = categoriaEmp.MostrarEmpleado(IdCategoria, IdInstalacion);
+            gridEmpleado.DataBind();
+            
+
+        }
 
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
-            foreach (GridViewRow row in gridActividad.Rows)
+            foreach (GridViewRow row in gridEmpleado.Rows)
             {
-                if(row.RowType==DataControlRowType.DataRow)
+                if (row.RowType == DataControlRowType.DataRow)
                 {
                     string decodedString = System.Text.ASCIIEncoding.ASCII.GetString(Convert.FromBase64String(Request.QueryString["id"]));
                     int IdCategoria = Convert.ToInt32(decodedString);
@@ -66,49 +50,44 @@ namespace SGM.Competencia.MatrizCatAct
                     int IdActividad = Convert.ToInt32(row.Cells[3].Controls.OfType<Label>().FirstOrDefault().Text);
                     int IdRegistro = Convert.ToInt32(row.Cells[4].Controls.OfType<Label>().FirstOrDefault().Text);
 
-                    if (isChecked==true && IdActividad != IdRegistro) {
+                    if (isChecked == true && IdActividad != IdRegistro)
+                    {
 
-                        if (categoriaAct.Insertar(IdCategoria, IdActividad))
+                        if (categoriaEmp.Insertar(IdCategoria, IdActividad))
                         {
-                            string txtJS = String.Format("<script>alert('{0}');</script>", "Se actualizaron las actividades.");
+                            string txtJS = String.Format("<script>alert('{0}');</script>", "Se actualizaron los empleados.");
                             ScriptManager.RegisterClientScriptBlock(litControl, litControl.GetType(), "script", txtJS, false);
                         }
-                        
+
                     }
                     if (IdRegistro != 0)
                     {
                         if (isChecked == false)
                         {
-                            if (categoriaAct.Eliminar(IdCategoria, IdActividad))
+                            if (categoriaEmp.Eliminar(IdCategoria, IdActividad))
                             {
-                                string txtJS = String.Format("<script>alert('{0}');</script>", "Se actualizaron las actividades.");
+                                string txtJS = String.Format("<script>alert('{0}');</script>", "Se actualizaron los empleados.");
                                 ScriptManager.RegisterClientScriptBlock(litControl, litControl.GetType(), "script", txtJS, false);
                             }
                         }
                     }
 
 
-               
+
                 }
 
             }
             MostrarGrid();
         }
 
-        protected void gridActividad_RowDataBound(object sender, GridViewRowEventArgs e)
+        protected void gridEmpleado_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             if (e.Row.RowType == DataControlRowType.Header)
             {
                 ((CheckBox)e.Row.FindControl("checkall") as CheckBox).Attributes.Add("onclick", "javascript:SelectAll('" + ((CheckBox)e.Row.FindControl("checkall") as CheckBox).ClientID + "')");
             }
 
-     
-        }
 
-        protected void ddl_Area_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            MostrarGrid();
         }
-  
     }
 }

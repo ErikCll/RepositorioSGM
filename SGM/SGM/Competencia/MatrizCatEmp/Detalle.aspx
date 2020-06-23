@@ -1,13 +1,14 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Detalle.aspx.cs" Inherits="SGM.Competencia.MatrizCatAct.Index" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Detalle.aspx.cs" Inherits="SGM.Competencia.MatrizCatEmp.Detalle" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    Detalle Matriz Categoría-Actividad
+        Detalle Matriz Categoría-Empleado
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="mapeo" runat="server">
-     <li class="breadcrumb-item active"><a href="Index.aspx">Matriz Categoría-Actividad</a></li>
+         <li class="breadcrumb-item active"><a href="Index.aspx">Matriz Categoría-Empleado</a></li>
                   <li class="breadcrumb-item "><a>Detalle</a></li>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Content" runat="server">
-      <asp:UpdatePanel runat="server" UpdateMode="Conditional">
+          <asp:UpdatePanel runat="server" UpdateMode="Conditional">
 
         <ContentTemplate>
 
@@ -55,4 +56,5 @@
             </div>
         </ContentTemplate>
     </asp:UpdatePanel>
+
 </asp:Content>

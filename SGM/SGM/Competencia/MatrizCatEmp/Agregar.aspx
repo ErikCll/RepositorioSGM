@@ -1,18 +1,17 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Agregar.aspx.cs" Inherits="SGM.Competencia.MatrizCatAct.Agregar" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Agregar.aspx.cs" Inherits="SGM.Competencia.MatrizCatEmp.Agregar" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    Agregar censo de actividad<br />
+    Agregar empleado<br />
         <label class="font-weight-normal text small">Categoría: </label> <asp:Label runat="server" ID="lblCategoría" CssClass=" font-weight-bold text small"></asp:Label>
-
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="mapeo" runat="server">
-     <li class="breadcrumb-item active"><a href="Index.aspx">Matriz Categoría-Actividad</a></li>
+    <li class="breadcrumb-item active"><a href="Index.aspx">Matriz Categoría-Empleado</a></li>
 
 
       <li class="breadcrumb-item active"><a href="Detalle.aspx">Detalle</a></li>
                   <li class="breadcrumb-item "><a>Agregar</a></li>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Content" runat="server">
-       <asp:UpdatePanel runat="server" UpdateMode="Conditional" >
+           <asp:UpdatePanel runat="server" UpdateMode="Conditional" >
         <ContentTemplate>
             <asp:Literal runat="server" ID="litControl"></asp:Literal>
             <div class="col-lg-12">
@@ -21,16 +20,16 @@
                     <div class="row">
                         
                            
-                        <div class="col-sm-12 col-md-3 col-lg-3">
-                            <div class="form-group">
-                               <label>Área:</label>
-                                <asp:DropDownList runat="server" ID="ddl_Area" DataTextField="Nombre" DataValueField="Id_Area" CssClass="form-control" AutoPostBack="true" OnSelectedIndexChanged="ddl_Area_SelectedIndexChanged"></asp:DropDownList>
-                            </div>
-                        </div>
+                     
                         <div class="col-sm-12 col-md-12 col-lg-12"></div>
                         <div class="col-sm-6 col-md-6 col-lg-6">
-                            <h4>Censo de actividades:</h4>
-                        </div>
+                            <div class="form-group custom-control-inline">
+                                                            <h4>Empleados:</h4>
+
+                                                                 <input type="text" id="txtFiltro" class="form-control ml-1" placeholder="Búsqueda rápida" maxlength="20"  onkeyup="filtro(this)"/>
+
+                            </div>                        </div>
+
                         <div class="col-sm-6 col-md-6 col-lg-6">
                               <div class="form-group float-right">
                                 <asp:Button runat="server" CssClass="btn btn-primary" Text="Guardar" ID="btnGuardar" OnClick="btnGuardar_Click"/>
@@ -39,13 +38,13 @@
                         </div>
                                    <div class="table-responsive">
                                                                             <div style="overflow: auto; height: 400px">
-                                                                            <asp:GridView ID="gridActividad" runat="server"
+                                                                            <asp:GridView ID="gridEmpleado" runat="server"
                                                             AutoGenerateColumns="false" 
                                                              CssClass=" table table-striped table-sm"
                                                              GridLines="Vertical"
-                                                            EmptyDataText="Sin registro de actividades."
-                                                            DataKeyNames="Id_Actividad"
-                                                              OnRowDataBound="gridActividad_RowDataBound"  >                                                                     
+                                                            EmptyDataText="Sin registro de empleados."
+                                                            DataKeyNames="Id_Empleado"
+                                                              OnRowDataBound="gridEmpleado_RowDataBound"  >                                                                     
                                                             <Columns>
                                                                 
                                                                 <asp:TemplateField HeaderStyle-Width="15px" HeaderText="Agregar" ItemStyle-HorizontalAlign="Center" HeaderStyle-CssClass="header-center">
@@ -60,12 +59,12 @@
                                                                     </ItemTemplate>
                                                                 </asp:TemplateField>
 
-                                                                <asp:BoundField HeaderText="Nombre" DataField="Nombre" ItemStyle-Width="500px" />
-                                                                  <asp:BoundField HeaderText="Área" DataField="Area" />
+                                                                <asp:BoundField HeaderText="Empleado" DataField="Empleado" ItemStyle-Width="500px" />
+                                                                  <asp:BoundField HeaderText="Instalación" DataField="Instalacion" />
 
                                                                 <asp:TemplateField Visible="false">
                                                                     <ItemTemplate>
-                                                                        <asp:Label ID="Label1" runat="server" Text='<%#Eval("Id_Actividad") %>'></asp:Label>
+                                                                        <asp:Label ID="Label1" runat="server" Text='<%#Eval("Id_Empleado") %>'></asp:Label>
                                                                     </ItemTemplate>
                                                                 </asp:TemplateField>
                                                                 <asp:TemplateField Visible="false">
@@ -96,7 +95,7 @@
                <asp:PostBackTrigger ControlID="btnGuardar" />
            </Triggers>
     </asp:UpdatePanel>
-     <script type="text/javascript">
+         <script type="text/javascript">
 
               Sys.WebForms.PageRequestManager.getInstance().add_beginRequest(BeginRequestHandler);
          function BeginRequestHandler(sender, args) { var oControl = args.get_postBackElement(); oControl.disabled = true; }
@@ -107,10 +106,38 @@
   }
          window.onbeforeunload = DisableButton;
 
+             function filtro() {
+            var txtKeyword = document.getElementById("txtFiltro");
+            var tblGrid = document.getElementById('<%= gridEmpleado.ClientID %>');
+            var rows = tblGrid.rows;
+            var i = 0, row, cell;
+            for (i = 1; i < rows.length; i++) {
+                row = rows[i];
+                var found = false;
+                for (var j = 0; j < row.cells.length; j++) {
+                    cell = row.cells[j];
+                    if (cell.innerHTML.toUpperCase().indexOf(txtKeyword.value.toUpperCase()) >= 0) {
+                        found = true;
+                        break;
+                    }
+                }
+                if (!found) {
+                    row.style['display'] = 'none';
+
+                }
+                else {
+                    row.style.display = '';
+                }
+            }
+
+            return false;
+
+             }
+
              function SelectAll(id)
         {
             //get reference of GridView control
-            var grid = document.getElementById("<%= gridActividad.ClientID %>");
+            var grid = document.getElementById("<%= gridEmpleado.ClientID %>");
             //variable to contain the cell of the grid
             var cell;
             

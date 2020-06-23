@@ -41,7 +41,7 @@ namespace SGM.Clase
         public DataTable MostrarGeneral(int IdInstalacion)
         {
 
-            string query = "DECLARE @cols AS NVARCHAR(MAX), @query AS NVARCHAR(MAX)  DECLARE	@Id_Instalacion as NVARCHAR(MAX) set @Id_Instalacion =@IdInstalacion select @cols = STUFF((SELECT ',' + QUOTENAME(cat.Nombre) FROM Cat_Categoria cat JOIN Cat_Area area on cat.Id_Area = area.Id_area JOIN Cat_Instalacion ins on area.Id_instalacion = ins.Id_instalacion WHERE ins.Id_instalacion = 487 AND cat.Activado IS NULL FOR XML PATH(''), TYPE).value('.', 'NVARCHAR(MAX)'),1,1,'') set @query = 'SELECT Actividad,' + @cols + ' from (select actividad, Categoria FROM(SELECT act.Nombre Actividad, cat.Nombre Categoria FROM Op_Cat_Act catact LEFT JOIN Cat_Categoria cat on catact.Id_Categoria = cat.Id_Categoria RIGHT JOIN Cat_Actividades act on catact.Id_Actividad = act.Id_Actividades JOIN Cat_Area area on act.Id_Area = area.Id_area JOIN Cat_Instalacion ins on area.Id_instalacion = ins.Id_instalacion WHERE act.Activado Is null AND cat.Activado IS NULL AND ins.Id_instalacion ='+@Id_Instalacion+' ) as tabla) x pivot ( MAX(Categoria) for Categoria in (' + @cols + ') ) p 'execute(@query);";
+            string query = "DECLARE @cols AS NVARCHAR(MAX), @query AS NVARCHAR(MAX)  DECLARE	@Id_Instalacion as NVARCHAR(MAX) set @Id_Instalacion =@IdInstalacion select @cols = STUFF((SELECT ',' + QUOTENAME(cat.Nombre) FROM Cat_Categoria cat JOIN Cat_Area area on cat.Id_Area = area.Id_area JOIN Cat_Instalacion ins on area.Id_instalacion = ins.Id_instalacion WHERE ins.Id_instalacion =  @Id_Instalacion AND cat.Activado IS NULL FOR XML PATH(''), TYPE).value('.', 'NVARCHAR(MAX)'),1,1,'') set @query = 'SELECT Actividad,' + @cols + ' from (select actividad, Categoria FROM(SELECT act.Nombre Actividad, cat.Nombre Categoria FROM Op_Cat_Act catact LEFT JOIN Cat_Categoria cat on catact.Id_Categoria = cat.Id_Categoria RIGHT JOIN Cat_Actividades act on catact.Id_Actividad = act.Id_Actividades JOIN Cat_Area area on act.Id_Area = area.Id_area JOIN Cat_Instalacion ins on area.Id_instalacion = ins.Id_instalacion WHERE act.Activado Is null AND cat.Activado IS NULL AND ins.Id_instalacion ='+@Id_Instalacion+' ) as tabla) x pivot ( MAX(Categoria) for Categoria in (' + @cols + ') ) p 'execute(@query);";
 
 
             comm.Connection = conexion.AbrirConexion();
@@ -68,6 +68,24 @@ namespace SGM.Clase
             comm.CommandType = CommandType.Text;
             comm.Parameters.AddWithValue("@Id_Categoria", IdCategoria);
             comm.Parameters.AddWithValue("@IdArea", IdArea);
+
+            da = new SqlDataAdapter(comm);
+            dt = new DataTable();
+            da.Fill(dt);
+            conexion.CerrarConexion();
+            return dt;
+
+        }
+        public DataTable MostrarTodasActividades(int IdCategoria)
+        {
+
+            string query = "SELECT act.Id_Actividades 'Id_Actividad', act.Nombre, area.Nombre 'Area', CAST(CASE WHEN CatAct.Id_Actividad IS NULL THEN 0 else CatAct.Id_Actividad END as bit) 'Id_registro',CASE WHEN CatAct.Id_Actividad IS NULL THEN 0 else CatAct.Id_Actividad END 'Id_registro2' FROM Cat_Actividades act LEFT JOIN(SELECT Id_Actividad FROM Op_Cat_Act WHERE Id_Categoria =@Id_Categoria) CatAct on act.Id_Actividades = CatAct.Id_Actividad JOIN Cat_Area area on act.Id_Area = area.Id_Area WHERE act.Activado IS NULL ORDER BY Id_registro DESC,act.Id_Actividades DESC";
+
+
+            comm.Connection = conexion.AbrirConexion();
+            comm.CommandText = query;
+            comm.CommandType = CommandType.Text;
+            comm.Parameters.AddWithValue("@Id_Categoria", IdCategoria);
 
             da = new SqlDataAdapter(comm);
             dt = new DataTable();
