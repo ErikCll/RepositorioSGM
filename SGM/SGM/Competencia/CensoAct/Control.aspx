@@ -44,7 +44,12 @@
 
                                             </ItemTemplate>
                                         </asp:TemplateField>
-                                        <asp:BoundField HeaderText="Código" DataField="Codigo" />
+                                        <asp:TemplateField HeaderText="Código">
+                                            <ItemTemplate>
+                                           <asp:LinkButton runat="server" ID="lnkNombre" Text='<%# Eval("Codigo") %>' CommandName="AgregarEv" ToolTip="Agregar Evaluación"></asp:LinkButton>
+
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
                                         <asp:TemplateField HeaderText="Fecha de emisión">
                                             <ItemTemplate>
                                                 <asp:Label runat="server" ID="lblFechaEmision" Text='<%# Eval("FechaEmision") %>'></asp:Label>

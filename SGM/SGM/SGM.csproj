@@ -137,6 +137,8 @@
     <Content Include="Competencia\CensoAct\ControlEditar.aspx" />
     <Content Include="Competencia\CensoAct\Crear.aspx" />
     <Content Include="Competencia\CensoAct\CrearControl.aspx" />
+    <Content Include="Competencia\CensoAct\CrearEv.aspx" />
+    <Content Include="Competencia\CensoAct\CrearPreg.aspx" />
     <Content Include="Competencia\CensoAct\Detalle.aspx" />
     <Content Include="Competencia\CensoAct\Editar.aspx" />
     <Content Include="Competencia\CensoAct\Index.aspx" />
@@ -1748,6 +1750,7 @@
     <Compile Include="Clase\ActividadControl.cs" />
     <Compile Include="Clase\CategoriaActividad.cs" />
     <Compile Include="Clase\CategoriaEmpleado.cs" />
+    <Compile Include="Clase\Evaluacion.cs" />
     <Compile Include="Clase\Master.cs" />
     <Compile Include="Competencia\CensoAct\Control.aspx.cs">
       <DependentUpon>Control.aspx</DependentUpon>
@@ -1776,6 +1779,20 @@
     </Compile>
     <Compile Include="Competencia\CensoAct\CrearControl.aspx.designer.cs">
       <DependentUpon>CrearControl.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Competencia\CensoAct\CrearEv.aspx.cs">
+      <DependentUpon>CrearEv.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Competencia\CensoAct\CrearEv.aspx.designer.cs">
+      <DependentUpon>CrearEv.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Competencia\CensoAct\CrearPreg.aspx.cs">
+      <DependentUpon>CrearPreg.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Competencia\CensoAct\CrearPreg.aspx.designer.cs">
+      <DependentUpon>CrearPreg.aspx</DependentUpon>
     </Compile>
     <Compile Include="Competencia\CensoAct\Detalle.aspx.cs">
       <DependentUpon>Detalle.aspx</DependentUpon>

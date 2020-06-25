@@ -165,7 +165,7 @@
             keyEntry = !isIE ? e.which : event.keyCode;
                  if (((keyEntry >= 65) && (keyEntry <= 90)) ||
                      ((keyEntry >= 97) && (keyEntry <= 122)) ||
-                     (keyEntry == 46) || (keyEntry == 32) || keyEntry == 45 || (keyEntry == 32) || keyEntry == 45
+                     (keyEntry == 46) || (keyEntry == 32) || keyEntry == 45 || (keyEntry == 32) || keyEntry == 45 
                      || (keyEntry == 241) || keyEntry == 209
                      || (keyEntry == 225) || keyEntry == 233
                      || (keyEntry == 237) || keyEntry == 243
@@ -175,7 +175,8 @@
                      || (keyEntry == 218) ||(keyEntry >=48 && keyEntry<=57) || (keyEntry == 40) || keyEntry == 41 || keyEntry == 44 || keyEntry == 95 || keyEntry == 64) 
                 return true;
             else {
-                return false;
+                     return false;
+
             }
               }
 
