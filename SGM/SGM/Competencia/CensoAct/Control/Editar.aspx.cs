@@ -84,7 +84,7 @@ namespace SGM.Competencia.CensoAct
 
         protected void Regresar(Object sender, EventArgs e)
         {
-            Response.Redirect("Control.aspx?id=" + Request.QueryString["act"] + "");
+            Response.Redirect("Index.aspx?id=" + Request.QueryString["act"] + "");
         }
 
     }

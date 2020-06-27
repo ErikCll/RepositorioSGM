@@ -45,7 +45,7 @@
                                         </asp:TemplateField>
                                         <asp:TemplateField HeaderText="Nombre">
                                             <ItemTemplate>
-                                                <asp:LinkButton runat="server" ID="lnkNombre" Text='<%# Eval("Nombre") %>' CommandName="AgregarVer"></asp:LinkButton>
+                                                <asp:LinkButton runat="server" ID="lnkNombre" Text='<%# Eval("Nombre") %>' CommandName="AgregarVer" ToolTip="Agregar Control de Versión"></asp:LinkButton>
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                         <asp:BoundField HeaderText="Área" DataField="Area" />

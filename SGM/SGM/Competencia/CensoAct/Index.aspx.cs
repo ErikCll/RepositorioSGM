@@ -78,7 +78,7 @@ namespace SGM.Competencia.CensoAct
                 int IdActividad = (int)gridActividad.DataKeys[row.RowIndex].Value;
                 string encodedString = (Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(IdActividad.ToString())));
 
-                Response.Redirect("Control.aspx?id=" + encodedString + "");
+                Response.Redirect("Control/Index.aspx?id=" + encodedString + "");
             }
         }
 

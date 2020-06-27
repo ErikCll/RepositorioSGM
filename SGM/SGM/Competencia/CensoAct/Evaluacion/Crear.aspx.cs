@@ -25,7 +25,7 @@ namespace SGM.Competencia.CensoAct
 
         protected void Regresar(Object sender, EventArgs e)
         {
-            Response.Redirect("Control.aspx?id=" + Request.QueryString["act"] + "");
+            Response.Redirect("~/Competencia/CensoAct/Control/Index.aspx?id=" + Request.QueryString["act"] + "");
         }
 
         protected void btnGuardar_Click(object sender, EventArgs e)
@@ -43,7 +43,7 @@ namespace SGM.Competencia.CensoAct
 
                 string encodedString = (Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(evaluacion.IdEvaluacion.ToString())));
 
-                Response.Redirect("CrearPreg.aspx?ev=" + encodedString+ "");
+                Response.Redirect("CrearCuestionario.aspx?ev=" + encodedString+ "");
             }
         }
     }

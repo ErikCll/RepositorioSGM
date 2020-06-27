@@ -133,14 +133,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Competencia\CensoAct\Control.aspx" />
-    <Content Include="Competencia\CensoAct\ControlEditar.aspx" />
+    <Content Include="Competencia\CensoAct\Control\Index.aspx" />
+    <Content Include="Competencia\CensoAct\Control\Editar.aspx" />
     <Content Include="Competencia\CensoAct\Crear.aspx" />
-    <Content Include="Competencia\CensoAct\CrearControl.aspx" />
-    <Content Include="Competencia\CensoAct\CrearEv.aspx" />
-    <Content Include="Competencia\CensoAct\CrearPreg.aspx" />
+    <Content Include="Competencia\CensoAct\Control\Crear.aspx" />
+    <Content Include="Competencia\CensoAct\Evaluacion\Crear.aspx" />
+    <Content Include="Competencia\CensoAct\Evaluacion\CrearCuestionario.aspx" />
     <Content Include="Competencia\CensoAct\Detalle.aspx" />
     <Content Include="Competencia\CensoAct\Editar.aspx" />
+    <Content Include="Competencia\CensoAct\Evaluacion\EditarCuestionario.aspx" />
     <Content Include="Competencia\CensoAct\Index.aspx" />
     <Content Include="Catalogo\Area\Crear.aspx" />
     <Content Include="Catalogo\Area\Detalle.aspx" />
@@ -150,6 +151,7 @@
     <Content Include="Catalogo\Categoria\Detalle.aspx" />
     <Content Include="Catalogo\Categoria\Editar.aspx" />
     <Content Include="Catalogo\Categoria\Index.aspx" />
+    <Content Include="Competencia\CensoAct\Evaluacion\VCuestionario.aspx" />
     <Content Include="Competencia\MatrizCatAct\Agregar.aspx" />
     <Content Include="Competencia\MatrizCatAct\Index.aspx" />
     <Content Include="Competencia\MatrizCatAct\Detalle.aspx" />
@@ -1752,19 +1754,19 @@
     <Compile Include="Clase\CategoriaEmpleado.cs" />
     <Compile Include="Clase\Evaluacion.cs" />
     <Compile Include="Clase\Master.cs" />
-    <Compile Include="Competencia\CensoAct\Control.aspx.cs">
-      <DependentUpon>Control.aspx</DependentUpon>
+    <Compile Include="Competencia\CensoAct\Control\Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Competencia\CensoAct\Control.aspx.designer.cs">
-      <DependentUpon>Control.aspx</DependentUpon>
+    <Compile Include="Competencia\CensoAct\Control\Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Competencia\CensoAct\ControlEditar.aspx.cs">
-      <DependentUpon>ControlEditar.aspx</DependentUpon>
+    <Compile Include="Competencia\CensoAct\Control\Editar.aspx.cs">
+      <DependentUpon>Editar.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Competencia\CensoAct\ControlEditar.aspx.designer.cs">
-      <DependentUpon>ControlEditar.aspx</DependentUpon>
+    <Compile Include="Competencia\CensoAct\Control\Editar.aspx.designer.cs">
+      <DependentUpon>Editar.aspx</DependentUpon>
     </Compile>
     <Compile Include="Competencia\CensoAct\Crear.aspx.cs">
       <DependentUpon>Crear.aspx</DependentUpon>
@@ -1773,26 +1775,26 @@
     <Compile Include="Competencia\CensoAct\Crear.aspx.designer.cs">
       <DependentUpon>Crear.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Competencia\CensoAct\CrearControl.aspx.cs">
-      <DependentUpon>CrearControl.aspx</DependentUpon>
+    <Compile Include="Competencia\CensoAct\Control\Crear.aspx.cs">
+      <DependentUpon>Crear.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Competencia\CensoAct\CrearControl.aspx.designer.cs">
-      <DependentUpon>CrearControl.aspx</DependentUpon>
+    <Compile Include="Competencia\CensoAct\Control\Crear.aspx.designer.cs">
+      <DependentUpon>Crear.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Competencia\CensoAct\CrearEv.aspx.cs">
-      <DependentUpon>CrearEv.aspx</DependentUpon>
+    <Compile Include="Competencia\CensoAct\Evaluacion\Crear.aspx.cs">
+      <DependentUpon>Crear.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Competencia\CensoAct\CrearEv.aspx.designer.cs">
-      <DependentUpon>CrearEv.aspx</DependentUpon>
+    <Compile Include="Competencia\CensoAct\Evaluacion\Crear.aspx.designer.cs">
+      <DependentUpon>Crear.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Competencia\CensoAct\CrearPreg.aspx.cs">
-      <DependentUpon>CrearPreg.aspx</DependentUpon>
+    <Compile Include="Competencia\CensoAct\Evaluacion\CrearCuestionario.aspx.cs">
+      <DependentUpon>CrearCuestionario.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Competencia\CensoAct\CrearPreg.aspx.designer.cs">
-      <DependentUpon>CrearPreg.aspx</DependentUpon>
+    <Compile Include="Competencia\CensoAct\Evaluacion\CrearCuestionario.aspx.designer.cs">
+      <DependentUpon>CrearCuestionario.aspx</DependentUpon>
     </Compile>
     <Compile Include="Competencia\CensoAct\Detalle.aspx.cs">
       <DependentUpon>Detalle.aspx</DependentUpon>
@@ -1807,6 +1809,13 @@
     </Compile>
     <Compile Include="Competencia\CensoAct\Editar.aspx.designer.cs">
       <DependentUpon>Editar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Competencia\CensoAct\Evaluacion\EditarCuestionario.aspx.cs">
+      <DependentUpon>EditarCuestionario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Competencia\CensoAct\Evaluacion\EditarCuestionario.aspx.designer.cs">
+      <DependentUpon>EditarCuestionario.aspx</DependentUpon>
     </Compile>
     <Compile Include="Competencia\CensoAct\Index.aspx.cs">
       <DependentUpon>Index.aspx</DependentUpon>
@@ -1875,6 +1884,13 @@
     <Compile Include="Clase\Area.cs" />
     <Compile Include="Clase\Categoria.cs" />
     <Compile Include="Clase\Empleado.cs" />
+    <Compile Include="Competencia\CensoAct\Evaluacion\VCuestionario.aspx.cs">
+      <DependentUpon>VCuestionario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Competencia\CensoAct\Evaluacion\VCuestionario.aspx.designer.cs">
+      <DependentUpon>VCuestionario.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Competencia\MatrizCatAct\Agregar.aspx.cs">
       <DependentUpon>Agregar.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

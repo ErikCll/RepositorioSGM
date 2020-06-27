@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Control.aspx.cs" Inherits="SGM.Competencia.CensoAct.Control" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Index.aspx.cs" Inherits="SGM.Competencia.CensoAct.Control" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     Control de versiones<br />
@@ -6,7 +6,7 @@
     <asp:Label runat="server" ID="lblCensoAct" CssClass=" font-weight-bold text small"></asp:Label>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="mapeo" runat="server">
-    <li class="breadcrumb-item active"><a href="Index.aspx">Censo de actividad</a></li>
+    <li class="breadcrumb-item active"><a href="../Index.aspx">Censo de actividad</a></li>
     <li class="breadcrumb-item "><a>Control de versiones</a></li>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Content" runat="server">
@@ -19,7 +19,6 @@
                         <asp:LinkButton runat="server" CssClass="text-sm"  OnClick="CrearVersion"><span class=" ion-plus" ></span>Agregar</asp:LinkButton>
                         <br />
                         <br />
-          
                         <div class=" table-responsive">
                             <div style="overflow: auto; height: auto">
                                 <asp:GridView ID="gridControl"
@@ -90,7 +89,7 @@
                                     <PagerStyle HorizontalAlign="Center" CssClass="" />
 
                                 </asp:GridView>
-                                   <a class="btn btn-default" href="Index.aspx">Regresar</a>
+                                   <a class="btn btn-default" href="../Index.aspx">Regresar</a>
 
                             </div>
 

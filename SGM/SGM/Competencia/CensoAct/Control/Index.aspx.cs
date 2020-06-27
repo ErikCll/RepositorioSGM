@@ -45,7 +45,7 @@ namespace SGM.Competencia.CensoAct
 
         protected void CrearVersion(Object sender, EventArgs e)
         {
-            Response.Redirect("CrearControl.aspx?id=" + Request.QueryString["id"] + "");
+            Response.Redirect("Crear.aspx?id=" + Request.QueryString["id"] + "");
         }
 
         protected void gridControl_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -107,7 +107,7 @@ namespace SGM.Competencia.CensoAct
                 string encodedString = (Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(IdControl.ToString())));
 
 
-                Response.Redirect("ControlEditar.aspx?id=" + encodedString + "&act="+ Request.QueryString["id"] + "");
+                Response.Redirect("Editar.aspx?id=" + encodedString + "&act="+ Request.QueryString["id"] + "");
             }
             else if (e.CommandName == "AgregarEv")
             {
@@ -117,7 +117,7 @@ namespace SGM.Competencia.CensoAct
                 string encodedString = (Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(IdControl.ToString())));
 
 
-                Response.Redirect("CrearEv.aspx?id=" + encodedString + "&act=" + Request.QueryString["id"] + "");
+                Response.Redirect("~/Competencia/CensoAct/Evaluacion/Crear.aspx?id=" + encodedString + "&act=" + Request.QueryString["id"] + "");
             }
             
 

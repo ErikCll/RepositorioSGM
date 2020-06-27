@@ -21,13 +21,32 @@ namespace SGM.Clase
         public DataTable MostrarPregunta (int IdEvaluacion)
         {
 
-            string query = "SELECT Pregunta FROM Ev_Pregunta WHERE Id_Evaluacion=@IdEvaluacion";
+            string query = "SELECT Id_Pregunta,Pregunta FROM Ev_Pregunta WHERE Id_Evaluacion=@IdEvaluacion AND Activado IS NULL";
      
 
             comm.Connection = conexion.AbrirConexion();
             comm.CommandText = query;
             comm.CommandType = CommandType.Text;
             comm.Parameters.AddWithValue("@IdEvaluacion", IdEvaluacion);
+
+            da = new SqlDataAdapter(comm);
+            dt = new DataTable();
+            da.Fill(dt);
+            conexion.CerrarConexion();
+            return dt;
+
+        }
+
+        public DataTable MostrarRespuesta(int IdPregunta)
+        {
+
+            string query = "SELECT Id_Respuesta, Respuesta, EsRespuesta FROM Ev_Respuesta WHERE Id_Pregunta =@IdPregunta";
+
+
+            comm.Connection = conexion.AbrirConexion();
+            comm.CommandText = query;
+            comm.CommandType = CommandType.Text;
+            comm.Parameters.AddWithValue("@IdPregunta", IdPregunta);
 
             da = new SqlDataAdapter(comm);
             dt = new DataTable();
@@ -144,6 +163,27 @@ namespace SGM.Clase
 
         }
 
+        public bool EliminarPregunta(int IdPregunta)
+        {
+            comm.Connection = conexion.AbrirConexion();
+            comm.CommandText = "UPDATE Ev_Pregunta set Activado=1 WHERE Id_Pregunta=@IdPreguntaa";
+            comm.CommandType = CommandType.Text;
+            comm.Parameters.AddWithValue("@IdPreguntaa", IdPregunta);
+            int i = comm.ExecuteNonQuery();
+            comm.Parameters.Clear();
+            conexion.CerrarConexion();
+
+            if (i > 0)
+            {
+                return true;
+
+
+            }
+            else
+                return false;
+
+
+        }
         public void LeerDatosControl(int Id_Control)
         {
             comm.Connection = conexion.AbrirConexion();
@@ -186,9 +226,9 @@ namespace SGM.Clase
         public void ObtenerIdPregunta(int IdEvaluacion)
         {
             comm.Connection = conexion.AbrirConexion();
-            comm.CommandText = "SELECT TOP(1) Id_Pregunta FROM Ev_Pregunta WHERE Id_Evaluacion=@IdEvaluacion ORDER BY Id_Pregunta DESC";
+            comm.CommandText = "SELECT TOP(1) Id_Pregunta FROM Ev_Pregunta WHERE Id_Evaluacion=@IdEvaluacionn ORDER BY Id_Pregunta DESC";
             comm.CommandType = CommandType.Text;
-            comm.Parameters.AddWithValue("@IdEvaluacion", IdEvaluacion);
+            comm.Parameters.AddWithValue("@IdEvaluacionn", IdEvaluacion);
 
             dr = comm.ExecuteReader();
             dr.Read();

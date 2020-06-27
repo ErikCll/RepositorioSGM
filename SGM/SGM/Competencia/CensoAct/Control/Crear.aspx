@@ -1,9 +1,9 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="CrearControl.aspx.cs" Inherits="SGM.Competencia.CensoAct.CrearControl" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Crear.aspx.cs" Inherits="SGM.Competencia.CensoAct.CrearControl" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     Crear control de versión
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="mapeo" runat="server">
-        <li class="breadcrumb-item active"><a href="Index.aspx">Censo de actividad</a></li>
+        <li class="breadcrumb-item active"><a href="../Index.aspx">Censo de actividad</a></li>
                   <li class="breadcrumb-item active"><asp:LinkButton runat="server" OnClick="Regresar">Control de versiones</asp:LinkButton></li>
                       <li class="breadcrumb-item active"><a>Crear</a></li>
 
