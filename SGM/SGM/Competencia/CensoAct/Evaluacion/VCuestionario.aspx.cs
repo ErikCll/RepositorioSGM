@@ -14,11 +14,12 @@ namespace SGM.Competencia.CensoAct
         {
             if (!IsPostBack)
             {
-                MostrarLista();
             }
+            MostrarLista();
+
 
         }
-         public void MostrarLista()
+        public void MostrarLista()
         {
             string decodedString = System.Text.ASCIIEncoding.ASCII.GetString(Convert.FromBase64String(Request.QueryString["ev"]));
             int IdEvaluacion =Convert.ToInt32( decodedString);
@@ -39,11 +40,17 @@ namespace SGM.Competencia.CensoAct
         {
             ListViewItem item = (sender as LinkButton).NamingContainer as ListViewItem;
             Label Id_Pregunta = (Label)item.FindControl("lblIdPregunta");
+            Label Tipo_Pregunta = (Label)item.FindControl("lblTipoPregunta");
+
             int IdPregunta = Convert.ToInt32(Id_Pregunta.Text);
+            int TipoPregunta = Convert.ToInt32(Tipo_Pregunta.Text);
+
 
             string encodedString = (Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(IdPregunta.ToString())));
+            string encodedString2 = (Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(TipoPregunta.ToString())));
 
-            Response.Redirect("EditarCuestionario.aspx?preg=" + encodedString + "");
+
+            Response.Redirect("EditarCuestionario.aspx?preg=" + encodedString + "&tp=" + encodedString2+"&ev="+Request.QueryString["ev"]);
         }
         protected void lstPreguntas_ItemDataBound(object sender, ListViewItemEventArgs e)
         {
@@ -56,7 +63,7 @@ namespace SGM.Competencia.CensoAct
                 radioList.DataSource = evaluacion.MostrarRespuesta(IdPregunta);
                 radioList.DataBind();
 
-
+               
            }
 
         }

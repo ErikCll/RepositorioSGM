@@ -139,6 +139,15 @@ namespace SGM.Competencia.CensoAct {
         protected global::System.Web.UI.WebControls.CheckBox chkTrue;
         
         /// <summary>
+        /// Control lblVerdadero.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblVerdadero;
+        
+        /// <summary>
         /// Control chkFalse.
         /// </summary>
         /// <remarks>
@@ -146,6 +155,15 @@ namespace SGM.Competencia.CensoAct {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox chkFalse;
+        
+        /// <summary>
+        /// Control lblFalso.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblFalso;
         
         /// <summary>
         /// Control btnGuardar.

@@ -20,9 +20,10 @@ namespace SGM.Competencia.CensoAct
                 string IdEvaluacion = decodedString;
                 lblIdEvaluacion.Text = IdEvaluacion;
                 LlenarDropTipo();
-                MostrarLista();
 
             }
+            MostrarLista();
+
         }
 
 
@@ -41,7 +42,7 @@ namespace SGM.Competencia.CensoAct
                     {
                     int IdEvaluacion = Convert.ToInt32(lblIdEvaluacion.Text);
                     string Pregunta = txtPregunta.Value;
-                    if (evaluacion.InsertarPregunta(IdEvaluacion, Pregunta))
+                    if (evaluacion.InsertarPregunta(IdEvaluacion, Pregunta,1))
                     {
                         evaluacion.ObtenerIdPregunta(IdEvaluacion);
                         int IdPregunta = Convert.ToInt32(evaluacion.IdPregunta);
@@ -50,10 +51,10 @@ namespace SGM.Competencia.CensoAct
                         string R2 = txt2.Text;
                         string R3 = txt3.Text;
                         string R4 = txt4.Text;
-                        evaluacion.InsertarRespuestaMultiple(IdPregunta, RCorrecta, "1");
-                        evaluacion.InsertarRespuestaMultiple(IdPregunta, R2, "0");
-                        evaluacion.InsertarRespuestaMultiple(IdPregunta, R3, "0");
-                        evaluacion.InsertarRespuestaMultiple(IdPregunta, R4, "0");
+                        evaluacion.InsertarRespuestaMultiple(IdPregunta, RCorrecta, "1",1);
+                        evaluacion.InsertarRespuestaMultiple(IdPregunta, R2, "0",2);
+                        evaluacion.InsertarRespuestaMultiple(IdPregunta, R3, "0",3);
+                        evaluacion.InsertarRespuestaMultiple(IdPregunta, R4, "0",4);
                         MostrarLista();
                         Limpiar();
                     }
@@ -67,7 +68,7 @@ namespace SGM.Competencia.CensoAct
                 {
                 int IdEvaluacion = Convert.ToInt32(lblIdEvaluacion.Text);
                 string Pregunta = txtPregunta.Value;
-                if (evaluacion.InsertarPregunta(IdEvaluacion, Pregunta))
+                if (evaluacion.InsertarPregunta(IdEvaluacion, Pregunta,2))
                 {
                     evaluacion.ObtenerIdPregunta(IdEvaluacion);
                     int IdPregunta = Convert.ToInt32(evaluacion.IdPregunta);

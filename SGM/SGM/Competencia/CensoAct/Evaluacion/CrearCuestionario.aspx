@@ -59,11 +59,12 @@
                                                     <div class="col-sm-6 col-md-6 col-lg-6" runat="server" id="DivTrue" visible="false">
                                                         <div class="form-group ">
                                                             <asp:CheckBox runat="server" id="chkTrue"/>
-                                                            <asp:TextBox runat="server" CssClass="form-control" placeholder="Verdadero" ReadOnly="true"></asp:TextBox>
+                                                            <asp:Label CssClass=" font-weight-bold" runat="server" ID="lblVerdadero" Text="Verdadero"></asp:Label>
                                                         </div>
                                                           <div class="form-group ">
                                                             <asp:CheckBox runat="server" ID="chkFalse"/>
-                                                            <asp:TextBox runat="server" CssClass="form-control" placeholder="Falso" ReadOnly="true"></asp:TextBox>
+                                                        <asp:Label CssClass=" font-weight-bold" runat="server" ID="lblFalso" Text="Falso"></asp:Label>
+
                                                         </div>
                                                      </div>
                                                                             <div class="col-sm-12 col-md-12 col-lg-12">
