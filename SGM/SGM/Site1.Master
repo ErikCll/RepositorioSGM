@@ -170,6 +170,36 @@
             </ul>
           </li>
 
+
+
+
+              <li class="nav-item has-treeview" id="menu_confirmacion" runat="server">
+             
+            <a href="#" class="nav-link" id="confirmacion" runat="server">
+                <i class="nav-icon fas fa-circle"></i>
+
+              <p>
+               Confirmación metrológica
+
+                <i class="right fas fa-angle-left"style="margin-right:-9px"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+         
+               
+                <li class="nav-item">
+                <a  href="/Confirmacion/CensoSis/Index.aspx" class="nav-link" id="sistema" runat="server">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Censo sistemas de medición</p>
+                </a>
+              </li>
+
+              
+
+              
+            </ul>
+          </li>
+
        <%--   <li class="nav-item has-treeview">
              
             <a href="#" class="nav-link">

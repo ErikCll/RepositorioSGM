@@ -37,23 +37,23 @@
                                <div class="col-sm-6 col-md-6 col-lg-6" runat="server" id="divMultiple" >
                                  <div class="form-group">
                                      <label>Respuesta 1:</label>
-                                     <asp:TextBox runat="server" CssClass="form-control" ID="txt1" BorderColor="Green"></asp:TextBox>
+                                     <asp:TextBox runat="server" CssClass="form-control" ID="txt1" BorderColor="Green" onkeypress="return AllowAlphabet(event)" MaxLength="200"></asp:TextBox>
                                      <asp:Label runat="server" ID="IdR1"></asp:Label>
                                  </div>
                                     <div class="form-group">
                                      <label>Respuesta 2:</label>
-                                     <asp:TextBox runat="server" CssClass="form-control" ID="txt2"></asp:TextBox>
+                                     <asp:TextBox runat="server" CssClass="form-control" ID="txt2" onkeypress="return AllowAlphabet(event)" MaxLength="200"></asp:TextBox>
                                       <asp:Label runat="server" ID="IdR2"></asp:Label>
  
                                  </div>
                                     <div class="form-group">
                                      <label>Respuesta 3:</label>
-                                     <asp:TextBox runat="server" CssClass="form-control" ID="txt3"></asp:TextBox>
+                                     <asp:TextBox runat="server" CssClass="form-control" ID="txt3" onkeypress="return AllowAlphabet(event)" MaxLength="200"></asp:TextBox>
                                          <asp:Label runat="server" ID="IdR3"></asp:Label>
                                  </div>
                                     <div class="form-group">
                                      <label>Respuesta 4:</label>
-                                     <asp:TextBox runat="server" CssClass="form-control" ID="txt4"></asp:TextBox>
+                                     <asp:TextBox runat="server" CssClass="form-control" ID="txt4" onkeypress="return AllowAlphabet(event)" MaxLength="200"></asp:TextBox>
                                          <asp:Label runat="server" ID="IdR4"></asp:Label>
                                  </div>
                         </div>
@@ -126,12 +126,14 @@
               function DisableButton() {
                 document.getElementById("<%= btnGuardar.ClientID %>").disabled = true;
                 document.getElementById("<%= btnGuardar.ClientID %>").value = "Cargando...";
-
+                     document.getElementById("<%= btnRegresar.ClientID %>").disabled = true;
+                document.getElementById("<%= btnRegresar.ClientID %>").value = "Cargando...";
 
   }
-      
-              
+           window.onbeforeunload = DisableButton;
 
+      
+        
                 function AllowAlphabet(e) {
             isIE = document.all ? 1 : 0
             keyEntry = !isIE ? e.which : event.keyCode;

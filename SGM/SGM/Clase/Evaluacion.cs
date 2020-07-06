@@ -55,16 +55,58 @@ namespace SGM.Clase
 
         }
 
+        public DataTable MostrarPreguntaAleatoria(int IdEvaluacion)
+        {
+
+            string query = "SELECT Id_Pregunta,Pregunta,TipoPregunta FROM Ev_Pregunta WHERE Id_Evaluacion=@IdEvaluacionn AND Activado IS NULL ORDER BY NEWID()";
+
+
+            comm.Connection = conexion.AbrirConexion();
+            comm.CommandText = query;
+            comm.CommandType = CommandType.Text;
+            comm.Parameters.AddWithValue("@IdEvaluacionn", IdEvaluacion);
+
+            da = new SqlDataAdapter(comm);
+            dt = new DataTable();
+            da.Fill(dt);
+            comm.Parameters.Clear();
+
+            conexion.CerrarConexion();
+            return dt;
+
+        }
+
         public DataTable MostrarRespuesta(int IdPregunta)
         {
 
-            string query = "SELECT Id_Respuesta, Respuesta, EsRespuesta FROM Ev_Respuesta WHERE Id_Pregunta =@IdPregunta";
+            string query = "SELECT Id_Respuesta, Respuesta, EsRespuesta FROM Ev_Respuesta WHERE Id_Pregunta =@IdPregunta ORDER BY EsRespuesta DESC";
 
 
             comm.Connection = conexion.AbrirConexion();
             comm.CommandText = query;
             comm.CommandType = CommandType.Text;
             comm.Parameters.AddWithValue("@IdPregunta", IdPregunta);
+
+            da = new SqlDataAdapter(comm);
+            dt = new DataTable();
+            da.Fill(dt);
+            comm.Parameters.Clear();
+
+            conexion.CerrarConexion();
+            return dt;
+
+        }
+
+        public DataTable MostrarRespuestaAleatoria(int IdPregunta)
+        {
+
+            string query = "SELECT Id_Respuesta, Respuesta, EsRespuesta FROM Ev_Respuesta WHERE Id_Pregunta =@IdPreguntaa ORDER BY NEWID()";
+
+
+            comm.Connection = conexion.AbrirConexion();
+            comm.CommandText = query;
+            comm.CommandType = CommandType.Text;
+            comm.Parameters.AddWithValue("@IdPreguntaa", IdPregunta);
 
             da = new SqlDataAdapter(comm);
             dt = new DataTable();
@@ -461,6 +503,22 @@ namespace SGM.Clase
         {
             comm.Connection = conexion.AbrirConexion();
             comm.CommandText = "SELECT Id_Respuesta FROM Ev_Respuesta WHERE Id_Pregunta=@IdPregunta AND Respuesta='Falso'";
+            comm.CommandType = CommandType.Text;
+            comm.Parameters.AddWithValue("@IdPregunta", IdPregunta);
+            dr = comm.ExecuteReader();
+            comm.Parameters.Clear();
+
+            dr.Read();
+            IdRespuesta = dr["Id_Respuesta"].ToString();
+            dr.Close();
+            comm.Connection = conexion.CerrarConexion();
+
+        }
+
+        public void ObtenerIdRespuesta(int IdPregunta)
+        {
+            comm.Connection = conexion.AbrirConexion();
+            comm.CommandText = "SELECT Id_Respuesta FROM Ev_Respuesta WHERE Id_Pregunta=@IdPregunta AND EsRespuesta=1";
             comm.CommandType = CommandType.Text;
             comm.Parameters.AddWithValue("@IdPregunta", IdPregunta);
             dr = comm.ExecuteReader();

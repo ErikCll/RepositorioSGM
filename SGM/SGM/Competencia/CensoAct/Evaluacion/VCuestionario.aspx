@@ -31,7 +31,7 @@
                                                                  <asp:Label runat="server" ID="lblIdPregunta" Text='<%# Eval("Id_Pregunta") %>'></asp:Label>
                                                                  <asp:Label runat="server" ID="lblTipoPregunta" Text='<%# Eval("TipoPregunta") %>'></asp:Label>
 
-<asp:RadioButtonList runat="server" ID="radioList" DataTextField="Respuesta" DataValueField="Respuesta" TextAlign="Right" CssClass="RBL"> </asp:RadioButtonList>
+<asp:RadioButtonList runat="server" ID="radioList" DataTextField="Respuesta" DataValueField="Respuesta" TextAlign="Right" CssClass="RBL" Enabled="false"> </asp:RadioButtonList>
 
                       </li>
                             
@@ -49,42 +49,65 @@
                     </asp:ListView>
 
                     </ol>
-                   
-                
-            
-        <%--    <div class="col-sm-4 col-md-12 col-lg-4">
-                  <div class="card shadow-none border-top border-primary" >
-                <div class="card-body">
-                    <div class="row">
-                           <div class="col-sm-12 col-md-12 col-lg-12">
-                            <h4>Lista de Preguntas</h4>
-                        </div>
-
-                        <ol id="ordered">
-   <asp:ListView runat="server" ID="lstPreguntas" >
-                            <ItemTemplate>
-                                
-                                <asp:Label runat="server" ID="lblIdPregunta" Text='<%# Eval("Id_Pregunta") %>'></asp:Label>
-                           <li><asp:LinkButton runat="server" CssClass="ion-android-cancel text-red" OnClick="Eliminar"></asp:LinkButton> <label class=" font-weight-bold"><%# Eval("Pregunta") %></label> </li>  
-
-                            </ItemTemplate>
-                        </asp:ListView>
-                        </ol>
-                       
-                     
-                  
-                     
-                                        
-                    
-                        </div>
+                    <div class="container">
+                                 <div class="col-sm-12 col-md-12 col-lg-12">
+                       <div class="form-group float-right">
+                                <asp:Button runat="server" CssClass="btn btn-success" Text="Finalizar" ID="btnFinalizar" Visible="false" OnClick="Finalizar" />
+                       <asp:Button runat="server" CssClass="btn btn-default" Text="Regresar" OnClick="Regresar" ID="btnRegresar" />
+                       </div>
+                 
+                   </div>
                     </div>
-                      </div>
-            </div>--%>
-
+          
+                
+          
                 </div>
              
             </div>
 
         </ContentTemplate>
     </asp:UpdatePanel>
+      <script type="text/javascript">
+
+              Sys.WebForms.PageRequestManager.getInstance().add_beginRequest(BeginRequestHandler);
+            function BeginRequestHandler(sender, args) { var oControl = args.get_postBackElement(); oControl.disabled = true; }
+            Sys.WebForms.PageRequestManager.getInstance().add_pageLoaded(function () {
+                   
+                  
+                 
+
+
+          });
+              function DisableButton() {
+                document.getElementById("<%= btnFinalizar.ClientID %>").disabled = true;
+                document.getElementById("<%= btnFinalizar.ClientID %>").value = "Cargando...";
+                     document.getElementById("<%= btnRegresar.ClientID %>").disabled = true;
+                document.getElementById("<%= btnRegresar.ClientID %>").value = "Cargando...";
+
+  }
+           window.onbeforeunload = DisableButton;
+
+      
+        
+                function AllowAlphabet(e) {
+            isIE = document.all ? 1 : 0
+            keyEntry = !isIE ? e.which : event.keyCode;
+                 if (((keyEntry >= 65) && (keyEntry <= 90)) ||
+                     ((keyEntry >= 97) && (keyEntry <= 122)) ||
+                     (keyEntry == 46) || (keyEntry == 32) || keyEntry == 45 || (keyEntry == 32) || keyEntry == 45 || keyEntry == 63 || keyEntry == 33 || keyEntry == 168
+
+                     || (keyEntry == 241) || keyEntry == 209
+                     || (keyEntry == 225) || keyEntry == 233
+                     || (keyEntry == 237) || keyEntry == 243
+                     || (keyEntry == 243) || keyEntry == 250
+                     || (keyEntry == 193) || keyEntry == 201
+                     || (keyEntry == 205) || keyEntry == 211
+                     || (keyEntry == 218) ||(keyEntry >=48 && keyEntry<=57) || (keyEntry == 40) || keyEntry == 41 || keyEntry == 44 || keyEntry == 95 || keyEntry == 64) 
+                return true;
+            else {
+                return false;
+            }
+        }
+            </script>  
+
 </asp:Content>

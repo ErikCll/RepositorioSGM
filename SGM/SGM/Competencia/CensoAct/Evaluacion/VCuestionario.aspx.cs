@@ -25,6 +25,9 @@ namespace SGM.Competencia.CensoAct
             int IdEvaluacion =Convert.ToInt32( decodedString);
             lstPreguntas.DataSource = evaluacion.MostrarPregunta(IdEvaluacion);
             lstPreguntas.DataBind();
+            if (lstPreguntas.Items.Count>=1){
+                btnFinalizar.Visible = true;
+            }
 
         }
         protected void Eliminar(object sender, EventArgs e)
@@ -62,10 +65,24 @@ namespace SGM.Competencia.CensoAct
                 RadioButtonList radioList = (RadioButtonList)e.Item.FindControl("radioList");
                 radioList.DataSource = evaluacion.MostrarRespuesta(IdPregunta);
                 radioList.DataBind();
+                radioList.Items[0].Selected = true;
 
                
            }
 
+        }
+
+        protected void Finalizar(Object sender, EventArgs e)
+        {
+    
+            ScriptManager.RegisterStartupScript(Page, typeof(Page), "OpenWindow", "window.open('EvPrueba.aspx?ev=" + Request.QueryString["ev"] + "','mywindow','menubar=1,resizable=1');", true);
+
+        }
+        protected void Regresar(Object sender, EventArgs e)
+        {
+
+
+            Response.Redirect("CrearCuestionario.aspx?ev=" + Request.QueryString["ev"] + "");
         }
     }
 }

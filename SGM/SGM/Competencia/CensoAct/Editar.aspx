@@ -21,7 +21,7 @@
                         <div class="col-sm-12 col-md-12 col-lg-4">
                             <div class="form-group">
                                 <label>Nombre:</label>
-                                                            <asp:TextBox runat="server" CssClass="form-control" ID="txtNombre" onkeypress="return AllowAlphabet(event)" MaxLength="100"></asp:TextBox>
+                                                            <asp:TextBox runat="server" CssClass="form-control" ID="txtNombre" onkeypress="return AllowAlphabet(event)" MaxLength="200"></asp:TextBox>
                                   <asp:RequiredFieldValidator runat="server" ID="RequiredFieldValidator2" ControlToValidate="txtNombre"
                                     ErrorMessage="Nombre de área requerido." ForeColor="Red" ValidationGroup="btnGuardar"></asp:RequiredFieldValidator>
                             </div>
@@ -50,7 +50,7 @@
                         <div class="col-sm-12 col-md-12 col-lg-6">
                             <div class="form-group">
                                 <asp:Button runat="server" CssClass="btn btn-primary" Text="Guardar" ID="btnGuardar" OnClick="btnGuardar_Click"  ValidationGroup="btnGuardar"/>
-                                <a class="btn btn-default" href="Index.aspx">Regresar</a>
+                                <asp:Button runat="server" id="btnRegresar" Text="Regresar" CssClass="btn btn-default" PostBackUrl="~/Competencia/CensoAct/Index.aspx" />
                             </div>
                         </div>
                     </div>
@@ -58,11 +58,27 @@
                 </div>
         </ContentTemplate>
     </asp:UpdatePanel>
-      <script type="text/javascript">
-               Sys.WebForms.PageRequestManager.getInstance().add_beginRequest(BeginRequestHandler);
-          function BeginRequestHandler(sender, args) { var oControl = args.get_postBackElement(); oControl.disabled = true; }
+    <script type="text/javascript">
 
-             function AllowAlphabet(e) {
+              Sys.WebForms.PageRequestManager.getInstance().add_beginRequest(BeginRequestHandler);
+            function BeginRequestHandler(sender, args) { var oControl = args.get_postBackElement(); oControl.disabled = true; }
+            Sys.WebForms.PageRequestManager.getInstance().add_pageLoaded(function () {
+
+
+
+          });
+                function DisableButton() {
+                document.getElementById("<%= btnGuardar.ClientID %>").disabled = true;
+                    document.getElementById("<%= btnGuardar.ClientID %>").value = "Cargando...";
+                      document.getElementById("<%= btnRegresar.ClientID %>").disabled = true;
+                    document.getElementById("<%= btnRegresar.ClientID %>").value = "Cargando...";
+
+
+  }
+  window.onbeforeunload = DisableButton;
+                
+
+                function AllowAlphabet(e) {
             isIE = document.all ? 1 : 0
             keyEntry = !isIE ? e.which : event.keyCode;
                  if (((keyEntry >= 65) && (keyEntry <= 90)) ||
@@ -80,12 +96,6 @@
                 return false;
             }
         }
- function DisableButton() {
-                document.getElementById("<%= btnGuardar.ClientID %>").disabled = true;
-                document.getElementById("<%= btnGuardar.ClientID %>").value = "Cargando...";
+            </script>  
 
-
-  }
-  window.onbeforeunload = DisableButton;
-                  </script>  
 </asp:Content>

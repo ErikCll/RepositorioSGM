@@ -142,6 +142,7 @@
     <Content Include="Competencia\CensoAct\Detalle.aspx" />
     <Content Include="Competencia\CensoAct\Editar.aspx" />
     <Content Include="Competencia\CensoAct\Evaluacion\EditarCuestionario.aspx" />
+    <Content Include="Competencia\CensoAct\Evaluacion\EvPrueba.aspx" />
     <Content Include="Competencia\CensoAct\Index.aspx" />
     <Content Include="Catalogo\Area\Crear.aspx" />
     <Content Include="Catalogo\Area\Detalle.aspx" />
@@ -158,6 +159,12 @@
     <Content Include="Competencia\MatrizCatEmp\Agregar.aspx" />
     <Content Include="Competencia\MatrizCatEmp\Detalle.aspx" />
     <Content Include="Competencia\MatrizCatEmp\Index.aspx" />
+    <Content Include="Confirmacion\CensoSis\Componente\Crear.aspx" />
+    <Content Include="Confirmacion\CensoSis\Componente\Editar.aspx" />
+    <Content Include="Confirmacion\CensoSis\Componente\Index.aspx" />
+    <Content Include="Confirmacion\CensoSis\Crear.aspx" />
+    <Content Include="Confirmacion\CensoSis\Editar.aspx" />
+    <Content Include="Confirmacion\CensoSis\Index.aspx" />
     <Content Include="dist\css\adminlte.css" />
     <Content Include="dist\css\adminlte.min.css" />
     <Content Include="dist\css\alt\adminlte.components.css" />
@@ -1754,6 +1761,8 @@
     <Compile Include="Clase\CategoriaEmpleado.cs" />
     <Compile Include="Clase\Evaluacion.cs" />
     <Compile Include="Clase\Master.cs" />
+    <Compile Include="Clase\SistemaComponente.cs" />
+    <Compile Include="Clase\SistemaMed.cs" />
     <Compile Include="Competencia\CensoAct\Control\Index.aspx.cs">
       <DependentUpon>Index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1816,6 +1825,13 @@
     </Compile>
     <Compile Include="Competencia\CensoAct\Evaluacion\EditarCuestionario.aspx.designer.cs">
       <DependentUpon>EditarCuestionario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Competencia\CensoAct\Evaluacion\EvPrueba.aspx.cs">
+      <DependentUpon>EvPrueba.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Competencia\CensoAct\Evaluacion\EvPrueba.aspx.designer.cs">
+      <DependentUpon>EvPrueba.aspx</DependentUpon>
     </Compile>
     <Compile Include="Competencia\CensoAct\Index.aspx.cs">
       <DependentUpon>Index.aspx</DependentUpon>
@@ -1960,6 +1976,48 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Catalogo\Empleado\Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Confirmacion\CensoSis\Componente\Crear.aspx.cs">
+      <DependentUpon>Crear.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Confirmacion\CensoSis\Componente\Crear.aspx.designer.cs">
+      <DependentUpon>Crear.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Confirmacion\CensoSis\Componente\Editar.aspx.cs">
+      <DependentUpon>Editar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Confirmacion\CensoSis\Componente\Editar.aspx.designer.cs">
+      <DependentUpon>Editar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Confirmacion\CensoSis\Componente\Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Confirmacion\CensoSis\Componente\Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Confirmacion\CensoSis\Crear.aspx.cs">
+      <DependentUpon>Crear.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Confirmacion\CensoSis\Crear.aspx.designer.cs">
+      <DependentUpon>Crear.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Confirmacion\CensoSis\Editar.aspx.cs">
+      <DependentUpon>Editar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Confirmacion\CensoSis\Editar.aspx.designer.cs">
+      <DependentUpon>Editar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Confirmacion\CensoSis\Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Confirmacion\CensoSis\Index.aspx.designer.cs">
       <DependentUpon>Index.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">

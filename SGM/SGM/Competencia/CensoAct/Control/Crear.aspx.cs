@@ -66,7 +66,7 @@ namespace SGM.Competencia.CensoAct
                                 blob.UploadFromStream(File1.PostedFile.InputStream);
 
                             }
-                            string script = "alert('Se creó correctamente el registro.'); window.location.href= 'Control.aspx?id="+ Request.QueryString["id"] + "'";
+                            string script = "alert('Se creó correctamente el registro.'); window.location.href= 'Index.aspx?id="+ Request.QueryString["id"] + "'";
 
                             ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", script, true);
 
@@ -108,7 +108,7 @@ namespace SGM.Competencia.CensoAct
                                     blob.UploadFromStream(File1.PostedFile.InputStream);
 
                                 }
-                                string script = "alert('Se creó correctamente el registro.'); window.location.href= 'Control.aspx?id=" + Request.QueryString["id"] + "';";
+                                string script = "alert('Se creó correctamente el registro.'); window.location.href= 'Index.aspx?id=" + Request.QueryString["id"] + "';";
 
                                 ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", script, true);
 

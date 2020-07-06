@@ -38,11 +38,32 @@
                         <div class="col-sm-12 col-md-12 col-lg-6">
                             <div class="form-group">
                                
-                                <a class="btn btn-default" href="Index.aspx">Regresar</a>
+                                <asp:Button runat="server" ID="btnRegresar" CssClass="btn btn-default" Text="Regresar" PostBackUrl="~/Catalogo/Area/Index.aspx"/>
                             </div>
                         </div>
                         </div>
                     </div>
                       </div>
         </div>
+
+       <script type="text/javascript">
+
+              Sys.WebForms.PageRequestManager.getInstance().add_beginRequest(BeginRequestHandler);
+            function BeginRequestHandler(sender, args) { var oControl = args.get_postBackElement(); oControl.disabled = true; }
+            Sys.WebForms.PageRequestManager.getInstance().add_pageLoaded(function () {
+
+
+
+          });
+                function DisableButton() {
+            
+                     document.getElementById("<%= btnRegresar.ClientID %>").disabled = true;
+                document.getElementById("<%= btnRegresar.ClientID %>").value = "Cargando...";
+
+
+  }
+  window.onbeforeunload = DisableButton;
+                
+
+            </script>  
 </asp:Content>

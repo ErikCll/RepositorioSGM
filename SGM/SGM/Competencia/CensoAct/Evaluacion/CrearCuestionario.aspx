@@ -41,19 +41,19 @@
                                <div class="col-sm-6 col-md-6 col-lg-6" runat="server" id="divMultiple" >
                                  <div class="form-group">
                                      <label>Respuesta 1:</label>
-                                     <asp:TextBox runat="server" CssClass="form-control" ID="txt1" BorderColor="Green"></asp:TextBox>
+                                     <asp:TextBox runat="server" CssClass="form-control" ID="txt1" BorderColor="Green" onkeypress="return AllowAlphabet(event)" MaxLength="200"></asp:TextBox>
                                  </div>
                                     <div class="form-group">
                                      <label>Respuesta 2:</label>
-                                     <asp:TextBox runat="server" CssClass="form-control" ID="txt2"></asp:TextBox>
+                                     <asp:TextBox runat="server" CssClass="form-control" ID="txt2" onkeypress="return AllowAlphabet(event)" MaxLength="200"></asp:TextBox>
                                  </div>
                                     <div class="form-group">
                                      <label>Respuesta 3:</label>
-                                     <asp:TextBox runat="server" CssClass="form-control" ID="txt3"></asp:TextBox>
+                                     <asp:TextBox runat="server" CssClass="form-control" ID="txt3" onkeypress="return AllowAlphabet(event)" MaxLength="200"></asp:TextBox>
                                  </div>
                                     <div class="form-group">
                                      <label>Respuesta 4:</label>
-                                     <asp:TextBox runat="server" CssClass="form-control" ID="txt4"></asp:TextBox>
+                                     <asp:TextBox runat="server" CssClass="form-control" ID="txt4" onkeypress="return AllowAlphabet(event)" MaxLength="200"></asp:TextBox>
                                  </div>
                         </div>
                                                     <div class="col-sm-6 col-md-6 col-lg-6" runat="server" id="DivTrue" visible="false">
@@ -73,7 +73,7 @@
                         <div class="col-sm-12 col-md-12 col-lg-12">
                             <div class="form-group">
                                 <asp:Button runat="server" CssClass="btn btn-primary" Text="Guardar y continuar" ID="btnGuardar" OnClick="btnGuardar_Click"  ValidationGroup="btnGuardar"/>
-                        <asp:Button runat="server" ID="btnTerminar" CssClass="btn btn-success float-right" Text="Terminar" Visible="false" OnClick="btnTerminar_Click" />
+                        <asp:Button runat="server" ID="btnTerminar" CssClass="btn btn-success float-right" Text="Siguiente" Visible="false" OnClick="btnTerminar_Click" />
                             </div>
                         </div>
                         </div>
@@ -149,20 +149,13 @@
               function DisableButton() {
                 document.getElementById("<%= btnGuardar.ClientID %>").disabled = true;
                 document.getElementById("<%= btnGuardar.ClientID %>").value = "Cargando...";
-
-
-  }
-         window.onbeforeunload = DisableButton;
-
-
-               function DisableButton2() {
-                document.getElementById("<%= btnTerminar.ClientID %>").disabled = true;
+                         document.getElementById("<%= btnTerminar.ClientID %>").disabled = true;
                 document.getElementById("<%= btnTerminar.ClientID %>").value = "Cargando...";
 
-
   }
-  window.onbeforeunload = DisableButton2;
-              
+
+  window.onbeforeunload = DisableButton;
+          
 
                 function AllowAlphabet(e) {
             isIE = document.all ? 1 : 0

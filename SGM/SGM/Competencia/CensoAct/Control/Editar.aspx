@@ -24,7 +24,7 @@
                             <div class="form-group">
                                 <label class="font-weight-bold">Código:</label>
 
-                                <asp:TextBox runat="server" class="form-control" id="txtCodigo" onkeypress="return AllowAlphabet(event)" MaxLength="50"></asp:TextBox>
+                                <asp:TextBox runat="server" class="form-control" id="txtCodigo" onkeypress="return AllowAlphabet(event)" MaxLength="100"></asp:TextBox>
                                 <asp:RequiredFieldValidator runat="server" ID="reqCodigo" ControlToValidate="txtCodigo"
                                     ErrorMessage="Código requerido." ForeColor="Red"  ValidationGroup="btnGuardar"></asp:RequiredFieldValidator>
 
@@ -88,7 +88,17 @@
                             'Sep', 'Oct', 'Nov', 'Dic']
                   });
 
-              });
+           });
+
+            function DisableButton() {
+                document.getElementById("<%= btnGuardar.ClientID %>").disabled = true;
+                     document.getElementById("<%= btnGuardar.ClientID %>").value = "Cargando...";
+                     document.getElementById("<%=btnRegresar.ClientID%>").disabled = true;
+                     document.getElementById("<%=btnRegresar.ClientID%>").value = "Cargando...";
+
+
+  }
+  window.onbeforeunload = DisableButton;
              function AllowAlphabet(e) {
             isIE = document.all ? 1 : 0
             keyEntry = !isIE ? e.which : event.keyCode;

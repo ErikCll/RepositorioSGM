@@ -41,7 +41,7 @@
                             <div class="form-group">
                                 <label class="font-weight-bold">Código:</label>
 
-                                <asp:TextBox runat="server" class="form-control" id="txtCodigo" onkeypress="return AllowAlphabet(event)" MaxLength="50"></asp:TextBox>
+                                <asp:TextBox runat="server" class="form-control" id="txtCodigo" onkeypress="return AllowAlphabet(event)" MaxLength="100"></asp:TextBox>
                                 <asp:RequiredFieldValidator runat="server" ID="reqCodigo" ControlToValidate="txtCodigo"
                                     ErrorMessage="Código requerido." ForeColor="Red"  ValidationGroup="btnGuardar"></asp:RequiredFieldValidator>
 
@@ -87,7 +87,7 @@
                           
                             <div class="form-group">
                                 <asp:Button class="btn btn-primary" id="btnGuardar" runat="server" Text="Guardar" ValidationGroup="btnGuardar" OnClick="btnGuardar_Click"/>
-                                <asp:LinkButton runat="server" OnClick="Regresar" class="btn btn-default">Regresar</asp:LinkButton>
+                                <asp:LinkButton runat="server" OnClick="Regresar" class="btn btn-default" ID="btnRegresar">Regresar</asp:LinkButton>
 
 
                             </div>
@@ -154,7 +154,9 @@
 
                  function DisableButton() {
                 document.getElementById("<%= btnGuardar.ClientID %>").disabled = true;
-                document.getElementById("<%= btnGuardar.ClientID %>").value = "Cargando...";
+                     document.getElementById("<%= btnGuardar.ClientID %>").value = "Cargando...";
+                     document.getElementById("<%=btnRegresar.ClientID%>").disabled = true;
+                     document.getElementById("<%=btnRegresar.ClientID%>").value = "Cargando...";
 
 
   }

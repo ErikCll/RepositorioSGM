@@ -34,7 +34,7 @@
                         <div class="col-sm-6 col-md-6 col-lg-6">
                               <div class="form-group float-right">
                                 <asp:Button runat="server" CssClass="btn btn-primary" Text="Guardar" ID="btnGuardar" OnClick="btnGuardar_Click"/>
-                                <a class="btn btn-default" href="Detalle.aspx">Regresar</a>
+                                  <asp:Button runat="server" ID="btnRegresar" CssClass="btn btn-default" Text="Regresar" PostBackUrl="~/Competencia/MatrizCatAct/Detalle.aspx" />
                             </div>
                         </div>
                                    <div class="table-responsive">
@@ -103,7 +103,9 @@
 
          function DisableButton() {
                 document.getElementById("<%= btnGuardar.ClientID %>").disabled = true;
-                document.getElementById("<%= btnGuardar.ClientID %>").value = "Cargando...";
+             document.getElementById("<%= btnGuardar.ClientID %>").value = "Cargando...";
+             document.getElementById("<%= btnRegresar.ClientID %>").disabled = true;
+                document.getElementById("<%= btnRegresar.ClientID %>").value = "Cargando...";
   }
          window.onbeforeunload = DisableButton;
 

@@ -22,7 +22,7 @@
                         <div class="col-12 col-md-12 col-lg-4">
                             <div class="form-group">
                                 <label>Nombre:</label>
-                                                            <asp:TextBox runat="server" CssClass="form-control" ID="txtNombre" onkeypress="return AllowAlphabet(event)" MaxLength="100"></asp:TextBox>
+                                                            <asp:TextBox runat="server" CssClass="form-control" ID="txtNombre" onkeypress="return AllowAlphabet(event)" MaxLength="200"></asp:TextBox>
                                   <asp:RequiredFieldValidator runat="server" ID="RequiredFieldValidator2" ControlToValidate="txtNombre"
                                     ErrorMessage="Nombre de evaluación requerida." ForeColor="Red" ValidationGroup="btnGuardar"></asp:RequiredFieldValidator>
                             </div>
@@ -54,7 +54,8 @@
                 function DisableButton() {
                 document.getElementById("<%= btnGuardar.ClientID %>").disabled = true;
                 document.getElementById("<%= btnGuardar.ClientID %>").value = "Cargando...";
-
+                        document.getElementById("<%= btnRegresar.ClientID %>").disabled = true;
+                document.getElementById("<%= btnRegresar.ClientID %>").value = "Cargando...";
 
   }
   window.onbeforeunload = DisableButton;
