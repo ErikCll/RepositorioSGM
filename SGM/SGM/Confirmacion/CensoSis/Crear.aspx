@@ -36,8 +36,7 @@
                         <div class="col-sm-12 col-md-12 col-lg-6">
                             <div class="form-group">
                                 <asp:Button runat="server" CssClass="btn btn-primary" Text="Guardar" ID="btnGuardar" OnClick="btnGuardar_Click"  ValidationGroup="btnGuardar"/>
-                                <a class="btn btn-default">Limpiar</a>
-                                <a class="btn btn-default" href="Index.aspx">Regresar</a>
+                                <asp:Button runat="server" ID="btnRegresar" CssClass="btn btn-default" Text="Regresar" PostBackUrl="~/Confirmacion/CensoSis/Index.aspx" />
                             </div>
                         </div>
                         </div>
@@ -58,7 +57,9 @@
           });
                 function DisableButton() {
                 document.getElementById("<%= btnGuardar.ClientID %>").disabled = true;
-                document.getElementById("<%= btnGuardar.ClientID %>").value = "Cargando...";
+                    document.getElementById("<%= btnGuardar.ClientID %>").value = "Cargando...";
+                      document.getElementById("<%= btnRegresar.ClientID %>").disabled = true;
+                document.getElementById("<%= btnRegresar.ClientID %>").value = "Cargando...";
 
 
   }

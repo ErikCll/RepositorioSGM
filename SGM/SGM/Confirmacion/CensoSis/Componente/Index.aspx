@@ -42,6 +42,7 @@
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                      <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
+                                        <asp:BoundField HeaderText="Tipo" DataField="Tipo" />
                                      
 
                                     </Columns>

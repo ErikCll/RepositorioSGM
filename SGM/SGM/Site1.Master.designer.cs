@@ -94,6 +94,15 @@ namespace SGM.Master {
         protected global::System.Web.UI.HtmlControls.HtmlAnchor empleado;
         
         /// <summary>
+        /// Control medidor.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor medidor;
+        
+        /// <summary>
         /// Control menu_competencia.
         /// </summary>
         /// <remarks>

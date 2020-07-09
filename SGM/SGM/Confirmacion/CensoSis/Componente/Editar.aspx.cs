@@ -19,12 +19,32 @@ namespace SGM.Confirmacion.CensoSis.Componente
                 string decodedString = System.Text.ASCIIEncoding.ASCII.GetString(Convert.FromBase64String(Request.QueryString["id"]));
                 int IdComponente = Convert.ToInt32(decodedString);
                 componente.LeerDatosComponente(IdComponente);
-                txtNombre.Text = componente.Nombre;
+               componente.LeerTipo(IdComponente);
+                 if(componente.Tipo=="2")
+                {
+                    Div1.Visible = true;
+                    Div2.Visible = true;
+                    txtNombre.Text = componente.Nombre;
+                }
+                else
+                {
+                    LlenarDrop();
+                    Div3.Visible = true;
+                    Div4.Visible = true;
+                    ddl_Medidor.SelectedValue = componente.IdMedidor;
+                }
               
 
             }
         }
 
+        public void LlenarDrop()
+        {
+            ddl_Medidor.DataSource = componente.MostrarMedidor();
+            ddl_Medidor.DataBind();
+            ddl_Medidor.Items.Insert(0, new ListItem("[Seleccionar]"));
+
+        }
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
 
@@ -32,8 +52,8 @@ namespace SGM.Confirmacion.CensoSis.Componente
             int IdComponente = Convert.ToInt32(decodedString);
             string Nombre = txtNombre.Text;
 
-          
-                if (componente.Editar(IdComponente, Nombre))
+
+            if (componente.EditarAccesorio(IdComponente, Nombre))
                 {
 
                     string txtJS = String.Format("<script>alert('{0}');</script>", "Se actualizaron correctamente los datos.");
@@ -41,7 +61,25 @@ namespace SGM.Confirmacion.CensoSis.Componente
 
                 }
                                 
+        }
+
+        protected void btnGuardar2_Click(object sender, EventArgs e)
+        {
+
+            string decodedString = System.Text.ASCIIEncoding.ASCII.GetString(Convert.FromBase64String(Request.QueryString["id"]));
+            int IdComponente = Convert.ToInt32(decodedString);
+            int IdMedidor = Convert.ToInt32(ddl_Medidor.SelectedValue);
+
+
+            if (componente.EditarMedidor(IdComponente, IdMedidor))
+            {
+
+                string txtJS = String.Format("<script>alert('{0}');</script>", "Se actualizaron correctamente los datos.");
+                ScriptManager.RegisterClientScriptBlock(litControl, litControl.GetType(), "script", txtJS, false);
+
             }
+
+        }
 
         protected void Regresar(Object sender, EventArgs e)
         {

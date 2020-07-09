@@ -78,6 +78,14 @@ namespace SGM.Master
 
                 }
 
+                else if (activepage.Contains("/Catalogo/Medidor/Index.aspx") || activepage.Contains("/Catalogo/Medidor/Crear.aspx") || activepage.Contains("/Catalogo/Medidor/Detalle.aspx") || activepage.Contains("/Catalogo/Medidor/Editar.aspx"))
+                {
+                    menu_catalogo.Attributes.Add("class", "  nav-item has-treeview menu-open");
+                    catalogo.Attributes.Add("class", "nav-link active");
+                    medidor.Attributes.Add("class", "nav-link active");
+
+                }
+
                 else if (activepage.Contains("/Competencia/CensoAct/Index.aspx") || activepage.Contains("/Competencia/CensoAct/Crear.aspx") || activepage.Contains("/Competencia/CensoAct/Detalle.aspx") || activepage.Contains("/Competencia/CensoAct/Editar.aspx") || activepage.Contains("/Competencia/CensoAct/Control/Index.aspx") || activepage.Contains("/Competencia/CensoAct/Control/Crear.aspx") || activepage.Contains("/Competencia/CensoAct/Control/Editar.aspx"))
                 {
                     menu_competencia.Attributes.Add("class", "  nav-item has-treeview menu-open");

@@ -19,8 +19,15 @@
                             <h4>Datos del componente</h4>
                         </div>
                      
-                     
-                     <div class="col-sm-12 col-md-12 col-lg-4">
+                     <div class="col-sm-12 col-md-12 col-lg-12">
+                         <div class="form-group">
+                             <label>Medidor:</label>
+                             <asp:CheckBox runat="server" ID="chckMedidor" />
+                             <label class="ml-1">Accesorio:</label>
+                             <asp:CheckBox runat="server" ID="chckAccesorio" />
+                         </div>
+                     </div>
+                     <div class="col-sm-12 col-md-12 col-lg-4" id="Div1" runat="server">
                             <div class="form-group">
                                 <label class="font-weight-bold">Nombre:</label>
 
@@ -35,16 +42,40 @@
 
        
                     
-                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="Div2" runat="server">
                           
                             <div class="form-group">
                                 <asp:Button class="btn btn-primary" id="btnGuardar" runat="server" Text="Guardar" ValidationGroup="btnGuardar" OnClick="btnGuardar_Click"/>
-                                <asp:LinkButton runat="server" OnClick="Regresar" class="btn btn-default">Regresar</asp:LinkButton>
+                                <asp:LinkButton runat="server" OnClick="Regresar" class="btn btn-default" ID="btnRegresar">Regresar</asp:LinkButton>
 
 
                             </div>
                         </div>
                        
+                        <div class="col-sm-12 col-md-12 col-lg-4" id="Div3" runat="server">
+                            <div class="form-group">
+                                <label class="font-weight-bold">Tipo de medidor:</label>
+
+                                <asp:DropDownList runat="server" CssClass="form-control" ID="ddl_Medidor" DataTextField="Nombre" DataValueField="Id_Medidor"></asp:DropDownList>
+                                <asp:RequiredFieldValidator runat="server" ID="RequiredFieldValidator1" ControlToValidate="ddl_Medidor"
+                                    ErrorMessage="Tipo de medidor requerido." ForeColor="Red"  ValidationGroup="btnGuardar2" InitialValue="[Seleccionar]"></asp:RequiredFieldValidator>
+
+
+                            </div>
+                        </div>
+                          
+
+       
+                    
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="Div4" runat="server">
+                          
+                            <div class="form-group">
+                                <asp:Button class="btn btn-primary" id="btnGuardar2" runat="server" Text="Guardar" ValidationGroup="btnGuardar2" OnClick="btnGuardar2_Click"/>
+                                <asp:LinkButton runat="server" OnClick="Regresar" class="btn btn-default" ID="btnRegresar2">Regresar</asp:LinkButton>
+
+
+                            </div>
+                        </div>
                  
                         </div>
                     </div>
@@ -59,7 +90,66 @@
   
                              Sys.WebForms.PageRequestManager.getInstance().add_pageLoaded(function(){
 
+                                 var Div1 = $("#<%=Div1.ClientID%>");
+                                  var Div2 = $("#<%=Div2.ClientID%>");
+                                  var Div3 = $("#<%=Div3.ClientID%>");
+                                 var Div4= $("#<%=Div4.ClientID%>");
+
+                         Div1.hide();
+                        Div2.hide();
+
+                        Div3.show();
+                        Div4.show();
+
+  var chckMedidor = $("#<%=chckMedidor.ClientID%>");
                    
+                   var chckAccesorio = $("#<%=chckAccesorio.ClientID%>");
+                                 chckMedidor.click(function () {
+                                     if (chckMedidor.prop('checked') == false) {
+                                         chckAccesorio.prop('checked', true);
+
+
+                                             Div1.show();
+                        Div2.show();
+
+                        Div3.hide();
+                        Div4.hide();
+
+
+                                     }
+                                     else {
+                                           chckAccesorio.prop('checked', false);
+                        Div3.show();
+                        Div4.show();
+
+                        Div1.hide();
+                        Div2.hide();
+                                     }
+                      
+
+             
+
+                   });
+                     chckAccesorio.click(function () {
+                         if (chckAccesorio.prop('checked') == false) {
+                              chckMedidor.prop('checked', true);
+                        Div3.show();
+                        Div4.show();
+
+                        Div1.hide();
+                        Div2.hide();
+                         }
+                         else {
+                               chckMedidor.prop('checked', false);
+
+                             Div1.show();
+                        Div2.show();
+
+                        Div3.hide();
+                        Div4.hide();
+                         }
+
+                   });
                
                 
 
@@ -67,7 +157,13 @@
 
                  function DisableButton() {
                 document.getElementById("<%= btnGuardar.ClientID %>").disabled = true;
-                document.getElementById("<%= btnGuardar.ClientID %>").value = "Cargando...";
+                     document.getElementById("<%= btnGuardar.ClientID %>").value = "Cargando...";
+                        document.getElementById("<%= btnGuardar2.ClientID %>").disabled = true;
+                     document.getElementById("<%= btnGuardar2.ClientID %>").value = "Cargando...";
+                        document.getElementById("<%= btnRegresar.ClientID %>").disabled = true;
+                     document.getElementById("<%= btnRegresar.ClientID %>").value = "Cargando...";
+                        document.getElementById("<%= btnRegresar2.ClientID %>").disabled = true;
+                document.getElementById("<%= btnRegresar2.ClientID %>").value = "Cargando...";
 
 
   }

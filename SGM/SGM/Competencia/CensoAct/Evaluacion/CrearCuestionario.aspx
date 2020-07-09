@@ -124,13 +124,23 @@
                 var chkTrue = $("#<%=chkTrue.ClientID%>");
                    
                 var chkFalse = $("#<%=chkFalse.ClientID%>");
-                     chkTrue.click(function () {
-                       chkFalse.prop('checked', false);
+
+                chkTrue.click(function () {
+                    if (chkTrue.prop('checked') == false) {
+                        chkFalse.prop('checked', true);
+
+
+                    }
+                    else {
+                        chkFalse.prop('checked', false);
+                      }
              
 
                    });
                    chkFalse.click(function () {
-                         if (chkFalse.prop('checked')==false) {
+                       if (chkFalse.prop('checked') == false) {
+                                                    chkTrue.prop('checked', true);
+
             
                          }
                          else {

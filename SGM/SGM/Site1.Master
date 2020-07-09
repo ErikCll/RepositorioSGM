@@ -126,6 +126,14 @@
                   <p>Empleado</p>
                 </a>
               </li>
+
+                 <li class="nav-item">
+                <a  href="/Catalogo/Medidor/Index.aspx" class="nav-link" id="medidor" runat="server">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Medidores</p>
+                </a>
+              </li>
+            
             
               
             </ul>
