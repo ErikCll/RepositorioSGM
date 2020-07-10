@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Crear.aspx.cs" Inherits="SGM.Competencia.CensoAct.CrearEv" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    Crear Evaluación<br />
+    Crear Evaluación(Paso 1)<br />
         <label class="font-weight-normal text small">Control de versión: </label> <asp:Label runat="server" ID="lblCodigo" CssClass=" font-weight-bold text small"></asp:Label>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="mapeo" runat="server">

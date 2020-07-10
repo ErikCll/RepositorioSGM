@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="CrearCuestionario.aspx.cs" Inherits="SGM.Competencia.CensoAct.CrearPreg" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    Crear cuestionario<br />
+    Crear cuestionario(Paso 2)<br />
      <label class="font-weight-normal text small">Evaluacion: </label>
     <asp:Label runat="server" ID="lblEvaluacion" CssClass=" font-weight-bold text small"></asp:Label>
     <asp:Label runat="server" ID="lblIdEvaluacion"></asp:Label>
