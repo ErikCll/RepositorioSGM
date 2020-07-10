@@ -7,13 +7,13 @@ using System.Web.UI.WebControls;
 
 namespace SGM.Competencia.CensoAct.Evaluacion
 {
-    public partial class EvPrueba : System.Web.UI.Page
+    public partial class EvPrueba2 : System.Web.UI.Page
     {
         Clase.Evaluacion evaluacion = new Clase.Evaluacion();
         static int hh, mm, ss;
         static int con = 0;
         string totalItems;
-       static decimal cal = 0;
+        static decimal cal = 0;
 
 
         static double TimeAllSecondes = 0;
@@ -23,10 +23,10 @@ namespace SGM.Competencia.CensoAct.Evaluacion
             if (!IsPostBack)
             {
                 MostrarLista();
-       
+
                 int min = 1 * 60;
                 TimeAllSecondes = min;
-               
+
                 //foreach (ListViewItem itm in lstPreguntas.Items)
                 //{
                 //    Label Contador = (Label)itm.FindControl("lblContador");
@@ -112,7 +112,7 @@ namespace SGM.Competencia.CensoAct.Evaluacion
 
                     string txtJS = String.Format("<script>alert('{0}');</script>", "Seleccionar una respuesta.");
                     ScriptManager.RegisterClientScriptBlock(litControl, litControl.GetType(), "script", txtJS, false);
-                    DataPager1.SetPageProperties(e.StartRowIndex-1, e.MaximumRows, false);
+                    DataPager1.SetPageProperties(e.StartRowIndex - 1, e.MaximumRows, false);
 
                 }
                 else
@@ -128,14 +128,15 @@ namespace SGM.Competencia.CensoAct.Evaluacion
                     }
                     else
                     {
-                        string txtJS = String.Format("<script>alert('{0}');</script>", "La respuesta es incorrecta.");
+                        radioList.SelectedValue = IdRespuesta;
+                        string txtJS = String.Format("<script>alert('{0}');</script>", "La respuesta es incorrecta. La respuesta correcta es: "+radioList.SelectedItem.ToString()+"");
                         ScriptManager.RegisterClientScriptBlock(litControl, litControl.GetType(), "script", txtJS, false);
 
                         DataPager1.SetPageProperties(e.StartRowIndex, e.MaximumRows, false);
                         MostrarLista(); //rebind listView
                     }
                 }
-              
+
 
 
 
@@ -191,7 +192,7 @@ namespace SGM.Competencia.CensoAct.Evaluacion
             //    {
             //        cal++;
             //    }
-                
+
 
 
 
@@ -201,9 +202,9 @@ namespace SGM.Competencia.CensoAct.Evaluacion
 
             decimal calificacion = (cal / cantidadPreguntas) * 10;
 
-          decimal calFinal=  Math.Round(calificacion, 2);
+            decimal calFinal = Math.Round(calificacion, 2);
 
-            string txtJS = String.Format("<script>alert('{0}');</script>", "Tu calificación es: " + calFinal +" ");
+            string txtJS = String.Format("<script>alert('{0}');</script>", "Tu calificación es: " + calFinal + " ");
             ScriptManager.RegisterClientScriptBlock(litControl, litControl.GetType(), "script", txtJS, false);
         }
 

@@ -75,7 +75,7 @@ namespace SGM.Competencia.CensoAct
         protected void Finalizar(Object sender, EventArgs e)
         {
     
-            ScriptManager.RegisterStartupScript(Page, typeof(Page), "OpenWindow", "window.open('EvPrueba.aspx?ev=" + Request.QueryString["ev"] + "','mywindow','menubar=1,resizable=1');", true);
+            ScriptManager.RegisterStartupScript(Page, typeof(Page), "OpenWindow", "window.open('EvPrueba2.aspx?ev=" + Request.QueryString["ev"] + "','mywindow','menubar=1,resizable=1');", true);
 
         }
         protected void Regresar(Object sender, EventArgs e)
