@@ -49,6 +49,24 @@ namespace SGM.Competencia.CensoAct.Evaluacion {
         protected global::System.Web.UI.WebControls.ListView lstPreguntas;
         
         /// <summary>
+        /// Control lblTotal.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTotal;
+        
+        /// <summary>
+        /// Control DataPager1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DataPager DataPager1;
+        
+        /// <summary>
         /// Control btnFinalizar.
         /// </summary>
         /// <remarks>

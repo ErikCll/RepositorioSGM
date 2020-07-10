@@ -29,6 +29,9 @@ namespace SGM.Clase
 
         public string Respuesta { get; set; }
 
+        public string TotalItems { get; set; }
+
+
 
 
 
@@ -58,7 +61,7 @@ namespace SGM.Clase
         public DataTable MostrarPreguntaAleatoria(int IdEvaluacion)
         {
 
-            string query = "SELECT Id_Pregunta,Pregunta,TipoPregunta FROM Ev_Pregunta WHERE Id_Evaluacion=@IdEvaluacionn AND Activado IS NULL ORDER BY NEWID()";
+            string query = "SELECT Id_Pregunta,Pregunta,TipoPregunta,row_number() OVER (ORDER BY Id_Pregunta DESC) 'ORDEN' FROM Ev_Pregunta WHERE Id_Evaluacion=@IdEvaluacionn AND Activado IS NULL ORDER BY Pregunta DESC";
 
 
             comm.Connection = conexion.AbrirConexion();
@@ -526,6 +529,22 @@ namespace SGM.Clase
 
             dr.Read();
             IdRespuesta = dr["Id_Respuesta"].ToString();
+            dr.Close();
+            comm.Connection = conexion.CerrarConexion();
+
+        }
+
+        public void ObtenerTotalItems(int IdEvaluacion)
+        {
+            comm.Connection = conexion.AbrirConexion();
+            comm.CommandText = "SELECT COUNT(*) 'TotalItems' FROM Ev_Pregunta WHERE Id_Evaluacion=@IdEvaluacioon";
+            comm.CommandType = CommandType.Text;
+            comm.Parameters.AddWithValue("@IdEvaluacioon", IdEvaluacion);
+            dr = comm.ExecuteReader();
+            comm.Parameters.Clear();
+
+            dr.Read();
+            TotalItems = dr["TotalItems"].ToString();
             dr.Close();
             comm.Connection = conexion.CerrarConexion();
 

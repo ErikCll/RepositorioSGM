@@ -11,6 +11,8 @@ namespace SGM.Competencia.CensoAct.Evaluacion
     {
         Clase.Evaluacion evaluacion = new Clase.Evaluacion();
         static int hh, mm, ss;
+        static int con = 0;
+        string totalItems;
 
         static double TimeAllSecondes = 0;
         protected void Page_Load(object sender, EventArgs e)
@@ -19,8 +21,19 @@ namespace SGM.Competencia.CensoAct.Evaluacion
             if (!IsPostBack)
             {
                 MostrarLista();
+       
                 int min = 1 * 60;
                 TimeAllSecondes = min;
+               
+                //foreach (ListViewItem itm in lstPreguntas.Items)
+                //{
+                //    Label Contador = (Label)itm.FindControl("lblContador");
+                //    Contador.Text ="1".ToString();
+
+
+                //}
+
+
             }
         }
 
@@ -50,10 +63,15 @@ namespace SGM.Competencia.CensoAct.Evaluacion
             int IdEvaluacion = Convert.ToInt32(decodedString);
             lstPreguntas.DataSource = evaluacion.MostrarPreguntaAleatoria(IdEvaluacion);
             lstPreguntas.DataBind();
-            if (lstPreguntas.Items.Count >= 1)
-            {
-                btnFinalizar.Visible = true;
-            }
+
+            //if (lstPreguntas.Items.Count >= 1)
+            //{
+            //    btnFinalizar.Visible = true;
+            //}
+            evaluacion.ObtenerTotalItems(IdEvaluacion);
+            totalItems = evaluacion.TotalItems.ToString();
+            lblTotal.Text = evaluacion.TotalItems.ToString();
+
 
         }
 
@@ -76,6 +94,48 @@ namespace SGM.Competencia.CensoAct.Evaluacion
             }
 
         }
+
+        protected void lstPreguntas_PagePropertiesChanging(object sender, PagePropertiesChangingEventArgs e)
+        {
+
+           
+                DataPager1.SetPageProperties(e.StartRowIndex, e.MaximumRows, false);
+            MostrarLista(); //rebind listView
+
+
+
+            foreach (ListViewItem itm in lstPreguntas.Items)
+            {
+                Label Contador = (Label)itm.FindControl("lblContador");
+
+                if (Contador.Text == totalItems)
+                {
+                    btnFinalizar.Visible = true;
+                }
+
+
+            }
+
+
+
+
+
+
+        }
+
+        //protected void Unnamed_PreRender(object sender, EventArgs e)
+        //{
+        //    if (!IsPostBack)
+        //    {
+        //        DataPager pager = lstPreguntas.FindControl("DataPager1") as DataPager;
+        //        if (pager != null)
+        //        {
+        //            //pager.PageSize = pager.TotalRowCount;
+        //            pager.PageSize = 1;
+        //            pager.SetPageProperties(0 * pager.PageSize, pager.MaximumRows, true);
+        //        }
+        //    }
+        //}
 
         protected void btnFinalizar_Click(object sender, EventArgs e)
         {
