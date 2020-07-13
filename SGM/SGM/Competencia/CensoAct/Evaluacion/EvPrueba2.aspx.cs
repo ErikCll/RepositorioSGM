@@ -34,6 +34,17 @@ namespace SGM.Competencia.CensoAct.Evaluacion
 
 
                 //}
+                foreach (ListViewItem itm in lstPreguntas.Items)
+                {
+                    Label Contador = (Label)itm.FindControl("lblContador");
+
+                    if (Contador.Text == totalItems)
+                    {
+                        btnFinalizar.Visible = true;
+                    }
+
+
+                }
 
 
             }
@@ -179,6 +190,9 @@ namespace SGM.Competencia.CensoAct.Evaluacion
 
         protected void btnFinalizar_Click(object sender, EventArgs e)
         {
+
+          
+
             //decimal cal = 0;
 
             //foreach (ListViewItem itm in lstPreguntas.Items)

@@ -204,6 +204,18 @@
         }
         window.onbeforeunload = DisableButton;
 
+        function checkKeyCode(evt)
+{
+
+var evt = (evt) ? evt : ((event) ? event : null);
+var node = (evt.target) ? evt.target : ((evt.srcElement) ? evt.srcElement : null);
+if(event.keyCode==116)
+{
+evt.keyCode=0;
+return false
+}
+}
+document.onkeydown=checkKeyCode;
     </script>
     </body>
 </html>
