@@ -116,8 +116,7 @@ namespace SGM.Competencia.CensoAct
                 int IdControl = (int)gridControl.DataKeys[row.RowIndex].Value;
                 string encodedString = (Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(IdControl.ToString())));
 
-
-                Response.Redirect("~/Competencia/CensoAct/Evaluacion/Crear.aspx?id=" + encodedString + "&act=" + Request.QueryString["id"] + "");
+                Response.Redirect("~/Competencia/CensoAct/Evaluacion/Crear.aspx?id=" + encodedString + "&act=" + Request.QueryString["id"] +"");
             }
             
 

@@ -14,6 +14,8 @@ namespace SGM.Clase
         SqlDataAdapter da;
         SqlDataReader dr;
         public string Codigo { get; set; }
+        public string Actividad { get; set; }
+
         public string IdEvaluacion { get; set; }
         public string IdPregunta { get; set; }
 
@@ -33,7 +35,26 @@ namespace SGM.Clase
 
 
 
+        public DataTable MostrarEvaluacion(int IdControl)
+        {
 
+            string query = "SELECT Id_Evaluacion,CantidadReactivos,CASE WHEN Estatus=1 THEN 'Pendiente de capturar' WHEN Estatus=2 THEN 'Capturado' END 'Estatus' FROM Evaluacion WHERE Id_Control = @IdCoontrol AND Activado IS NULL";
+
+
+            comm.Connection = conexion.AbrirConexion();
+            comm.CommandText = query;
+            comm.CommandType = CommandType.Text;
+            comm.Parameters.AddWithValue("@IdCoontrol", IdControl);
+
+            da = new SqlDataAdapter(comm);
+            dt = new DataTable();
+            da.Fill(dt);
+            comm.Parameters.Clear();
+
+            conexion.CerrarConexion();
+            return dt;
+
+        }
 
 
 
@@ -122,13 +143,15 @@ namespace SGM.Clase
         }
 
 
-        public bool Insertar(int IdControl, string Nombre)
+        public bool Insertar(int IdControl, int Cantidad,int Estatus)
         {
             comm.Connection = conexion.AbrirConexion();
-            comm.CommandText = "INSERT INTO [Evaluacion] (Id_Control,Nombre) VALUES(@Id_Control,@Nombre)";
+            comm.CommandText = "INSERT INTO [Evaluacion] (Id_Control,CantidadReactivos,Estatus) VALUES(@Id_Control,@Cantidad,@Estatus)";
             comm.CommandType = CommandType.Text;
             comm.Parameters.AddWithValue("@Id_Control", IdControl);
-            comm.Parameters.AddWithValue("@Nombre", Nombre);
+            comm.Parameters.AddWithValue("@Cantidad", Cantidad);
+            comm.Parameters.AddWithValue("@Estatus", Estatus);
+
             int i = comm.ExecuteNonQuery();
             comm.Parameters.Clear();
             conexion.CerrarConexion();
@@ -239,6 +262,28 @@ namespace SGM.Clase
 
         }
 
+        public bool EliminarEvaluacion(int IdEvaluacion)
+        {
+            comm.Connection = conexion.AbrirConexion();
+            comm.CommandText = "UPDATE Evaluacion set Activado=1 WHERE Id_Evaluacion=@IdEvaluacion";
+            comm.CommandType = CommandType.Text;
+            comm.Parameters.AddWithValue("@IdEvaluacion", IdEvaluacion);
+            int i = comm.ExecuteNonQuery();
+            comm.Parameters.Clear();
+            conexion.CerrarConexion();
+
+            if (i > 0)
+            {
+                return true;
+
+
+            }
+            else
+                return false;
+
+
+        }
+
         public bool EliminarPregunta(int IdPregunta)
         {
             comm.Connection = conexion.AbrirConexion();
@@ -333,13 +378,14 @@ namespace SGM.Clase
         public void LeerDatosControl(int Id_Control)
         {
             comm.Connection = conexion.AbrirConexion();
-            comm.CommandText = "SELECT Codigo FROM Cat_ActividadControl WHERE Id_Control=@Id_Control";
+            comm.CommandText = "SELECT con.Codigo,act.Nombre'Actividad' FROM Cat_ActividadControl con JOIN Cat_Actividades act on con.Id_Actividad = act.Id_Actividades WHERE Id_Control=@Id_Control";
             comm.CommandType = CommandType.Text;
             comm.Parameters.AddWithValue("@Id_Control", Id_Control);
 
             dr = comm.ExecuteReader();
             dr.Read();
             Codigo = dr["Codigo"].ToString();
+            Actividad = dr["Actividad"].ToString();
 
 
 
@@ -352,9 +398,9 @@ namespace SGM.Clase
         public void ObtenerIdEvaluacion(int IdControl)
         {
             comm.Connection = conexion.AbrirConexion();
-            comm.CommandText = "SELECT TOP(1) Id_Evaluacion FROM Evaluacion WHERE Id_Control=@IdControl ORDER BY Id_Evaluacion DESC";
+            comm.CommandText = "SELECT TOP(1) Id_Evaluacion FROM Evaluacion WHERE Id_Control=@IddControl ORDER BY Id_Evaluacion DESC";
             comm.CommandType = CommandType.Text;
-            comm.Parameters.AddWithValue("@IdControl", IdControl);
+            comm.Parameters.AddWithValue("@IddControl", IdControl);
 
             dr = comm.ExecuteReader();
             dr.Read();

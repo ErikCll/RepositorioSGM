@@ -27,7 +27,10 @@ namespace SGM.Clase
         public DataTable Mostrar(int IdActividad)
         {
 
-            string query = "SELECT Id_Control,Codigo,CONVERT(nvarchar,FechaEmision, 105) 'FechaEmision',VigenciaMeses,CASE WHEN TieneVigencia=1 THEN '1' ELSE '' END 'Tienevigencia' FROM Cat_ActividadControl WHERE id_Actividad =@Id_Actividad AND Activado IS NULL ORDER BY CONVERT(datetime,FechaEmision, 105) DESC";
+            string query = "SELECT con.Id_Control,con.Codigo,CONVERT(nvarchar,con.FechaEmision, 105) 'FechaEmision',con.VigenciaMeses,CASE WHEN con.TieneVigencia = 1 THEN '1' ELSE '' END 'Tienevigencia',CASE WHEN ev.Id_Control IS NULL OR ev.Activado = 1 THEN 'No' ELSE 'Si' END 'TieneEvaluacion' FROM Cat_ActividadControl con LEFT JOIN Evaluacion ev on con.Id_Control = ev.Id_Control AND ev.Activado IS NULL WHERE con.id_Actividad =@Id_Actividad AND con.Activado IS NULL GROUP BY con.codigo,con.FechaEmision,con.VigenciaMeses,con.Id_Control,con.TieneVigencia,ev.Id_Control,ev.Activado ORDER BY CONVERT(datetime, con.FechaEmision, 105) DESC";
+
+
+                //"SELECT Id_Control,Codigo,CONVERT(nvarchar,FechaEmision, 105) 'FechaEmision',VigenciaMeses,CASE WHEN TieneVigencia=1 THEN '1' ELSE '' END 'Tienevigencia' FROM Cat_ActividadControl WHERE id_Actividad =@Id_Actividad AND Activado IS NULL ORDER BY CONVERT(datetime,FechaEmision, 105) DESC";
 
 
             comm.Connection = conexion.AbrirConexion();

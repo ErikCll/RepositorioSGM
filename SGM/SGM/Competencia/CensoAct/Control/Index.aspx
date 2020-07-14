@@ -83,7 +83,11 @@
                                                 <asp:HyperLink runat="server" ID="lnk" CssClass="ion-android-document" Target="_blank"></asp:HyperLink>
                                             </ItemTemplate>
                                         </asp:TemplateField>
-
+                                        <asp:TemplateField HeaderText="Tiene Evaluación" ItemStyle-HorizontalAlign="Center">
+                                            <ItemTemplate>
+                                                <asp:Label runat="server"  Text='<%# Eval("TieneEvaluacion")%>' ID="lblTieneEvaluacion"></asp:Label>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
 
                                     </Columns>
                                     <PagerStyle HorizontalAlign="Center" CssClass="" />

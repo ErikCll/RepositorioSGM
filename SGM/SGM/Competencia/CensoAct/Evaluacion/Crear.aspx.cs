@@ -15,13 +15,35 @@ namespace SGM.Competencia.CensoAct
         {
             if (!IsPostBack)
             {
+                MostrarGrid();
+
                 string decodedString = System.Text.ASCIIEncoding.ASCII.GetString(Convert.FromBase64String(Request.QueryString["id"]));
                 int IdControl = Convert.ToInt32(decodedString);
                 evaluacion.LeerDatosControl(IdControl);
                 lblCodigo.Text = evaluacion.Codigo;
+                lblActividad.Text = evaluacion.Actividad;
+
             }
+
         }
 
+        public void MostrarGrid()
+        {
+            string decodedString = System.Text.ASCIIEncoding.ASCII.GetString(Convert.FromBase64String(Request.QueryString["id"]));
+            int IdControl = Convert.ToInt32(decodedString);
+            gridEvaluacion.DataSource = evaluacion.MostrarEvaluacion(IdControl);
+            gridEvaluacion.DataBind();
+            if (gridEvaluacion.Rows.Count >= 1)
+            {
+                rowGrid.Visible = true;
+                rowCaptura.Visible = false;
+            }
+            else
+            {
+                rowCaptura.Visible = true;
+                rowGrid.Visible = false;
+            }
+        }
 
         protected void Regresar(Object sender, EventArgs e)
         {
@@ -32,19 +54,64 @@ namespace SGM.Competencia.CensoAct
         {
             string decodedString = System.Text.ASCIIEncoding.ASCII.GetString(Convert.FromBase64String(Request.QueryString["id"]));
             int IdControl = Convert.ToInt32(decodedString);
-            string Nombre = txtNombre.Text;
-            if (evaluacion.Insertar(IdControl, Nombre))
+            int Cantidad = Convert.ToInt32(txtCantidad.Text);
+
+            if (evaluacion.Insertar(IdControl, Cantidad,1))
             {
                 //string script = "alert('Evaluación creada exitosamente.'); window.location.href= 'Index.aspx';";
 
                 //ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", script, true);
                 evaluacion.ObtenerIdEvaluacion(IdControl);
-
+                txtCantidad.Text = String.Empty;
+                MostrarGrid();
+                Update1.Update();
 
                 string encodedString = (Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(evaluacion.IdEvaluacion.ToString())));
 
                 Response.Redirect("CrearCuestionario.aspx?ev=" + encodedString+ "");
             }
+        }
+
+        protected void gridEvaluacion_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "Eliminar")
+            {
+                GridViewRow row = ((Button)e.CommandSource).Parent.Parent as GridViewRow;
+
+                int IdEvaluacion = (int)gridEvaluacion.DataKeys[row.RowIndex].Value;
+                if (evaluacion.EliminarEvaluacion(IdEvaluacion))
+                {
+                    MostrarGrid();
+                    string txtJS = String.Format("<script>alert('{0}');</script>", "Se eliminó correctamente el dato.");
+                    ScriptManager.RegisterClientScriptBlock(litControl, litControl.GetType(), "script", txtJS, false);
+                }
+
+
+
+            }
+            else if (e.CommandName == "Editar")
+            {
+                GridViewRow row = ((Button)e.CommandSource).Parent.Parent as GridViewRow;
+
+                int IdControl = (int)gridEvaluacion.DataKeys[row.RowIndex].Value;
+                string encodedString = (Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(IdControl.ToString())));
+
+
+                Response.Redirect("Editar.aspx?id=" + encodedString + "&act=" + Request.QueryString["id"] + "");
+            }
+            else if (e.CommandName == "AgregarEv")
+            {
+                GridViewRow row = ((LinkButton)e.CommandSource).Parent.Parent as GridViewRow;
+
+                int IdControl = (int)gridEvaluacion.DataKeys[row.RowIndex].Value;
+                string encodedString = (Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(IdControl.ToString())));
+                Label TieneEvaluacion = (Label)row.FindControl("lblTieneEvaluacion");
+
+
+
+                Response.Redirect("~/Competencia/CensoAct/Evaluacion/Crear.aspx?id=" + encodedString + "&act=" + Request.QueryString["id"] + "&tev=" + TieneEvaluacion.Text + "");
+            }
+
         }
     }
 }

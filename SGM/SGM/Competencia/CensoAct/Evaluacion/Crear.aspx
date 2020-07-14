@@ -1,7 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Crear.aspx.cs" Inherits="SGM.Competencia.CensoAct.CrearEv" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    Crear Evaluación(Paso 1)<br />
-        <label class="font-weight-normal text small">Control de versión: </label> <asp:Label runat="server" ID="lblCodigo" CssClass=" font-weight-bold text small"></asp:Label>
+    Crear Evaluación (Paso 1)<br />
+        <label class="font-weight-normal text small">Control de versión: </label> <asp:Label runat="server" ID="lblCodigo" CssClass=" font-weight-bold text small"></asp:Label><br />
+    <label class=" font-weight-normal text small">Censo de actividad:</label> <asp:Label runat="server" ID="lblActividad" CssClass=" font-weight-bold text small"></asp:Label>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="mapeo" runat="server">
      <li class="breadcrumb-item active"><a href="Index.aspx">Censo de actividad</a></li>
@@ -10,21 +11,23 @@
 
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Content" runat="server">
-       <asp:UpdatePanel runat="server" UpdateMode="Conditional" >
+       <asp:UpdatePanel runat="server" UpdateMode="Conditional" ID="Update1" >
         <ContentTemplate>
+                        <asp:Literal runat="server" ID="litControl"></asp:Literal>
+
             <div class="col-lg-12">
                   <div class="card shadow-none border-top border-dark" >
                 <div class="card-body">
-                    <div class="row">
+                    <div class="row" runat="server" id="rowCaptura" visible="false">
                            <div class="col-sm-12 col-md-12 col-lg-12">
                             <h4>Datos de la evaluación</h4>
                         </div>
                         <div class="col-12 col-md-12 col-lg-4">
                             <div class="form-group">
-                                <label>Nombre:</label>
-                                                            <asp:TextBox runat="server" CssClass="form-control" ID="txtNombre" onkeypress="return AllowAlphabet(event)" MaxLength="200"></asp:TextBox>
-                                  <asp:RequiredFieldValidator runat="server" ID="RequiredFieldValidator2" ControlToValidate="txtNombre"
-                                    ErrorMessage="Nombre de evaluación requerida." ForeColor="Red" ValidationGroup="btnGuardar"></asp:RequiredFieldValidator>
+                                <label>Cantidad de reactivos:</label>
+                                                            <asp:TextBox runat="server" CssClass="form-control" ID="txtCantidad" onkeypress="return soloNumeros(event)" MaxLength="3"></asp:TextBox>
+                                  <asp:RequiredFieldValidator runat="server" ID="RequiredFieldValidator2" ControlToValidate="txtCantidad"
+                                    ErrorMessage="Cantidad de reactivos requerida." ForeColor="Red" ValidationGroup="btnGuardar"></asp:RequiredFieldValidator>
                             </div>
                         </div>
                      <div class="col-sm-12 col-md-8 col-lg-8"></div>
@@ -37,6 +40,52 @@
                             </div>
                         </div>
                         </div>
+
+                    <div class="row" runat="server" id="rowGrid" visible="false">
+                           <div class="col-sm-12 col-md-12 col-lg-12">
+                            <h4>Datos de la evaluación</h4>
+                        </div>
+                    <div class="container col-12">
+                     
+                        <div class=" table-responsive">
+                            <div style="overflow: auto; height: auto">
+                                <asp:GridView ID="gridEvaluacion"
+                                    runat="server"
+                                    AutoGenerateColumns="false"
+                                    CssClass=" table table-striped table-sm"
+                                    GridLines="Vertical"
+                                    EmptyDataText="Sin registro de evaluación."
+                                    DataKeyNames="Id_Evaluacion"
+                                 OnRowCommand="gridEvaluacion_RowCommand"
+                                 >
+                                    <Columns>
+                                        <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="260px" ItemStyle-Width="260px" ControlStyle-Width="76px">
+                                            <ItemTemplate>
+                                                <asp:Button runat="server" Text="Editar" CssClass="btn btn-outline-secondary" CommandName="Editar" />
+
+                                                <asp:Button runat="server" Text="Eliminar" CssClass="btn btn-outline-danger" CommandName="Eliminar" OnClientClick="javascript:if(!confirm('¿Desea borrar el registro?'))return false" />
+
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                        <asp:BoundField DataField="CantidadReactivos" HeaderText="Cantidad de reactivos"/>
+                                        <asp:BoundField DataField="Estatus" HeaderText="Estatus" />
+
+
+                                        
+
+                                    </Columns>
+
+                                </asp:GridView>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+
                     </div>
                       </div>
             </div>
@@ -59,7 +108,12 @@
 
   }
   window.onbeforeunload = DisableButton;
-                
+                                                           function soloNumeros(e){
+  var key = window.event ? e.which : e.keyCode;
+  if (key < 48 || key > 57) {
+    e.preventDefault();
+  }
+}
 
                 function AllowAlphabet(e) {
             isIE = document.all ? 1 : 0
