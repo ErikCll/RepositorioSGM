@@ -10,7 +10,9 @@ namespace SGM.Clase
     {
         private Conexion conexion = new Conexion();
         SqlCommand comm = new SqlCommand();
-       public DataTable dt = new DataTable();
+        DataTable dt = new DataTable();
+        public DataTable dt2 = new DataTable();
+
         SqlDataAdapter da;
         SqlDataReader dr;
         public string Codigo { get; set; }
@@ -84,22 +86,22 @@ namespace SGM.Clase
         public DataTable MostrarPreguntaAleatoria(int IdEvaluacion,int TotalReactivos)
         {
 
-            string query = "  SELECT row_number() OVER (ORDER BY (select null)) 'ORDEN',* FROM(SELECT TOP(@TotalReactivos) Id_Pregunta, Pregunta, TipoPregunta FROM Ev_Pregunta WHERE Id_Evaluacion = 6 AND Activado IS NULL ORDER BY NEWID()) a";
+            string query = "  SELECT row_number() OVER (ORDER BY (select null)) 'ORDEN',* FROM(SELECT TOP(@TotalReactivos) Id_Pregunta, Pregunta, TipoPregunta FROM Ev_Pregunta WHERE Id_Evaluacion = @IddEvaluacion AND Activado IS NULL ORDER BY NEWID()) a";
 
 
             comm.Connection = conexion.AbrirConexion();
             comm.CommandText = query;
             comm.CommandType = CommandType.Text;
-            comm.Parameters.AddWithValue("@IdEvaluacionn", IdEvaluacion);
+            comm.Parameters.AddWithValue("@IddEvaluacion", IdEvaluacion);
             comm.Parameters.AddWithValue("@TotalReactivos", TotalReactivos);
 
             da = new SqlDataAdapter(comm);
-            dt = new DataTable();
-            da.Fill(dt);
+            dt2 = new DataTable();
+            da.Fill(dt2);
             comm.Parameters.Clear();
 
             conexion.CerrarConexion();
-            return dt;
+            return dt2;
 
         }
 

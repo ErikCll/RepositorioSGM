@@ -63,7 +63,9 @@ namespace SGM.Competencia.CensoAct.Evaluacion
         {
             string decodedString = System.Text.ASCIIEncoding.ASCII.GetString(Convert.FromBase64String(Request.QueryString["ev"]));
             int IdEvaluacion = Convert.ToInt32(decodedString);
-            //lstPreguntas.DataSource = evaluacion.MostrarPreguntaAleatoria(IdEvaluacion);
+            evaluacion.ObtenerTotalReactivos(IdEvaluacion);
+            int TotalReactivos = Convert.ToInt32(evaluacion.TotalReactivos);
+            lstPreguntas.DataSource = evaluacion.MostrarPreguntaAleatoria(IdEvaluacion,TotalReactivos);
             lstPreguntas.DataBind();
 
             //if (lstPreguntas.Items.Count >= 1)

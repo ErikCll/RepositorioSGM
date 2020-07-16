@@ -4,7 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
+using System.Data.SqlClient;
+using System.Data;
 namespace SGM.Competencia.CensoAct.Evaluacion
 {
     public partial class EvPrueba2 : System.Web.UI.Page
@@ -12,8 +13,10 @@ namespace SGM.Competencia.CensoAct.Evaluacion
         Clase.Evaluacion evaluacion = new Clase.Evaluacion();
         static int hh, mm, ss;
         static int con = 0;
-        string totalItems;
+       static string totalItems;
         static decimal cal = 0;
+       static DataTable data;
+
 
 
         static double TimeAllSecondes = 0;
@@ -74,8 +77,12 @@ namespace SGM.Competencia.CensoAct.Evaluacion
         {
             string decodedString = System.Text.ASCIIEncoding.ASCII.GetString(Convert.FromBase64String(Request.QueryString["ev"]));
             int IdEvaluacion = Convert.ToInt32(decodedString);
-            //lstPreguntas.DataSource = evaluacion.MostrarPreguntaAleatoria(IdEvaluacion);
+            evaluacion.ObtenerTotalReactivos(IdEvaluacion);
+            int TotalReactivos = Convert.ToInt32(evaluacion.TotalReactivos);
+            lstPreguntas.DataSource = evaluacion.MostrarPreguntaAleatoria(IdEvaluacion,TotalReactivos);
             lstPreguntas.DataBind();
+
+             data = evaluacion.dt2;
 
             //if (lstPreguntas.Items.Count >= 1)
             //{
@@ -135,7 +142,8 @@ namespace SGM.Competencia.CensoAct.Evaluacion
                         string txtJS = String.Format("<script>alert('{0}');</script>", "La respuesta es correcta.");
                         ScriptManager.RegisterClientScriptBlock(litControl, litControl.GetType(), "script", txtJS, false);
                         DataPager1.SetPageProperties(e.StartRowIndex, e.MaximumRows, false);
-                        MostrarLista(); //rebind listView
+                        lstPreguntas.DataSource = data;
+                        lstPreguntas.DataBind();
                     }
                     else
                     {
@@ -144,7 +152,8 @@ namespace SGM.Competencia.CensoAct.Evaluacion
                         ScriptManager.RegisterClientScriptBlock(litControl, litControl.GetType(), "script", txtJS, false);
 
                         DataPager1.SetPageProperties(e.StartRowIndex, e.MaximumRows, false);
-                        MostrarLista(); //rebind listView
+                        lstPreguntas.DataSource = data;
+                        lstPreguntas.DataBind();
                     }
                 }
 

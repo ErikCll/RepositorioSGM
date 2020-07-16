@@ -58,6 +58,7 @@
                        <div class="form-group float-right">
                                 <asp:Button runat="server" CssClass="btn btn-success" Text="Finalizar" ID="btnFinalizar" Visible="false" OnClick="Finalizar" />
                        <asp:Button runat="server" CssClass="btn btn-default" Text="Regresar" OnClick="Regresar" ID="btnRegresar" />
+
                        </div>
                  
                    </div>
