@@ -1,8 +1,11 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="VCuestionario.aspx.cs" Inherits="SGM.Competencia.CensoAct.VCuestionario" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    Validar Cuestionario(Paso 3)
+    Validar Cuestionario (Paso 3)
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="mapeo" runat="server">
+       <li class="breadcrumb-item active"><asp:LinkButton runat="server" onclick="Regresa2">Evaluación</asp:LinkButton></li>
+           <li class="breadcrumb-item active"><asp:LinkButton runat="server" onclick="Regresar">Paso 2</asp:LinkButton></li>
+                          <li class="breadcrumb-item"><a>Paso 3</a></li>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Content" runat="server">
     <style>
@@ -15,6 +18,7 @@
     </style>
     <asp:UpdatePanel runat="server" UpdateMode="Conditional">
         <ContentTemplate>
+            <asp:Literal runat="server" ID="litControl"></asp:Literal>
                         <div class="col-lg-12">
                 <div class="row">
                     <ol class="col-12">

@@ -14,6 +14,8 @@ namespace SGM.Competencia.CensoAct
         {
             if (!IsPostBack)
             {
+                (this.Master as SGM.Master.Site1).OcultarDrop = false;
+                (this.Master as SGM.Master.Site1).OcultarLabel = false;
             }
             MostrarLista();
 
@@ -74,15 +76,42 @@ namespace SGM.Competencia.CensoAct
 
         protected void Finalizar(Object sender, EventArgs e)
         {
-    
-            ScriptManager.RegisterStartupScript(Page, typeof(Page), "OpenWindow", "window.open('EvPrueba2.aspx?ev=" + Request.QueryString["ev"] + "','mywindow','menubar=1,resizable=1');", true);
+            string decodedString = System.Text.ASCIIEncoding.ASCII.GetString(Convert.FromBase64String(Request.QueryString["ev"]));
+            int IdEvaluacion = Convert.ToInt32(decodedString);
+
+            evaluacion.ObtenerTotalReactivos(IdEvaluacion);
+
+            int totalReactivos = Convert.ToInt32(evaluacion.TotalReactivos);
+            int totalItems = lstPreguntas.Items.Count;
+            if (totalItems >= totalReactivos)
+            {
+                if (evaluacion.ModificarEstatus(IdEvaluacion, 2))
+                {
+                    Response.Redirect("~/Competencia/CensoAct/Evaluacion/Crear.aspx?id=" + Request.QueryString["ctr"] + "&act=" + Request.QueryString["act"] + "");
+                }
+            }
+            else
+            {
+
+                string txtJS = String.Format("<script>alert('{0}');</script>", "La cantidad de reactivos debe ser mayor o igual a "+evaluacion.TotalReactivos+".");
+                ScriptManager.RegisterClientScriptBlock(litControl, litControl.GetType(), "script", txtJS, false);
+            }
+       
+
+
+            //ScriptManager.RegisterStartupScript(Page, typeof(Page), "OpenWindow", "window.open('EvPrueba2.aspx?ev=" + Request.QueryString["ev"] + "','mywindow','menubar=1,resizable=1');", true);
 
         }
         protected void Regresar(Object sender, EventArgs e)
         {
 
 
-            Response.Redirect("CrearCuestionario.aspx?ev=" + Request.QueryString["ev"] + "");
+            Response.Redirect("CrearCuestionario.aspx?ev=" + Request.QueryString["ev"] + "&ctr=" + Request.QueryString["ctr"] + "&act=" + Request.QueryString["act"] + "");
+        }
+
+        protected void Regresa2(Object sender, EventArgs e)
+        {
+            Response.Redirect("Crear.aspx?id=" + Request.QueryString["ctr"] + "&act=" + Request.QueryString["act"] + "");
         }
     }
 }

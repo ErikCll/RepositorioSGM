@@ -145,6 +145,7 @@
     <Content Include="Competencia\CensoAct\Evaluacion\CrearCuestionario.aspx" />
     <Content Include="Competencia\CensoAct\Detalle.aspx" />
     <Content Include="Competencia\CensoAct\Editar.aspx" />
+    <Content Include="Competencia\CensoAct\Evaluacion\Editar.aspx" />
     <Content Include="Competencia\CensoAct\Evaluacion\EditarCuestionario.aspx" />
     <Content Include="Competencia\CensoAct\Evaluacion\EvPrueba.aspx" />
     <Content Include="Competencia\CensoAct\Evaluacion\EvPrueba2.aspx" />
@@ -1851,6 +1852,13 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Competencia\CensoAct\Editar.aspx.designer.cs">
+      <DependentUpon>Editar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Competencia\CensoAct\Evaluacion\Editar.aspx.cs">
+      <DependentUpon>Editar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Competencia\CensoAct\Evaluacion\Editar.aspx.designer.cs">
       <DependentUpon>Editar.aspx</DependentUpon>
     </Compile>
     <Compile Include="Competencia\CensoAct\Evaluacion\EditarCuestionario.aspx.cs">

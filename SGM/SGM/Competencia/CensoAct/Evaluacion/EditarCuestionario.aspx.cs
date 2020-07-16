@@ -15,6 +15,8 @@ namespace SGM.Competencia.CensoAct.Evaluacion
         {
             if (!IsPostBack)
             {
+                (this.Master as SGM.Master.Site1).OcultarDrop = false;
+                (this.Master as SGM.Master.Site1).OcultarLabel = false;
                 string decodedString = System.Text.ASCIIEncoding.ASCII.GetString(Convert.FromBase64String(Request.QueryString["preg"]));
                 int IdPregunta = Convert.ToInt32(decodedString);
                 string decodedString2 = System.Text.ASCIIEncoding.ASCII.GetString(Convert.FromBase64String(Request.QueryString["tp"]));

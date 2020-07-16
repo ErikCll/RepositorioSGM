@@ -10,7 +10,7 @@ namespace SGM.Clase
     {
         private Conexion conexion = new Conexion();
         SqlCommand comm = new SqlCommand();
-        DataTable dt = new DataTable();
+       public DataTable dt = new DataTable();
         SqlDataAdapter da;
         SqlDataReader dr;
         public string Codigo { get; set; }
@@ -32,6 +32,8 @@ namespace SGM.Clase
         public string Respuesta { get; set; }
 
         public string TotalItems { get; set; }
+
+        public string TotalReactivos { get; set; }
 
 
 
@@ -79,16 +81,17 @@ namespace SGM.Clase
 
         }
 
-        public DataTable MostrarPreguntaAleatoria(int IdEvaluacion)
+        public DataTable MostrarPreguntaAleatoria(int IdEvaluacion,int TotalReactivos)
         {
 
-            string query = "SELECT Id_Pregunta,Pregunta,TipoPregunta,row_number() OVER (ORDER BY Id_Pregunta DESC) 'ORDEN' FROM Ev_Pregunta WHERE Id_Evaluacion=@IdEvaluacionn AND Activado IS NULL ORDER BY Pregunta DESC";
+            string query = "  SELECT row_number() OVER (ORDER BY (select null)) 'ORDEN',* FROM(SELECT TOP(@TotalReactivos) Id_Pregunta, Pregunta, TipoPregunta FROM Ev_Pregunta WHERE Id_Evaluacion = 6 AND Activado IS NULL ORDER BY NEWID()) a";
 
 
             comm.Connection = conexion.AbrirConexion();
             comm.CommandText = query;
             comm.CommandType = CommandType.Text;
             comm.Parameters.AddWithValue("@IdEvaluacionn", IdEvaluacion);
+            comm.Parameters.AddWithValue("@TotalReactivos", TotalReactivos);
 
             da = new SqlDataAdapter(comm);
             dt = new DataTable();
@@ -306,6 +309,52 @@ namespace SGM.Clase
 
         }
 
+        public bool ModificarEvaluacion(int IdEvaluacion, int Cantidad)
+        {
+            comm.Connection = conexion.AbrirConexion();
+            comm.CommandText = "UPDATE Evaluacion SET CantidadReactivos=@CantidadReactivos WHERE Id_Evaluacion=@IdEvaluaciion";
+            comm.CommandType = CommandType.Text;
+            comm.Parameters.AddWithValue("@IdEvaluaciion", IdEvaluacion);
+            comm.Parameters.AddWithValue("@CantidadReactivos", Cantidad);
+            int i = comm.ExecuteNonQuery();
+            comm.Parameters.Clear();
+            conexion.CerrarConexion();
+
+            if (i > 0)
+            {
+                return true;
+
+
+            }
+            else
+                return false;
+
+
+        }
+
+        public bool ModificarEstatus(int IdEvaluacion,int Estatus)
+        {
+            comm.Connection = conexion.AbrirConexion();
+            comm.CommandText = "UPDATE Evaluacion SET Estatus=@Estatus WHERE Id_Evaluacion=@IdEvaluaciion";
+            comm.CommandType = CommandType.Text;
+            comm.Parameters.AddWithValue("@IdEvaluaciion", IdEvaluacion);
+            comm.Parameters.AddWithValue("@Estatus", Estatus);
+            int i = comm.ExecuteNonQuery();
+            comm.Parameters.Clear();
+            conexion.CerrarConexion();
+
+            if (i > 0)
+            {
+                return true;
+
+
+            }
+            else
+                return false;
+
+
+        }
+
         public bool ModificarPregunta(int IdPregunta, string Pregunta)
         {
             comm.Connection = conexion.AbrirConexion();
@@ -395,6 +444,8 @@ namespace SGM.Clase
 
 
         }
+
+       
         public void ObtenerIdEvaluacion(int IdControl)
         {
             comm.Connection = conexion.AbrirConexion();
@@ -583,7 +634,7 @@ namespace SGM.Clase
         public void ObtenerTotalItems(int IdEvaluacion)
         {
             comm.Connection = conexion.AbrirConexion();
-            comm.CommandText = "SELECT COUNT(*) 'TotalItems' FROM Ev_Pregunta WHERE Id_Evaluacion=@IdEvaluacioon";
+            comm.CommandText = "SELECT COUNT(*) 'TotalItems' FROM Ev_Pregunta WHERE Id_Evaluacion=@IdEvaluacioon AND Activado IS NULL";
             comm.CommandType = CommandType.Text;
             comm.Parameters.AddWithValue("@IdEvaluacioon", IdEvaluacion);
             dr = comm.ExecuteReader();
@@ -591,6 +642,22 @@ namespace SGM.Clase
 
             dr.Read();
             TotalItems = dr["TotalItems"].ToString();
+            dr.Close();
+            comm.Connection = conexion.CerrarConexion();
+
+        }
+
+        public void ObtenerTotalReactivos(int IdEvaluacion)
+        {
+            comm.Connection = conexion.AbrirConexion();
+            comm.CommandText = "SELECT CantidadReactivos FROM Evaluacion WHERE Id_Evaluacion=@IdEvaluacion";
+            comm.CommandType = CommandType.Text;
+            comm.Parameters.AddWithValue("@IdEvaluacion", IdEvaluacion);
+            dr = comm.ExecuteReader();
+            comm.Parameters.Clear();
+
+            dr.Read();
+            TotalReactivos = dr["CantidadReactivos"].ToString();
             dr.Close();
             comm.Connection = conexion.CerrarConexion();
 

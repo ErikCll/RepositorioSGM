@@ -15,10 +15,17 @@ namespace SGM.Competencia.CensoAct
 
             if (!IsPostBack)
             {
+                (this.Master as SGM.Master.Site1).OcultarDrop = false;
+                (this.Master as SGM.Master.Site1).OcultarLabel = false;
                 chkTrue.Checked = true;
                 string decodedString = System.Text.ASCIIEncoding.ASCII.GetString(Convert.FromBase64String(Request.QueryString["ev"]));
                 string IdEvaluacion = decodedString;
+                string decodedString2 = System.Text.ASCIIEncoding.ASCII.GetString(Convert.FromBase64String(Request.QueryString["ctr"]));
+                int IdControl = Convert.ToInt32(decodedString2);
+                evaluacion.LeerDatosControl(IdControl);
+                lblVersion.Text = evaluacion.Codigo;
                 lblIdEvaluacion.Text = IdEvaluacion;
+                lblIdEvaluacion.Visible = false;
                 LlenarDropTipo();
 
             }
@@ -97,6 +104,11 @@ namespace SGM.Competencia.CensoAct
 
             
         }
+
+        protected void Regresar(Object sender, EventArgs e)
+        {
+            Response.Redirect("~/Competencia/CensoAct/Evaluacion/Crear.aspx?id=" + Request.QueryString["ctr"] + "&act=" + Request.QueryString["act"] + "");
+        }
         public void Limpiar()
         {
             txtPregunta.Value = string.Empty;
@@ -155,7 +167,7 @@ namespace SGM.Competencia.CensoAct
 
             string encodedString = (Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(IdEvaluacion.ToString())));
 
-            Response.Redirect("VCuestionario.aspx?ev=" + encodedString + "");
+            Response.Redirect("VCuestionario.aspx?ev=" + encodedString + "&ctr=" + Request.QueryString["ctr"] + "&act=" + Request.QueryString["act"] + "");
 
         }
     }

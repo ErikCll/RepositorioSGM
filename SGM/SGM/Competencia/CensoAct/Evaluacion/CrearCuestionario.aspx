@@ -1,11 +1,14 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="CrearCuestionario.aspx.cs" Inherits="SGM.Competencia.CensoAct.CrearPreg" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    Crear cuestionario(Paso 2)<br />
-     <label class="font-weight-normal text small">Evaluacion: </label>
+    Crear cuestionario (Paso 2)<br />
+     <label class="font-weight-normal text small">Evaluacion para el control de versión: </label> <asp:Label runat="server" CssClass="font-weight-bold text small" ID="lblVersion"></asp:Label>
     <asp:Label runat="server" ID="lblEvaluacion" CssClass=" font-weight-bold text small"></asp:Label>
     <asp:Label runat="server" ID="lblIdEvaluacion"></asp:Label>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="mapeo" runat="server">
+                  <li class="breadcrumb-item active"><asp:LinkButton runat="server" onclick="Regresar">Evaluación</asp:LinkButton></li>
+                          <li class="breadcrumb-item"><a>Paso 2</a></li>
+
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Content" runat="server">
 <asp:UpdatePanel runat="server" UpdateMode="Conditional" >
@@ -40,7 +43,7 @@
                         </div>
                                <div class="col-sm-6 col-md-6 col-lg-6" runat="server" id="divMultiple" >
                                  <div class="form-group">
-                                     <label>Respuesta 1:</label>
+                                     <label>Respuesta 1(Correcta):</label>
                                      <asp:TextBox runat="server" CssClass="form-control" ID="txt1" BorderColor="Green" onkeypress="return AllowAlphabet(event)" MaxLength="200"></asp:TextBox>
                                  </div>
                                     <div class="form-group">
@@ -73,6 +76,8 @@
                         <div class="col-sm-12 col-md-12 col-lg-12">
                             <div class="form-group">
                                 <asp:Button runat="server" CssClass="btn btn-primary" Text="Guardar y continuar" ID="btnGuardar" OnClick="btnGuardar_Click"  ValidationGroup="btnGuardar"/>
+                               <asp:Button runat="server" CssClass=" btn btn-default" ID="btnRegresar" Text="Regresar"  OnClick="Regresar"/>
+
                         <asp:Button runat="server" ID="btnTerminar" CssClass="btn btn-success float-right" Text="Siguiente" Visible="false" OnClick="btnTerminar_Click" />
                             </div>
                         </div>
@@ -160,7 +165,9 @@
                 document.getElementById("<%= btnGuardar.ClientID %>").disabled = true;
                 document.getElementById("<%= btnGuardar.ClientID %>").value = "Cargando...";
                          document.getElementById("<%= btnTerminar.ClientID %>").disabled = true;
-                document.getElementById("<%= btnTerminar.ClientID %>").value = "Cargando...";
+                  document.getElementById("<%= btnTerminar.ClientID %>").value = "Cargando...";
+                          document.getElementById("<%= btnRegresar.ClientID %>").disabled = true;
+                document.getElementById("<%=btnRegresar.ClientID %>").value = "Cargando...";
 
   }
 

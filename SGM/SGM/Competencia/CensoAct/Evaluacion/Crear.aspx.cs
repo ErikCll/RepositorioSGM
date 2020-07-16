@@ -15,6 +15,8 @@ namespace SGM.Competencia.CensoAct
         {
             if (!IsPostBack)
             {
+                (this.Master as SGM.Master.Site1).OcultarDrop = false;
+                (this.Master as SGM.Master.Site1).OcultarLabel = false;
                 MostrarGrid();
 
                 string decodedString = System.Text.ASCIIEncoding.ASCII.GetString(Convert.FromBase64String(Request.QueryString["id"]));
@@ -68,7 +70,7 @@ namespace SGM.Competencia.CensoAct
 
                 string encodedString = (Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(evaluacion.IdEvaluacion.ToString())));
 
-                Response.Redirect("CrearCuestionario.aspx?ev=" + encodedString+ "");
+                Response.Redirect("CrearCuestionario.aspx?ev=" + encodedString+ "&ctr=" + Request.QueryString["id"] + "&act=" + Request.QueryString["act"] + "");
             }
         }
 
@@ -93,23 +95,21 @@ namespace SGM.Competencia.CensoAct
             {
                 GridViewRow row = ((Button)e.CommandSource).Parent.Parent as GridViewRow;
 
-                int IdControl = (int)gridEvaluacion.DataKeys[row.RowIndex].Value;
-                string encodedString = (Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(IdControl.ToString())));
+                int IdEvaluacion = (int)gridEvaluacion.DataKeys[row.RowIndex].Value;
+                string encodedString = (Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(IdEvaluacion.ToString())));
 
 
-                Response.Redirect("Editar.aspx?id=" + encodedString + "&act=" + Request.QueryString["id"] + "");
+                Response.Redirect("Editar.aspx?ev=" + encodedString + "&ctr=" + Request.QueryString["id"] + "&act=" + Request.QueryString["act"] + "");
             }
-            else if (e.CommandName == "AgregarEv")
+            else if (e.CommandName == "Ver")
             {
-                GridViewRow row = ((LinkButton)e.CommandSource).Parent.Parent as GridViewRow;
+                GridViewRow row = ((Button)e.CommandSource).Parent.Parent as GridViewRow;
 
-                int IdControl = (int)gridEvaluacion.DataKeys[row.RowIndex].Value;
-                string encodedString = (Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(IdControl.ToString())));
-                Label TieneEvaluacion = (Label)row.FindControl("lblTieneEvaluacion");
-
+                int IdEvaluacion = (int)gridEvaluacion.DataKeys[row.RowIndex].Value;
+                string encodedString = (Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(IdEvaluacion.ToString())));
 
 
-                Response.Redirect("~/Competencia/CensoAct/Evaluacion/Crear.aspx?id=" + encodedString + "&act=" + Request.QueryString["id"] + "&tev=" + TieneEvaluacion.Text + "");
+                Response.Redirect("CrearCuestionario.aspx?ev=" + encodedString + "&ctr=" + Request.QueryString["id"] + "&act=" + Request.QueryString["act"] + "");
             }
 
         }
