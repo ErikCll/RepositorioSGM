@@ -57,11 +57,7 @@ namespace SGM.Catalogo.Medidor
                     string txtJS = String.Format("<script>alert('{0}');</script>", "Se eliminó correctamente el dato.");
                     ScriptManager.RegisterClientScriptBlock(litControl, litControl.GetType(), "script", txtJS, false);
                 }
-                else
-                {
-                    string txtJS = String.Format("<script>alert('{0}');</script>", "ocurrio un error.");
-                    ScriptManager.RegisterClientScriptBlock(litControl, litControl.GetType(), "script", txtJS, false);
-                }
+             
 
 
             }

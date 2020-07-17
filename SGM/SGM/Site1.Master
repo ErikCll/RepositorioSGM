@@ -174,6 +174,13 @@
                 </a>
               </li>
               
+                 <li class="nav-item">
+                <a  href="/Competencia/Programa/Index.aspx" class="nav-link" id="prog" runat="server">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Programa de capacitación</p>
+                </a>
+              </li>
+              
               
             </ul>
           </li>

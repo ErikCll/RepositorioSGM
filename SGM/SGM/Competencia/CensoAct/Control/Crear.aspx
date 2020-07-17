@@ -87,7 +87,8 @@
                           
                             <div class="form-group">
                                 <asp:Button class="btn btn-primary" id="btnGuardar" runat="server" Text="Guardar" ValidationGroup="btnGuardar" OnClick="btnGuardar_Click"/>
-                                <asp:LinkButton runat="server" OnClick="Regresar" class="btn btn-default" ID="btnRegresar">Regresar</asp:LinkButton>
+
+                                <asp:Button runat="server" ID="btnRegresar2" CssClass="btn btn-default" Text="Regresar" OnClick="Regresar" />
 
 
                             </div>
@@ -155,8 +156,8 @@
                  function DisableButton() {
                 document.getElementById("<%= btnGuardar.ClientID %>").disabled = true;
                      document.getElementById("<%= btnGuardar.ClientID %>").value = "Cargando...";
-                     document.getElementById("<%=btnRegresar.ClientID%>").disabled = true;
-                     document.getElementById("<%=btnRegresar.ClientID%>").value = "Cargando...";
+                     document.getElementById("<%=btnRegresar2.ClientID%>").disabled = true;
+                     document.getElementById("<%=btnRegresar2.ClientID%>").value = "Cargando...";
 
 
   }

@@ -160,11 +160,15 @@
     <Content Include="Catalogo\Categoria\Index.aspx" />
     <Content Include="Competencia\CensoAct\Evaluacion\VCuestionario.aspx" />
     <Content Include="Competencia\MatrizCatAct\Agregar.aspx" />
+    <Content Include="Competencia\MatrizCatAct\Editar.aspx" />
     <Content Include="Competencia\MatrizCatAct\Index.aspx" />
     <Content Include="Competencia\MatrizCatAct\Detalle.aspx" />
     <Content Include="Competencia\MatrizCatEmp\Agregar.aspx" />
     <Content Include="Competencia\MatrizCatEmp\Detalle.aspx" />
     <Content Include="Competencia\MatrizCatEmp\Index.aspx" />
+    <Content Include="Competencia\Programa\Agregar.aspx" />
+    <Content Include="Competencia\Programa\Detalle.aspx" />
+    <Content Include="Competencia\Programa\Index.aspx" />
     <Content Include="Confirmacion\CensoSis\Componente\Crear.aspx" />
     <Content Include="Confirmacion\CensoSis\Componente\Editar.aspx" />
     <Content Include="Confirmacion\CensoSis\Componente\Index.aspx" />
@@ -1796,6 +1800,7 @@
     <Compile Include="Clase\Evaluacion.cs" />
     <Compile Include="Clase\Master.cs" />
     <Compile Include="Clase\Medidor.cs" />
+    <Compile Include="Clase\ProgramaCapacitacion.cs" />
     <Compile Include="Clase\SistemaComponente.cs" />
     <Compile Include="Clase\SistemaMed.cs" />
     <Compile Include="Competencia\CensoAct\Control\Index.aspx.cs">
@@ -1963,6 +1968,13 @@
     <Compile Include="Competencia\MatrizCatAct\Agregar.aspx.designer.cs">
       <DependentUpon>Agregar.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Competencia\MatrizCatAct\Editar.aspx.cs">
+      <DependentUpon>Editar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Competencia\MatrizCatAct\Editar.aspx.designer.cs">
+      <DependentUpon>Editar.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Competencia\MatrizCatAct\Index.aspx.cs">
       <DependentUpon>Index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1996,6 +2008,27 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Competencia\MatrizCatEmp\Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Competencia\Programa\Agregar.aspx.cs">
+      <DependentUpon>Agregar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Competencia\Programa\Agregar.aspx.designer.cs">
+      <DependentUpon>Agregar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Competencia\Programa\Detalle.aspx.cs">
+      <DependentUpon>Detalle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Competencia\Programa\Detalle.aspx.designer.cs">
+      <DependentUpon>Detalle.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Competencia\Programa\Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Competencia\Programa\Index.aspx.designer.cs">
       <DependentUpon>Index.aspx</DependentUpon>
     </Compile>
     <Compile Include="Conexion.cs" />
