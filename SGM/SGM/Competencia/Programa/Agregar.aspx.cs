@@ -13,6 +13,8 @@ namespace SGM.Competencia.Programa
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            Page.Form.DefaultButton = btnBuscar.UniqueID;
+
             if (!IsPostBack)
             {
                 (this.Master as SGM.Master.Site1).OcultarDrop = false;
@@ -20,7 +22,7 @@ namespace SGM.Competencia.Programa
 
                 LlenarDrop();
                 MostrarGrid();
-               
+
             }
         }
 
@@ -28,7 +30,7 @@ namespace SGM.Competencia.Programa
         {
             string decodedString = System.Text.ASCIIEncoding.ASCII.GetString(Convert.FromBase64String(Request.QueryString["ev"]));
             int IdEvaluacion = Convert.ToInt32(decodedString);
-            gridPrograma.DataSource = programa.MostrarEvaluaciones(IdEvaluacion);
+            gridPrograma.DataSource = programa.MostrarEvaluaciones(IdEvaluacion, txtSearch.Text.Trim());
             gridPrograma.DataBind();
         }
 
@@ -91,7 +93,7 @@ namespace SGM.Competencia.Programa
                     string txtJS = String.Format("<script>alert('{0}');</script>", "Se eliminó correctamente el dato.");
                     ScriptManager.RegisterClientScriptBlock(litControl, litControl.GetType(), "script", txtJS, false);
                 }
-           
+
 
 
             }
@@ -101,9 +103,22 @@ namespace SGM.Competencia.Programa
                 int IdPrograma = (int)gridPrograma.DataKeys[row.RowIndex].Value;
                 string encodedString = (Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(IdPrograma.ToString())));
 
-                Response.Redirect("Editar.aspx?id=" + encodedString + "");
+                Response.Redirect("Editar.aspx?id=" + encodedString + "&ev=" + Request.QueryString["ev"] + "");
 
             }
-    }
+        }
 
+        protected void gridPrograma_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gridPrograma.PageIndex = e.NewPageIndex;
+
+            MostrarGrid();
+        }
+
+        protected void Buscar(Object sender, EventArgs e)
+        {
+            MostrarGrid();
+        }
     }
+  
+}

@@ -15,6 +15,9 @@ namespace SGM.Clase
         SqlDataAdapter da;
         SqlDataReader dr;
 
+        public string FechaEvaluacion { get; set; }
+
+
         public DataTable Mostrar(string txtSearch, int IdInstalacion)
         {
 
@@ -38,14 +41,19 @@ namespace SGM.Clase
 
         }
 
-        public DataTable MostrarEvaluaciones( int IdEvaluacion)
+        public DataTable MostrarEvaluaciones( int IdEvaluacion, string txtSearch)
         {
 
             string query = "SELECT Id_Programa,CONCAT(emp.Nombre,' ',emp.ApellidoPaterno,' ',emp.ApellidoMaterno) 'Empleado', CONVERT(nvarchar, prog.FechaEvaluacion, 105) 'FechaEvaluacion', CONVERT(nvarchar, prog.FechaRealizado, 105) 'FechaRealizado', CASE WHEN prog.Estatus = 1 THEN 'Pendiente de realizar' ELSE 'Realizado' END 'Estatus',prog.Estatus 'IntEstatus' FROM Op_ProgramaCapacitacion prog JOIN Cat_Empleado emp on prog.Id_Empleado = emp.Id_empleado WHERE prog.Id_Evidencia = @Id_Evidencia AND prog.Activado IS NULL ORDER BY prog.Id_Programa DESC";
-       
+
+            if (!String.IsNullOrEmpty(txtSearch.Trim()))
+            {
+                query = "SELECT Id_Programa,CONCAT(emp.Nombre,' ',emp.ApellidoPaterno,' ',emp.ApellidoMaterno) 'Empleado', CONVERT(nvarchar, prog.FechaEvaluacion, 105) 'FechaEvaluacion', CONVERT(nvarchar, prog.FechaRealizado, 105) 'FechaRealizado', CASE WHEN prog.Estatus = 1 THEN 'Pendiente de realizar' ELSE 'Realizado' END 'Estatus',prog.Estatus 'IntEstatus' FROM Op_ProgramaCapacitacion prog JOIN Cat_Empleado emp on prog.Id_Empleado = emp.Id_empleado WHERE prog.Id_Evidencia = @Id_Evidencia AND prog.Activado IS NULL AND CONCAT(emp.Nombre,' ',emp.ApellidoPaterno,' ',emp.ApellidoMaterno) LIKE '%'+@txtSearch+'%'  ORDER BY prog.Id_Programa DESC";
+            }
             comm.Connection = conexion.AbrirConexion();
             comm.CommandText = query;
             comm.CommandType = CommandType.Text;
+            comm.Parameters.AddWithValue("@txtSearch", txtSearch);
             comm.Parameters.AddWithValue("@Id_Evidencia", IdEvaluacion);
 
             da = new SqlDataAdapter(comm);
@@ -101,9 +109,9 @@ namespace SGM.Clase
         public bool Editar(int IdPrograma,string FechaEvaluacion)
         {
             comm.Connection = conexion.AbrirConexion();
-            comm.CommandText = "UPDATE Op_ProgramaCapacitacion SET FechaEvaluacion = (date,@FechaEvaluacion,103)  WHERE Id_Programa = @IdPrograma";
+            comm.CommandText = "UPDATE Op_ProgramaCapacitacion SET FechaEvaluacion =CONVERT(date,@FechaEvaluacion,103)  WHERE Id_Programa = @Id_Programa";
             comm.CommandType = CommandType.Text;
-            comm.Parameters.AddWithValue("@IdPrograma", IdPrograma);
+            comm.Parameters.AddWithValue("@Id_Programa", IdPrograma);
             comm.Parameters.AddWithValue("@FechaEvaluacion", FechaEvaluacion);
        
 
@@ -144,6 +152,23 @@ namespace SGM.Clase
             }
             else
                 return false;
+
+
+        }
+
+        public void LeerDatos(int IdPrograma)
+        {
+            comm.Connection = conexion.AbrirConexion();
+            comm.CommandText = "SELECT CONVERT(nvarchar,FechaEvaluacion, 105) 'FechaEvaluacion' FROM Op_ProgramaCapacitacion WHERE Id_Programa =@IdPrograma ";
+            comm.CommandType = CommandType.Text;
+            comm.Parameters.AddWithValue("@IdPrograma", IdPrograma);
+            dr = comm.ExecuteReader();
+            dr.Read();
+            FechaEvaluacion = dr["FechaEvaluacion"].ToString();
+        
+            dr.Close();
+            comm.Connection = conexion.CerrarConexion();
+
 
 
         }

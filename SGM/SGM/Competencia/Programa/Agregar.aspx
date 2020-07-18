@@ -57,10 +57,15 @@
                  
                         </div>
 
-                         <div class="row" runat="server" >
+                         <div class="row">
                         
                     <div class="container col-12">
-                     
+                         <div class="input-group float-right col-sm-4 col-md-4 col-lg-4">
+                <div class="input-group btn">
+                   <asp:TextBox ID="txtSearch" runat="server" CssClass="form-control form-control-sm"></asp:TextBox>
+<asp:Button ID="btnBuscar" Text="Buscar" runat="server"  OnClick="Buscar"  CssClass="btn btn-default btn-sm" />
+                </div>
+            </div>
                         <div class=" table-responsive">
                             <div style="overflow: auto; height: auto">
                                 <asp:GridView ID="gridPrograma"
@@ -72,6 +77,10 @@
                                     DataKeyNames="Id_Programa"
                                      OnRowDataBound="gridPrograma_RowDataBound"
                                      OnRowCommand="gridPrograma_RowCommand"
+                                     PageSize="10"
+                                     OnPageIndexChanging="gridPrograma_PageIndexChanging"
+                                     AllowPaging="true"
+
                          
                                  >
                                     <Columns>
@@ -127,7 +136,7 @@
                
                    $("#<%=txtFecha.ClientID%>").datepicker({
                         dateFormat: 'dd-mm-yy',
-                       minDate:'+1D',
+                       minDate:'+0D',
                      
                         changeMonth: true,
                         changeYear: true,
