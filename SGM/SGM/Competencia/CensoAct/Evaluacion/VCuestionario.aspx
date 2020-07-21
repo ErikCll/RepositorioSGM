@@ -31,9 +31,9 @@
                     <div class="row">
                         <div class="col-sm-12 col-md-12 col-lg-12">
                              <li>
-              <label class=" font-weight-bold"><%# Eval("Pregunta") %></label>  <asp:LinkButton runat="server" CssClass="ion-edit" ToolTip="Editar" OnClick="Editar"></asp:LinkButton> <asp:LinkButton runat="server" CssClass="ion-android-delete text-red" ToolTip="Eliminar" OnClick="Eliminar"></asp:LinkButton>  
-                                                                 <asp:Label runat="server" ID="lblIdPregunta" Text='<%# Eval("Id_Pregunta") %>'></asp:Label>
-                                                                 <asp:Label runat="server" ID="lblTipoPregunta" Text='<%# Eval("TipoPregunta") %>'></asp:Label>
+              <label class=" font-weight-bold"><%# Eval("Pregunta") %></label>  <asp:LinkButton runat="server" CssClass="ion-edit ml-1" ToolTip="Editar" OnClick="Editar"></asp:LinkButton> <asp:LinkButton runat="server" CssClass="ion-android-delete text-red ml-1" ToolTip="Eliminar" OnClick="Eliminar"></asp:LinkButton>  
+                                                                 <asp:Label runat="server" ID="lblIdPregunta" Text='<%# Eval("Id_Pregunta") %>' Visible="false"></asp:Label>
+                                                                 <asp:Label runat="server" ID="lblTipoPregunta" Text='<%# Eval("TipoPregunta") %>' Visible="false"></asp:Label>
 
 <asp:RadioButtonList runat="server" ID="radioList" DataTextField="Respuesta" DataValueField="Respuesta" TextAlign="Right" CssClass="RBL" Enabled="false"> </asp:RadioButtonList>
 

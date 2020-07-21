@@ -97,7 +97,7 @@
    <asp:ListView runat="server" ID="lstPreguntas" >
                             <ItemTemplate>
                                 
-                                <asp:Label runat="server" ID="lblIdPregunta" Text='<%# Eval("Id_Pregunta") %>'></asp:Label>
+                                <asp:Label runat="server" ID="lblIdPregunta" Text='<%# Eval("Id_Pregunta") %>' Visible="false"></asp:Label>
                            <li><asp:LinkButton runat="server" CssClass="ion-android-cancel text-red" OnClick="Eliminar"></asp:LinkButton> <label class=" font-weight-bold"><%# Eval("Pregunta") %></label> </li>  
 
                             </ItemTemplate>

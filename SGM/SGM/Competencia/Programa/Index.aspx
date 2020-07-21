@@ -9,18 +9,43 @@
                 <div class="row">
                     <div class="container col-12">
                     <a href="Detalle.aspx" class="float-left">Programar evaluaciones</a>
-
+                        <br />
+                        <label>Año:</label>
+                        <asp:DropDownList runat="server" ID="ddl_Anio" DataTextField="Anio" DataValueField="Anio" CssClass="form-control" AutoPostBack="true" OnSelectedIndexChanged="ddl_Anio_SelectedIndexChanged"></asp:DropDownList>
                    
+                        <asp:TextBox runat="server" ID="txtSearch"></asp:TextBox>
                         <div class=" table-responsive">
                             <div style="overflow:auto ;height:auto">
                                 <asp:GridView runat="server" 
                                  CssClass=" table table-striped table-sm"
                                    GridLines="Vertical"
                                    id="gridMatriz"
-                                    AutoGenerateColumns="true"
+                                    AutoGenerateColumns="false"
                                      EmptyDataText="Sin registros."
                                 HeaderStyle-VerticalAlign="Middle"
-                                    >
+                                     DataKeyNames="Id_Actividades"
+                                 OnRowDataBound="gridMatriz_RowDataBound"
+                                 
+                                                         >
+                                    <Columns>
+                                        <asp:BoundField DataField="Nombre" HeaderText="Actividad" />
+                                        <asp:BoundField DataField="Codigo" HeaderText="Versión" />
+                                        <asp:BoundField DataField="Pendiente/Realizado" HeaderText="Pendiente/Realizado" />
+                                        <asp:BoundField DataField="Ene" HeaderText="Ene" />
+                                        <asp:BoundField DataField="Feb" HeaderText="Feb" />
+                                        <asp:BoundField DataField="Mar" HeaderText="Mar" />
+                                        <asp:BoundField DataField="Abr" HeaderText="Abr" />
+                                        <asp:BoundField DataField="May" HeaderText="May" />
+                                        <asp:BoundField DataField="Jun" HeaderText="Jun" />
+                                        <asp:BoundField DataField="Jul" HeaderText="Jul" />
+                                        <asp:BoundField DataField="Ago" HeaderText="Ago" />
+                                        <asp:BoundField DataField="Sep" HeaderText="Sep" />
+                                        <asp:BoundField DataField="Oct" HeaderText="Oct" />
+                                        <asp:BoundField DataField="Nov" HeaderText="Nov" />
+                                        <asp:BoundField DataField="Dic" HeaderText="Dic" />
+                                        <asp:BoundField DataField="Total" HeaderText="Total" />
+                                        <asp:BoundField DataField="Avance" HeaderText="Avance" />
+                                    </Columns>
                              
                                 </asp:GridView>
                             </div>
