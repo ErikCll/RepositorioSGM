@@ -13,6 +13,24 @@ namespace SGM.Competencia.CensoAct.Evaluacion {
     public partial class EvPrueba2 {
         
         /// <summary>
+        /// Control lblActividad.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblActividad;
+        
+        /// <summary>
+        /// Control lblEmpleado.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblEmpleado;
+        
+        /// <summary>
         /// Control Timer1.
         /// </summary>
         /// <remarks>
@@ -29,6 +47,15 @@ namespace SGM.Competencia.CensoAct.Evaluacion {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal litControl;
+        
+        /// <summary>
+        /// Control RowEvaluacion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl RowEvaluacion;
         
         /// <summary>
         /// Control btnTime.
@@ -83,5 +110,23 @@ namespace SGM.Competencia.CensoAct.Evaluacion {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblCal;
+        
+        /// <summary>
+        /// Control RowCalificacion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl RowCalificacion;
+        
+        /// <summary>
+        /// Control lblCalificacion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCalificacion;
     }
 }

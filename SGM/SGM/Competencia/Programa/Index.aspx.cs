@@ -15,6 +15,9 @@ namespace SGM.Competencia.Programa
             if (!IsPostBack)
             {
                 LlenarDrop();
+                int Anio = DateTime.Now.Year;
+                ddl_Anio.SelectedValue = Anio.ToString();
+                MostrarGrid();
             }
         }
 
@@ -22,7 +25,7 @@ namespace SGM.Competencia.Programa
         {
             int Anio = Convert.ToInt32(ddl_Anio.SelectedValue);
             int IdInstalacion = Convert.ToInt32((this.Master as SGM.Master.Site1).IdInstalacion.ToString());
-            gridMatriz.DataSource = programa.MostrarGeneral(txtSearch.Text.Trim(),IdInstalacion,Anio);
+            gridMatriz.DataSource = programa.MostrarGeneral(IdInstalacion,Anio);
             gridMatriz.DataBind();
         }
 
@@ -30,7 +33,7 @@ namespace SGM.Competencia.Programa
         {
             ddl_Anio.DataSource = programa.MostrarAnios();
             ddl_Anio.DataBind();
-            ddl_Anio.Items.Insert(0, new ListItem("[Seleccionar]"));
+            ddl_Anio.Items.Insert(0, new ListItem("[Seleccionar]","0"));
             
         }
 
@@ -51,6 +54,15 @@ namespace SGM.Competencia.Programa
                 else
                 {
                     e.Row.Cells[0].Visible = false;
+                }
+
+                if (e.Row.RowIndex % 2 == 0)
+                {
+                    e.Row.Cells[1].Attributes.Add("rowspan", "2");
+                }
+                else
+                {
+                    e.Row.Cells[1].Visible = false;
                 }
 
                 if (e.Row.RowIndex % 2 == 0)

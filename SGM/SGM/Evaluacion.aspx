@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="EvPrueba2.aspx.cs" Inherits="SGM.Competencia.CensoAct.Evaluacion.EvPrueba2" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Evaluacion.aspx.cs" Inherits="SGM.Competencia.CensoAct.Evaluacion.EvPrueba2" %>
 
 <!DOCTYPE html>
 
@@ -48,10 +48,10 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>              Evaluación de Prueba
-
-
+            <h1>              Evaluación
 </h1>
+              <h6 class="mt-1">Actividad: <asp:Label runat="server" ID="lblActividad" CssClass=" font-weight-bold"></asp:Label></h6>
+              <h6>Empleado: <asp:Label runat="server" ID="lblEmpleado" CssClass=" font-weight-bold"></asp:Label></h6>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -75,9 +75,9 @@
             <asp:Literal runat="server" ID="litControl"></asp:Literal>
 
             <div class="col-lg-12">
-                <div class="row">
+                <div class="row" runat="server" id="RowEvaluacion">
                     <div class="col-sm-12 col-md-12 col-lg-12">
-                        <asp:Button runat="server" CssClass="btn btn-danger" ID="btnTime" />
+                        <asp:Button runat="server" CssClass="btn btn-danger" ID="btnTime" Visible="false" />
                         <%--                                                                    Date: <asp:Label Id="LabelDateTime" runat="server"></asp:Label>--%>
                     </div>
 
@@ -144,7 +144,14 @@
 
 
                 </div>
-
+                <div class="row" runat="server" id="RowCalificacion" visible="false">
+                    <div class="col-sm-12 col-md-12 col-lg-12 text-center">
+                        <div class=" custom-control-inline">
+                            <label class="font-weight-normal">Calificación:</label>
+                            <asp:Label runat="server" ID="lblCalificacion" CssClass=" font-weight-bold ml-1"></asp:Label>
+                        </div>
+                    </div>
+                </div>
             </div>
 
         </ContentTemplate>

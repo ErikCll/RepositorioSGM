@@ -11,6 +11,7 @@ namespace SGM.Competencia.CensoAct.Evaluacion
     public partial class EvPrueba2 : System.Web.UI.Page
     {
         Clase.Evaluacion evaluacion = new Clase.Evaluacion();
+        Clase.ProgramaCapacitacion programa = new Clase.ProgramaCapacitacion();
         static int hh, mm, ss;
         static int con = 0;
        static string totalItems;
@@ -25,6 +26,13 @@ namespace SGM.Competencia.CensoAct.Evaluacion
 
             if (!IsPostBack)
             {
+
+
+                string decodedString = System.Text.ASCIIEncoding.ASCII.GetString(Convert.FromBase64String(Request.QueryString["prog"]));
+                int IdPrograma = Convert.ToInt32(decodedString);
+                programa.LeerDatosProgramaEmpleado(IdPrograma);
+                lblEmpleado.Text = programa.Empleado;
+                lblActividad.Text = programa.Actividad;
                 MostrarLista();
 
                 int min = 1 * 60;
@@ -199,8 +207,63 @@ namespace SGM.Competencia.CensoAct.Evaluacion
 
         protected void btnFinalizar_Click(object sender, EventArgs e)
         {
+            foreach (ListViewItem itm in lstPreguntas.Items)
+            {
+                RadioButtonList radioList = (RadioButtonList)itm.FindControl("radioList");
+                Label Id_Respuesta = (Label)itm.FindControl("lblIdRespuesta");
 
-          
+                string ValorSeleccionado = radioList.SelectedValue;
+                string IdRespuesta = Id_Respuesta.Text;
+                if (ValorSeleccionado == "")
+                {
+
+                    string txtJS = String.Format("<script>alert('{0}');</script>", "Seleccionar una respuesta.");
+                    ScriptManager.RegisterClientScriptBlock(litControl, litControl.GetType(), "script", txtJS, false);
+
+                }
+                else
+                {
+                    if (ValorSeleccionado == IdRespuesta)
+                    {
+                        cal++;
+
+                        string txtJS = String.Format("<script>alert('{0}');</script>", "La respuesta es correcta.");
+                        ScriptManager.RegisterClientScriptBlock(litControl, litControl.GetType(), "script", txtJS, false);
+                        lstPreguntas.DataSource = data;
+                        lstPreguntas.DataBind();
+                    }
+                    else
+                    {
+                        radioList.SelectedValue = IdRespuesta;
+                        string txtJS = String.Format("<script>alert('{0}');</script>", "La respuesta es incorrecta. La respuesta correcta es: " + radioList.SelectedItem.ToString() + "");
+                        ScriptManager.RegisterClientScriptBlock(litControl, litControl.GetType(), "script", txtJS, false);
+
+                        lstPreguntas.DataSource = data;
+                        lstPreguntas.DataBind();
+                    }
+
+                    decimal cantidadPreguntas = Convert.ToDecimal(lblTotal.Text);
+
+
+                    decimal calificacion = (cal / cantidadPreguntas) * 10;
+
+                    decimal calFinal = Math.Round(calificacion, 2);
+
+                    string decodedString = System.Text.ASCIIEncoding.ASCII.GetString(Convert.FromBase64String(Request.QueryString["prog"]));
+                    int IdPrograma = Convert.ToInt32(decodedString);
+
+                    programa.EditarProgramaEv(IdPrograma, calFinal);
+
+                    RowEvaluacion.Visible = false;
+                    RowCalificacion.Visible = true;
+                    lblCalificacion.Text = calFinal.ToString().Replace(",", ".");
+                }
+
+
+
+
+            }
+
 
             //decimal cal = 0;
 
@@ -220,15 +283,10 @@ namespace SGM.Competencia.CensoAct.Evaluacion
 
 
             //}
-            decimal cantidadPreguntas = Convert.ToDecimal(lblTotal.Text);
+         
 
-
-            decimal calificacion = (cal / cantidadPreguntas) * 10;
-
-            decimal calFinal = Math.Round(calificacion, 2);
-
-            string txtJS = String.Format("<script>alert('{0}');</script>", "Tu calificación es: " + calFinal + " ");
-            ScriptManager.RegisterClientScriptBlock(litControl, litControl.GetType(), "script", txtJS, false);
+            //string txtJS = String.Format("<script>alert('{0}');</script>", "Tu calificación es: " + calFinal + " ");
+            //ScriptManager.RegisterClientScriptBlock(litControl, litControl.GetType(), "script", txtJS, false);
         }
 
         protected void Regresar(Object sender, EventArgs e)

@@ -148,7 +148,8 @@
     <Content Include="Competencia\CensoAct\Evaluacion\Editar.aspx" />
     <Content Include="Competencia\CensoAct\Evaluacion\EditarCuestionario.aspx" />
     <Content Include="Competencia\CensoAct\Evaluacion\EvPrueba.aspx" />
-    <Content Include="Competencia\CensoAct\Evaluacion\EvPrueba2.aspx" />
+    <Content Include="Evaluacion.aspx" />
+    <Content Include="PreEvaluacion.aspx" />
     <Content Include="Competencia\CensoAct\Index.aspx" />
     <Content Include="Catalogo\Area\Crear.aspx" />
     <Content Include="Catalogo\Area\Detalle.aspx" />
@@ -1880,12 +1881,19 @@
     <Compile Include="Competencia\CensoAct\Evaluacion\EvPrueba.aspx.designer.cs">
       <DependentUpon>EvPrueba.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Competencia\CensoAct\Evaluacion\EvPrueba2.aspx.cs">
-      <DependentUpon>EvPrueba2.aspx</DependentUpon>
+    <Compile Include="Evaluacion.aspx.cs">
+      <DependentUpon>Evaluacion.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Competencia\CensoAct\Evaluacion\EvPrueba2.aspx.designer.cs">
-      <DependentUpon>EvPrueba2.aspx</DependentUpon>
+    <Compile Include="Evaluacion.aspx.designer.cs">
+      <DependentUpon>Evaluacion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PreEvaluacion.aspx.cs">
+      <DependentUpon>PreEvaluacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PreEvaluacion.aspx.designer.cs">
+      <DependentUpon>PreEvaluacion.aspx</DependentUpon>
     </Compile>
     <Compile Include="Competencia\CensoAct\Index.aspx.cs">
       <DependentUpon>Index.aspx</DependentUpon>

@@ -23,7 +23,7 @@
                      
                         <div class="col-sm-12 col-md-12 col-lg-4">
                              <div class="form-group">
-                                    <label class="font-weight-bold">Fecha de evaluación:</label>
+                                    <label class="font-weight-bold">Fecha de programación:</label>
                                         <asp:TextBox runat="server" ID="txtFecha" class="form-control ml-1 " placeholder="dd-mm-yyyy" onkeydown="return false;"></asp:TextBox>
                                          <asp:RequiredFieldValidator runat="server" ID="RequiredFieldValidator2" ControlToValidate="txtFecha"
                                     ErrorMessage="Fecha de evaluación requerida." ForeColor="Red"  ValidationGroup="btnGuardar"></asp:RequiredFieldValidator>
@@ -60,6 +60,7 @@
                          <div class="row">
                         
                     <div class="container col-12">
+                        <label>Url para ingresar a la evaluación: </label> <asp:Label runat="server" Text="http://localhost:10931/PreEvaluacion.aspx"></asp:Label>
                          <div class="input-group float-right col-sm-4 col-md-4 col-lg-4">
                 <div class="input-group btn">
                    <asp:TextBox ID="txtSearch" runat="server" CssClass="form-control form-control-sm"></asp:TextBox>
@@ -96,16 +97,17 @@
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                         <asp:BoundField DataField="Empleado" HeaderText="Empleado"/>
-                                        <asp:BoundField DataField="FechaEvaluacion" HeaderText="Fecha de evaluación" />
+                                        <asp:BoundField DataField="FechaEvaluacion" HeaderText="Fecha de programación" />
                                          <asp:BoundField DataField="FechaRealizado" HeaderText="Fecha de realización" />
                                         <asp:BoundField DataField="Estatus" HeaderText="Estatus" /> 
+                                        <asp:BoundField DataField="Calificacion" HeaderText="Calificación" ItemStyle-HorizontalAlign="Center" />
+                                         <asp:BoundField DataField="Clave" HeaderText="Clave" ItemStyle-HorizontalAlign="Center"  />
 
-                                        <asp:TemplateField>
+                                        <asp:TemplateField Visible="false">
                                             <ItemTemplate>
                                                 <asp:Label runat="server" ID="lblEstatus" Text='<%# Eval("IntEstatus") %>' ></asp:Label>
                                             </ItemTemplate>
                                         </asp:TemplateField>
-
                                         
 
                                     </Columns>

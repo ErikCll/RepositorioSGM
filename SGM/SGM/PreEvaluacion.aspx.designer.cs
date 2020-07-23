@@ -7,27 +7,36 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace SGM.Competencia.Programa {
+namespace SGM.Competencia.CensoAct.Evaluacion {
     
     
-    public partial class Index {
+    public partial class PreEvaluacion {
         
         /// <summary>
-        /// Control ddl_Anio.
+        /// Control litControl.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddl_Anio;
+        protected global::System.Web.UI.WebControls.Literal litControl;
         
         /// <summary>
-        /// Control gridMatriz.
+        /// Control txtClave.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gridMatriz;
+        protected global::System.Web.UI.WebControls.TextBox txtClave;
+        
+        /// <summary>
+        /// Control btnIngresar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnIngresar;
     }
 }

@@ -54,6 +54,11 @@ namespace SGM.Competencia.Programa
 
             if (programa.Insertar(IdEvaluacion, IdEmpleado, FechaEvaluacion))
             {
+                programa.ObtenerIdPrograma(IdEvaluacion, IdEmpleado);
+                int IdPrograma = Convert.ToInt32(programa.Id_Programa);
+                string Clave = (Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(IdPrograma.ToString())));
+
+                programa.EditarPrograma(IdPrograma, Clave);
                 MostrarGrid();
                 txtFecha.Text = String.Empty;
                 ddl_Empleado.SelectedIndex = 0;

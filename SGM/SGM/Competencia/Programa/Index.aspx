@@ -9,11 +9,15 @@
                 <div class="row">
                     <div class="container col-12">
                     <a href="Detalle.aspx" class="float-left">Programar evaluaciones</a>
-                        <br />
-                        <label>Año:</label>
+                        <br /><br />
+                        <div class="col-sm-3 col-md-3 col-lg-3">
+                            <div class="form-group">
+                                 <label>Año:</label>
                         <asp:DropDownList runat="server" ID="ddl_Anio" DataTextField="Anio" DataValueField="Anio" CssClass="form-control" AutoPostBack="true" OnSelectedIndexChanged="ddl_Anio_SelectedIndexChanged"></asp:DropDownList>
                    
-                        <asp:TextBox runat="server" ID="txtSearch"></asp:TextBox>
+                            </div>
+                        </div>
+                       
                         <div class=" table-responsive">
                             <div style="overflow:auto ;height:auto">
                                 <asp:GridView runat="server" 
@@ -30,7 +34,7 @@
                                     <Columns>
                                         <asp:BoundField DataField="Nombre" HeaderText="Actividad" />
                                         <asp:BoundField DataField="Codigo" HeaderText="Versión" />
-                                        <asp:BoundField DataField="Pendiente/Realizado" HeaderText="Pendiente/Realizado" />
+                                        <asp:BoundField DataField="Pendiente/Realizado" HeaderText="Programado/Realizado" />
                                         <asp:BoundField DataField="Ene" HeaderText="Ene" />
                                         <asp:BoundField DataField="Feb" HeaderText="Feb" />
                                         <asp:BoundField DataField="Mar" HeaderText="Mar" />
