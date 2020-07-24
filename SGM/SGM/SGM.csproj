@@ -148,6 +148,7 @@
     <Content Include="Competencia\CensoAct\Evaluacion\Editar.aspx" />
     <Content Include="Competencia\CensoAct\Evaluacion\EditarCuestionario.aspx" />
     <Content Include="Competencia\CensoAct\Evaluacion\EvPrueba.aspx" />
+    <Content Include="Competencia\Programa\DetalleEv.aspx" />
     <Content Include="Evaluacion.aspx" />
     <Content Include="PreEvaluacion.aspx" />
     <Content Include="Competencia\CensoAct\Index.aspx" />
@@ -1880,6 +1881,13 @@
     </Compile>
     <Compile Include="Competencia\CensoAct\Evaluacion\EvPrueba.aspx.designer.cs">
       <DependentUpon>EvPrueba.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Competencia\Programa\DetalleEv.aspx.cs">
+      <DependentUpon>DetalleEv.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Competencia\Programa\DetalleEv.aspx.designer.cs">
+      <DependentUpon>DetalleEv.aspx</DependentUpon>
     </Compile>
     <Compile Include="Evaluacion.aspx.cs">
       <DependentUpon>Evaluacion.aspx</DependentUpon>

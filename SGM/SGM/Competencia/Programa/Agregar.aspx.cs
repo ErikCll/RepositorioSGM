@@ -108,7 +108,17 @@ namespace SGM.Competencia.Programa
                 int IdPrograma = (int)gridPrograma.DataKeys[row.RowIndex].Value;
                 string encodedString = (Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(IdPrograma.ToString())));
 
-                Response.Redirect("Editar.aspx?id=" + encodedString + "&ev=" + Request.QueryString["ev"] + "");
+                Response.Redirect("Editar.aspx?id=" + Request.QueryString["id"] + "&ev=" + Request.QueryString["ev"] + "&prog=" + encodedString + "");
+
+            }
+
+            else if (e.CommandName == "Ver")
+            {
+                GridViewRow row = ((Control)e.CommandSource).Parent.Parent as GridViewRow;
+                int IdPrograma = (int)gridPrograma.DataKeys[row.RowIndex].Value;
+                string encodedString = (Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(IdPrograma.ToString())));
+
+                Response.Redirect("DetalleEv.aspx?id=" + Request.QueryString["id"] + "&ev=" + Request.QueryString["ev"] + "&prog="+encodedString+"");
 
             }
         }

@@ -14,7 +14,9 @@ namespace SGM.Competencia.MatrizCatAct
         {
             if (!IsPostBack)
             {
-                string decodedString = System.Text.ASCIIEncoding.ASCII.GetString(Convert.FromBase64String(Request.QueryString["id"]));
+                (this.Master as SGM.Master.Site1).OcultarDrop = false;
+                (this.Master as SGM.Master.Site1).OcultarLabel = false;
+                string decodedString = System.Text.ASCIIEncoding.ASCII.GetString(Convert.FromBase64String(Request.QueryString["prog"]));
                 int IdPrograma = Convert.ToInt32(decodedString);
                 programa.LeerDatos(IdPrograma);
                 txtFecha.Text = programa.FechaEvaluacion;
@@ -25,7 +27,7 @@ namespace SGM.Competencia.MatrizCatAct
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
 
-            string decodedString = System.Text.ASCIIEncoding.ASCII.GetString(Convert.FromBase64String(Request.QueryString["id"]));
+            string decodedString = System.Text.ASCIIEncoding.ASCII.GetString(Convert.FromBase64String(Request.QueryString["prog"]));
             int IdPrograma = Convert.ToInt32(decodedString);
 
             string FechaEvaluacion = txtFecha.Text;

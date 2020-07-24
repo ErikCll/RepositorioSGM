@@ -33,10 +33,13 @@ namespace SGM.Competencia.CensoAct.Evaluacion
                 //string script = "window.close();";
                 //ScriptManager.RegisterStartupScript(Page, Page.GetType(), "closewindows", script, true);
                 txtClave.Text = string.Empty;
-                ScriptManager.RegisterStartupScript(Page, typeof(Page), "OpenWindow", "window.open('Evaluacion.aspx?ev=" +IdEvaluacion + "&emp="+IdEmpleado +"&prog="+IdPrograma+"','mywindow','menubar=1,resizable=1');", true);
+                RadWindow1.NavigateUrl = "Evaluacion.aspx?ev=" + IdEvaluacion + "&emp=" + IdEmpleado + "&prog=" + IdPrograma + "";
+                RadWindow1.VisibleOnPageLoad = true;
+                //ScriptManager.RegisterStartupScript(Page, typeof(Page), "OpenWindow", "window.open('Evaluacion.aspx?ev=" +IdEvaluacion + "&emp="+IdEmpleado +"&prog="+IdPrograma+"','mywindow','menubar=1,resizable=1');", true);
             }
             else
             {
+                RadWindow1.VisibleOnPageLoad = false;
                 string txtJS = String.Format("<script>alert('{0}');</script>", "La Clave es incorrecta o la Evaluación no esta disponible.");
                 ScriptManager.RegisterClientScriptBlock(litControl, litControl.GetType(), "script", txtJS, false);
             }

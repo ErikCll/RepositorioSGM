@@ -1,5 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PreEvaluacion.aspx.cs" Inherits="SGM.Competencia.CensoAct.Evaluacion.PreEvaluacion" %>
 
+<%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
+
 <!DOCTYPE html>
 
 <html>
@@ -87,10 +89,10 @@
                 </div>
 
             </div>
-
+            <telerik:RadWindow ID="RadWindow1" runat="server" Behaviors="Close,Resize,Maximize" Height="600px" Width="1200px" Modal="true" VisibleStatusbar="false" VisibleOnPageLoad="false" ></telerik:RadWindow>
         </ContentTemplate>
     </asp:UpdatePanel>
-
+        
     </section>
     <!-- /.content -->
   </div>
@@ -160,6 +162,19 @@
                 return false;
             }
         }
+
+               function checkKeyCode(evt)
+{
+
+var evt = (evt) ? evt : ((event) ? event : null);
+var node = (evt.target) ? evt.target : ((evt.srcElement) ? evt.srcElement : null);
+if(event.keyCode==116)
+{
+evt.keyCode=0;
+return false
+}
+}
+document.onkeydown=checkKeyCode;
     </script>
     </body>
 </html>

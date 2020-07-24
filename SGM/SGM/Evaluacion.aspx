@@ -6,7 +6,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>SGM</title>
+  <title>Evaluación</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Font Awesome -->
@@ -123,7 +123,7 @@
                              <label class=" text-gray font-weight-normal">Total de preguntas: </label><asp:Label CssClass="ml-1" runat="server" ID="lblTotal"></asp:Label>
                             <div class="form-group float-right">
                                
-                                 <asp:DataPager ID="DataPager1" runat="server" PagedControlID="lstPreguntas" PageSize="1">
+                                 <asp:DataPager ID="DataPager1" runat="server" PagedControlID="lstPreguntas" PageSize="1" OnPreRender="DataPager1_PreRender">
                         <Fields>
 
 

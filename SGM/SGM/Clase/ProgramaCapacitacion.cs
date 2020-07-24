@@ -15,7 +15,6 @@ namespace SGM.Clase
         SqlDataAdapter da;
         SqlDataReader dr;
 
-        public string FechaEvaluacion { get; set; }
 
         public string Id_Programa { get; set; }
 
@@ -24,6 +23,11 @@ namespace SGM.Clase
 
         public string Empleado { get; set; }
         public string Actividad { get; set; }
+        public string FechaEvaluacion { get; set; }
+        public string FechaRealizado { get; set; }
+        public string Calificacion { get; set; }
+        public string Estatus { get; set; }
+
         public DataTable MostrarGeneral(int IdInstalacion,int Anio)
         {
 
@@ -368,6 +372,29 @@ namespace SGM.Clase
             dr = comm.ExecuteReader();
             dr.Read();
             Empleado = dr["Empleado"].ToString();
+            Actividad = dr["Actividad"].ToString();
+
+            dr.Close();
+            comm.Connection = conexion.CerrarConexion();
+
+
+
+        }
+
+        public void LeerDatosProgramaEvaluacion(int IdPrograma)
+        {
+            comm.Connection = conexion.AbrirConexion();
+            comm.CommandText = "SELECT Id_Programa, CONCAT(emp.Nombre, ' ', emp.ApellidoPaterno, ' ', emp.ApellidoMaterno) 'Empleado', CONVERT(nvarchar, prog.FechaEvaluacion, 105) 'FechaEvaluacion', CONVERT(nvarchar, prog.FechaRealizado, 105) 'FechaRealizado', REPLACE(prog.Calificacion, ',', '.') 'Calificacion',  CASE WHEN prog.Estatus = 1 THEN 'Pendiente de realizar' ELSE 'Realizado' END 'Estatus',act.Nombre 'Actividad' FROM Op_ProgramaCapacitacion prog JOIN Cat_Empleado emp on prog.Id_Empleado = emp.Id_empleado JOIN Evaluacion ev on prog.Id_Evaluacion = ev.Id_evaluacion JOIN Cat_ActividadControl ctr on ev.Id_Control = ctr.Id_Control JOIN Cat_Actividades act on ctr.Id_Actividad = act.Id_Actividades WHERE prog.Id_programa = @IdProgramaa";
+            comm.CommandType = CommandType.Text;
+            comm.Parameters.AddWithValue("@IdProgramaa", IdPrograma);
+
+            dr = comm.ExecuteReader();
+            dr.Read();
+            Empleado = dr["Empleado"].ToString();
+            FechaEvaluacion= dr["FechaEvaluacion"].ToString();
+            FechaRealizado= dr["FechaRealizado"].ToString();
+            Calificacion= dr["Calificacion"].ToString();
+            Estatus= dr["Estatus"].ToString();
             Actividad = dr["Actividad"].ToString();
 
             dr.Close();

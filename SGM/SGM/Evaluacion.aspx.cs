@@ -18,6 +18,8 @@ namespace SGM.Competencia.CensoAct.Evaluacion
         static decimal cal = 0;
        static DataTable data;
 
+        static int estatus = 0;
+
 
 
         static double TimeAllSecondes = 0;
@@ -33,7 +35,10 @@ namespace SGM.Competencia.CensoAct.Evaluacion
                 programa.LeerDatosProgramaEmpleado(IdPrograma);
                 lblEmpleado.Text = programa.Empleado;
                 lblActividad.Text = programa.Actividad;
-                MostrarLista();
+
+                //MostrarLista();
+
+
 
                 int min = 1 * 60;
                 TimeAllSecondes = min;
@@ -77,7 +82,6 @@ namespace SGM.Competencia.CensoAct.Evaluacion
             {
                 Timer1.Enabled = false;
                 btnFinalizar_Click(null, null);
-
             }
         }
 
@@ -190,6 +194,18 @@ namespace SGM.Competencia.CensoAct.Evaluacion
 
 
         }
+
+        protected void DataPager1_PreRender(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                MostrarLista();
+
+            }
+        }
+
+
+
 
         //protected void Unnamed_PreRender(object sender, EventArgs e)
         //{
