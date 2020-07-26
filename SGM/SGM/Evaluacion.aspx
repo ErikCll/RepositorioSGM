@@ -95,9 +95,9 @@
                                                         <asp:Label runat="server" ID="lblContador" Text='<%# Eval("ORDEN") %>'></asp:Label>.
 
               <label class=" font-weight-bold"><%# Eval("Pregunta") %></label>
-                                                        <asp:Label runat="server" ID="lblIdPregunta" Text='<%# Eval("Id_Pregunta") %>'></asp:Label>
-                                                        <asp:Label runat="server" ID="lblTipoPregunta" Text='<%# Eval("TipoPregunta") %>'></asp:Label>
-                                                        <asp:Label runat="server" ID="lblIdRespuesta"></asp:Label>
+                                                        <asp:Label runat="server" ID="lblIdPregunta" Text='<%# Eval("Id_Pregunta") %>' Visible="false"></asp:Label>
+                                                        <asp:Label runat="server" ID="lblTipoPregunta" Text='<%# Eval("TipoPregunta") %>' Visible="false"></asp:Label>
+                                                        <asp:Label runat="server" ID="lblIdRespuesta" Visible="false"></asp:Label>
 
 
                                                         <asp:RadioButtonList runat="server" ID="radioList" DataTextField="Respuesta" DataValueField="Id_Respuesta" TextAlign="Right" CssClass="RBL"></asp:RadioButtonList>

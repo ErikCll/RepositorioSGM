@@ -6,6 +6,11 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="mapeo" runat="server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Content" runat="server">
+        <style>
+    .VerticalHeaderText {
+       writing-mode:vertical-rl;
+    }
+</style>
           <div class="col-lg-12">
                 <div class="row">
                     <div class="container col-12">

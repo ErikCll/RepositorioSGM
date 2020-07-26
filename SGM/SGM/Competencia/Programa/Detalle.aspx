@@ -45,7 +45,7 @@
                                         </asp:TemplateField>
                                        
                                         <asp:BoundField HeaderText="Versión" DataField="Codigo" />
-                                        <asp:TemplateField>
+                                        <asp:TemplateField Visible="false">
                                             <ItemTemplate>
                                                 <asp:Label runat="server" ID="lblIdEvaluacion" Text='<%# Eval("Id_Evaluacion") %>'></asp:Label>
                                             </ItemTemplate>

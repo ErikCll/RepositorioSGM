@@ -50,7 +50,7 @@ namespace SGM.Competencia.CensoAct.Evaluacion
             else
             {
                 RadWindow1.VisibleOnPageLoad = false;
-                string txtJS = String.Format("<script>alert('{0}');</script>", "La Clave es incorrecta o la Evaluación no esta disponible.");
+                string txtJS = String.Format("<script>alert('{0}');</script>", "La Clave es incorrecta o la Evaluación no está disponible.");
                 ScriptManager.RegisterClientScriptBlock(litControl, litControl.GetType(), "script", txtJS, false);
             }
 

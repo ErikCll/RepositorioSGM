@@ -82,7 +82,7 @@
                      <div class="col-sm-122 col-md-12 col-lg-12">
                         <div class="form-group">
                           <asp:Button runat="server" CssClass="btn btn-primary" Text="Ingresar" ID="btnIngresar" ValidationGroup="btnIngresar" OnClick="btnIngresar_Click"/>
-                            <asp:Button ID="btnValidar" runat="server" OnClick="btnValidar_Click"  />
+                            <asp:Button ID="btnValidar" runat="server" OnClick="btnValidar_Click" Visible="false"  />
                         </div>
                     </div>
 
@@ -183,6 +183,7 @@ return false
         function RefreshParentPage()//function in parent page
         {
             document.getElementById("<%= btnValidar.ClientID %>").click();
+          
 //document.location.reload();
 }
 

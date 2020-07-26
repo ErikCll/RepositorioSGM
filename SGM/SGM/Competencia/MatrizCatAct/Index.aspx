@@ -7,8 +7,14 @@
     
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Content" runat="server">
+    <style>
+    .VerticalHeaderText {
+       writing-mode:vertical-rl;
+    }
+</style>
 
       <div class="col-lg-12">
+
                 <div class="row">
                     <div class="container col-12">
                     <a href="Detalle.aspx" class="float-left">Detalle Matriz Categoría-Actividad
@@ -24,7 +30,7 @@
                                     AutoGenerateColumns="true"
                                      EmptyDataText="Sin registros."
                                OnRowDataBound="gridMatriz_RowDataBound"
-                                HeaderStyle-VerticalAlign="Middle"
+                                   
                                     >
                              
                                 </asp:GridView>

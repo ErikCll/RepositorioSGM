@@ -12,9 +12,13 @@ namespace SGM.Competencia.CensoAct
         Clase.Evaluacion evaluacion = new Clase.Evaluacion();
         protected void Page_Load(object sender, EventArgs e)
         {
-
+         
             if (!IsPostBack)
             {
+
+                
+                    
+                
                 (this.Master as SGM.Master.Site1).OcultarDrop = false;
                 (this.Master as SGM.Master.Site1).OcultarLabel = false;
                 chkTrue.Checked = true;

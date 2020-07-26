@@ -39,13 +39,20 @@ namespace SGM.Competencia.MatrizCatEmp
                     if (celda != "&nbsp;")
 
                     {
-
-                        e.Row.Cells[i].Text = "Agregado";
+                        e.Row.Cells[i].Text = "✔";
                         e.Row.Cells[i].Attributes.Add("class", "text-green");
                         e.Row.Cells[i].HorizontalAlign = HorizontalAlign.Center;
                     }
 
 
+                }
+            }
+
+            if (e.Row.RowType == DataControlRowType.Header)
+            {
+                for (int i = 1; i < e.Row.Cells.Count; i++)
+                {
+                    e.Row.Cells[i].Text = "<div class=\"VerticalHeaderText\">" + e.Row.Cells[i].Text + "</div>";
                 }
             }
 

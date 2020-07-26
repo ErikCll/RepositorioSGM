@@ -161,6 +161,10 @@
 
        function updateTextInput(val) {
           document.getElementById("<%= txtRange2.ClientID %>").value=val; 
-        }
+            }
+
+                   window.history.forward();
+
+
             </script>  
 </asp:Content>
