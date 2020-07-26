@@ -82,6 +82,7 @@
                      <div class="col-sm-122 col-md-12 col-lg-12">
                         <div class="form-group">
                           <asp:Button runat="server" CssClass="btn btn-primary" Text="Ingresar" ID="btnIngresar" ValidationGroup="btnIngresar" OnClick="btnIngresar_Click"/>
+                            <asp:Button ID="btnValidar" runat="server" OnClick="btnValidar_Click"  />
                         </div>
                     </div>
 
@@ -89,7 +90,9 @@
                 </div>
 
             </div>
-            <telerik:RadWindow ID="RadWindow1" runat="server" Behaviors="Close,Resize,Maximize" Height="600px" Width="1200px" Modal="true" VisibleStatusbar="false" VisibleOnPageLoad="false" ></telerik:RadWindow>
+            <telerik:RadWindow ID="RadWindow1" runat="server" Behaviors="Close,Resize,Maximize" Height="600px" Width="1200px" Modal="true" VisibleStatusbar="false" VisibleOnPageLoad="false" OnClientClose="RefreshParentPage"  >
+               
+            </telerik:RadWindow>
         </ContentTemplate>
     </asp:UpdatePanel>
         
@@ -174,7 +177,16 @@ evt.keyCode=0;
 return false
 }
 }
-document.onkeydown=checkKeyCode;
+        document.onkeydown = checkKeyCode;
+
+
+        function RefreshParentPage()//function in parent page
+        {
+            document.getElementById("<%= btnValidar.ClientID %>").click();
+//document.location.reload();
+}
+
+
     </script>
     </body>
 </html>

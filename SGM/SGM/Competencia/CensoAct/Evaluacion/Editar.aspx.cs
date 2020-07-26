@@ -22,6 +22,8 @@ namespace SGM.Competencia.CensoAct.Evaluacion
 
                 evaluacion.ObtenerTotalReactivos(IdEvaluacion);
                 txtCantidad.Text = evaluacion.TotalReactivos;
+                txtRange2.Value = evaluacion.CalMinima;
+                range.Value = evaluacion.CalMinima;
 
             }
         }
@@ -45,20 +47,34 @@ namespace SGM.Competencia.CensoAct.Evaluacion
 
             int TotalReactivos = Convert.ToInt32(txtCantidad.Text);
             int TotalItems = Convert.ToInt32(evaluacion.TotalItems);
+            int CalMinima = Convert.ToInt32(txtRange2.Value);
+            string Estatus = evaluacion.Estatus;
 
-            if (TotalReactivos>TotalItems)
+            if (Estatus == "1")
             {
-                string txtJS = String.Format("<script>alert('{0}');</script>", "La cantidad de reactivos debe ser menor o igual a "+TotalItems.ToString()+".");
-                ScriptManager.RegisterClientScriptBlock(litControl, litControl.GetType(), "script", txtJS, false);
-            }
-            else
-            {
-                if (evaluacion.ModificarEvaluacion(IdEvaluacion, TotalReactivos))
+                if (evaluacion.ModificarEvaluacion(IdEvaluacion, TotalReactivos, CalMinima))
                 {
                     string txtJS = String.Format("<script>alert('{0}');</script>", "Se actualizaron correctamente los datos.");
                     ScriptManager.RegisterClientScriptBlock(litControl, litControl.GetType(), "script", txtJS, false);
                 }
             }
+            else
+            {
+                if (TotalReactivos > TotalItems)
+                {
+                    string txtJS = String.Format("<script>alert('{0}');</script>", "La cantidad de reactivos debe ser menor o igual a " + TotalItems.ToString() + ".");
+                    ScriptManager.RegisterClientScriptBlock(litControl, litControl.GetType(), "script", txtJS, false);
+                }
+                else
+                {
+                    if (evaluacion.ModificarEvaluacion(IdEvaluacion, TotalReactivos, CalMinima))
+                    {
+                        string txtJS = String.Format("<script>alert('{0}');</script>", "Se actualizaron correctamente los datos.");
+                        ScriptManager.RegisterClientScriptBlock(litControl, litControl.GetType(), "script", txtJS, false);
+                    }
+                }
+            }
+           
         }
     }
 }

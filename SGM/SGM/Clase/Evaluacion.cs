@@ -36,13 +36,14 @@ namespace SGM.Clase
         public string TotalItems { get; set; }
 
         public string TotalReactivos { get; set; }
-
+        public string CalMinima { get; set; }
+        public string Estatus { get; set; }
 
 
         public DataTable MostrarEvaluacion(int IdControl)
         {
 
-            string query = "SELECT Id_Evaluacion,CantidadReactivos,CASE WHEN Estatus=1 THEN 'Pendiente de capturar' WHEN Estatus=2 THEN 'Capturado' END 'Estatus' FROM Evaluacion WHERE Id_Control = @IdCoontrol AND Activado IS NULL";
+            string query = "SELECT Id_Evaluacion,CantidadReactivos,CalificacionMinima,CASE WHEN Estatus=1 THEN 'Pendiente de capturar' WHEN Estatus=2 THEN 'Capturado' END 'Estatus' FROM Evaluacion WHERE Id_Control = @IdCoontrol AND Activado IS NULL";
 
 
             comm.Connection = conexion.AbrirConexion();
@@ -148,14 +149,16 @@ namespace SGM.Clase
         }
 
 
-        public bool Insertar(int IdControl, int Cantidad,int Estatus)
+        public bool Insertar(int IdControl, int Cantidad,int Estatus,int CalMinima)
         {
             comm.Connection = conexion.AbrirConexion();
-            comm.CommandText = "INSERT INTO [Evaluacion] (Id_Control,CantidadReactivos,Estatus) VALUES(@Id_Control,@Cantidad,@Estatus)";
+            comm.CommandText = "INSERT INTO [Evaluacion] (Id_Control,CantidadReactivos,Estatus,CalificacionMinima) VALUES(@Id_Control,@Cantidad,@Estatus,@CalMinima)";
             comm.CommandType = CommandType.Text;
             comm.Parameters.AddWithValue("@Id_Control", IdControl);
             comm.Parameters.AddWithValue("@Cantidad", Cantidad);
             comm.Parameters.AddWithValue("@Estatus", Estatus);
+            comm.Parameters.AddWithValue("@CalMinima", CalMinima);
+
 
             int i = comm.ExecuteNonQuery();
             comm.Parameters.Clear();
@@ -311,13 +314,14 @@ namespace SGM.Clase
 
         }
 
-        public bool ModificarEvaluacion(int IdEvaluacion, int Cantidad)
+        public bool ModificarEvaluacion(int IdEvaluacion, int Cantidad,int CalMinima)
         {
             comm.Connection = conexion.AbrirConexion();
-            comm.CommandText = "UPDATE Evaluacion SET CantidadReactivos=@CantidadReactivos WHERE Id_Evaluacion=@IdEvaluaciion";
+            comm.CommandText = "UPDATE Evaluacion SET CantidadReactivos=@CantidadReactivos,CalificacionMinima=@CalMinima WHERE Id_Evaluacion=@IdEvaluaciion";
             comm.CommandType = CommandType.Text;
             comm.Parameters.AddWithValue("@IdEvaluaciion", IdEvaluacion);
             comm.Parameters.AddWithValue("@CantidadReactivos", Cantidad);
+            comm.Parameters.AddWithValue("@CalMinima", CalMinima);
             int i = comm.ExecuteNonQuery();
             comm.Parameters.Clear();
             conexion.CerrarConexion();
@@ -636,7 +640,7 @@ namespace SGM.Clase
         public void ObtenerTotalItems(int IdEvaluacion)
         {
             comm.Connection = conexion.AbrirConexion();
-            comm.CommandText = "SELECT COUNT(*) 'TotalItems' FROM Ev_Pregunta WHERE Id_Evaluacion=@IdEvaluacioon AND Activado IS NULL";
+            comm.CommandText = " SELECT COUNT(*) 'TotalItems',ev.Estatus FROM Ev_Pregunta preg JOIN Evaluacion ev on preg.Id_Evaluacion = ev.Id_Evaluacion WHERE preg.Id_Evaluacion = @IdEvaluacioon AND preg.Activado IS NULL GROUP BY ev.Estatus";
             comm.CommandType = CommandType.Text;
             comm.Parameters.AddWithValue("@IdEvaluacioon", IdEvaluacion);
             dr = comm.ExecuteReader();
@@ -644,6 +648,8 @@ namespace SGM.Clase
 
             dr.Read();
             TotalItems = dr["TotalItems"].ToString();
+            Estatus = dr["Estatus"].ToString();
+
             dr.Close();
             comm.Connection = conexion.CerrarConexion();
 
@@ -652,7 +658,7 @@ namespace SGM.Clase
         public void ObtenerTotalReactivos(int IdEvaluacion)
         {
             comm.Connection = conexion.AbrirConexion();
-            comm.CommandText = "SELECT CantidadReactivos FROM Evaluacion WHERE Id_Evaluacion=@IdEvaluacion";
+            comm.CommandText = "SELECT CantidadReactivos,CalificacionMinima FROM Evaluacion WHERE Id_Evaluacion=@IdEvaluacion";
             comm.CommandType = CommandType.Text;
             comm.Parameters.AddWithValue("@IdEvaluacion", IdEvaluacion);
             dr = comm.ExecuteReader();
@@ -660,6 +666,7 @@ namespace SGM.Clase
 
             dr.Read();
             TotalReactivos = dr["CantidadReactivos"].ToString();
+            CalMinima = dr["CalificacionMinima"].ToString();
             dr.Close();
             comm.Connection = conexion.CerrarConexion();
 

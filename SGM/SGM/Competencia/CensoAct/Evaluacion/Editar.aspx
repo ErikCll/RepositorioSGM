@@ -30,7 +30,20 @@
                                     ErrorMessage="Cantidad de reactivos requerida." ForeColor="Red" ValidationGroup="btnGuardar"></asp:RequiredFieldValidator>
                             </div>
                         </div>
-                     <div class="col-sm-12 col-md-8 col-lg-8"></div>
+                         <div class="col-12 col-md-12 col-lg-4">
+                            <div class="form-group">
+                                <label>Calificación mínima:</label>
+
+                                <input id="txtRange2"  runat="server" style="border:none;width:auto"  readonly="readonly"/>
+                                    <%-- <input type="range" id="range" list="lista" max="10" min="0" step="1" onchange="updateTextInput(this.value);"/>
+                                <asp:Label runat="server" ID="lblRange"></asp:Label>--%>
+                             
+                                <input type="range" name="rangeInput" min="0" max="10" step="1"   onchange="updateTextInput(this.value);" class="custom-range" id="range" runat="server"/>
+
+                              
+                            </div>
+                        </div>
+                     <div class="col-sm-12 col-md-4 col-lg-4"></div>
                      
                                         
                         <div class="col-sm-12 col-md-12 col-lg-6">
@@ -92,6 +105,10 @@
             else {
                 return false;
             }
+            }
+
+              function updateTextInput(val) {
+          document.getElementById("<%= txtRange2.ClientID %>").value=val; 
         }
             </script>  
 </asp:Content>

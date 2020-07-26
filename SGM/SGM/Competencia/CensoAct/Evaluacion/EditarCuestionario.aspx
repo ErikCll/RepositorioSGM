@@ -38,35 +38,35 @@
                                  <div class="form-group">
                                      <label>Respuesta 1:</label>
                                      <asp:TextBox runat="server" CssClass="form-control" ID="txt1" BorderColor="Green" onkeypress="return AllowAlphabet(event)" MaxLength="200"></asp:TextBox>
-                                     <asp:Label runat="server" ID="IdR1"></asp:Label>
+                                     <asp:Label runat="server" ID="IdR1" Visible="false"></asp:Label>
                                  </div>
                                     <div class="form-group">
                                      <label>Respuesta 2:</label>
                                      <asp:TextBox runat="server" CssClass="form-control" ID="txt2" onkeypress="return AllowAlphabet(event)" MaxLength="200"></asp:TextBox>
-                                      <asp:Label runat="server" ID="IdR2"></asp:Label>
+                                      <asp:Label runat="server" ID="IdR2" Visible="false"></asp:Label>
  
                                  </div>
                                     <div class="form-group">
                                      <label>Respuesta 3:</label>
                                      <asp:TextBox runat="server" CssClass="form-control" ID="txt3" onkeypress="return AllowAlphabet(event)" MaxLength="200"></asp:TextBox>
-                                         <asp:Label runat="server" ID="IdR3"></asp:Label>
+                                         <asp:Label runat="server" ID="IdR3" Visible="false"></asp:Label>
                                  </div>
                                     <div class="form-group">
                                      <label>Respuesta 4:</label>
                                      <asp:TextBox runat="server" CssClass="form-control" ID="txt4" onkeypress="return AllowAlphabet(event)" MaxLength="200"></asp:TextBox>
-                                         <asp:Label runat="server" ID="IdR4"></asp:Label>
+                                         <asp:Label runat="server" ID="IdR4" Visible="false"></asp:Label>
                                  </div>
                         </div>
                                                       <div class="col-sm-6 col-md-6 col-lg-6" runat="server" id="DivTrue" visible="false">
                                                         <div class="form-group ">
                                                             <asp:CheckBox runat="server" id="chkTrue"/>
                                                             <asp:Label CssClass=" font-weight-bold" runat="server" ID="lblVerdadero" Text="Verdadero"></asp:Label>
-                                                            <asp:Label runat="server" ID="IdTrue"></asp:Label>
+                                                            <asp:Label runat="server" ID="IdTrue" Visible="false"></asp:Label>
                                                         </div>
                                                           <div class="form-group ">
                                                             <asp:CheckBox runat="server" ID="chkFalse"/>
                                                         <asp:Label CssClass=" font-weight-bold" runat="server" ID="lblFalso" Text="Falso"></asp:Label>
-                                                                 <asp:Label runat="server" ID="IdFalse"></asp:Label>
+                                                                 <asp:Label runat="server" ID="IdFalse" Visible="false"></asp:Label>
 
 
                                                         </div>

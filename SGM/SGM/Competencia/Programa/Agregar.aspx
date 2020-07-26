@@ -100,8 +100,18 @@
                                         <asp:BoundField DataField="FechaEvaluacion" HeaderText="Fecha de programación" />
                                          <asp:BoundField DataField="FechaRealizado" HeaderText="Fecha de realización" />
                                         <asp:BoundField DataField="Estatus" HeaderText="Estatus" /> 
-                                        <asp:BoundField DataField="Calificacion" HeaderText="Calificación" ItemStyle-HorizontalAlign="Center" />
-                                         <asp:BoundField DataField="Clave" HeaderText="Clave" ItemStyle-HorizontalAlign="Center"  />
+                                   <asp:TemplateField  ItemStyle-HorizontalAlign="Center" HeaderText="Calificación">
+                                            <ItemTemplate>
+                                                <asp:Label runat="server" ID="lblCalificacion" Text='<%# Eval("Calificacion") %>' ></asp:Label>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+
+                                           <asp:TemplateField Visible="false">
+                                            <ItemTemplate>
+                                                <asp:Label runat="server" ID="lblCalMinima" Text='<%# Eval("CalificacionMinima") %>' ></asp:Label>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                           <asp:BoundField DataField="Clave" HeaderText="Clave" ItemStyle-HorizontalAlign="Center"  />
 
                                         <asp:TemplateField Visible="false">
                                             <ItemTemplate>
@@ -109,6 +119,7 @@
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                         
+                                     
 
                                     </Columns>
 

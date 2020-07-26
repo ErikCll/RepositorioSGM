@@ -149,6 +149,7 @@
                         <div class=" custom-control-inline">
                             <label class="font-weight-normal">Calificación:</label>
                             <asp:Label runat="server" ID="lblCalificacion" CssClass=" font-weight-bold ml-1"></asp:Label>
+                            <label class="font-weight-normal">/10</label>
                         </div>
                     </div>
                 </div>

@@ -215,6 +215,21 @@
             </ul>
           </li>
 
+              <li class="nav-item has-treeview" id="Li1" runat="server">
+             
+            <a href="#" class="nav-link" id="A1">
+                <i class="nav-icon fas fa-circle"></i>
+
+              <p>
+               Indicadores
+
+                <i class="right fas fa-angle-left"style="margin-right:-9px"></i>
+              </p>
+            </a>
+     
+          </li>
+
+
        <%--   <li class="nav-item has-treeview">
              
             <a href="#" class="nav-link">

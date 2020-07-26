@@ -75,11 +75,11 @@ namespace SGM.Clase
         public DataTable MostrarEvaluaciones( int Id_Evaluacion, string txtSearch)
         {
 
-            string query = "SELECT Id_Programa,CONCAT(emp.Nombre,' ',emp.ApellidoPaterno,' ',emp.ApellidoMaterno) 'Empleado', CONVERT(nvarchar, prog.FechaEvaluacion, 105) 'FechaEvaluacion', CONVERT(nvarchar, prog.FechaRealizado, 105) 'FechaRealizado',REPLACE(prog.Calificacion,',','.') 'Calificacion', CASE WHEN prog.Estatus = 1 THEN 'Pendiente de realizar' ELSE 'Realizado' END 'Estatus',prog.Estatus 'IntEstatus',Clave FROM Op_ProgramaCapacitacion prog JOIN Cat_Empleado emp on prog.Id_Empleado = emp.Id_empleado WHERE prog.Id_Evaluacion = @Id_Evaluacion AND prog.Activado IS NULL ORDER BY prog.FechaEvaluacion DESC";
+            string query = "SELECT Id_Programa,CONCAT(emp.Nombre,' ',emp.ApellidoPaterno,' ',emp.ApellidoMaterno) 'Empleado', CONVERT(nvarchar, prog.FechaEvaluacion, 105) 'FechaEvaluacion', CONVERT(nvarchar, prog.FechaRealizado, 105) 'FechaRealizado',REPLACE(prog.Calificacion,',','.') 'Calificacion',prog.Calificacion 'Calificacion2', CASE WHEN prog.Estatus = 1 THEN 'Pendiente de realizar' ELSE 'Realizado' END 'Estatus',prog.Estatus 'IntEstatus',Clave,ev.CalificacionMinima FROM Op_ProgramaCapacitacion prog JOIN Cat_Empleado emp on prog.Id_Empleado = emp.Id_empleado JOIN Evaluacion ev on prog.Id_Evaluacion=ev.Id_Evaluacion WHERE prog.Id_Evaluacion = @Id_Evaluacion AND prog.Activado IS NULL ORDER BY prog.FechaEvaluacion DESC";
 
             if (!String.IsNullOrEmpty(txtSearch.Trim()))
             {
-                query = "SELECT Id_Programa,CONCAT(emp.Nombre,' ',emp.ApellidoPaterno,' ',emp.ApellidoMaterno) 'Empleado', CONVERT(nvarchar, prog.FechaEvaluacion, 105) 'FechaEvaluacion', CONVERT(nvarchar, prog.FechaRealizado, 105) 'FechaRealizado',REPLACE(prog.Calificacion,',','.') 'Calificacion', CASE WHEN prog.Estatus = 1 THEN 'Pendiente de realizar' ELSE 'Realizado' END 'Estatus',prog.Estatus 'IntEstatus',Clave FROM Op_ProgramaCapacitacion prog JOIN Cat_Empleado emp on prog.Id_Empleado = emp.Id_empleado WHERE prog.Id_Evaluacion = @Id_Evaluacion AND prog.Activado IS NULL AND CONCAT(emp.Nombre,' ',emp.ApellidoPaterno,' ',emp.ApellidoMaterno) LIKE '%'+@txtSearch+'%'  ORDER BY prog.FechaEvaluacion DESC";
+                query = "SELECT Id_Programa,CONCAT(emp.Nombre,' ',emp.ApellidoPaterno,' ',emp.ApellidoMaterno) 'Empleado', CONVERT(nvarchar, prog.FechaEvaluacion, 105) 'FechaEvaluacion', CONVERT(nvarchar, prog.FechaRealizado, 105) 'FechaRealizado',REPLACE(prog.Calificacion,',','.') 'Calificacion', prog.Calificacion 'Calificacion2', CASE WHEN prog.Estatus = 1 THEN 'Pendiente de realizar' ELSE 'Realizado' END 'Estatus',prog.Estatus 'IntEstatus',Clave,ev.CalificacionMinima FROM Op_ProgramaCapacitacion prog JOIN Cat_Empleado emp on prog.Id_Empleado = emp.Id_empleado JOIN Evaluacion ev on prog.Id_Evaluacion=ev.Id_Evaluacion WHERE prog.Id_Evaluacion = @Id_Evaluacion AND prog.Activado IS NULL AND CONCAT(emp.Nombre,' ',emp.ApellidoPaterno,' ',emp.ApellidoMaterno) LIKE '%'+@txtSearch+'%'  ORDER BY prog.FechaEvaluacion DESC";
             }
             comm.Connection = conexion.AbrirConexion();
             comm.CommandText = query;
@@ -282,10 +282,33 @@ namespace SGM.Clase
 
         }
 
+        public bool EliminarValidacion(int IdPrograma)
+        {
+            comm.Connection = conexion.AbrirConexion();
+            comm.CommandText = "UPDATE Op_ProgramaCapacitacion SET Activado=1  WHERE Id_Programa = @IdPrograama";
+            comm.CommandType = CommandType.Text;
+
+            comm.Parameters.AddWithValue("@IdPrograama", IdPrograma);
+            int i = comm.ExecuteNonQuery();
+            comm.Parameters.Clear();
+            conexion.CerrarConexion();
+
+            if (i > 0)
+            {
+                return true;
+
+
+            }
+            else
+                return false;
+
+
+        }
+
         public bool ValidarClave(string Clave)
         {
             comm.Connection = conexion.AbrirConexion();
-            comm.CommandText = "SELECT COUNT(*) FROM Op_ProgramaCapacitacion WHERE Clave = @Clave AND Estatus=1 AND Activado IS NULL AND EsIngresado IS NULL";
+            comm.CommandText = "SELECT COUNT(*) FROM Op_ProgramaCapacitacion WHERE Clave = @Clave COLLATE Latin1_General_CS_AS AND Estatus=1 AND Activado IS NULL AND EsIngresado IS NULL";
             comm.CommandType = CommandType.Text;
 
             comm.Parameters.AddWithValue("@Clave", Clave);
@@ -304,6 +327,31 @@ namespace SGM.Clase
 
 
         }
+
+        public bool ValidarRealizado(int IdPrograma)
+        {
+            comm.Connection = conexion.AbrirConexion();
+            comm.CommandText = "SELECT COUNT(*) FROM Op_ProgramaCapacitacion WHERE Id_programa=@IdProograma AND Estatus=1";
+            comm.CommandType = CommandType.Text;
+
+            comm.Parameters.AddWithValue("@IdProograma", IdPrograma);
+            int i = (int)comm.ExecuteScalar();
+            comm.Parameters.Clear();
+            conexion.CerrarConexion();
+
+            if (i > 0)
+            {
+                return true;
+
+
+            }
+            else
+                return false;
+
+
+        }
+
+
 
         public void LeerDatos(int IdPrograma)
         {
@@ -345,7 +393,7 @@ namespace SGM.Clase
         public void LeerDatosPrograma(int IdPrograma)
         {
             comm.Connection = conexion.AbrirConexion();
-            comm.CommandText = "SELECT Id_Empleado,Id_Evaluacion FROM Op_ProgramaCapacitacion WHERE Id_Programa=@IdPrograma";
+            comm.CommandText = "SELECT Id_Empleado,Id_Evaluacion,CONVERT(nvarchar,FechaEvaluacion, 105) 'FechaEvaluacion' FROM Op_ProgramaCapacitacion WHERE Id_Programa=@IdPrograma";
             comm.CommandType = CommandType.Text;
             comm.Parameters.AddWithValue("@IdPrograma", IdPrograma);
         
@@ -354,6 +402,7 @@ namespace SGM.Clase
             dr.Read();
             Id_Empleado = dr["Id_Empleado"].ToString();
             Id_Evaluacion = dr["Id_Evaluacion"].ToString();
+            FechaEvaluacion = dr["FechaEvaluacion"].ToString();
 
             dr.Close();
             comm.Connection = conexion.CerrarConexion();

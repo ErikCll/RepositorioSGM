@@ -40,6 +40,15 @@ namespace SGM.Competencia.CensoAct.Evaluacion {
         protected global::System.Web.UI.WebControls.Button btnIngresar;
         
         /// <summary>
+        /// Control btnValidar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnValidar;
+        
+        /// <summary>
         /// Control RadWindow1.
         /// </summary>
         /// <remarks>

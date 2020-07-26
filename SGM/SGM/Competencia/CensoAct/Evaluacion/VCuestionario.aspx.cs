@@ -55,7 +55,7 @@ namespace SGM.Competencia.CensoAct
             string encodedString2 = (Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(TipoPregunta.ToString())));
 
 
-            Response.Redirect("EditarCuestionario.aspx?preg=" + encodedString + "&tp=" + encodedString2+"&ev="+Request.QueryString["ev"]);
+            Response.Redirect("EditarCuestionario.aspx?preg=" + encodedString + "&tp=" + encodedString2+"&ev="+Request.QueryString["ev"]+ "&ctr=" + Request.QueryString["ctr"] + "&act=" + Request.QueryString["act"] + "");
         }
         protected void lstPreguntas_ItemDataBound(object sender, ListViewItemEventArgs e)
         {

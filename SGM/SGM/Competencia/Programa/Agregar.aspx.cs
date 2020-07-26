@@ -74,7 +74,27 @@ namespace SGM.Competencia.Programa
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
                 Label Estatus = e.Row.FindControl("lblEstatus") as Label;
+                Label Calificacion = e.Row.FindControl("lblCalificacion") as Label;
+
+                Label CalMinima = e.Row.FindControl("lblCalMinima") as Label;
+
                 Button btnEditar = e.Row.FindControl("btnEditar") as Button;
+
+                if (Calificacion.Text != "" && CalMinima.Text!="")
+                {
+                    decimal CalificacionFinal = decimal.Parse(Calificacion.Text);
+                    int CalMinimaFinal = Convert.ToInt32(CalMinima.Text);
+
+                    if (CalificacionFinal >= CalMinimaFinal)
+                    {
+                        Calificacion.Attributes.Add("class", "text-green");
+                    }
+                    else
+                    {
+                        Calificacion.Attributes.Add("class", "text-red");
+                    }
+                }
+              
 
                 if (Estatus.Text == "2")
                 {

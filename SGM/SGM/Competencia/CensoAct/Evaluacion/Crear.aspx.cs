@@ -57,8 +57,10 @@ namespace SGM.Competencia.CensoAct
             string decodedString = System.Text.ASCIIEncoding.ASCII.GetString(Convert.FromBase64String(Request.QueryString["id"]));
             int IdControl = Convert.ToInt32(decodedString);
             int Cantidad = Convert.ToInt32(txtCantidad.Text);
+            int CalMinima = Convert.ToInt32(txtRange2.Value);
 
-            if (evaluacion.Insertar(IdControl, Cantidad,1))
+
+            if (evaluacion.Insertar(IdControl, Cantidad,1,CalMinima))
             {
                 //string script = "alert('Evaluación creada exitosamente.'); window.location.href= 'Index.aspx';";
 

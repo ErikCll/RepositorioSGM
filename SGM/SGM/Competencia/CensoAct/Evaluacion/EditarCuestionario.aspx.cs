@@ -64,7 +64,7 @@ namespace SGM.Competencia.CensoAct.Evaluacion
         }
         protected void Regresar(Object sender, EventArgs e)
         {
-            Response.Redirect("VCuestionario.aspx?ev=" + Request.QueryString["ev"] + "");
+            Response.Redirect("VCuestionario.aspx?ev=" + Request.QueryString["ev"] + "&ctr=" + Request.QueryString["ctr"] + "&act=" + Request.QueryString["act"] + "");
         }
 
         protected void btnGuardar_Click(object sender, EventArgs e)
