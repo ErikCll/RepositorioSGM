@@ -44,9 +44,8 @@ namespace SGM.Competencia.CensoAct.Evaluacion
             string decodedString = System.Text.ASCIIEncoding.ASCII.GetString(Convert.FromBase64String(Request.QueryString["ev"]));
             int IdEvaluacion = Convert.ToInt32(decodedString);
             evaluacion.ObtenerTotalItems(IdEvaluacion);
-
+            evaluacion.ObtenerEstatus(IdEvaluacion);
             int TotalReactivos = Convert.ToInt32(txtCantidad.Text);
-            int TotalItems = Convert.ToInt32(evaluacion.TotalItems);
             int CalMinima = Convert.ToInt32(txtRange2.Value);
             string Estatus = evaluacion.Estatus;
 
@@ -60,6 +59,8 @@ namespace SGM.Competencia.CensoAct.Evaluacion
             }
             else
             {
+                int TotalItems = Convert.ToInt32(evaluacion.TotalItems);
+
                 if (TotalReactivos > TotalItems)
                 {
                     string txtJS = String.Format("<script>alert('{0}');</script>", "La cantidad de reactivos debe ser menor o igual a " + TotalItems.ToString() + ".");

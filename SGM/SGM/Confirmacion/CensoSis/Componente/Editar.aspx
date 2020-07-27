@@ -5,7 +5,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="mapeo" runat="server">
     <li class="breadcrumb-item active"><a href="../Index.aspx">Censo de sistema de medición</a></li>
-                  <li class="breadcrumb-item active"><asp:LinkButton runat="server" onclick="Regresar">Componente</asp:LinkButton></li>
+                  <li class="breadcrumb-item active"><asp:LinkButton runat="server" OnClick="Regresar">Componente</asp:LinkButton></li>
                       <li class="breadcrumb-item"><a>Editar</a></li>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Content" runat="server">
@@ -40,7 +40,8 @@
                           
                             <div class="form-group">
                                 <asp:Button class="btn btn-primary" id="btnGuardar" runat="server" Text="Guardar" ValidationGroup="btnGuardar" OnClick="btnGuardar_Click"/>
-                                <asp:LinkButton runat="server" OnClick="Regresar" CssClass="btn btn-default" ID="btnRegresa">Regresar</asp:LinkButton>
+
+                                <asp:Button runat="server" OnClick="Regresar" CssClass="btn btn-default" ID="Regresar1" Text="Regresar"/>
 
 
                             </div>
@@ -65,7 +66,8 @@
                           
                             <div class="form-group">
                                 <asp:Button class="btn btn-primary" id="btnGuardar2" runat="server" Text="Guardar" ValidationGroup="btnGuardar2" OnClick="btnGuardar2_Click"/>
-                                <asp:LinkButton runat="server" OnClick="Regresar" class="btn btn-default" ID="btnRegresar2">Regresar</asp:LinkButton>
+
+                                <asp:Button runat="server" OnClick="Regresar" CssClass="btn btn-default" ID="Regresar2" Text="Regresar" />
 
 
                             </div>
@@ -93,10 +95,10 @@
                      document.getElementById("<%= btnGuardar.ClientID %>").value = "Cargando...";
                         document.getElementById("<%= btnGuardar2.ClientID %>").disabled = true;
                      document.getElementById("<%= btnGuardar2.ClientID %>").value = "Cargando...";
-                        document.getElementById("<%= btnRegresa.ClientID %>").disabled = true;
-                     document.getElementById("<%= btnRegresa.ClientID %>").value = "Cargando...";
-                        document.getElementById("<%= btnRegresar2.ClientID %>").disabled = true;
-                document.getElementById("<%= btnRegresar2.ClientID %>").value = "Cargando...";
+                        document.getElementById("<%= Regresar1.ClientID %>").disabled = true;
+                     document.getElementById("<%= Regresar1.ClientID %>").value = "Cargando...";
+                        document.getElementById("<%= Regresar2.ClientID %>").disabled = true;
+                document.getElementById("<%=Regresar2.ClientID %>").value = "Cargando...";
 
 
   }

@@ -67,13 +67,13 @@ namespace SGM.Confirmacion.CensoSis.Componente {
         protected global::System.Web.UI.WebControls.Button btnGuardar;
         
         /// <summary>
-        /// Control btnRegresa.
+        /// Control Regresar1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnRegresa;
+        protected global::System.Web.UI.WebControls.Button Regresar1;
         
         /// <summary>
         /// Control Div3.
@@ -121,12 +121,12 @@ namespace SGM.Confirmacion.CensoSis.Componente {
         protected global::System.Web.UI.WebControls.Button btnGuardar2;
         
         /// <summary>
-        /// Control btnRegresar2.
+        /// Control Regresar2.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnRegresar2;
+        protected global::System.Web.UI.WebControls.Button Regresar2;
     }
 }

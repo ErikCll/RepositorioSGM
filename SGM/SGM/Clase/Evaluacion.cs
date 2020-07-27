@@ -640,7 +640,7 @@ namespace SGM.Clase
         public void ObtenerTotalItems(int IdEvaluacion)
         {
             comm.Connection = conexion.AbrirConexion();
-            comm.CommandText = " SELECT COUNT(*) 'TotalItems',ev.Estatus FROM Ev_Pregunta preg JOIN Evaluacion ev on preg.Id_Evaluacion = ev.Id_Evaluacion WHERE preg.Id_Evaluacion = @IdEvaluacioon AND preg.Activado IS NULL GROUP BY ev.Estatus";
+            comm.CommandText = " SELECT COUNT(*) 'TotalItems' FROM Ev_Pregunta WHERE Id_Evaluacion = @IdEvaluacioon AND Activado IS NULL ";
             comm.CommandType = CommandType.Text;
             comm.Parameters.AddWithValue("@IdEvaluacioon", IdEvaluacion);
             dr = comm.ExecuteReader();
@@ -648,13 +648,28 @@ namespace SGM.Clase
 
             dr.Read();
             TotalItems = dr["TotalItems"].ToString();
-            Estatus = dr["Estatus"].ToString();
 
             dr.Close();
             comm.Connection = conexion.CerrarConexion();
 
         }
 
+        public void ObtenerEstatus(int IdEvaluacion)
+        {
+            comm.Connection = conexion.AbrirConexion();
+            comm.CommandText = " SELECT Estatus FROM Evaluacion WHERE Id_Evaluacion = @IdEvaluacioon ";
+            comm.CommandType = CommandType.Text;
+            comm.Parameters.AddWithValue("@IdEvaluacioon", IdEvaluacion);
+            dr = comm.ExecuteReader();
+            comm.Parameters.Clear();
+
+            dr.Read();
+            Estatus = dr["Estatus"].ToString();
+
+            dr.Close();
+            comm.Connection = conexion.CerrarConexion();
+
+        }
         public void ObtenerTotalReactivos(int IdEvaluacion)
         {
             comm.Connection = conexion.AbrirConexion();

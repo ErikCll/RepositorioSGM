@@ -46,7 +46,7 @@
                           
                             <div class="form-group">
                                 <asp:Button class="btn btn-primary" id="btnGuardar" runat="server" Text="Guardar" ValidationGroup="btnGuardar" OnClick="btnGuardar_Click"/>
-                                <asp:LinkButton runat="server" OnClick="Regresar" class="btn btn-default" ID="btnRegresar">Regresar</asp:LinkButton>
+                                <asp:Button runat="server" OnClick="Regresar" CssClass="btn btn-default" ID="btnRegresar1" Text="Regresar"/>
 
 
                             </div>
@@ -71,7 +71,8 @@
                           
                             <div class="form-group">
                                 <asp:Button class="btn btn-primary" id="btnGuardar2" runat="server" Text="Guardar" ValidationGroup="btnGuardar2" OnClick="btnGuardar2_Click"/>
-                                <asp:LinkButton runat="server" OnClick="Regresar" class="btn btn-default" ID="btnRegresar2">Regresar</asp:LinkButton>
+<%--                                <asp:LinkButton runat="server" OnClick="Regresar" class="btn btn-default" ID="btnRegresar2">Regresar</asp:LinkButton>--%>
+                                <asp:Button runat="server" OnClick="Regresar" CssClass="btn btn-default" ID="Regresar2" Text="Regresar" />
 
 
                             </div>
@@ -160,10 +161,10 @@
                      document.getElementById("<%= btnGuardar.ClientID %>").value = "Cargando...";
                         document.getElementById("<%= btnGuardar2.ClientID %>").disabled = true;
                      document.getElementById("<%= btnGuardar2.ClientID %>").value = "Cargando...";
-                        document.getElementById("<%= btnRegresar.ClientID %>").disabled = true;
-                     document.getElementById("<%= btnRegresar.ClientID %>").value = "Cargando...";
-                        document.getElementById("<%= btnRegresar2.ClientID %>").disabled = true;
-                document.getElementById("<%= btnRegresar2.ClientID %>").value = "Cargando...";
+                        document.getElementById("<%= btnRegresar1.ClientID %>").disabled = true;
+                     document.getElementById("<%= btnRegresar1.ClientID %>").value = "Cargando...";
+                        document.getElementById("<%= Regresar2.ClientID %>").disabled = true;
+                document.getElementById("<%= Regresar2.ClientID %>").value = "Cargando...";
 
 
   }
