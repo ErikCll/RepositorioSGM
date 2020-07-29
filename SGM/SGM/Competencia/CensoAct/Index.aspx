@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Index.aspx.cs" Inherits="SGM.Competencia.CensoAct.Index" %>
+﻿    <%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Index.aspx.cs" Inherits="SGM.Competencia.CensoAct.Index" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     Censo de actividad
 </asp:Content>

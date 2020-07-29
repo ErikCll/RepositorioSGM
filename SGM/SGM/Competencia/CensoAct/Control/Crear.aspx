@@ -60,29 +60,37 @@
                                         ErrorMessage="Formato incorrecto de fecha." ForeColor="Red" ></asp:RegularExpressionValidator>
                                 </div>
                               </div>
-                           <div class="col-sm-8 col-md-4 col-lg-4">
+                           <div class="col-sm-12 col-md-5 col-lg-5">
                 <div class="form-group">
                     <label class="font-weight-bold">Sin vigencia:</label>
                     <asp:CheckBox runat="server" ID="checkSin"   />
-                </div>
-            </div>
-                        <div class="col-sm-8 col-md-8 col-lg-8"></div>
-
-
-            <div class="col-sm-8 col-md-4 col-lg-4">
-                <div class="form-group">
-                    <label class="font-weight-bold">Con vigencia:</label>
+                      <label class="font-weight-bold ml-1">Con vigencia:</label>
                     <asp:CheckBox runat="server" ID="checkCon" />
                 </div>
+                                 <div class="form-group" id="Div1" runat="server">
+                                <label class="font-weight-bold">Cantidad de años:</label>
+                                <asp:TextBox runat="server" ID="txtCantidad" MaxLength="2" CssClass="form-control" onkeypress="return soloNumeros(event)" Width="200px"></asp:TextBox>
+                            </div>
             </div>
+
+                       
+                    
+                        <div class="col-sm-12 col-md-12 col-lg-12"></div>
+
+
+                                   <div class="col-sm-12 col-md-12 col-lg-12" id="Div2" runat="server" visible="false">
+                <div class="form-group">
+                    <label>Usar evaluación de la versión anterior:</label>
+                    <label class="font-weight-bold">Si</label>
+                    <asp:CheckBox runat="server" ID="chckSi"   />
+                     <label class="font-weight-bold ml-1">No</label>
+                    <asp:CheckBox runat="server" ID="chckNo"   />
+                </div>
+            </div>
+        
                         <div class="col-sm-8 col-md-8 col-lg-8"></div>
                
-                            <div class="col-sm-8 col-md-3 col-lg-3" id="Div1" runat="server">
-                            <div class="form-group">
-                                <label class="font-weight-bold">Cantidad de años:</label>
-                                <asp:TextBox runat="server" ID="txtCantidad" MaxLength="2" CssClass="form-control" onkeypress="return soloNumeros(event)"></asp:TextBox>
-                            </div>
-                        </div>
+                         
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                           
                             <div class="form-group">
@@ -115,15 +123,30 @@
                        divP.hide();
   var checkSin = $("#<%=checkSin.ClientID%>");
                    
-                   var checkCon = $("#<%=checkCon.ClientID%>");
+                                 var checkCon = $("#<%=checkCon.ClientID%>");
+                                   var chckSi = $("#<%=chckSi.ClientID%>");
+                    var chckNo = $("#<%=chckNo.ClientID%>");
+
                     checkSin.click(function () {
-                       checkCon.prop('checked', false);
-                        divP.hide();
+                        if (checkSin.prop('checked') == false) {
+                            checkCon.prop('checked', true);
+
+                                                  divP.show();
+                        }
+                        else {
+                                                        checkCon.prop('checked', false);
+                               divP.hide();
+
+
+                        }
+                     
              
 
                    });
                      checkCon.click(function () {
-                         if (checkCon.prop('checked')==false) {
+                         if (checkCon.prop('checked') == false) {
+                                  checkSin.prop('checked', true);
+
                                divP.hide();
             
                          }
@@ -131,6 +154,35 @@
                                checkSin.prop('checked', false);
 
                       divP.show();
+                          
+                         }
+
+                                 });
+
+
+                                    chckSi.click(function () {
+                        if (chckSi.prop('checked') == false) {
+                            chckNo.prop('checked', true);
+
+                        }
+                        else {
+                                                        chckNo.prop('checked', false);
+
+
+                        }
+                     
+             
+
+                   });
+                     chckNo.click(function () {
+                         if (chckNo.prop('checked') == false) {
+                                  chckSi.prop('checked', true);
+
+            
+                         }
+                         else {
+                               chckSi.prop('checked', false);
+
                           
                          }
 

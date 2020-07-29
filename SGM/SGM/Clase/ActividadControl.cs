@@ -15,6 +15,12 @@ namespace SGM.Clase
         SqlDataReader dr;
 
         public string IdControl { get; set; }
+        public string IdControl2 { get; set; }
+        public string IdEvaluacion { get; set; }
+        public string IdEvaluacion2 { get; set; }
+
+
+
         public string Codigo { get; set; }
         public string FechaEmision { get; set; }
         public string Meses { get; set; }
@@ -55,6 +61,54 @@ namespace SGM.Clase
             comm.Parameters.AddWithValue("@Codigo", Codigo);
             comm.Parameters.AddWithValue("@FechaEmision", FechaEmision);
             comm.Parameters.AddWithValue("@VigenciaMeses", VigenciaMeses);
+            int i = comm.ExecuteNonQuery();
+            comm.Parameters.Clear();
+            conexion.CerrarConexion();
+
+            if (i > 0)
+            {
+                return true;
+
+
+            }
+            else
+                return false;
+
+
+        }
+
+        public bool InsertarEvaluacion(int IdControl1, int IdControl2)
+        {
+            comm.Connection = conexion.AbrirConexion();
+            comm.CommandText = "INSERT INTO [Evaluacion] (Id_Control, CantidadReactivos, Estatus, CalificacionMinima) SELECT @IdControll,CantidadReactivos,1,CalificacionMinima FROM Evaluacion WHERE Id_Control = @IdControl2 AND Estatus = 2 AND Activado IS NULL";
+            comm.CommandType = CommandType.Text;
+            comm.Parameters.AddWithValue("@IdControll", IdControl1);
+            comm.Parameters.AddWithValue("@IdControl2", IdControl2);
+      
+            int i = comm.ExecuteNonQuery();
+            comm.Parameters.Clear();
+            conexion.CerrarConexion();
+
+            if (i > 0)
+            {
+                return true;
+
+
+            }
+            else
+                return false;
+
+
+        }
+
+        public bool InsertarPreguntasEvaluacion(int IdControl1, int IdControl2)
+        {
+            comm.Connection = conexion.AbrirConexion();
+            comm.CommandText = "INSERT INTO [Evaluacion] (Id_Control, CantidadReactivos, Estatus, CalificacionMinima) SELECT @IdControll,CantidadReactivos,1,CalificacionMinima FROM Evaluacion WHERE Id_Control = @IdControl2 AND Estatus = 2 AND Activado IS NULL";
+            comm.CommandType = CommandType.Text;
+            comm.Parameters.AddWithValue("@IdControll", IdControl1);
+            comm.Parameters.AddWithValue("@IdControl2", IdControl2);
+
             int i = comm.ExecuteNonQuery();
             comm.Parameters.Clear();
             conexion.CerrarConexion();
@@ -121,6 +175,54 @@ namespace SGM.Clase
 
 
         }
+
+        public bool EditarEvaluacion(int IdControl1,int IdControl2)
+        {
+            comm.Connection = conexion.AbrirConexion();
+            comm.CommandText = "UPDATE Evaluacion SET Id_Control=@IdControl1 WHERE Id_Control=@IdControl2";
+            comm.CommandType = CommandType.Text;
+            comm.Parameters.AddWithValue("@IdControl1", IdControl1);
+            comm.Parameters.AddWithValue("@IdControl2", IdControl2);
+          
+            int i = comm.ExecuteNonQuery();
+            comm.Parameters.Clear();
+            conexion.CerrarConexion();
+
+            if (i > 0)
+            {
+                return true;
+
+
+            }
+            else
+                return false;
+
+
+        }
+
+        public bool EditarProgramaEvaluacion(int IdEvaluacion)
+        {
+            comm.Connection = conexion.AbrirConexion();
+            comm.CommandText = "UPDATE Op_ProgramaCapacitacion SET Activado=1 WHERE Id_Evaluacion=@IdEvaluacion";
+            comm.CommandType = CommandType.Text;
+            comm.Parameters.AddWithValue("@IdEvaluacion", IdEvaluacion);
+
+            int i = comm.ExecuteNonQuery();
+            comm.Parameters.Clear();
+            conexion.CerrarConexion();
+
+            if (i > 0)
+            {
+                return true;
+
+
+            }
+            else
+                return false;
+
+
+        }
+
         public bool EditarSinVigencia(int IdControl, string Codigo, string FechaEmision)
         {
             comm.Connection = conexion.AbrirConexion();
@@ -219,6 +321,70 @@ namespace SGM.Clase
             dr.Close();
             comm.Connection = conexion.CerrarConexion();
 
+
+
+        }
+
+        public void ObtenerIdControl(int IdActividad)
+        {
+            comm.Connection = conexion.AbrirConexion();
+            comm.CommandText = "SELECT s.Id_Control,ev.Id_Evaluacion FROM Cat_Actividades act JOIN(SELECT Id_Actividad, MAX(Id_Control) max_score FROM Cat_ActividadControl WHERE Activado IS NULL GROUP BY Id_Actividad) r on act.Id_Actividades = r.Id_Actividad JOIN(SELECT Id_Control, FechaEmision, Codigo, VigenciaMeses, Activado FROM Cat_ActividadControl) s on r.max_score = s.Id_Control JOIN Evaluacion ev on s.Id_Control=ev.Id_Control WHERE act.Id_Actividades = @IddActividad AND ev.Activado IS NULL AND ev.Estatus=2";
+            comm.CommandType = CommandType.Text;
+            comm.Parameters.AddWithValue("@IddActividad", IdActividad);
+
+            dr = comm.ExecuteReader();
+            dr.Read();
+            IdControl2 = dr["Id_Control"].ToString();
+            IdEvaluacion = dr["Id_Evaluacion"].ToString();
+
+
+
+            dr.Close();
+            comm.Connection = conexion.CerrarConexion();
+
+
+
+        }
+
+        public void ObtenerIdEvaluacion(int IdControl)
+        {
+            comm.Connection = conexion.AbrirConexion();
+            comm.CommandText = "SELECT Id_Evaluacion FROM Evaluacion WHERE Id_Control=@IidControl";
+            comm.CommandType = CommandType.Text;
+            comm.Parameters.AddWithValue("@IidControl", IdControl);
+
+            dr = comm.ExecuteReader();
+            dr.Read();
+            IdEvaluacion2 = dr["Id_Evaluacion"].ToString();
+
+
+
+            dr.Close();
+            comm.Connection = conexion.CerrarConexion();
+
+
+
+        }
+
+        public bool ValidarExistenciaEvaluacion(int IdActividad)
+        {
+            comm.Connection = conexion.AbrirConexion();
+            comm.CommandText = "SELECT COUNT(*) FROM Cat_Actividades act JOIN(SELECT Id_Actividad, MAX(Id_Control) max_score FROM Cat_ActividadControl WHERE Activado IS NULL GROUP BY Id_Actividad) r on act.Id_Actividades = r.Id_Actividad JOIN(SELECT Id_Control, FechaEmision, Codigo, VigenciaMeses, Activado FROM Cat_ActividadControl) s on r.max_score = s.Id_Control JOIN Evaluacion ev on s.Id_Control = ev.Id_Control WHERE s.Activado IS NULL AND act.Id_Actividades = @IdAactividad AND ev.Activado IS NULL AND ev.Estatus = 2";
+            comm.CommandType = CommandType.Text;
+
+            comm.Parameters.AddWithValue("@IdAactividad", IdActividad);
+            int i = (int)comm.ExecuteScalar();
+            comm.Parameters.Clear();
+            conexion.CerrarConexion();
+
+            if (i > 0)
+            {
+                return true;
+
+
+            }
+            else
+                return false;
 
 
         }

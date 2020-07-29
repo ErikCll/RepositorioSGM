@@ -10,7 +10,7 @@
                     <div class="container col-12">
                     <a href="Detalle.aspx" class="float-left">Programar evaluaciones</a>
                         <br /><br />
-                        <div class="col-sm-3 col-md-3 col-lg-3">
+                        <div class="col-sm-3 col-md-3 col-lg-3 ">
                             <div class="form-group">
                                  <label>Año:</label>
                         <asp:DropDownList runat="server" ID="ddl_Anio" DataTextField="Anio" DataValueField="Anio" CssClass="form-control" AutoPostBack="true" OnSelectedIndexChanged="ddl_Anio_SelectedIndexChanged"></asp:DropDownList>
