@@ -89,6 +89,15 @@
     <Content Include="dist\js\pages\dashboard2.js" />
     <Content Include="dist\js\pages\dashboard3.js" />
     <Content Include="Global.asax" />
+    <Content Include="img\thumbnail_IMG_1479.jpg" />
+    <Content Include="img\thumbnail_IMG_1481.jpg" />
+    <Content Include="img\thumbnail_IMG_1487.jpg" />
+    <Content Include="img\thumbnail_IMG_1500.jpg" />
+    <Content Include="img\thumbnail_IMG_1502.jpg" />
+    <Content Include="img\thumbnail_IMG_1507.jpg" />
+    <Content Include="img\thumbnail_IMG_1518.jpg" />
+    <Content Include="img\thumbnail_IMG_2285 %281%29.jpg" />
+    <Content Include="img\thumbnail_terminal .jpg" />
     <Content Include="Inicio.aspx" />
     <Content Include="plugins\bootstrap-colorpicker\css\bootstrap-colorpicker.css" />
     <Content Include="plugins\bootstrap-colorpicker\css\bootstrap-colorpicker.min.css" />
@@ -1768,6 +1777,7 @@
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
