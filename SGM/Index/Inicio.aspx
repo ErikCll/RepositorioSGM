@@ -22,7 +22,7 @@ div.responsive {
 
 @media  (min-width: 600px) { // or whatever you are after
  div.responsive {
-    display:none; // Hide BR tag for wider screens
+    display:none; 
   }
       
 }
@@ -48,7 +48,7 @@ margin-top:200px;
         <div class="row position-absolute" style="z-index:1">
 
           <!--Carousel Wrapper-->
-<div id="carousel-example-2" class="carousel slide carousel-fade shadow" data-ride="carousel" >
+<div id="carousel-example-2" class="carousel slide carousel-fade   w-75 container " data-ride="carousel" >
   <!--Indicators-->
 <%--  <ol class="carousel-indicators mb-5">
     <li data-target="#carousel-example-2" data-slide-to="0" class="active"></li>
@@ -88,11 +88,11 @@ margin-top:200px;
   </div>
   <!--/.Slides-->
   <!--Controls-->
-  <a class="carousel-control-prev a" href="#carousel-example-2" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon a" aria-hidden="true"></span>
+  <a class="carousel-control-prev " href="#carousel-example-2" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon " aria-hidden="true"></span>
   </a>
-  <a class="carousel-control-next a" href="#carousel-example-2" role="button" data-slide="next">
-    <span class="carousel-control-next-icon a " aria-hidden="true"></span>
+  <a class="carousel-control-next " href="#carousel-example-2" role="button" data-slide="next">
+    <span class="carousel-control-next-icon  " aria-hidden="true"></span>
   </a>
   <!--/.Controls-->
 </div>
@@ -100,7 +100,7 @@ margin-top:200px;
 
         </div>
      
-            <div class=" ocultar-div" >
+<%--            <div class=" ocultar-div" >
         <br />
                 <br />
                 <br />
@@ -125,6 +125,26 @@ margin-top:200px;
                 <br />
                 <br />
                 <br />
+            </div>--%>
+
+            
+            <div class=" ocultar-div" >
+        <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                               
+
             </div>
       
 
