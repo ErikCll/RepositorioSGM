@@ -1,0 +1,36 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace SASISOPA.Competencia.Programa
+{
+    public partial class Ver : System.Web.UI.Page
+    {
+        Clase.ProgramaCapacitacion programa = new Clase.ProgramaCapacitacion();
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                (this.Master as SASISOPA.s.Site1).OcultarDrop = false;
+                (this.Master as SASISOPA.s.Site1).OcultarLabel = false;
+                string decodedString = System.Text.ASCIIEncoding.ASCII.GetString(Convert.FromBase64String(Request.QueryString["prog"]));
+                int IdPrograma = Convert.ToInt32(decodedString);
+                programa.LeerDatosProgramaEvaluacion(IdPrograma);
+                lblEmpleado.Text = programa.Empleado;
+                lblActividad.Text = programa.Actividad;
+                lblEstatus.Text = programa.Estatus;
+                lblFechaEvaluacion.Text = programa.FechaEvaluacion;
+                lblFechaRealizado.Text = programa.FechaRealizado;
+                lblCalificacion.Text = programa.Calificacion;
+            }
+        }
+
+        protected void Regresar(Object sender, EventArgs e)
+        {
+            Response.Redirect("Agregar.aspx?id=" + Request.QueryString["id"] + "&ev="+ Request.QueryString["ev"] + "");
+        }
+    }
+}

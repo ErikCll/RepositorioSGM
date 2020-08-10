@@ -7,7 +7,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Index</title>
+  <title>SAM</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Font Awesome -->
@@ -44,21 +44,75 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="Inicio.aspx" class="nav-link">Inicio</a>
+        <a href="../../Inicio.aspx" class="nav-link">Inicio</a>
       </li>
-         <li class=" mt-2">
-             <label class="text-white" runat="server" id="lblInstalacion">Instalación:</label>
-  <%--       <telerik:RadComboBox InputCssClass="font-weight-bold" Visible="true" AutoPostBack="true" OnSelectedIndexChanged="RadComboBox1_SelectedIndexChanged" ID="RadComboBox1"
-             runat="server" DataTextField="Nombre" DataValueField="Id_Instalacion" RenderMode="Lightweight" Filter="StartsWith"
-             MarkFirstMatch="true" EmptyMessage="[Seleccionar]" CausesValidation="false"></telerik:RadComboBox>--%>
 
-           
-      </li>
 
       <li class="nav-item d-none d-sm-inline-block">
 <%--        <a href="#" class="nav-link">Contact</a>--%>
       </li>
     </ul>
+
+
+                <ul class=" navbar-nav ml-auto ">
+                    <li class=" mr-5 " style="margin-bottom:-20px">
+<%--                        <img src="img/LogoSAM.PNG" class=" img-fluid" />--%>
+                        <div class="form-group text-center">
+                          <label class=" text-gray text-lg font-weight-normal " style="margin-bottom:-30px">SAM</label><br />
+
+                        <label class="font-weight-normal text-sm" style="margin-bottom:-30px">Sistema de Administración de Micrositios</label>
+                        </div>
+                        
+
+
+        </li>
+      
+           <li class="nav-item d-none d-sm-inline-block mr-5">
+        <a ></a>
+      </li>
+          <li class="nav-item d-none d-sm-inline-block mr-5">
+        <a ></a>
+      </li>
+         <li class="nav-item d-none d-sm-inline-block mr-5">
+        <a ></a>
+      </li>
+      
+      <li class="nav-item d-none d-sm-inline-block mr-5">
+      </li>
+                     <li class="nav-item d-none d-sm-inline-block mr-5">
+        <a ></a>
+      </li>
+                     <li class="nav-item d-none d-sm-inline-block mr-5">
+        <a ></a>
+      </li>
+                     <li class="nav-item d-none d-sm-inline-block mr-5">
+        <a ></a>
+      </li> 
+                     <li class="nav-item d-none d-sm-inline-block mr-5">
+        <a ></a>
+      </li>
+                                  <li class="nav-item d-none d-sm-inline-block mr-5">
+        <a ></a>
+      </li>
+                                          <li class="nav-item d-none d-sm-inline-block mr-5">
+        <a ></a>
+      </li>
+
+                    <li class="nav-item dropdown mt-1">
+        <a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="false">
+          <i class=" fas fa-th-large"></i>
+        </a>
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right" style="left: inherit; right: 0px;">
+        
+          <a href="#" class="dropdown-item">
+            <i class=" far fa-file-pdf mr-2"></i>Manual de usuario
+          </a>
+        
+        <%--  <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item dropdown-footer"></a>--%>
+        </div>
+      </li>
+              </ul>
 
  
   </nav>
@@ -67,8 +121,9 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4  ">
     <!-- Brand Logo -->
-    <a href="#" class="brand-link">
-      <span class="brand-text text-dark">Index </span>
+    <a  href="../../Inicio.aspx" class="brand-link mt-1">
+      <img src="../../img/s.jpg" class="brand-image img-circle" style="opacity:.8"/>
+      <span class="brand-text font-weight-light">SAM</span>
     </a>
 
     <!-- Sidebar -->
@@ -78,13 +133,13 @@
 
       <!-- Sidebar Menu -->
       <nav class="mt-2">
-        <%--<ul class="nav nav-pills nav-sidebar flex-column  text-sm " data-widget="treeview" role="menu" data-accordion="true">
+        <ul class="nav nav-pills nav-sidebar flex-column  text-sm " data-widget="treeview" role="menu" data-accordion="true">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
 
-              <li class="nav-item has-treeview" id="menu_catalogo" runat="server">
+             <li class="nav-item has-treeview" id="menu_catalogo1" runat="server">
              
-            <a href="#" class="nav-link" id="catalogo" runat="server">
+            <a href="#" class="nav-link" id="catalogo1" runat="server">
                 <i class="nav-icon fas fa-circle"></i>
 
               <p>
@@ -95,20 +150,20 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/Catalogo/Instalacion/Index.aspx" class="nav-link" id="instalacion" runat="server">
+                <a href="~/Catalogo/Instalacion/Index.aspx" class="nav-link" id="instalacion1" runat="server">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Instalación</p>
                 </a>
               </li>
                  <li class="nav-item">
-                <a  href="/Catalogo/Area/Index.aspx" class="nav-link" id="area" runat="server">
+                <a  href="~/Catalogo/Area/Index.aspx" class="nav-link" id="area1" runat="server">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Área</p>
                 </a>
               </li>
 
                    <li class="nav-item">
-                <a  href="/Catalogo/Categoria/Index.aspx" class="nav-link" id="categoria" runat="server">
+                <a  href="~/Catalogo/Categoria/Index.aspx" class="nav-link" id="categoria1" runat="server">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Categoría</p>
                 </a>
@@ -117,104 +172,38 @@
               
 
                   <li class="nav-item">
-                <a  href="/Catalogo/Empleado/Index.aspx" class="nav-link" id="empleado" runat="server">
+                <a  href="~/Catalogo/Empleado/Index.aspx" class="nav-link" id="empleado1" runat="server">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Empleado</p>
                 </a>
               </li>
 
-                 <li class="nav-item">
-                <a  href="/Catalogo/Medidor/Index.aspx" class="nav-link" id="medidor" runat="server">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Medidores</p>
-                </a>
-              </li>
             
             
               
             </ul>
           </li>
+            
 
-           <li class="nav-item has-treeview" id="menu_competencia" runat="server">
-             
-            <a href="#" class="nav-link" id="competencia" runat="server">
-                <i class="nav-icon fas fa-circle"></i>
-
-              <p>
-               Competencia y formación
-
-                <i class="right fas fa-angle-left"style="margin-right:-9px"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-         
-               
-                <li class="nav-item">
-                <a  href="/Competencia/CensoAct/Index.aspx" class="nav-link" id="actividad" runat="server">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Censo de actividad</p>
-                </a>
-              </li>
-
-                <li class="nav-item">
-                <a  href="/Competencia/MatrizCatAct/Index.aspx" class="nav-link" id="catact" runat="server">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Matriz Categoría-Actividad</p>
-                </a>
-              </li>
-
-                <li class="nav-item">
-                <a  href="/Competencia/MatrizCatEmp/Index.aspx" class="nav-link" id="catemp" runat="server">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Matriz Categoría-Empleado</p>
-                </a>
-              </li>
-              
-                 <li class="nav-item">
-                <a  href="/Competencia/Programa/Index.aspx" class="nav-link" id="prog" runat="server">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Programa de capacitación</p>
-                </a>
-              </li>
-              
-              
-            </ul>
-          </li>
-
-
-
-
-              <li class="nav-item has-treeview" id="menu_confirmacion" runat="server">
-             
-            <a href="#" class="nav-link" id="confirmacion" runat="server">
-                <i class="nav-icon fas fa-circle"></i>
-
-              <p>
-               Confirmación metrológica
-
-                <i class="right fas fa-angle-left"style="margin-right:-9px"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-         
-               
-                <li class="nav-item">
-                <a  href="/Confirmacion/CensoSis/Index.aspx" class="nav-link" id="sistema" runat="server">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Censo sistemas de medición</p>
-                </a>
-              </li>
-
-              
-
-              
-            </ul>
-          </li>
-
-              <li class="nav-item has-treeview" id="Li1" runat="server">
+              <li class="nav-item" id="Li1" runat="server">
              
             <a href="#" class="nav-link" id="A1">
-                <i class="nav-icon fas fa-circle"></i>
+                <i class="nav-icon 	fas fa-users"></i>
+
+              <p>
+               Organigrama
+
+              </p>
+            </a>
+     
+          </li>
+
+
+
+              <li class="nav-item has-treeview" id="menu_catalogo" runat="server">
+             
+            <a href="#" class="nav-link" id="catalogo" runat="server">
+                <i class="nav-icon fas fa-chart-bar"></i>
 
               <p>
                Indicadores
@@ -222,379 +211,66 @@
                 <i class="right fas fa-angle-left"style="margin-right:-9px"></i>
               </p>
             </a>
-     
-          </li>
-
-
-       <%--   <li class="nav-item has-treeview">
-             
-            <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-circle"></i>
-
-              <p>
-               Responsabilidad de dirección
-
-                <i class="right fas fa-angle-left"style="margin-right:-9px"></i>
-              </p>
-            </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="#" class="nav-link" id="instalacion" runat="server">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Función metrológica</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Enfoque al cliente</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Objetivos de la calidad</p>
+                  <p>SGM</p>
                 </a>
               </li>
                  <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a  href="#" class="nav-link" id="area" runat="server">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Revisión por la dirección</p>
+                  <p>SASISOPA</p>
                 </a>
               </li>
-            </ul>
-          </li>--%>
-         
 
-          <%--  <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-circle" ></i>
-              <p>
-               Gestión de los recursos
-                <i class="right fas fa-angle-left" style="margin-right:-9px"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview" style="display: none;">
+                   <li class="nav-item">
+                <a  href="#" class="nav-link" id="categoria" runat="server">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Operación</p>
+                </a>
+              </li>
+
+              
+
+                  <li class="nav-item">
+                <a  href="#" class="nav-link" id="empleado" runat="server">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Mantenimiento</p>
+                </a>
+              </li>
+
+                 <li class="nav-item">
+                <a  href="#" class="nav-link" id="medidor" runat="server">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Seguridad Industrial</p>
+                </a>
+              </li>
+            
+               <li class="nav-item">
+                <a  href="#" class="nav-link" id="A2" runat="server">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Administración</p>
+                </a>
+              </li>
+            
+              
+            </ul>
+          </li>
+
+           
+
+
+
+
+           
+   
+
           
-              <li class="nav-item has-treeview">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>
-                    Recursos humanos
-                    <i class="right fas fa-angle-left"></i>
-                  </p>
-                </a>
-                <ul class="nav nav-treeview" style="display: none;">
-                  <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      <i class="far fa-dot-circle nav-icon"></i>
-                      <p>Responsabilidades del personal</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      <i class="far fa-dot-circle nav-icon"></i>
-                      <p>Competencia y formación</p>
-                    </a>
-                  </li>            
-                </ul>
-              </li>
-         
-                   <li class="nav-item has-treeview">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>
-                    Recursos de información
-                    <i class="right fas fa-angle-left"></i>
-                  </p>
-                </a>
-                <ul class="nav nav-treeview" style="display: none;">
-                  <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      <i class="far fa-dot-circle nav-icon"></i>
-                      <p>Procedimientos</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      <i class="far fa-dot-circle nav-icon"></i>
-                      <p>Software</p>
-                    </a>
-                  </li>
-                       <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      <i class="far fa-dot-circle nav-icon"></i>
-                      <p>Registros</p>
-                    </a>
-                  </li>  
-                       <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      <i class="far fa-dot-circle nav-icon"></i>
-                      <p>Identificación</p>
-                    </a>
-                  </li>  
-                </ul>
-              </li>
-         
-                  <li class="nav-item has-treeview">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>
-                    Recursos materiales
-                    <i class="right fas fa-angle-left"></i>
-                  </p>
-                </a>
-                <ul class="nav nav-treeview" style="display: none;">
-                  <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      <i class="far fa-dot-circle nav-icon"></i>
-                      <p>Equipo de medición</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      <i class="far fa-dot-circle nav-icon"></i>
-                      <p>Medio ambiente</p>
-                    </a>
-                  </li>            
-                </ul>
-              </li>
-                  <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Proveedores externos</p>
-                    </a>
-                  </li>
-            </ul>
-          </li>--%>
-   
-          <%--  <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-circle" ></i>
-              <p>
-               Confirmación metrológica
-                <i class="right fas fa-angle-left" style="margin-right:-9px"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview" style="display: none;">
-          
-              <li class="nav-item has-treeview">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>
-                    Confirmación metrológica
-                    <i class="right fas fa-angle-left"></i>
-                  </p>
-                </a>
-                <ul class="nav nav-treeview" style="display: none;">
-                  <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      <i class="far fa-dot-circle nav-icon"></i>
-                      <p>Generalidades</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      <i class="far fa-dot-circle nav-icon"></i>
-                      <p>Intervalos de confirmación</p>
-                    </a>
-                  </li>
-                      <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      <i class="far fa-dot-circle nav-icon"></i>
-                      <p>Control de ajustes del equipo</p>
-                    </a>
-                  </li> 
-                        <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      <i class="far fa-dot-circle nav-icon"></i>
-                      <p>Registros del proceso</p>
-                    </a>
-                  </li>  
-                </ul>
-              </li>
-         
-                   <li class="nav-item has-treeview">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>
-                    Proceso de medición
-                    <i class="right fas fa-angle-left"></i>
-                  </p>
-                </a>
-                <ul class="nav nav-treeview" style="display: none;">
-                  <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      <i class="far fa-dot-circle nav-icon"></i>
-                      <p>Generalidades</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      <i class="far fa-dot-circle nav-icon"></i>
-                      <p>Diseño del proceso</p>
-                    </a>
-                  </li>
-                       <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      <i class="far fa-dot-circle nav-icon"></i>
-                      <p>Realización del proceso</p>
-                    </a>
-                  </li>  
-                       <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      <i class="far fa-dot-circle nav-icon"></i>
-                      <p>Registros de los procesos</p>
-                    </a>
-                  </li>  
-                </ul>
-              </li>
-         
-                  <li class="nav-item has-treeview">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>
-                    Incentidumbre de medición
-                    <i class="right fas fa-angle-left"></i>
-                  </p>
-                </a>
-                <ul class="nav nav-treeview" style="display: none;">
-                  <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      <i class="far fa-dot-circle nav-icon"></i>
-                      <p>Incentidumbre de la medición</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      <i class="far fa-dot-circle nav-icon"></i>
-                      <p>Trazabilidad</p>
-                    </a>
-                  </li>            
-                </ul>
-              </li>
-             
-            </ul>
-          </li>--%>
-   
 
-
-             <%--  <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-circle" ></i>
-              <p>
-               Análisis y mejora
-                <i class="right fas fa-angle-left" style="margin-right:-9px"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview" style="display: none;">
-           <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Generalidades</p>
-                    </a>
-                  </li>  
-              <li class="nav-item has-treeview">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>
-                    Auditoría y seguimiento
-                    <i class="right fas fa-angle-left"></i>
-                  </p>
-                </a>
-                <ul class="nav nav-treeview" style="display: none;">
-                  <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      <i class="far fa-dot-circle nav-icon"></i>
-                      <p>Generalidades</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      <i class="far fa-dot-circle nav-icon"></i>
-                      <p>Satisfacción del cliente</p>
-                    </a>
-                  </li>
-                      <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      <i class="far fa-dot-circle nav-icon"></i>
-                      <p>Auditoría del sistema</p>
-                    </a>
-                  </li> 
-                        <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      <i class="far fa-dot-circle nav-icon"></i>
-                      <p>Seguimiento del sistema</p>
-                    </a>
-                  </li>  
-                </ul>
-              </li>
-         
-                   <li class="nav-item has-treeview">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>
-                    Control no conformidades
-                    <i class="right fas fa-angle-left"></i>
-                  </p>
-                </a>
-                <ul class="nav nav-treeview" style="display: none;">
-                  <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      <i class="far fa-dot-circle nav-icon"></i>
-                      <p>Sistemas de gestión</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      <i class="far fa-dot-circle nav-icon"></i>
-                      <p>Procesos de medición</p>
-                    </a>
-                  </li>
-                       <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      <i class="far fa-dot-circle nav-icon"></i>
-                      <p>Equipo de medición</p>
-                    </a>
-                  </li>  
-                     
-                </ul>
-              </li>
-         
-                  <li class="nav-item has-treeview">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>
-                    Mejora
-                    <i class="right fas fa-angle-left"></i>
-                  </p>
-                </a>
-                <ul class="nav nav-treeview" style="display: none;">
-                  <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      <i class="far fa-dot-circle nav-icon"></i>
-                      <p>Generalidades</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      <i class="far fa-dot-circle nav-icon"></i>
-                      <p>Acción correctiva</p>
-                    </a>
-                  </li>  
-                      <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      <i class="far fa-dot-circle nav-icon"></i>
-                      <p>Acción preventiva</p>
-                    </a>
-                  </li>  
-                </ul>
-              </li>
-             
-            </ul>
-          </li>--%>
    
-       
+       </ul>
       </nav>
       <!-- /.sidebar-menu -->
     </div>
@@ -631,7 +307,11 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-
+        <footer class="main-footer mt-5">
+    <strong>Copyright © </strong>
+    <div class="float-right d-none d-sm-inline-block">
+    </div>
+  </footer>
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
     <!-- Control sidebar content goes here -->
