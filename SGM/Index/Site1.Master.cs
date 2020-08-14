@@ -2,19 +2,47 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace Index
+namespace SAM
 {
     public partial class Site1 : System.Web.UI.MasterPage
     {
-        protected void Page_Load(object sender, EventArgs e)
+        Clase.Master master = new Clase.Master();
+        protected void Page_Init(object sender, EventArgs e)
         {
+            if(HttpContext.Current.User.Identity.IsAuthenticated)
+
+            {
+
+            }
+            else
+            {
+                FormsAuthentication.SignOut();
+                Response.Redirect(Request.UrlReferrer.ToString());
+
+            }
 
             if (!IsPostBack)
             {
+                string Usuario = Page.User.Identity.Name;
+                master.LeerDatosUsuario(Usuario);
+                lblIdSuscripcion.Text = master.IdSuscripcion;
+                lblUsuario.Text = Usuario;
+            }
+            
+        }
 
+        protected void Page_Load(object sender, EventArgs e)
+        {
+           
+            if (!IsPostBack)
+            {
+
+              
+               
 
 
 
@@ -54,6 +82,29 @@ namespace Index
                 }
 
             }
+        }
+
+        protected void CerrarSesion(Object sender, EventArgs e)
+        {
+            FormsAuthentication.SignOut();
+            Response.Redirect(Request.UrlReferrer.ToString());
+        }
+
+        public string IdSuscripcion
+        {
+
+            set
+            {
+                lblIdSuscripcion.Text = value;
+            }
+
+            get
+            {
+                
+                return lblIdSuscripcion.Text;
+            }
+
+       
         }
 
     }

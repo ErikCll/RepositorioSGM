@@ -24,10 +24,10 @@ namespace SGM.Clase
         public DataTable Mostrar(string txtSearch,int IdInstalacion)
         {
 
-            string query = "SELECT act.Id_Actividades 'Id_Actividad',act.Nombre,area.Nombre 'Area',ins.Nombre 'Instalacion', ISNULL(r.max_score, '0') 'Archivo',CONVERT(nvarchar,s.FechaEmision, 105) 'FechaEmision',ISNULL(s.VigenciaMeses,'0') 'VigenciaMeses',s.Codigo FROM Cat_Actividades act LEFT JOIN(SELECT Id_Actividad, MAX(Id_Control) max_score FROM Cat_ActividadControl WHERE Activado IS NULL GROUP BY Id_Actividad) r on act.Id_Actividades = r.Id_Actividad LEFT JOIN(SELECT Id_Control,FechaEmision,Codigo,VigenciaMeses FROM Cat_ActividadControl) s on r.max_score=s.Id_Control JOIN Cat_Area area on act.Id_Area = area.Id_area JOIN Cat_Instalacion ins on area.Id_instalacion = ins.Id_instalacion WHERE act.Activado IS NULL AND ins.Id_Instalacion=@IdInstalacion ORDER BY act.Id_Actividades DESC";
+            string query = "SELECT act.Id_Actividades 'Id_Actividad',act.Nombre,area.Nombre 'Area',ins.Nombre 'Instalacion', ISNULL(r.max_score, '0') 'Archivo',CONVERT(nvarchar,s.FechaEmision, 105) 'FechaEmision',ISNULL(s.VigenciaMeses,'0') 'VigenciaMeses',s.Codigo FROM Cat_Actividades act LEFT JOIN(SELECT Id_Actividad, MAX(Id_Control) max_score FROM Cat_ActividadControl WHERE Activado IS NULL GROUP BY Id_Actividad) r on act.Id_Actividades = r.Id_Actividad LEFT JOIN(SELECT Id_Control,FechaEmision,Codigo,VigenciaMeses FROM Cat_ActividadControl) s on r.max_score=s.Id_Control JOIN Cat_Area area on act.Id_Area = area.Id_area JOIN Cat_Instalacion ins on area.Id_instalacion = ins.Id_instalacion WHERE act.Activado IS NULL AND act.TipoSistema=1 AND ins.Id_Instalacion=@IdInstalacion ORDER BY act.Id_Actividades DESC";
             if (!String.IsNullOrEmpty(txtSearch.Trim()))
             {
-                query = "SELECT act.Id_Actividades 'Id_Actividad',act.Nombre,area.Nombre 'Area',ins.Nombre 'Instalacion', ISNULL(r.max_score, '0') 'Archivo',CONVERT(nvarchar,s.FechaEmision, 105) 'FechaEmision',ISNULL(s.VigenciaMeses,'0') 'VigenciaMeses',s.Codigo FROM Cat_Actividades act LEFT JOIN(SELECT Id_Actividad, MAX(Id_Control) max_score FROM Cat_ActividadControl WHERE Activado IS NULL GROUP BY Id_Actividad) r on act.Id_Actividades = r.Id_Actividad LEFT JOIN(SELECT Id_Control,FechaEmision,Codigo,VigenciaMeses FROM Cat_ActividadControl) s on r.max_score=s.Id_Control JOIN Cat_Area area on act.Id_Area = area.Id_area JOIN Cat_Instalacion ins on area.Id_instalacion = ins.Id_instalacion WHERE act.Activado IS NULL AND ins.Id_Instalacion=@IdInstalacion AND act.Nombre LIKE '%' + @txtSearch + '%' ORDER BY act.Id_Actividades DESC";
+                query = "SELECT act.Id_Actividades 'Id_Actividad',act.Nombre,area.Nombre 'Area',ins.Nombre 'Instalacion', ISNULL(r.max_score, '0') 'Archivo',CONVERT(nvarchar,s.FechaEmision, 105) 'FechaEmision',ISNULL(s.VigenciaMeses,'0') 'VigenciaMeses',s.Codigo FROM Cat_Actividades act LEFT JOIN(SELECT Id_Actividad, MAX(Id_Control) max_score FROM Cat_ActividadControl WHERE Activado IS NULL GROUP BY Id_Actividad) r on act.Id_Actividades = r.Id_Actividad LEFT JOIN(SELECT Id_Control,FechaEmision,Codigo,VigenciaMeses FROM Cat_ActividadControl) s on r.max_score=s.Id_Control JOIN Cat_Area area on act.Id_Area = area.Id_area JOIN Cat_Instalacion ins on area.Id_instalacion = ins.Id_instalacion WHERE act.Activado IS NULL AND act.TipoSistema=1 AND ins.Id_Instalacion=@IdInstalacion AND act.Nombre LIKE '%' + @txtSearch + '%' ORDER BY act.Id_Actividades DESC";
             }
 
             comm.Connection = conexion.AbrirConexion();
@@ -60,12 +60,14 @@ namespace SGM.Clase
 
         }
 
-        public DataTable MostrarInstalacion()
+        public DataTable MostrarInstalacion(int IdSuscripcion)
         {
 
             comm.Connection = conexion.AbrirConexion();
-            comm.CommandText = "SELECT TOP(40) Id_Instalacion, Nombre FROM Cat_Instalacion WHERE Activado IS NULL ORDER BY Id_Instalacion DESC";
+            comm.CommandText = "SELECT Id_Instalacion, Nombre FROM Cat_Instalacion WHERE Activado IS NULL AND Id_Suscripcion=@IdSuscripcionn ORDER BY Id_Instalacion DESC";
             comm.CommandType = CommandType.Text;
+            comm.Parameters.AddWithValue("@IdSuscripcionn", IdSuscripcion);
+
             da = new SqlDataAdapter(comm);
             dt = new DataTable();
             da.Fill(dt);
@@ -76,7 +78,7 @@ namespace SGM.Clase
         public bool Insertar(int IdArea, string Nombre)
         {
             comm.Connection = conexion.AbrirConexion();
-            comm.CommandText = "INSERT INTO [Cat_Actividades] (Id_Area,Nombre) VALUES(@Id_Area,@Nombre)";
+            comm.CommandText = "INSERT INTO [Cat_Actividades] (Id_Area,Nombre,TipoSistema) VALUES(@Id_Area,@Nombre,1)";
             comm.CommandType = CommandType.Text;
             comm.Parameters.AddWithValue("@Id_Area", IdArea);
             comm.Parameters.AddWithValue("@Nombre", Nombre);

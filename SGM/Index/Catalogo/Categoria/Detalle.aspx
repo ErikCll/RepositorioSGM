@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Detalle.aspx.cs" Inherits="Index.Catalogo.Categoria.Detalle" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Detalle.aspx.cs" Inherits="SAM.Catalogo.Categoria.Detalle" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     Detalle Categoría
 </asp:Content>

@@ -7,45 +7,36 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace SGM.Catalogo.Area {
+namespace SAM {
     
     
-    public partial class Detalle {
+    public partial class Login {
         
         /// <summary>
-        /// Control lblNombre.
+        /// Control litControl.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblNombre;
+        protected global::System.Web.UI.WebControls.Literal litControl;
         
         /// <summary>
-        /// Control lblInstalacion.
+        /// Control scrScript.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblInstalacion;
+        protected global::System.Web.UI.ScriptManager scrScript;
         
         /// <summary>
-        /// Control lblCodigo.
+        /// Control Login1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCodigo;
-        
-        /// <summary>
-        /// Control btnRegresar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnRegresar;
+        protected global::System.Web.UI.WebControls.Login Login1;
     }
 }

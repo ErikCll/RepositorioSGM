@@ -14,8 +14,8 @@ namespace SGM.Catalogo.Medidor
         {
             if (!IsPostBack)
             {
-                (this.Master as SGM.Master.Site1).OcultarDrop = false;
-                (this.Master as SGM.Master.Site1).OcultarLabel = false;
+                (this.Master as SGM.s.Site1).OcultarDrop = false;
+                (this.Master as SGM.s.Site1).OcultarLabel = false;
                 LlenarDrop();
             }
         }
@@ -26,7 +26,9 @@ namespace SGM.Catalogo.Medidor
             string VariableMedir = ddl_Variable.SelectedValue;
             int calibracion = Convert.ToInt32(txtCalibracion.Text);
             int verificacion = Convert.ToInt32(txtVerificacion.Text);
-            if (medidor.Insertar(Nombre, VariableMedir, calibracion,verificacion))
+            int IdSuscripcion = Convert.ToInt32((this.Master as SGM.s.Site1).IdSuscripcion.ToString());
+
+            if (medidor.Insertar(Nombre, VariableMedir, calibracion,verificacion,IdSuscripcion))
             {
                 string script = "alert('Registro creado exitosamente.'); window.location.href= 'Index.aspx';";
 

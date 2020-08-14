@@ -7,7 +7,7 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace Index.Catalogo.Instalacion {
+namespace SAM.Catalogo.Instalacion {
     
     
     public partial class Editar {

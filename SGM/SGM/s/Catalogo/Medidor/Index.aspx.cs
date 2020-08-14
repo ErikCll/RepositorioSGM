@@ -16,15 +16,17 @@ namespace SGM.Catalogo.Medidor
 
             if (!IsPostBack)
             {
-                (this.Master as SGM.Master.Site1).OcultarDrop = false;
-                (this.Master as SGM.Master.Site1).OcultarLabel = false;
+                (this.Master as SGM.s.Site1).OcultarDrop = false;
+                (this.Master as SGM.s.Site1).OcultarLabel = false;
                 MostrarGrid();
             }
         }
 
         public void MostrarGrid()
         {
-            gridMedidor.DataSource = medidor.Mostrar(txtSearch.Text.Trim());
+            int IdSuscripcion = Convert.ToInt32((this.Master as SGM.s.Site1).IdSuscripcion.ToString());
+
+            gridMedidor.DataSource = medidor.Mostrar(txtSearch.Text.Trim(),IdSuscripcion);
             gridMedidor.DataBind();
         }
 

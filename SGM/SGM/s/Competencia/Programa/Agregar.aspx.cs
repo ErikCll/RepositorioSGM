@@ -17,8 +17,8 @@ namespace SGM.Competencia.Programa
 
             if (!IsPostBack)
             {
-                (this.Master as SGM.Master.Site1).OcultarDrop = false;
-                (this.Master as SGM.Master.Site1).OcultarLabel = false;
+                (this.Master as SGM.s.Site1).OcultarDrop = false;
+                (this.Master as SGM.s.Site1).OcultarLabel = false;
 
                 LlenarDrop();
                 MostrarGrid();

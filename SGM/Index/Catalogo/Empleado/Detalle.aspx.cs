@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace Index.Catalogo.Empleado
+namespace SAM.Catalogo.Empleado
 {
     public partial class Detalle : System.Web.UI.Page
     {

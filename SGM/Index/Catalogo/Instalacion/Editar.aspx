@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Editar.aspx.cs" Inherits="Index.Catalogo.Instalacion.Editar" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Editar.aspx.cs" Inherits="SAM.Catalogo.Instalacion.Editar" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     Editar Instalación
 </asp:Content>

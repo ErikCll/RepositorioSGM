@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Crear.aspx.cs" Inherits="Index.Catalogo.Area.Crear" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Crear.aspx.cs" Inherits="SAM.Catalogo.Area.Crear" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     Crear Área
 </asp:Content>

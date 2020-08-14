@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace Index.Catalogo.Instalacion
+namespace SAM.Catalogo.Instalacion
 {
     public partial class Index : System.Web.UI.Page
     {
@@ -24,7 +24,9 @@ namespace Index.Catalogo.Instalacion
 
         public void MostrarGrid()
         {
-            gridInstalacion.DataSource = objIns.Mostrar(txtSearch.Text.Trim());
+           
+            int IdSuscripcion = Convert.ToInt32((this.Master as SAM.Site1).IdSuscripcion);
+            gridInstalacion.DataSource = objIns.Mostrar(txtSearch.Text.Trim(),IdSuscripcion);
             gridInstalacion.DataBind();
         }
 

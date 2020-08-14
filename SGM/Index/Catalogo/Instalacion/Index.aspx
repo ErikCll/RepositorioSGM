@@ -1,4 +1,6 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Index.aspx.cs" Inherits="Index.Catalogo.Instalacion.Index" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Index.aspx.cs" Inherits="SAM.Catalogo.Instalacion.Index" %>
+
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     Instalación        
 

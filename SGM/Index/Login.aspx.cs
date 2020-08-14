@@ -6,16 +6,19 @@ using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace SGM.s
+namespace SAM
 {
     public partial class Login : System.Web.UI.Page
     {
-
         Clase.Login login = new Clase.Login();
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            Button btnLogin = (Button)Login1.FindControl("LoginButton");
+            Button btnLogin  = (Button)Login1.FindControl("LoginButton");
             Page.Form.DefaultButton = btnLogin.UniqueID;
+
+
+
 
         }
 
@@ -26,19 +29,8 @@ namespace SGM.s
 
             if (login.AutenticarUsuario(Usuario, Contrasena))
             {
+                FormsAuthentication.RedirectFromLoginPage(Login1.UserName, Login1.RememberMeSet);
 
-                if (login.ValidarSGM(Usuario))
-                {
-                    FormsAuthentication.RedirectFromLoginPage(Login1.UserName, Login1.RememberMeSet);
-
-                }
-
-                else
-                {
-
-                    string txtJS = String.Format("<script>alert('{0}');</script>", "No cuentas con el acceso para este apartado.");
-                    ScriptManager.RegisterClientScriptBlock(litControl, litControl.GetType(), "script", txtJS, false);
-                }
 
             }
             else
@@ -47,7 +39,5 @@ namespace SGM.s
                 ScriptManager.RegisterClientScriptBlock(litControl, litControl.GetType(), "script", txtJS, false);
             }
         }
-
-
     }
 }

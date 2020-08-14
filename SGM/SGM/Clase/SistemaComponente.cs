@@ -41,13 +41,15 @@ namespace SGM.Clase
 
         }
 
-        public DataTable MostrarMedidor()
+        public DataTable MostrarMedidor(int IdSuscripcion)
         {
 
 
             comm.Connection = conexion.AbrirConexion();
-            comm.CommandText = "SELECT Id_Medidor,Nombre FROM Cat_Medidor WHERE Activado IS NULL ORDER BY Id_Medidor DESC";
+            comm.CommandText = "SELECT Id_Medidor,Nombre FROM Cat_Medidor WHERE Activado IS NULL AND Id_Suscripcion=@IdSuscripcion ORDER BY Id_Medidor DESC";
             comm.CommandType = CommandType.Text;
+            comm.Parameters.AddWithValue("@IdSuscripcion", IdSuscripcion);
+
             da = new SqlDataAdapter(comm);
             dt = new DataTable();
             da.Fill(dt);

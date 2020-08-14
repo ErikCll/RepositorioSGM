@@ -7,7 +7,7 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace SGM {
+namespace SGM.s {
     
     
     public partial class Login {

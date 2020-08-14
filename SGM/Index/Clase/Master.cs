@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Data.SqlClient;
 using System.Data;
-namespace Index.Clase
+namespace SAM.Clase
 {
     public class Master
     {
@@ -13,6 +13,8 @@ namespace Index.Clase
         DataTable dt = new DataTable();
         SqlDataAdapter da;
         SqlDataReader dr;
+
+        public string IdSuscripcion { get; set; }
 
 
         public DataTable MostrarInstalacion()
@@ -27,6 +29,24 @@ namespace Index.Clase
             da.Fill(dt);
             conexion.CerrarConexion();
             return dt;
+
+        }
+
+        public void LeerDatosUsuario(string Usuario)
+        {
+            comm.Connection = conexion.AbrirConexion();
+            comm.CommandText = "SELECT Id_Suscripcion FROM Usuario WHERE Acceso=@Usuario";
+            comm.CommandType = CommandType.Text;
+            comm.Parameters.AddWithValue("@Usuario", Usuario);
+
+            dr = comm.ExecuteReader();
+            dr.Read();
+           IdSuscripcion = dr["Id_Suscripcion"].ToString();
+
+            dr.Close();
+            comm.Connection = conexion.CerrarConexion();
+
+
 
         }
     }

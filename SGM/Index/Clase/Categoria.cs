@@ -5,7 +5,7 @@ using System.Web;
 using System.Data.SqlClient;
 using System.Data;
 
-namespace Index.Clase
+namespace SAM.Clase
 {
     public class Categoria
     {
@@ -21,19 +21,20 @@ namespace Index.Clase
         public string Area { get; set; }
 
 
-        public DataTable Mostrar(string txtSearch)
+        public DataTable Mostrar(string txtSearch,int IdSuscripcion)
         {
 
-            string query = "SELECT cat.Id_Categoria,cat.Nombre,area.Nombre 'Area',ins.Nombre 'Instalacion' FROM Cat_Categoria cat JOIN Cat_Area area on cat.Id_Area = area.Id_area JOIN Cat_Instalacion ins on area.Id_instalacion = ins.Id_instalacion WHERE cat.Activado IS NULL ORDER BY cat.Id_Categoria DESC";
+            string query = "SELECT cat.Id_Categoria,cat.Nombre,area.Nombre 'Area',ins.Nombre 'Instalacion' FROM Cat_Categoria cat JOIN Cat_Area area on cat.Id_Area = area.Id_area JOIN Cat_Instalacion ins on area.Id_instalacion = ins.Id_instalacion WHERE cat.Activado IS NULL AND ins.Id_Suscripcion=@IdSuscripcion ORDER BY cat.Id_Categoria DESC";
             if (!String.IsNullOrEmpty(txtSearch.Trim()))
             {
-                query = "SELECT cat.Id_Categoria,cat.Nombre,area.Nombre 'Area',ins.Nombre 'Instalacion' FROM Cat_Categoria cat JOIN Cat_Area area on cat.Id_Area = area.Id_area JOIN Cat_Instalacion ins on area.Id_instalacion = ins.Id_instalacion WHERE cat.Activado IS NULL AND cat.Nombre LIKE '%'+@txtSearch+'%' ORDER BY cat.Id_Categoria DESC";
+                query = "SELECT cat.Id_Categoria,cat.Nombre,area.Nombre 'Area',ins.Nombre 'Instalacion' FROM Cat_Categoria cat JOIN Cat_Area area on cat.Id_Area = area.Id_area JOIN Cat_Instalacion ins on area.Id_instalacion = ins.Id_instalacion WHERE cat.Activado IS NULL AND cat.Nombre LIKE '%'+@txtSearch+'%' AND ins.Id_Suscripcion=@IdSuscripcion ORDER BY cat.Id_Categoria DESC";
             }
 
             comm.Connection = conexion.AbrirConexion();
             comm.CommandText = query;
             comm.CommandType = CommandType.Text;
             comm.Parameters.AddWithValue("@txtSearch", txtSearch);
+            comm.Parameters.AddWithValue("@IdSuscripcion", IdSuscripcion);
             da = new SqlDataAdapter(comm);
             dt = new DataTable();
             da.Fill(dt);
@@ -58,12 +59,13 @@ namespace Index.Clase
 
         }
 
-        public DataTable MostrarInstalacion()
+        public DataTable MostrarInstalacion(int IdSuscripcion)
         {
 
             comm.Connection = conexion.AbrirConexion();
-            comm.CommandText = "SELECT TOP(40) Id_Instalacion, Nombre FROM Cat_Instalacion WHERE Activado IS NULL ORDER BY Id_Instalacion DESC";
+            comm.CommandText = "SELECT Id_Instalacion, Nombre FROM Cat_Instalacion WHERE Activado IS NULL AND Id_Suscripcion=@IdSuscripcionn ORDER BY Id_Instalacion DESC";
             comm.CommandType = CommandType.Text;
+            comm.Parameters.AddWithValue("@IdSuscripcionn", IdSuscripcion);
             da = new SqlDataAdapter(comm);
             dt = new DataTable();
             da.Fill(dt);

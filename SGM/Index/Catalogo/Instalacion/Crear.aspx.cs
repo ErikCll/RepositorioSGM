@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace Index.Catalogo.Instalacion
+namespace SAM.Catalogo.Instalacion
 {
     public partial class Crear : System.Web.UI.Page
     {
@@ -25,7 +25,8 @@ namespace Index.Catalogo.Instalacion
             string Nombre = txtNombre.Text;
             string Localizacion = txtLocalizacion.Text;
             int IdRegion = Convert.ToInt32(ddl_Region.SelectedValue);
-            if (objIns.Insertar(IdRegion, Nombre, Localizacion))
+            int IdSuscripcion = Convert.ToInt32((this.Master as SAM.Site1).IdSuscripcion.ToString());
+            if (objIns.Insertar(IdRegion, Nombre, Localizacion,IdSuscripcion))
             {
                 string script = "alert('Registro creado exitosamente.'); window.location.href= 'Index.aspx';";
 

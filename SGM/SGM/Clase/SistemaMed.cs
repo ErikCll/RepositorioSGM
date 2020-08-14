@@ -40,12 +40,14 @@ namespace SGM.Clase
 
         }
 
-        public DataTable MostrarInstalacion()
+        public DataTable MostrarInstalacion(int IdSuscripcion)
         {
 
             comm.Connection = conexion.AbrirConexion();
-            comm.CommandText = "SELECT TOP(40) Id_Instalacion, Nombre FROM Cat_Instalacion WHERE Activado IS NULL ORDER BY Id_Instalacion DESC";
+            comm.CommandText = "SELECT Id_Instalacion, Nombre FROM Cat_Instalacion WHERE Activado IS NULL AND Id_Suscripcion=@IdSuscripcion ORDER BY Id_Instalacion DESC";
             comm.CommandType = CommandType.Text;
+            comm.Parameters.AddWithValue("@IdSuscripcion", IdSuscripcion);
+
             da = new SqlDataAdapter(comm);
             dt = new DataTable();
             da.Fill(dt);

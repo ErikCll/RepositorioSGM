@@ -20,19 +20,21 @@ namespace SGM.Clase
 
 
 
-        public DataTable Mostrar(string txtSearch)
+        public DataTable Mostrar(string txtSearch, int IdSuscripcion)
         {
 
-            string query = "SELECT Id_Medidor,Nombre, VariableMedir, PeriodoCalibracion, PeriodoVerificacion FROM Cat_Medidor WHERE Activado IS NULL ORDER BY Id_Medidor DESC";
+            string query = "SELECT Id_Medidor,Nombre, VariableMedir, PeriodoCalibracion, PeriodoVerificacion FROM Cat_Medidor WHERE Activado IS NULL AND Id_Suscripcion=@IdSuscripcion ORDER BY Id_Medidor DESC";
             if (!String.IsNullOrEmpty(txtSearch.Trim()))
             {
-                query = "SELECT Id_Medidor,Nombre, VariableMedir, PeriodoCalibracion, PeriodoVerificacion FROM Cat_Medidor WHERE Activado IS NULL AND Nombre LIKE '%'+@txtSearch+'%' ORDER BY Id_Medidor DESC ";
+                query = "SELECT Id_Medidor,Nombre, VariableMedir, PeriodoCalibracion, PeriodoVerificacion FROM Cat_Medidor WHERE Activado IS NULL AND Id_Suscripcion=@IdSuscripcion AND Nombre LIKE '%'+@txtSearch+'%' ORDER BY Id_Medidor DESC ";
             }
 
             comm.Connection = conexion.AbrirConexion();
             comm.CommandText = query;
             comm.CommandType = CommandType.Text;
             comm.Parameters.AddWithValue("@txtSearch", txtSearch);
+            comm.Parameters.AddWithValue("@IdSuscripcion", IdSuscripcion);
+
             da = new SqlDataAdapter(comm);
             dt = new DataTable();
             da.Fill(dt);
@@ -41,15 +43,17 @@ namespace SGM.Clase
 
         }
 
-        public bool Insertar(string Nombre, string Variable, int PeriodoCalibracion, int PeriodoVerificacion)
+        public bool Insertar(string Nombre, string Variable, int PeriodoCalibracion, int PeriodoVerificacion,int IdSuscripcion)
         {
             comm.Connection = conexion.AbrirConexion();
-            comm.CommandText = "INSERT INTO [Cat_Medidor] (Nombre,VariableMedir,PeriodoCalibracion,PeriodoVerificacion) VALUES(@Nombre,@VariableMedir,@PeriodoCalibracion,@PeriodoVerificacion)";
+            comm.CommandText = "INSERT INTO [Cat_Medidor] (Nombre,VariableMedir,PeriodoCalibracion,PeriodoVerificacion,Id_Suscripcion) VALUES(@Nombre,@VariableMedir,@PeriodoCalibracion,@PeriodoVerificacion,@IdSuscripcionn)";
             comm.CommandType = CommandType.Text;
             comm.Parameters.AddWithValue("@Nombre", Nombre);
             comm.Parameters.AddWithValue("@VariableMedir", Variable);
             comm.Parameters.AddWithValue("@PeriodoCalibracion", PeriodoCalibracion);
             comm.Parameters.AddWithValue("@PeriodoVerificacion", PeriodoVerificacion);
+            comm.Parameters.AddWithValue("@IdSuscripcionn", IdSuscripcion);
+
 
             int i = comm.ExecuteNonQuery();
             comm.Parameters.Clear();

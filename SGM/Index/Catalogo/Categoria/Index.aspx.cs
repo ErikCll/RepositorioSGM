@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace Index.Catalogo.Categoria
+namespace SAM.Catalogo.Categoria
 {
     public partial class Index : System.Web.UI.Page
     {
@@ -24,7 +24,9 @@ namespace Index.Catalogo.Categoria
 
         public void MostrarGrid()
         {
-            gridCategoria.DataSource = categoria.Mostrar(txtSearch.Text.Trim());
+            int IdSuscripcion = Convert.ToInt32((this.Master as SAM.Site1).IdSuscripcion);
+
+            gridCategoria.DataSource = categoria.Mostrar(txtSearch.Text.Trim(),IdSuscripcion);
             gridCategoria.DataBind();
         }
 

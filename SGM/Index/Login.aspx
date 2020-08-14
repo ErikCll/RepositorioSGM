@@ -1,6 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="SGM.s.Login" %>
-
-<!DOCTYPE html>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="SAM.Login" %>
 
 <!DOCTYPE html>
 
@@ -8,7 +6,7 @@
 <head >
        <meta charset="utf-8"/>
   <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-  <title>SGM | Iniciar sesión</title>
+  <title>SAM | Iniciar sesión</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <!-- Font Awesome -->
@@ -40,21 +38,15 @@ font-size:20px;
     <form runat="server">
            <asp:Literal ID="litControl" runat="server"></asp:Literal>
         <asp:ScriptManager runat="server" ID="scrScript"></asp:ScriptManager>
-        <div class="col-sm-12  col-md-12 col-lg-12">
-              <div class="row">
-                                         <a href="http://orygon.azurewebsites.net/Inicio.aspx" class="ml-2" >SAM</a>
-
-        </div>
-        </div>
-      
-
+        
                  <div class="container">
+
             <div class="row " style="margin-top:50px">
 <%--                <div class="col-sm-1 col-md-1 col-lg-1"></div>--%>
                 <div class="col-sm-6 col-md-6 col-lg-6 justify-content-center mt-5" >
-                    <h1 class="text-center font-weight-bold">SGM</h1>
-                    <h2 class="text-center ocultar-letras">Sistema de Gestión de las</h2>
-                    <h2 class="text-center ocultar-letras">Mediciones</h2>
+                    <h1 class="text-center font-weight-bold">SAM</h1>
+                    <h2 class="text-center ocultar-letras">Sistema de Administración de</h2>
+                    <h2 class="text-center ocultar-letras">Micrositios</h2>
 
 
 
@@ -110,7 +102,7 @@ font-size:20px;
                                                 </label>--%>
                                             </div>
                                               <div class="form-group text-center">
-                                                  <asp:LinkButton CssClass="text-center" runat="server">Recuperar contraseña</asp:LinkButton>
+                                                  <asp:LinkButton CssClass="text-center" runat="server">¿Olvidaste tu contraseña?</asp:LinkButton>
 
                                             </div>
 

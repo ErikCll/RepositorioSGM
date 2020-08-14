@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Data.SqlClient;
 using System.Data;
-namespace Index.Clase
+namespace SAM.Clase
 {
   
     public class Instalacion
@@ -21,18 +21,19 @@ namespace Index.Clase
         public string IdRegion { get; set; }
         public string Region { get; set; }
 
-        public DataTable Mostrar(string txtSearch)
+        public DataTable Mostrar(string txtSearch,int IdSuscripcion)
         {
 
-            string query= "SELECT TOP(40)ins.Id_Instalacion,ins.Nombre,ins.Localizacion,reg.Nombre 'Region'FROM Cat_Instalacion ins JOIN Cat_Region reg on ins.Id_region = reg.Id_region WHERE ins.Activado IS NULL ORDER BY ins.Id_instalacion DESC";
+            string query= "SELECT ins.Id_Instalacion,ins.Nombre,ins.Localizacion,reg.Nombre 'Region'FROM Cat_Instalacion ins JOIN Cat_Region reg on ins.Id_region = reg.Id_region WHERE ins.Activado IS NULL AND Id_Suscripcion=@IdSuscripcion ORDER BY ins.Id_instalacion DESC";
             if (!String.IsNullOrEmpty(txtSearch.Trim())){
-                query = "SELECT TOP(40)ins.Id_Instalacion,ins.Nombre,ins.Localizacion,reg.Nombre 'Region'FROM Cat_Instalacion ins JOIN Cat_Region reg on ins.Id_region = reg.Id_region WHERE ins.Activado IS NULL AND ins.Nombre LIKE '%'+@txtSearch+'%'  ORDER BY ins.Id_instalacion DESC";
+                query = "SELECT ins.Id_Instalacion,ins.Nombre,ins.Localizacion,reg.Nombre 'Region'FROM Cat_Instalacion ins JOIN Cat_Region reg on ins.Id_region = reg.Id_region WHERE ins.Activado IS NULL AND Id_Suscripcion=@IdSuscripcion AND ins.Nombre LIKE '%'+@txtSearch+'%'  ORDER BY ins.Id_instalacion DESC";
             }
 
             comm.Connection = conexion.AbrirConexion();
             comm.CommandText = query;
             comm.CommandType = CommandType.Text;
             comm.Parameters.AddWithValue("@txtSearch", txtSearch);
+            comm.Parameters.AddWithValue("@IdSuscripcion", IdSuscripcion);
             da = new SqlDataAdapter(comm);
             dt = new DataTable();
             da.Fill(dt);
@@ -56,14 +57,15 @@ namespace Index.Clase
 
         }
 
-        public bool Insertar(int IdRegion,string Nombre,string Localizacion)
+        public bool Insertar(int IdRegion,string Nombre,string Localizacion,int IdSuscripcion)
         {
             comm.Connection = conexion.AbrirConexion();
-            comm.CommandText = "INSERT INTO [Cat_Instalacion] (Id_Region,Nombre,Localizacion) VALUES(@Id_Region,@Nombre,@Localizacion)";
+            comm.CommandText = "INSERT INTO [Cat_Instalacion] (Id_Region,Nombre,Localizacion,Id_Suscripcion) VALUES(@Id_Region,@Nombre,@Localizacion,@IdSuscripcion)";
             comm.CommandType = CommandType.Text;
             comm.Parameters.AddWithValue("@Id_Region", IdRegion);
             comm.Parameters.AddWithValue("@Nombre", Nombre);
             comm.Parameters.AddWithValue("@Localizacion", Localizacion);
+            comm.Parameters.AddWithValue("@IdSuscripcion", IdSuscripcion);
             int i=comm.ExecuteNonQuery();
             comm.Parameters.Clear();
             conexion.CerrarConexion();

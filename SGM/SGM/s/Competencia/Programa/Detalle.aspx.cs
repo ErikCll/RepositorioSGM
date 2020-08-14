@@ -21,7 +21,7 @@ namespace SGM.Competencia.Programa
         }
         public void MostrarGrid()
         {
-            int IdInstalacion = Convert.ToInt32((this.Master as SGM.Master.Site1).IdInstalacion.ToString());
+            int IdInstalacion = Convert.ToInt32((this.Master as SGM.s.Site1).IdInstalacion.ToString());
 
             gridActividad.DataSource = programa.Mostrar(txtSearch.Text.Trim(), IdInstalacion);
             gridActividad.DataBind();

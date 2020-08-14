@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace Index.Catalogo.Instalacion
+namespace SAM.Catalogo.Instalacion
 {
     public partial class Editar : System.Web.UI.Page
     {

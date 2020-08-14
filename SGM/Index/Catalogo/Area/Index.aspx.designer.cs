@@ -7,7 +7,7 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace Index.Catalogo.Area {
+namespace SAM.Catalogo.Area {
     
     
     public partial class Index {

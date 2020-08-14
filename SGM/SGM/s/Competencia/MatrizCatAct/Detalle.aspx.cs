@@ -22,7 +22,7 @@ namespace SGM.Competencia.MatrizCatAct
 
         public void MostrarGrid()
         {
-            int IdInstalacion = Convert.ToInt32((this.Master as SGM.Master.Site1).IdInstalacion.ToString());
+            int IdInstalacion = Convert.ToInt32((this.Master as SGM.s.Site1).IdInstalacion.ToString());
 
             gridCategoria.DataSource = categoriaAct.Mostrar(txtSearch.Text.Trim(),IdInstalacion);
             gridCategoria.DataBind();

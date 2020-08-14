@@ -20,7 +20,7 @@ namespace SGM.Confirmacion.CensoSis
 
         public void MostrarGrid()
         {
-            int IdInstalacion = Convert.ToInt32((this.Master as SGM.Master.Site1).IdInstalacion.ToString());
+            int IdInstalacion = Convert.ToInt32((this.Master as SGM.s.Site1).IdInstalacion.ToString());
             gridSistema.DataSource = sistema.Mostrar(txtSearch.Text.Trim(), IdInstalacion);
             gridSistema.DataBind();
         }

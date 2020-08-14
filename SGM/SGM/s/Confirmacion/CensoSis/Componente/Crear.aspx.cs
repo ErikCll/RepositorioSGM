@@ -10,12 +10,13 @@ namespace SGM.Confirmacion.CensoSis.Componente
     public partial class Crear : System.Web.UI.Page
     {
         Clase.SistemaComponente componente = new Clase.SistemaComponente();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                (this.Master as SGM.Master.Site1).OcultarDrop = false;
-                (this.Master as SGM.Master.Site1).OcultarLabel = false;
+                (this.Master as SGM.s.Site1).OcultarDrop = false;
+                (this.Master as SGM.s.Site1).OcultarLabel = false;
                 LlenarDrop();
                 chckMedidor.Checked = true;
             }
@@ -65,7 +66,9 @@ namespace SGM.Confirmacion.CensoSis.Componente
 
         public void LlenarDrop()
         {
-            ddl_Medidor.DataSource = componente.MostrarMedidor();
+            int IdSuscripcion = Convert.ToInt32((this.Master as SGM.s.Site1).IdSuscripcion.ToString());
+
+            ddl_Medidor.DataSource = componente.MostrarMedidor(IdSuscripcion);
             ddl_Medidor.DataBind();
             ddl_Medidor.Items.Insert(0, new ListItem("[Seleccionar]"));
 

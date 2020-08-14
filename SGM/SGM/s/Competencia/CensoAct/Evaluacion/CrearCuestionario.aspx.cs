@@ -19,8 +19,8 @@ namespace SGM.Competencia.CensoAct
                 
                     
                 
-                (this.Master as SGM.Master.Site1).OcultarDrop = false;
-                (this.Master as SGM.Master.Site1).OcultarLabel = false;
+                (this.Master as SGM.s.Site1).OcultarDrop = false;
+                (this.Master as SGM.s.Site1).OcultarLabel = false;
                 chkTrue.Checked = true;
                 string decodedString = System.Text.ASCIIEncoding.ASCII.GetString(Convert.FromBase64String(Request.QueryString["ev"]));
                 string IdEvaluacion = decodedString;

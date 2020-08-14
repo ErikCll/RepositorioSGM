@@ -123,6 +123,7 @@
     <Content Include="img\thumbnail_slide-2.jpg" />
     <Content Include="img\thumbnail_terminal .jpg" />
     <Content Include="Inicio.aspx" />
+    <Content Include="Login.aspx" />
     <Content Include="plugins\bootstrap-colorpicker\css\bootstrap-colorpicker.css" />
     <Content Include="plugins\bootstrap-colorpicker\css\bootstrap-colorpicker.min.css" />
     <Content Include="plugins\bootstrap-colorpicker\js\bootstrap-colorpicker.js" />
@@ -1796,20 +1797,12 @@
     <Compile Include="Catalogo\Instalacion\Index.aspx.designer.cs">
       <DependentUpon>Index.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Clase\Actividad.cs" />
-    <Compile Include="Clase\ActividadControl.cs" />
     <Compile Include="Clase\Area.cs" />
     <Compile Include="Clase\Categoria.cs" />
-    <Compile Include="Clase\CategoriaActividad.cs" />
-    <Compile Include="Clase\CategoriaEmpleado.cs" />
     <Compile Include="Clase\Empleado.cs" />
-    <Compile Include="Clase\Evaluacion.cs" />
     <Compile Include="Clase\Instalacion.cs" />
+    <Compile Include="Clase\Login.cs" />
     <Compile Include="Clase\Master.cs" />
-    <Compile Include="Clase\Medidor.cs" />
-    <Compile Include="Clase\ProgramaCapacitacion.cs" />
-    <Compile Include="Clase\SistemaComponente.cs" />
-    <Compile Include="Clase\SistemaMed.cs" />
     <Compile Include="Conexion.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -1820,6 +1813,13 @@
     </Compile>
     <Compile Include="Inicio.aspx.designer.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site1.Master.cs">

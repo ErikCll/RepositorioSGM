@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace Index.Catalogo.Categoria
+namespace SAM.Catalogo.Categoria
 {
     public partial class Editar : System.Web.UI.Page
     {
@@ -29,7 +29,9 @@ namespace Index.Catalogo.Categoria
         public void LlenarDropInstalacion()
 
         {
-            ddl_Instalacion.DataSource = categoria.MostrarInstalacion();
+            int IdSuscripcion = Convert.ToInt32((this.Master as SAM.Site1).IdSuscripcion);
+
+            ddl_Instalacion.DataSource = categoria.MostrarInstalacion(IdSuscripcion);
             ddl_Instalacion.DataBind();
             ddl_Instalacion.Items.Insert(0, new ListItem("[Seleccionar]", "0"));
 

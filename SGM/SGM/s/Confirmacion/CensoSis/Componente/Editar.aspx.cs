@@ -14,8 +14,8 @@ namespace SGM.Confirmacion.CensoSis.Componente
         {
             if (!IsPostBack)
             {
-                (this.Master as SGM.Master.Site1).OcultarDrop = false;
-                (this.Master as SGM.Master.Site1).OcultarLabel = false;
+                (this.Master as SGM.s.Site1).OcultarDrop = false;
+                (this.Master as SGM.s.Site1).OcultarLabel = false;
                 string decodedString = System.Text.ASCIIEncoding.ASCII.GetString(Convert.FromBase64String(Request.QueryString["id"]));
                 int IdComponente = Convert.ToInt32(decodedString);
                 componente.LeerDatosComponente(IdComponente);
@@ -40,7 +40,9 @@ namespace SGM.Confirmacion.CensoSis.Componente
 
         public void LlenarDrop()
         {
-            ddl_Medidor.DataSource = componente.MostrarMedidor();
+            int IdSuscripcion = Convert.ToInt32((this.Master as SGM.s.Site1).IdSuscripcion.ToString());
+
+            ddl_Medidor.DataSource = componente.MostrarMedidor(IdSuscripcion);
             ddl_Medidor.DataBind();
             ddl_Medidor.Items.Insert(0, new ListItem("[Seleccionar]"));
 

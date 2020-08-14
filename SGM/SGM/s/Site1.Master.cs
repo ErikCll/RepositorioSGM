@@ -2,17 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Telerik.Web.UI;
 
-namespace SGM.Master
+namespace SGM.s
 {
     public partial class Site1 : System.Web.UI.MasterPage
     {
 
         Clase.Master master = new Clase.Master();
-
+        Clase.Login login = new Clase.Login();
        
        
     
@@ -21,6 +22,29 @@ namespace SGM.Master
 
         protected void Page_Init(object sender, EventArgs e)
         {
+            if (HttpContext.Current.User.Identity.IsAuthenticated)
+
+            {
+                string Usuario = Page.User.Identity.Name;
+                if (login.ValidarSGM(Usuario))
+                {
+
+                }
+                else
+                {
+                    FormsAuthentication.SignOut();
+                    Response.Redirect(Request.UrlReferrer.ToString());
+                }
+
+            }
+            else
+            {
+                FormsAuthentication.SignOut();
+                Response.Redirect(Request.UrlReferrer.ToString());
+
+            }
+
+
             if (RadInstalacion.SelectedIndex == -1)
             {
                 lblIDInstalacion.Text = "0";
@@ -31,6 +55,14 @@ namespace SGM.Master
             {
                 RadInstalacion.SelectedValue = Session["IdInstalacion"].ToString();
                 lblIDInstalacion.Text = Session["IdInstalacion"].ToString();
+            }
+
+            if (!IsPostBack)
+            {
+                string Usuario = Page.User.Identity.Name;
+                master.LeerDatosUsuario(Usuario);
+                lblIdSuscripcion.Text = master.IdSuscripcion;
+                lblUsuario.Text = Usuario;
             }
 
         }
@@ -155,7 +187,8 @@ namespace SGM.Master
 
         public void LlenarDrop()
         {
-            RadInstalacion.DataSource = master.MostrarInstalacion();
+            int IdSuscripcion = Convert.ToInt32(lblIdSuscripcion.Text);
+            RadInstalacion.DataSource = master.MostrarInstalacion(IdSuscripcion);
             RadInstalacion.DataBind();
 
         }
@@ -175,6 +208,29 @@ namespace SGM.Master
             lblIDInstalacion.Text = IdInstalacion;
             Session["IdInstalacion"] = IdInstalacion;
             Response.Redirect(Request.UrlReferrer.ToString());
+        }
+
+        protected void CerrarSesion(Object sender, EventArgs e)
+        {
+            FormsAuthentication.SignOut();
+            Response.Redirect(Request.UrlReferrer.ToString());
+        }
+
+        public string IdSuscripcion
+        {
+
+            set
+            {
+                lblIdSuscripcion.Text = value;
+            }
+
+            get
+            {
+
+                return lblIdSuscripcion.Text;
+            }
+
+
         }
     }
 }

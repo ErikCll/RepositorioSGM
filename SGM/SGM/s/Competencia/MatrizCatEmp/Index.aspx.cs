@@ -20,7 +20,7 @@ namespace SGM.Competencia.MatrizCatEmp
 
         public void MostrarGrid()
         {
-            int IdInstalacion = Convert.ToInt32((this.Master as SGM.Master.Site1).IdInstalacion.ToString());
+            int IdInstalacion = Convert.ToInt32((this.Master as SGM.s.Site1).IdInstalacion.ToString());
 
             gridMatriz.DataSource = categoriaEmp.MostrarGeneral(IdInstalacion);
             gridMatriz.DataBind();

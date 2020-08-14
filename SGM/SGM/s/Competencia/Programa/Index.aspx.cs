@@ -24,14 +24,16 @@ namespace SGM.Competencia.Programa
         public void MostrarGrid()
         {
             int Anio = Convert.ToInt32(ddl_Anio.SelectedValue);
-            int IdInstalacion = Convert.ToInt32((this.Master as SGM.Master.Site1).IdInstalacion.ToString());
+            int IdInstalacion = Convert.ToInt32((this.Master as SGM.s.Site1).IdInstalacion.ToString());
             gridMatriz.DataSource = programa.MostrarGeneral(IdInstalacion,Anio);
             gridMatriz.DataBind();
         }
 
         public void LlenarDrop()
         {
-            ddl_Anio.DataSource = programa.MostrarAnios();
+            int IdInstalacion = Convert.ToInt32((this.Master as SGM.s.Site1).IdInstalacion.ToString());
+
+            ddl_Anio.DataSource = programa.MostrarAnios(IdInstalacion);
             ddl_Anio.DataBind();
             ddl_Anio.Items.Insert(0, new ListItem("[Seleccionar]","0"));
             

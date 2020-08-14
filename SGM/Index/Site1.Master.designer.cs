@@ -7,10 +7,28 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace Index {
+namespace SAM {
     
     
     public partial class Site1 {
+        
+        /// <summary>
+        /// Control lblIdSuscripcion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblIdSuscripcion;
+        
+        /// <summary>
+        /// Control lblUsuario.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblUsuario;
         
         /// <summary>
         /// Control menu_catalogo1.

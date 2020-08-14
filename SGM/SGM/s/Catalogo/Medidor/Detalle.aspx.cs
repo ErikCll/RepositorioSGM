@@ -12,8 +12,8 @@ namespace SGM.Catalogo.Medidor
         Clase.Medidor medidor = new Clase.Medidor();
         protected void Page_Load(object sender, EventArgs e)
         {
-            (this.Master as SGM.Master.Site1).OcultarDrop = false;
-            (this.Master as SGM.Master.Site1).OcultarLabel = false;
+            (this.Master as SGM.s.Site1).OcultarDrop = false;
+            (this.Master as SGM.s.Site1).OcultarLabel = false;
             string decodedString = System.Text.ASCIIEncoding.ASCII.GetString(Convert.FromBase64String(Request.QueryString["id"]));
             int IdMedidor = Convert.ToInt32(decodedString);
             medidor.LeerDatos(IdMedidor);

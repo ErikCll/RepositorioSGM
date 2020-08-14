@@ -15,8 +15,8 @@ namespace SGM.Competencia.CensoAct
         {
             if (!IsPostBack)                     
             {
-                (this.Master as SGM.Master.Site1).OcultarDrop = false;
-                (this.Master as SGM.Master.Site1).OcultarLabel = false;
+                (this.Master as SGM.s.Site1).OcultarDrop = false;
+                (this.Master as SGM.s.Site1).OcultarLabel = false;
 
                 LlenarDropInstalacion();
                 string decodedString = System.Text.ASCIIEncoding.ASCII.GetString(Convert.FromBase64String(Request.QueryString["id"]));
@@ -32,7 +32,9 @@ namespace SGM.Competencia.CensoAct
         public void LlenarDropInstalacion()
 
         {
-            ddl_Instalacion.DataSource = actividad.MostrarInstalacion();
+            int IdSuscripcion = Convert.ToInt32((this.Master as SGM.s.Site1).IdSuscripcion);
+
+            ddl_Instalacion.DataSource = actividad.MostrarInstalacion(IdSuscripcion);
             ddl_Instalacion.DataBind();
             ddl_Instalacion.Items.Insert(0, new ListItem("[Seleccionar]","0"));
 

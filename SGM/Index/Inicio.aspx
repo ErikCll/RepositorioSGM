@@ -1,6 +1,6 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Inicio.aspx.cs" Inherits="Index.Inicio" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Inicio.aspx.cs" Inherits="SAM.Inicio" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server"  >
-
+    <asp:Label runat="server" ID="userr"></asp:Label>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="mapeo" runat="server">
 </asp:Content>
@@ -181,9 +181,9 @@ margin-top:200px;
 
 
 
-            <div class="row  "  >
+            <div class="row"  >
                 
-            <div class="col-12 col-sm-6 col-md-4 mt-3">
+            <div class="col-12 col-sm-6 col-md-4 mt-3" runat="server" id="SitioSGM" visible="false">
            <asp:LinkButton runat="server" class="info-box shadow zoom h-100" PostBackUrl="http://orygon.azurewebsites.net/SGM/s/Inicio.aspx">
               <span class="info-box-icon bg-info elevation-1"><i class="fas fa-tape"></i></span>
 
@@ -201,7 +201,7 @@ margin-top:200px;
             <!-- /.info-box -->
           </div>
 
-             <div class="col-12 col-sm-6 col-md-4 mt-3">
+             <div class="col-12 col-sm-6 col-md-4 mt-3" runat="server" id="SitioSASISOPA" visible="false">
             <asp:LinkButton runat="server" class="info-box shadow zoom h-100" PostBackUrl="http://orygon.azurewebsites.net/SASISOPA/s/Inicio.aspx">
               <span class="info-box-icon bg-info elevation-1"><i class="fas fa-industry"></i></span>
 
@@ -216,7 +216,7 @@ margin-top:200px;
             <!-- /.info-box -->
           </div>
 
-              <div class="col-12 col-sm-6 col-md-4 mt-3">
+              <div class="col-12 col-sm-6 col-md-4 mt-3" runat="server" id="SitioOperacion" visible="false">
             <asp:LinkButton runat="server" class="info-box shadow zoom h-100" >
               <span class="info-box-icon bg-info elevation-1"><i class="fas fa-cogs"></i></span>
 
@@ -233,7 +233,7 @@ margin-top:200px;
             <!-- /.info-box -->
           </div>
 
-               <div class="col-12 col-sm-6 col-md-4 mt-3">
+               <div class="col-12 col-sm-6 col-md-4 mt-3" runat="server" id="SitioMantenimiento" visible="false">
             <asp:LinkButton runat="server" class="info-box shadow zoom h-100">
               <span class="info-box-icon bg-info elevation-1"><i class="fas fa-user-cog"></i></span>
 
@@ -250,7 +250,7 @@ margin-top:200px;
             <!-- /.info-box -->
           </div>
 
-                <div class="col-12 col-sm-6 col-md-4 mt-3">
+                <div class="col-12 col-sm-6 col-md-4 mt-3" runat="server" id="SitioSeguridad" visible="false">
             <asp:LinkButton runat="server" class="info-box shadow zoom h-100">
               <span class="info-box-icon bg-info elevation-1"><i class="fas fa-hard-hat"></i></span>
 
@@ -267,7 +267,7 @@ margin-top:200px;
             <!-- /.info-box -->
           </div>
 
-                    <div class="col-12 col-sm-6 col-md-4 mt-3">
+                    <div class="col-12 col-sm-6 col-md-4 mt-3" runat="server" id="SitioAdministracion" visible="false">
             <asp:LinkButton runat="server" class="info-box shadow zoom h-100">
               <span class="info-box-icon bg-info elevation-1"><i class="fas fa-clipboard-check"></i></span>
 

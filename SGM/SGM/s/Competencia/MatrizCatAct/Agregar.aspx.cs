@@ -14,8 +14,8 @@ namespace SGM.Competencia.MatrizCatAct
         {
             if (!IsPostBack)
             {
-                (this.Master as SGM.Master.Site1).OcultarDrop = false;
-                (this.Master as SGM.Master.Site1).OcultarLabel = false;
+                (this.Master as SGM.s.Site1).OcultarDrop = false;
+                (this.Master as SGM.s.Site1).OcultarLabel = false;
 
                 string decodedString = System.Text.ASCIIEncoding.ASCII.GetString(Convert.FromBase64String(Request.QueryString["id"]));
                 int IdCategoria = Convert.ToInt32(decodedString);
@@ -28,12 +28,14 @@ namespace SGM.Competencia.MatrizCatAct
 
         public void MostrarGrid()
         {
+            int IdInstalacion = Convert.ToInt32((this.Master as SGM.s.Site1).IdInstalacion.ToString());
+
             string decodedString = System.Text.ASCIIEncoding.ASCII.GetString(Convert.FromBase64String(Request.QueryString["id"]));
             int IdCategoria = Convert.ToInt32(decodedString);
             int IdArea = Convert.ToInt32(ddl_Area.SelectedValue);
             if (IdArea == 0)
             {
-                gridActividad.DataSource = categoriaAct.MostrarTodasActividades(IdCategoria);
+                gridActividad.DataSource = categoriaAct.MostrarTodasActividades(IdCategoria,IdInstalacion);
                 gridActividad.DataBind();
 
             }
@@ -47,7 +49,7 @@ namespace SGM.Competencia.MatrizCatAct
 
         public void LlenarDropArea()
         {
-            int IdInstalacion = Convert.ToInt32((this.Master as SGM.Master.Site1).IdInstalacion.ToString());
+            int IdInstalacion = Convert.ToInt32((this.Master as SGM.s.Site1).IdInstalacion.ToString());
             ddl_Area.DataSource = categoriaAct.MostrarArea(IdInstalacion);
             ddl_Area.DataBind();
             ddl_Area.Items.Insert(0, new ListItem("[Todas]","0"));
