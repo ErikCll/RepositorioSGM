@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SAM", "Index\SAM.csproj", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SASISOPA", "SASISOPA\SASISOPA.csproj", "{6DADA994-99BE-44C5-A121-F83FA0D9B0E5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Operacion", "Operacion\Operacion.csproj", "{1384319A-C3E4-4752-880C-751E15BEBFAE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Administracion", "Administracion\Administracion.csproj", "{B4C3815E-3F6C-4E06-853D-6297FA363BA1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{6DADA994-99BE-44C5-A121-F83FA0D9B0E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6DADA994-99BE-44C5-A121-F83FA0D9B0E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6DADA994-99BE-44C5-A121-F83FA0D9B0E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1384319A-C3E4-4752-880C-751E15BEBFAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1384319A-C3E4-4752-880C-751E15BEBFAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1384319A-C3E4-4752-880C-751E15BEBFAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1384319A-C3E4-4752-880C-751E15BEBFAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4C3815E-3F6C-4E06-853D-6297FA363BA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4C3815E-3F6C-4E06-853D-6297FA363BA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4C3815E-3F6C-4E06-853D-6297FA363BA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4C3815E-3F6C-4E06-853D-6297FA363BA1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

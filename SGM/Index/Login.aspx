@@ -39,9 +39,17 @@ font-size:20px;
            <asp:Literal ID="litControl" runat="server"></asp:Literal>
         <asp:ScriptManager runat="server" ID="scrScript"></asp:ScriptManager>
         
+        <div class="col-lg-12">
+            <div class="row">
+                <div class="col-sm-3 col-md-3 col-lg-3 ">
+                    <img class="img-fluid h-100 w-25" src="img/logoOR.png" />
+                </div>
+            </div>
+        </div>
+           
                  <div class="container">
 
-            <div class="row " style="margin-top:50px">
+            <div class="row " >
 <%--                <div class="col-sm-1 col-md-1 col-lg-1"></div>--%>
                 <div class="col-sm-6 col-md-6 col-lg-6 justify-content-center mt-5" >
                     <h1 class="text-center font-weight-bold">SAM</h1>
@@ -74,7 +82,7 @@ font-size:20px;
 
                                                     <span class="input-group-append bg-white border-left-0">
                                                         <span class="input-group-text bg-transparent">
-                                                            <i class=" ion-android-person"></i>
+                                                            <i class=" fas fa-user-alt"></i>
                                                         </span>
                                                     </span>
                                                 </div>
@@ -87,8 +95,14 @@ font-size:20px;
                                                 <div class="input-group">
                                                     <asp:TextBox runat="server" ID="Password" TextMode="Password" class="form-control" onkeypress="return AllowAlphabet(event)" ClientIDMode="Static" MaxLength="15"></asp:TextBox>
 
-                                                    <span class="input-group-append bg-white">
-                                                        <span class="btn border border-left-0" onmousedown="mostrarContrasena()" onmouseup="NomostrarContrasena()"><i class=" icon ion-ios-locked"></i></span>
+                                                    <%--<span class="input-group-append bg-transparent">
+                                                        <span class="btn border border-left-0" onmousedown="mostrarContrasena()" onmouseup="NomostrarContrasena()"><i class=" fas fa-lock"></i></span>
+                                                    </span>--%>
+
+                                                    <span class="input-group-append bg-white border-left-0">
+                                                        <span class="input-group-text bg-transparent">
+                                                            <i class=" fas fa-lock"></i>
+                                                        </span>
                                                     </span>
                                                 </div>
                                                                   <asp:RequiredFieldValidator  ForeColor="red" ID="RequiredFieldValidator1" runat="server" ControlToValidate="Password" ValidationGroup="LoginButton" ErrorMessage="Ingresar contraseña"></asp:RequiredFieldValidator>
@@ -102,7 +116,7 @@ font-size:20px;
                                                 </label>--%>
                                             </div>
                                               <div class="form-group text-center">
-                                                  <asp:LinkButton CssClass="text-center" runat="server">¿Olvidaste tu contraseña?</asp:LinkButton>
+                                                  <asp:LinkButton CssClass="text-center" runat="server" PostBackUrl="~/Recuperar.aspx">¿Olvidaste tu contraseña?</asp:LinkButton>
 
                                             </div>
 
@@ -158,22 +172,9 @@ font-size:20px;
 
                Sys.WebForms.PageRequestManager.getInstance().add_pageLoaded(function(){
 
-       //$('.card').hover(
-       //         function () {
-       //             $(this).animate({
-       //                 marginTop: "-=2%",
-
-       //             }, 200);
-       //         },
-       //         function () {
-       //             $(this).animate({
-       //                 marginTop: "0%"
-       //             }, 200);
-       //         }
-
-       //     );
-       // });
-                  
+   
+                   });
+              
      
           function mostrarContrasena(){
       var tipo = document.getElementById("Password");

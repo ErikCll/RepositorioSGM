@@ -11,6 +11,7 @@ namespace SAM
     public partial class Site1 : System.Web.UI.MasterPage
     {
         Clase.Master master = new Clase.Master();
+        Clase.Login login = new Clase.Login();
         protected void Page_Init(object sender, EventArgs e)
         {
             if(HttpContext.Current.User.Identity.IsAuthenticated)
@@ -30,7 +31,43 @@ namespace SAM
                 string Usuario = Page.User.Identity.Name;
                 master.LeerDatosUsuario(Usuario);
                 lblIdSuscripcion.Text = master.IdSuscripcion;
+                lblTitulo.Text = master.Nombre;
+                lblTitulo2.Text = master.Nombre;
                 lblUsuario.Text = Usuario;
+
+                if (login.ValidarSGM(Usuario))
+                {
+                    SGM.Visible = true;
+                }
+                if (login.ValidarSASISOPA(Usuario))
+                {
+                    SASISOPA.Visible = true;
+                }
+                if (login.ValidarOperacion(Usuario))
+                {
+                    Operacion.Visible = true;
+                }
+
+                if (login.ValidarMantenimiento(Usuario))
+                {
+                    Mantenimiento.Visible = true;
+
+                }
+
+                if (login.ValidarSeguridadIndustrial(Usuario))
+                {
+                    Seguridad.Visible = true;
+                }
+
+                if (login.ValidarAdministracion(Usuario))
+                {
+                    Administracion.Visible = true;
+                }
+
+                if (login.ValidarSGL(Usuario))
+                {
+                    SGL.Visible = true;
+                }
             }
             
         }
@@ -87,6 +124,8 @@ namespace SAM
         protected void CerrarSesion(Object sender, EventArgs e)
         {
             FormsAuthentication.SignOut();
+            Session.RemoveAll();
+
             Response.Redirect(Request.UrlReferrer.ToString());
         }
 
@@ -107,5 +146,6 @@ namespace SAM
        
         }
 
+     
     }
 }

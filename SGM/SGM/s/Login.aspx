@@ -2,7 +2,6 @@
 
 <!DOCTYPE html>
 
-<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head >
@@ -79,10 +78,9 @@ font-size:20px;
                                                 <label>Usuario</label>
                                                 <div class="input-group">
                                                     <asp:TextBox runat="server" ID="UserName" MaxLength="20" class="form-control" onkeypress="return AllowAlphabet(event)"></asp:TextBox>
-
-                                                    <span class="input-group-append bg-white border-left-0">
+                                                 <span class="input-group-append bg-white border-left-0">
                                                         <span class="input-group-text bg-transparent">
-                                                            <i class=" ion-android-person"></i>
+                                                            <i class=" fas fa-user-alt"></i>
                                                         </span>
                                                     </span>
                                                 </div>
@@ -95,8 +93,10 @@ font-size:20px;
                                                 <div class="input-group">
                                                     <asp:TextBox runat="server" ID="Password" TextMode="Password" class="form-control" onkeypress="return AllowAlphabet(event)" ClientIDMode="Static" MaxLength="15"></asp:TextBox>
 
-                                                    <span class="input-group-append bg-white">
-                                                        <span class="btn border border-left-0" onmousedown="mostrarContrasena()" onmouseup="NomostrarContrasena()"><i class=" icon ion-ios-locked"></i></span>
+                                                         <span class="input-group-append bg-white border-left-0">
+                                                        <span class="input-group-text bg-transparent">
+                                                            <i class=" fas fa-lock"></i>
+                                                        </span>
                                                     </span>
                                                 </div>
                                                                   <asp:RequiredFieldValidator  ForeColor="red" ID="RequiredFieldValidator1" runat="server" ControlToValidate="Password" ValidationGroup="LoginButton" ErrorMessage="Ingresar contraseña"></asp:RequiredFieldValidator>
@@ -110,7 +110,7 @@ font-size:20px;
                                                 </label>--%>
                                             </div>
                                               <div class="form-group text-center">
-                                                  <asp:LinkButton CssClass="text-center" runat="server">Recuperar contraseña</asp:LinkButton>
+<%--                                                  <asp:LinkButton CssClass="text-center" runat="server">Recuperar contraseña</asp:LinkButton>--%>
 
                                             </div>
 

@@ -1729,24 +1729,19 @@
     <Content Include="s\Competencia\Programa\Editar.aspx" />
     <Content Include="s\Competencia\Programa\Index.aspx" />
     <Content Include="s\Inicio.aspx" />
+    <Content Include="s\Login.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Clase\Actividad.cs" />
     <Compile Include="Clase\ActividadControl.cs" />
-    <Compile Include="Clase\Area.cs" />
-    <Compile Include="Clase\Categoria.cs" />
     <Compile Include="Clase\CategoriaActividad.cs" />
     <Compile Include="Clase\CategoriaEmpleado.cs" />
-    <Compile Include="Clase\Empleado.cs" />
     <Compile Include="Clase\Evaluacion.cs" />
-    <Compile Include="Clase\Instalacion.cs" />
     <Compile Include="Clase\InstalacionActividad.cs" />
+    <Compile Include="Clase\Login.cs" />
     <Compile Include="Clase\Master.cs" />
-    <Compile Include="Clase\Medidor.cs" />
     <Compile Include="Clase\ProgramaCapacitacion.cs" />
-    <Compile Include="Clase\SistemaComponente.cs" />
-    <Compile Include="Clase\SistemaMed.cs" />
     <Compile Include="Conexion.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -1947,6 +1942,13 @@
     </Compile>
     <Compile Include="s\Inicio.aspx.designer.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="s\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="s\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="s\Site1.Master.cs">
       <DependentUpon>Site1.Master</DependentUpon>

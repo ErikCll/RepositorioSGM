@@ -22,6 +22,24 @@ namespace SAM {
         protected global::System.Web.UI.WebControls.Label userr;
         
         /// <summary>
+        /// Control listaImg.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListView listaImg;
+        
+        /// <summary>
+        /// Control list2.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListView list2;
+        
+        /// <summary>
         /// Control SitioSGM.
         /// </summary>
         /// <remarks>
@@ -74,5 +92,14 @@ namespace SAM {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl SitioAdministracion;
+        
+        /// <summary>
+        /// Control SitioSGL.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl SitioSGL;
     }
 }

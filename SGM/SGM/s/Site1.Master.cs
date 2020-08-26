@@ -55,6 +55,7 @@ namespace SGM.s
             {
                 RadInstalacion.SelectedValue = Session["IdInstalacion"].ToString();
                 lblIDInstalacion.Text = Session["IdInstalacion"].ToString();
+
             }
 
             if (!IsPostBack)
@@ -213,7 +214,14 @@ namespace SGM.s
         protected void CerrarSesion(Object sender, EventArgs e)
         {
             FormsAuthentication.SignOut();
+            Session.RemoveAll();
             Response.Redirect(Request.UrlReferrer.ToString());
+        }
+
+        protected void IrSAM(Object sender, EventArgs e)
+        {
+            Session.RemoveAll();
+            Response.Redirect("http://orygon.azurewebsites.net/Inicio.aspx");
         }
 
         public string IdSuscripcion

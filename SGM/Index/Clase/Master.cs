@@ -15,6 +15,8 @@ namespace SAM.Clase
         SqlDataReader dr;
 
         public string IdSuscripcion { get; set; }
+        public string Nombre { get; set; }
+
 
 
         public DataTable MostrarInstalacion()
@@ -35,13 +37,15 @@ namespace SAM.Clase
         public void LeerDatosUsuario(string Usuario)
         {
             comm.Connection = conexion.AbrirConexion();
-            comm.CommandText = "SELECT Id_Suscripcion FROM Usuario WHERE Acceso=@Usuario";
+            comm.CommandText = "SELECT us.Id_Suscripcion,sus.Nombre FROM Usuario us JOIN Suscripcion sus on us.Id_Suscripcion = sus.Id_Suscripcion WHERE us.Acceso=@Usuario";
             comm.CommandType = CommandType.Text;
             comm.Parameters.AddWithValue("@Usuario", Usuario);
 
             dr = comm.ExecuteReader();
             dr.Read();
            IdSuscripcion = dr["Id_Suscripcion"].ToString();
+            Nombre = dr["Nombre"].ToString();
+
 
             dr.Close();
             comm.Connection = conexion.CerrarConexion();

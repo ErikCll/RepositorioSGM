@@ -44,7 +44,7 @@ namespace SGM.Clase
         public bool ValidarSGM(string Usuario)
         {
             comm.Connection = conexion.AbrirConexion();
-            comm.CommandText = "SELECT COUNT(*) FROM Usuario us JOIN Suscripcion sus on us.Id_Suscripcion = sus.Id_Suscripcion JOIN SuscripcionSistema susis on sus.Id_Suscripcion = susis.Id_Suscripcion JOIN Sistema sis on susis.Id_Sistema = sis.Id_Sistema WHERE us.Activado IS NULL AND sus.Activado IS NULL AND us.Acceso = @Usuario AND sis.Nombre = 'SGM'";
+            comm.CommandText = "SELECT COUNT(*) FROM Suscripcion sus JOIN Usuario us on sus.Id_Suscripcion = us.Id_Suscripcion JOIN UsuarioSistema ussis on us.Id_usuario = ussis.Id_Usuario JOIN Sistema sis on ussis.Id_Sistema = sis.Id_Sistema WHERE us.Activado IS NULL AND sus.Activado IS NULL AND us.Acceso = @Usuario AND sis.Nombre = 'SGM'";
             comm.CommandType = CommandType.Text;
             comm.Parameters.AddWithValue("@Usuario", Usuario);
             int i = (int)comm.ExecuteScalar();

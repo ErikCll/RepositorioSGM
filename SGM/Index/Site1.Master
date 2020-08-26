@@ -59,9 +59,9 @@
                     <li class=" mr-5 " style="margin-bottom:-20px">
 <%--                        <img src="img/LogoSAM.PNG" class=" img-fluid" />--%>
                         <div class="form-group text-center">
-                          <label class=" text-gray text-lg font-weight-normal " style="margin-bottom:-30px">SAM</label><br />
+                          <asp:Label runat="server" class=" text-gray text-lg font-weight-normal " style="margin-bottom:-30px" ID="lblTitulo"></asp:Label><br />
 
-                        <label class="font-weight-normal text-sm" style="margin-bottom:-30px">Sistema de Administración de Micrositios</label>
+                        <asp:Label runat="server" class="font-weight-normal text-sm" style="margin-bottom:-30px" ID="lblTitulo2" Visible="false"></asp:Label>
                         </div>
 
 
@@ -97,7 +97,9 @@
                                           <li class="nav-item d-none d-sm-inline-block mr-5">
         <a ></a>
       </li>
-
+                                     <li class="nav-item d-none d-sm-inline-block mr-3">
+        <a ></a>
+      </li>
          <%--           <li class="nav-item dropdown mt-1">
         <a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="false">
           <i class=" fas fa-th-large"></i>
@@ -116,11 +118,12 @@
                      <li class="nav-item dropdown text-sm mt-1">
                             <a class="nav-link dropdown-toggle  ion-android-person" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <asp:Label runat="server" ID="lblUsuario" CssClass="ml-3 font-weight-bold"></asp:Label>
+                                <asp:Label runat="server" ID="lblUsuario" CssClass="ml-3 font-weight-bold"></asp:Label><br />
 <%--                                <a class="dropdown-item  ion-ios-unlocked" href="Contrasena.aspx"> Cambiar contraseña</a>--%>
+                                <asp:LinkButton runat="server" CssClass="dropdown-item ion-ios-locked" Text=" Cambiar contraseña" PostBackUrl="~/Contrasena.aspx"></asp:LinkButton>
                                 <asp:HyperLink runat="server" class="dropdown-item ion-android-document text-blue" href="../docs/ManualDeUsuario.pdf" Target="_blank"> Manual de usuario</asp:HyperLink>
                                 <div class="dropdown-divider"></div>
-                                <asp:LinkButton runat="server" CssClass="dropdown-item ion-android-exit" OnClick="CerrarSesion" Text=" Cerrar sesión" ></asp:LinkButton>
+                                <asp:LinkButton runat="server" CssClass="dropdown-item ion-android-exit exit" OnClick="CerrarSesion" Text=" Cerrar sesión" ></asp:LinkButton>
                             </div>
                         </li>
               </ul>
@@ -222,21 +225,21 @@
                 <i class="right fas fa-angle-left"style="margin-right:-9px"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
+            <ul class="nav nav-treeview" >
+              <li class="nav-item" runat="server" id="SGM" visible="false">
                 <a href="#" class="nav-link" id="instalacion" runat="server">
                   <i class="far fa-circle nav-icon"></i>
                   <p>SGM</p>
                 </a>
               </li>
-                 <li class="nav-item">
+                 <li class="nav-item" runat="server" id="SASISOPA" visible="false">
                 <a  href="#" class="nav-link" id="area" runat="server">
                   <i class="far fa-circle nav-icon"></i>
                   <p>SASISOPA</p>
                 </a>
               </li>
 
-                   <li class="nav-item">
+                   <li class="nav-item" runat="server" id="Operacion" visible="false">
                 <a  href="#" class="nav-link" id="categoria" runat="server">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Operación</p>
@@ -245,28 +248,34 @@
 
               
 
-                  <li class="nav-item">
+                  <li class="nav-item" runat="server" id="Mantenimiento" visible="false">
                 <a  href="#" class="nav-link" id="empleado" runat="server">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Mantenimiento</p>
                 </a>
               </li>
 
-                 <li class="nav-item">
+                 <li class="nav-item" runat="server" id="Seguridad" visible="false">
                 <a  href="#" class="nav-link" id="medidor" runat="server">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Seguridad Industrial</p>
                 </a>
               </li>
             
-               <li class="nav-item">
+               <li class="nav-item" runat="server" id="Administracion" visible="false">
                 <a  href="#" class="nav-link" id="A2" runat="server">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Administración</p>
                 </a>
               </li>
             
-              
+               <li class="nav-item" runat="server" id="SGL" visible="false">
+                <a  href="#" class="nav-link" id="A3" runat="server">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>SGL</p>
+                </a>
+              </li>
+            
             </ul>
           </li>
 
@@ -319,9 +328,12 @@
   </div>
   <!-- /.content-wrapper -->
         <footer class="main-footer mt-5">
-    <strong>Copyright © </strong>
-    <div class="float-right d-none d-sm-inline-block">
+               <div class="text-center">
+        <strong class=" float-left">SAM</strong>
+                       <strong class="float-right">Desarrollado por ORyGON Consultores © </strong>
+
     </div>
+ 
   </footer>
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">

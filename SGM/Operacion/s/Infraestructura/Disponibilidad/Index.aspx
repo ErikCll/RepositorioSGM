@@ -1,0 +1,89 @@
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/s/Site1.Master" AutoEventWireup="true" CodeBehind="Index.aspx.cs" Inherits="Operacion.s.Infraestructura.Disponibilidad.Index" %>
+
+<%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    Disponibilidad de equipos
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="mapeo" runat="server">
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="Content" runat="server">
+        <style>
+          .zoom {
+            transition: transform .2s; /* Animation */
+            margin: 0 auto;
+        }
+
+            .zoom:hover {
+                transform: scale(0.9); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+            }
+    </style>
+  <asp:UpdatePanel runat="server" UpdateMode="Conditional">
+
+        <ContentTemplate>
+
+            <div class="col-lg-12">
+                <div class="row">
+                    <div class="col-sm-12 col-md-6 col-lg-8"></div>
+                    <div class= "input-group float-right col-sm-12 col-md-6 col-lg-4 float-right">
+                              <div class="input-group btn">
+                   <asp:TextBox ID="txtSearch" runat="server" CssClass="form-control form-control-sm"></asp:TextBox>
+<asp:Button ID="btnBuscar" Text="Buscar" runat="server" OnClick="Buscar"  CssClass="btn btn-default btn-sm" />
+                </div>
+                    </div>
+                 <div class="col-sm-12 col-md-12 col-lg-12"></div>
+                  <asp:ListView runat="server" ID="listEquipos" OnItemCommand="listEquipos_ItemCommand" OnItemDataBound="listEquipos_ItemDataBound">
+                      <ItemTemplate>
+              
+
+                          <div class="col-12 col-sm-6 col-md-4 mt-3">
+       
+                              <asp:Label runat="server" Text='<%#Eval("Id_Equipo")%>' ID="lblIdEquipo" Visible="false"></asp:Label>
+                               <asp:Label runat="server" Text='<%#Eval("Estatus")%>' ID="lblEstatus" Visible="false"></asp:Label>
+
+                <asp:LinkButton runat="server" class="info-box shadow zoom h-100 border-left border-dark" CommandName="Ver" >
+              <span class="info-box-icon bg-gray elevation-1"><i class="fas fa-hdd"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text text-dark font-weight-bold"><%#Eval("Nombre")%></span>
+                  <div runat="server" id="operando" visible="false">
+                                          <label class="info-box-number text-sm text-green " runat="server"> <span class=" fas fa-cog text-sm text-green"></span> Operando</label>   
+                      <br />
+                   
+                  </div>
+                  <div runat="server" id="fallando" visible="false">
+                         <label class="info-box-number text-sm text-red " runat="server"> <span class=" fas fa-exclamation-triangle text-sm text-red"></span> Falla</label>
+
+                  <label class="text-dark font-weight-normal text-sm">Fecha:</label><label class="font-weight-bold text-dark text-sm"><%#Eval("Fecha")%></label>
+                                 <label class="text-dark font-weight-normal text-sm">, Hora:</label><label class="font-weight-bold text-dark text-sm"><%#Eval("Hora")%></label>
+                     
+                  </div>
+             
+
+
+              </div>
+              <!-- /.info-box-content -->
+                </asp:LinkButton>
+                <!-- /.info-box -->
+            </div>
+                      </ItemTemplate>
+                    
+                  </asp:ListView>
+                </div>
+            </div>
+        </ContentTemplate>
+    </asp:UpdatePanel>
+       <script type="text/javascript">
+
+              Sys.WebForms.PageRequestManager.getInstance().add_beginRequest(BeginRequestHandler);
+            function BeginRequestHandler(sender, args) { var oControl = args.get_postBackElement(); oControl.disabled = true; }
+            Sys.WebForms.PageRequestManager.getInstance().add_pageLoaded(function () {
+
+
+
+               
+          });
+               
+           
+         
+            </script>  
+</asp:Content>

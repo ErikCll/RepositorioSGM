@@ -29,7 +29,16 @@ namespace SAM
 
             if (login.AutenticarUsuario(Usuario, Contrasena))
             {
-                FormsAuthentication.RedirectFromLoginPage(Login1.UserName, Login1.RememberMeSet);
+                if (login.ValidarSAM(Usuario))
+                {
+                    FormsAuthentication.RedirectFromLoginPage(Login1.UserName, Login1.RememberMeSet);
+
+                }
+                else
+                {
+                    string txtJS = String.Format("<script>alert('{0}');</script>", "No cuentas con el apartado para este acceso.");
+                    ScriptManager.RegisterClientScriptBlock(litControl, litControl.GetType(), "script", txtJS, false);
+                }
 
 
             }

@@ -13,5 +13,11 @@ namespace SASISOPA.s
         {
 
         }
+
+        protected void IrSAM(Object sender, EventArgs e)
+        {
+            Session.RemoveAll();
+            Response.Redirect("http://orygon.azurewebsites.net/Inicio.aspx");
+        }
     }
 }

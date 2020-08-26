@@ -80,7 +80,7 @@
     </ul>
 
               <ul class=" navbar-nav ml-auto ">
-                    <li class=" mt-2 mr-5">
+                <%--    <li class=" mt-2 mr-5">
             <label class=" text-white text-center font-weight-normal">Sistema de Gestión de las Mediciones</label>
 
         </li>
@@ -110,7 +110,7 @@
       </li> 
                      <li class="nav-item d-none d-sm-inline-block mr-5">
         <a ></a>
-      </li>
+      </li>--%>
 
                   <li class="nav-item dropdown text-sm mt-1">
                             <a class="nav-link dropdown-toggle  ion-android-person" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
@@ -135,11 +135,11 @@
       <span class="brand-text font-weight-light">SGM</span>
     </a>
 
-          <a href="http://orygon.azurewebsites.net/Inicio.aspx" class="brand-link ">
+          <asp:LinkButton runat="server" OnClick="IrSAM" class="brand-link ">
              
               <span class="brand-image fas fa-home mt-2"></span>
       <span class="brand-text font-weight-light">SAM</span>
-    </a>
+    </asp:LinkButton>
 
    
     <!-- Sidebar -->

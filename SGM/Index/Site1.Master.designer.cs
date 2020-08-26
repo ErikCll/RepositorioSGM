@@ -22,6 +22,24 @@ namespace SAM {
         protected global::System.Web.UI.WebControls.Label lblIdSuscripcion;
         
         /// <summary>
+        /// Control lblTitulo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTitulo;
+        
+        /// <summary>
+        /// Control lblTitulo2.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTitulo2;
+        
+        /// <summary>
         /// Control lblUsuario.
         /// </summary>
         /// <remarks>
@@ -112,6 +130,15 @@ namespace SAM {
         protected global::System.Web.UI.HtmlControls.HtmlAnchor catalogo;
         
         /// <summary>
+        /// Control SGM.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl SGM;
+        
+        /// <summary>
         /// Control instalacion.
         /// </summary>
         /// <remarks>
@@ -119,6 +146,15 @@ namespace SAM {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlAnchor instalacion;
+        
+        /// <summary>
+        /// Control SASISOPA.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl SASISOPA;
         
         /// <summary>
         /// Control area.
@@ -130,6 +166,15 @@ namespace SAM {
         protected global::System.Web.UI.HtmlControls.HtmlAnchor area;
         
         /// <summary>
+        /// Control Operacion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Operacion;
+        
+        /// <summary>
         /// Control categoria.
         /// </summary>
         /// <remarks>
@@ -137,6 +182,15 @@ namespace SAM {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlAnchor categoria;
+        
+        /// <summary>
+        /// Control Mantenimiento.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Mantenimiento;
         
         /// <summary>
         /// Control empleado.
@@ -148,6 +202,15 @@ namespace SAM {
         protected global::System.Web.UI.HtmlControls.HtmlAnchor empleado;
         
         /// <summary>
+        /// Control Seguridad.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Seguridad;
+        
+        /// <summary>
         /// Control medidor.
         /// </summary>
         /// <remarks>
@@ -157,6 +220,15 @@ namespace SAM {
         protected global::System.Web.UI.HtmlControls.HtmlAnchor medidor;
         
         /// <summary>
+        /// Control Administracion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Administracion;
+        
+        /// <summary>
         /// Control A2.
         /// </summary>
         /// <remarks>
@@ -164,6 +236,24 @@ namespace SAM {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlAnchor A2;
+        
+        /// <summary>
+        /// Control SGL.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl SGL;
+        
+        /// <summary>
+        /// Control A3.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor A3;
         
         /// <summary>
         /// Control head.

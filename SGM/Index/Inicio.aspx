@@ -1,108 +1,162 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Inicio.aspx.cs" Inherits="SAM.Inicio" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server"  >
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <asp:Label runat="server" ID="userr"></asp:Label>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="mapeo" runat="server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Content" runat="server">
-     <style>
+    <style>
         .zoom {
- 
-  transition: transform .2s; /* Animation */
-  margin: 0 auto;
-}
-.zoom:hover {
-  transform: scale(0.9); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
-}
-div.responsive {
-}
-@media  (min-width: 600px) { // or whatever you are after
- div.responsive {
-    display:none; 
-  }
-      
-}
-@media screen and (max-width: 650px) {
-.ocultar-div{
-display:none;
-}
-}
-@media screen and (max-width: 650px) {
-.quitarrow-div{
-margin-top:200px;
-}
-}
-.a:hover{
-   background: rgba(76, 76, 76, 0.25);
-}
-    </style>
-    
-        <div class="col-lg-12">
-        <div class="row " >
+            transition: transform .2s; /* Animation */
+            margin: 0 auto;
+        }
 
-          <!--Carousel Wrapper-->
-<div id="carousel-example-2" class="carousel slide carousel-fade " data-ride="carousel" >
-  <!--Indicators-->
-<%--  <ol class="carousel-indicators mb-5">
+            .zoom:hover {
+                transform: scale(0.9); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+            }
+
+        div.responsive {
+        }
+
+        @media (min-width: 600px) {
+            // or whatever you are after
+            div.responsive {
+                display: none;
+            }
+        }
+
+        @media screen and (max-width: 650px) {
+            .ocultar-div {
+                display: none;
+            }
+        }
+
+        @media screen and (max-width: 650px) {
+            .quitarrow-div {
+                margin-top: 200px;
+            }
+        }
+
+        .a:hover {
+            background: rgba(76, 76, 76, 0.25);
+        }
+    </style>
+
+    <div class="col-lg-12">
+        <div class="row ">
+
+            <!--Carousel Wrapper-->
+            <div id="carousel-example-2" class="carousel slide carousel-fade " data-ride="carousel">
+                <!--Indicators-->
+                <%--  <ol class="carousel-indicators mb-5">
     <li data-target="#carousel-example-2" data-slide-to="0" class="active"></li>
     <li data-target="#carousel-example-2" data-slide-to="1"></li>
     <li data-target="#carousel-example-2" data-slide-to="2"></li>
   </ol>--%>
-  <!--/.Indicators-->
-  <!--Slides-->
-  <div class="carousel-inner h-100" role="listbox">
-    <div class="carousel-item active ">
-      <div class="view ">
-        <img class="d-block w-100 img-fluid" src="img/thumbnail_slide-2.jpg" alt="First slide">
-<%--          <img class="d-block w-100 img-fluid" src="img/thumbnail_terminal%20.jpg" />--%>
-        <div class="mask rgba-black-light"></div>
-      </div>
-    
-    </div>
+                <!--/.Indicators-->
+                <!--Slides-->
+                <div class="carousel-inner h-100" role="listbox">
 
-        <div class="carousel-item">
-      <!--Mask color-->
+                                 <asp:ListView runat="server" id="listaImg" OnItemDataBound="listaImg_ItemDataBound">
+          <ItemTemplate>
+                    <div class="carousel-item active " >
+
+                        <div class="view ">
+
+
+                            <asp:Label runat="server" ID="IdImagen" Text='<%# Eval("Id_Imagen") %>' Visible="false"></asp:Label>
+                                                        <asp:Label runat="server" ID="TipoImagen" Text='<%# Eval("TipoImagen") %>' Visible="false"></asp:Label>
+
+
+<%--                            <img class="d-block w-100 img-fluid" alt="Sin registro" runat="server" id="img">--%>
+
+                            <%--          <img class="d-block w-100 img-fluid" src="img/thumbnail_terminal%20.jpg" />--%>
+                                                        <asp:Image AlternateText="Sin registro" runat="server" ID="img" class="d-block w-100 img-fluid" />
+
+                            <div class="mask rgba-black-light"></div>
+
+                        </div>
+
+
+                    </div>
+              </ItemTemplate>
+                                     </asp:ListView>
+
+
+                        <asp:ListView runat="server" id="list2" OnItemDataBound="list2_ItemDataBound">
+          <ItemTemplate>
+                    <div class="carousel-item " >
+
+                        <div class="view ">
+
+
+                            <asp:Label runat="server" ID="IdImagen" Text='<%# Eval("Id_Imagen") %>' Visible="false"></asp:Label>
+                                                        <asp:Label runat="server" ID="TipoImagen" Text='<%# Eval("TipoImagen") %>' Visible="false"></asp:Label>
+
+<%--                            <iframe class="d-block w-100 img-fluid" alt="Sin registro" runat="server" id="img"></iframe>--%>
+
+                            <asp:Image AlternateText="Sin registro" runat="server" ID="img" class="d-block w-100 img-fluid" />
+
+                            <%--          <img class="d-block w-100 img-fluid" src="img/thumbnail_terminal%20.jpg" />--%>
+                            <div class="mask rgba-black-light"></div>
+
+                        </div>
+
+
+                    </div>
+              </ItemTemplate>
+                                     </asp:ListView>
+              
+
+                               
+
+
+
+                    <%--      <div class="carousel-item">
       <div class="view">
         <img class="d-block w-100 img-fluid" src="img/oil-d.jpg" alt="Third slide">
-<%--          <img class="d-block w-100 img-fluid" src="img/thumbnail_IMG_2285%20(1).jpg" />--%>
+          <img class="d-block w-100 img-fluid" src="img/thumbnail_IMG_2285%20(1).jpg" />
 
         <div class="mask rgba-black-slight"></div>
       </div>
    
-    </div>
-    <div class="carousel-item">
+    </div>--%>
+
+                    <%-- <div class="carousel-item">
       <!--Mask color-->
       <div class="view">
         <img class="d-block w-100 img-fluid" src="img/thumbnail_gas-station.jpg" alt="Second slide">
-<%--          <img class="d-block w-100 img-fluid" src="img/thumbnail_IMG_1507.jpg" />--%>
+          <img class="d-block w-100 img-fluid" src="img/thumbnail_IMG_1507.jpg" />
         <div class="mask rgba-black-strong"></div>
       </div>
   
-    </div>
-    <div class="carousel-item">
+    </div>--%>
+
+                    <%--   <div class="carousel-item">
       <!--Mask color-->
       <div class="view">
         <img class="d-block w-100 img-fluid" src="img/thumbnail_gas transport 3 trucks.jpg" alt="Third slide">
-<%--          <img  class="d-block w-100 img-fluid" src="img/thumbnail_IMG_1481.jpg" />--%>
+          <img  class="d-block w-100 img-fluid" src="img/thumbnail_IMG_1481.jpg" />
         <div class="mask rgba-black-slight"></div>
       </div>
    
-    </div>
+    </div>--%>
 
 
-       <div class="carousel-item">
+                    <%--    <div class="carousel-item">
       <!--Mask color-->
       <div class="view">
         <img class="d-block w-100 img-fluid" src="img/thumbnail_oil-gas-storage1.jpg" alt="Third slide">
 
-<%--          <img class="d-block w-100 img-fluid" src="img/thumbnail_IMG_1502.jpg" />--%>
+          <img class="d-block w-100 img-fluid" src="img/thumbnail_IMG_1502.jpg" />
         <div class="mask rgba-black-slight"></div>
       </div>
    
-    </div>
-       
+    </div>--%>
 
-         <div class="carousel-item">
+
+                    <%--    <div class="carousel-item">
       <!--Mask color-->
       <div class="view">
         <img class="d-block w-100 img-fluid" src="img/measurement-functions-skid.jpg"
@@ -111,25 +165,23 @@ margin-top:200px;
       </div>
    
     </div>
-
-
-      
-  </div>
-  <!--/.Slides-->
-  <!--Controls-->
-  <a class="carousel-control-prev " href="#carousel-example-2" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon " aria-hidden="true"></span>
-  </a>
-  <a class="carousel-control-next " href="#carousel-example-2" role="button" data-slide="next">
-    <span class="carousel-control-next-icon  " aria-hidden="true"></span>
-  </a>
-  <!--/.Controls-->
-</div>
-<!--/.Carousel Wrapper-->
+                    --%>
+                </div>
+                <!--/.Slides-->
+                <!--Controls-->
+                <a class="carousel-control-prev " href="#carousel-example-2" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon " aria-hidden="true"></span>
+                </a>
+                <a class="carousel-control-next " href="#carousel-example-2" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon  " aria-hidden="true"></span>
+                </a>
+                <!--/.Controls-->
+            </div>
+            <!--/.Carousel Wrapper-->
 
         </div>
-     
-<%--            <div class=" ocultar-div" >
+
+        <%--            <div class=" ocultar-div" >
         <br />
                 <br />
                 <br />
@@ -153,8 +205,8 @@ margin-top:200px;
                 <br />
             </div>--%>
 
-            
-       <%--     <div class=" ocultar-div" >
+
+        <%--     <div class=" ocultar-div" >
         <br />
                 <br />
                 <br />
@@ -174,17 +226,17 @@ margin-top:200px;
                                
 
             </div>
-      --%>
+        --%>
 
 
 
 
 
 
-            <div class="row"  >
-                
+        <div class="row">
+
             <div class="col-12 col-sm-6 col-md-4 mt-3" runat="server" id="SitioSGM" visible="false">
-           <asp:LinkButton runat="server" class="info-box shadow zoom h-100" PostBackUrl="http://orygon.azurewebsites.net/SGM/s/Inicio.aspx">
+                <asp:LinkButton runat="server" class="info-box shadow zoom h-100" PostBackUrl="http://orygon.azurewebsites.net/SGM/s/Inicio.aspx">
               <span class="info-box-icon bg-info elevation-1"><i class="fas fa-tape"></i></span>
 
               <div class="info-box-content">
@@ -197,12 +249,12 @@ margin-top:200px;
                 </span>
               </div>
               <!-- /.info-box-content -->
-            </asp:LinkButton>
-            <!-- /.info-box -->
-          </div>
+                </asp:LinkButton>
+                <!-- /.info-box -->
+            </div>
 
-             <div class="col-12 col-sm-6 col-md-4 mt-3" runat="server" id="SitioSASISOPA" visible="false">
-            <asp:LinkButton runat="server" class="info-box shadow zoom h-100" PostBackUrl="http://orygon.azurewebsites.net/SASISOPA/s/Inicio.aspx">
+            <div class="col-12 col-sm-6 col-md-4 mt-3" runat="server" id="SitioSASISOPA" visible="false">
+                <asp:LinkButton runat="server" class="info-box shadow zoom h-100" PostBackUrl="http://orygon.azurewebsites.net/SASISOPA/s/Inicio.aspx">
               <span class="info-box-icon bg-info elevation-1"><i class="fas fa-industry"></i></span>
 
               <div class="info-box-content">
@@ -212,12 +264,12 @@ margin-top:200px;
                 </span>
               </div>
               <!-- /.info-box-content -->
-            </asp:LinkButton>
-            <!-- /.info-box -->
-          </div>
+                </asp:LinkButton>
+                <!-- /.info-box -->
+            </div>
 
-              <div class="col-12 col-sm-6 col-md-4 mt-3" runat="server" id="SitioOperacion" visible="false">
-            <asp:LinkButton runat="server" class="info-box shadow zoom h-100" >
+            <div class="col-12 col-sm-6 col-md-4 mt-3" runat="server" id="SitioOperacion" visible="false">
+                <asp:LinkButton runat="server" class="info-box shadow zoom h-100" PostBackUrl="http://orygon.azurewebsites.net/Operacion/s/Inicio.aspx">
               <span class="info-box-icon bg-info elevation-1"><i class="fas fa-cogs"></i></span>
 
               <div class="info-box-content">
@@ -229,12 +281,12 @@ margin-top:200px;
                 </span>
               </div>
               <!-- /.info-box-content -->
-            </asp:LinkButton>
-            <!-- /.info-box -->
-          </div>
+                </asp:LinkButton>
+                <!-- /.info-box -->
+            </div>
 
-               <div class="col-12 col-sm-6 col-md-4 mt-3" runat="server" id="SitioMantenimiento" visible="false">
-            <asp:LinkButton runat="server" class="info-box shadow zoom h-100">
+            <div class="col-12 col-sm-6 col-md-4 mt-3" runat="server" id="SitioMantenimiento" visible="false">
+                <asp:LinkButton runat="server" class="info-box shadow zoom h-100">
               <span class="info-box-icon bg-info elevation-1"><i class="fas fa-user-cog"></i></span>
 
               <div class="info-box-content">
@@ -246,12 +298,12 @@ margin-top:200px;
                 </span>
               </div>
               <!-- /.info-box-content -->
-            </asp:LinkButton>
-            <!-- /.info-box -->
-          </div>
+                </asp:LinkButton>
+                <!-- /.info-box -->
+            </div>
 
-                <div class="col-12 col-sm-6 col-md-4 mt-3" runat="server" id="SitioSeguridad" visible="false">
-            <asp:LinkButton runat="server" class="info-box shadow zoom h-100">
+            <div class="col-12 col-sm-6 col-md-4 mt-3" runat="server" id="SitioSeguridad" visible="false">
+                <asp:LinkButton runat="server" class="info-box shadow zoom h-100">
               <span class="info-box-icon bg-info elevation-1"><i class="fas fa-hard-hat"></i></span>
 
               <div class="info-box-content">
@@ -263,12 +315,12 @@ margin-top:200px;
                 </span>
               </div>
               <!-- /.info-box-content -->
-            </asp:LinkButton>
-            <!-- /.info-box -->
-          </div>
+                </asp:LinkButton>
+                <!-- /.info-box -->
+            </div>
 
-                    <div class="col-12 col-sm-6 col-md-4 mt-3" runat="server" id="SitioAdministracion" visible="false">
-            <asp:LinkButton runat="server" class="info-box shadow zoom h-100">
+            <div class="col-12 col-sm-6 col-md-4 mt-3" runat="server" id="SitioAdministracion" visible="false">
+                <asp:LinkButton runat="server" class="info-box shadow zoom h-100" PostBackUrl="http://orygon.azurewebsites.net/Administracion/s/Inicio.aspx">
               <span class="info-box-icon bg-info elevation-1"><i class="fas fa-clipboard-check"></i></span>
 
               <div class="info-box-content">
@@ -280,11 +332,29 @@ margin-top:200px;
                 </span>
               </div>
               <!-- /.info-box-content -->
-            </asp:LinkButton>
-            <!-- /.info-box -->
-          </div>
-
+                </asp:LinkButton>
+                <!-- /.info-box -->
             </div>
+
+            <div class="col-12 col-sm-6 col-md-4 mt-3" runat="server" id="SitioSGL" visible="false">
+                <asp:LinkButton runat="server" class="info-box shadow zoom h-100">
+              <span class="info-box-icon bg-info elevation-1"><i class="fas fa-flask"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text text-dark font-weight-bold">SGL</span>
+                <span class="info-box-number text-black-50 text-sm">
+                    Sistema de Gestión de Laboratorios
+                   <br />
+                    <br />
+                    <br />
+                </span>
+              </div>
+              <!-- /.info-box-content -->
+                </asp:LinkButton>
+                <!-- /.info-box -->
+            </div>
+
+        </div>
     </div>
 
 </asp:Content>
