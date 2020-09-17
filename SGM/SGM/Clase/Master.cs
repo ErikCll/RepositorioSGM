@@ -15,7 +15,7 @@ namespace SGM.Clase
         SqlDataReader dr;
 
         public string IdSuscripcion { get; set; }
-
+        public string Nombre { get; set; }
 
         public DataTable MostrarInstalacion(int IdSuscripcion)
         {
@@ -36,18 +36,96 @@ namespace SGM.Clase
         public void LeerDatosUsuario(string Usuario)
         {
             comm.Connection = conexion.AbrirConexion();
-            comm.CommandText = "SELECT Id_Suscripcion FROM Usuario WHERE Acceso=@Usuario";
+            comm.CommandText = "SELECT us.Id_Suscripcion,sus.Nombre FROM Usuario us JOIN Suscripcion sus on us.Id_Suscripcion = sus.Id_Suscripcion WHERE us.Acceso=@Usuario";
             comm.CommandType = CommandType.Text;
             comm.Parameters.AddWithValue("@Usuario", Usuario);
 
             dr = comm.ExecuteReader();
             dr.Read();
             IdSuscripcion = dr["Id_Suscripcion"].ToString();
+            Nombre = dr["Nombre"].ToString();
+
 
             dr.Close();
             comm.Connection = conexion.CerrarConexion();
 
 
+
+        }
+
+        public bool ValidarCatalogo(string Usuario)
+        {
+            comm.Connection = conexion.AbrirConexion();
+            comm.CommandText = "SELECT COUNT(*) FROM UsuarioSistemaMenu sismenu JOIN SistemaMenu menu on sismenu.Id_Menu = menu.Id_Menu JOIN Sistema sis on menu.Id_Sistema = sis.Id_Sistema JOIN Usuario us on sismenu.Id_Usuario = us.Id_usuario WHERE us.Acceso =@Usuario AND menu.Id_Menu = 4 AND menu.Activado IS NULL";
+            comm.CommandType = CommandType.Text;
+            comm.Parameters.AddWithValue("@Usuario", Usuario);
+            int i = (int)comm.ExecuteScalar();
+            comm.Parameters.Clear();
+            conexion.CerrarConexion();
+
+            if (i > 0)
+            {
+                return true;
+            }
+            else
+                return false;
+
+        }
+
+        public bool ValidarCompetencia(string Usuario)
+        {
+            comm.Connection = conexion.AbrirConexion();
+            comm.CommandText = "SELECT COUNT(*) FROM UsuarioSistemaMenu sismenu JOIN SistemaMenu menu on sismenu.Id_Menu = menu.Id_Menu JOIN Sistema sis on menu.Id_Sistema = sis.Id_Sistema JOIN Usuario us on sismenu.Id_Usuario = us.Id_usuario WHERE us.Acceso =@Usuario AND menu.Id_Menu = 5 AND menu.Activado IS NULL";
+            comm.CommandType = CommandType.Text;
+            comm.Parameters.AddWithValue("@Usuario", Usuario);
+            int i = (int)comm.ExecuteScalar();
+            comm.Parameters.Clear();
+            conexion.CerrarConexion();
+
+            if (i > 0)
+            {
+                return true;
+            }
+            else
+                return false;
+
+        }
+
+        public bool ValidarConfirmacion(string Usuario)
+        {
+            comm.Connection = conexion.AbrirConexion();
+            comm.CommandText = "SELECT COUNT(*) FROM UsuarioSistemaMenu sismenu JOIN SistemaMenu menu on sismenu.Id_Menu = menu.Id_Menu JOIN Sistema sis on menu.Id_Sistema = sis.Id_Sistema JOIN Usuario us on sismenu.Id_Usuario = us.Id_usuario WHERE us.Acceso =@Usuario AND menu.Id_Menu = 6 AND menu.Activado IS NULL";
+            comm.CommandType = CommandType.Text;
+            comm.Parameters.AddWithValue("@Usuario", Usuario);
+            int i = (int)comm.ExecuteScalar();
+            comm.Parameters.Clear();
+            conexion.CerrarConexion();
+
+            if (i > 0)
+            {
+                return true;
+            }
+            else
+                return false;
+
+        }
+
+        public bool ValidarIndicadores(string Usuario)
+        {
+            comm.Connection = conexion.AbrirConexion();
+            comm.CommandText = "SELECT COUNT(*) FROM UsuarioSistemaMenu sismenu JOIN SistemaMenu menu on sismenu.Id_Menu = menu.Id_Menu JOIN Sistema sis on menu.Id_Sistema = sis.Id_Sistema JOIN Usuario us on sismenu.Id_Usuario = us.Id_usuario WHERE us.Acceso =@Usuario AND menu.Id_Menu = 7 AND menu.Activado IS NULL";
+            comm.CommandType = CommandType.Text;
+            comm.Parameters.AddWithValue("@Usuario", Usuario);
+            int i = (int)comm.ExecuteScalar();
+            comm.Parameters.Clear();
+            conexion.CerrarConexion();
+
+            if (i > 0)
+            {
+                return true;
+            }
+            else
+                return false;
 
         }
     }

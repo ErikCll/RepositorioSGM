@@ -15,7 +15,6 @@ namespace SGM.s
         Clase.Master master = new Clase.Master();
         Clase.Login login = new Clase.Login();
        
-       
     
    
 
@@ -28,6 +27,26 @@ namespace SGM.s
                 string Usuario = Page.User.Identity.Name;
                 if (login.ValidarSGM(Usuario))
                 {
+                    if (master.ValidarCatalogo(Usuario))
+                    {
+                        menu_catalogo.Visible = true;
+                    }
+
+                    if (master.ValidarCompetencia(Usuario))
+                    {
+                        menu_competencia.Visible = true;
+                    }
+
+                    if (master.ValidarConfirmacion(Usuario))
+                    {
+                        menu_confirmacion.Visible = true;
+                    }
+
+                    if (master.ValidarIndicadores(Usuario))
+                    {
+                        menu_indicador.Visible = true;
+                    }
+
 
                 }
                 else
@@ -63,6 +82,8 @@ namespace SGM.s
                 string Usuario = Page.User.Identity.Name;
                 master.LeerDatosUsuario(Usuario);
                 lblIdSuscripcion.Text = master.IdSuscripcion;
+                lblTitulo.Text = master.Nombre;
+
                 lblUsuario.Text = Usuario;
             }
 
@@ -239,6 +260,38 @@ namespace SGM.s
             }
 
 
+        }
+
+        protected void lnkInstalacion_Click(object sender, EventArgs e)
+        {
+            string url = HttpContext.Current.Request.Url.AbsoluteUri;
+            string encodedString = (Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(url.ToString())));
+
+            Response.Redirect("http://orygon.azurewebsites.net/Catalogo/Instalacion/Index.aspx?url=" + encodedString + "");
+        }
+
+        protected void lnkArea_Click(object sender, EventArgs e)
+        {
+            string url = HttpContext.Current.Request.Url.AbsoluteUri;
+            string encodedString = (Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(url.ToString())));
+
+            Response.Redirect("http://orygon.azurewebsites.net/Catalogo/Area/Index.aspx?url=" + encodedString + "");
+        }
+
+        protected void lnkCategoria_Click(object sender, EventArgs e)
+        {
+            string url = HttpContext.Current.Request.Url.AbsoluteUri;
+            string encodedString = (Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(url.ToString())));
+
+            Response.Redirect("http://orygon.azurewebsites.net/Catalogo/Categoria/Index.aspx?url=" + encodedString + "");
+        }
+
+        protected void lnkEmpleado_Click(object sender, EventArgs e)
+        {
+            string url = HttpContext.Current.Request.Url.AbsoluteUri;
+            string encodedString = (Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(url.ToString())));
+
+            Response.Redirect("http://orygon.azurewebsites.net/Catalogo/Empleado/Index.aspx?url=" + encodedString + "");
         }
     }
 }

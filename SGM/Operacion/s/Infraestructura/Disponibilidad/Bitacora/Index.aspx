@@ -15,31 +15,45 @@
             <asp:Literal ID="litControl" runat="server"></asp:Literal>
             <div class="col-lg-12">
                 <div class="row">
-                    <div class="container col-12">
-                        <asp:LinkButton runat="server" CssClass="text-sm"  OnClick="CrearBitacora"><span class=" ion-plus" ></span>Agregar</asp:LinkButton>
-                        <div class="input-group float-right col-sm-4 col-md-4 col-lg-4">
-                            <div class="input-group btn">
-                                <asp:TextBox runat="server" ID="txtFecha" placeholder="Fecha de inicio"  CssClass="form-control  form-control-sm"></asp:TextBox>
+                          <div class="col-sm-12 col-md-12 col-lg-12">
+
+                         <div class="card ">
+                    <div class="card-body">
+
+                            <div class="row">
+                                                                           <div class="col-sm-4 col-md-4 col-lg-8">
+
+                                                                                                       <asp:LinkButton runat="server" CssClass="text-sm"  OnClick="CrearBitacora"><span class=" ion-plus" ></span>Agregar</asp:LinkButton>
+
+                                                                               </div>
+
+                                                                          <div class=" input-group col-sm-8 col-md-8 col-lg-4">
+
+                                                                              <asp:TextBox runat="server" ID="txtFecha" placeholder="Fecha de inicio"  CssClass="form-control  form-control-sm"></asp:TextBox>
                                 <asp:Button ID="btnBuscar" Text="Consultar" runat="server" OnClick="Buscar" CssClass="btn btn-primary btn-sm" />
-                            </div>
-                        </div>
+                                                                              </div>
+                                                    <div class="container col-12">
+                    <br />
                         <div class=" table-responsive">
                             <div style="overflow: auto; height: auto">
                                 <asp:GridView ID="gridBitacora"
                                     runat="server"
                                     AutoGenerateColumns="false"
-                                    CssClass=" table table-striped table-sm border-light"
-                                    GridLines="Vertical"
+                                    CssClass=" table table-bordered table-striped table-sm "
+  HeaderStyle-CssClass="bg-white"
+                                    GridLines="Horizontal"
                                     EmptyDataText="Sin registro de bitacoras."
                                     PageSize="10"
                                     DataKeyNames="Id_Falla"
                                     OnPageIndexChanging="gridBitacora_PageIndexChanging"
                                     AllowCustomPaging="false"
                                     AllowPaging="true"
+                                     HeaderStyle-HorizontalAlign="Center"
+                                    
                                      OnRowCommand="gridBitacora_RowCommand">
                                     
                                     <Columns>
-                                          <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="260px" ItemStyle-Width="260px" ControlStyle-Width="76px">
+                                          <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="180px" ItemStyle-Width="180px" ControlStyle-Width="76px">
                                             <ItemTemplate>
                                            
 
@@ -48,13 +62,13 @@
                                             </ItemTemplate>
                                         </asp:TemplateField>
 
-                                        <asp:BoundField DataField="FechaInicio" HeaderText="Fecha de inicio" ItemStyle-HorizontalAlign="Center"/>
-                                        <asp:BoundField DataField="HoraInicio" HeaderText="Hora de inicio" ItemStyle-HorizontalAlign="Center" />
+                                        <asp:BoundField DataField="FechaInicio" HeaderText="Fecha de inicio" ItemStyle-HorizontalAlign="Center" />
+                                        <asp:BoundField DataField="HoraInicio" HeaderText="Hora de inicio" ItemStyle-HorizontalAlign="Center"  />
 
-                                        <asp:BoundField DataField="FechaFin" HeaderText="Fecha fin" ItemStyle-HorizontalAlign="Center"/>
+                                        <asp:BoundField DataField="FechaFin" HeaderText="Fecha fin" ItemStyle-HorizontalAlign="Center" />
 
                                         <asp:BoundField DataField="HoraFin" HeaderText="Hora fin" ItemStyle-HorizontalAlign="Center" />
-
+                                        <asp:BoundField DataField="Total" HeaderText="Total" ItemStyle-HorizontalAlign="Center"  />
                                         <asp:BoundField DataField="Descripcion" HeaderText="Descripción" />
 
 
@@ -71,6 +85,18 @@
 
                         </div>
                     </div>
+
+                                </div>
+
+
+                        </div>
+
+
+                             </div>
+
+                              </div>
+
+
                 </div>
             </div>
 

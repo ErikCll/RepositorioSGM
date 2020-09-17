@@ -10,6 +10,32 @@ namespace SAM.Catalogo.Instalacion
     public partial class Index : System.Web.UI.Page
     {
        Clase.Instalacion objIns = new Clase.Instalacion();
+        Clase.Master master = new Clase.Master();
+
+        protected void Page_Init(object sender, EventArgs e)
+        {
+            string Usuario = Page.User.Identity.Name;
+            if (master.ValidarCatalogo(Usuario))
+            {
+
+            }
+            else
+            {
+                Response.Redirect("~/Inicio.aspx");
+            }
+
+            if (Request.QueryString["url"] == null)
+            {
+                //Response.Redirect("~/Inicio.aspx");
+
+            }
+            else
+            {
+                string url = System.Text.ASCIIEncoding.ASCII.GetString(Convert.FromBase64String(Request.QueryString["url"]));
+                Session["url"] = url;
+            }
+
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
             Page.Form.DefaultButton = btnBuscar.UniqueID;
@@ -84,6 +110,22 @@ namespace SAM.Catalogo.Instalacion
 
                 Response.Redirect("Detalle.aspx?id=" + encodedString + "");
             }
+        }
+
+        protected void btnRegresar_Click(object sender, EventArgs e)
+        {
+            if (Session["url"] == null)
+            {
+                Response.Redirect("~/Inicio.aspx");
+
+            }
+            else
+            {
+                Response.Redirect(Session["url"].ToString());
+            }
+
+
+
         }
     }
 }

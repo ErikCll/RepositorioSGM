@@ -10,6 +10,20 @@ namespace SGM.Confirmacion.CensoSis
     public partial class Crear : System.Web.UI.Page
     {
         Clase.SistemaMed sistema = new Clase.SistemaMed();
+        Clase.Master master = new Clase.Master();
+
+        protected void Page_Init(object sender, EventArgs e)
+        {
+            string Usuario = Page.User.Identity.Name;
+            if (master.ValidarConfirmacion(Usuario))
+            {
+
+            }
+            else
+            {
+                Response.Redirect("~/s/Inicio.aspx");
+            }
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)

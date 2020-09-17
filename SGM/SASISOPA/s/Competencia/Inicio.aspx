@@ -1,41 +1,154 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/s/Site1.Master" AutoEventWireup="true" CodeBehind="Inicio.aspx.cs" Inherits="SASISOPA.s.Competencia.Inicio" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-   <div class="custom-control-inline">6. Competencia y Formación <a class="nav-link text-sm " data-widget="control-sidebar" data-slide="true" href="#" role="button">
-          Opciones
-        </a></div>
+    6. Competencia y Formación
+        
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="mapeo" runat="server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Content" runat="server">
-    
-    <aside class="control-sidebar control-sidebar-dark h-50 " style="top: 61px; display: block;">
-    <div class=" p-3 control-sidebar-content os-host os-theme-light os-host-resize-disabled os-host-scrollbar-horizontal-hidden os-host-overflow os-host-overflow-y os-host-transition" style="height: 596px;"><div class="os-resize-observer-host"><div class="os-resize-observer observed" style="left: 0px; right: auto;"></div></div><div class="os-size-auto-observer" style="height: calc(100% + 1px); float: left;"><div class="os-resize-observer observed"></div></div><div class="os-content-glue" style="margin: -16px;"></div><div class="os-padding"><div class="os-viewport os-viewport-native-scrollbars-invisible" style="overflow-y: scroll; right: 0px; bottom: 0px;"><div class="os-content" style="padding: 16px; height: 100%; width: 100%;"><h5>Opciones <a class="float-right text-sm" data-widget="control-sidebar" href="#" role="button">Cerrar</a></h5><hr class="mb-2">    
 
-    <a href="CensoAct/Index.aspx">Censo de Actividades</a>
-        <br />              <br />
+    <div class="col-lg-12">
+        <div class="row">
+            <div class="col-sm-12 col-md-6 col-lg-4" runat="server" id="infraestructura" visible="true">
+                <div class="card card-default shadow-sm">
+                    <div class="card-header">
+                        <h3 class="card-title font-weight-bold">Matriz Categoría-Actividad</h3>
 
-                <a  href="MatrizActIns/Index.aspx">
-                
-                  Matriz Actividad-Instalación
-                </a>
-              <br />
-                      <br />
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body" style="display: block;">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-6 col-lg-12">
+                                <h3>
+                                    <asp:Label runat="server" ID="lblPorcentaje"></asp:Label><label class="font-weight-normal">%</label><i class="fas fa-fw fa-tachometer-alt fa-2x text-black-50 float-right"></i>
+                                </h3>
 
-                <a  href="MatrizCatAct/Index.aspx" >
-               Matriz Categoría-Actividad
-                </a>
-              <br />
-                      <br />
+                            </div>
 
-                <a  href="MatrizCatEmp/Index.aspx">
-                 Matriz Categoría-Empleado
-                </a>
-                           <br />
+                            <div class="col-sm-12 col-md-12 col-lg-12">
+                                <p>
+                                    <asp:Label runat="server" ID="lblOperando"></asp:Label>
+                                    de
+                                    <asp:Label runat="server" ID="lblTotal"></asp:Label></p>
 
-              <br />
-                <a href="Programa/Index.aspx">
-                 Programa de capacitación
-                </a>
+                            </div>
+                        </div>
 
-    <div class="mb-1"></div></div></div></div><div class="os-scrollbar os-scrollbar-horizontal os-scrollbar-unusable os-scrollbar-auto-hidden"><div class="os-scrollbar-track"><div class="os-scrollbar-handle" style="transform: translate(0px, 0px); width: 100%;"></div></div></div><div class="os-scrollbar os-scrollbar-vertical os-scrollbar-auto-hidden"><div class="os-scrollbar-track"><div class="os-scrollbar-handle" style="transform: translate(0px, 0px); height: 46.13%;"></div></div></div><div class="os-scrollbar-corner"></div></div></aside>
+
+
+                        <div class="progress">
+                            <div class="progress-bar" runat="server" id="divprogress1">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- /.card-body -->
+                    <div class="card-footer mt-2">
+                        <a href="MatrizCatAct/Index.aspx" class="float-right">Más información <i class="fas fa-arrow-circle-right"></i></a>
+
+                    </div>
+                </div>
+
+            </div>
+
+               <div class="col-sm-12 col-md-6 col-lg-4" runat="server" id="Div1" visible="true">
+                <div class="card card-default shadow-sm">
+                    <div class="card-header">
+                        <h3 class="card-title font-weight-bold">Matriz Categoría-Empleado</h3>
+
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body" style="display: block;">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-6 col-lg-12">
+                                <h3>
+                                    <asp:Label runat="server" ID="Label1"></asp:Label><label class="font-weight-normal">%</label><i class="fas fa-fw fa-tachometer-alt fa-2x text-black-50 float-right"></i>
+                                </h3>
+
+                            </div>
+
+                            <div class="col-sm-12 col-md-12 col-lg-12">
+                                <p>
+                                    <asp:Label runat="server" ID="Label2"></asp:Label>
+                                    de
+                                    <asp:Label runat="server" ID="Label3"></asp:Label></p>
+
+                            </div>
+                        </div>
+
+
+
+                        <div class="progress">
+                            <div class="progress-bar" runat="server" id="div2">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- /.card-body -->
+                    <div class="card-footer mt-2">
+                        <a href="MatrizCatEmp/Index.aspx" class="float-right">Más información <i class="fas fa-arrow-circle-right"></i></a>
+
+                    </div>
+                </div>
+
+            </div>
+
+               <div class="col-sm-12 col-md-6 col-lg-4" runat="server" id="Div3" visible="true">
+                <div class="card card-default shadow-sm">
+                    <div class="card-header">
+                        <h3 class="card-title font-weight-bold">Programa de Capacitación</h3>
+
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body" style="display: block;">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-6 col-lg-12">
+                                <h3>
+                                    <asp:Label runat="server" ID="Label4"></asp:Label><label class="font-weight-normal">%</label><i class="fas fa-fw fa-tachometer-alt fa-2x text-black-50 float-right"></i>
+                                </h3>
+
+                            </div>
+
+                            <div class="col-sm-12 col-md-12 col-lg-12">
+                                <p>
+                                    <asp:Label runat="server" ID="Label5"></asp:Label>
+                                    de
+                                    <asp:Label runat="server" ID="Label6"></asp:Label></p>
+
+                            </div>
+                        </div>
+
+
+
+                        <div class="progress">
+                            <div class="progress-bar" runat="server" id="div4">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- /.card-body -->
+                    <div class="card-footer mt-2">
+                        <a href="Programa/Index.aspx" class="float-right">Más información <i class="fas fa-arrow-circle-right"></i></a>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
 </asp:Content>

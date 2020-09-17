@@ -26,8 +26,8 @@ namespace SASISOPA.Competencia.CensoAct
 
         public void MostrarGrid()
         {
-            int IdInstalacion = Convert.ToInt32((this.Master as SASISOPA.s.Site1).IdInstalacion.ToString());
-            gridActividad.DataSource = actividad.Mostrar(txtSearch.Text.Trim(),IdInstalacion);
+            int IdSuscripcion = Convert.ToInt32((this.Master as SASISOPA.s.Site1).IdSuscripcion.ToString());
+            gridActividad.DataSource = actividad.Mostrar(txtSearch.Text.Trim(), IdSuscripcion);
             gridActividad.DataBind();
         }
 
@@ -133,11 +133,11 @@ namespace SASISOPA.Competencia.CensoAct
                     Vig.Visible = true;
 
                 }
-                else
-                {
-                    Vig.Visible = false;
+                //else
+                //{
+                //    Vig.Visible = false;
 
-                }
+                //}
 
 
 

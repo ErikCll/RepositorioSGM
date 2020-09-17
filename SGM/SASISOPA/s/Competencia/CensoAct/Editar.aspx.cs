@@ -22,8 +22,7 @@ namespace SASISOPA.Competencia.CensoAct
                 int IdActividad = Convert.ToInt32(decodedString);
                 actividad.LeerDatos(IdActividad);
                 txtNombre.Text = actividad.Nombre;
-                ddl_Instalacion.SelectedValue = actividad.IdInstalacion;
-                ddl_Area.SelectedValue = actividad.IdArea;
+          
             }
         }
 
@@ -34,8 +33,7 @@ namespace SASISOPA.Competencia.CensoAct
             string decodedString = System.Text.ASCIIEncoding.ASCII.GetString(Convert.FromBase64String(Request.QueryString["id"]));
             int IdActividad = Convert.ToInt32(decodedString);
             string Nombre = txtNombre.Text;
-            int IdArea = Convert.ToInt32(ddl_Area.SelectedValue);
-            if (actividad.Editar(IdActividad, Nombre, IdArea))
+            if (actividad.Editar(IdActividad, Nombre))
             {
                 string txtJS = String.Format("<script>alert('{0}');</script>", "Se actualizaron correctamente los datos.");
                 ScriptManager.RegisterClientScriptBlock(litControl, litControl.GetType(), "script", txtJS, false);

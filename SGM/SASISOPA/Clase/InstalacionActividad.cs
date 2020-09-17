@@ -14,15 +14,17 @@ namespace SASISOPA.Clase
         SqlDataAdapter da;
         SqlDataReader dr;
 
-        public DataTable MostrarGeneral()
+        public DataTable MostrarGeneral(int IdSuscripcion)
         {
 
-            string query = "DECLARE @cols AS NVARCHAR(MAX), @query AS NVARCHAR(MAX) select @cols = STUFF((SELECT ',' + QUOTENAME(Nombre) FROM Cat_Instalacion WHERE Activado IS NULL FOR XML PATH(''), TYPE).value('.', 'NVARCHAR(MAX)'),1,1,'') set @query = 'SELECT Actividad,' + @cols + ' from (select actividad, Instalacion FROM(SELECT act.Nombre Actividad, cat.Nombre Instalacion FROM Op_Ins_Act catact LEFT JOIN Cat_Instalacion cat on catact.Id_Instalacion = cat.Id_Instalacion RIGHT JOIN Cat_Actividades act on catact.Id_Actividad = act.Id_Actividades WHERE act.Activado Is null AND cat.Activado IS NULL AND act.TipoSistema = 2) as tabla) x pivot(MAX(Instalacion)  for Instalacion in (' + @cols + ') ) p 'execute(@query);";
+            string query = "DECLARE @cols AS NVARCHAR(MAX), @query AS NVARCHAR(MAX) DECLARE @Id_Suscripcion as NVARCHAR(MAX) SET @Id_Suscripcion=@IdSuscripcion select @cols = STUFF((SELECT ',' + QUOTENAME(Nombre) FROM Cat_Instalacion WHERE Activado IS NULL AND Id_Suscripcion=@IdSuscripcion FOR XML PATH(''), TYPE).value('.', 'NVARCHAR(MAX)'),1,1,'') set @query = 'SELECT Actividad,' + @cols + ' from (select actividad, Instalacion FROM(SELECT act.Nombre Actividad, cat.Nombre Instalacion FROM Op_Ins_Act catact LEFT JOIN Cat_Instalacion cat on catact.Id_Instalacion = cat.Id_Instalacion RIGHT JOIN Cat_Actividades act on catact.Id_Actividad = act.Id_Actividades WHERE act.Activado Is null AND cat.Activado IS NULL AND act.TipoSistema = 2 AND act.Id_Suscripcion=' + @Id_Suscripcion + ') as tabla) x pivot(MAX(Instalacion)  for Instalacion in (' + @cols + ') ) p 'execute(@query);";
 
 
             comm.Connection = conexion.AbrirConexion();
             comm.CommandText = query;
             comm.CommandType = CommandType.Text;
+            comm.Parameters.AddWithValue("@IdSuscripcion", IdSuscripcion);
+
             da = new SqlDataAdapter(comm);
             dt = new DataTable();
             da.Fill(dt);
@@ -31,16 +33,18 @@ namespace SASISOPA.Clase
 
         }
 
-        public DataTable MostrarActividades(int IdArea)
+        public DataTable MostrarActividades(int IdInstalacion,int IdSuscripcion)
         {
 
-            string query = "SELECT act.Id_Actividades 'Id_Actividad', act.Nombre, CAST(CASE WHEN InsAct.Id_Actividad IS NULL THEN 0 else InsAct.Id_Actividad END as bit) 'Id_registro', CASE WHEN InsAct.Id_Actividad IS NULL THEN 0 else InsAct.Id_Actividad END 'Id_registro2' FROM Cat_Actividades act LEFT JOIN(SELECT Id_Actividad, Id_Area FROM Op_Ins_Act WHERE Id_area = @IdArea) InsAct on act.Id_Actividades = InsAct.Id_Actividad WHERE act.Activado IS NULL AND act.TipoSistema = 2 ORDER BY Id_registro DESC, act.Id_Actividades DESC";
+            string query = "SELECT act.Id_Actividades 'Id_Actividad', act.Nombre, CAST(CASE WHEN InsAct.Id_Actividad IS NULL THEN 0 else InsAct.Id_Actividad END as bit) 'Id_registro', CASE WHEN InsAct.Id_Actividad IS NULL THEN 0 else InsAct.Id_Actividad END 'Id_registro2' FROM Cat_Actividades act LEFT JOIN(SELECT Id_Actividad, Id_Area FROM Op_Ins_Act WHERE Id_Instalacion = @IdInsstalacion) InsAct on act.Id_Actividades = InsAct.Id_Actividad WHERE act.Activado IS NULL AND act.TipoSistema = 2 AND act.Id_Suscripcion=@IdSuscripcionn ORDER BY Id_registro DESC, act.Id_Actividades DESC";
 
 
             comm.Connection = conexion.AbrirConexion();
             comm.CommandText = query;
             comm.CommandType = CommandType.Text;
-            comm.Parameters.AddWithValue("@IdArea", IdArea);
+            comm.Parameters.AddWithValue("@IdInsstalacion", IdInstalacion);
+            comm.Parameters.AddWithValue("@IdSuscripcionn", IdSuscripcion);
+
 
             da = new SqlDataAdapter(comm);
             dt = new DataTable();
@@ -66,28 +70,30 @@ namespace SASISOPA.Clase
 
         }
 
-        public DataTable MostrarInstalacion()
+        public DataTable MostrarInstalacion(int IdSuscripcion)
         {
 
             comm.Connection = conexion.AbrirConexion();
-            comm.CommandText = "SELECT TOP(40) Id_Instalacion, Nombre FROM Cat_Instalacion WHERE Activado IS NULL ORDER BY Id_Instalacion DESC";
+            comm.CommandText = "SELECT Id_Instalacion,Nombre FROM Cat_Instalacion WHERE Activado IS NULL AND Id_Suscripcion=@IdSuscripcion ORDER BY Id_Instalacion DESC";
             comm.CommandType = CommandType.Text;
+            comm.Parameters.AddWithValue("@IdSuscripcion", IdSuscripcion);
+
             da = new SqlDataAdapter(comm);
             dt = new DataTable();
             da.Fill(dt);
             conexion.CerrarConexion();
             return dt;
+
         }
 
 
-        public bool Insertar(int IdInstalacion,int IdArea, int IdActividad)
+        public bool Insertar(int IdInstalacion, int IdActividad)
         {
             comm.Connection = conexion.AbrirConexion();
-            comm.CommandText = "INSERT INTO [Op_Ins_Act] (Id_Instalacion,Id_Area,Id_Actividad) VALUES(@IdInstalacion,@IdAreaa,@Id_Actividad)";
+            comm.CommandText = "INSERT INTO [Op_Ins_Act] (Id_Instalacion,Id_Actividad) VALUES(@IdInstalacion,@Id_Actividad)";
             comm.CommandType = CommandType.Text;
             comm.Parameters.Clear();
             comm.Parameters.AddWithValue("@IdInstalacion", IdInstalacion);
-            comm.Parameters.AddWithValue("@IdAreaa", IdArea);
             comm.Parameters.AddWithValue("@Id_Actividad", IdActividad);
             int i = comm.ExecuteNonQuery();
             conexion.CerrarConexion();
@@ -104,13 +110,13 @@ namespace SASISOPA.Clase
 
         }
 
-        public bool Eliminar(int IdArea, int IdActividad)
+        public bool Eliminar(int IdInstalacion, int IdActividad)
         {
             comm.Connection = conexion.AbrirConexion();
-            comm.CommandText = "DELETE FROM Op_Ins_Act WHERE Id_Area=@IdAreea AND Id_Actividad=@Id_Actividad";
+            comm.CommandText = "DELETE FROM Op_Ins_Act WHERE Id_Instalacion=@IdInstaalacion AND Id_Actividad=@Id_Actividad";
             comm.CommandType = CommandType.Text;
             comm.Parameters.Clear();
-            comm.Parameters.AddWithValue("@IdAreea", IdArea);
+            comm.Parameters.AddWithValue("@IdInstaalacion", IdInstalacion);
             comm.Parameters.AddWithValue("@Id_Actividad", IdActividad);
             int i = comm.ExecuteNonQuery();
             conexion.CerrarConexion();

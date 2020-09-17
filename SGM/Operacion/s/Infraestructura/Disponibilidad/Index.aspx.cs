@@ -10,6 +10,20 @@ namespace Operacion.s.Infraestructura.Disponibilidad
     public partial class Index : System.Web.UI.Page
     {
         Clase.Disponibilidad disponibilidad = new Clase.Disponibilidad();
+        Clase.Master master = new Clase.Master();
+        protected void Page_Init(object sender, EventArgs e)
+        {
+            string Usuario = Page.User.Identity.Name;
+            if (master.ValidarInfraestructura(Usuario))
+            {
+
+            }
+            else
+            {
+                Response.Redirect("~/s/Inicio.aspx");
+            }
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             Page.Form.DefaultButton = btnBuscar.UniqueID;
@@ -68,6 +82,12 @@ namespace Operacion.s.Infraestructura.Disponibilidad
         protected void Buscar(Object sender, EventArgs e)
         {
             MostrarLista();
+        }
+
+        protected void IrSAM(Object sender, EventArgs e)
+        {
+            Session.RemoveAll();
+            Response.Redirect("http://orygon.azurewebsites.net/Inicio.aspx");
         }
     }
 }

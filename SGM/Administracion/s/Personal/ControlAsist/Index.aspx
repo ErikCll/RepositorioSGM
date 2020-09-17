@@ -3,6 +3,9 @@
     Control de asistencia
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="mapeo" runat="server">
+    <li class="breadcrumb-item active"><asp:LinkButton runat="server" OnClick="IrSAM">SAM</asp:LinkButton></li>
+                  <li class="breadcrumb-item "><a href="../../Inicio.aspx">Administración</a></li>
+                     <li class="breadcrumb-item "><a> Control de asistencia</a></li>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Content" runat="server">
 
@@ -13,26 +16,30 @@
 
             <div class="col-lg-12">
                 <div class="row">
+                     <div class="col-sm-12 col-md-12 col-lg-12">
 
-                    <div class="input-group col-sm-3 col-md-3 col-lg-3">
-                          <div class="input-group btn">
+                         <div class="card ">
+                    <div class="card-body">
+
+                            <div class="row">
+                                  <div class="input-group col-sm-3 col-md-3 col-lg-3">
 
                                   <asp:TextBox runat="server" ID="txtFecha" placeholder="dd-mm-yyyy" onkeydown="return false;" CssClass="form-control  form-control-sm"></asp:TextBox>
                         <asp:Button CssClass="btn btn-primary btn-sm" ID="btnConsultar" Text="Consultar" runat="server" OnClick="btnConsultar_Click"/>
-                            </div>
-                    </div>
-                          <div class="col-sm-5 col-md-5 col-lg-5"></div>
-                             
 
-                            <div class="input-group col-sm-4 col-md-4 col-lg-4 float-right">
-                <div class="input-group btn">
+
+                    </div>
+
+                                <div class="col-sm-5 col-md-5 col-lg-5"></div>
+                                    <div class="input-group col-sm-4 col-md-4 col-lg-4 float-right">
                    <asp:TextBox ID="txtSearch" runat="server" CssClass="form-control form-control-sm"></asp:TextBox>
 <asp:Button ID="btnBuscar" Text="Buscar" runat="server"  OnClick="Buscar"  CssClass="btn btn-default btn-sm" />
-                </div>
             </div>
-                    <div class="container col-12">
-                        
 
+
+                                 <div class="container col-12">
+                        
+                                     <br />
                      
 
 <%--                       <asp:LinkButton runat="server" CssClass="text-sm" PostBackUrl="~/s/Catalogo/Medidor/Crear.aspx"><span class=" ion-plus" ></span>Agregar</asp:LinkButton>--%>
@@ -40,9 +47,10 @@
                         <div class=" table-responsive">
                             <div style="overflow:auto ;height:auto">
                                 <asp:GridView runat="server" 
-                                 CssClass=" table table-striped table-sm border-light"
-                                   GridLines="Vertical"
-                                   id="gridAsistencia"
+                                 CssClass=" table table-bordered table-striped table-sm"
+                               HeaderStyle-CssClass="bg-white"
+                                    GridLines="Horizontal"                                  
+                                    id="gridAsistencia"
                                     AutoGenerateColumns="false"
                                      EmptyDataText="Sin registro de asistencias."
                                      PageSize="10"
@@ -60,9 +68,9 @@
                                             </ItemTemplate>
                                         </asp:TemplateField>
 
-                                         <asp:BoundField HeaderText="Fecha" DataField="Fecha" ItemStyle-HorizontalAlign="Center" />
-                                         <asp:BoundField HeaderText="Entrada" DataField="Entrada" ItemStyle-HorizontalAlign="Center"  />
-                                       <asp:BoundField HeaderText="Salida" DataField="Salida" ItemStyle-HorizontalAlign="Center"  />
+                                         <asp:BoundField HeaderText="Fecha" DataField="Fecha"  />
+                                         <asp:BoundField HeaderText="Entrada" DataField="Entrada"   />
+                                       <asp:BoundField HeaderText="Salida" DataField="Salida"  />
 
                                     </Columns>
                                             <PagerStyle HorizontalAlign = "Center" CssClass="" />
@@ -70,6 +78,23 @@
                             </div>
                         </div>
                     </div>
+
+                                </div>
+
+                        </div>
+
+                             </div>
+
+                         </div>
+
+
+
+                  
+                          
+                             
+
+                        
+                   
                 </div>
             </div>
         </ContentTemplate>

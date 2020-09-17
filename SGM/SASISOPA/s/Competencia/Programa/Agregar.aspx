@@ -13,15 +13,18 @@
         <ContentTemplate>
             <asp:Literal runat="server" ID="litControl"></asp:Literal>
             <div class="col-lg-12">
-                  <div class="card shadow-none border-top border-dark" >
-                <div class="card-body">
-                    <div class="row">
-                           <div class="col-sm-12 col-md-12 col-lg-12">
-                            <h4>Datos de la programación</h4>
-                        </div>
-                     
-                     
-                        <div class="col-sm-12 col-md-12 col-lg-4">
+                 <div class="row">
+                         <div class="col-sm-12 col-md-12 col-lg-12">
+
+                        <div class="card ">
+                            <div class="card-header">
+                                  <h4>Datos de la programación</h4>
+                            </div>
+                            <div class="card-body">
+                                   <div class="row">
+                          
+
+                                          <div class="col-sm-12 col-md-12 col-lg-4">
                              <div class="form-group">
                                     <label class="font-weight-bold">Fecha de programación:</label>
                                         <asp:TextBox runat="server" ID="txtFecha" class="form-control ml-1 " placeholder="dd-mm-yyyy" onkeydown="return false;"></asp:TextBox>
@@ -34,7 +37,8 @@
                            
                                   
                         </div>
-                     <div class="col-sm-12 col-md-12 col-lg-4">
+
+                                          <div class="col-sm-12 col-md-12 col-lg-4">
                             <div class="form-group">
                                 <label class="font-weight-bold">Empleado:</label>
                      <asp:DropDownList CssClass="form-control "  runat="server" ID="ddl_Empleado" DataTextField="Empleado" DataValueField="Id_Empleado"></asp:DropDownList>
@@ -44,7 +48,8 @@
 
                             </div>
                         </div>
-                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+                                          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                           
                             <div class="form-group">
                                 <asp:Button class="btn btn-primary" id="btnGuardar" runat="server" Text="Guardar" ValidationGroup="btnGuardar" OnClick="btnGuardar_Click" />
@@ -53,32 +58,32 @@
 
                             </div>
                         </div>
-                       
-                 
-                        </div>
 
-                         <div class="row">
-                        
-                    <div class="container col-12">
-                        <label>Url para ingresar a la evaluación: </label> <asp:Label runat="server" Text="http://orygon.azurewebsites.net/SASISOPA/s/PreEvaluacion.aspx"></asp:Label>
-                         <div class="input-group float-right col-sm-4 col-md-4 col-lg-4">
-                <div class="input-group btn">
-                   <asp:TextBox ID="txtSearch" runat="server" CssClass="form-control form-control-sm"></asp:TextBox>
+                                          <div class="col-sm-4 col-md-4 col-lg-8">
+
+                                              <label>Url para ingresar a la evaluación: </label> <asp:Label runat="server" Text="http://orygon.azurewebsites.net/SASISOPA/s/PreEvaluacion.aspx"></asp:Label>
+                                </div>
+                                                                       <div class=" input-group float-right col-sm-4 col-md-4 col-lg-4">
+                                                                                <asp:TextBox ID="txtSearch" runat="server" CssClass="form-control form-control-sm"></asp:TextBox>
 <asp:Button ID="btnBuscar" Text="Buscar" runat="server"  OnClick="Buscar"  CssClass="btn btn-default btn-sm" />
-                </div>
-            </div>
+                                                                           </div>
+
+                                          <div class="container col-12">
+<br />                 
                         <div class=" table-responsive">
                             <div style="overflow: auto; height: auto">
                                 <asp:GridView ID="gridPrograma"
                                     runat="server"
                                     AutoGenerateColumns="false"
-                                    CssClass=" table table-striped table-sm border-light"
-                                    GridLines="Vertical"
+                                    CssClass=" table table-bordered table-striped table-sm"
+                                     HeaderStyle-CssClass="bg-white"
+                                                GridLines="Horizontal"
                                     EmptyDataText="Sin registro de evaluaciones programadas."
                                     DataKeyNames="Id_Programa"
                                      OnRowDataBound="gridPrograma_RowDataBound"
                                      OnRowCommand="gridPrograma_RowCommand"
                                      PageSize="10"
+                                     HeaderStyle-HorizontalAlign="Center"
                                      OnPageIndexChanging="gridPrograma_PageIndexChanging"
                                      AllowPaging="true"
 
@@ -97,8 +102,8 @@
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                         <asp:BoundField DataField="Empleado" HeaderText="Empleado"/>
-                                        <asp:BoundField DataField="FechaEvaluacion" HeaderText="Fecha de programación" />
-                                         <asp:BoundField DataField="FechaRealizado" HeaderText="Fecha de realización" />
+                                        <asp:BoundField DataField="FechaEvaluacion" HeaderText="Fecha de programación" ItemStyle-HorizontalAlign="Center"/>
+                                         <asp:BoundField DataField="FechaRealizado" HeaderText="Fecha de realización" ItemStyle-HorizontalAlign="Center" />
                                         <asp:BoundField DataField="Estatus" HeaderText="Estatus" /> 
                                    <asp:TemplateField  ItemStyle-HorizontalAlign="Center" HeaderText="Calificación">
                                             <ItemTemplate>
@@ -130,7 +135,24 @@
                         </div>
                     </div>
                            
-                </div>
+                                       </div>
+
+
+                                </div>
+
+                           
+                          
+                     
+                     
+                     
+                  
+                     
+                       
+                 
+                        </div>
+
+                        
+                 
 
                     </div>
                       </div>

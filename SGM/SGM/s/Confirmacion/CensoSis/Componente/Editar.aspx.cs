@@ -10,6 +10,20 @@ namespace SGM.Confirmacion.CensoSis.Componente
     public partial class Editar : System.Web.UI.Page
     {
         Clase.SistemaComponente componente = new Clase.SistemaComponente();
+        Clase.Master master = new Clase.Master();
+
+        protected void Page_Init(object sender, EventArgs e)
+        {
+            string Usuario = Page.User.Identity.Name;
+            if (master.ValidarConfirmacion(Usuario))
+            {
+
+            }
+            else
+            {
+                Response.Redirect("~/s/Inicio.aspx");
+            }
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)

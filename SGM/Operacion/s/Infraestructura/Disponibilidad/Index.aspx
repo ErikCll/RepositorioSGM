@@ -5,6 +5,10 @@
     Disponibilidad de equipos
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="mapeo" runat="server">
+       <li class="breadcrumb-item active"><asp:LinkButton runat="server" OnClick="IrSAM">SAM</asp:LinkButton></li>
+                  <li class="breadcrumb-item "><a href="../../Inicio.aspx">Operación</a></li>
+                     <li class="breadcrumb-item "><a>Disponibilidad de equipos</a></li>
+
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Content" runat="server">
         <style>
@@ -34,28 +38,33 @@
                   <asp:ListView runat="server" ID="listEquipos" OnItemCommand="listEquipos_ItemCommand" OnItemDataBound="listEquipos_ItemDataBound">
                       <ItemTemplate>
               
-
+                        
                           <div class="col-12 col-sm-6 col-md-4 mt-3">
-       
+      
                               <asp:Label runat="server" Text='<%#Eval("Id_Equipo")%>' ID="lblIdEquipo" Visible="false"></asp:Label>
                                <asp:Label runat="server" Text='<%#Eval("Estatus")%>' ID="lblEstatus" Visible="false"></asp:Label>
 
-                <asp:LinkButton runat="server" class="info-box shadow zoom h-100 border-left border-dark" CommandName="Ver" >
+                <asp:LinkButton runat="server" class="info-box shadow zoom h-100 " CommandName="Ver" >
               <span class="info-box-icon bg-gray elevation-1"><i class="fas fa-hdd"></i></span>
 
               <div class="info-box-content">
-                <span class="info-box-text text-dark font-weight-bold"><%#Eval("Nombre")%></span>
+<%--                <label class="info-box-text text-dark font-weight-bold"><%#Eval("Nombre")%></label>--%>
+
+                  <asp:Label Text='<%#Eval("Nombre")%>' runat="server" class=" text-dark font-weight-bold"></asp:Label>
                   <div runat="server" id="operando" visible="false">
                                           <label class="info-box-number text-sm text-green " runat="server"> <span class=" fas fa-cog text-sm text-green"></span> Operando</label>   
                       <br />
                    
                   </div>
                   <div runat="server" id="fallando" visible="false">
-                         <label class="info-box-number text-sm text-red " runat="server"> <span class=" fas fa-exclamation-triangle text-sm text-red"></span> Falla</label>
+                                                   <label class="info-box-number text-sm text-red " runat="server"> <span class=" fas fa-exclamation-triangle text-sm text-red"></span> Falla</label>
+
+
 
                   <label class="text-dark font-weight-normal text-sm">Fecha:</label><label class="font-weight-bold text-dark text-sm"><%#Eval("Fecha")%></label>
                                  <label class="text-dark font-weight-normal text-sm">, Hora:</label><label class="font-weight-bold text-dark text-sm"><%#Eval("Hora")%></label>
-                     
+                                                                                           <label class="text-dark font-weight-normal text-sm ">Fuera de operación:</label><label class="font-weight-bold text-dark text-sm ml-1"> <%#Eval("Transcurrido")%></label>
+
                   </div>
              
 

@@ -23,7 +23,21 @@ namespace Administracion.s
                 string Usuario = Page.User.Identity.Name;
                 if (login.ValidarAdministracion(Usuario))
                 {
+                    if (master.ValidarCatalogo(Usuario))
+                    {
+                        menu_catalogo.Visible = true;
 
+                    }
+
+                    if (master.ValidarPersonal(Usuario))
+                    {
+                        menu_personal.Visible = true;
+                    }
+
+                    if (master.ValidarAlmacen(Usuario))
+                    {
+                        menu_almacen.Visible = true;
+                    }
                 }
                 else
                 {
@@ -58,7 +72,18 @@ namespace Administracion.s
                 string Usuario = Page.User.Identity.Name;
                 master.LeerDatosUsuario(Usuario);
                 lblIdSuscripcion.Text = master.IdSuscripcion;
+                lblTitulo.Text = master.Nombre;
                 lblUsuario.Text = Usuario;
+                LlenarDrop();
+                if (RadInstalacion.Items.Count == 1)
+                {
+                    int IdSuscripcion = Convert.ToInt32(lblIdSuscripcion.Text);
+
+                    master.LeerDatosInstalacion(IdSuscripcion);
+                    RadInstalacion.SelectedValue = master.IdInstalacion;
+                    lblIDInstalacion.Text = master.IdInstalacion;
+                    RadInstalacion.Enabled = false;
+                }
             }
 
         }
@@ -68,7 +93,6 @@ namespace Administracion.s
             if (!IsPostBack)
             {
 
-                LlenarDrop();
 
                 string activepage = Request.RawUrl;
 
@@ -80,7 +104,22 @@ namespace Administracion.s
 
                 }
 
-               
+              else if (activepage.Contains("/s/Catalogo/Material/Index.aspx") || activepage.Contains("/s/Catalogo/Material/Crear.aspx") || activepage.Contains("/s/Catalogo/Material/Editar.aspx"))
+                {
+                    menu_catalogo.Attributes.Add("class", "  nav-item has-treeview menu-open");
+                    catalogo.Attributes.Add("class", "nav-link active");
+                    material.Attributes.Add("class", "nav-link active");
+
+                }
+
+                else if (activepage.Contains("/s/Almacen/InventarioMaterial/Index.aspx") || activepage.Contains("/s/Almacen/InventarioMaterial/Detalle.aspx"))
+                {
+                    menu_almacen.Attributes.Add("class", "  nav-item has-treeview menu-open");
+                    almacen.Attributes.Add("class", "nav-link active");
+                    inventario.Attributes.Add("class", "nav-link active");
+
+                }
+
             }
         }
 
@@ -160,6 +199,38 @@ namespace Administracion.s
             }
 
 
+        }
+
+        protected void lnkInstalacion_Click(object sender, EventArgs e)
+        {
+            string url = HttpContext.Current.Request.Url.AbsoluteUri;
+            string encodedString = (Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(url.ToString())));
+
+            Response.Redirect("http://orygon.azurewebsites.net/Catalogo/Instalacion/Index.aspx?url=" + encodedString + "");
+        }
+
+        protected void lnkArea_Click(object sender, EventArgs e)
+        {
+            string url = HttpContext.Current.Request.Url.AbsoluteUri;
+            string encodedString = (Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(url.ToString())));
+
+            Response.Redirect("http://orygon.azurewebsites.net/Catalogo/Area/Index.aspx?url=" + encodedString + "");
+        }
+
+        protected void lnkCategoria_Click(object sender, EventArgs e)
+        {
+            string url = HttpContext.Current.Request.Url.AbsoluteUri;
+            string encodedString = (Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(url.ToString())));
+
+            Response.Redirect("http://orygon.azurewebsites.net/Catalogo/Categoria/Index.aspx?url=" + encodedString + "");
+        }
+
+        protected void lnkEmpleado_Click(object sender, EventArgs e)
+        {
+            string url = HttpContext.Current.Request.Url.AbsoluteUri;
+            string encodedString = (Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(url.ToString())));
+
+            Response.Redirect("http://orygon.azurewebsites.net/Catalogo/Empleado/Index.aspx?url=" + encodedString + "");
         }
     }
 }

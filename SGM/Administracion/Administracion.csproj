@@ -46,6 +46,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="QRCoder, Version=1.3.9.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Downloads\QRCode_Demo\QRCode_Demo\QRCode_Demo\DLL\QRCoder.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -68,6 +74,7 @@
     <Reference Include="Telerik.Web.UI.Skins">
       <HintPath>..\..\..\..\..\Desktop\Erik\Admins\Admins\bin\Telerik.Web.UI.Skins.dll</HintPath>
     </Reference>
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
@@ -1653,6 +1660,12 @@
     <Content Include="plugins\toastr\toastr.css" />
     <Content Include="plugins\toastr\toastr.min.css" />
     <Content Include="plugins\toastr\toastr.min.js" />
+    <Content Include="s\Almacen\InventarioMaterial\Detalle.aspx" />
+    <Content Include="s\Almacen\InventarioMaterial\Index.aspx" />
+    <Content Include="s\Catalogo\Material\Crear.aspx" />
+    <Content Include="s\Catalogo\Material\Editar.aspx" />
+    <Content Include="s\Catalogo\Material\Index.aspx" />
+    <Content Include="s\Catalogo\Material\Prueba.aspx" />
     <Content Include="s\Inicio.aspx" />
     <Content Include="s\Login.aspx" />
     <Content Include="s\Personal\ControlAsist\Detalle.aspx" />
@@ -1661,13 +1674,57 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Clase\ControlAsistencia.cs" />
+    <Compile Include="Clase\InventarioMaterial.cs" />
     <Compile Include="Clase\Login.cs" />
     <Compile Include="Clase\Master.cs" />
+    <Compile Include="Clase\Material.cs" />
     <Compile Include="Conexion.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="s\Almacen\InventarioMaterial\Detalle.aspx.cs">
+      <DependentUpon>Detalle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="s\Almacen\InventarioMaterial\Detalle.aspx.designer.cs">
+      <DependentUpon>Detalle.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="s\Almacen\InventarioMaterial\Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="s\Almacen\InventarioMaterial\Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="s\Catalogo\Material\Crear.aspx.cs">
+      <DependentUpon>Crear.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="s\Catalogo\Material\Crear.aspx.designer.cs">
+      <DependentUpon>Crear.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="s\Catalogo\Material\Editar.aspx.cs">
+      <DependentUpon>Editar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="s\Catalogo\Material\Editar.aspx.designer.cs">
+      <DependentUpon>Editar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="s\Catalogo\Material\Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="s\Catalogo\Material\Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="s\Catalogo\Material\Prueba.aspx.cs">
+      <DependentUpon>Prueba.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="s\Catalogo\Material\Prueba.aspx.designer.cs">
+      <DependentUpon>Prueba.aspx</DependentUpon>
+    </Compile>
     <Compile Include="s\Inicio.aspx.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1805,6 +1862,7 @@
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

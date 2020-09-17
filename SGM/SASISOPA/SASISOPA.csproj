@@ -1728,8 +1728,10 @@
     <Content Include="s\Competencia\Programa\DetalleEv.aspx" />
     <Content Include="s\Competencia\Programa\Editar.aspx" />
     <Content Include="s\Competencia\Programa\Index.aspx" />
+    <Content Include="s\Evaluacion.aspx" />
     <Content Include="s\Inicio.aspx" />
     <Content Include="s\Login.aspx" />
+    <Content Include="s\PreEvaluacion.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -1936,6 +1938,13 @@
     <Compile Include="s\Competencia\Programa\Index.aspx.designer.cs">
       <DependentUpon>Index.aspx</DependentUpon>
     </Compile>
+    <Compile Include="s\Evaluacion.aspx.cs">
+      <DependentUpon>Evaluacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="s\Evaluacion.aspx.designer.cs">
+      <DependentUpon>Evaluacion.aspx</DependentUpon>
+    </Compile>
     <Compile Include="s\Inicio.aspx.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1949,6 +1958,13 @@
     </Compile>
     <Compile Include="s\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="s\PreEvaluacion.aspx.cs">
+      <DependentUpon>PreEvaluacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="s\PreEvaluacion.aspx.designer.cs">
+      <DependentUpon>PreEvaluacion.aspx</DependentUpon>
     </Compile>
     <Compile Include="s\Site1.Master.cs">
       <DependentUpon>Site1.Master</DependentUpon>

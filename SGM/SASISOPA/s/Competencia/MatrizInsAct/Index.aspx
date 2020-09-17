@@ -14,7 +14,7 @@
           <div class="col-lg-12">
                 <div class="row">
                     <div class="container col-12">
-                    <a href="Agregar.aspx" class="float-left">Agreagar Instalación-Actividad
+                    <a href="Agregar.aspx" class="float-left">Agregar Instalación-Actividad
 </a>
 
                    

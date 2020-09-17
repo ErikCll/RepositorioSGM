@@ -27,9 +27,11 @@ namespace SASISOPA.Competencia.CensoAct
 
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
+            int IdSuscripcion = Convert.ToInt32((this.Master as SASISOPA.s.Site1).IdSuscripcion.ToString());
+
             string Nombre = txtNombre.Text;
             int TipoSistema = Convert.ToInt32((this.Master as SASISOPA.s.Site1).TipoSistema.ToString());
-            if (objIns.Insertar(TipoSistema, Nombre))
+            if (objIns.Insertar(TipoSistema, Nombre, IdSuscripcion))
             {
                 string script = "alert('Registro creado exitosamente.'); window.location.href= 'Index.aspx';";
 

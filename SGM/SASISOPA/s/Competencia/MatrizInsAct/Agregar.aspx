@@ -21,12 +21,7 @@
                             </div>
                         </div>
                            
-                        <div class="col-sm-12 col-md-3 col-lg-3">
-                            <div class="form-group">
-                               <label>Área:</label>
-                                <asp:DropDownList runat="server" ID="ddl_Area" DataTextField="Nombre" DataValueField="Id_Area" CssClass="form-control" AutoPostBack="true" OnSelectedIndexChanged="ddl_Area_SelectedIndexChanged"></asp:DropDownList>
-                            </div>
-                        </div>
+                     
                         <div class="col-sm-12 col-md-12 col-lg-12"></div>
                         <div class="col-sm-6 col-md-6 col-lg-6">
                             <h4>Censo de actividades:</h4>

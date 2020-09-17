@@ -53,5 +53,24 @@ namespace SAM.Clase
 
 
         }
+
+        public bool ValidarCatalogo(string Usuario)
+        {
+            comm.Connection = conexion.AbrirConexion();
+            comm.CommandText = "SELECT COUNT(*) FROM UsuarioSistemaMenu sismenu JOIN SistemaMenu menu on sismenu.Id_Menu = menu.Id_Menu JOIN Sistema sis on menu.Id_Sistema = sis.Id_Sistema JOIN Usuario us on sismenu.Id_Usuario = us.Id_usuario WHERE us.Acceso =@Usuario AND menu.Id_Menu = 10 AND menu.Activado IS NULL";
+            comm.CommandType = CommandType.Text;
+            comm.Parameters.AddWithValue("@Usuario", Usuario);
+            int i = (int)comm.ExecuteScalar();
+            comm.Parameters.Clear();
+            conexion.CerrarConexion();
+
+            if (i > 0)
+            {
+                return true;
+            }
+            else
+                return false;
+
+        }
     }
 }

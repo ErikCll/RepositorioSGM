@@ -10,6 +10,20 @@ namespace SAM.Catalogo.Instalacion
     public partial class Editar : System.Web.UI.Page
     {
         Clase.Instalacion objIns = new Clase.Instalacion();
+        Clase.Master master = new Clase.Master();
+
+        protected void Page_Init(object sender, EventArgs e)
+        {
+            string Usuario = Page.User.Identity.Name;
+            if (master.ValidarCatalogo(Usuario))
+            {
+
+            }
+            else
+            {
+                Response.Redirect("~/Inicio.aspx");
+            }
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)

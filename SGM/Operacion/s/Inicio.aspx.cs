@@ -10,7 +10,22 @@ namespace Operacion.s
     public partial class Inicio : System.Web.UI.Page
     {
         Clase.Disponibilidad disponibilidad = new Clase.Disponibilidad();
-        protected void Page_Load(object sender, EventArgs e)
+        Clase.Master master = new Clase.Master();
+        Clase.Resumen resumen = new Clase.Resumen();
+
+        protected void Page_Init(object sender, EventArgs e)
+        {
+            string Usuario = Page.User.Identity.Name;
+            if (master.ValidarInfraestructura(Usuario))
+            {
+                infraestructura.Visible = true;
+            }
+            if (master.ValidarProduccion(Usuario))
+            {
+                produccion.Visible = true;
+            }
+        }
+            protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
@@ -19,13 +34,16 @@ namespace Operacion.s
                 lblTotal.Text = disponibilidad.TotalEquipos;
                 disponibilidad.LeerDatosTotalOperando(IdInstalacion);
                 lblOperando.Text = disponibilidad.TotalEquiposOperando;
-
+                string Mes = DateTime.Now.ToString("MM");
+                string Anio = DateTime.Now.ToString("yyyy");
                 decimal Operando = Convert.ToDecimal(lblOperando.Text );
                 decimal Total = Convert.ToDecimal(lblTotal.Text);
-
+           
                 if(Operando==0 && Total == 0)
                 {
                     lblPorcentaje.Text = "0";
+                    divprogress1.Style.Add("width","0%");
+
                 }
                 else
                 {
@@ -36,8 +54,21 @@ namespace Operacion.s
                     divprogress1.Style.Add("width", val.ToString() + "%");
 
                 }
+                int Mess = Convert.ToInt32(Mes);
+                int Anioo = Convert.ToInt32(Anio);
 
-
+                resumen.LeerDatosHoras(IdInstalacion, Anioo, Mess);
+                lblHoras.Text = resumen.PromedioHora;
+                double Horas = Convert.ToDouble(lblHoras.Text);
+                decimal porcentajeHoras = (int)((10 * Horas)+20);
+                if (Horas.ToString() != "0")
+                {
+                    progresHora.Style.Add("width", porcentajeHoras.ToString() + "%");
+                }
+                else
+                {
+                    progresHora.Style.Add("width", "0%");
+                }
 
 
             }

@@ -64,6 +64,7 @@ namespace SASISOPA.Competencia.Programa
                 {
                     e.Row.Cells[1].Visible = false;
                 }
+            
 
                 if (e.Row.RowIndex % 2 == 0)
                 {
@@ -74,6 +75,12 @@ namespace SASISOPA.Competencia.Programa
                     e.Row.Cells[16].Visible = false;
                 }
             }
+        }
+
+        protected void IrSAM(Object sender, EventArgs e)
+        {
+            Session.RemoveAll();
+            Response.Redirect("http://orygon.azurewebsites.net/Inicio.aspx");
         }
     }
 }

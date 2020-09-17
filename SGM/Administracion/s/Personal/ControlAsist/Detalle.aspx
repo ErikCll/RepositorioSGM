@@ -16,8 +16,13 @@
 
             <div class="col-lg-12">
                 <div class="row">
+                        <div class="col-sm-12 col-md-12 col-lg-12">
 
-                    <div class="col-sm-3 col-md-3 col-lg-3">
+                         <div class="card ">
+                    <div class="card-body">
+
+                            <div class="row">
+                                 <div class="col-sm-3 col-md-3 col-lg-3">
                          <div class="form-inline">
                              <label >Fecha inicial:</label>
                              <asp:TextBox runat="server" CssClass="form-control form-control-sm ml-1" ID="txtFechaInicial"  placeholder="dd-mm-yyyy" onkeydown="return false;"></asp:TextBox>
@@ -41,10 +46,10 @@
                     <div class="col-sm-12 col-md-12 col-lg-12">
                         <div class="form-group">
                        <asp:Button  runat="server" CssClass="btn btn-primary" Text="Consultar" ID="btnConsultar" ValidationGroup="btnConsultar" OnClick="btnConsultar_Click" />
-                            <asp:Button runat="server" Text="Regresar" ID="btnRegresar" PostBackUrl="~/s/Personal/ControlAsist/Index.aspx" CssClass="btn btn-default" />
                         </div>
                     </div>
-                    <div class="container col-12">
+
+                                                    <div class="container col-12">
                         
 
                      
@@ -54,14 +59,16 @@
                         <div class=" table-responsive">
                             <div style="overflow:auto ;height:auto">
                                 <asp:GridView runat="server" 
-                                 CssClass=" table table-striped table-sm border-light"
-                                   GridLines="Vertical"
+                                 CssClass=" table table-bordered table-striped table-sm"
+                                   HeaderStyle-CssClass="bg-white"
+                                    GridLines="Horizontal"
                                    id="gridAsistenciaEmpleado"
                                     AutoGenerateColumns="false"
                                      EmptyDataText="Sin registro de asistencias."
                                      PageSize="10"
                                      OnPageIndexChanging="gridAsistenciaEmpleado_PageIndexChanging"
                                      AllowPaging="true"
+                                     HeaderStyle-HorizontalAlign="Center"
                                      DataKeyNames="UserId"
                                     >
                                     <Columns>         
@@ -73,9 +80,21 @@
                                     </Columns>
                                             <PagerStyle HorizontalAlign = "Center" CssClass="" />
                                 </asp:GridView>
+                                                                <asp:Button runat="server" CssClass="btn btn-default" Text="Regresar" ID="btnRegresar" PostBackUrl="~/s/Personal/ControlAsist/Index.aspx" />
+
                             </div>
                         </div>
                     </div>
+
+                                </div>
+
+                        </div>
+
+                             </div>
+
+                            </div>
+
+                   
                 </div>
             </div>
         </ContentTemplate>

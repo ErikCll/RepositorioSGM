@@ -57,6 +57,8 @@ namespace SASISOPA.s
                 string Usuario = Page.User.Identity.Name;
                 master.LeerDatosUsuario(Usuario);
                 lblIdSuscripcion.Text = master.IdSuscripcion;
+                lblTitulo.Text = master.Nombre;
+
                 lblUsuario.Text = Usuario;
             }
 
@@ -89,6 +91,14 @@ namespace SASISOPA.s
 
                 }
                 else if (activepage.Contains("/Competencia/MatrizCatAct/Index.aspx") || activepage.Contains("/Competencia/MatrizCatAct/Agregar.aspx") || activepage.Contains("/Competencia/MatrizCatAct/Detalle.aspx"))
+                {
+                    menu_competencia.Attributes.Add("class", "  nav-item has-treeview menu-open");
+                    competencia.Attributes.Add("class", "nav-link active");
+                    //catact.Attributes.Add("class", "nav-link active");
+
+                }
+
+                else if (activepage.Contains("/Competencia/MatrizInsAct/Index.aspx") || activepage.Contains("/Competencia/MatrizInsAct/Agregar.aspx"))
                 {
                     menu_competencia.Attributes.Add("class", "  nav-item has-treeview menu-open");
                     competencia.Attributes.Add("class", "nav-link active");
@@ -158,7 +168,9 @@ namespace SASISOPA.s
 
         public void LlenarDrop()
         {
-            RadInstalacion.DataSource = master.MostrarInstalacion();
+            int IdSuscripcion = Convert.ToInt32(lblIdSuscripcion.Text);
+
+            RadInstalacion.DataSource = master.MostrarInstalacion(IdSuscripcion);
             RadInstalacion.DataBind();
 
         }
@@ -210,6 +222,38 @@ namespace SASISOPA.s
             }
 
 
+        }
+
+        protected void lnkInstalacion_Click(object sender, EventArgs e)
+        {
+            string url = HttpContext.Current.Request.Url.AbsoluteUri;
+            string encodedString = (Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(url.ToString())));
+
+            Response.Redirect("http://orygon.azurewebsites.net/Catalogo/Instalacion/Index.aspx?url=" + encodedString + "");
+        }
+
+        protected void lnkArea_Click(object sender, EventArgs e)
+        {
+            string url = HttpContext.Current.Request.Url.AbsoluteUri;
+            string encodedString = (Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(url.ToString())));
+
+            Response.Redirect("http://orygon.azurewebsites.net/Catalogo/Area/Index.aspx?url=" + encodedString + "");
+        }
+
+        protected void lnkCategoria_Click(object sender, EventArgs e)
+        {
+            string url = HttpContext.Current.Request.Url.AbsoluteUri;
+            string encodedString = (Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(url.ToString())));
+
+            Response.Redirect("http://orygon.azurewebsites.net/Catalogo/Categoria/Index.aspx?url=" + encodedString + "");
+        }
+
+        protected void lnkEmpleado_Click(object sender, EventArgs e)
+        {
+            string url = HttpContext.Current.Request.Url.AbsoluteUri;
+            string encodedString = (Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(url.ToString())));
+
+            Response.Redirect("http://orygon.azurewebsites.net/Catalogo/Empleado/Index.aspx?url=" + encodedString + "");
         }
     }
 }

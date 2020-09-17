@@ -15,26 +15,23 @@ namespace SASISOPA.Clase
         SqlDataReader dr;
        
         public string Nombre { get; set; }
-        public string IdInstalacion { get; set; }
-        public string Instalacion { get; set; }
-        public string IdArea { get; set; }
-        public string Area { get; set; }
+      
 
 
-        public DataTable Mostrar(string txtSearch,int IdInstalacion)
+        public DataTable Mostrar(string txtSearch,int IdSuscripcion)
         {
 
-            string query = "SELECT act.Id_Actividades 'Id_Actividad',act.Nombre, ISNULL(r.max_score, '0') 'Archivo',CONVERT(nvarchar, s.FechaEmision, 105) 'FechaEmision',ISNULL(s.VigenciaMeses, '0') 'VigenciaMeses',s.Codigo FROM Cat_Actividades act LEFT JOIN(SELECT Id_Actividad, MAX(Id_Control) max_score FROM Cat_ActividadControl WHERE Activado IS NULL GROUP BY Id_Actividad) r on act.Id_Actividades = r.Id_Actividad LEFT JOIN(SELECT Id_Control, FechaEmision, Codigo, VigenciaMeses FROM Cat_ActividadControl) s on r.max_score = s.Id_Control WHERE act.Activado IS NULL AND act.TipoSistema = 2 ORDER BY act.Id_Actividades DESC";
+            string query = "SELECT act.Id_Actividades 'Id_Actividad',act.Nombre, ISNULL(r.max_score, '0') 'Archivo',CONVERT(nvarchar, s.FechaEmision, 105) 'FechaEmision',ISNULL(s.VigenciaMeses, '0') 'VigenciaMeses',s.Codigo FROM Cat_Actividades act LEFT JOIN(SELECT Id_Actividad, MAX(Id_Control) max_score FROM Cat_ActividadControl WHERE Activado IS NULL GROUP BY Id_Actividad) r on act.Id_Actividades = r.Id_Actividad LEFT JOIN(SELECT Id_Control, FechaEmision, Codigo, VigenciaMeses FROM Cat_ActividadControl) s on r.max_score = s.Id_Control WHERE act.Activado IS NULL AND act.TipoSistema = 2 AND act.Id_Suscripcion=@IdSuscripcion ORDER BY act.Id_Actividades DESC";
             if (!String.IsNullOrEmpty(txtSearch.Trim()))
             {
-                query = "SELECT act.Id_Actividades 'Id_Actividad',act.Nombre, ISNULL(r.max_score, '0') 'Archivo',CONVERT(nvarchar, s.FechaEmision, 105) 'FechaEmision',ISNULL(s.VigenciaMeses, '0') 'VigenciaMeses',s.Codigo FROM Cat_Actividades act LEFT JOIN(SELECT Id_Actividad, MAX(Id_Control) max_score FROM Cat_ActividadControl WHERE Activado IS NULL GROUP BY Id_Actividad) r on act.Id_Actividades = r.Id_Actividad LEFT JOIN(SELECT Id_Control, FechaEmision, Codigo, VigenciaMeses FROM Cat_ActividadControl) s on r.max_score = s.Id_Control WHERE act.Activado IS NULL AND act.TipoSistema = 2 AND act.Nombre LIKE '%' + @txtSearch + '%' ORDER BY act.Id_Actividades DESC";
+                query = "SELECT act.Id_Actividades 'Id_Actividad',act.Nombre, ISNULL(r.max_score, '0') 'Archivo',CONVERT(nvarchar, s.FechaEmision, 105) 'FechaEmision',ISNULL(s.VigenciaMeses, '0') 'VigenciaMeses',s.Codigo FROM Cat_Actividades act LEFT JOIN(SELECT Id_Actividad, MAX(Id_Control) max_score FROM Cat_ActividadControl WHERE Activado IS NULL GROUP BY Id_Actividad) r on act.Id_Actividades = r.Id_Actividad LEFT JOIN(SELECT Id_Control, FechaEmision, Codigo, VigenciaMeses FROM Cat_ActividadControl) s on r.max_score = s.Id_Control WHERE act.Activado IS NULL AND act.TipoSistema = 2 AND act.Id_Suscripcion=@IdSuscripcion AND act.Nombre LIKE '%' + @txtSearch + '%' ORDER BY act.Id_Actividades DESC";
             }
 
             comm.Connection = conexion.AbrirConexion();
             comm.CommandText = query;
             comm.CommandType = CommandType.Text;
             comm.Parameters.AddWithValue("@txtSearch", txtSearch);
-            comm.Parameters.AddWithValue("@IdInstalacion", IdInstalacion);
+            comm.Parameters.AddWithValue("@IdSuscripcion", IdSuscripcion);
 
             da = new SqlDataAdapter(comm);
             dt = new DataTable();
@@ -73,13 +70,15 @@ namespace SASISOPA.Clase
         //    return dt;
         //}
 
-        public bool Insertar(int TipoSistema, string Nombre)
+        public bool Insertar(int TipoSistema, string Nombre,int IdSuscripcion)
         {
             comm.Connection = conexion.AbrirConexion();
-            comm.CommandText = "INSERT INTO [Cat_Actividades] (Nombre,TipoSistema) VALUES(@Nombre,@TipoSistema)";
+            comm.CommandText = "INSERT INTO [Cat_Actividades] (Nombre,TipoSistema,Id_Suscripcion) VALUES(@Nombre,@TipoSistema,@IdSuscripcion)";
             comm.CommandType = CommandType.Text;
             comm.Parameters.AddWithValue("@TipoSistema", TipoSistema);
             comm.Parameters.AddWithValue("@Nombre", Nombre);
+            comm.Parameters.AddWithValue("@IdSuscripcion", IdSuscripcion);
+
             int i = comm.ExecuteNonQuery();
             comm.Parameters.Clear();
             conexion.CerrarConexion();
@@ -96,14 +95,13 @@ namespace SASISOPA.Clase
 
         }
 
-        public bool Editar(int IdActividad, string Nombre, int IdArea)
+        public bool Editar(int IdActividad, string Nombre)
         {
             comm.Connection = conexion.AbrirConexion();
-            comm.CommandText = "UPDATE Cat_Actividades SET Nombre = @Nombre, Id_Area = @Id_Area WHERE Id_Actividades = @Id_Actividades";
+            comm.CommandText = "UPDATE Cat_Actividades SET Nombre = @Nombre WHERE Id_Actividades = @Id_Actividades";
             comm.CommandType = CommandType.Text;
             comm.Parameters.AddWithValue("@Id_Actividades", IdActividad);
             comm.Parameters.AddWithValue("@Nombre", Nombre);
-            comm.Parameters.AddWithValue("@Id_Area", IdArea);
 
             int i = comm.ExecuteNonQuery();
             comm.Parameters.Clear();
@@ -148,17 +146,14 @@ namespace SASISOPA.Clase
         public void LeerDatos(int IdActividad)
         {
             comm.Connection = conexion.AbrirConexion();
-            comm.CommandText = "SELECT act.Id_Actividades 'Id_Actividad',act.Nombre,area.Id_area, area.Nombre 'Area',ins.Id_instalacion,ins.Nombre 'Instalacion' FROM Cat_Actividades act JOIN Cat_Area area on act.Id_Area = area.Id_area JOIN Cat_Instalacion ins on area.Id_instalacion = ins.Id_instalacion WHERE act.Id_Actividades=@Id_Actividades";
+            comm.CommandText = "SELECT Nombre FROM Cat_Actividades WHERE Id_Actividades=@Id_Actividades";
             comm.CommandType = CommandType.Text;
             comm.Parameters.AddWithValue("@Id_Actividades", IdActividad);
 
             dr = comm.ExecuteReader();
             dr.Read();
             Nombre = dr["Nombre"].ToString();
-            IdInstalacion = dr["Id_Instalacion"].ToString();
-            Instalacion = dr["Instalacion"].ToString();
-            IdArea = dr["Id_Area"].ToString();
-            Area = dr["Area"].ToString();
+        
             dr.Close();
             comm.Connection = conexion.CerrarConexion();
 

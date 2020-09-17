@@ -90,11 +90,11 @@ namespace SASISOPA.Competencia.CensoAct
                     Vig.Visible = true;
 
                 }
-                else
-                {
-                    Vig.Visible = false;
+                //else
+                //{
+                //    Vig.Visible = false;
 
-                }
+                //}
 
             }
         }

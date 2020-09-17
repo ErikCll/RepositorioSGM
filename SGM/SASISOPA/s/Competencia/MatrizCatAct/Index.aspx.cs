@@ -22,8 +22,9 @@ namespace SASISOPA.Competencia.MatrizCatAct
         public void MostrarGrid()
         {
             int IdInstalacion = Convert.ToInt32((this.Master as SASISOPA.s.Site1).IdInstalacion.ToString());
+            int IdSuscripcion = Convert.ToInt32((this.Master as SASISOPA.s.Site1).IdSuscripcion.ToString());
 
-            gridMatriz.DataSource = categoriaAct.MostrarGeneral(IdInstalacion);
+            gridMatriz.DataSource = categoriaAct.MostrarGeneral(IdInstalacion,IdSuscripcion);
             gridMatriz.DataBind();
             //foreach (GridViewRow row in gridMatriz.Rows)
             //{
@@ -51,7 +52,7 @@ namespace SASISOPA.Competencia.MatrizCatAct
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
                
-                for (int i = 2; i < e.Row.Cells.Count; i++)
+                for (int i = 1; i < e.Row.Cells.Count; i++)
                 {
                     string celda = e.Row.Cells[i].Text;
                     if (celda != "&nbsp;")
@@ -69,12 +70,18 @@ namespace SASISOPA.Competencia.MatrizCatAct
 
             if (e.Row.RowType == DataControlRowType.Header)
             {
-                for (int i = 2; i < e.Row.Cells.Count; i++)
+                for (int i = 1; i < e.Row.Cells.Count; i++)
                 {
                     e.Row.Cells[i].Text = "<div class=\"VerticalHeaderText\">" + e.Row.Cells[i].Text + "</div>";
                 }
             }
 
+        }
+
+        protected void IrSAM(Object sender, EventArgs e)
+        {
+            Session.RemoveAll();
+            Response.Redirect("http://orygon.azurewebsites.net/Inicio.aspx");
         }
     }
 }

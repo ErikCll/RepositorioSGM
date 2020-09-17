@@ -8,12 +8,14 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Content" runat="server">
      <div class="col-lg-12">
-                  <div class="card shadow-none border-top border-dark" >
+                  <div class="card" >
+                      <div class="card-header">
+                                                      <h4>Datos de la categoría</h4>
+
+                      </div>
                 <div class="card-body">
                     <div class="row">
-                           <div class="col-sm-12 col-md-12 col-lg-12">
-                            <h4>Datos de la categoría</h4>
-                        </div>
+                        
                         <div class="col-sm-12 col-md-12 col-lg-4">
                             <div class="form-group">
                                 <label class="font-weight-normal">Nombre:</label>

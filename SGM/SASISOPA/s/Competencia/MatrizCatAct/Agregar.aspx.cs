@@ -21,7 +21,7 @@ namespace SASISOPA.Competencia.MatrizCatAct
                 int IdCategoria = Convert.ToInt32(decodedString);
                 categoriaAct.LeerDatos(IdCategoria);
                 lblCategoría.Text = categoriaAct.Nombre;
-                LlenarDropArea();
+                //LlenarDropArea();
                 MostrarGrid();
             }
         }
@@ -30,30 +30,23 @@ namespace SASISOPA.Competencia.MatrizCatAct
         {
             string decodedString = System.Text.ASCIIEncoding.ASCII.GetString(Convert.FromBase64String(Request.QueryString["id"]));
             int IdCategoria = Convert.ToInt32(decodedString);
-            int IdArea = Convert.ToInt32(ddl_Area.SelectedValue);
+            //int IdArea = Convert.ToInt32(ddl_Area.SelectedValue);
             int IdInstalacion = Convert.ToInt32((this.Master as SASISOPA.s.Site1).IdInstalacion.ToString());
 
-            if (IdArea == 0)
-            {
-                gridActividad.DataSource = categoriaAct.MostrarTodasActividades(IdCategoria,IdInstalacion);
+                gridActividad.DataSource = categoriaAct.MostrarActividades(IdCategoria,IdInstalacion);
                 gridActividad.DataBind();
 
-            }
-            else
-            {
-                gridActividad.DataSource = categoriaAct.MostrarActividades(IdCategoria, IdArea,IdInstalacion);
-                gridActividad.DataBind();
-            }
+          
         
         }
 
-        public void LlenarDropArea()
-        {
-            int IdInstalacion = Convert.ToInt32((this.Master as SASISOPA.s.Site1).IdInstalacion.ToString());
-            ddl_Area.DataSource = categoriaAct.MostrarArea(IdInstalacion);
-            ddl_Area.DataBind();
-            ddl_Area.Items.Insert(0, new ListItem("[Todas]","0"));
-        }
+        //public void LlenarDropArea()
+        //{
+        //    int IdInstalacion = Convert.ToInt32((this.Master as SASISOPA.s.Site1).IdInstalacion.ToString());
+        //    ddl_Area.DataSource = categoriaAct.MostrarArea(IdInstalacion);
+        //    ddl_Area.DataBind();
+        //    ddl_Area.Items.Insert(0, new ListItem("[Todas]","0"));
+        //}
 
 
         protected void btnGuardar_Click(object sender, EventArgs e)
@@ -107,10 +100,10 @@ namespace SASISOPA.Competencia.MatrizCatAct
      
         }
 
-        protected void ddl_Area_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            MostrarGrid();
-        }
+        //protected void ddl_Area_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    MostrarGrid();
+        //}
   
     }
 }

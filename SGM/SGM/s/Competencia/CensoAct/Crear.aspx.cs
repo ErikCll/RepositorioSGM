@@ -11,7 +11,20 @@ namespace SGM.Competencia.CensoAct
     {
 
         Clase.Actividad objIns = new Clase.Actividad();
+        Clase.Master master = new Clase.Master();
 
+        protected void Page_Init(object sender, EventArgs e)
+        {
+            string Usuario = Page.User.Identity.Name;
+            if (master.ValidarCompetencia(Usuario))
+            {
+
+            }
+            else
+            {
+                Response.Redirect("~/s/Inicio.aspx");
+            }
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
 

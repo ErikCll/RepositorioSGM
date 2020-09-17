@@ -36,11 +36,11 @@
   <!-- Navbar -->
 
 <%--  <nav class="main-header navbar navbar-expand navbar-white navbar-light ">--%>
-          <nav class="main-header navbar navbar-expand navbar-white navbar-light ">
+          <nav class="main-header navbar navbar-expand navbar-dark navbar-info " >
                                       <asp:Label runat="server" ID="lblIdSuscripcion" Visible="false"></asp:Label>
 
     <!-- Left navbar links -->
-    <ul class="navbar-nav">
+    <ul class="navbar-nav nav navbar-nav flex-fill  w-100 flex-nowrap">
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
@@ -54,68 +54,17 @@
       </li>
     </ul>
 
+                <ul class=" nav navbar-nav flex-fill w-100 justify-content-center">
+                    <li class="nav-item text-center">
+                                                      <asp:Label runat="server" class=" text-white  font-weight-normal " ID="lblTitulo"></asp:Label><br />
 
-                <ul class=" navbar-nav ml-auto ">
-                    <li class=" mr-5 " style="margin-bottom:-20px">
-<%--                        <img src="img/LogoSAM.PNG" class=" img-fluid" />--%>
-                        <div class="form-group text-center">
-                          <asp:Label runat="server" class=" text-gray text-lg font-weight-normal " style="margin-bottom:-30px" ID="lblTitulo"></asp:Label><br />
-
-                        <asp:Label runat="server" class="font-weight-normal text-sm" style="margin-bottom:-30px" ID="lblTitulo2" Visible="false"></asp:Label>
-                        </div>
+                    </li>
+                </ul>
 
 
-        </li>
-      
-           <li class="nav-item d-none d-sm-inline-block mr-5">
-        <a ></a>
-      </li>
-          <li class="nav-item d-none d-sm-inline-block mr-5">
-        <a ></a>
-      </li>
-         <li class="nav-item d-none d-sm-inline-block mr-5">
-        <a ></a>
-      </li>
-      
-      <li class="nav-item d-none d-sm-inline-block mr-5">
-      </li>
-                     <li class="nav-item d-none d-sm-inline-block mr-5">
-        <a ></a>
-      </li>
-                     <li class="nav-item d-none d-sm-inline-block mr-5">
-        <a ></a>
-      </li>
-                     <li class="nav-item d-none d-sm-inline-block mr-5">
-        <a ></a>
-      </li> 
-                     <li class="nav-item d-none d-sm-inline-block mr-5">
-        <a ></a>
-      </li>
-                                  <li class="nav-item d-none d-sm-inline-block mr-5">
-        <a ></a>
-      </li>
-                                          <li class="nav-item d-none d-sm-inline-block mr-5">
-        <a ></a>
-      </li>
-                                     <li class="nav-item d-none d-sm-inline-block mr-3">
-        <a ></a>
-      </li>
-         <%--           <li class="nav-item dropdown mt-1">
-        <a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="false">
-          <i class=" fas fa-th-large"></i>
-        </a>
-        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right" style="left: inherit; right: 0px;">
-        
-          <a href="#" class="dropdown-item">
-            <i class=" far fa-file-pdf mr-2"></i>Manual de usuario
-          </a>--%>
-        
-        <%--  <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item dropdown-footer"></a>--%>
-     <%--   </div>
-      </li>--%>
 
-                     <li class="nav-item dropdown text-sm mt-1">
+                                 <ul class=" nav navbar-nav flex-fill w-100  justify-content-end ">
+  <li class="nav-item dropdown text-sm ">
                             <a class="nav-link dropdown-toggle  ion-android-person" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 <asp:Label runat="server" ID="lblUsuario" CssClass="ml-3 font-weight-bold"></asp:Label><br />
@@ -126,16 +75,18 @@
                                 <asp:LinkButton runat="server" CssClass="dropdown-item ion-android-exit exit" OnClick="CerrarSesion" Text=" Cerrar sesión" ></asp:LinkButton>
                             </div>
                         </li>
-              </ul>
+                                     </ul>
+
+                   
 
  
   </nav>
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-primary elevation-4  ">
+  <aside class="main-sidebar sidebar-dark-info elevation-4  ">
     <!-- Brand Logo -->
-    <a  href="../../Inicio.aspx" class="brand-link mt-1">
+    <a  href="../../Inicio.aspx" class="brand-link">
       <img src="../../img/s.jpg" class="brand-image img-circle" style="opacity:.8"/>
       <span class="brand-text font-weight-light">SAM</span>
     </a>
@@ -151,7 +102,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
 
-             <li class="nav-item has-treeview" id="menu_catalogo1" runat="server">
+             <li class="nav-item has-treeview" id="menu_catalogo1" runat="server" visible="false">
              
             <a href="#" class="nav-link" id="catalogo1" runat="server">
                 <i class="nav-icon fas fa-circle"></i>
@@ -327,7 +278,7 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-        <footer class="main-footer mt-5">
+        <footer class="main-footer ">
                <div class="text-center">
         <strong class=" float-left">SAM</strong>
                        <strong class="float-right">Desarrollado por ORyGON Consultores © </strong>

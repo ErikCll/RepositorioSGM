@@ -11,6 +11,20 @@ namespace Administracion.s.Personal.ControlAsist
     {
 
         Clase.ControlAsistencia asist = new Clase.ControlAsistencia();
+        Clase.Master master = new Clase.Master();
+        protected void Page_Init(object sender, EventArgs e)
+        {
+            string Usuario = Page.User.Identity.Name;
+            if (master.ValidarPersonal(Usuario))
+            {
+
+            }
+            else
+            {
+                Response.Redirect("~/s/Inicio.aspx");
+            }
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             Page.Form.DefaultButton = btnBuscar.UniqueID;
@@ -63,6 +77,13 @@ namespace Administracion.s.Personal.ControlAsist
                 string encodedString = (Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(IdUser.ToString())));
                 Response.Redirect("Detalle.aspx?id=" + encodedString + "");
             }
+        }
+
+
+        protected void IrSAM(Object sender, EventArgs e)
+        {
+            Session.RemoveAll();
+            Response.Redirect("http://orygon.azurewebsites.net/Inicio.aspx");
         }
     }
 }

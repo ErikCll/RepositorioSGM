@@ -24,9 +24,9 @@ namespace SASISOPA.s.Competencia.MatrizInsAct
 
         public void MostrarGrid()
         {
-            int IdInstalacion = Convert.ToInt32((this.Master as SASISOPA.s.Site1).IdInstalacion.ToString());
+            int IdSuscripcion = Convert.ToInt32((this.Master as SASISOPA.s.Site1).IdSuscripcion.ToString());
 
-            gridMatriz.DataSource = insact.MostrarGeneral();
+            gridMatriz.DataSource = insact.MostrarGeneral(IdSuscripcion);
             gridMatriz.DataBind();
         
 

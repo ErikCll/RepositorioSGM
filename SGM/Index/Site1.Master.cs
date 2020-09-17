@@ -17,7 +17,11 @@ namespace SAM
             if(HttpContext.Current.User.Identity.IsAuthenticated)
 
             {
-
+                string Usuario = Page.User.Identity.Name;
+                if (master.ValidarCatalogo(Usuario))
+                {
+                    menu_catalogo1.Visible = true;
+                }
             }
             else
             {
@@ -32,7 +36,7 @@ namespace SAM
                 master.LeerDatosUsuario(Usuario);
                 lblIdSuscripcion.Text = master.IdSuscripcion;
                 lblTitulo.Text = master.Nombre;
-                lblTitulo2.Text = master.Nombre;
+                //lblTitulo2.Text = master.Nombre;
                 lblUsuario.Text = Usuario;
 
                 if (login.ValidarSGM(Usuario))

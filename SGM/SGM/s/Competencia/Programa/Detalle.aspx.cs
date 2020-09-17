@@ -10,6 +10,20 @@ namespace SGM.Competencia.Programa
     public partial class Detalle : System.Web.UI.Page
     {
         Clase.ProgramaCapacitacion programa = new Clase.ProgramaCapacitacion();
+        Clase.Master master = new Clase.Master();
+
+        protected void Page_Init(object sender, EventArgs e)
+        {
+            string Usuario = Page.User.Identity.Name;
+            if (master.ValidarCompetencia(Usuario))
+            {
+
+            }
+            else
+            {
+                Response.Redirect("~/s/Inicio.aspx");
+            }
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
             Page.Form.DefaultButton = btnBuscar.UniqueID;

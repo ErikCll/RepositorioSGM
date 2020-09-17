@@ -26,7 +26,13 @@
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
                   <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
-   
+    <style>
+        @media screen and (max-width: 650px) {
+            .ocultar-div {
+                display: none;
+            }
+        }
+    </style>
 </head>
 <%--    hold-transition sidebar-mini layout-fixed--%>
 <body class="sidebar-mini layout-fixed sidebar-collapse" style="height: auto;">
@@ -37,83 +43,57 @@
   <!-- Navbar -->
 
 <%--  <nav class="main-header navbar navbar-expand navbar-white navbar-light ">--%>
-          <nav class="main-header navbar navbar-expand  navbar-dark ">
+          <nav class="main-header navbar navbar-expand  navbar-dark navbar-lightblue ">
                                                     <asp:Label runat="server" ID="lblIdSuscripcion" Visible="false"></asp:Label>
 
 
     <!-- Left navbar links -->
-    <ul class="navbar-nav">
+    <ul class="nav navbar-nav flex-fill  w-100 flex-nowrap">
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
       </li>
-         <li class=" mt-2">
-             <label class="text-white font-weight-normal" runat="server" id="lblInstalacion">Instalación:</label>
+            <li class="nav-item mt-2">
+                        <div class=" custom-control-inline">
+
+                            <label class="text-white font-weight-normal" runat="server" id="lblInstalacion">Instalación:</label>
 
 
-             <telerik:RadComboBox runat="server" InputCssClass="font-weight-bold" AutoPostBack="true" ID="RadInstalacion" OnSelectedIndexChanged="RadInstalacion_SelectedIndexChanged"
-                 MarkFirstMatch="true"  EmptyMessage="[Seleccionar]" DataTextField="Nombre" DataValueField="Id_Instalacion" RenderMode="Lightweight" Filter="StartsWith"></telerik:RadComboBox>
-             <asp:Label runat="server" ID="lblIDInstalacion" ForeColor="White" Visible="false" ></asp:Label>
+                            <telerik:RadComboBox Style="margin-top: 2px" CssClass="ml-1 " runat="server" InputCssClass="font-weight-bold" AutoPostBack="true" ID="RadInstalacion" OnSelectedIndexChanged="RadInstalacion_SelectedIndexChanged"
+                                MarkFirstMatch="true" EmptyMessage="[Seleccionar]" DataTextField="Nombre" DataValueField="Id_Instalacion" RenderMode="Lightweight" Filter="StartsWith" ForeColor="#1d1d1d">
+                            </telerik:RadComboBox>
+                            <asp:Label runat="server" ID="lblIDInstalacion" ForeColor="White" Visible="false"></asp:Label>
 
-             
-      </li>
+                        </div>
 
-     <%--   <li class="nav-item d-none d-sm-inline-block ml-5">
-        <a ></a>
-      </li>
-          <li class="nav-item d-none d-sm-inline-block ml-5">
-        <a ></a>
-      </li>
-          <li class="nav-item d-none d-sm-inline-block ml-5">
-        <a ></a>
-      </li>
-         <li class="nav-item d-none d-sm-inline-block ml-5">
-        <a ></a>
-      </li>--%>
-      
-      <%--<li class="nav-item d-none d-sm-inline-block ml-5">
-        <a href="#" class="nav-link">Sistema de Gestión de las Mediciones</a>
-      </li>--%>
+
+                    </li>
+
+ 
     </ul>
+               <ul class=" nav navbar-nav flex-fill w-100 justify-content-center ocultar-div">
+                    <li class="nav-item text-center">
+                                <asp:Label runat="server" class=" text-white  font-weight-normal " ID="lblTitulo"></asp:Label><br />
 
-              <ul class=" navbar-nav ml-auto ">
-             <%--       <li class=" mt-2 mr-5">
-            <label class=" text-white text-center font-weight-normal">Operación</label>
+                    </li>
+                </ul>
 
-        </li>
-                       <li class="nav-item d-none d-sm-inline-block mr-5">
-        <a ></a>
-      </li>
-          <li class="nav-item d-none d-sm-inline-block mr-5">
-        <a ></a>
-      </li>
-          <li class="nav-item d-none d-sm-inline-block mr-5">
-        <a ></a>
-      </li>
-         <li class="nav-item d-none d-sm-inline-block mr-5">
-        <a ></a>
-      </li>
-      
-      <li class="nav-item d-none d-sm-inline-block mr-5">
-      </li>
-                     <li class="nav-item d-none d-sm-inline-block mr-5">
-        <a ></a>
-      </li>
-                     <li class="nav-item d-none d-sm-inline-block mr-5">
-        <a ></a>
-      </li>
-                     <li class="nav-item d-none d-sm-inline-block mr-5">
-        <a ></a>
-      </li> 
-                     <li class="nav-item d-none d-sm-inline-block mr-5">
-        <a ></a>
-      </li>
-                                 <li class="nav-item d-none d-sm-inline-block mr-5">
-        <a ></a>
-      </li>--%>
+              <ul class=" nav navbar-nav flex-fill w-100  justify-content-end  ">
+                <li class="nav-item dropdown text-sm">
+                        <a class="nav-link ion-grid" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <asp:Label runat="server" ID="Label1" CssClass="ml-3 font-weight-bold" Text="Catálogo"></asp:Label>
+                               <asp:LinkButton class="dropdown-item text-blue" runat="server"  ID="lnkInstalacion" OnClick="lnkInstalacion_Click" Text="Instalación"></asp:LinkButton>
+                            <asp:LinkButton class="dropdown-item text-blue" runat="server" ID="lnkArea" OnClick="lnkArea_Click" Text="Área"></asp:LinkButton>
+                            <asp:LinkButton class="dropdown-item text-blue" runat="server" ID="lnkCategoria" OnClick="lnkCategoria_Click" Text="Categoría" ></asp:LinkButton>
+                            <asp:LinkButton class="dropdown-item text-blue" runat="server" ID="lnkEmpleado" OnClick="lnkEmpleado_Click" Text="Empleado"></asp:LinkButton>
 
-                  <li class="nav-item dropdown text-sm mt-1">
+
+                        </div>
+                    </li>
+
+                  <li class="nav-item dropdown text-sm ">
                             <a class="nav-link dropdown-toggle  ion-android-person" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 <asp:Label runat="server" ID="lblUsuario" CssClass="ml-3 font-weight-bold"></asp:Label>
@@ -129,18 +109,21 @@
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-primary elevation-4  ">
+  <aside class="main-sidebar sidebar-dark-lightblue elevation-4  ">
     <!-- Brand Logo -->
+
+       <asp:LinkButton runat="server" OnClick="IrSAM" class="brand-link ">
+             
+              <span class="brand-image img-circle fas fa-home mt-2 " style="opacity:.8"></span>
+      <span class="brand-text font-weight-light">SAM</span>
+    </asp:LinkButton>
+
     <a href="http://orygon.azurewebsites.net/Operacion/s/Inicio.aspx" class="brand-link">
-        <span class="brand-image img-circle fas fa-cogs mt-2" style="opacity:.8"></span>
+        <span class="brand-image fas fa-cogs mt-2" style="opacity:.8"></span>
       <span class="brand-text font-weight-light">Operación</span>
     </a>
 
-          <asp:LinkButton runat="server" OnClick="IrSAM" class="brand-link ">
-             
-              <span class="brand-image fas fa-home mt-2"></span>
-      <span class="brand-text font-weight-light">SAM</span>
-    </asp:LinkButton>
+         
 
    
     <!-- Sidebar -->
@@ -154,7 +137,39 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
 
-              <li class="nav-item has-treeview" id="menu_infraestructura" runat="server">
+             <li class="nav-item has-treeview" id="menu_catalogo" runat="server" visible="false">
+             
+            <a href="#" class="nav-link" id="A1" runat="server">
+                <i class="nav-icon fas fa-circle"></i>
+
+              <p>
+                  Catálogo
+
+                <i class="right fas fa-angle-left"style="margin-right:-9px"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+        
+
+                 <li class="nav-item">
+                <a href="#" class="nav-link" id="A2" runat="server">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Censo de equipos</p>
+                </a>
+              </li>
+            
+            <li class="nav-item">
+                <a href="#" class="nav-link" id="A3" runat="server">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Turnos</p>
+                </a>
+              </li>
+            
+              
+            </ul>
+          </li>
+
+              <li class="nav-item has-treeview" id="menu_infraestructura" runat="server" visible="false">
              
             <a href="#" class="nav-link" id="infraestructura" runat="server">
                 <i class="nav-icon fas fa-circle"></i>
@@ -181,7 +196,7 @@
           </li>
 
           
-               <li class="nav-item has-treeview" id="menu_produccion" runat="server">
+               <li class="nav-item has-treeview" id="menu_produccion" runat="server" visible="false">
              
             <a href="#" class="nav-link" id="produccion" runat="server">
                 <i class="nav-icon fas fa-circle"></i>
