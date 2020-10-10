@@ -6,7 +6,9 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="mapeo" runat="server">
        <li class="breadcrumb-item active"><asp:LinkButton runat="server" OnClick="IrSAM">SAM</asp:LinkButton></li>
-                  <li class="breadcrumb-item "><a href="../../Inicio.aspx">Operación</a></li>
+                  <li class="breadcrumb-item "><a href="../../Inicio.aspx">Operación (Inicio)</a></li>
+                      <li class="breadcrumb-item "><a href="../Inicio.aspx">Infraestructura</a></li>
+
                      <li class="breadcrumb-item "><a>Disponibilidad de equipos</a></li>
 
 </asp:Content>
@@ -57,10 +59,15 @@
                    
                   </div>
                   <div runat="server" id="fallando" visible="false">
-                                                   <label class="info-box-number text-sm text-red " runat="server"> <span class=" fas fa-exclamation-triangle text-sm text-red"></span> Falla</label>
+                      <div class="custom-control-inline">
+                    <label class="info-box-number text-sm text-red" runat="server"> <span class=" fas fa-exclamation-triangle text-sm text-red"></span> Falla</label>   
+                          <label class="text-sm text-dark font-weight-normal ml-1"> (Tipo:</label><label class="text-sm font-weight-bold text-dark ml-1"><%#Eval("TipoFalla")%></label> <label class="text-sm text-dark font-weight-normal">) </label>
+
+                      </div>
+                  
 
 
-
+                      <br />
                   <label class="text-dark font-weight-normal text-sm">Fecha:</label><label class="font-weight-bold text-dark text-sm"><%#Eval("Fecha")%></label>
                                  <label class="text-dark font-weight-normal text-sm">, Hora:</label><label class="font-weight-bold text-dark text-sm"><%#Eval("Hora")%></label>
                                                                                            <label class="text-dark font-weight-normal text-sm ">Fuera de operación:</label><label class="font-weight-bold text-dark text-sm ml-1"> <%#Eval("Transcurrido")%></label>
@@ -77,6 +84,11 @@
                       </ItemTemplate>
                     
                   </asp:ListView>
+
+                    <div class="col-sm-12 col-md-12 col-lg-12 mt-1">
+                                                                            <asp:Button runat="server" CssClass="btn btn-default mt-2" Text="Regresar" ID="btnRegresar" PostBackUrl="~/s/Infraestructura/Inicio.aspx" />
+
+                    </div>
                 </div>
             </div>
         </ContentTemplate>

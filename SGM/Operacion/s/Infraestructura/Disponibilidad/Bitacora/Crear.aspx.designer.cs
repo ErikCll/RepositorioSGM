@@ -58,6 +58,51 @@ namespace Operacion.s.Infraestructura.Disponibilidad.Bitacora {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
         
         /// <summary>
+        /// Control ddl_TipoFalla.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddl_TipoFalla;
+        
+        /// <summary>
+        /// Control reqTipoFalla.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqTipoFalla;
+        
+        /// <summary>
+        /// Control divInformacion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divInformacion;
+        
+        /// <summary>
+        /// Control gridDescripcion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gridDescripcion;
+        
+        /// <summary>
+        /// Control divDescripcion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divDescripcion;
+        
+        /// <summary>
         /// Control txtDesc.
         /// </summary>
         /// <remarks>
@@ -67,13 +112,13 @@ namespace Operacion.s.Infraestructura.Disponibilidad.Bitacora {
         protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDesc;
         
         /// <summary>
-        /// Control reqCodigo.
+        /// Control reqDescripcion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqCodigo;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqDescripcion;
         
         /// <summary>
         /// Control btnGuardar.

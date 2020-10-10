@@ -44,6 +44,8 @@ namespace Operacion.s.Produccion.Resumen
             string Fecha = txtFecha.Text;
             gridHora.DataSource = resumen.MostrarDetalleHoras(IdInstalacion,Fecha);
             gridHora.DataBind();
+            graficaHoraDetalle.DataSource = resumen.MostrarDetalleHoras(IdInstalacion, Fecha);
+            graficaHoraDetalle.DataBind();
 
         }
 

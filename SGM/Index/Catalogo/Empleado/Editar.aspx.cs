@@ -30,8 +30,8 @@ namespace SAM.Catalogo.Empleado
         {
             if (!IsPostBack)
             {
-                //(this.Master as SGM.Master.Site1).OcultarDrop = false;
-                //(this.Master as SGM.Master.Site1).OcultarLabel = false;
+                (this.Master as SAM.Site1).OcultarDrop = false;
+                (this.Master as SAM.Site1).OcultarLabel = false;
                 LlenarDrop();
                 string decodedString = System.Text.ASCIIEncoding.ASCII.GetString(Convert.FromBase64String(Request.QueryString["id"]));
                 int IdEmpleado = Convert.ToInt32(decodedString);

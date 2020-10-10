@@ -28,6 +28,7 @@
      <style>
         .RBL label {
             margin-left: 3px;
+            display:inline;
         }
     </style>
 </head>
@@ -66,7 +67,7 @@
     <!-- Main content -->
     <section class="content">
 
-       <asp:Timer ID="Timer1" runat="server" Interval="1000" OnTick="Timer1_Tick" Enabled="false"></asp:Timer>
+       <asp:Timer ID="Timer2" runat="server" Interval="1000"  OnTick="Timer2_Tick" Enabled="true"></asp:Timer>
 
     <asp:UpdatePanel runat="server" UpdateMode="Conditional">
 
@@ -85,30 +86,33 @@
                         <asp:ListView runat="server" ID="lstPreguntas" OnItemDataBound="lstPreguntas_ItemDataBound" OnPagePropertiesChanging="lstPreguntas_PagePropertiesChanging">
 
                             <ItemTemplate>
-                                <div class=" container col-8">
+                                <div class=" container col-10">
                                     <div class=" col-sm-12 col-md-12 col-lg-12">
-                                        <div class="card shadow border-top border-dark">
+                                        <div class="card">
                                             <div class="card-body">
-                                                <div class="row">
-                                                    <div class="col-sm-12 col-md-12 col-lg-12">
 
-                                                        <asp:Label runat="server" ID="lblContador" Text='<%# Eval("ORDEN") %>'></asp:Label>.
+                                                     <asp:Label runat="server" ID="lblContador" Text='<%# Eval("ORDEN") %>'></asp:Label>.
 
-              <label class=" font-weight-bold"><%# Eval("Pregunta") %></label>
+              <span class=" font-weight-bold"><%# Eval("Pregunta") %></span>                         
+
                                                         <asp:Label runat="server" ID="lblIdPregunta" Text='<%# Eval("Id_Pregunta") %>' Visible="false"></asp:Label>
                                                         <asp:Label runat="server" ID="lblTipoPregunta" Text='<%# Eval("TipoPregunta") %>' Visible="false"></asp:Label>
                                                         <asp:Label runat="server" ID="lblIdRespuesta" Visible="false"></asp:Label>
 
-
-                                                        <asp:RadioButtonList runat="server" ID="radioList" DataTextField="Respuesta" DataValueField="Id_Respuesta" TextAlign="Right" CssClass="RBL"></asp:RadioButtonList>
-
-
-
-                                                    </div>
-
+                                                
+                                           
+              <asp:RadioButtonList runat="server" ID="radioList" DataTextField="Respuesta" DataValueField="Id_Respuesta" TextAlign="Right" CssClass="RBL mt-2" CellPadding="4">
+                 
+              </asp:RadioButtonList>
 
 
-                                                </div>
+
+
+
+
+                                            </div>
+                                            <div class="card-footer">
+                                                <asp:Button runat="server" CssClass="btn btn-danger  float-right" ID="btnTime"/>  
                                             </div>
                                         </div>
                                     </div>
@@ -136,6 +140,7 @@
                     </asp:DataPager>
                                 <asp:Button runat="server" CssClass="btn btn-success" Text="Finalizar" ID="btnFinalizar" Visible="false" OnClick="btnFinalizar_Click" />
                                 <asp:Label runat="server" ID="lblCal"></asp:Label>
+
                             </div>
 
                         </div>
@@ -158,7 +163,7 @@
 
         </ContentTemplate>
         <Triggers>
-            <asp:AsyncPostBackTrigger ControlID="Timer1" EventName="Tick" />
+            <asp:AsyncPostBackTrigger ControlID="Timer2" EventName="Tick" />
         </Triggers>
     </asp:UpdatePanel>
 

@@ -40,8 +40,7 @@ namespace SAM.Catalogo.Empleado
         {
             if (!IsPostBack)
             {
-                //(this.Master as SGM.Master.Site1).OcultarDrop = false;
-                //(this.Master as SGM.Master.Site1).OcultarLabel = false;
+                
                 MostrarGrid();
             }
 
@@ -51,8 +50,8 @@ namespace SAM.Catalogo.Empleado
 
         public void MostrarGrid()
         {
-            int IdSuscripcion = Convert.ToInt32((this.Master as SAM.Site1).IdSuscripcion);
-            gridempleado.DataSource = empleado.Mostrar(txtSearch.Text.Trim(),IdSuscripcion);
+            int IdInstalacion = Convert.ToInt32((this.Master as SAM.Site1).IdInstalacion);
+            gridempleado.DataSource = empleado.Mostrar(txtSearch.Text.Trim(),IdInstalacion);
             gridempleado.DataBind();
         }
 

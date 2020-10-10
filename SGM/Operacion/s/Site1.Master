@@ -88,8 +88,9 @@
                             <asp:LinkButton class="dropdown-item text-blue" runat="server" ID="lnkArea" OnClick="lnkArea_Click" Text="Área"></asp:LinkButton>
                             <asp:LinkButton class="dropdown-item text-blue" runat="server" ID="lnkCategoria" OnClick="lnkCategoria_Click" Text="Categoría" ></asp:LinkButton>
                             <asp:LinkButton class="dropdown-item text-blue" runat="server" ID="lnkEmpleado" OnClick="lnkEmpleado_Click" Text="Empleado"></asp:LinkButton>
-
-
+                              <asp:LinkButton class="dropdown-item text-blue" runat="server" ID="lnkCliente" OnClick="lnkCliente_Click" Text="Cliente"></asp:LinkButton>
+                            <asp:LinkButton class="dropdown-item text-blue" runat="server" ID="lnkMaterial" OnClick="lnkMaterial_Click" Text="Material"></asp:LinkButton>
+                             <asp:LinkButton class="dropdown-item text-blue" runat="server" ID="lnkEquipo" OnClick="lnkEquipo_Click" Text="Equipo"></asp:LinkButton>
                         </div>
                     </li>
 
@@ -137,9 +138,9 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
 
-             <li class="nav-item has-treeview" id="menu_catalogo" runat="server" visible="false">
+      <%--       <li class="nav-item has-treeview" id="menu_catalogo" runat="server" visible="false">
              
-            <a href="#" class="nav-link" id="A1" runat="server">
+            <a href="#" class="nav-link" id="catalogo" runat="server">
                 <i class="nav-icon fas fa-circle"></i>
 
               <p>
@@ -152,7 +153,7 @@
         
 
                  <li class="nav-item">
-                <a href="#" class="nav-link" id="A2" runat="server">
+                <a href="~/s/Catalogo/Equipo/Index.aspx" class="nav-link" id="equipo" runat="server">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Censo de equipos</p>
                 </a>
@@ -167,20 +168,19 @@
             
               
             </ul>
-          </li>
+          </li>--%>
 
               <li class="nav-item has-treeview" id="menu_infraestructura" runat="server" visible="false">
              
-            <a href="#" class="nav-link" id="infraestructura" runat="server">
+            <a href="~/s/Infraestructura/Inicio.aspx" class="nav-link" id="infraestructura" runat="server">
                 <i class="nav-icon fas fa-circle"></i>
 
               <p>
                   Infraestructura
 
-                <i class="right fas fa-angle-left"style="margin-right:-9px"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview">
+     <%--       <ul class="nav nav-treeview">
         
 
                  <li class="nav-item">
@@ -192,22 +192,21 @@
             
             
               
-            </ul>
+            </ul>--%>
           </li>
 
           
                <li class="nav-item has-treeview" id="menu_produccion" runat="server" visible="false">
              
-            <a href="#" class="nav-link" id="produccion" runat="server">
+            <a href="~/s/Produccion/Inicio.aspx" class="nav-link" id="produccion" runat="server">
                 <i class="nav-icon fas fa-circle"></i>
 
               <p>
                   Producción
 
-                <i class="right fas fa-angle-left"style="margin-right:-9px"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview">
+       <%--     <ul class="nav nav-treeview">
         
 
                  <li class="nav-item">
@@ -219,7 +218,7 @@
             
             
               
-            </ul>
+            </ul>--%>
           </li>
 
 

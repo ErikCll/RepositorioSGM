@@ -30,8 +30,9 @@ namespace Operacion.s.Produccion.Resumen
                 int IdInstalacion = Convert.ToInt32((this.Master as Operacion.s.Site1).IdInstalacion.ToString());
                 LlenarDropAnio();
                 LlenarDropMes();
-                string Mes = DateTime.Now.ToString("MM");
-                string Anio = DateTime.Now.ToString("yyyy");
+                LlenarDropEquipo();
+                string Mes = DateTime.Now.AddHours(-5).ToString("MM");
+                string Anio = DateTime.Now.AddHours(-5).ToString("yyyy");
                 int Mess = Convert.ToInt32(Mes);
                 int Anioo = Convert.ToInt32(Anio);
 
@@ -47,44 +48,9 @@ namespace Operacion.s.Produccion.Resumen
                 //int Anioo = Convert.ToInt32(ddl_Anio.SelectedValue);
                 //LineChart.DataSource = resumen.MostrarGeneral2(IdInstalacion, Anioo, Mess);
                 //LineChart.DataBind();
+                LlenarIndicadores();
 
-                resumen.LeerDatosHorasTurno(IdInstalacion, Anioo, Mess);
-                lblTurno1.Text = resumen.Turno1;
-                double HTurno1 = Convert.ToDouble(lblTurno1.Text);
-                decimal porcentajeHorasTurno1 = (int)((10 * HTurno1) + 20);
-
-                if (HTurno1.ToString() != "0")
-                {
-                    progresTurno1.Style.Add("width", porcentajeHorasTurno1.ToString() + "%");
-                }
-                else
-                {
-                    progresTurno1.Style.Add("width", "0%");
-                }
-
-                lblTurno2.Text = resumen.Turno2;
-                double HTurno2 = Convert.ToDouble(lblTurno2.Text);
-                decimal porcentajeHorasTurno2 = (int)((10 * HTurno2) + 20);
-                if (HTurno2.ToString() != "0")
-                {
-                    progresTurno2.Style.Add("width", porcentajeHorasTurno2.ToString() + "%");
-                }
-                else
-                {
-                    progresTurno2.Style.Add("width", "0%");
-                }
-
-                lblTurno3.Text = resumen.Turno3;
-                double HTurno3 = Convert.ToDouble(lblTurno3.Text);
-                decimal porcentajeHorasTurno3 = (int)((10 * HTurno3) + 20);
-                if (HTurno3.ToString() != "0")
-                {
-                    progresTurno3.Style.Add("width", porcentajeHorasTurno3.ToString() + "%");
-                }
-                else
-                {
-                    progresTurno3.Style.Add("width", "0%");
-                }
+             
             }
 
         }
@@ -94,10 +60,22 @@ namespace Operacion.s.Produccion.Resumen
             int IdInstalacion = Convert.ToInt32((this.Master as Operacion.s.Site1).IdInstalacion.ToString());
             int Mes = Convert.ToInt32(ddl_Mes.SelectedValue);
             int Anio = Convert.ToInt32(ddl_Anio.SelectedValue);
-            gridHora.DataSource = resumen.MostrarHoras(IdInstalacion, Anio, Mes);
-            gridHora.DataBind();
-            GraficaHora.DataSource = resumen.MostrarHoras(IdInstalacion, Anio, Mes);
-            GraficaHora.DataBind();
+            int IdEquipo = Convert.ToInt32(ddl_Equipo.SelectedValue);
+            if (IdEquipo == 0)
+            {
+                gridHora.DataSource = resumen.MostrarHoras(IdInstalacion, Anio, Mes);
+                gridHora.DataBind();
+                GraficaHora.DataSource = resumen.MostrarHoras(IdInstalacion, Anio, Mes);
+                GraficaHora.DataBind();
+            }
+            else
+            {
+                gridHora.DataSource = resumen.MostrarHorasPorEquipo(IdEquipo, Anio, Mes);
+                gridHora.DataBind();
+                GraficaHora.DataSource = resumen.MostrarHorasPorEquipo(IdEquipo, Anio, Mes);
+                GraficaHora.DataBind();
+            }
+      
 
 
 
@@ -131,6 +109,17 @@ namespace Operacion.s.Produccion.Resumen
 
 
         }
+
+        public void LlenarDropEquipo()
+        {
+            int IdInstalacion = Convert.ToInt32((this.Master as Operacion.s.Site1).IdInstalacion.ToString());
+            ddl_Equipo.DataSource = resumen.MostrarEquipo(IdInstalacion);
+            ddl_Equipo.DataBind();
+            ddl_Equipo.Items.Insert(0, new ListItem("[Todos]", "0"));
+
+
+        }
+
         public void LlenarDropMes()
         {
             ddl_Mes.Items.Insert(0, new ListItem("[Seleccionar]", "0"));
@@ -185,91 +174,13 @@ namespace Operacion.s.Produccion.Resumen
         protected void ddl_Mes_SelectedIndexChanged(object sender, EventArgs e)
         {
             MostrarGridHora();
-            int IdInstalacion = Convert.ToInt32((this.Master as Operacion.s.Site1).IdInstalacion.ToString());
-            int Mes = Convert.ToInt32(ddl_Mes.SelectedValue);
-            int Anio = Convert.ToInt32(ddl_Anio.SelectedValue);
-            resumen.LeerDatosHorasTurno(IdInstalacion, Anio, Mes);
-            lblTurno1.Text = resumen.Turno1;
-            double HTurno1 = Convert.ToDouble(lblTurno1.Text);
-            decimal porcentajeHorasTurno1 = (int)((10 * HTurno1) + 20);
-
-            if (HTurno1.ToString() != "0")
-            {
-                progresTurno1.Style.Add("width", porcentajeHorasTurno1.ToString() + "%");
-            }
-            else
-            {
-                progresTurno1.Style.Add("width", "0%");
-            }
-
-            lblTurno2.Text = resumen.Turno2;
-            double HTurno2 = Convert.ToDouble(lblTurno2.Text);
-            decimal porcentajeHorasTurno2 = (int)((10 * HTurno2) + 20);
-            if (HTurno2.ToString() != "0")
-            {
-                progresTurno2.Style.Add("width", porcentajeHorasTurno2.ToString() + "%");
-            }
-            else
-            {
-                progresTurno2.Style.Add("width", "0%");
-            }
-
-            lblTurno3.Text = resumen.Turno3;
-            double HTurno3 = Convert.ToDouble(lblTurno3.Text);
-            decimal porcentajeHorasTurno3 = (int)((10 * HTurno3) + 20);
-            if (HTurno3.ToString() != "0")
-            {
-                progresTurno3.Style.Add("width", porcentajeHorasTurno3.ToString() + "%");
-            }
-            else
-            {
-                progresTurno3.Style.Add("width", "0%");
-            }
+            LlenarIndicadores();
         }
 
         protected void ddl_Anio_SelectedIndexChanged(object sender, EventArgs e)
         {
             MostrarGridHora();
-            int IdInstalacion = Convert.ToInt32((this.Master as Operacion.s.Site1).IdInstalacion.ToString());
-            int Mes = Convert.ToInt32(ddl_Mes.SelectedValue);
-            int Anio = Convert.ToInt32(ddl_Anio.SelectedValue);
-            resumen.LeerDatosHorasTurno(IdInstalacion, Anio, Mes);
-            lblTurno1.Text = resumen.Turno1;
-            double HTurno1 = Convert.ToDouble(lblTurno1.Text);
-            decimal porcentajeHorasTurno1 = (int)((10 * HTurno1) + 20);
-
-            if (HTurno1.ToString() != "0")
-            {
-                progresTurno1.Style.Add("width", porcentajeHorasTurno1.ToString() + "%");
-            }
-            else
-            {
-                progresTurno1.Style.Add("width", "0%");
-            }
-
-            lblTurno2.Text = resumen.Turno2;
-            double HTurno2 = Convert.ToDouble(lblTurno2.Text);
-            decimal porcentajeHorasTurno2 = (int)((10 * HTurno2) + 20);
-            if (HTurno2.ToString() != "0")
-            {
-                progresTurno2.Style.Add("width", porcentajeHorasTurno2.ToString() + "%");
-            }
-            else
-            {
-                progresTurno2.Style.Add("width","0%");
-            }
-
-            lblTurno3.Text = resumen.Turno3;
-            double HTurno3 = Convert.ToDouble(lblTurno3.Text);
-            decimal porcentajeHorasTurno3 = (int)((10 * HTurno3) + 20);
-            if (HTurno3.ToString() != "0")
-            {
-                progresTurno3.Style.Add("width", porcentajeHorasTurno3.ToString() + "%");
-            }
-            else
-            {
-                progresTurno3.Style.Add("width",  "0%");
-            }
+            LlenarIndicadores();
         }
 
         protected void gridResumen_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -359,6 +270,67 @@ namespace Operacion.s.Produccion.Resumen
               
                 lblPromedio.Text = Math.Round(Promedio, 2).ToString();
 
+            }
+        }
+
+        protected void ddl_Equipo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            MostrarGridHora();
+            LlenarIndicadores();
+        }
+
+        public void LlenarIndicadores()
+        {
+            int IdInstalacion = Convert.ToInt32((this.Master as Operacion.s.Site1).IdInstalacion.ToString());
+            int Mes = Convert.ToInt32(ddl_Mes.SelectedValue);
+            int Anio = Convert.ToInt32(ddl_Anio.SelectedValue);
+            int IdEquipo = Convert.ToInt32(ddl_Equipo.SelectedValue);
+
+            if (IdEquipo == 0)
+            {
+                resumen.LeerDatosHorasTurno(IdInstalacion, Anio, Mes);
+
+            }
+
+            else
+            {
+                resumen.LeerDatosHorasTurnoPorEquipo(IdEquipo, Anio, Mes);
+            }
+            lblTurno1.Text = resumen.Turno1;
+            double HTurno1 = Convert.ToDouble(lblTurno1.Text);
+            decimal porcentajeHorasTurno1 = (int)((10 * HTurno1) + 20);
+
+            if (HTurno1.ToString() != "0")
+            {
+                progresTurno1.Style.Add("width", porcentajeHorasTurno1.ToString() + "%");
+            }
+            else
+            {
+                progresTurno1.Style.Add("width", "0%");
+            }
+
+            lblTurno2.Text = resumen.Turno2;
+            double HTurno2 = Convert.ToDouble(lblTurno2.Text);
+            decimal porcentajeHorasTurno2 = (int)((10 * HTurno2) + 20);
+            if (HTurno2.ToString() != "0")
+            {
+                progresTurno2.Style.Add("width", porcentajeHorasTurno2.ToString() + "%");
+            }
+            else
+            {
+                progresTurno2.Style.Add("width", "0%");
+            }
+
+            lblTurno3.Text = resumen.Turno3;
+            double HTurno3 = Convert.ToDouble(lblTurno3.Text);
+            decimal porcentajeHorasTurno3 = (int)((10 * HTurno3) + 20);
+            if (HTurno3.ToString() != "0")
+            {
+                progresTurno3.Style.Add("width", porcentajeHorasTurno3.ToString() + "%");
+            }
+            else
+            {
+                progresTurno3.Style.Add("width", "0%");
             }
         }
     }

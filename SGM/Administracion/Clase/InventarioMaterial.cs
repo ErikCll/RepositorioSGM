@@ -15,6 +15,7 @@ namespace Administracion.Clase
         SqlDataReader dr;
         public string Material { get; set; }
 
+        public string TotalInventario { get; set; }
 
         public DataTable Mostrar(string txtSearch, int IdSuscripcion)
         {
@@ -89,6 +90,23 @@ namespace Administracion.Clase
             dr = comm.ExecuteReader();
             dr.Read();
             Material = dr["Nombre"].ToString();
+            dr.Close();
+            comm.Connection = conexion.CerrarConexion();
+
+
+
+        }
+
+        public void LeerDatosTotalAlmacen(int IdSuscripcion)
+        {
+            comm.Connection = conexion.AbrirConexion();
+            comm.CommandText = " SELECT ISNULL(CAST(SUM(t.Total) as MONEY),0) 'Total' FROM(SELECT mat.Id_Material, CAST(SUM(mat.Costo) as money)'Total' FROM Cat_Material mat JOIN Op_InventarioAlmacen inv on mat.Id_Material = inv.Id_Material WHERE inv.Activado IS NULL AND mat.Activado IS NULL AND mat.Id_Suscripcion = @Id_Suscripcion GROUP BY mat.Id_Material)t";
+            comm.CommandType = CommandType.Text;
+            comm.Parameters.AddWithValue("@Id_Suscripcion", IdSuscripcion);
+
+            dr = comm.ExecuteReader();
+            dr.Read();
+            TotalInventario = dr["Total"].ToString();
             dr.Close();
             comm.Connection = conexion.CerrarConexion();
 

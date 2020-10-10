@@ -16,6 +16,9 @@ namespace SAM
         {
             if(!IsPostBack)
             {
+              
+                    (this.Master as SAM.Site1).OcultarDrop = false;
+                    (this.Master as SAM.Site1).OcultarLabel = false;
                 ListaImagen();
                 ListaImagen2();
                 string Usuario = Page.User.Identity.Name;

@@ -85,6 +85,15 @@ namespace Operacion.s.Infraestructura.Disponibilidad.Bitacora
 
 
             }
+            else if (e.CommandName == "Editar")
+            {
+                GridViewRow row = ((Control)e.CommandSource).Parent.Parent as GridViewRow;
+
+                int IdBitacora = (int)gridBitacora.DataKeys[row.RowIndex].Value;
+                string encodedString = (Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(IdBitacora.ToString())));
+
+                Response.Redirect("Editar.aspx?idbit=" + encodedString + "&id=" + Request.QueryString["id"] + "");
+            }
         }
     }
 }

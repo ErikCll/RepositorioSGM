@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Telerik.Web.UI;
 
 namespace SAM
 {
@@ -30,15 +31,35 @@ namespace SAM
 
             }
 
+            if (RadInstalacion.SelectedIndex == -1)
+            {
+                lblIDInstalacion.Text = "0";
+
+            }
+
+            if (Session["IdInstalacion"] != null)
+            {
+                RadInstalacion.SelectedValue = Session["IdInstalacion"].ToString();
+                lblIDInstalacion.Text = Session["IdInstalacion"].ToString();
+
+            }
+
             if (!IsPostBack)
             {
                 string Usuario = Page.User.Identity.Name;
                 master.LeerDatosUsuario(Usuario);
                 lblIdSuscripcion.Text = master.IdSuscripcion;
                 lblTitulo.Text = master.Nombre;
-                //lblTitulo2.Text = master.Nombre;
                 lblUsuario.Text = Usuario;
-
+                LlenarDrop();
+                if (RadInstalacion.Items.Count == 1)
+                {
+                    int IdSuscripcion = Convert.ToInt32(lblIdSuscripcion.Text);
+                    master.LeerDatosInstalacion(IdSuscripcion,Usuario);
+                    RadInstalacion.SelectedValue = master.IdInstalacion;
+                    lblIDInstalacion.Text = master.IdInstalacion;
+                    RadInstalacion.Enabled = false;
+                }
                 if (login.ValidarSGM(Usuario))
                 {
                     SGM.Visible = true;
@@ -121,6 +142,45 @@ namespace SAM
                     categoria1.Attributes.Add("class", "nav-link active");
 
                 }
+                else if (activepage.Contains("/Catalogo/Cliente/Index.aspx") || activepage.Contains("/Catalogo/Cliente/Crear.aspx") || activepage.Contains("/Catalogo/Cliente/Editar.aspx"))
+                {
+                    menu_catalogo1.Attributes.Add("class", "  nav-item has-treeview menu-open");
+                    catalogo1.Attributes.Add("class", "nav-link active");
+                    cliente.Attributes.Add("class", "nav-link active");
+
+                }
+
+                else if (activepage.Contains("/Catalogo/Material/Index.aspx") || activepage.Contains("/Catalogo/Material/Crear.aspx") || activepage.Contains("/Catalogo/Material/Editar.aspx"))
+                {
+                    menu_catalogo1.Attributes.Add("class", "  nav-item has-treeview menu-open");
+                    catalogo1.Attributes.Add("class", "nav-link active");
+                    material.Attributes.Add("class", "nav-link active");
+
+                }
+
+                else if (activepage.Contains("/Catalogo/Equipo/Index.aspx") || activepage.Contains("/Catalogo/Equipo/Crear.aspx") || activepage.Contains("/Catalogo/Equipo/Detalle.aspx") || activepage.Contains("/Catalogo/Equipo/Editar.aspx"))
+                {
+                    menu_catalogo1.Attributes.Add("class", "  nav-item has-treeview menu-open");
+                    catalogo1.Attributes.Add("class", "nav-link active");
+                    equipo.Attributes.Add("class", "nav-link active");
+
+                }
+
+                else if (activepage.Contains("/Indicador/SGL/Inicio.aspx") || activepage.Contains("/Indicador/SGL/Acreditacion/Detalle.aspx"))
+                {
+                    menu_indicador.Attributes.Add("class", "  nav-item has-treeview menu-open");
+                    indicador.Attributes.Add("class", "nav-link active");
+                    sgl2.Attributes.Add("class", "nav-link active");
+
+                }
+
+                else if (activepage.Contains("/Usuario/Index.aspx") || activepage.Contains("/Usuario/Crear.aspx") || activepage.Contains("/Usuario/Editar.aspx") || activepage.Contains("/Usuario/Agregar.aspx"))
+                {
+                    menu_usuario.Attributes.Add("class", "  nav-item has-treeview menu-open");
+                    usuario.Attributes.Add("class", "nav-link active");
+
+                }
+
 
             }
         }
@@ -150,6 +210,45 @@ namespace SAM
        
         }
 
-     
+
+        public string IdInstalacion
+        {
+            get
+            {
+
+
+                return lblIDInstalacion.Text;
+            }
+        }
+
+        public bool OcultarDrop
+        {
+            get { return RadInstalacion.Visible; }
+            set { RadInstalacion.Visible = value; }
+        }
+        public bool OcultarLabel
+        {
+            get { return lblInstalacion.Visible; }
+            set { lblInstalacion.Visible = value; }
+        }
+
+        public void LlenarDrop()
+        {
+
+            int IdSuscripcion = Convert.ToInt32(lblIdSuscripcion.Text);
+            string Usuario = Page.User.Identity.Name;
+            RadInstalacion.DataSource = master.MostrarInstalacion(IdSuscripcion, Usuario);
+            RadInstalacion.DataBind();
+
+        }
+
+        protected void RadInstalacion_SelectedIndexChanged(object sender, RadComboBoxSelectedIndexChangedEventArgs e)
+        {
+            string IdInstalacion = RadInstalacion.SelectedValue;
+            lblIDInstalacion.Text = IdInstalacion;
+            Session["IdInstalacion"] = IdInstalacion;
+            Response.Redirect(Request.UrlReferrer.ToString());
+        }
+
     }
 }

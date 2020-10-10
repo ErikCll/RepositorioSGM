@@ -79,7 +79,7 @@ namespace Administracion.s
                 {
                     int IdSuscripcion = Convert.ToInt32(lblIdSuscripcion.Text);
 
-                    master.LeerDatosInstalacion(IdSuscripcion);
+                    master.LeerDatosInstalacion(IdSuscripcion,Usuario);
                     RadInstalacion.SelectedValue = master.IdInstalacion;
                     lblIDInstalacion.Text = master.IdInstalacion;
                     RadInstalacion.Enabled = false;
@@ -148,7 +148,9 @@ namespace Administracion.s
         public void LlenarDrop()
         {
             int IdSuscripcion = Convert.ToInt32(lblIdSuscripcion.Text);
-            RadInstalacion.DataSource = master.MostrarInstalacion(IdSuscripcion);
+            string Usuario = Page.User.Identity.Name;
+
+            RadInstalacion.DataSource = master.MostrarInstalacion(IdSuscripcion, Usuario);
             RadInstalacion.DataBind();
 
         }

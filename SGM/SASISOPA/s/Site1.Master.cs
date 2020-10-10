@@ -58,8 +58,17 @@ namespace SASISOPA.s
                 master.LeerDatosUsuario(Usuario);
                 lblIdSuscripcion.Text = master.IdSuscripcion;
                 lblTitulo.Text = master.Nombre;
-
                 lblUsuario.Text = Usuario;
+                LlenarDrop();
+                if (RadInstalacion.Items.Count == 1)
+                {
+                    int IdSuscripcion = Convert.ToInt32(lblIdSuscripcion.Text);
+
+                    master.LeerDatosInstalacion(IdSuscripcion, Usuario);
+                    RadInstalacion.SelectedValue = master.IdInstalacion;
+                    lblIDInstalacion.Text = master.IdInstalacion;
+                    RadInstalacion.Enabled = false;
+                }
             }
 
         }
@@ -70,12 +79,11 @@ namespace SASISOPA.s
             if (!IsPostBack)
             {
 
-                LlenarDrop();
 
                 string activepage = Request.RawUrl;
 
-              
-                if (activepage.Contains("/Competencia/Inicio.aspx"))
+
+                if (activepage.Contains("/Competencia/Inicio.aspx") || activepage.Contains("/Competencia/Programa/Index.aspx") || activepage.Contains("/Competencia/Programa/Agregar.aspx") || activepage.Contains("/Competencia/Programa/Detalle.aspx") || activepage.Contains("/Competencia/Programa/DetalleEv.aspx") || activepage.Contains("/Competencia/Programa/Editar.aspx") || activepage.Contains("/Competencia/ResultadoEv/Index.aspx") || activepage.Contains("/Competencia/ResultadoEv/Detalle.aspx"))
                 {
                     menu_competencia.Attributes.Add("class", "  nav-item has-treeview menu-open");
                     competencia.Attributes.Add("class", "nav-link active");
@@ -83,52 +91,30 @@ namespace SASISOPA.s
 
                 }
 
-                else if (activepage.Contains("/Competencia/CensoAct/Index.aspx") || activepage.Contains("/Competencia/CensoAct/Crear.aspx") || activepage.Contains("/Competencia/CensoAct/Detalle.aspx") || activepage.Contains("/Competencia/CensoAct/Editar.aspx") || activepage.Contains("/Competencia/CensoAct/Control/Index.aspx") || activepage.Contains("/Competencia/CensoAct/Control/Crear.aspx") || activepage.Contains("/Competencia/CensoAct/Control/Editar.aspx") || activepage.Contains("/Competencia/CensoAct/Evaluacion/Crear.aspx") || activepage.Contains("/Competencia/CensoAct/Evaluacion/CrearCuestionario.aspx") || activepage.Contains("/Competencia/CensoAct/Evaluacion/Editar.aspx") || activepage.Contains("/Competencia/CensoAct/Evaluacion/EditarCuestionario.aspx") || activepage.Contains("/Competencia/CensoAct/Evaluacion/VCuestionario.aspx"))
-                {
-                    menu_competencia.Attributes.Add("class", "  nav-item has-treeview menu-open");
-                    competencia.Attributes.Add("class", "nav-link active");
-                    //actividad.Attributes.Add("class", "nav-link active");
 
-                }
-                else if (activepage.Contains("/Competencia/MatrizCatAct/Index.aspx") || activepage.Contains("/Competencia/MatrizCatAct/Agregar.aspx") || activepage.Contains("/Competencia/MatrizCatAct/Detalle.aspx"))
+                else if (activepage.Contains("/FuncionRes/Inicio.aspx") || activepage.Contains("/FuncionRes/MatrizCatAct/Index.aspx") || activepage.Contains("/FuncionRes/MatrizCatAct/Agregar.aspx") || activepage.Contains("/FuncionRes/MatrizCatAct/Detalle.aspx") || activepage.Contains("/FuncionRes/MatrizCatEmp/Index.aspx") || activepage.Contains("/FuncionRes/MatrizCatEmp/Agregar.aspx") || activepage.Contains("/FuncionRes/MatrizCatEmp/Detalle.aspx"))
                 {
-                    menu_competencia.Attributes.Add("class", "  nav-item has-treeview menu-open");
-                    competencia.Attributes.Add("class", "nav-link active");
+                    menu_funciones.Attributes.Add("class", "  nav-item has-treeview menu-open");
+                    funciones.Attributes.Add("class", "nav-link active");
                     //catact.Attributes.Add("class", "nav-link active");
 
                 }
 
-                else if (activepage.Contains("/Competencia/MatrizInsAct/Index.aspx") || activepage.Contains("/Competencia/MatrizInsAct/Agregar.aspx"))
+                else if (activepage.Contains("/ControlAct/Inicio.aspx") || activepage.Contains("/ControlAct/MatrizInsAct/Index.aspx") || activepage.Contains("/ControlAct/MatrizInsAct/Agregar.aspx") || activepage.Contains("/ControlAct/CensoAct/Index.aspx") || activepage.Contains("/ControlAct/CensoAct/Crear.aspx") || activepage.Contains("/ControlAct/CensoAct/Detalle.aspx") || activepage.Contains("/ControlAct/CensoAct/Editar.aspx") || activepage.Contains("/ControlAct/CensoAct/Control/Index.aspx") || activepage.Contains("/ControlAct/CensoAct/Control/Crear.aspx") || activepage.Contains("/ControlAct/CensoAct/Control/Editar.aspx") || activepage.Contains("/ControlAct/CensoAct/Evaluacion/Crear.aspx") || activepage.Contains("/ControlAct/CensoAct/Evaluacion/CrearCuestionario.aspx") || activepage.Contains("/ControlAct/CensoAct/Evaluacion/Editar.aspx") || activepage.Contains("/ControlAct/CensoAct/Evaluacion/EditarCuestionario.aspx") || activepage.Contains("/ControlAct/CensoAct/Evaluacion/VCuestionario.aspx") || activepage.Contains("/ControlAct/Inicio.aspx"))
                 {
-                    menu_competencia.Attributes.Add("class", "  nav-item has-treeview menu-open");
-                    competencia.Attributes.Add("class", "nav-link active");
+                    menu_controlact.Attributes.Add("class", "  nav-item has-treeview menu-open");
+                    controlact.Attributes.Add("class", "nav-link active");
                     //catact.Attributes.Add("class", "nav-link active");
 
                 }
-                else if (activepage.Contains("/Competencia/Programa/Index.aspx") || activepage.Contains("/Competencia/Programa/Agregar.aspx") || activepage.Contains("/Competencia/Programa/Detalle.aspx") || activepage.Contains("/Competencia/Programa/DetalleEv.aspx") || activepage.Contains("/Competencia/Programa/Editar.aspx"))
-                {
-                    menu_competencia.Attributes.Add("class", "  nav-item has-treeview menu-open");
-                    competencia.Attributes.Add("class", "nav-link active");
-                    //prog.Attributes.Add("class", "nav-link active");
-
-                }
-
-                else if (activepage.Contains("/Competencia/MatrizCatEmp/Index.aspx") || activepage.Contains("/Competencia/MatrizCatEmp/Agregar.aspx") || activepage.Contains("/Competencia/MatrizCatEmp/Detalle.aspx"))
-                {
-                    menu_competencia.Attributes.Add("class", "  nav-item has-treeview menu-open");
-                    competencia.Attributes.Add("class", "nav-link active");
-                    //catemp.Attributes.Add("class", "nav-link active");
-
-                }
 
 
-                //else if (activepage.Contains("/Confirmacion/CensoSis/Index.aspx") || activepage.Contains("/Confirmacion/CensoSis/Crear.aspx") || activepage.Contains("/Confirmacion/CensoSis/Editar.aspx") || activepage.Contains("/Confirmacion/CensoSis/Componente/Index.aspx") || activepage.Contains("/Confirmacion/CensoSis/Componente/Editar.aspx") || activepage.Contains("/Confirmacion/CensoSis/Componente/Crear.aspx"))
-                //{
-                //    menu_confirmacion.Attributes.Add("class", "  nav-item has-treeview menu-open");
-                //    confirmacion.Attributes.Add("class", "nav-link active");
-                //    sistema.Attributes.Add("class", "nav-link active");
 
-                //}
+           
+
+
+            
+          
 
 
             }
@@ -169,8 +155,9 @@ namespace SASISOPA.s
         public void LlenarDrop()
         {
             int IdSuscripcion = Convert.ToInt32(lblIdSuscripcion.Text);
+            string Usuario = Page.User.Identity.Name;
 
-            RadInstalacion.DataSource = master.MostrarInstalacion(IdSuscripcion);
+            RadInstalacion.DataSource = master.MostrarInstalacion(IdSuscripcion,Usuario);
             RadInstalacion.DataBind();
 
         }
@@ -254,6 +241,30 @@ namespace SASISOPA.s
             string encodedString = (Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(url.ToString())));
 
             Response.Redirect("http://orygon.azurewebsites.net/Catalogo/Empleado/Index.aspx?url=" + encodedString + "");
+        }
+
+        protected void lnkCliente_Click(object sender, EventArgs e)
+        {
+            string url = HttpContext.Current.Request.Url.AbsoluteUri;
+            string encodedString = (Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(url.ToString())));
+
+            Response.Redirect("http://orygon.azurewebsites.net/Catalogo/Cliente/Index.aspx?url=" + encodedString + "");
+        }
+
+        protected void lnkMaterial_Click(object sender, EventArgs e)
+        {
+            string url = HttpContext.Current.Request.Url.AbsoluteUri;
+            string encodedString = (Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(url.ToString())));
+
+            Response.Redirect("http://orygon.azurewebsites.net/Catalogo/Material/Index.aspx?url=" + encodedString + "");
+        }
+
+        protected void lnkEquipo_Click(object sender, EventArgs e)
+        {
+            string url = HttpContext.Current.Request.Url.AbsoluteUri;
+            string encodedString = (Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(url.ToString())));
+
+            Response.Redirect("http://orygon.azurewebsites.net/Catalogo/Equipo/Index.aspx?url=" + encodedString + "");
         }
     }
 }

@@ -7,7 +7,7 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace Index {
+namespace SAM {
     
     
     public partial class Recuperar {
@@ -40,15 +40,6 @@ namespace Index {
         protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtCorreo;
         
         /// <summary>
-        /// Control btnRegresar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnRegresar;
-        
-        /// <summary>
         /// Control btnEnviar.
         /// </summary>
         /// <remarks>
@@ -56,5 +47,14 @@ namespace Index {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnEnviar;
+        
+        /// <summary>
+        /// Control btnRegresar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnRegresar;
     }
 }

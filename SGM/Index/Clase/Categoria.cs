@@ -21,20 +21,20 @@ namespace SAM.Clase
         public string Area { get; set; }
 
 
-        public DataTable Mostrar(string txtSearch,int IdSuscripcion)
+        public DataTable Mostrar(string txtSearch,int IdInstalacion)
         {
 
-            string query = "SELECT cat.Id_Categoria,cat.Nombre,area.Nombre 'Area',ins.Nombre 'Instalacion' FROM Cat_Categoria cat JOIN Cat_Area area on cat.Id_Area = area.Id_area JOIN Cat_Instalacion ins on area.Id_instalacion = ins.Id_instalacion WHERE cat.Activado IS NULL AND ins.Id_Suscripcion=@IdSuscripcion ORDER BY cat.Id_Categoria DESC";
+            string query = "SELECT cat.Id_Categoria,cat.Nombre,area.Nombre 'Area',ins.Nombre 'Instalacion' FROM Cat_Categoria cat JOIN Cat_Area area on cat.Id_Area = area.Id_area JOIN Cat_Instalacion ins on area.Id_instalacion = ins.Id_instalacion WHERE cat.Activado IS NULL AND ins.Id_Instalacion=@IdInstalacion ORDER BY cat.Id_Categoria DESC";
             if (!String.IsNullOrEmpty(txtSearch.Trim()))
             {
-                query = "SELECT cat.Id_Categoria,cat.Nombre,area.Nombre 'Area',ins.Nombre 'Instalacion' FROM Cat_Categoria cat JOIN Cat_Area area on cat.Id_Area = area.Id_area JOIN Cat_Instalacion ins on area.Id_instalacion = ins.Id_instalacion WHERE cat.Activado IS NULL AND cat.Nombre LIKE '%'+@txtSearch+'%' AND ins.Id_Suscripcion=@IdSuscripcion ORDER BY cat.Id_Categoria DESC";
+                query = "SELECT cat.Id_Categoria,cat.Nombre,area.Nombre 'Area',ins.Nombre 'Instalacion' FROM Cat_Categoria cat JOIN Cat_Area area on cat.Id_Area = area.Id_area JOIN Cat_Instalacion ins on area.Id_instalacion = ins.Id_instalacion WHERE cat.Activado IS NULL AND cat.Nombre LIKE '%'+@txtSearch+'%' AND ins.Id_Instalacion=@IdInstalacion ORDER BY cat.Id_Categoria DESC";
             }
 
             comm.Connection = conexion.AbrirConexion();
             comm.CommandText = query;
             comm.CommandType = CommandType.Text;
             comm.Parameters.AddWithValue("@txtSearch", txtSearch);
-            comm.Parameters.AddWithValue("@IdSuscripcion", IdSuscripcion);
+            comm.Parameters.AddWithValue("@IdInstalacion", IdInstalacion);
             da = new SqlDataAdapter(comm);
             dt = new DataTable();
             da.Fill(dt);

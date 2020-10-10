@@ -1,9 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/s/Site1.Master" AutoEventWireup="true" CodeBehind="Index.aspx.cs" Inherits="Operacion.s.Infraestructura.Disponibilidad.Bitacora.Index" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    Bitácora de fallas<br />
-    <label class="font-weight-normal text small">Equipo: </label>
-    <asp:Label runat="server" ID="lblEquipo" CssClass=" font-weight-bold text small"></asp:Label>
+    Bitácora de fallas
+   
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="mapeo" runat="server">
     <li class="breadcrumb-item active"><a href="../Index.aspx">Disponibilidad de equipos</a></li>
@@ -18,6 +17,10 @@
                           <div class="col-sm-12 col-md-12 col-lg-12">
 
                          <div class="card ">
+                             <div class="card-header">
+                                  <label class="font-weight-normal text-lg">Equipo: </label>
+    <asp:Label runat="server" ID="lblEquipo" CssClass=" font-weight-bold text-lg"></asp:Label>
+                             </div>
                     <div class="card-body">
 
                             <div class="row">
@@ -40,7 +43,8 @@
                                     runat="server"
                                     AutoGenerateColumns="false"
                                     CssClass=" table table-bordered table-striped table-sm "
-  HeaderStyle-CssClass="bg-white"
+                                     HeaderStyle-BackColor="#343a40"
+                                     HeaderStyle-CssClass=" text-white"
                                     GridLines="Horizontal"
                                     EmptyDataText="Sin registro de bitacoras."
                                     PageSize="10"
@@ -56,20 +60,18 @@
                                           <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="180px" ItemStyle-Width="180px" ControlStyle-Width="76px">
                                             <ItemTemplate>
                                            
-
-                                               <asp:Button runat="server" Text="Eliminar" CssClass="btn btn-outline-danger" CommandName="Eliminar" OnClientClick="javascript:if(!confirm('¿Desea borrar el registro?'))return false" />
+                                                 <asp:Button runat="server" Text="Editar" CssClass="btn btn-outline-secondary" CommandName="Editar" />
+<%--                                               <asp:Button runat="server" Text="Eliminar" CssClass="btn btn-outline-danger" CommandName="Eliminar" OnClientClick="javascript:if(!confirm('¿Desea borrar el registro?'))return false" />--%>
 
                                             </ItemTemplate>
                                         </asp:TemplateField>
-
-                                        <asp:BoundField DataField="FechaInicio" HeaderText="Fecha de inicio" ItemStyle-HorizontalAlign="Center" />
-                                        <asp:BoundField DataField="HoraInicio" HeaderText="Hora de inicio" ItemStyle-HorizontalAlign="Center"  />
-
-                                        <asp:BoundField DataField="FechaFin" HeaderText="Fecha fin" ItemStyle-HorizontalAlign="Center" />
-
-                                        <asp:BoundField DataField="HoraFin" HeaderText="Hora fin" ItemStyle-HorizontalAlign="Center" />
-                                        <asp:BoundField DataField="Total" HeaderText="Total" ItemStyle-HorizontalAlign="Center"  />
+                                        <asp:BoundField DataField="TipoFalla" HeaderText="Tipo de falla"  ItemStyle-HorizontalAlign="Center" ItemStyle-Width="140px"/>
                                         <asp:BoundField DataField="Descripcion" HeaderText="Descripción" />
+                                        <asp:BoundField DataField="Inicio" HeaderText="Inicio" ItemStyle-Width="170px" ItemStyle-HorizontalAlign="Center" />
+                                        <asp:BoundField DataField="Fin" HeaderText="Fin" ItemStyle-Width="170px" ItemStyle-HorizontalAlign="Center"      />
+
+
+                                        <asp:BoundField DataField="Total" HeaderText="Duración" ItemStyle-HorizontalAlign="Center"  ItemStyle-Width="120px" />
 
 
 

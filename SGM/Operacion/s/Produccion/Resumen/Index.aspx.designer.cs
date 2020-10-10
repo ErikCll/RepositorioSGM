@@ -31,6 +31,15 @@ namespace Operacion.s.Produccion.Resumen {
         protected global::System.Web.UI.WebControls.DropDownList ddl_Mes;
         
         /// <summary>
+        /// Control ddl_Equipo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddl_Equipo;
+        
+        /// <summary>
         /// Control LineChart.
         /// </summary>
         /// <remarks>
@@ -119,6 +128,15 @@ namespace Operacion.s.Produccion.Resumen {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gridHora;
+        
+        /// <summary>
+        /// Control btnRegresar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnRegresar;
         
         /// <summary>
         /// Control RadHtmlChart2.

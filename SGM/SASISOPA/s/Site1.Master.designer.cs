@@ -112,6 +112,33 @@ namespace SASISOPA.s {
         protected global::System.Web.UI.WebControls.LinkButton lnkEmpleado;
         
         /// <summary>
+        /// Control lnkCliente.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkCliente;
+        
+        /// <summary>
+        /// Control lnkMaterial.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkMaterial;
+        
+        /// <summary>
+        /// Control lnkEquipo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkEquipo;
+        
+        /// <summary>
         /// Control lblUsuario.
         /// </summary>
         /// <remarks>
@@ -193,22 +220,22 @@ namespace SASISOPA.s {
         protected global::System.Web.UI.HtmlControls.HtmlAnchor A5;
         
         /// <summary>
-        /// Control Li6.
+        /// Control menu_funciones.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Li6;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl menu_funciones;
         
         /// <summary>
-        /// Control A6.
+        /// Control funciones.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor A6;
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor funciones;
         
         /// <summary>
         /// Control menu_competencia.
@@ -283,22 +310,22 @@ namespace SASISOPA.s {
         protected global::System.Web.UI.HtmlControls.HtmlAnchor A9;
         
         /// <summary>
-        /// Control Li10.
+        /// Control menu_controlact.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Li10;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl menu_controlact;
         
         /// <summary>
-        /// Control A10.
+        /// Control controlact.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor A10;
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor controlact;
         
         /// <summary>
         /// Control Li11.

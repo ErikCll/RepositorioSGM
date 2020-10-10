@@ -1,5 +1,5 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="SAM.Site1" %>
-
+<%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
 <!DOCTYPE html>
 
 
@@ -25,8 +25,15 @@
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
                   <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
-
+    <style>
+        @media screen and (max-width: 650px) {
+            .ocultar-div {
+                display: none;
+            }
+        }
+    </style>
 </head>
+
 <%--    hold-transition sidebar-mini layout-fixed--%>
 <body class="sidebar-mini layout-fixed sidebar-collapse" style="height: auto;">
 <form runat="server">
@@ -45,16 +52,32 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="../../Inicio.aspx" class="nav-link">Inicio</a>
       </li>
 
 
       <li class="nav-item d-none d-sm-inline-block">
 <%--        <a href="#" class="nav-link">Contact</a>--%>
       </li>
+
+            <li class="nav-item mt-2">
+                        <div class=" custom-control-inline">
+
+                            <label class="text-white font-weight-normal" runat="server" id="lblInstalacion">Instalación:</label>
+
+
+                            <telerik:RadComboBox Style="margin-top: 2px" CssClass="ml-1 " runat="server" InputCssClass="font-weight-bold" AutoPostBack="true" ID="RadInstalacion" OnSelectedIndexChanged="RadInstalacion_SelectedIndexChanged"
+                                MarkFirstMatch="true" EmptyMessage="[Seleccionar]" DataTextField="Nombre" DataValueField="Id_Instalacion" RenderMode="Lightweight" Filter="StartsWith" ForeColor="#1d1d1d">
+                            </telerik:RadComboBox>
+                            <asp:Label runat="server" ID="lblIDInstalacion" ForeColor="White" Visible="false"></asp:Label>
+
+                        </div>
+
+
+                    </li>
+
     </ul>
 
-                <ul class=" nav navbar-nav flex-fill w-100 justify-content-center">
+                <ul class=" nav navbar-nav flex-fill w-100 justify-content-center ocultar-div">
                     <li class="nav-item text-center">
                                                       <asp:Label runat="server" class=" text-white  font-weight-normal " ID="lblTitulo"></asp:Label><br />
 
@@ -66,8 +89,8 @@
                                  <ul class=" nav navbar-nav flex-fill w-100  justify-content-end ">
   <li class="nav-item dropdown text-sm ">
                             <a class="nav-link dropdown-toggle  ion-android-person" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <asp:Label runat="server" ID="lblUsuario" CssClass="ml-3 font-weight-bold"></asp:Label><br />
+                            <div class="dropdown-menu dropdown-menu-right text-center" aria-labelledby="navbarDropdown">
+                                <asp:Label runat="server" ID="lblUsuario" CssClass=" text-sm font-weight-bold"></asp:Label><br />
 <%--                                <a class="dropdown-item  ion-ios-unlocked" href="Contrasena.aspx"> Cambiar contraseña</a>--%>
                                 <asp:LinkButton runat="server" CssClass="dropdown-item ion-ios-locked" Text=" Cambiar contraseña" PostBackUrl="~/Contrasena.aspx"></asp:LinkButton>
                                 <asp:HyperLink runat="server" class="dropdown-item ion-android-document text-blue" href="../docs/ManualDeUsuario.pdf" Target="_blank"> Manual de usuario</asp:HyperLink>
@@ -86,8 +109,8 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-info elevation-4  ">
     <!-- Brand Logo -->
-    <a  href="../../Inicio.aspx" class="brand-link">
-      <img src="../../img/s.jpg" class="brand-image img-circle" style="opacity:.8"/>
+    <a  href="../../../Inicio.aspx" class="brand-link">
+      <img src="../../../img/s.jpg" class="brand-image img-circle" style="opacity:.8"/>
       <span class="brand-text font-weight-light">SAM</span>
     </a>
 
@@ -144,19 +167,39 @@
               </li>
 
             
-            
+              <li class="nav-item">
+                <a  href="~/Catalogo/Cliente/Index.aspx" class="nav-link" id="cliente" runat="server">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Cliente</p>
+                </a>
+              </li>
+
               
+                <li class="nav-item">
+                <a  href="~/Catalogo/Material/Index.aspx" class="nav-link" id="material" runat="server">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Material</p>
+                </a>
+              </li>
+
+
+                     <li class="nav-item">
+                <a  href="~/Catalogo/Equipo/Index.aspx" class="nav-link" id="equipo" runat="server">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Equipo</p>
+                </a>
+              </li>
             </ul>
           </li>
             
 
-              <li class="nav-item" id="Li1" runat="server">
+              <li class="nav-item" id="menu_usuario" runat="server">
              
-            <a href="#" class="nav-link" id="A1">
-                <i class="nav-icon 	fas fa-users"></i>
+            <a href="~/Usuario/Index.aspx" class="nav-link" id="usuario" runat="server">
+                <i class="nav-icon 	fas fa-user"></i>
 
               <p>
-               Organigrama
+               Usuario
 
               </p>
             </a>
@@ -165,9 +208,9 @@
 
 
 
-              <li class="nav-item has-treeview" id="menu_catalogo" runat="server">
+              <li class="nav-item has-treeview" id="menu_indicador" runat="server">
              
-            <a href="#" class="nav-link" id="catalogo" runat="server">
+            <a href="#" class="nav-link" id="indicador" runat="server">
                 <i class="nav-icon fas fa-chart-bar"></i>
 
               <p>
@@ -221,7 +264,7 @@
               </li>
             
                <li class="nav-item" runat="server" id="SGL" visible="false">
-                <a  href="#" class="nav-link" id="A3" runat="server">
+                <a  href="~/Indicador/SGL/Inicio.aspx" class="nav-link" id="sgl2" runat="server">
                   <i class="far fa-circle nav-icon"></i>
                   <p>SGL</p>
                 </a>

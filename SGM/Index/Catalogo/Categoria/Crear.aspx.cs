@@ -30,8 +30,8 @@ namespace SAM.Catalogo.Categoria
         {
             if (!IsPostBack)
             {
-                //(this.Master as SGM.Master.Site1).OcultarDrop = false;
-                //(this.Master as SGM.Master.Site1).OcultarLabel = false;
+                (this.Master as SAM.Site1).OcultarDrop = false;
+                (this.Master as SAM.Site1).OcultarLabel = false;
                 LlenarDropInstalacion();
             }
         }

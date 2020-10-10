@@ -337,7 +337,7 @@
             </div>
 
             <div class="col-12 col-sm-6 col-md-4 mt-3" runat="server" id="SitioSGL" visible="false">
-                <asp:LinkButton runat="server" class="info-box shadow zoom h-100">
+                <asp:LinkButton runat="server" class="info-box shadow zoom h-100" PostBackUrl="http://orygon.azurewebsites.net/SGL/s/Inicio.aspx">
               <span class="info-box-icon bg-info elevation-1"><i class="fas fa-flask"></i></span>
 
               <div class="info-box-content">

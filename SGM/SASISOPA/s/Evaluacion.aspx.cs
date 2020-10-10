@@ -16,6 +16,8 @@ namespace SASISOPA.s
         static int con = 0;
         static string totalItems;
         static decimal cal = 0;
+        static int expirado = 0;
+        static int contador = 0;
         static DataTable data;
 
         static int estatus = 0;
@@ -66,7 +68,7 @@ namespace SASISOPA.s
             }
         }
 
-        protected void Timer1_Tick(object sender, EventArgs e)
+        protected void Timer2_Tick(object sender, EventArgs e)
         {
             if (TimeAllSecondes > 0)
             {
@@ -77,11 +79,51 @@ namespace SASISOPA.s
             hh = time_Span.Hours;
             mm = time_Span.Minutes;
             ss = time_Span.Seconds;
-            btnTime.Text = "  " + hh + ":" + mm + ":" + ss;
+            foreach (ListViewItem itm in lstPreguntas.Items)
+            {
+                Button btnTime2 = (Button)itm.FindControl("btnTime");
+                btnTime2.Text = "  " + hh + ":" + mm + ":" + ss;
+
+            }
+
             if (TimeAllSecondes == 0)
             {
-                Timer1.Enabled = false;
-                btnFinalizar_Click(null, null);
+                //Timer2.Enabled = false;
+                expirado = 1;
+
+                //foreach (ListViewItem itm in lstPreguntas.Items)
+                //{
+                //    Label Contador = (Label)itm.FindControl("lblContador");
+                //    contador = Convert.ToInt32(Contador.Text);
+
+
+
+
+                //}
+                //lstPreguntas_PagePropertiesChanging(null, new PagePropertiesChangingEventArgs(contador, 1));
+
+
+                foreach (ListViewItem itm in lstPreguntas.Items)
+                {
+                    Label Contador = (Label)itm.FindControl("lblContador");
+                    contador = Convert.ToInt32(Contador.Text);
+
+                    if (Contador.Text == totalItems)
+                    {
+                        btnFinalizar.Visible = true;
+                        btnFinalizar_Click(null, null);
+                         
+                    }
+
+                    else
+                    {
+                        lstPreguntas_PagePropertiesChanging(null, new PagePropertiesChangingEventArgs(contador, 1));
+
+                    }
+
+
+                }
+             
             }
         }
 
@@ -132,14 +174,15 @@ namespace SASISOPA.s
 
             foreach (ListViewItem itm in lstPreguntas.Items)
             {
+                 
                 RadioButtonList radioList = (RadioButtonList)itm.FindControl("radioList");
                 Label Id_Respuesta = (Label)itm.FindControl("lblIdRespuesta");
 
                 string ValorSeleccionado = radioList.SelectedValue;
                 string IdRespuesta = Id_Respuesta.Text;
-                if (ValorSeleccionado == "")
+                if (ValorSeleccionado == "" && expirado!=1)
                 {
-
+                    expirado = 0;
                     string txtJS = String.Format("<script>alert('{0}');</script>", "Seleccionar una respuesta.");
                     ScriptManager.RegisterClientScriptBlock(litControl, litControl.GetType(), "script", txtJS, false);
                     DataPager1.SetPageProperties(e.StartRowIndex - 1, e.MaximumRows, false);
@@ -149,6 +192,9 @@ namespace SASISOPA.s
                 {
                     if (ValorSeleccionado == IdRespuesta)
                     {
+                        TimeAllSecondes = 60;
+                        expirado = 0;
+
                         cal++;
 
                         string txtJS = String.Format("<script>alert('{0}');</script>", "La respuesta es correcta.");
@@ -159,6 +205,9 @@ namespace SASISOPA.s
                     }
                     else
                     {
+                        TimeAllSecondes = 60;
+                        expirado = 0;
+
                         radioList.SelectedValue = IdRespuesta;
                         string txtJS = String.Format("<script>alert('{0}');</script>", "La respuesta es incorrecta. La respuesta correcta es: " + radioList.SelectedItem.ToString() + "");
                         ScriptManager.RegisterClientScriptBlock(litControl, litControl.GetType(), "script", txtJS, false);
@@ -195,6 +244,8 @@ namespace SASISOPA.s
 
         }
 
+       
+
         //protected void DataPager1_PreRender(object sender, EventArgs e)
         //{
         //    if (!IsPostBack)
@@ -223,6 +274,7 @@ namespace SASISOPA.s
 
         protected void btnFinalizar_Click(object sender, EventArgs e)
         {
+            Timer2.Enabled = false;
             foreach (ListViewItem itm in lstPreguntas.Items)
             {
                 RadioButtonList radioList = (RadioButtonList)itm.FindControl("radioList");
@@ -230,7 +282,7 @@ namespace SASISOPA.s
 
                 string ValorSeleccionado = radioList.SelectedValue;
                 string IdRespuesta = Id_Respuesta.Text;
-                if (ValorSeleccionado == "")
+                if (ValorSeleccionado == "" && expirado !=1)
                 {
 
                     string txtJS = String.Format("<script>alert('{0}');</script>", "Seleccionar una respuesta.");

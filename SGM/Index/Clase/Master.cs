@@ -16,19 +16,23 @@ namespace SAM.Clase
 
         public string IdSuscripcion { get; set; }
         public string Nombre { get; set; }
+        public string IdInstalacion { get; set; }
 
 
-
-        public DataTable MostrarInstalacion()
+        public DataTable MostrarInstalacion(int IdSuscripcion,string Correo)
         {
 
-
             comm.Connection = conexion.AbrirConexion();
-            comm.CommandText = "SELECT TOP(40) Id_Instalacion,Nombre FROM Cat_Instalacion WHERE Activado IS NULL ORDER BY Id_Instalacion DESC";
+            comm.CommandText = "SELECT Nav.Id_instalacion, Nav.Nombre  FROM Cat_Instalacion Nav JOIN(SELECT Id_Instalacion FROM Op_UsIns op JOIN Usuario us on op.Id_Usuario = us.Id_usuario WHERE us.Acceso =@Correo) UsAct on Nav.Id_instalacion = UsAct.Id_Instalacion WHERE nav.Activado IS NULL AND nav.Id_Suscripcion = @IdSuscripcion ORDER BY nav.Id_instalacion DESC";
             comm.CommandType = CommandType.Text;
+            comm.Parameters.AddWithValue("@IdSuscripcion", IdSuscripcion);
+            comm.Parameters.AddWithValue("@Correo", Correo);
+
+
             da = new SqlDataAdapter(comm);
             dt = new DataTable();
             da.Fill(dt);
+            comm.Parameters.Clear();
             conexion.CerrarConexion();
             return dt;
 
@@ -70,6 +74,26 @@ namespace SAM.Clase
             }
             else
                 return false;
+
+        }
+
+        public void LeerDatosInstalacion(int IdSuscripcion,string CorreoAcceso)
+        {
+            comm.Connection = conexion.AbrirConexion();
+            comm.CommandText = "SELECT Nav.Id_Instalacion  FROM Cat_Instalacion Nav JOIN(SELECT Id_Instalacion FROM Op_UsIns op JOIN Usuario us on op.Id_Usuario = us.Id_usuario WHERE us.Acceso =@LCorreo) UsAct on Nav.Id_instalacion = UsAct.Id_Instalacion WHERE nav.Activado IS NULL AND nav.Id_Suscripcion = @Id_Suscripcionn ORDER BY nav.Id_instalacion DESC";
+            comm.CommandType = CommandType.Text;
+            comm.Parameters.AddWithValue("@Id_Suscripcionn", IdSuscripcion);
+            comm.Parameters.AddWithValue("@LCorreo", CorreoAcceso);
+
+
+            dr = comm.ExecuteReader();
+            dr.Read();
+            IdInstalacion = dr["Id_Instalacion"].ToString();
+
+            dr.Close();
+            comm.Connection = conexion.CerrarConexion();
+
+
 
         }
     }

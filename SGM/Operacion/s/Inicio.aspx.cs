@@ -25,53 +25,67 @@ namespace Operacion.s
                 produccion.Visible = true;
             }
         }
-            protected void Page_Load(object sender, EventArgs e)
+        protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                int IdInstalacion = Convert.ToInt32((this.Master as Operacion.s.Site1).IdInstalacion.ToString());
-                disponibilidad.LeerDatosTotalEquipos(IdInstalacion);
-                lblTotal.Text = disponibilidad.TotalEquipos;
-                disponibilidad.LeerDatosTotalOperando(IdInstalacion);
-                lblOperando.Text = disponibilidad.TotalEquiposOperando;
-                string Mes = DateTime.Now.ToString("MM");
-                string Anio = DateTime.Now.ToString("yyyy");
-                decimal Operando = Convert.ToDecimal(lblOperando.Text );
-                decimal Total = Convert.ToDecimal(lblTotal.Text);
-           
-                if(Operando==0 && Total == 0)
-                {
-                    lblPorcentaje.Text = "0";
-                    divprogress1.Style.Add("width","0%");
 
-                }
-                else
-                {
-                    decimal porcentaje = (int)((100 * Operando) / Total);
-                    lblPorcentaje.Text = porcentaje.ToString();
-                    int val = (int)((100 * Operando) / Total);
+                IndicadorInfraestructura();
+                IndicadorProduccion();
+            }
+        }
 
-                    divprogress1.Style.Add("width", val.ToString() + "%");
+        public void IndicadorInfraestructura()
+        {
+            int IdInstalacion = Convert.ToInt32((this.Master as Operacion.s.Site1).IdInstalacion.ToString());
+            disponibilidad.LeerDatosTotalEquipos(IdInstalacion);
+            lblTotal.Text = disponibilidad.TotalEquipos;
+            disponibilidad.LeerDatosTotalOperando(IdInstalacion);
+            lblOperando.Text = disponibilidad.TotalEquiposOperando;
+            string Mes = DateTime.Now.AddHours(-5).ToString("MM");
+            string Anio = DateTime.Now.AddHours(-5).ToString("yyyy");
+            decimal Operando = Convert.ToDecimal(lblOperando.Text);
+            decimal Total = Convert.ToDecimal(lblTotal.Text);
 
-                }
-                int Mess = Convert.ToInt32(Mes);
-                int Anioo = Convert.ToInt32(Anio);
-
-                resumen.LeerDatosHoras(IdInstalacion, Anioo, Mess);
-                lblHoras.Text = resumen.PromedioHora;
-                double Horas = Convert.ToDouble(lblHoras.Text);
-                decimal porcentajeHoras = (int)((10 * Horas)+20);
-                if (Horas.ToString() != "0")
-                {
-                    progresHora.Style.Add("width", porcentajeHoras.ToString() + "%");
-                }
-                else
-                {
-                    progresHora.Style.Add("width", "0%");
-                }
-
+            if (Operando == 0 && Total == 0)
+            {
+                lblPorcentaje.Text = "0";
+                divprogress1.Style.Add("width", "0%");
 
             }
+            else
+            {
+                decimal porcentaje = (int)((100 * Operando) / Total);
+                lblPorcentaje.Text = porcentaje.ToString();
+                int val = (int)((100 * Operando) / Total);
+
+                divprogress1.Style.Add("width", val.ToString() + "%");
+
+            }
+        }
+
+        public void IndicadorProduccion()
+        {
+            int IdInstalacion = Convert.ToInt32((this.Master as Operacion.s.Site1).IdInstalacion.ToString());
+
+            string Mes = DateTime.Now.AddHours(-5).ToString("MM");
+            string Anio = DateTime.Now.AddHours(-5).ToString("yyyy");
+            int Mess = Convert.ToInt32(Mes);
+            int Anioo = Convert.ToInt32(Anio);
+
+            resumen.LeerDatosHoras(IdInstalacion, Anioo, Mess);
+            lblHoras.Text = resumen.PromedioHora;
+            double Horas = Convert.ToDouble(lblHoras.Text);
+            decimal porcentajeHoras = (int)((10 * Horas) + 20);
+            if (Horas.ToString() != "0")
+            {
+                progresHora.Style.Add("width", porcentajeHoras.ToString() + "%");
+            }
+            else
+            {
+                progresHora.Style.Add("width", "0%");
+            }
+
         }
 
         protected void IrSAM(Object sender, EventArgs e)

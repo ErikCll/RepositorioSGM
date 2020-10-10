@@ -21,20 +21,20 @@ namespace SAM.Clase
         public string IdInstalacion { get; set; }
         public string Instalacion { get; set; }
 
-        public DataTable Mostrar(string txtSearch,int IdSuscripcion)
+        public DataTable Mostrar(string txtSearch,int IdInstalacion)
         {
 
-            string query = "SELECT emp.Id_empleado, emp.Nombre,emp.ApellidoPaterno, emp.ApellidoMaterno,CONVERT(nvarchar, emp.CreacionFecha, 105) CreacionFecha,ins.Nombre 'Instalacion' FROM Cat_Empleado emp JOIN Cat_Instalacion ins on emp.Id_instalacion = ins.Id_instalacion WHERE emp.Activado IS NULL AND ins.Id_Suscripcion=@IdSuscripcion ORDER BY emp.Id_empleado DESC";
+            string query = "SELECT emp.Id_empleado, emp.Nombre,emp.ApellidoPaterno, emp.ApellidoMaterno,CONVERT(nvarchar, emp.CreacionFecha, 105) CreacionFecha,ins.Nombre 'Instalacion' FROM Cat_Empleado emp JOIN Cat_Instalacion ins on emp.Id_instalacion = ins.Id_instalacion WHERE emp.Activado IS NULL AND ins.Id_Instalacion=@IdInstalacion ORDER BY emp.Id_empleado DESC";
             if (!String.IsNullOrEmpty(txtSearch.Trim()))
             {
-                query = "SELECT emp.Id_empleado, emp.Nombre,emp.ApellidoPaterno, emp.ApellidoMaterno,CONVERT(nvarchar, emp.CreacionFecha, 105) CreacionFecha,ins.Nombre 'Instalacion' FROM Cat_Empleado emp JOIN Cat_Instalacion ins on emp.Id_instalacion = ins.Id_instalacion WHERE emp.Activado IS NULL AND emp.Nombre LIKE '%'+@txtSearch+'%' OR emp.ApellidoPaterno LIKE '%'+@txtSearch+'%' AND ins.Id_Suscripcion=@IdSuscripcion ORDER BY emp.Id_empleado DESC";
+                query = "SELECT emp.Id_empleado, emp.Nombre,emp.ApellidoPaterno, emp.ApellidoMaterno,CONVERT(nvarchar, emp.CreacionFecha, 105) CreacionFecha,ins.Nombre 'Instalacion' FROM Cat_Empleado emp JOIN Cat_Instalacion ins on emp.Id_instalacion = ins.Id_instalacion WHERE emp.Activado IS NULL AND emp.Nombre LIKE '%'+@txtSearch+'%' OR emp.ApellidoPaterno LIKE '%'+@txtSearch+'%' AND ins.Id_Instalacion=@IdInstalacion ORDER BY emp.Id_empleado DESC";
             }
 
             comm.Connection = conexion.AbrirConexion();
             comm.CommandText = query;
             comm.CommandType = CommandType.Text;
             comm.Parameters.AddWithValue("@txtSearch", txtSearch);
-            comm.Parameters.AddWithValue("@IdSuscripcion", IdSuscripcion);
+            comm.Parameters.AddWithValue("@IdInstalacion", IdInstalacion);
             da = new SqlDataAdapter(comm);
             dt = new DataTable();
             da.Fill(dt);

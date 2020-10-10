@@ -83,8 +83,16 @@ namespace SGM.s
                 master.LeerDatosUsuario(Usuario);
                 lblIdSuscripcion.Text = master.IdSuscripcion;
                 lblTitulo.Text = master.Nombre;
-
                 lblUsuario.Text = Usuario;
+                LlenarDrop();
+                if (RadInstalacion.Items.Count == 1)
+                {
+                    int IdSuscripcion = Convert.ToInt32(lblIdSuscripcion.Text);
+                    master.LeerDatosInstalacion(IdSuscripcion, Usuario);
+                    RadInstalacion.SelectedValue = master.IdInstalacion;
+                    lblIDInstalacion.Text = master.IdInstalacion;
+                    RadInstalacion.Enabled = false;
+                }
             }
 
         }
@@ -95,7 +103,6 @@ namespace SGM.s
             if (!IsPostBack)
             {
               
-                LlenarDrop();
 
 
 
@@ -210,7 +217,9 @@ namespace SGM.s
         public void LlenarDrop()
         {
             int IdSuscripcion = Convert.ToInt32(lblIdSuscripcion.Text);
-            RadInstalacion.DataSource = master.MostrarInstalacion(IdSuscripcion);
+            string Usuario = Page.User.Identity.Name;
+
+            RadInstalacion.DataSource = master.MostrarInstalacion(IdSuscripcion,Usuario);
             RadInstalacion.DataBind();
 
         }

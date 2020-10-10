@@ -28,7 +28,8 @@ namespace SAM.Catalogo.Categoria
         {
             if (!IsPostBack)
             {
-              
+                (this.Master as SAM.Site1).OcultarDrop = false;
+                (this.Master as SAM.Site1).OcultarLabel = false;
                 LlenarDropInstalacion();
                 string decodedString = System.Text.ASCIIEncoding.ASCII.GetString(Convert.FromBase64String(Request.QueryString["id"]));
                 int IdCategoria = Convert.ToInt32(decodedString);

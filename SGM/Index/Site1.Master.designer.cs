@@ -22,6 +22,33 @@ namespace SAM {
         protected global::System.Web.UI.WebControls.Label lblIdSuscripcion;
         
         /// <summary>
+        /// Control lblInstalacion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblInstalacion;
+        
+        /// <summary>
+        /// Control RadInstalacion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadComboBox RadInstalacion;
+        
+        /// <summary>
+        /// Control lblIDInstalacion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblIDInstalacion;
+        
+        /// <summary>
         /// Control lblTitulo.
         /// </summary>
         /// <remarks>
@@ -94,31 +121,67 @@ namespace SAM {
         protected global::System.Web.UI.HtmlControls.HtmlAnchor empleado1;
         
         /// <summary>
-        /// Control Li1.
+        /// Control cliente.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Li1;
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor cliente;
         
         /// <summary>
-        /// Control menu_catalogo.
+        /// Control material.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl menu_catalogo;
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor material;
         
         /// <summary>
-        /// Control catalogo.
+        /// Control equipo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor catalogo;
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor equipo;
+        
+        /// <summary>
+        /// Control menu_usuario.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl menu_usuario;
+        
+        /// <summary>
+        /// Control usuario.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor usuario;
+        
+        /// <summary>
+        /// Control menu_indicador.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl menu_indicador;
+        
+        /// <summary>
+        /// Control indicador.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor indicador;
         
         /// <summary>
         /// Control SGM.
@@ -238,13 +301,13 @@ namespace SAM {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl SGL;
         
         /// <summary>
-        /// Control A3.
+        /// Control sgl2.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor A3;
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor sgl2;
         
         /// <summary>
         /// Control head.

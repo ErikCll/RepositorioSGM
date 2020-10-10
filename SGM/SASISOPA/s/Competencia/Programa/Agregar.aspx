@@ -61,7 +61,8 @@
 
                                           <div class="col-sm-4 col-md-4 col-lg-8">
 
-                                              <label>Url para ingresar a la evaluación: </label> <asp:Label runat="server" Text="http://orygon.azurewebsites.net/SASISOPA/s/PreEvaluacion.aspx"></asp:Label>
+                                              <label>Url para ingresar a la evaluación: </label> <asp:HyperLink runat="server"
+                                                  Text="http://orygon.azurewebsites.net/SASISOPA/s/PreEvaluacion.aspx" NavigateUrl="http://orygon.azurewebsites.net/SASISOPA/s/PreEvaluacion.aspx" Target="_blank"></asp:HyperLink>
                                 </div>
                                                                        <div class=" input-group float-right col-sm-4 col-md-4 col-lg-4">
                                                                                 <asp:TextBox ID="txtSearch" runat="server" CssClass="form-control form-control-sm"></asp:TextBox>
@@ -76,7 +77,8 @@
                                     runat="server"
                                     AutoGenerateColumns="false"
                                     CssClass=" table table-bordered table-striped table-sm"
-                                     HeaderStyle-CssClass="bg-white"
+                                     HeaderStyle-BackColor="#343a40"
+                                     HeaderStyle-CssClass=" text-white"
                                                 GridLines="Horizontal"
                                     EmptyDataText="Sin registro de evaluaciones programadas."
                                     DataKeyNames="Id_Programa"

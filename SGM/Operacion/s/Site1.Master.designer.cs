@@ -103,6 +103,33 @@ namespace Operacion.s {
         protected global::System.Web.UI.WebControls.LinkButton lnkEmpleado;
         
         /// <summary>
+        /// Control lnkCliente.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkCliente;
+        
+        /// <summary>
+        /// Control lnkMaterial.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkMaterial;
+        
+        /// <summary>
+        /// Control lnkEquipo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkEquipo;
+        
+        /// <summary>
         /// Control lblUsuario.
         /// </summary>
         /// <remarks>
@@ -110,42 +137,6 @@ namespace Operacion.s {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblUsuario;
-        
-        /// <summary>
-        /// Control menu_catalogo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl menu_catalogo;
-        
-        /// <summary>
-        /// Control A1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor A1;
-        
-        /// <summary>
-        /// Control A2.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor A2;
-        
-        /// <summary>
-        /// Control A3.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor A3;
         
         /// <summary>
         /// Control menu_infraestructura.
@@ -166,15 +157,6 @@ namespace Operacion.s {
         protected global::System.Web.UI.HtmlControls.HtmlAnchor infraestructura;
         
         /// <summary>
-        /// Control disponibilidad.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor disponibilidad;
-        
-        /// <summary>
         /// Control menu_produccion.
         /// </summary>
         /// <remarks>
@@ -191,15 +173,6 @@ namespace Operacion.s {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlAnchor produccion;
-        
-        /// <summary>
-        /// Control resumen.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor resumen;
         
         /// <summary>
         /// Control head.

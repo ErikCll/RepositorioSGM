@@ -37,14 +37,16 @@
                         <div class=" table-responsive ">
                             <div style="overflow:auto ;height:auto">
                                 <asp:GridView runat="server" 
-                                 CssClass=" table table-bordered table-striped table-sm "
+                                 CssClass=" table  table-bordered  table-striped table-sm  "
                                    id="gridInstalacion"
                                     AutoGenerateColumns="false"
                                      EmptyDataText="Sin registro de instalaciones."
                                      PageSize="10"
-                                    HeaderStyle-CssClass="bg-white"
                                     GridLines="Horizontal"
-                                     OnPageIndexChanging="gridInstalacion_PageIndexChanging"
+                                      HeaderStyle-BackColor="#343a40"
+                                     HeaderStyle-CssClass=" text-white"
+                                    
+                                    OnPageIndexChanging="gridInstalacion_PageIndexChanging"
                                      AllowPaging="true"
                                  DataKeyNames="Id_Instalacion"
                                      OnRowCommand="gridInstalacion_RowCommand"

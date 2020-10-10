@@ -33,7 +33,8 @@
                             <div style="overflow:auto ;height:auto">
                                 <asp:GridView runat="server" 
                                  CssClass=" table table-bordered table-striped  table-sm"
-                                     HeaderStyle-CssClass="bg-white"
+                                    HeaderStyle-BackColor="#343a40"
+                                     HeaderStyle-CssClass=" text-white"
                                     GridLines="Horizontal"
                                    id="gridArea"
                                     AutoGenerateColumns="false"

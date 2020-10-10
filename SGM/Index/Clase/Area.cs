@@ -18,20 +18,20 @@ namespace SAM.Clase
         public string IdInstalacion { get; set; }
         public string Instalacion { get; set; }
 
-        public DataTable Mostrar(string txtSearch,int IdSuscripcion)
+        public DataTable Mostrar(string txtSearch,int IdInstalacion)
         {
 
-            string query = "SELECT area.Id_Area, area.Nombre,area.Codigo, ins.Nombre 'Instalacion' FROM Cat_Area area JOIN Cat_Instalacion ins on area.Id_instalacion = ins.Id_instalacion WHERE area.Activado IS NULL AND ins.Id_Suscripcion=@IdSuscripcion ORDER BY area.Id_instalacion DESC";
+            string query = "SELECT area.Id_Area, area.Nombre,area.Codigo, ins.Nombre 'Instalacion' FROM Cat_Area area JOIN Cat_Instalacion ins on area.Id_instalacion = ins.Id_instalacion WHERE area.Activado IS NULL AND ins.Id_Instalacion=@IdInstalacion ORDER BY area.Id_instalacion DESC";
             if (!String.IsNullOrEmpty(txtSearch.Trim()))
             {
-                query = "SELECT area.Id_Area, area.Nombre,area.Codigo, ins.Nombre 'Instalacion' FROM Cat_Area area JOIN Cat_Instalacion ins on area.Id_instalacion = ins.Id_instalacion WHERE area.Activado IS NULL AND area.Nombre LIKE '%'+@txtSearch+'%' AND ins.Id_Suscripcion = @IdSuscripcion ORDER BY area.Id_instalacion DESC";
+                query = "SELECT area.Id_Area, area.Nombre,area.Codigo, ins.Nombre 'Instalacion' FROM Cat_Area area JOIN Cat_Instalacion ins on area.Id_instalacion = ins.Id_instalacion WHERE area.Activado IS NULL AND area.Nombre LIKE '%'+@txtSearch+'%' AND ins.Id_Instalacion = @IdInstalacion ORDER BY area.Id_instalacion DESC";
             }
 
             comm.Connection = conexion.AbrirConexion();
             comm.CommandText = query;
             comm.CommandType = CommandType.Text;
             comm.Parameters.AddWithValue("@txtSearch", txtSearch);
-            comm.Parameters.AddWithValue("@IdSuscripcion", IdSuscripcion);
+            comm.Parameters.AddWithValue("@IdInstalacion", IdInstalacion);
             da = new SqlDataAdapter(comm);
             dt = new DataTable();
             da.Fill(dt);

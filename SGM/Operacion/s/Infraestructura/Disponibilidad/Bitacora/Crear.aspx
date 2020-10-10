@@ -52,26 +52,55 @@
                             </div>
                         </div>
                      
-
-                       
-                    
                         <div class="col-sm-12 col-md-12 col-lg-12"></div>
+                            <div class="col-sm-12 col-md-12 col-lg-4">
+                            <div class="form-group">
+                                <label>Tipo de falla:</label>
+                                <asp:DropDownList CssClass="form-control"  runat="server" ID="ddl_TipoFalla" DataTextField="Nombre" DataValueField="Id_Falla" AutoPostBack="true" OnSelectedIndexChanged="ddl_TipoFalla_SelectedIndexChanged"></asp:DropDownList>
+                                   <asp:RequiredFieldValidator runat="server" ID="reqTipoFalla" ControlToValidate="ddl_TipoFalla"
+                                    ErrorMessage="Tipo de falla requerida." ForeColor="Red" InitialValue="[Seleccionar]" ValidationGroup="btnGuardar"></asp:RequiredFieldValidator>
+
+                            </div>
+                        </div>
+                     
+                          <div class="col-sm-12 col-md-12 col-lg-4" runat="server" id="divInformacion">
+                                      <asp:GridView ID="gridDescripcion"
+                                    runat="server"
+                                    AutoGenerateColumns="false"
+                                    CssClass=" table table-bordered table-striped table-sm "
+                                     HeaderStyle-CssClass=" bg-white"
+                                    GridLines="Horizontal"
+                                    EmptyDataText="Sin registro de descripción."
+                                    PageSize="10"
+                                    DataKeyNames="Id_Falla"                                                              
+                                     HeaderStyle-HorizontalAlign="Center">                                                                    
+                                   <Columns>
+                                      
+
+                                        <asp:BoundField DataField="Descripcion" HeaderText="Descripción" />
+                                    
+                                    </Columns>
+
+                                </asp:GridView>
+                              </div>
+                    
+                        
 
 
-                       <div class="col-sm-12 col-md-12 col-lg-4">
+                       <div class="col-sm-12 col-md-12 col-lg-4" runat="server" id="divDescripcion" visible="false">
                             <div class="form-group">
                                 <label class="font-weight-bold">Descripción:</label>
 
 
                                 <textarea runat="server" class="form-control" onkeypress="return AllowAlphabet(event)"  maxlength="200" id="txtDesc"></textarea>
-                                <asp:RequiredFieldValidator runat="server" ID="reqCodigo" ControlToValidate="txtDesc"
-                                    ErrorMessage="Descripción requerida." ForeColor="Red"  ValidationGroup="btnGuardar"></asp:RequiredFieldValidator>
+                                <asp:RequiredFieldValidator runat="server" ID="reqDescripcion" ControlToValidate="txtDesc"
+                                    ErrorMessage="Descripción requerida." ForeColor="Red"  ValidationGroup="btnGuardar" Enabled="false"></asp:RequiredFieldValidator>
 
 
                             </div>
                         </div>
         
-                        <div class="col-sm-8 col-md-8 col-lg-8"></div>
+                        <div class="col-sm-12 col-md-12 col-lg-12"></div>
                
                          
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">

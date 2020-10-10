@@ -4,6 +4,8 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="mapeo" runat="server">
     <li class="breadcrumb-item active"><asp:LinkButton runat="server" OnClick="IrSAM">SAM</asp:LinkButton></li>
+                   <li class="breadcrumb-item "><a href="../../Inicio.aspx">SASISOPA (Inicio)</a></li>
+
                   <li class="breadcrumb-item "><a href="../Inicio.aspx">6. Competencia y Formación</a></li>
                      <li class="breadcrumb-item "><a>Programa de capacitación</a></li>
 </asp:Content>
@@ -39,7 +41,8 @@
                             <div style="overflow:auto ;height:auto">
                                 <asp:GridView runat="server" 
                                  CssClass=" table table-bordered table-striped table-sm"
-                                   HeaderStyle-CssClass="bg-white"
+                                   HeaderStyle-BackColor="#343a40"
+                                     HeaderStyle-CssClass=" text-white"
                                             GridLines="Horizontal"
                                    id="gridMatriz"
                                     AutoGenerateColumns="false"

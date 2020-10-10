@@ -62,6 +62,12 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Telerik.Web.UI">
+      <HintPath>..\..\..\..\..\Desktop\Erik\Admins\Admins\bin\Telerik.Web.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Web.UI.Skins">
+      <HintPath>..\..\..\..\..\Desktop\Erik\Admins\Admins\bin\Telerik.Web.UI.Skins.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
@@ -77,14 +83,24 @@
     <Content Include="Catalogo\Categoria\Detalle.aspx" />
     <Content Include="Catalogo\Categoria\Editar.aspx" />
     <Content Include="Catalogo\Categoria\Index.aspx" />
+    <Content Include="Catalogo\Cliente\Crear.aspx" />
+    <Content Include="Catalogo\Cliente\Editar.aspx" />
+    <Content Include="Catalogo\Cliente\Index.aspx" />
     <Content Include="Catalogo\Empleado\Crear.aspx" />
     <Content Include="Catalogo\Empleado\Detalle.aspx" />
     <Content Include="Catalogo\Empleado\Editar.aspx" />
     <Content Include="Catalogo\Empleado\Index.aspx" />
+    <Content Include="Catalogo\Equipo\Crear.aspx" />
+    <Content Include="Catalogo\Equipo\Detalle.aspx" />
+    <Content Include="Catalogo\Equipo\Editar.aspx" />
+    <Content Include="Catalogo\Equipo\Index.aspx" />
     <Content Include="Catalogo\Instalacion\Crear.aspx" />
     <Content Include="Catalogo\Instalacion\Detalle.aspx" />
     <Content Include="Catalogo\Instalacion\Editar.aspx" />
     <Content Include="Catalogo\Instalacion\Index.aspx" />
+    <Content Include="Catalogo\Material\Crear.aspx" />
+    <Content Include="Catalogo\Material\Editar.aspx" />
+    <Content Include="Catalogo\Material\Index.aspx" />
     <Content Include="Contrasena.aspx" />
     <Content Include="dist\css\adminlte.css" />
     <Content Include="dist\css\adminlte.min.css" />
@@ -110,6 +126,7 @@
     <Content Include="img\LogoSAM.PNG" />
     <Content Include="img\measurement-functions-skid.jpg" />
     <Content Include="img\oil-d.jpg" />
+    <Content Include="img\pdficon.png" />
     <Content Include="img\s.jpg" />
     <Content Include="img\thumbnail_gas transport 3 trucks.jpg" />
     <Content Include="img\thumbnail_gas-station.jpg" />
@@ -124,6 +141,8 @@
     <Content Include="img\thumbnail_oil-gas-storage1.jpg" />
     <Content Include="img\thumbnail_slide-2.jpg" />
     <Content Include="img\thumbnail_terminal .jpg" />
+    <Content Include="Indicador\SGL\Acreditacion\Detalle.aspx" />
+    <Content Include="Indicador\SGL\Inicio.aspx" />
     <Content Include="Inicio.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="plugins\bootstrap-colorpicker\css\bootstrap-colorpicker.css" />
@@ -1685,6 +1704,10 @@
     <Content Include="plugins\toastr\toastr.min.css" />
     <Content Include="plugins\toastr\toastr.min.js" />
     <Content Include="Recuperar.aspx" />
+    <Content Include="Usuario\Agregar.aspx" />
+    <Content Include="Usuario\Crear.aspx" />
+    <Content Include="Usuario\Editar.aspx" />
+    <Content Include="Usuario\Index.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -1744,6 +1767,27 @@
     <Compile Include="Catalogo\Categoria\Index.aspx.designer.cs">
       <DependentUpon>Index.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Catalogo\Cliente\Crear.aspx.cs">
+      <DependentUpon>Crear.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogo\Cliente\Crear.aspx.designer.cs">
+      <DependentUpon>Crear.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogo\Cliente\Editar.aspx.cs">
+      <DependentUpon>Editar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogo\Cliente\Editar.aspx.designer.cs">
+      <DependentUpon>Editar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogo\Cliente\Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogo\Cliente\Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Catalogo\Empleado\Crear.aspx.cs">
       <DependentUpon>Crear.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1770,6 +1814,34 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Catalogo\Empleado\Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogo\Equipo\Crear.aspx.cs">
+      <DependentUpon>Crear.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogo\Equipo\Crear.aspx.designer.cs">
+      <DependentUpon>Crear.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogo\Equipo\Detalle.aspx.cs">
+      <DependentUpon>Detalle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogo\Equipo\Detalle.aspx.designer.cs">
+      <DependentUpon>Detalle.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogo\Equipo\Editar.aspx.cs">
+      <DependentUpon>Editar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogo\Equipo\Editar.aspx.designer.cs">
+      <DependentUpon>Editar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogo\Equipo\Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogo\Equipo\Index.aspx.designer.cs">
       <DependentUpon>Index.aspx</DependentUpon>
     </Compile>
     <Compile Include="Catalogo\Instalacion\Crear.aspx.cs">
@@ -1800,12 +1872,39 @@
     <Compile Include="Catalogo\Instalacion\Index.aspx.designer.cs">
       <DependentUpon>Index.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Catalogo\Material\Crear.aspx.cs">
+      <DependentUpon>Crear.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogo\Material\Crear.aspx.designer.cs">
+      <DependentUpon>Crear.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogo\Material\Editar.aspx.cs">
+      <DependentUpon>Editar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogo\Material\Editar.aspx.designer.cs">
+      <DependentUpon>Editar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogo\Material\Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogo\Material\Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Clase\Acreditacion.cs" />
     <Compile Include="Clase\Area.cs" />
     <Compile Include="Clase\Categoria.cs" />
+    <Compile Include="Clase\Cliente.cs" />
+    <Compile Include="Clase\Correo.cs" />
     <Compile Include="Clase\Empleado.cs" />
+    <Compile Include="Clase\Equipo.cs" />
     <Compile Include="Clase\Instalacion.cs" />
     <Compile Include="Clase\Login.cs" />
     <Compile Include="Clase\Master.cs" />
+    <Compile Include="Clase\Material.cs" />
+    <Compile Include="Clase\Usuario.cs" />
     <Compile Include="Conexion.cs" />
     <Compile Include="Contrasena.aspx.cs">
       <DependentUpon>Contrasena.aspx</DependentUpon>
@@ -1816,6 +1915,20 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Indicador\SGL\Acreditacion\Detalle.aspx.cs">
+      <DependentUpon>Detalle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Indicador\SGL\Acreditacion\Detalle.aspx.designer.cs">
+      <DependentUpon>Detalle.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Indicador\SGL\Inicio.aspx.cs">
+      <DependentUpon>Inicio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Indicador\SGL\Inicio.aspx.designer.cs">
+      <DependentUpon>Inicio.aspx</DependentUpon>
     </Compile>
     <Compile Include="Inicio.aspx.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>
@@ -1845,6 +1958,34 @@
     </Compile>
     <Compile Include="Site1.Master.designer.cs">
       <DependentUpon>Site1.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Usuario\Agregar.aspx.cs">
+      <DependentUpon>Agregar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Usuario\Agregar.aspx.designer.cs">
+      <DependentUpon>Agregar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Usuario\Crear.aspx.cs">
+      <DependentUpon>Crear.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Usuario\Crear.aspx.designer.cs">
+      <DependentUpon>Crear.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Usuario\Editar.aspx.cs">
+      <DependentUpon>Editar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Usuario\Editar.aspx.designer.cs">
+      <DependentUpon>Editar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Usuario\Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Usuario\Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

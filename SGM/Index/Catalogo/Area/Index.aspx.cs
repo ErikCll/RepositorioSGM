@@ -51,9 +51,9 @@ namespace SAM.Catalogo.Area
 
         public void MostrarGrid()
         {
-            int IdSuscripcion = Convert.ToInt32((this.Master as SAM.Site1).IdSuscripcion);
+            int IdInstalacion = Convert.ToInt32((this.Master as SAM.Site1).IdInstalacion);
 
-            gridArea.DataSource = area.Mostrar(txtSearch.Text.Trim(),IdSuscripcion);
+            gridArea.DataSource = area.Mostrar(txtSearch.Text.Trim(), IdInstalacion);
             gridArea.DataBind();
         }
 

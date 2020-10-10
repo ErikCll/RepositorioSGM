@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Recuperar.aspx.cs" Inherits="Index.Recuperar" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Recuperar.aspx.cs" Inherits="SAM.Recuperar" %>
 
 <!DOCTYPE html>
 
@@ -64,10 +64,11 @@ font-size:20px;
                 <br />
                 <div class="row">
                     <div class="col-sm-12 col-md-4 col-lg-4">
+                                                <asp:Button runat="server" id="btnEnviar" Text="Enviar" CssClass="btn btn-primary ml-1" ValidationGroup="btnEnviar" OnClick="btnEnviar_Click"/>
+
                                                 <asp:Button runat="server" ID="btnRegresar" Text="Regresar" CssClass="btn btn-default" PostBackUrl="~/Login.aspx" />
 <%--                                                                                     <a class="btn btn-default" href="#" onclick="history.back();">Regresar</a>  --%>
 
-                        <asp:Button runat="server" id="btnEnviar" Text="Enviar" CssClass="btn btn-primary ml-1" ValidationGroup="btnEnviar"/>
 
 
                     </div>

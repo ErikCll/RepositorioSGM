@@ -28,6 +28,8 @@ namespace SASISOPA.Clase
         public string Calificacion { get; set; }
         public string Estatus { get; set; }
 
+        public string Porcentaje { get; set; }
+
         public DataTable MostrarGeneral(int IdInstalacion,int Anio)
         {
 
@@ -48,6 +50,7 @@ namespace SASISOPA.Clase
             return dt;
 
         }
+        
 
         public DataTable Mostrar(string txtSearch, int IdInstalacion)
         {
@@ -451,6 +454,27 @@ namespace SASISOPA.Clase
 
 
 
+        }
+
+
+        public void LeerDatosIndicador(int IdInstalacion, int Anio)
+        {
+
+            string query = "SELECT ISNULL(CAST(AVG(t.Avance)*100 as DECIMAL(10,2)),0) 'Porcentaje' FROM(SELECT act.Id, act.Nombre,s.Codigo,CASE WHEN act.Id IS NOT NULL THEN 'P' END 'Pendiente/Realizado', SUM(CASE WHEN MONTH(prog.FechaEvaluacion) = 1 AND prog.Activado IS NULL  THEN 1 ELSE 0 END) AS Ene, SUM(CASE WHEN MONTH(prog.FechaEvaluacion) = 2 AND prog.Activado IS NULL THEN 1 ELSE 0 END) AS Feb, SUM(CASE WHEN MONTH(prog.FechaEvaluacion) = 3 AND prog.Activado IS NULL THEN 1 ELSE 0 END) AS Mar, SUM(CASE WHEN MONTH(prog.FechaEvaluacion) = 4 AND prog.Activado IS NULL THEN 1 ELSE 0 END) AS Abr, SUM(CASE WHEN MONTH(prog.FechaEvaluacion) = 5 AND prog.Activado IS NULL THEN 1 ELSE 0 END) AS May, SUM(CASE WHEN MONTH(prog.FechaEvaluacion) = 6 AND prog.Activado IS NULL THEN 1 ELSE 0 END) AS Jun, SUM(CASE WHEN MONTH(prog.FechaEvaluacion) = 7 AND  prog.Activado IS NULL THEN 1 ELSE 0 END) AS Jul, SUM(CASE WHEN MONTH(prog.FechaEvaluacion) = 8 AND prog.Activado IS NULL THEN 1 ELSE 0 END) AS Ago, SUM(CASE WHEN MONTH(prog.FechaEvaluacion) = 9 AND prog.Activado IS NULL THEN 1 ELSE 0 END) AS Sep, SUM(CASE WHEN MONTH(prog.FechaEvaluacion) = 10 AND prog.Activado IS NULL THEN 1 ELSE 0 END) AS Oct, SUM(CASE WHEN MONTH(prog.FechaEvaluacion) = 11 AND prog.Activado IS NULL THEN 1 ELSE 0 END) AS Nov, SUM(CASE WHEN MONTH(prog.FechaEvaluacion) = 12 AND prog.Activado IS NULL THEN 1 ELSE 0 END) AS Dic, SUM(CASE WHEN prog.FechaEvaluacion IS NOT NULL AND prog.Activado IS NULL THEN 1 ELSE 0 END) AS Total, CAST(SUM(CASE WHEN prog.Estatus = 2 AND prog.Activado IS NULL THEN 1 ELSE null END) as DECIMAL(9, 2)) / CAST(SUM(CASE WHEN prog.FechaEvaluacion IS NOT NULL AND prog.Activado IS NULL THEN 1 ELSE null END) AS DECIMAL(9, 2)) AS Avance FROM Op_ProgramaCapacitacion prog JOIN Evaluacion ev on prog.Id_Evaluacion = ev.Id_Evaluacion JOIN(SELECT Id_Actividad, MAX(Id_Control) max_score FROM Cat_ActividadControl WHERE Activado IS NULL GROUP BY Id_Actividad) ctr on ev.Id_Control = ctr.max_score JOIN(SELECT Id_Control, FechaEmision, Codigo, VigenciaMeses, Activado FROM Cat_ActividadControl) s on ctr.max_score = s.Id_Control RIGHT JOIN(SELECT InsAct.Id, act.Id_Actividades, act.Nombre, InsAct.Id_Instalacion FROM Op_Ins_Act InsAct JOIN Cat_Actividades act on InsAct.Id_Actividad= act.Id_Actividades WHERE InsAct.Id_Instalacion= @IdInstalacion AND act.Activado IS NULL AND act.TipoSistema= 2) act on ctr.Id_Actividad = act.Id_Actividades JOIN Cat_Instalacion ins on act.Id_instalacion = ins.Id_instalacion WHERE s.Activado IS NULL AND ev.Activado IS NULL and ins.Id_instalacion = @IdInstalacion AND YEAR(prog.FechaEvaluacion)= @Anio GROUP BY act.Id,act.Nombre,s.Codigo UNION  SELECT act.Id, act.Nombre,s.Codigo, CASE WHEN act.Id IS NOT NULL THEN 'R' END 'Pendiente/Realizado', SUM(CASE WHEN MONTH(prog.FechaEvaluacion) = 1 AND prog.Estatus = 2 AND prog.Activado IS NULL  THEN 1 ELSE 0 END) AS Ene, SUM(CASE WHEN MONTH(prog.FechaEvaluacion) = 2 AND prog.Estatus = 2 AND prog.Activado IS NULL THEN 1 ELSE 0 END) AS Feb, SUM(CASE WHEN MONTH(prog.FechaEvaluacion) = 3 AND prog.Estatus = 2 AND prog.Activado IS NULL THEN 1 ELSE 0 END) AS Mar, SUM(CASE WHEN MONTH(prog.FechaEvaluacion) = 4 AND prog.Estatus = 2 AND prog.Activado IS NULL THEN 1 ELSE 0 END) AS Abr, SUM(CASE WHEN MONTH(prog.FechaEvaluacion) = 5 AND prog.Estatus = 2 AND prog.Activado IS NULL THEN 1 ELSE 0 END) AS May, SUM(CASE WHEN MONTH(prog.FechaEvaluacion) = 6 AND prog.Estatus = 2 AND prog.Activado IS NULL THEN 1 ELSE 0 END) AS Jun, SUM(CASE WHEN MONTH(prog.FechaEvaluacion) = 7 AND prog.Estatus = 2 AND prog.Activado IS NULL THEN 1 ELSE 0 END) AS Jul, SUM(CASE WHEN MONTH(prog.FechaEvaluacion) = 8 AND prog.Estatus = 2 AND prog.Activado IS NULL THEN 1 ELSE 0 END) AS Ago, SUM(CASE WHEN MONTH(prog.FechaEvaluacion) = 9 AND prog.Estatus = 2 AND prog.Activado IS NULL THEN 1 ELSE 0 END) AS Sep, SUM(CASE WHEN MONTH(prog.FechaEvaluacion) = 10 AND prog.Estatus = 2 AND prog.Activado IS NULL THEN 1 ELSE 0 END) AS Oct, SUM(CASE WHEN MONTH(prog.FechaEvaluacion) = 11 AND prog.Estatus = 2 AND prog.Activado IS NULL THEN 1 ELSE 0 END) AS Nov, SUM(CASE WHEN MONTH(prog.FechaEvaluacion) = 12 AND prog.Estatus = 2 AND prog.Activado IS NULL THEN 1 ELSE 0 END) AS Dic, SUM(CASE WHEN prog.Estatus = 2 AND prog.Activado IS NULL THEN 1 ELSE 0 END) AS Total, CAST(SUM(CASE WHEN prog.Estatus = 2 AND prog.Activado IS NULL THEN 1 ELSE null END) as DECIMAL(9, 2)) / CAST(SUM(CASE WHEN prog.FechaEvaluacion IS NOT NULL AND prog.Activado IS NULL THEN 1 ELSE null END) AS DECIMAL(9, 2)) AS Avance  FROM Op_ProgramaCapacitacion prog JOIN Evaluacion ev on prog.Id_Evaluacion = ev.Id_Evaluacion JOIN(SELECT Id_Actividad, MAX(Id_Control) max_score FROM Cat_ActividadControl WHERE Activado IS NULL GROUP BY Id_Actividad) ctr on ev.Id_Control = ctr.max_score JOIN(SELECT Id_Control, FechaEmision, Codigo, VigenciaMeses, Activado FROM Cat_ActividadControl) s on ctr.max_score = s.Id_Control RIGHT JOIN(SELECT InsAct.Id, act.Id_Actividades, act.Nombre, InsAct.Id_Instalacion FROM Op_Ins_Act InsAct JOIN Cat_Actividades act on InsAct.Id_Actividad= act.Id_Actividades WHERE InsAct.Id_Instalacion= @IdInstalacion AND act.Activado IS NULL AND act.TipoSistema= 2) act on ctr.Id_Actividad = act.Id_Actividades JOIN Cat_Instalacion ins on act.Id_instalacion = ins.Id_instalacion WHERE ev.Activado IS NULL AND s.Activado IS NULL AND ins.Id_instalacion = @IdInstalacion AND YEAR(prog.FechaEvaluacion)= @Anio GROUP BY act.Id,act.Nombre,s.Codigo)t";
+
+
+            comm.Connection = conexion.AbrirConexion();
+            comm.CommandText = query;
+            comm.CommandType = CommandType.Text;
+            comm.Parameters.AddWithValue("@IdInstalacion", IdInstalacion);
+            comm.Parameters.AddWithValue("@Anio", Anio);
+
+
+            dr = comm.ExecuteReader();
+            dr.Read();
+            Porcentaje = dr["Porcentaje"].ToString();
+            dr.Close();
+            comm.Connection = conexion.CerrarConexion();
         }
     }
 }

@@ -1,0 +1,54 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace SGL.s.Acreditacion.EMA
+{
+    public partial class Editar : System.Web.UI.Page
+    {
+        Clase.EMA ema = new Clase.EMA();
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                (this.Master as SGL.s.Site1).OcultarDrop = false;
+                (this.Master as SGL.s.Site1).OcultarLabel = false;
+                LlenarDrop();
+                string decodedString = System.Text.ASCIIEncoding.ASCII.GetString(Convert.FromBase64String(Request.QueryString["id"]));
+                int IdAcreditacion = Convert.ToInt32(decodedString);
+                ema.LeerDatos(IdAcreditacion);
+                txtNo.Text = ema.No;
+                txtReferencia.Text = ema.Referencia;
+                ddl_Instalacion.SelectedValue = ema.IdInstalacion;
+            }
+        }
+
+        public void LlenarDrop()
+        {
+            int IdSuscripcion = Convert.ToInt32((this.Master as SGL.s.Site1).IdSuscripcion);
+
+            ddl_Instalacion.DataSource = ema.MostrarInstalacion(IdSuscripcion);
+            ddl_Instalacion.DataBind();
+            ddl_Instalacion.Items.Insert(0, new ListItem("[Seleccionar]"));
+
+        }
+
+        protected void btnGuardar_Click(object sender, EventArgs e)
+        {
+            string decodedString = System.Text.ASCIIEncoding.ASCII.GetString(Convert.FromBase64String(Request.QueryString["id"]));
+            int IdAcreditacion = Convert.ToInt32(decodedString);
+            string No = txtNo.Text;
+            string Referencia = txtReferencia.Text;
+            int IdInstalacion = Convert.ToInt32(ddl_Instalacion.SelectedValue);
+            if (ema.Editar(IdAcreditacion,No,Referencia, IdInstalacion))
+            {
+                string txtJS = String.Format("<script>alert('{0}');</script>", "Se actualizaron correctamente los datos.");
+                ScriptManager.RegisterClientScriptBlock(litControl, litControl.GetType(), "script", txtJS, false);
+            }
+
+        }
+    }
+}

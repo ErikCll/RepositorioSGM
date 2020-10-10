@@ -41,7 +41,9 @@ namespace SASISOPA.s
                 Id_EvaluacionG = Convert.ToInt32(programa.Id_Evaluacion);
                 FechaEvaluacionG = programa.FechaEvaluacion;
 
-                string IdPrograma = (Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(Id_Programa.ToString())));
+                btnValidar2_Click(null, null);
+
+                string IdPrograma = (Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(Id_programaG.ToString())));
                 string IdEmpleado = (Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(programa.Id_Empleado.ToString())));
                 string IdEvaluacion = (Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(programa.Id_Evaluacion.ToString())));
                 //string script = "window.close();";
@@ -56,10 +58,9 @@ namespace SASISOPA.s
                 string txtJS = String.Format("<script>alert('{0}');</script>", "La Clave es incorrecta o la Evaluación no está disponible.");
                 ScriptManager.RegisterClientScriptBlock(litControl, litControl.GetType(), "script", txtJS, false);
             }
-
         }
 
-        protected void btnValidar_Click(object sender, EventArgs e)
+        protected void btnValidar2_Click(object sender, EventArgs e)
         {
             RadWindow1.VisibleOnPageLoad = false;
             if (programa.ValidarRealizado(Id_programaG))
@@ -70,14 +71,14 @@ namespace SASISOPA.s
 
                     programa.ObtenerIdPrograma(Id_EvaluacionG, Id_EmpleadoG);
                     int IdPrograma = Convert.ToInt32(programa.Id_Programa);
+                    Id_programaG = IdPrograma;
                     string Clave = (Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(IdPrograma.ToString())));
-
+                    
                     programa.EditarPrograma(IdPrograma, Clave);
 
 
                 }
             }
-
         }
     }
 }

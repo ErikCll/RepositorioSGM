@@ -14,11 +14,13 @@ namespace SAM.Clase
         SqlDataAdapter da;
         SqlDataReader dr;
         public string Nombre { get; set; }
+        public string Contrasena { get; set; }
+
 
         public bool AutenticarUsuario(string Usuario,string Contrasena)
         {
             comm.Connection = conexion.AbrirConexion();
-            comm.CommandText = "SELECT COUNT(*) FROM Usuario us JOIN Suscripcion sus on us.Id_Suscripcion = sus.Id_Suscripcion WHERE Acceso = @Usuario AND Contrasena = @Contrasena COLLATE Latin1_General_CS_AS AND us.Activado IS NULL AND sus.Activado IS NULL";
+            comm.CommandText = "SELECT COUNT(*) FROM Usuario us JOIN Suscripcion sus on us.Id_Suscripcion = sus.Id_Suscripcion WHERE Acceso = @Usuario COLLATE Latin1_General_CS_AS AND Contrasena = @Contrasena COLLATE Latin1_General_CS_AS AND us.Activado IS NULL AND sus.Activado IS NULL";
             comm.CommandType = CommandType.Text;
 
             comm.Parameters.AddWithValue("@Usuario", Usuario);
@@ -230,5 +232,43 @@ namespace SAM.Clase
                 return false;
 
         }
+
+        public bool ValidarCorreo(string Correo)
+        {
+            comm.Connection = conexion.AbrirConexion();
+            comm.CommandText = "SELECT COUNT(*) FROM Usuario WHERE Acceso=@Correo AND Activado IS NULL";
+            comm.CommandType = CommandType.Text;
+            comm.Parameters.AddWithValue("@Correo", Correo);
+            int i = (int)comm.ExecuteScalar();
+            comm.Parameters.Clear();
+            conexion.CerrarConexion();
+
+            if (i > 0)
+            {
+                return true;
+            }
+            else
+                return false;
+
+        }
+
+        public void LeerDatos(string Correo)
+        {
+            comm.Connection = conexion.AbrirConexion();
+            comm.CommandText = "SELECT TOP 1 Contrasena FROM Usuario WHERE Acceso=@Correoo";
+            comm.CommandType = CommandType.Text;
+            comm.Parameters.AddWithValue("@Correoo", Correo);
+
+            dr = comm.ExecuteReader();
+            dr.Read();
+            Contrasena = dr["Contrasena"].ToString();
+   
+            dr.Close();
+            comm.Connection = conexion.CerrarConexion();
+
+
+
+        }
+
     }
 }

@@ -23,10 +23,10 @@ namespace Operacion.s
                 string Usuario = Page.User.Identity.Name;
                 if (login.ValidarOperacion(Usuario))
                 {
-                    if (master.ValidarCatalogo(Usuario))
-                    {
-                        menu_catalogo.Visible = true;
-                    }
+                    //if (master.ValidarCatalogo(Usuario))
+                    //{
+                    //    menu_catalogo.Visible = true;
+                    //}
                     if (master.ValidarInfraestructura(Usuario))
                     {
                         menu_infraestructura.Visible = true;
@@ -77,7 +77,7 @@ namespace Operacion.s
                 {
                     int IdSuscripcion = Convert.ToInt32(lblIdSuscripcion.Text);
 
-                    master.LeerDatosInstalacion(IdSuscripcion);
+                    master.LeerDatosInstalacion(IdSuscripcion,Usuario);
                     RadInstalacion.SelectedValue = master.IdInstalacion;
                     lblIDInstalacion.Text = master.IdInstalacion;
                     RadInstalacion.Enabled = false;
@@ -97,21 +97,28 @@ namespace Operacion.s
 
                 string activepage = Request.RawUrl;
 
-                if (activepage.Contains("/s/Infraestructura/Disponibilidad/Index.aspx") || activepage.Contains("/s/Infraestructura/Disponibilidad/Bitacora/Index.aspx"))
+                if (activepage.Contains("/s/Infraestructura/Disponibilidad/Index.aspx") || activepage.Contains("/s/Infraestructura/Disponibilidad/Bitacora/Index.aspx") || activepage.Contains("/s/Infraestructura/Inicio.aspx"))
                 {
                     menu_infraestructura.Attributes.Add("class", "  nav-item has-treeview menu-open");
                     infraestructura.Attributes.Add("class", "nav-link active");
-                    disponibilidad.Attributes.Add("class", "nav-link active");
 
                 }
 
-                else if (activepage.Contains("/s/Produccion/Resumen/Index.aspx") || activepage.Contains("/s/Produccion/Resumen/Detalle.aspx"))
+                else if (activepage.Contains("/s/Produccion/Resumen/Index.aspx") || activepage.Contains("/s/Produccion/Resumen/Detalle.aspx") || activepage.Contains("/s/Produccion/Inicio.aspx"))
                 {
                     menu_produccion.Attributes.Add("class", "  nav-item has-treeview menu-open");
                     produccion.Attributes.Add("class", "nav-link active");
-                    resumen.Attributes.Add("class", "nav-link active");
 
                 }
+
+
+                //else if (activepage.Contains("/s/Catalogo/Equipo/Index.aspx") || activepage.Contains("/s/Catalogo/Equipo/Detalle.aspx") || activepage.Contains("/s/Catalogo/Equipo/Crear.aspx") || activepage.Contains("/s/Catalogo/Equipo/Editar.aspx"))
+                //{
+                //    menu_catalogo.Attributes.Add("class", "  nav-item has-treeview menu-open");
+                //    catalogo.Attributes.Add("class", "nav-link active");
+                //    equipo.Attributes.Add("class", "nav-link active");
+
+                //}
             }
         }
 
@@ -141,7 +148,9 @@ namespace Operacion.s
         {
 
             int IdSuscripcion = Convert.ToInt32(lblIdSuscripcion.Text);
-            RadInstalacion.DataSource = master.MostrarInstalacion(IdSuscripcion);
+            string Usuario = Page.User.Identity.Name;
+
+            RadInstalacion.DataSource = master.MostrarInstalacion(IdSuscripcion,Usuario);
             RadInstalacion.DataBind();
           
         }
@@ -224,6 +233,30 @@ namespace Operacion.s
             string encodedString = (Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(url.ToString())));
 
             Response.Redirect("http://orygon.azurewebsites.net/Catalogo/Empleado/Index.aspx?url=" + encodedString + "");
+        }
+
+        protected void lnkCliente_Click(object sender, EventArgs e)
+        {
+            string url = HttpContext.Current.Request.Url.AbsoluteUri;
+            string encodedString = (Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(url.ToString())));
+
+            Response.Redirect("http://orygon.azurewebsites.net/Catalogo/Cliente/Index.aspx?url=" + encodedString + "");
+        }
+
+        protected void lnkMaterial_Click(object sender, EventArgs e)
+        {
+            string url = HttpContext.Current.Request.Url.AbsoluteUri;
+            string encodedString = (Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(url.ToString())));
+
+            Response.Redirect("http://orygon.azurewebsites.net/Catalogo/Material/Index.aspx?url=" + encodedString + "");
+        }
+
+        protected void lnkEquipo_Click(object sender, EventArgs e)
+        {
+            string url = HttpContext.Current.Request.Url.AbsoluteUri;
+            string encodedString = (Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(url.ToString())));
+
+            Response.Redirect("http://orygon.azurewebsites.net/Catalogo/Equipo/Index.aspx?url=" + encodedString + "");
         }
     }
 }

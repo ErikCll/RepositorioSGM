@@ -4,12 +4,15 @@
 
 <%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    Resumen mensual
+Horas por Turno
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="mapeo" runat="server">
       <li class="breadcrumb-item active"><asp:LinkButton runat="server" OnClick="IrSAM">SAM</asp:LinkButton></li>
-                  <li class="breadcrumb-item "><a href="../../Inicio.aspx">Operación</a></li>
-                     <li class="breadcrumb-item "><a>Resumen mensual</a></li>
+                  <li class="breadcrumb-item "><a href="../../Inicio.aspx">Operación (Inicio)</a></li>
+                      <li class="breadcrumb-item "><a href="../Inicio.aspx">Producción</a></li>
+
+                     <li class="breadcrumb-item "><a>Horas por Turno</a></li>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Content" runat="server">
     <asp:UpdatePanel runat="server" UpdateMode="Conditional">
@@ -27,6 +30,12 @@
                         <div class="fomr-group">
                             <label>Mes:</label>
                             <asp:DropDownList runat="server" CssClass="form-control" AutoPostBack="true" ID="ddl_Mes" OnSelectedIndexChanged="ddl_Mes_SelectedIndexChanged"></asp:DropDownList>
+                        </div>
+                    </div>
+                        <div class="col-sm-12 col-md-6 col-lg-3">
+                        <div class="fomr-group">
+                            <label>Equipo:</label>
+                            <asp:DropDownList runat="server" CssClass="form-control" AutoPostBack="true" ID="ddl_Equipo" OnSelectedIndexChanged="ddl_Equipo_SelectedIndexChanged" DataValueField="Id_Equipo" DataTextField="Nombre"></asp:DropDownList>
                         </div>
                     </div>
                     <div class="col-sm-12 col-md-12 col-lg-12" runat="server" visible="false">
@@ -467,7 +476,8 @@
                                 <asp:GridView runat="server" 
                                     
                                     CssClass=" table table-bordered table-striped table-sm "
-                                  HeaderStyle-CssClass="bg-white"
+                                   HeaderStyle-BackColor="#343a40"
+                                     HeaderStyle-CssClass=" text-white"
                                     GridLines="Horizontal"  
                                    id="gridHora"
                                     AutoGenerateColumns="false"
@@ -492,12 +502,17 @@
                                         </asp:TemplateField>
 
                                     </Columns>
+                                    <PagerStyle HorizontalAlign="Center" />
                              
                                 </asp:GridView>
+
                             </div>
+
                         </div>
                     </div>
                   <!-- /.col -->
+                                                                                    <asp:Button runat="server" CssClass="btn btn-default" Text="Regresar" ID="btnRegresar" PostBackUrl="~/s/Produccion/Inicio.aspx" />
+
                 </div>
                 <!-- /.row -->
               </div>

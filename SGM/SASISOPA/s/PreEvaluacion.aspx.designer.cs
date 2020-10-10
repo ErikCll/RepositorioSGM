@@ -40,13 +40,13 @@ namespace SASISOPA.s {
         protected global::System.Web.UI.WebControls.Button btnIngresar;
         
         /// <summary>
-        /// Control btnValidar.
+        /// Control btnValidar2.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnValidar;
+        protected global::System.Web.UI.WebControls.Button btnValidar2;
         
         /// <summary>
         /// Control RadWindow1.
