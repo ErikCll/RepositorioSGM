@@ -75,7 +75,7 @@ namespace SGM.Competencia.CensoAct
                 HtmlControl Vig = e.Row.FindControl("Vigente") as HtmlControl;
                 HtmlControl Ven = e.Row.FindControl("Vencido") as HtmlControl;
                 HyperLink lnk = e.Row.FindControl("lnk") as HyperLink;
-                lnk.NavigateUrl = "https://er2020.blob.core.windows.net/controlvers/" + IdControl.ToString() + ".pdf";
+                lnk.NavigateUrl = "https://er2020.blob.core.windows.net/sgm/Competencia/" + IdControl.ToString() + ".pdf";
                 HtmlControl Vig2 = e.Row.FindControl("Vigente") as HtmlControl;
 
             

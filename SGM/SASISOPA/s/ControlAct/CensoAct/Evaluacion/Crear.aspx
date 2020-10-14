@@ -87,7 +87,8 @@
 
                                             </ItemTemplate>
                                         </asp:TemplateField>
-                                        <asp:BoundField DataField="CantidadReactivos" HeaderText="Cantidad de reactivos"/>
+                                        <asp:BoundField DataField="CantidadReactivos" HeaderText="Reactivos evaluación"/>
+                                        <asp:BoundField DataField="TotalReactivos" HeaderText="Reactivos capturados" />
                                         <asp:BoundField DataField="CalificacionMinima" HeaderText="Calificación mínima" />
                                         <asp:BoundField DataField="Estatus" HeaderText="Estatus" />
 

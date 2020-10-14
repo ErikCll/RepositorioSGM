@@ -76,8 +76,9 @@ namespace SAM.Catalogo.Equipo
         public void LlenarDropInstalacion()
         {
             int IdSuscripcion = Convert.ToInt32((this.Master as SAM.Site1).IdSuscripcion);
+            string Usuario = Page.User.Identity.Name;
 
-            ddl_Instalacion.DataSource = equipo.MostrarInstalacion(IdSuscripcion);
+            ddl_Instalacion.DataSource = equipo.MostrarInstalacion(IdSuscripcion,Usuario);
             ddl_Instalacion.DataBind();
             ddl_Instalacion.Items.Insert(0, new ListItem("[Seleccionar]"));
 

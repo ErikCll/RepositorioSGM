@@ -126,7 +126,7 @@
     <Content Include="img\LogoSAM.PNG" />
     <Content Include="img\measurement-functions-skid.jpg" />
     <Content Include="img\oil-d.jpg" />
-    <Content Include="img\pdficon.png" />
+    <Content Include="img\pdficon.svg" />
     <Content Include="img\s.jpg" />
     <Content Include="img\thumbnail_gas transport 3 trucks.jpg" />
     <Content Include="img\thumbnail_gas-station.jpg" />
@@ -141,6 +141,7 @@
     <Content Include="img\thumbnail_oil-gas-storage1.jpg" />
     <Content Include="img\thumbnail_slide-2.jpg" />
     <Content Include="img\thumbnail_terminal .jpg" />
+    <Content Include="Indicador\SASISOPA\Inicio.aspx" />
     <Content Include="Indicador\SGL\Acreditacion\Detalle.aspx" />
     <Content Include="Indicador\SGL\Inicio.aspx" />
     <Content Include="Inicio.aspx" />
@@ -1915,6 +1916,13 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Indicador\SASISOPA\Inicio.aspx.cs">
+      <DependentUpon>Inicio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Indicador\SASISOPA\Inicio.aspx.designer.cs">
+      <DependentUpon>Inicio.aspx</DependentUpon>
     </Compile>
     <Compile Include="Indicador\SGL\Acreditacion\Detalle.aspx.cs">
       <DependentUpon>Detalle.aspx</DependentUpon>

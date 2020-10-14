@@ -46,8 +46,9 @@ namespace SASISOPA.s.ControlAct.MatrizInsAct
         public void LlenarDropInstalacion()
         {
             int IdSuscripcion = Convert.ToInt32((this.Master as SASISOPA.s.Site1).IdSuscripcion.ToString());
+            string Usuario = Page.User.Identity.Name;
 
-            ddl_Instalacion.DataSource = insact.MostrarInstalacion(IdSuscripcion);
+            ddl_Instalacion.DataSource = insact.MostrarInstalacion(IdSuscripcion,Usuario);
             ddl_Instalacion.DataBind();
             ddl_Instalacion.Items.Insert(0, new ListItem("[Seleccionar]", "0"));
         }

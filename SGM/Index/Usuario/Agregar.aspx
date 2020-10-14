@@ -8,8 +8,7 @@
     <li class="breadcrumb-item "><a>Agregar Instalación</a></li>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Content" runat="server">
-    <asp:UpdatePanel runat="server" UpdateMode="Conditional">
-        <ContentTemplate>
+    
             <asp:Literal ID="litControl" runat="server"></asp:Literal>
 
             <div class="col-lg-12">
@@ -124,8 +123,7 @@
                 </div>
                
             </div>
-        </ContentTemplate>
-    </asp:UpdatePanel>
+        
     <script type="text/javascript">
 
         Sys.WebForms.PageRequestManager.getInstance().add_beginRequest(BeginRequestHandler);

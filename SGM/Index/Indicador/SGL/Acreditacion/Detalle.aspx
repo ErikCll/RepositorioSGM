@@ -69,7 +69,7 @@
                                                <asp:TemplateField HeaderText="Archivo" ItemStyle-HorizontalAlign="Center">
                                             <ItemTemplate>
                                                 <asp:Label runat="server" ID="lblArchivo" Text='<%# Eval("Id_status") %>' Visible="false" ></asp:Label>
-                                                <asp:HyperLink runat="server" ID="lnkArchivo" Target="_blank" ImageUrl="~/img/pdficon.png" ImageHeight="17px" ImageWidth="17px" ></asp:HyperLink>
+                                                <asp:HyperLink runat="server" ID="lnkArchivo" Target="_blank" ImageUrl="~/img/pdficon.svg" ImageHeight="17px" ImageWidth="17px" ></asp:HyperLink>
                                             </ItemTemplate>
                                         </asp:TemplateField>
 <%--                                        <asp:BoundField HeaderText="Región" DataField="Region" />--%>

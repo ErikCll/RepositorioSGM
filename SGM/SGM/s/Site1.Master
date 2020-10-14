@@ -97,8 +97,9 @@
                     </li>
                     <li class="nav-item dropdown text-sm ">
                         <a class="nav-link dropdown-toggle  ion-android-person" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <asp:Label runat="server" ID="lblUsuario" CssClass="ml-3 font-weight-bold"></asp:Label>
+                        <div class="dropdown-menu dropdown-menu-right text-center" aria-labelledby="navbarDropdown">
+                                                            <asp:Label runat="server" ID="lblUsuario" CssClass=" text-sm font-weight-bold"></asp:Label>
+
                             <%--                                <a class="dropdown-item  ion-ios-unlocked" href="Contrasena.aspx"> Cambiar contraseña</a>--%>
                             <asp:HyperLink runat="server" class="dropdown-item ion-android-document text-blue" href="../docs/ManualDeUsuario.pdf" Target="_blank"> Manual de usuario</asp:HyperLink>
                             <div class="dropdown-divider"></div>

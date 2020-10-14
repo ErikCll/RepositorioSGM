@@ -227,7 +227,7 @@
                 </a>
               </li>
                  <li class="nav-item" runat="server" id="SASISOPA" visible="false">
-                <a  href="#" class="nav-link" id="area" runat="server">
+                <a  href="~/Indicador/SASISOPA/Inicio.aspx" class="nav-link" id="sasisopa2" runat="server">
                   <i class="far fa-circle nav-icon"></i>
                   <p>SASISOPA</p>
                 </a>

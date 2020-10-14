@@ -51,7 +51,7 @@ font-size:20px;
 <%--                <div class="col-sm-1 col-md-1 col-lg-1"></div>--%>
                 <div class="col-sm-6 col-md-6 col-lg-6 justify-content-center mt-5" >
                     <h1 class="text-center font-weight-bold">SGL</h1>
-                    <h2 class="text-center ocultar-letras">Sistema de Gestión de</h2>
+                    <h2 class="text-center ocultar-letras">Sistema de Gestión para</h2>
                     <h2 class="text-center ocultar-letras">Laboratorios</h2>
 
 

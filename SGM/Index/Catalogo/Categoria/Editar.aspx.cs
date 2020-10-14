@@ -45,8 +45,9 @@ namespace SAM.Catalogo.Categoria
 
         {
             int IdSuscripcion = Convert.ToInt32((this.Master as SAM.Site1).IdSuscripcion);
+            string Usuario = Page.User.Identity.Name;
 
-            ddl_Instalacion.DataSource = categoria.MostrarInstalacion(IdSuscripcion);
+            ddl_Instalacion.DataSource = categoria.MostrarInstalacion(IdSuscripcion,Usuario);
             ddl_Instalacion.DataBind();
             ddl_Instalacion.Items.Insert(0, new ListItem("[Seleccionar]", "0"));
 

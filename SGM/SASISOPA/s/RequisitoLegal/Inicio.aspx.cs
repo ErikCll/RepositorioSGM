@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace SASISOPA.s.Requisito
+namespace SASISOPA.s.RequisitoLegal
 {
     public partial class Inicio : System.Web.UI.Page
     {
@@ -13,7 +13,6 @@ namespace SASISOPA.s.Requisito
         {
 
         }
-
         protected void IrSAM(Object sender, EventArgs e)
         {
             Session.RemoveAll();

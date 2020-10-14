@@ -77,8 +77,8 @@ namespace SASISOPA.s.ControlAct.CensoAct.Control
                             StorageCredentials creds = new StorageCredentials(AccountName, AccountKey);
                             var account = CloudStorageAccount.Parse("DefaultEndpointsProtocol=https;AccountName=" + AccountName + ";AccountKey=" + AccountKey);
                             CloudBlobClient client = account.CreateCloudBlobClient();
-                            CloudBlobContainer sampleContainer = client.GetContainerReference("controlvers");
-                            sampleContainer.CreateIfNotExists();
+                            CloudBlobContainer sampleContainer = client.GetContainerReference("sasisopa/10");
+                            //sampleContainer.CreateIfNotExists();
 
 
                             CloudBlockBlob blob = sampleContainer.GetBlockBlobReference("" + control.IdControl + ".pdf");

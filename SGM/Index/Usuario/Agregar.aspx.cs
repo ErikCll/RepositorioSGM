@@ -61,6 +61,7 @@ namespace SAM.Usuario
 
                         if (usuario.InsertarInstalacion(IdUsuario, Id_Instalacion))
                         {
+
                             string txtJS = String.Format("<script>alert('{0}');</script>", "Se actualizaron las instalaciones.");
                             ScriptManager.RegisterClientScriptBlock(litControl, litControl.GetType(), "script", txtJS, false);
                         }
@@ -72,6 +73,7 @@ namespace SAM.Usuario
                         {
                             if (usuario.EliminarInstalacion(IdUsuario, Id_Instalacion))
                             {
+
                                 string txtJS = String.Format("<script>alert('{0}');</script>", "Se actualizaron las instalaciones.");
                                 ScriptManager.RegisterClientScriptBlock(litControl, litControl.GetType(), "script", txtJS, false);
                             }

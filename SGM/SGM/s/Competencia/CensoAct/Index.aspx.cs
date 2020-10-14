@@ -114,7 +114,7 @@ namespace SGM.Competencia.CensoAct
                 {
                     lnk.Visible = false;
                 }
-                lnk.NavigateUrl = "https://er2020.blob.core.windows.net/controlvers/" + IdArchivo.Text.ToString() + ".pdf";
+                lnk.NavigateUrl = "https://er2020.blob.core.windows.net/sgm/Competencia/" + IdArchivo.Text.ToString() + ".pdf";
 
 
             

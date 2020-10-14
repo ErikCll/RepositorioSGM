@@ -1744,7 +1744,9 @@
     <Content Include="s\MetaObjetivo\Inicio.aspx" />
     <Content Include="s\Monitoreo\Inicio.aspx" />
     <Content Include="s\MPractica\Inicio.aspx" />
+    <Content Include="s\Politica\Control\Index.aspx" />
     <Content Include="s\Politica\Inicio.aspx" />
+    <Content Include="s\Politica\Programa\Index.aspx" />
     <Content Include="s\PreEvaluacion.aspx" />
     <Content Include="s\RequisitoLegal\Inicio.aspx" />
     <Content Include="s\Respuesta\Inicio.aspx" />
@@ -2070,12 +2072,26 @@
     <Compile Include="s\MPractica\Inicio.aspx.designer.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>
     </Compile>
+    <Compile Include="s\Politica\Control\Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="s\Politica\Control\Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
     <Compile Include="s\Politica\Inicio.aspx.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="s\Politica\Inicio.aspx.designer.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="s\Politica\Programa\Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="s\Politica\Programa\Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
     </Compile>
     <Compile Include="s\PreEvaluacion.aspx.cs">
       <DependentUpon>PreEvaluacion.aspx</DependentUpon>

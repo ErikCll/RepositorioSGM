@@ -97,7 +97,21 @@ namespace SGL.s
 
                 }
 
+              else if (activepage.Contains("/Procedimiento/Inicio.aspx")|| activepage.Contains("/Procedimiento/MatrizInsAct/Index.aspx") || activepage.Contains("/Procedimiento/MatrizInsAct/Agregar.aspx") || activepage.Contains("/Procedimiento/CensoAct/Index.aspx") || activepage.Contains("/Procedimiento/CensoAct/Crear.aspx") || activepage.Contains("/Procedimiento/CensoAct/Detalle.aspx") || activepage.Contains("/Procedimiento/CensoAct/Editar.aspx") || activepage.Contains("/Procedimiento/CensoAct/Control/Index.aspx") || activepage.Contains("/Procedimiento/CensoAct/Control/Crear.aspx") || activepage.Contains("/Procedimiento/CensoAct/Control/Editar.aspx") || activepage.Contains("/Procedimiento/CensoAct/Evaluacion/Crear.aspx") || activepage.Contains("/Procedimiento/CensoAct/Evaluacion/CrearCuestionario.aspx") || activepage.Contains("/Procedimiento/CensoAct/Evaluacion/Editar.aspx") || activepage.Contains("/Procedimiento/CensoAct/Evaluacion/EditarCuestionario.aspx") || activepage.Contains("/Procedimiento/CensoAct/Evaluacion/VCuestionario.aspx") || activepage.Contains("/Procedimiento/Inicio.aspx") || activepage.Contains("/Procedimiento/MatrizCatAct/Index.aspx") || activepage.Contains("/Procedimiento/MatrizCatAct/Agregar.aspx") || activepage.Contains("/Procedimiento/MatrizCatAct/Detalle.aspx") || activepage.Contains("/Procedimiento/MatrizCatEmp/Index.aspx") || activepage.Contains("/Procedimiento/MatrizCatEmp/Agregar.aspx") || activepage.Contains("/Procedimiento/MatrizCatEmp/Detalle.aspx"))
+                {
+                    menu_procedimiento.Attributes.Add("class", "  nav-item has-treeview menu-open");
+                    procedimiento.Attributes.Add("class", "nav-link active");
+                    //actividad.Attributes.Add("class", "nav-link active");
 
+                }
+
+                else if (activepage.Contains("/Competencia/Inicio.aspx"))
+                {
+                    menu_competencia.Attributes.Add("class", "  nav-item has-treeview menu-open");
+                    competencia.Attributes.Add("class", "nav-link active");
+                    //actividad.Attributes.Add("class", "nav-link active");
+
+                }
 
             }
 
@@ -109,6 +123,16 @@ namespace SGL.s
 
 
                 return lblIDInstalacion.Text;
+            }
+        }
+
+        public string TipoSistema
+        {
+            get
+            {
+
+
+                return IdTipoSistema.Text;
             }
         }
 

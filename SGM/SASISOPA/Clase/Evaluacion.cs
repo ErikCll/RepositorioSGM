@@ -43,7 +43,7 @@ namespace SASISOPA.Clase
         public DataTable MostrarEvaluacion(int IdControl)
         {
 
-            string query = "SELECT Id_Evaluacion,CantidadReactivos,CalificacionMinima,CASE WHEN Estatus=1 THEN 'Pendiente de capturar' WHEN Estatus=2 THEN 'Capturado' END 'Estatus' FROM Evaluacion WHERE Id_Control = @IdCoontrol AND Activado IS NULL";
+            string query = "SELECT ev.Id_Evaluacion,ev.CantidadReactivos,preg.TotalReactivos,ev.CalificacionMinima, CASE WHEN ev.Estatus = 1 THEN 'Pendiente de capturar' WHEN ev.Estatus = 2 THEN 'Capturado' END 'Estatus' FROM Evaluacion ev JOIN(SELECT Id_Evaluacion, COUNT(*) 'TotalReactivos' FROM Ev_Pregunta WHERE  Activado IS NULL GROUP BY Id_Evaluacion) preg on ev.Id_Evaluacion = preg.Id_Evaluacion WHERE ev.Id_Control = @IdCoontrol AND ev.Activado IS NULL";
 
 
             comm.Connection = conexion.AbrirConexion();

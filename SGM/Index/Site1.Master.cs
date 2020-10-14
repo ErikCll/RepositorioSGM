@@ -174,12 +174,21 @@ namespace SAM
 
                 }
 
+                else if (activepage.Contains("/Indicador/SASISOPA/Inicio.aspx"))
+                {
+                    menu_indicador.Attributes.Add("class", "  nav-item has-treeview menu-open");
+                    indicador.Attributes.Add("class", "nav-link active");
+                    sasisopa2.Attributes.Add("class", "nav-link active");
+
+                }
+
                 else if (activepage.Contains("/Usuario/Index.aspx") || activepage.Contains("/Usuario/Crear.aspx") || activepage.Contains("/Usuario/Editar.aspx") || activepage.Contains("/Usuario/Agregar.aspx"))
                 {
                     menu_usuario.Attributes.Add("class", "  nav-item has-treeview menu-open");
                     usuario.Attributes.Add("class", "nav-link active");
 
                 }
+
 
 
             }
@@ -189,9 +198,10 @@ namespace SAM
         {
             FormsAuthentication.SignOut();
             Session.RemoveAll();
-
             Response.Redirect(Request.UrlReferrer.ToString());
         }
+
+     
 
         public string IdSuscripcion
         {
@@ -213,9 +223,9 @@ namespace SAM
 
         public string IdInstalacion
         {
+            
             get
             {
-
 
                 return lblIDInstalacion.Text;
             }
@@ -232,11 +242,13 @@ namespace SAM
             set { lblInstalacion.Visible = value; }
         }
 
+    
         public void LlenarDrop()
         {
 
             int IdSuscripcion = Convert.ToInt32(lblIdSuscripcion.Text);
             string Usuario = Page.User.Identity.Name;
+
             RadInstalacion.DataSource = master.MostrarInstalacion(IdSuscripcion, Usuario);
             RadInstalacion.DataBind();
 

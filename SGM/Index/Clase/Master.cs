@@ -23,10 +23,10 @@ namespace SAM.Clase
         {
 
             comm.Connection = conexion.AbrirConexion();
-            comm.CommandText = "SELECT Nav.Id_instalacion, Nav.Nombre  FROM Cat_Instalacion Nav JOIN(SELECT Id_Instalacion FROM Op_UsIns op JOIN Usuario us on op.Id_Usuario = us.Id_usuario WHERE us.Acceso =@Correo) UsAct on Nav.Id_instalacion = UsAct.Id_Instalacion WHERE nav.Activado IS NULL AND nav.Id_Suscripcion = @IdSuscripcion ORDER BY nav.Id_instalacion DESC";
+            comm.CommandText = "SELECT Nav.Id_instalacion, Nav.Nombre  FROM Cat_Instalacion Nav JOIN(SELECT Id_Instalacion FROM Op_UsIns op JOIN Usuario us on op.Id_Usuario = us.Id_usuario WHERE us.Acceso =@MCorreo) UsAct on Nav.Id_instalacion = UsAct.Id_Instalacion WHERE nav.Activado IS NULL AND nav.Id_Suscripcion = @MIdSuscripcion ORDER BY nav.Id_instalacion DESC";
             comm.CommandType = CommandType.Text;
-            comm.Parameters.AddWithValue("@IdSuscripcion", IdSuscripcion);
-            comm.Parameters.AddWithValue("@Correo", Correo);
+            comm.Parameters.AddWithValue("@MIdSuscripcion", IdSuscripcion);
+            comm.Parameters.AddWithValue("@MCorreo", Correo);
 
 
             da = new SqlDataAdapter(comm);

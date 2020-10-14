@@ -103,7 +103,7 @@ namespace SASISOPA.s.ControlAct.CensoAct
                 {
                     lnk.Visible = false;
                 }
-                lnk.NavigateUrl = "https://er2020.blob.core.windows.net/controlvers/" + IdArchivo.Text.ToString() + ".pdf";
+                lnk.NavigateUrl = "https://er2020.blob.core.windows.net/sasisopa/10/" + IdArchivo.Text.ToString() + ".pdf";
 
 
             

@@ -61,7 +61,7 @@ namespace SASISOPA.s.ControlAct.CensoAct.Control
                 HtmlControl Vig = e.Row.FindControl("Vigente") as HtmlControl;
                 HtmlControl Ven = e.Row.FindControl("Vencido") as HtmlControl;
                 HyperLink lnk = e.Row.FindControl("lnk") as HyperLink;
-                lnk.NavigateUrl = "https://er2020.blob.core.windows.net/controlvers/" + IdControl.ToString() + ".pdf";
+                lnk.NavigateUrl = "https://er2020.blob.core.windows.net/sasisopa/10/" + IdControl.ToString() + ".pdf";
                 HtmlControl Vig2 = e.Row.FindControl("Vigente") as HtmlControl;
 
             

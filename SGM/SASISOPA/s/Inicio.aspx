@@ -19,15 +19,46 @@
                         <h3 class="card-title font-weight-bold">1. Política</h3>
                           <i class="fas fa-university  fa-2x text-black-50 float-right"></i>
                     </div>
-                    <div class="card-body" style="display: block;">
+                 <div class="card-body" style="display: block;">
                         <div class="row">
-                            <div class="col-sm-12 col-md-6 col-lg-12">
-                                <h3>
-                                    <asp:Label runat="server" ID="lblPorcentaje"></asp:Label><label class="font-weight-normal">  </label>
-                                  
-                                </h3>
 
+                            <div class="col-sm-8 col-md-8 col-lg-8">
+
+
+                                   <label class=" text-sm font-weight-normal">Difusión: </label><asp:Label runat="server" ID="Label5" CssClass="text-sm ml-1 text-bold"></asp:Label>
+                       
+  
+
+                                                               
+<%--<br />
+                                    <label class="text-sm">Promedio: </label><asp:Label runat="server" ID="lblPromedio" Text="87.50%" CssClass="text-sm"></asp:Label>--%>
+                                                                                       
+                            </div>  
+                            <div class="col-sm-4 col-md-4 col-lg-4 mt-1">
+
+                                  <div class="progress"><div class="progress-bar"  id="Div1" runat="server"></div></div> 
                             </div>
+
+                        
+                         
+                           
+                                                        <div class="col-sm-8 col-md-8 col-lg-8">
+
+ <label class="text-sm font-weight-normal">Evaluación: </label><asp:Label runat="server" ID="Label9" CssClass="text-sm ml-1 text-bold"></asp:Label>
+
+</div>
+                                <div class="col-sm-4 col-md-4 col-lg-4 mt-1">
+
+                                  <div class="progress"><div class="progress-bar" id="Div2" runat="server"></div></div> 
+                            </div>
+                           <%--    <div class="col-sm-6 col-md-6 col-lg-6">
+                                                 <i class="fas fa-graduation-cap fa-4x text-black-50 float-right"></i>
+                                       </div>         --%>       
+                           
+                                    
+
+
+
 
                         </div>
 
@@ -174,7 +205,7 @@
                             <div class="col-sm-8 col-md-8 col-lg-8">
 
 
-                                   <label class=" text-sm">Programa de capacitación: </label><asp:Label runat="server" ID="lblAvanceCapacitacion6" CssClass="text-sm ml-1 text-bold"></asp:Label>
+                                   <label class=" text-sm font-weight-normal">Programa de capacitación: </label><asp:Label runat="server" ID="lblAvanceCapacitacion6" CssClass="text-sm ml-1 text-bold"></asp:Label>
                        
   
 
@@ -193,7 +224,7 @@
                            
                                                         <div class="col-sm-8 col-md-8 col-lg-8">
 
- <label class="text-sm">Resultados de evaluación: </label><asp:Label runat="server" ID="lblPromedioResultado6" CssClass="text-sm ml-1 text-bold"></asp:Label>
+ <label class="text-sm font-weight-normal">Resultados de evaluación: </label><asp:Label runat="server" ID="lblPromedioResultado6" CssClass="text-sm ml-1 text-bold"></asp:Label>
 
 </div>
                                 <div class="col-sm-4 col-md-4 col-lg-4 mt-1">
@@ -320,7 +351,7 @@
                     </div>
                     <div class="card-body" style="display: block;">
                         <div class="row">
-                            <label class="text-sm">Censo de actividad</label>
+                            <label class="text-sm font-weight-normal">Censo de actividad</label>
                                   <div class="col-sm-12 col-md-12 col-lg-12">
                                          <div style="overflow:auto ;width:auto" >
                                                    <telerik:RadHtmlChart runat="server" ID="graficaAct" Height="100" Skin="Silk" PlotArea-YAxis-Step="1" >
@@ -457,15 +488,46 @@
                         <h3 class="card-title font-weight-bold">13. Respuesta a Emergencias</h3>
                          <i class="fas fa-ambulance fa-2x text-black-50 float-right"></i>
                     </div>
-                    <div class="card-body" style="display: block;">
+                  <div class="card-body" style="display: block;">
                         <div class="row">
-                            <div class="col-sm-12 col-md-6 col-lg-12">
-                                <h3>
-                                    <asp:Label runat="server" ID="Label12"></asp:Label><label class="font-weight-normal">  </label>
-                                   
-                                </h3>
 
+                            <div class="col-sm-8 col-md-8 col-lg-8">
+
+
+                                   <label class=" text-sm font-weight-normal">Programa de simulacros: </label><asp:Label runat="server" ID="Label12" CssClass="text-sm ml-1 text-bold"></asp:Label>
+                       
+  
+
+                                                               
+<%--<br />
+                                    <label class="text-sm">Promedio: </label><asp:Label runat="server" ID="lblPromedio" Text="87.50%" CssClass="text-sm"></asp:Label>--%>
+                                                                                       
+                            </div>  
+                            <div class="col-sm-4 col-md-4 col-lg-4 mt-1">
+
+                                  <div class="progress"><div class="progress-bar"  id="Div3" runat="server"></div></div> 
                             </div>
+
+                        
+                         
+                           
+                                                        <div class="col-sm-8 col-md-8 col-lg-8">
+
+ <label class="text-sm font-weight-normal">Plan de Emergencias: </label><asp:Label runat="server" ID="Label18" CssClass="text-sm ml-1 text-bold"></asp:Label>
+
+</div>
+                                <div class="col-sm-4 col-md-4 col-lg-4 mt-1">
+
+                                  <div class="progress"><div class="progress-bar" id="Div4" runat="server"></div></div> 
+                            </div>
+                           <%--    <div class="col-sm-6 col-md-6 col-lg-6">
+                                                 <i class="fas fa-graduation-cap fa-4x text-black-50 float-right"></i>
+                                       </div>         --%>       
+                           
+                                    
+
+
+
 
                         </div>
 
@@ -486,15 +548,46 @@
                         <h3 class="card-title font-weight-bold">14. Monitoreo, Verificación</h3>
                         <i class="fas fa-desktop fa-2x text-black-50 float-right"></i>
                     </div>
-                    <div class="card-body" style="display: block;">
+                  <div class="card-body" style="display: block;">
                         <div class="row">
-                            <div class="col-sm-12 col-md-6 col-lg-12">
-                                <h3>
-                                    <asp:Label runat="server" ID="Label13"></asp:Label><label class="font-weight-normal">  </label>
-                                    
-                                </h3>
 
+                            <div class="col-sm-8 col-md-8 col-lg-8">
+
+
+                                   <label class=" text-sm font-weight-normal">Programa  Reuniones: </label><asp:Label runat="server" ID="Label13" CssClass="text-sm ml-1 text-bold"></asp:Label>
+                       
+  
+
+                                                               
+<%--<br />
+                                    <label class="text-sm">Promedio: </label><asp:Label runat="server" ID="lblPromedio" Text="87.50%" CssClass="text-sm"></asp:Label>--%>
+                                                                                       
+                            </div>  
+                            <div class="col-sm-4 col-md-4 col-lg-4 mt-1">
+
+                                  <div class="progress"><div class="progress-bar"  id="Div5" runat="server"></div></div> 
                             </div>
+
+                        
+                         
+                           
+                                                        <div class="col-sm-8 col-md-8 col-lg-8">
+
+ <label class="text-sm font-weight-normal">Atención de acuerdos: </label><asp:Label runat="server" ID="Label19" CssClass="text-sm ml-1 text-bold"></asp:Label>
+
+</div>
+                                <div class="col-sm-4 col-md-4 col-lg-4 mt-1">
+
+                                  <div class="progress"><div class="progress-bar" id="Div6" runat="server"></div></div> 
+                            </div>
+                           <%--    <div class="col-sm-6 col-md-6 col-lg-6">
+                                                 <i class="fas fa-graduation-cap fa-4x text-black-50 float-right"></i>
+                                       </div>         --%>       
+                           
+                                    
+
+
+
 
                         </div>
 
@@ -515,15 +608,46 @@
                         <h3 class="card-title font-weight-bold">15. Auditoría</h3>
                         <i class="fas fa-search fa-2x text-black-50 float-right"></i>
                     </div>
-                    <div class="card-body" style="display: block;">
+                  <div class="card-body" style="display: block;">
                         <div class="row">
-                            <div class="col-sm-12 col-md-6 col-lg-12">
-                                <h3>
-                                    <asp:Label runat="server" ID="Label14"></asp:Label><label class="font-weight-normal">  </label>
-                                    
-                                </h3>
 
+                            <div class="col-sm-8 col-md-8 col-lg-8">
+
+
+                                   <label class=" text-sm font-weight-normal">Programa Auditorías: </label><asp:Label runat="server" ID="Label14" CssClass="text-sm ml-1 text-bold"></asp:Label>
+                       
+  
+
+                                                               
+<%--<br />
+                                    <label class="text-sm">Promedio: </label><asp:Label runat="server" ID="lblPromedio" Text="87.50%" CssClass="text-sm"></asp:Label>--%>
+                                                                                       
+                            </div>  
+                            <div class="col-sm-4 col-md-4 col-lg-4 mt-1">
+
+                                  <div class="progress"><div class="progress-bar"  id="Div7" runat="server"></div></div> 
                             </div>
+
+                        
+                         
+                           
+                                                        <div class="col-sm-8 col-md-8 col-lg-8">
+
+ <label class="text-sm font-weight-normal">Atención de hallazgos: </label><asp:Label runat="server" ID="Label20" CssClass="text-sm ml-1 text-bold"></asp:Label>
+
+</div>
+                                <div class="col-sm-4 col-md-4 col-lg-4 mt-1">
+
+                                  <div class="progress"><div class="progress-bar" id="Div8" runat="server"></div></div> 
+                            </div>
+                           <%--    <div class="col-sm-6 col-md-6 col-lg-6">
+                                                 <i class="fas fa-graduation-cap fa-4x text-black-50 float-right"></i>
+                                       </div>         --%>       
+                           
+                                    
+
+
+
 
                         </div>
 
@@ -544,15 +668,57 @@
                         <h3 class="card-title font-weight-bold">16. Investigación de Incidentes</h3>
                         <i class="fas fa-book-reader fa-2x text-black-50 float-right"></i>
                     </div>
-                    <div class="card-body" style="display: block;">
+                  <div class="card-body" style="display: block;">
                         <div class="row">
-                            <div class="col-sm-12 col-md-6 col-lg-12">
-                                <h3>
-                                    <asp:Label runat="server" ID="Label15"></asp:Label><label class="font-weight-normal">  </label>
-                                    
-                                </h3>
 
+                            <div class="col-sm-8 col-md-8 col-lg-8">
+
+
+                                   <label class=" text-sm font-weight-normal">Incidentes: </label><asp:Label runat="server" ID="Label15" CssClass="text-sm ml-1 text-bold"></asp:Label>
+                       
+  
+
+                                                               
+<%--<br />
+                                    <label class="text-sm">Promedio: </label><asp:Label runat="server" ID="lblPromedio" Text="87.50%" CssClass="text-sm"></asp:Label>--%>
+                                                                                       
+                            </div>  
+                            <div class="col-sm-4 col-md-4 col-lg-4 mt-1">
+
+                                  <div class="progress"><div class="progress-bar"  id="Div9" runat="server"></div></div> 
                             </div>
+
+                        
+                         
+                           
+                                                        <div class="col-sm-8 col-md-8 col-lg-8">
+
+ <label class="text-sm font-weight-normal">Difusión incidentes: </label><asp:Label runat="server" ID="Label21" CssClass="text-sm ml-1 text-bold"></asp:Label>
+
+</div>
+                                <div class="col-sm-4 col-md-4 col-lg-4 mt-1">
+
+                                  <div class="progress"><div class="progress-bar" id="Div10" runat="server"></div></div> 
+                            </div>
+
+                                             
+                                                        <div class="col-sm-8 col-md-8 col-lg-8">
+
+ <label class="text-sm font-weight-normal">Elaboración de ACR: </label><asp:Label runat="server" ID="Label22" CssClass="text-sm ml-1 text-bold"></asp:Label>
+
+</div>
+                                <div class="col-sm-4 col-md-4 col-lg-4 mt-1">
+
+                                  <div class="progress"><div class="progress-bar" id="Div11" runat="server"></div></div> 
+                            </div>
+                           <%--    <div class="col-sm-6 col-md-6 col-lg-6">
+                                                 <i class="fas fa-graduation-cap fa-4x text-black-50 float-right"></i>
+                                       </div>         --%>       
+                           
+                                    
+
+
+
 
                         </div>
 
