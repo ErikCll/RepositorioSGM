@@ -16,6 +16,11 @@ namespace SAM.Clase
         public string Nombre { get; set; }
         public string Contrasena { get; set; }
 
+        public string IdUsuario { get; set; }
+
+        public string IdSuscripcion { get; set; }
+
+
 
         public bool AutenticarUsuario(string Usuario,string Contrasena)
         {
@@ -79,12 +84,12 @@ namespace SAM.Clase
 
         }
 
-        public bool ValidarSGM(string Usuario)
+        public bool ValidarSGM(int IdUsuario)
         {
             comm.Connection = conexion.AbrirConexion();
-            comm.CommandText = "SELECT COUNT(*) FROM Suscripcion sus JOIN Usuario us on sus.Id_Suscripcion = us.Id_Suscripcion JOIN UsuarioSistema ussis on us.Id_usuario = ussis.Id_Usuario JOIN Sistema sis on ussis.Id_Sistema = sis.Id_Sistema WHERE us.Activado IS NULL AND sus.Activado IS NULL AND us.Acceso = @Usuario AND sis.Nombre = 'SGM'";
+            comm.CommandText = "SELECT COUNT(*) FROM MenuSubMenu Nav JOIN(SELECT Id_SubMenu FROM UsuarioSubMenu WHERE Id_Usuario = @IdUsuario) ussubmenu on Nav.Id_SubMenu = ussubmenu.Id_SubMenu JOIN SistemaMenu sismenu on nav.Id_Menu = sismenu.Id_Menu WHERE sismenu.Id_Sistema = 1 AND Nav.Activado IS NULL AND sismenu.Activado IS NULL";
             comm.CommandType = CommandType.Text;
-            comm.Parameters.AddWithValue("@Usuario", Usuario);
+            comm.Parameters.AddWithValue("@IdUsuario", IdUsuario);
             int i = (int)comm.ExecuteScalar();
             comm.Parameters.Clear();
             conexion.CerrarConexion();
@@ -98,12 +103,12 @@ namespace SAM.Clase
 
         }
 
-        public bool ValidarSASISOPA(string Usuario)
+        public bool ValidarSASISOPA(int IdUsuario)
         {
             comm.Connection = conexion.AbrirConexion();
-            comm.CommandText = "SELECT COUNT(*) FROM Suscripcion sus JOIN Usuario us on sus.Id_Suscripcion = us.Id_Suscripcion JOIN UsuarioSistema ussis on us.Id_usuario = ussis.Id_Usuario JOIN Sistema sis on ussis.Id_Sistema = sis.Id_Sistema WHERE us.Activado IS NULL AND sus.Activado IS NULL AND us.Acceso = @Usuario AND sis.Nombre = 'SASISOPA'";
+            comm.CommandText = "SELECT COUNT(*) FROM MenuSubMenu Nav JOIN(SELECT Id_SubMenu FROM UsuarioSubMenu WHERE Id_Usuario = @IdUsuario) ussubmenu on Nav.Id_SubMenu = ussubmenu.Id_SubMenu JOIN SistemaMenu sismenu on nav.Id_Menu = sismenu.Id_Menu WHERE sismenu.Id_Sistema = 2 AND Nav.Activado IS NULL AND sismenu.Activado IS NULL";
             comm.CommandType = CommandType.Text;
-            comm.Parameters.AddWithValue("@Usuario", Usuario);
+            comm.Parameters.AddWithValue("@IdUsuario", IdUsuario);
             int i = (int)comm.ExecuteScalar();
             comm.Parameters.Clear();
             conexion.CerrarConexion();
@@ -117,12 +122,12 @@ namespace SAM.Clase
 
         }
 
-        public bool ValidarOperacion(string Usuario)
+        public bool ValidarOperacion(int IdUsuario)
         {
             comm.Connection = conexion.AbrirConexion();
-            comm.CommandText = "SELECT COUNT(*) FROM Suscripcion sus JOIN Usuario us on sus.Id_Suscripcion = us.Id_Suscripcion JOIN UsuarioSistema ussis on us.Id_usuario = ussis.Id_Usuario JOIN Sistema sis on ussis.Id_Sistema = sis.Id_Sistema WHERE us.Activado IS NULL AND sus.Activado IS NULL AND us.Acceso = @Usuario AND sis.Nombre = 'Operacion'";
+            comm.CommandText = "SELECT COUNT(*) FROM MenuSubMenu Nav JOIN(SELECT Id_SubMenu FROM UsuarioSubMenu WHERE Id_Usuario = @IdUsuario) ussubmenu on Nav.Id_SubMenu = ussubmenu.Id_SubMenu JOIN SistemaMenu sismenu on nav.Id_Menu = sismenu.Id_Menu WHERE sismenu.Id_Sistema = 3 AND Nav.Activado IS NULL AND sismenu.Activado IS NULL";
             comm.CommandType = CommandType.Text;
-            comm.Parameters.AddWithValue("@Usuario", Usuario);
+            comm.Parameters.AddWithValue("@IdUsuario", IdUsuario);
             int i = (int)comm.ExecuteScalar();
             comm.Parameters.Clear();
             conexion.CerrarConexion();
@@ -136,51 +141,12 @@ namespace SAM.Clase
 
         }
 
-        public bool ValidarMantenimiento(string Usuario)
+        public bool ValidarMantenimiento(int IdUsuario)
         {
             comm.Connection = conexion.AbrirConexion();
-            comm.CommandText = "SELECT COUNT(*) FROM Suscripcion sus JOIN Usuario us on sus.Id_Suscripcion = us.Id_Suscripcion JOIN UsuarioSistema ussis on us.Id_usuario = ussis.Id_Usuario JOIN Sistema sis on ussis.Id_Sistema = sis.Id_Sistema WHERE us.Activado IS NULL AND sus.Activado IS NULL AND us.Acceso = @Usuario AND sis.Nombre = 'Mantenimiento'";
+            comm.CommandText = "SELECT COUNT(*) FROM MenuSubMenu Nav JOIN(SELECT Id_SubMenu FROM UsuarioSubMenu WHERE Id_Usuario = @IdUsuario) ussubmenu on Nav.Id_SubMenu = ussubmenu.Id_SubMenu JOIN SistemaMenu sismenu on nav.Id_Menu = sismenu.Id_Menu WHERE sismenu.Id_Sistema = 4 AND Nav.Activado IS NULL AND sismenu.Activado IS NULL";
             comm.CommandType = CommandType.Text;
-            comm.Parameters.AddWithValue("@Usuario", Usuario);
-            int i = (int)comm.ExecuteScalar();
-            comm.Parameters.Clear();
-            conexion.CerrarConexion();
-
-            if (i > 0)
-            {
-                return true;
-            }
-            else
-                return false;
-
-        }
-
-
-        public bool ValidarSeguridadIndustrial(string Usuario)
-        {
-            comm.Connection = conexion.AbrirConexion();
-            comm.CommandText = "SELECT COUNT(*) FROM Suscripcion sus JOIN Usuario us on sus.Id_Suscripcion = us.Id_Suscripcion JOIN UsuarioSistema ussis on us.Id_usuario = ussis.Id_Usuario JOIN Sistema sis on ussis.Id_Sistema = sis.Id_Sistema WHERE us.Activado IS NULL AND sus.Activado IS NULL AND us.Acceso = @Usuario AND sis.Nombre = 'Seguridad Industrial'";
-            comm.CommandType = CommandType.Text;
-            comm.Parameters.AddWithValue("@Usuario", Usuario);
-            int i = (int)comm.ExecuteScalar();
-            comm.Parameters.Clear();
-            conexion.CerrarConexion();
-
-            if (i > 0)
-            {
-                return true;
-            }
-            else
-                return false;
-
-        }
-
-        public bool ValidarAdministracion(string Usuario)
-        {
-            comm.Connection = conexion.AbrirConexion();
-            comm.CommandText = "SELECT COUNT(*) FROM Suscripcion sus JOIN Usuario us on sus.Id_Suscripcion = us.Id_Suscripcion JOIN UsuarioSistema ussis on us.Id_usuario = ussis.Id_Usuario JOIN Sistema sis on ussis.Id_Sistema = sis.Id_Sistema WHERE us.Activado IS NULL AND sus.Activado IS NULL AND us.Acceso = @Usuario AND sis.Nombre = 'Administracion'";
-            comm.CommandType = CommandType.Text;
-            comm.Parameters.AddWithValue("@Usuario", Usuario);
+            comm.Parameters.AddWithValue("@IdUsuario", IdUsuario);
             int i = (int)comm.ExecuteScalar();
             comm.Parameters.Clear();
             conexion.CerrarConexion();
@@ -195,12 +161,12 @@ namespace SAM.Clase
         }
 
 
-        public bool ValidarSGL(string Usuario)
+        public bool ValidarSeguridadIndustrial(int IdUsuario)
         {
             comm.Connection = conexion.AbrirConexion();
-            comm.CommandText = "SELECT COUNT(*) FROM Suscripcion sus JOIN Usuario us on sus.Id_Suscripcion = us.Id_Suscripcion JOIN UsuarioSistema ussis on us.Id_usuario = ussis.Id_Usuario JOIN Sistema sis on ussis.Id_Sistema = sis.Id_Sistema WHERE us.Activado IS NULL AND sus.Activado IS NULL AND us.Acceso = @Usuario AND sis.Nombre = 'SGL'";
+            comm.CommandText = "SELECT COUNT(*) FROM MenuSubMenu Nav JOIN(SELECT Id_SubMenu FROM UsuarioSubMenu WHERE Id_Usuario = @IdUsuario) ussubmenu on Nav.Id_SubMenu = ussubmenu.Id_SubMenu JOIN SistemaMenu sismenu on nav.Id_Menu = sismenu.Id_Menu WHERE sismenu.Id_Sistema = 5 AND Nav.Activado IS NULL AND sismenu.Activado IS NULL";
             comm.CommandType = CommandType.Text;
-            comm.Parameters.AddWithValue("@Usuario", Usuario);
+            comm.Parameters.AddWithValue("@IdUsuario", IdUsuario);
             int i = (int)comm.ExecuteScalar();
             comm.Parameters.Clear();
             conexion.CerrarConexion();
@@ -214,12 +180,51 @@ namespace SAM.Clase
 
         }
 
-        public bool ValidarSAM(string Usuario)
+        public bool ValidarAdministracion(int IdUsuario)
         {
             comm.Connection = conexion.AbrirConexion();
-            comm.CommandText = "SELECT COUNT(*) FROM Suscripcion sus JOIN Usuario us on sus.Id_Suscripcion = us.Id_Suscripcion JOIN UsuarioSistema ussis on us.Id_usuario = ussis.Id_Usuario JOIN Sistema sis on ussis.Id_Sistema = sis.Id_Sistema WHERE us.Activado IS NULL AND sus.Activado IS NULL AND us.Acceso = @Usuario AND sis.Nombre = 'SAM'";
+            comm.CommandText = "SELECT COUNT(*) FROM MenuSubMenu Nav JOIN(SELECT Id_SubMenu FROM UsuarioSubMenu WHERE Id_Usuario = @IdUsuario) ussubmenu on Nav.Id_SubMenu = ussubmenu.Id_SubMenu JOIN SistemaMenu sismenu on nav.Id_Menu = sismenu.Id_Menu WHERE sismenu.Id_Sistema = 6 AND Nav.Activado IS NULL AND sismenu.Activado IS NULL";
             comm.CommandType = CommandType.Text;
-            comm.Parameters.AddWithValue("@Usuario", Usuario);
+            comm.Parameters.AddWithValue("@IdUsuario", IdUsuario);
+            int i = (int)comm.ExecuteScalar();
+            comm.Parameters.Clear();
+            conexion.CerrarConexion();
+
+            if (i > 0)
+            {
+                return true;
+            }
+            else
+                return false;
+
+        }
+
+
+        public bool ValidarSGL(int IdUsuario)
+        {
+            comm.Connection = conexion.AbrirConexion();
+            comm.CommandText = "SELECT COUNT(*) FROM MenuSubMenu Nav JOIN(SELECT Id_SubMenu FROM UsuarioSubMenu WHERE Id_Usuario = @IdUsuario) ussubmenu on Nav.Id_SubMenu = ussubmenu.Id_SubMenu JOIN SistemaMenu sismenu on nav.Id_Menu = sismenu.Id_Menu WHERE sismenu.Id_Sistema = 7 AND Nav.Activado IS NULL AND sismenu.Activado IS NULL";
+            comm.CommandType = CommandType.Text;
+            comm.Parameters.AddWithValue("@IdUsuario", IdUsuario);
+            int i = (int)comm.ExecuteScalar();
+            comm.Parameters.Clear();
+            conexion.CerrarConexion();
+
+            if (i > 0)
+            {
+                return true;
+            }
+            else
+                return false;
+
+        }
+
+        public bool ValidarSAM(int IdSuscripcion)
+        {
+            comm.Connection = conexion.AbrirConexion();
+            comm.CommandText = "SELECT COUNT(*) FROM Sistema sis JOIN SuscripcionSistema sus on sis.Id_Sistema = sus.Id_Sistema WHERE sus.Id_Suscripcion = @IdSuscripcion AND sis.Id_Sistema = 8 AND sis.Activado IS NULL";
+            comm.CommandType = CommandType.Text;
+            comm.Parameters.AddWithValue("@IdSuscripcion", IdSuscripcion);
             int i = (int)comm.ExecuteScalar();
             comm.Parameters.Clear();
             conexion.CerrarConexion();
@@ -263,6 +268,26 @@ namespace SAM.Clase
             dr.Read();
             Contrasena = dr["Contrasena"].ToString();
    
+            dr.Close();
+            comm.Connection = conexion.CerrarConexion();
+
+
+
+        }
+
+        public void LeerDatosUsuario(string Correo)
+        {
+            comm.Connection = conexion.AbrirConexion();
+            comm.CommandText = "SELECT Id_Usuario,Id_Suscripcion FROM Usuario WHERE Acceso=@Correoo";
+            comm.CommandType = CommandType.Text;
+            comm.Parameters.AddWithValue("@Correoo", Correo);
+
+            dr = comm.ExecuteReader();
+            dr.Read();
+            IdUsuario = dr["Id_Usuario"].ToString();
+            IdSuscripcion = dr["Id_Suscripcion"].ToString();
+
+
             dr.Close();
             comm.Connection = conexion.CerrarConexion();
 

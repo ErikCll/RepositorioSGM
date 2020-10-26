@@ -13,13 +13,13 @@ namespace SGL.s.Procedimiento {
     public partial class Inicio {
         
         /// <summary>
-        /// Control infraestructura.
+        /// Control censoactividad.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl infraestructura;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl censoactividad;
         
         /// <summary>
         /// Control graficaAct.
@@ -31,13 +31,13 @@ namespace SGL.s.Procedimiento {
         protected global::Telerik.Web.UI.RadHtmlChart graficaAct;
         
         /// <summary>
-        /// Control Div1.
+        /// Control instalacionactividad.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div1;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl instalacionactividad;
         
         /// <summary>
         /// Control Label1.
@@ -76,13 +76,13 @@ namespace SGL.s.Procedimiento {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl div2;
         
         /// <summary>
-        /// Control Div3.
+        /// Control categoriaactividad.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div3;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl categoriaactividad;
         
         /// <summary>
         /// Control lblPorcentaje.
@@ -121,13 +121,13 @@ namespace SGL.s.Procedimiento {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divprogress1;
         
         /// <summary>
-        /// Control Div4.
+        /// Control categoriaempleado.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div4;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl categoriaempleado;
         
         /// <summary>
         /// Control Label4.

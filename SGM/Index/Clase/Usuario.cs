@@ -61,6 +61,60 @@ namespace SAM.Clase
 
         }
 
+        public DataTable MostrarAccesos(int IdUsuario, int IdMenu)
+        {
+
+            string query = "SELECT Nav.Id_SubMenu, Nav.Nombre 'Accesos', CAST(CASE WHEN ussubmenu.Id_SubMenu IS NULL THEN 0 else ussubmenu.Id_SubMenu END as bit) 'Id_registro', CASE WHEN ussubmenu.Id_SubMenu IS NULL THEN 0 else ussubmenu.Id_SubMenu END 'Id_registro2' FROM MenuSubMenu Nav LEFT JOIN(SELECT Id_SubMenu FROM UsuarioSubMenu WHERE Id_Usuario = @IdUsuarioo) ussubmenu on Nav.Id_SubMenu = ussubmenu.Id_SubMenu WHERE nav.Activado IS NULL AND nav.Id_Menu = @IdMenu ORDER BY Id_registro DESC, nav.Id_SubMenu ASC";
+
+            comm.Connection = conexion.AbrirConexion();
+            comm.CommandText = query;
+            comm.CommandType = CommandType.Text;
+            comm.Parameters.AddWithValue("@IdUsuarioo", IdUsuario);
+            comm.Parameters.AddWithValue("@IdMenu", IdMenu);
+            da = new SqlDataAdapter(comm);
+            dt = new DataTable();
+            da.Fill(dt);
+            conexion.CerrarConexion();
+            return dt;
+
+        }
+
+        public DataTable MostrarSistema(int IdSuscripcion)
+        {
+
+            string query = "SELECT sis.Id_Sistema, sis.Nombre FROM Sistema sis JOIN SuscripcionSistema sus on sis.Id_Sistema = sus.Id_Sistema WHERE sus.Id_Suscripcion = @SisIdSuscripcion AND sis.Activado IS NULL ORDER BY sis.Id_Sistema DESC";
+
+            comm.Connection = conexion.AbrirConexion();
+            comm.CommandText = query;
+            comm.CommandType = CommandType.Text;
+            comm.Parameters.AddWithValue("@SisIdSuscripcion", IdSuscripcion);
+            da = new SqlDataAdapter(comm);
+            dt = new DataTable();
+            da.Fill(dt);
+            conexion.CerrarConexion();
+            return dt;
+
+        }
+
+        public DataTable MostrarMenu(int IdSuscripcion,int IdSistema)
+        {
+
+            string query = "SELECT sismenu.Id_Menu,sismenu.Nombre FROM SuscripcionMenu susmenu JOIN SistemaMenu sismenu on susmenu.Id_Menu = sismenu.Id_Menu WHERE sismenu.Id_Sistema = @IdSistema AND susmenu.Id_Suscripcion = @MenuIdSuscripcion AND sismenu.Activado IS NULL ORDER BY sismenu.Id_Menu ASC";
+
+            comm.Connection = conexion.AbrirConexion();
+            comm.CommandText = query;
+            comm.CommandType = CommandType.Text;
+            comm.Parameters.AddWithValue("@MenuIdSuscripcion", IdSuscripcion);
+            comm.Parameters.AddWithValue("@IdSistema", IdSistema);
+
+            da = new SqlDataAdapter(comm);
+            dt = new DataTable();
+            da.Fill(dt);
+            conexion.CerrarConexion();
+            return dt;
+
+        }
+
         public bool InsertarInstalacion(int IdUsuario, int IdInstalacion)
         {
             comm.Connection = conexion.AbrirConexion();
@@ -69,6 +123,52 @@ namespace SAM.Clase
             comm.Parameters.Clear();
             comm.Parameters.AddWithValue("@IIdUsuario", IdUsuario);
             comm.Parameters.AddWithValue("@IIdInstalacion", IdInstalacion);
+            int i = comm.ExecuteNonQuery();
+            conexion.CerrarConexion();
+
+            if (i > 0)
+            {
+                return true;
+
+
+            }
+            else
+                return false;
+
+
+        }
+
+        public bool InsertarAcceso(int IdUsuario, int IdSubMenu)
+        {
+            comm.Connection = conexion.AbrirConexion();
+            comm.CommandText = "INSERT INTO [UsuarioSubMenu] (Id_Usuario,Id_SubMenu) VALUES(@IIdUsuario,@IId_SubMenu)";
+            comm.CommandType = CommandType.Text;
+            comm.Parameters.Clear();
+            comm.Parameters.AddWithValue("@IIdUsuario", IdUsuario);
+            comm.Parameters.AddWithValue("@IId_SubMenu", IdSubMenu);
+            int i = comm.ExecuteNonQuery();
+            conexion.CerrarConexion();
+
+            if (i > 0)
+            {
+                return true;
+
+
+            }
+            else
+                return false;
+
+
+        }
+
+        public bool EliminarAcceso(int IdUsuario, int IdSubMenu)
+        {
+            comm.Connection = conexion.AbrirConexion();
+            comm.CommandText = "DELETE FROM UsuarioSubMenu WHERE Id_Usuario=@DIdUsuario AND Id_SubMenu=@DIdSubMenu";
+            comm.CommandType = CommandType.Text;
+            comm.Parameters.Clear();
+            comm.Parameters.AddWithValue("@DIdUsuario", IdUsuario);
+            comm.Parameters.AddWithValue("@DIdSubMenu", IdSubMenu);
             int i = comm.ExecuteNonQuery();
             conexion.CerrarConexion();
 
@@ -185,13 +285,13 @@ namespace SAM.Clase
 
         }
 
-        public bool EditarContrasena(string Correo,string Contrasena,string ContrasenaActual)
+        public bool EditarContrasena(int IdUsuario,string Contrasena,string ContrasenaActual)
         {
             comm.Connection = conexion.AbrirConexion();
-            comm.CommandText = "UPDATE Usuario SET Contrasena=@Contrasenaa WHERE Acceso = @Correoo AND Contrasena=@ContrasenaActual";
+            comm.CommandText = "UPDATE Usuario SET Contrasena=@Contrasenaa WHERE Id_Usuario = @IdUsuario AND Contrasena=@ContrasenaActual";
             comm.CommandType = CommandType.Text;
 
-            comm.Parameters.AddWithValue("@Correoo", Correo);
+            comm.Parameters.AddWithValue("@IdUsuario", IdUsuario);
             comm.Parameters.AddWithValue("@Contrasenaa", Contrasena);
             comm.Parameters.AddWithValue("@ContrasenaActual", ContrasenaActual);
 
@@ -254,12 +354,12 @@ namespace SAM.Clase
         }
 
 
-        public bool ValidarContrasena(string Correo,string Contrasena)
+        public bool ValidarContrasena(int IdUsuario,string Contrasena)
         {
             comm.Connection = conexion.AbrirConexion();
-            comm.CommandText = "SELECT COUNT(*) FROM Usuario WHERE Acceso = @Correo  AND Contrasena = @Contrasena COLLATE Latin1_General_CS_AS AND Activado IS NULL";
+            comm.CommandText = "SELECT COUNT(*) FROM Usuario WHERE Id_Usuario = @Id_Usuario  AND Contrasena = @Contrasena COLLATE Latin1_General_CS_AS AND Activado IS NULL";
             comm.CommandType = CommandType.Text;
-            comm.Parameters.AddWithValue("@Correo", Correo);
+            comm.Parameters.AddWithValue("@Id_Usuario", IdUsuario);
             comm.Parameters.AddWithValue("@Contrasena", Contrasena);
 
             int i = (int)comm.ExecuteScalar();

@@ -49,7 +49,7 @@ namespace Administracion.Clase
         public bool ValidarAdministracion(string Usuario)
         {
             comm.Connection = conexion.AbrirConexion();
-            comm.CommandText = "SELECT COUNT(*) FROM Suscripcion sus JOIN Usuario us on sus.Id_Suscripcion = us.Id_Suscripcion JOIN UsuarioSistema ussis on us.Id_usuario = ussis.Id_Usuario JOIN Sistema sis on ussis.Id_Sistema = sis.Id_Sistema WHERE us.Activado IS NULL AND sus.Activado IS NULL AND us.Acceso = @Usuario AND sis.Nombre = 'Administracion'";
+            comm.CommandText = "SELECT COUNT(*) FROM Suscripcion sus JOIN Usuario us on sus.Id_Suscripcion = us.Id_Suscripcion JOIN UsuarioSistema ussis on us.Id_usuario = ussis.Id_Usuario JOIN Sistema sis on ussis.Id_Sistema = sis.Id_Sistema WHERE us.Activado IS NULL AND sus.Activado IS NULL AND us.Acceso = @Usuario AND sis.Nombre = 'Administración'";
             comm.CommandType = CommandType.Text;
             comm.Parameters.AddWithValue("@Usuario", Usuario);
             int i = (int)comm.ExecuteScalar();

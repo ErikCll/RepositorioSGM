@@ -8,13 +8,13 @@
     <li class="breadcrumb-item "><a>Agregar Instalación</a></li>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Content" runat="server">
-    
-            <asp:Literal ID="litControl" runat="server"></asp:Literal>
 
-            <div class="col-lg-12">
-                <div class="row">
-                                             <div class="col-sm-12 col-md-12 col-lg-12">
-                                                      <div class="card">
+    <asp:Literal ID="litControl" runat="server"></asp:Literal>
+
+    <div class="col-lg-12">
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+                <div class="card">
                     <div class="card-header">
                         <h4>Datos del usuario</h4>
                     </div>
@@ -59,7 +59,8 @@
                             <div class="col-sm-6 col-md-6 col-lg-6">
                                 <h4>Instalaciones:</h4>
                             </div>
-                              <div class="col-sm-6 col-md-6 col-lg-6">
+                        
+                            <div class="col-sm-6 col-md-6 col-lg-6">
                                 <div class="form-group float-right">
                                     <asp:Button runat="server" ID="btnGuardar" OnClick="btnGuardar_Click" CssClass="btn btn-primary" Text="Guardar" />
                                     <asp:Button runat="server" ID="btnRegresar" CssClass="btn btn-default" Text="Regresar" PostBackUrl="~/Usuario/Index.aspx" />
@@ -69,7 +70,7 @@
                                 <div class="table-responsive">
                                     <div style="overflow: auto; height: 400px">
                                         <asp:GridView ID="gridUsuarioInstalacion" runat="server"
-                                             AutoGenerateColumns="false"
+                                            AutoGenerateColumns="false"
                                             CssClass=" table table-bordered table-striped table-sm"
                                             HeaderStyle-BackColor="#343a40"
                                             HeaderStyle-CssClass=" text-white"
@@ -77,9 +78,8 @@
                                             EmptyDataText="Sin registro de instalaciones."
                                             DataKeyNames="Id_Instalacion"
                                             HeaderStyle-HorizontalAlign="Center"
-                                             OnRowDataBound="gridUsuarioInstalacion_RowDataBound"
-                                             >
-                                            
+                                            OnRowDataBound="gridUsuarioInstalacion_RowDataBound">
+
                                             <Columns>
 
                                                 <asp:TemplateField HeaderStyle-Width="15px" HeaderText="Agregar" ItemStyle-HorizontalAlign="Center" HeaderStyle-CssClass="header-center">
@@ -94,7 +94,7 @@
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
 
-                                                <asp:BoundField HeaderText="Instalación" DataField="Instalacion"  />
+                                                <asp:BoundField HeaderText="Instalación" DataField="Instalacion" />
                                                 <asp:BoundField HeaderText="Localización" DataField="Localizacion" />
 
                                                 <asp:TemplateField Visible="false">
@@ -102,28 +102,28 @@
                                                         <asp:Label ID="lblIdInstalacion" runat="server" Text='<%#Eval("Id_Instalacion") %>'></asp:Label>
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
-                                         <asp:TemplateField Visible="false">
-                                                                    <ItemTemplate>
-                                                                        <asp:Label ID="lblRegistro" runat="server" Text='<%#Eval("Id_registro2") %>'></asp:Label>
-                                                                    </ItemTemplate>
-                                                                </asp:TemplateField>
+                                                <asp:TemplateField Visible="false">
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="lblRegistro" runat="server" Text='<%#Eval("Id_registro2") %>'></asp:Label>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
                                             </Columns>
                                         </asp:GridView>
-                          
+
                                     </div>
 
                                 </div>
                             </div>
-                          
+
                         </div>
                     </div>
                 </div>
-                                                 </div>
-                
-                </div>
-               
             </div>
-        
+
+        </div>
+
+    </div>
+
     <script type="text/javascript">
 
         Sys.WebForms.PageRequestManager.getInstance().add_beginRequest(BeginRequestHandler);
@@ -142,29 +142,24 @@
 
         }
         window.onbeforeunload = DisableButton;
-               function SelectAll(id)
-        {
+        function SelectAll(id) {
             //get reference of GridView control
             var grid = document.getElementById("<%= gridUsuarioInstalacion.ClientID %>");
             //variable to contain the cell of the grid
             var cell;
-            
-            if (grid.rows.length > 0)
-            {
+
+            if (grid.rows.length > 0) {
                 //loop starts from 1. rows[0] points to the header.
-                for (i=1; i<grid.rows.length; i++)
-                {
+                for (i = 1; i < grid.rows.length; i++) {
                     //get the reference of first column
                     cell = grid.rows[i].cells[0];
-                    
+
                     //loop according to the number of childNodes in the cell
-                    for (j=0; j<cell.childNodes.length; j++)
-                    {           
+                    for (j = 0; j < cell.childNodes.length; j++) {
                         //if childNode type is CheckBox                 
-                        if (cell.childNodes[j].type =="checkbox")
-                        {
-                        //assign the status of the Select All checkbox to the cell 
-                        //checkbox within the grid
+                        if (cell.childNodes[j].type == "checkbox") {
+                            //assign the status of the Select All checkbox to the cell 
+                            //checkbox within the grid
                             cell.childNodes[j].checked = document.getElementById(id).checked;
                         }
                     }

@@ -10,14 +10,43 @@ namespace Operacion.s.Infraestructura
     public partial class Inicio : System.Web.UI.Page
     {
         Clase.Disponibilidad disponibilidad = new Clase.Disponibilidad();
+        Clase.Accesos accesos = new Clase.Accesos();
+
+        protected void Page_Init(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                ValidarAccesos();
+            }
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                IndicadorDisponibilidad();
+
             }
         }
 
+        public void ValidarAccesos()
+        {
+            int IdUsuario = Convert.ToInt32((this.Master as Operacion.s.Site1).IDUsuario.ToString());
+            if (accesos.ValidarInfraestructura(IdUsuario))
+            {
+                if (accesos.ValidarDisponibilidadDeEquipos(IdUsuario))
+                {
+                    disponibilidadequipos.Visible = true;
+                    IndicadorDisponibilidad();
+
+                }
+            }
+            else
+            {
+                Response.Redirect("~/s/Inicio.aspx");
+            }
+          
+
+        }
         public void IndicadorDisponibilidad()
         {
             int IdInstalacion = Convert.ToInt32((this.Master as Operacion.s.Site1).IdInstalacion.ToString());

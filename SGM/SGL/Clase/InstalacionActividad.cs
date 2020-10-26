@@ -15,17 +15,17 @@ namespace SGL.Clase
         SqlDataReader dr;
 
 
-        public DataTable MostrarGeneral(int IdSuscripcion, string Correo)
+        public DataTable MostrarGeneral(int IdSuscripcion, int IdUsuario)
         {
 
-            string query = "DECLARE @cols AS NVARCHAR(MAX), @query AS NVARCHAR(MAX) DECLARE @Id_Suscripcion as NVARCHAR(MAX) SET @Id_Suscripcion=@IdSuscripcion select @cols = STUFF((SELECT ',' + QUOTENAME(Nav.Nombre)  FROM Cat_Instalacion Nav JOIN(SELECT Id_Instalacion FROM Op_UsIns op JOIN Usuario us on op.Id_Usuario = us.Id_usuario WHERE us.Acceso = @Correo) UsAct on Nav.Id_instalacion = UsAct.Id_Instalacion WHERE nav.Activado IS NULL AND nav.Id_Suscripcion = @IdSuscripcion  FOR XML PATH(''), TYPE).value('.', 'NVARCHAR(MAX)'),1,1,'') set @query = 'SELECT Actividad,' + @cols + ' from (select actividad, Instalacion FROM(SELECT act.Nombre Actividad, cat.Nombre Instalacion FROM Op_Ins_Act catact LEFT JOIN Cat_Instalacion cat on catact.Id_Instalacion = cat.Id_Instalacion RIGHT JOIN Cat_Actividades act on catact.Id_Actividad = act.Id_Actividades WHERE act.Activado Is null AND cat.Activado IS NULL AND act.TipoSistema = 2 AND act.Id_Suscripcion=' + @Id_Suscripcion + ') as tabla) x pivot(MAX(Instalacion)  for Instalacion in (' + @cols + ') ) p 'execute(@query);";
+            string query = "DECLARE @cols AS NVARCHAR(MAX), @query AS NVARCHAR(MAX) DECLARE @Id_Suscripcion as NVARCHAR(MAX) SET @Id_Suscripcion=@IdSuscripcion select @cols = STUFF((SELECT ',' + QUOTENAME(Nav.Nombre)  FROM Cat_Instalacion Nav JOIN(SELECT Id_Instalacion FROM Op_UsIns WHERE Id_Usuario=@IdUsuario) UsAct on Nav.Id_instalacion = UsAct.Id_Instalacion WHERE nav.Activado IS NULL AND nav.Id_Suscripcion = @IdSuscripcion  FOR XML PATH(''), TYPE).value('.', 'NVARCHAR(MAX)'),1,1,'') set @query = 'SELECT Actividad,' + @cols + ' from (select actividad, Instalacion FROM(SELECT act.Nombre Actividad, cat.Nombre Instalacion FROM Op_Ins_Act catact LEFT JOIN Cat_Instalacion cat on catact.Id_Instalacion = cat.Id_Instalacion RIGHT JOIN Cat_Actividades act on catact.Id_Actividad = act.Id_Actividades WHERE act.Activado Is null AND cat.Activado IS NULL AND act.TipoSistema = 2 AND act.Id_Suscripcion=' + @Id_Suscripcion + ') as tabla) x pivot(MAX(Instalacion)  for Instalacion in (' + @cols + ') ) p 'execute(@query);";
 
 
             comm.Connection = conexion.AbrirConexion();
             comm.CommandText = query;
             comm.CommandType = CommandType.Text;
             comm.Parameters.AddWithValue("@IdSuscripcion", IdSuscripcion);
-            comm.Parameters.AddWithValue("@Correo", Correo);
+            comm.Parameters.AddWithValue("@IdUsuario", IdUsuario);
 
 
             da = new SqlDataAdapter(comm);
@@ -73,14 +73,14 @@ namespace SGL.Clase
 
         }
 
-        public DataTable MostrarInstalacion(int IdSuscripcion, string Correo)
+        public DataTable MostrarInstalacion(int IdSuscripcion, int IdUsuario)
         {
 
             comm.Connection = conexion.AbrirConexion();
-            comm.CommandText = "SELECT Nav.Id_instalacion, Nav.Nombre  FROM Cat_Instalacion Nav JOIN(SELECT Id_Instalacion FROM Op_UsIns op JOIN Usuario us on op.Id_Usuario = us.Id_usuario WHERE us.Acceso = @Correo) UsAct on Nav.Id_instalacion = UsAct.Id_Instalacion WHERE nav.Activado IS NULL AND nav.Id_Suscripcion = @IdSuscripcion ORDER BY nav.Id_instalacion DESC";
+            comm.CommandText = "SELECT Nav.Id_instalacion, Nav.Nombre  FROM Cat_Instalacion Nav JOIN(SELECT Id_Instalacion FROM Op_UsIns WHERE Id_Usuario=@IdUsuario) UsAct on Nav.Id_instalacion = UsAct.Id_Instalacion WHERE nav.Activado IS NULL AND nav.Id_Suscripcion = @IdSuscripcion ORDER BY nav.Id_instalacion DESC";
             comm.CommandType = CommandType.Text;
             comm.Parameters.AddWithValue("@IdSuscripcion", IdSuscripcion);
-            comm.Parameters.AddWithValue("@Correo", Correo);
+            comm.Parameters.AddWithValue("@IdUsuario", IdUsuario);
 
 
             da = new SqlDataAdapter(comm);

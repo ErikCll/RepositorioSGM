@@ -10,22 +10,14 @@ namespace SAM.Catalogo.Cliente
     public partial class Index : System.Web.UI.Page
     {
         Clase.Cliente cliente = new Clase.Cliente();
-        Clase.Master master = new Clase.Master();
-
+        Clase.Accesos accesos = new Clase.Accesos();
 
         protected void Page_Init(object sender, EventArgs e)
         {
-            string Usuario = Page.User.Identity.Name;
-            if (master.ValidarCatalogo(Usuario))
+            if (!IsPostBack)
             {
-
+                ValidarAccesos();
             }
-            else
-            {
-                Response.Redirect("~/Inicio.aspx");
-            }
-
-
             if (Request.QueryString["url"] == null)
             {
                 //Response.Redirect("~/Inicio.aspx");
@@ -36,6 +28,22 @@ namespace SAM.Catalogo.Cliente
                 string url = System.Text.ASCIIEncoding.ASCII.GetString(Convert.FromBase64String(Request.QueryString["url"]));
                 Session["url"] = url;
             }
+
+        }
+
+        public void ValidarAccesos()
+        {
+            int IdUsuario = Convert.ToInt32((this.Master as SAM.Site1).IDUsuario.ToString());
+            if (accesos.ValidarCliente(IdUsuario))
+            {
+
+            }
+            else
+            {
+                Response.Redirect("~/Inicio.aspx");
+            }
+
+
         }
         protected void Page_Load(object sender, EventArgs e)
         {

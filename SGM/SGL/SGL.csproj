@@ -1707,6 +1707,7 @@
     <Content Include="s\Acreditacion\EMA\Index.aspx" />
     <Content Include="s\Acreditacion\Inicio.aspx" />
     <Content Include="s\Competencia\Inicio.aspx" />
+    <Content Include="s\Error.aspx" />
     <Content Include="s\Inicio.aspx" />
     <Content Include="s\Login.aspx" />
     <Content Include="s\Procedimiento\CensoAct\Control\Crear.aspx" />
@@ -1734,11 +1735,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Clase\Accesos.cs" />
     <Compile Include="Clase\Actividad.cs" />
     <Compile Include="Clase\ActividadControl.cs" />
     <Compile Include="Clase\Archivo.cs" />
     <Compile Include="Clase\CategoriaActividad.cs" />
     <Compile Include="Clase\CategoriaEmpleado.cs" />
+    <Compile Include="Clase\Correo.cs" />
     <Compile Include="Clase\EMA.cs" />
     <Compile Include="Clase\Evaluacion.cs" />
     <Compile Include="Clase\InstalacionActividad.cs" />
@@ -1790,6 +1793,13 @@
     </Compile>
     <Compile Include="s\Competencia\Inicio.aspx.designer.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="s\Error.aspx.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="s\Error.aspx.designer.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
     </Compile>
     <Compile Include="s\Inicio.aspx.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>

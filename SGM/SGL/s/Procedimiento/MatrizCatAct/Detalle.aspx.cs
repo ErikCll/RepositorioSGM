@@ -10,6 +10,29 @@ namespace SGL.s.Procedimiento.MatrizCatAct
     public partial class Index : System.Web.UI.Page
     {
         Clase.CategoriaActividad categoriaAct = new Clase.CategoriaActividad();
+        Clase.Accesos accesos = new Clase.Accesos();
+        protected void Page_Init(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                ValidarAccesos();
+            }
+
+        }
+
+        public void ValidarAccesos()
+        {
+            int IdUsuario = Convert.ToInt32((this.Master as SGL.s.Site1).IDUsuario.ToString());
+            if (accesos.ValidarCategoriaActividad(IdUsuario))
+            {
+
+            }
+            else
+            {
+                Response.Redirect("~/s/Inicio.aspx");
+            }
+
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
             Page.Form.DefaultButton = btnBuscar.UniqueID;

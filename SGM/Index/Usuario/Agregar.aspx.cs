@@ -10,6 +10,30 @@ namespace SAM.Usuario
     public partial class Agregar : System.Web.UI.Page
     {
         Clase.Usuario usuario = new Clase.Usuario();
+        Clase.Accesos accesos = new Clase.Accesos();
+
+        protected void Page_Init(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                ValidarAccesos();
+            }
+        }
+
+        public void ValidarAccesos()
+        {
+            int IdUsuario = Convert.ToInt32((this.Master as SAM.Site1).IDUsuario.ToString());
+            if (accesos.ValidarUsuario(IdUsuario))
+            {
+
+            }
+            else
+            {
+                Response.Redirect("~/Inicio.aspx");
+            }
+
+
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -36,6 +60,12 @@ namespace SAM.Usuario
             gridUsuarioInstalacion.DataSource = usuario.MostrarInstalacion(IdUsuario, IdSuscripcion);
             gridUsuarioInstalacion.DataBind();
         }
+
+
+
+  
+
+
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
             foreach (GridViewRow row in gridUsuarioInstalacion.Rows)
@@ -95,5 +125,7 @@ namespace SAM.Usuario
             }
 
         }
+
+      
     }
 }

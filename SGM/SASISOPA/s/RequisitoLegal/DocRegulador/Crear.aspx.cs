@@ -1,0 +1,48 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace SASISOPA.s.RequisitoLegal.DocRegulador
+{
+    public partial class Crear : System.Web.UI.Page
+    {
+        Clase.DocRegulador docRegulador = new Clase.DocRegulador();
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                (this.Master as SASISOPA.s.Site1).OcultarDrop = false;
+                (this.Master as SASISOPA.s.Site1).OcultarLabel = false;
+                LlenarDrop();
+
+
+            }
+        }
+
+        protected void btnGuardar_Click(object sender, EventArgs e)
+        {
+
+            string Nombre = txtNombre.Text;
+            int IdRegulador = Convert.ToInt32(ddl_Regulador.SelectedValue);
+            if (docRegulador.Insertar(IdRegulador, Nombre))
+            {
+                string script = "alert('Registro creado exitosamente.'); window.location.href= 'Index.aspx';";
+
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", script, true);
+            }
+        }
+
+        public void LlenarDrop()
+        {
+            int IdSuscripcion = Convert.ToInt32((this.Master as SASISOPA.s.Site1).IdSuscripcion);
+            ddl_Regulador.DataSource = docRegulador.MostrarRegulador(IdSuscripcion);
+            ddl_Regulador.DataBind();
+            ddl_Regulador.Items.Insert(0, new ListItem("[Seleccionar]"));
+
+        }
+    }
+}

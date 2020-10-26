@@ -12,7 +12,7 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="Content" runat="server">
     <div class="col-lg-12">
        <div class="row">
-                       <div class="col-sm-12 col-md-6 col-lg-4" runat="server" id="produccion" visible="true">
+                       <div class="col-sm-12 col-md-6 col-lg-4" runat="server" id="horasturno" visible="true">
 <div class="card card-default shadow-sm">
               <div class="card-header">
                 <h3 class="card-title font-weight-bold">Horas por Turno</h3>

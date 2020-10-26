@@ -10,11 +10,20 @@ namespace Operacion.s.Infraestructura.Disponibilidad
     public partial class Index : System.Web.UI.Page
     {
         Clase.Disponibilidad disponibilidad = new Clase.Disponibilidad();
-        Clase.Master master = new Clase.Master();
+        Clase.Accesos accesos = new Clase.Accesos();
         protected void Page_Init(object sender, EventArgs e)
         {
-            string Usuario = Page.User.Identity.Name;
-            if (master.ValidarInfraestructura(Usuario))
+            if (!IsPostBack)
+            {
+                ValidarAccesos();
+            }
+       
+        }
+
+        public void ValidarAccesos()
+        {
+            int IdUsuario = Convert.ToInt32((this.Master as Operacion.s.Site1).IDUsuario.ToString());
+            if (accesos.ValidarDisponibilidadDeEquipos(IdUsuario))
             {
 
             }
@@ -22,6 +31,7 @@ namespace Operacion.s.Infraestructura.Disponibilidad
             {
                 Response.Redirect("~/s/Inicio.aspx");
             }
+
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -33,6 +43,7 @@ namespace Operacion.s.Infraestructura.Disponibilidad
                 MostrarLista();
             }
         }
+    
 
         public void MostrarLista()
         {

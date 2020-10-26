@@ -19,7 +19,7 @@ namespace SGL.Clase
         public DataTable Mostrar( int IdAcreditacion)
         {
 
-            string query = "SELECT acre.Id_Acreditacion, acre.Numero 'No',acre.Referencia,CONVERT(NVARCHAR,sta2.Fecha,105) 'Fecha',sta2.Status,ISNULL(sta.Id_status,0) 'Id_status' FROM Op_Acreditacion acre LEFT JOIN(SELECT MAX(Id_Status) 'Id_status', Id_acreditacion FROM Op_AcreditacionStatus WHERE Activado IS NULL GROUP BY Id_Acreditacion) sta on acre.Id_Acreditacion = sta.Id_Acreditacion LEFT JOIN Op_AcreditacionStatus sta2 on sta.Id_status=sta2.Id_Status WHERE acre.Id_Instalacion = @IdInstalacion AND acre.Activado IS NULL AND acre.Acreditador = 'EMA' ORDER BY acre.Id_Acreditacion DESC";
+            string query = "SELECT acre.Id_Acreditacion, acre.Numero 'No',acre.Referencia, CONVERT(NVARCHAR, sta2.Fecha, 105) 'Fecha',sta2.Status,ISNULL(sta2.Id_status, 0) 'Id_status' FROM Op_Acreditacion acre LEFT JOIN(SELECT MAX(Fecha) 'Fecha', Id_acreditacion FROM Op_AcreditacionStatus WHERE Activado IS NULL GROUP BY Id_Acreditacion) sta on acre.Id_Acreditacion = sta.Id_Acreditacion LEFT JOIN Op_AcreditacionStatus sta2 on sta.Id_Acreditacion = sta2.Id_Acreditacion and sta.Fecha = sta2.Fecha WHERE acre.Id_Instalacion = @IdInstalacion AND acre.Activado IS NULL AND acre.Acreditador = 'EMA' ORDER BY sta2.Fecha DESC";
      
 
             comm.Connection = conexion.AbrirConexion();

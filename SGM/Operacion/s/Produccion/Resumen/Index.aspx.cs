@@ -10,11 +10,20 @@ namespace Operacion.s.Produccion.Resumen
     public partial class Index : System.Web.UI.Page
     {
         Clase.Resumen resumen = new Clase.Resumen();
-        Clase.Master master = new Clase.Master();
+        Clase.Accesos accesos = new Clase.Accesos();
         protected void Page_Init(object sender, EventArgs e)
         {
-            string Usuario = Page.User.Identity.Name;
-            if (master.ValidarProduccion(Usuario))
+            if (!IsPostBack)
+            {
+                ValidarAccesos();
+            }
+
+        }
+
+        public void ValidarAccesos()
+        {
+            int IdUsuario = Convert.ToInt32((this.Master as Operacion.s.Site1).IDUsuario.ToString());
+            if (accesos.ValidarHorasPorTurno(IdUsuario))
             {
 
             }
@@ -22,6 +31,7 @@ namespace Operacion.s.Produccion.Resumen
             {
                 Response.Redirect("~/s/Inicio.aspx");
             }
+
         }
         protected void Page_Load(object sender, EventArgs e)
         {

@@ -13,13 +13,13 @@ namespace SGL.s.Acreditacion {
     public partial class Inicio {
         
         /// <summary>
-        /// Control infraestructura.
+        /// Control ema.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl infraestructura;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ema;
         
         /// <summary>
         /// Control lblPorcentaje.
@@ -40,13 +40,13 @@ namespace SGL.s.Acreditacion {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divprogress1;
         
         /// <summary>
-        /// Control Div1.
+        /// Control cre.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div1;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl cre;
         
         /// <summary>
         /// Control Label1.

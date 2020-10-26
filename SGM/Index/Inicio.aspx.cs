@@ -21,38 +21,38 @@ namespace SAM
                     (this.Master as SAM.Site1).OcultarLabel = false;
                 ListaImagen();
                 ListaImagen2();
-                string Usuario = Page.User.Identity.Name;
+                int IdUsuario = Convert.ToInt32((this.Master as SAM.Site1).IDUsuario.ToString());
 
-                if (login.ValidarSGM(Usuario))
+                if (login.ValidarSGM(IdUsuario))
                 {
                     SitioSGM.Visible = true;
                 }
-                if (login.ValidarSASISOPA(Usuario))
+                if (login.ValidarSASISOPA(IdUsuario))
                 {
                     SitioSASISOPA.Visible = true;
                 }
-                if (login.ValidarOperacion(Usuario))
+                if (login.ValidarOperacion(IdUsuario))
                 {
                     SitioOperacion.Visible = true;
                 }
 
-                if (login.ValidarMantenimiento(Usuario))
+                if (login.ValidarMantenimiento(IdUsuario))
                 {
                     SitioMantenimiento.Visible = true;
 
                 }
 
-                if (login.ValidarSeguridadIndustrial(Usuario))
+                if (login.ValidarSeguridadIndustrial(IdUsuario))
                 {
                     SitioSeguridad.Visible = true;
                 }
 
-                if (login.ValidarAdministracion(Usuario))
+                if (login.ValidarAdministracion(IdUsuario))
                 {
                     SitioAdministracion.Visible = true;
                 }
 
-                if (login.ValidarSGL(Usuario))
+                if (login.ValidarSGL(IdUsuario))
                 {
                     SitioSGL.Visible = true;
                 }

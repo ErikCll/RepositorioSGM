@@ -13,16 +13,13 @@ namespace SAM
     {
         Clase.Master master = new Clase.Master();
         Clase.Login login = new Clase.Login();
+        Clase.Accesos accesos = new Clase.Accesos();
         protected void Page_Init(object sender, EventArgs e)
         {
             if(HttpContext.Current.User.Identity.IsAuthenticated)
 
             {
-                string Usuario = Page.User.Identity.Name;
-                if (master.ValidarCatalogo(Usuario))
-                {
-                    menu_catalogo1.Visible = true;
-                }
+               
             }
             else
             {
@@ -48,53 +45,127 @@ namespace SAM
             {
                 string Usuario = Page.User.Identity.Name;
                 master.LeerDatosUsuario(Usuario);
+                lblIdUsuario.Text = master.IdUsuario;
                 lblIdSuscripcion.Text = master.IdSuscripcion;
                 lblTitulo.Text = master.Nombre;
                 lblUsuario.Text = Usuario;
+                ValidarAccesos();
                 LlenarDrop();
+
                 if (RadInstalacion.Items.Count == 1)
                 {
                     int IdSuscripcion = Convert.ToInt32(lblIdSuscripcion.Text);
-                    master.LeerDatosInstalacion(IdSuscripcion,Usuario);
+                    int IdUsuario2 = Convert.ToInt32(lblIdUsuario.Text);
+
+                    master.LeerDatosInstalacion(IdSuscripcion,IdUsuario2);
                     RadInstalacion.SelectedValue = master.IdInstalacion;
                     lblIDInstalacion.Text = master.IdInstalacion;
                     RadInstalacion.Enabled = false;
                 }
-                if (login.ValidarSGM(Usuario))
-                {
-                    SGM.Visible = true;
-                }
-                if (login.ValidarSASISOPA(Usuario))
-                {
-                    SASISOPA.Visible = true;
-                }
-                if (login.ValidarOperacion(Usuario))
-                {
-                    Operacion.Visible = true;
-                }
 
-                if (login.ValidarMantenimiento(Usuario))
-                {
-                    Mantenimiento.Visible = true;
 
-                }
-
-                if (login.ValidarSeguridadIndustrial(Usuario))
-                {
-                    Seguridad.Visible = true;
-                }
-
-                if (login.ValidarAdministracion(Usuario))
-                {
-                    Administracion.Visible = true;
-                }
-
-                if (login.ValidarSGL(Usuario))
-                {
-                    SGL.Visible = true;
-                }
             }
             
+        }
+
+        public void ValidarAccesos()
+        {
+            int IdUsuario = Convert.ToInt32(lblIdUsuario.Text);
+
+
+            if (login.ValidarSGM(IdUsuario))
+            {
+                SGM.Visible = true;
+                menu_indicador.Visible = true;
+
+            }
+            if (login.ValidarSASISOPA(IdUsuario))
+            {
+                SASISOPA.Visible = true;
+                menu_indicador.Visible = true;
+
+            }
+            if (login.ValidarOperacion(IdUsuario))
+            {
+                //Operacion.Visible = true;
+                //menu_indicador.Visible = true;
+
+
+            }
+
+            if (login.ValidarMantenimiento(IdUsuario))
+            {
+                Mantenimiento.Visible = true;
+                menu_indicador.Visible = true;
+
+            }
+
+            if (login.ValidarSeguridadIndustrial(IdUsuario))
+            {
+                Seguridad.Visible = true;
+                menu_indicador.Visible = true;
+
+            }
+
+            if (login.ValidarAdministracion(IdUsuario))
+            {
+                Administracion.Visible = true;
+                menu_indicador.Visible = true;
+
+            }
+
+            if (login.ValidarSGL(IdUsuario))
+            {
+                SGL.Visible = true;
+                menu_indicador.Visible = true;
+            }
+
+
+            if (accesos.ValidarCatalogo(IdUsuario))
+            {
+                menu_catalogo1.Visible = true;
+
+               if(accesos.ValidarInstalacion(IdUsuario))
+                {
+                    instalacion1.Visible = true;
+                }
+
+                if (accesos.ValidarArea(IdUsuario))
+                {
+                    area1.Visible = true;
+                }
+
+                if (accesos.ValidarCategoria(IdUsuario))
+                {
+                    categoria1.Visible = true;
+                }
+
+                if (accesos.ValidarEmpleado(IdUsuario))
+                {
+                    empleado1.Visible = true;
+                }
+
+                if (accesos.ValidarCliente(IdUsuario))
+                {
+                    cliente.Visible = true;
+                }
+
+                if (accesos.ValidarMaterial(IdUsuario))
+                {
+                    material.Visible = true;
+                }
+
+                if (accesos.ValidarEquipo(IdUsuario))
+                {
+                    equipo.Visible = true;
+                }
+            }
+
+            if (accesos.ValidarUsuario(IdUsuario))
+            {
+                menu_usuario.Visible = true;
+                usuario.Visible = true;
+            }
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -182,7 +253,7 @@ namespace SAM
 
                 }
 
-                else if (activepage.Contains("/Usuario/Index.aspx") || activepage.Contains("/Usuario/Crear.aspx") || activepage.Contains("/Usuario/Editar.aspx") || activepage.Contains("/Usuario/Agregar.aspx"))
+                else if (activepage.Contains("/Usuario/Index.aspx") || activepage.Contains("/Usuario/Crear.aspx") || activepage.Contains("/Usuario/Editar.aspx") || activepage.Contains("/Usuario/Agregar.aspx") || activepage.Contains("/Usuario/Acceso.aspx"))
                 {
                     menu_usuario.Attributes.Add("class", "  nav-item has-treeview menu-open");
                     usuario.Attributes.Add("class", "nav-link active");
@@ -201,7 +272,23 @@ namespace SAM
             Response.Redirect(Request.UrlReferrer.ToString());
         }
 
-     
+        public string IDUsuario
+        {
+
+            set
+            {
+                lblIdUsuario.Text = value;
+            }
+
+            get
+            {
+
+                return lblIdUsuario.Text;
+            }
+
+
+        }
+
 
         public string IdSuscripcion
         {
@@ -247,9 +334,8 @@ namespace SAM
         {
 
             int IdSuscripcion = Convert.ToInt32(lblIdSuscripcion.Text);
-            string Usuario = Page.User.Identity.Name;
-
-            RadInstalacion.DataSource = master.MostrarInstalacion(IdSuscripcion, Usuario);
+            int IdUsuario = Convert.ToInt32(lblIdUsuario.Text);
+            RadInstalacion.DataSource = master.MostrarInstalacion(IdSuscripcion, IdUsuario);
             RadInstalacion.DataBind();
 
         }

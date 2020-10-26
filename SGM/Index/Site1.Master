@@ -45,6 +45,8 @@
 <%--  <nav class="main-header navbar navbar-expand navbar-white navbar-light ">--%>
           <nav class="main-header navbar navbar-expand navbar-dark navbar-info " >
                                       <asp:Label runat="server" ID="lblIdSuscripcion" Visible="false"></asp:Label>
+                                                    <asp:Label runat="server" ID="lblIdUsuario" Visible="false"></asp:Label>
+
 
     <!-- Left navbar links -->
     <ul class="navbar-nav nav navbar-nav flex-fill  w-100 flex-nowrap">
@@ -138,20 +140,20 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="~/Catalogo/Instalacion/Index.aspx" class="nav-link" id="instalacion1" runat="server">
+                <a href="~/Catalogo/Instalacion/Index.aspx" class="nav-link" id="instalacion1" runat="server" visible="false">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Instalación</p>
                 </a>
               </li>
                  <li class="nav-item">
-                <a  href="~/Catalogo/Area/Index.aspx" class="nav-link" id="area1" runat="server">
+                <a  href="~/Catalogo/Area/Index.aspx" class="nav-link" id="area1" runat="server" visible="false">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Área</p>
                 </a>
               </li>
 
                    <li class="nav-item">
-                <a  href="~/Catalogo/Categoria/Index.aspx" class="nav-link" id="categoria1" runat="server">
+                <a  href="~/Catalogo/Categoria/Index.aspx" class="nav-link" id="categoria1" runat="server" visible="false">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Categoría</p>
                 </a>
@@ -160,7 +162,7 @@
               
 
                   <li class="nav-item">
-                <a  href="~/Catalogo/Empleado/Index.aspx" class="nav-link" id="empleado1" runat="server">
+                <a  href="~/Catalogo/Empleado/Index.aspx" class="nav-link" id="empleado1" runat="server" visible="false">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Empleado</p>
                 </a>
@@ -168,7 +170,7 @@
 
             
               <li class="nav-item">
-                <a  href="~/Catalogo/Cliente/Index.aspx" class="nav-link" id="cliente" runat="server">
+                <a  href="~/Catalogo/Cliente/Index.aspx" class="nav-link" id="cliente" runat="server" visible="false">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Cliente</p>
                 </a>
@@ -176,7 +178,7 @@
 
               
                 <li class="nav-item">
-                <a  href="~/Catalogo/Material/Index.aspx" class="nav-link" id="material" runat="server">
+                <a  href="~/Catalogo/Material/Index.aspx" class="nav-link" id="material" runat="server" visible="false">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Material</p>
                 </a>
@@ -184,7 +186,7 @@
 
 
                      <li class="nav-item">
-                <a  href="~/Catalogo/Equipo/Index.aspx" class="nav-link" id="equipo" runat="server">
+                <a  href="~/Catalogo/Equipo/Index.aspx" class="nav-link" id="equipo" runat="server" visible="false">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Equipo</p>
                 </a>
@@ -193,9 +195,9 @@
           </li>
             
 
-              <li class="nav-item" id="menu_usuario" runat="server">
+              <li class="nav-item" id="menu_usuario" runat="server" visible="false">
              
-            <a href="~/Usuario/Index.aspx" class="nav-link" id="usuario" runat="server">
+            <a href="~/Usuario/Index.aspx" class="nav-link" id="usuario" runat="server" visible="false">
                 <i class="nav-icon 	fas fa-user"></i>
 
               <p>
@@ -208,7 +210,7 @@
 
 
 
-              <li class="nav-item has-treeview" id="menu_indicador" runat="server">
+              <li class="nav-item has-treeview" id="menu_indicador" runat="server" visible="false">
              
             <a href="#" class="nav-link" id="indicador" runat="server">
                 <i class="nav-icon fas fa-chart-bar"></i>

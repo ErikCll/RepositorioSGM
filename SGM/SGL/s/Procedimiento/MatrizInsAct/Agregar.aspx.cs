@@ -10,6 +10,29 @@ namespace SGL.s.Procedimiento.MatrizInsAct
     public partial class Agregar : System.Web.UI.Page
     {
         Clase.InstalacionActividad insact = new Clase.InstalacionActividad();
+        Clase.Accesos accesos = new Clase.Accesos();
+        protected void Page_Init(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                ValidarAccesos();
+            }
+
+        }
+
+        public void ValidarAccesos()
+        {
+            int IdUsuario = Convert.ToInt32((this.Master as SGL.s.Site1).IDUsuario.ToString());
+            if (accesos.ValidarInstalacionActividad(IdUsuario))
+            {
+
+            }
+            else
+            {
+                Response.Redirect("~/s/Inicio.aspx");
+            }
+
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -46,9 +69,9 @@ namespace SGL.s.Procedimiento.MatrizInsAct
         public void LlenarDropInstalacion()
         {
             int IdSuscripcion = Convert.ToInt32((this.Master as SGL.s.Site1).IdSuscripcion.ToString());
-            string Usuario = Page.User.Identity.Name;
+            int IdUsuario = Convert.ToInt32((this.Master as SGL.s.Site1).IDUsuario.ToString());
 
-            ddl_Instalacion.DataSource = insact.MostrarInstalacion(IdSuscripcion,Usuario);
+            ddl_Instalacion.DataSource = insact.MostrarInstalacion(IdSuscripcion, IdUsuario);
             ddl_Instalacion.DataBind();
             ddl_Instalacion.Items.Insert(0, new ListItem("[Seleccionar]", "0"));
         }

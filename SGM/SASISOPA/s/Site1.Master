@@ -45,7 +45,7 @@
             <%--  <nav class="main-header navbar navbar-expand navbar-white navbar-light ">--%>
             <nav class="main-header navbar navbar-expand navbar-dark navbar-lightblue ">
                 <asp:Label runat="server" ID="lblIdSuscripcion" Visible="false"></asp:Label>
-
+                <asp:Label runat="server" ID="lblIdUsuario" Visible="false"></asp:Label>
                 <!-- Left navbar links -->
                 <ul class=" nav navbar-nav flex-fill  w-100 flex-nowrap">
                     <li class="nav-item">
@@ -166,9 +166,9 @@
                                 </a>
                             </li>
 
-                            <li class="nav-item" id="Li4" runat="server">
+                            <li class="nav-item" id="menu_requisito" runat="server">
 
-                                <a href="~/s/RequisitoLegal/Inicio.aspx" class="nav-link" id="A4" runat="server">
+                                <a href="~/s/RequisitoLegal/Inicio.aspx" class="nav-link" id="requisito" runat="server">
                                     <i class="nav-icon fas fa-balance-scale	"></i>
 
                                     <p>

@@ -22,6 +22,15 @@ namespace SASISOPA.s {
         protected global::System.Web.UI.WebControls.Label lblIdSuscripcion;
         
         /// <summary>
+        /// Control lblIdUsuario.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblIdUsuario;
+        
+        /// <summary>
         /// Control lblInstalacion.
         /// </summary>
         /// <remarks>
@@ -184,22 +193,22 @@ namespace SASISOPA.s {
         protected global::System.Web.UI.HtmlControls.HtmlAnchor A2;
         
         /// <summary>
-        /// Control Li4.
+        /// Control menu_requisito.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Li4;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl menu_requisito;
         
         /// <summary>
-        /// Control A4.
+        /// Control requisito.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor A4;
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor requisito;
         
         /// <summary>
         /// Control Li5.

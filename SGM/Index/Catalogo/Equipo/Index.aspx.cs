@@ -10,20 +10,14 @@ namespace SAM.Catalogo.Equipo
     public partial class Index : System.Web.UI.Page
     {
         Clase.Equipo equipo = new Clase.Equipo();
-        Clase.Master master = new Clase.Master();
+        Clase.Accesos accesos = new Clase.Accesos();
 
         protected void Page_Init(object sender, EventArgs e)
         {
-            string Usuario = Page.User.Identity.Name;
-            if (master.ValidarCatalogo(Usuario))
+            if (!IsPostBack)
             {
-
+                ValidarAccesos();
             }
-            else
-            {
-                Response.Redirect("~/Inicio.aspx");
-            }
-
             if (Request.QueryString["url"] == null)
             {
                 //Response.Redirect("~/Inicio.aspx");
@@ -36,6 +30,22 @@ namespace SAM.Catalogo.Equipo
             }
 
         }
+
+        public void ValidarAccesos()
+        {
+            int IdUsuario = Convert.ToInt32((this.Master as SAM.Site1).IDUsuario.ToString());
+            if (accesos.ValidarEquipo(IdUsuario))
+            {
+
+            }
+            else
+            {
+                Response.Redirect("~/Inicio.aspx");
+            }
+
+
+        }
+
 
         protected void Page_Load(object sender, EventArgs e)
         {

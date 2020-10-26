@@ -161,6 +161,7 @@
     <Content Include="s\Competencia\Programa\DetalleEv.aspx" />
     <Content Include="s\Competencia\Programa\Editar.aspx" />
     <Content Include="s\Competencia\Programa\Index.aspx" />
+    <Content Include="s\Error.aspx" />
     <Content Include="s\Evaluacion.aspx" />
     <Content Include="s\Inicio.aspx" />
     <Content Include="s\PreEvaluacion.aspx" />
@@ -1752,6 +1753,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Clase\Correo.cs" />
     <Compile Include="Clase\Login.cs" />
     <Compile Include="s\Catalogo\Medidor\Crear.aspx.cs">
       <DependentUpon>Crear.aspx</DependentUpon>
@@ -1958,6 +1960,13 @@
     <Compile Include="Clase\ProgramaCapacitacion.cs" />
     <Compile Include="Clase\SistemaComponente.cs" />
     <Compile Include="Clase\SistemaMed.cs" />
+    <Compile Include="s\Error.aspx.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="s\Error.aspx.designer.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+    </Compile>
     <Compile Include="s\Evaluacion.aspx.cs">
       <DependentUpon>Evaluacion.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

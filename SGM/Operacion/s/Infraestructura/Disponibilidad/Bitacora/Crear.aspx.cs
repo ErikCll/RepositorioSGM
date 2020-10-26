@@ -11,11 +11,20 @@ namespace Operacion.s.Infraestructura.Disponibilidad.Bitacora
     {
         Clase.Bitacora bitacora = new Clase.Bitacora();
 
-        Clase.Master master = new Clase.Master();
+        Clase.Accesos accesos = new Clase.Accesos();
         protected void Page_Init(object sender, EventArgs e)
         {
-            string Usuario = Page.User.Identity.Name;
-            if (master.ValidarInfraestructura(Usuario))
+            if (!IsPostBack)
+            {
+                ValidarAccesos();
+            }
+
+        }
+
+        public void ValidarAccesos()
+        {
+            int IdUsuario = Convert.ToInt32((this.Master as Operacion.s.Site1).IDUsuario.ToString());
+            if (accesos.ValidarDisponibilidadDeEquipos(IdUsuario))
             {
 
             }
@@ -23,6 +32,7 @@ namespace Operacion.s.Infraestructura.Disponibilidad.Bitacora
             {
                 Response.Redirect("~/s/Inicio.aspx");
             }
+
         }
         protected void Page_Load(object sender, EventArgs e)
         {

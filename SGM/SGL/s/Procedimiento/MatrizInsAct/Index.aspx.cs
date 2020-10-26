@@ -10,6 +10,29 @@ namespace SGL.s.Procedimiento.MatrizInsAct
     public partial class Index : System.Web.UI.Page
     {
         Clase.InstalacionActividad insact = new Clase.InstalacionActividad();
+        Clase.Accesos accesos = new Clase.Accesos();
+        protected void Page_Init(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                ValidarAccesos();
+            }
+
+        }
+
+        public void ValidarAccesos()
+        {
+            int IdUsuario = Convert.ToInt32((this.Master as SGL.s.Site1).IDUsuario.ToString());
+            if (accesos.ValidarInstalacionActividad(IdUsuario))
+            {
+
+            }
+            else
+            {
+                Response.Redirect("~/s/Inicio.aspx");
+            }
+
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -25,8 +48,8 @@ namespace SGL.s.Procedimiento.MatrizInsAct
         public void MostrarGrid()
         {
             int IdSuscripcion = Convert.ToInt32((this.Master as SGL.s.Site1).IdSuscripcion.ToString());
-            string Usuario = Page.User.Identity.Name;
-            gridMatriz.DataSource = insact.MostrarGeneral(IdSuscripcion,Usuario);
+            int IdUsuario = Convert.ToInt32((this.Master as SGL.s.Site1).IDUsuario.ToString());
+            gridMatriz.DataSource = insact.MostrarGeneral(IdSuscripcion,IdUsuario);
             gridMatriz.DataBind();
         
 

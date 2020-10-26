@@ -13,13 +13,13 @@ namespace Operacion.s.Produccion {
     public partial class Inicio {
         
         /// <summary>
-        /// Control produccion.
+        /// Control horasturno.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl produccion;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl horasturno;
         
         /// <summary>
         /// Control lblHoras.

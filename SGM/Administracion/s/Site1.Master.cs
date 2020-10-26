@@ -71,6 +71,8 @@ namespace Administracion.s
             {
                 string Usuario = Page.User.Identity.Name;
                 master.LeerDatosUsuario(Usuario);
+                lblIdUsuario.Text = master.IdUsuario;
+
                 lblIdSuscripcion.Text = master.IdSuscripcion;
                 lblTitulo.Text = master.Nombre;
                 lblUsuario.Text = Usuario;
@@ -78,8 +80,9 @@ namespace Administracion.s
                 if (RadInstalacion.Items.Count == 1)
                 {
                     int IdSuscripcion = Convert.ToInt32(lblIdSuscripcion.Text);
+                    int IdUsuario = Convert.ToInt32(lblIdUsuario.Text);
 
-                    master.LeerDatosInstalacion(IdSuscripcion,Usuario);
+                    master.LeerDatosInstalacion(IdSuscripcion, IdUsuario);
                     RadInstalacion.SelectedValue = master.IdInstalacion;
                     lblIDInstalacion.Text = master.IdInstalacion;
                     RadInstalacion.Enabled = false;
@@ -122,6 +125,22 @@ namespace Administracion.s
 
             }
         }
+        public string IDUsuario
+        {
+
+            set
+            {
+                lblIdUsuario.Text = value;
+            }
+
+            get
+            {
+
+                return lblIdUsuario.Text;
+            }
+
+
+        }
 
         public string IdInstalacion
         {
@@ -148,9 +167,9 @@ namespace Administracion.s
         public void LlenarDrop()
         {
             int IdSuscripcion = Convert.ToInt32(lblIdSuscripcion.Text);
-            string Usuario = Page.User.Identity.Name;
+            int IdUsuario = Convert.ToInt32(lblIdUsuario.Text);
 
-            RadInstalacion.DataSource = master.MostrarInstalacion(IdSuscripcion, Usuario);
+            RadInstalacion.DataSource = master.MostrarInstalacion(IdSuscripcion, IdUsuario);
             RadInstalacion.DataBind();
 
         }

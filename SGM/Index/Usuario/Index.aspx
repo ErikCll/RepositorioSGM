@@ -50,7 +50,7 @@
                                     <Columns>
                                         <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="260px" ItemStyle-Width="260px" ControlStyle-Width="76px">
                                             <ItemTemplate>
-<%--                                               <asp:Button runat="server" Text="Instalación" CssClass="btn btn-outline-primary" CommandName="Ver"/>--%>
+                                               <asp:Button runat="server" Text="Accesos" CssClass="btn btn-outline-primary" CommandName="Accesos"/>
                                                <asp:Button runat="server" Text="Editar" CssClass="btn btn-outline-secondary" CommandName="Editar" />
 
                                                <asp:Button runat="server" Text="Eliminar" CssClass="btn btn-outline-danger" CommandName="Eliminar" OnClientClick="javascript:if(!confirm('¿Desea borrar el registro?'))return false" />

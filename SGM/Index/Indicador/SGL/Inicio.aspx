@@ -8,7 +8,7 @@
          <div class="col-lg-12">
        <div class="row">
 
-                <div class="col-sm-12 col-md-6 col-lg-4" runat="server" id="infraestructura" visible="true">
+                <div class="col-sm-12 col-md-6 col-lg-4" runat="server" id="acreditaciones" visible="false">
 <div class="card card-default shadow-sm">
               <div class="card-header">
                 <h3 class="card-title font-weight-bold">Acreditaciones</h3>

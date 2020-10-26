@@ -1658,6 +1658,7 @@
     <Content Include="s\Catalogo\Equipo\Detalle.aspx" />
     <Content Include="s\Catalogo\Equipo\Editar.aspx" />
     <Content Include="s\Catalogo\Equipo\Index.aspx" />
+    <Content Include="s\Error.aspx" />
     <Content Include="s\Infraestructura\Disponibilidad\Bitacora\Crear.aspx" />
     <Content Include="s\Infraestructura\Disponibilidad\Bitacora\Editar.aspx" />
     <Content Include="s\Infraestructura\Disponibilidad\Bitacora\Index.aspx" />
@@ -1671,7 +1672,9 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Clase\Accesos.cs" />
     <Compile Include="Clase\Bitacora.cs" />
+    <Compile Include="Clase\Correo.cs" />
     <Compile Include="Clase\Disponibilidad.cs" />
     <Compile Include="Clase\Equipo.cs" />
     <Compile Include="Clase\Login.cs" />
@@ -1709,6 +1712,13 @@
     </Compile>
     <Compile Include="s\Catalogo\Equipo\Index.aspx.designer.cs">
       <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="s\Error.aspx.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="s\Error.aspx.designer.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
     </Compile>
     <Compile Include="s\Infraestructura\Disponibilidad\Bitacora\Crear.aspx.cs">
       <DependentUpon>Crear.aspx</DependentUpon>

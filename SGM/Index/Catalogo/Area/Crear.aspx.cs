@@ -10,12 +10,21 @@ namespace SAM.Catalogo.Area
     public partial class Crear : System.Web.UI.Page
     {
         Clase.Area objIns = new Clase.Area();
-        Clase.Master master = new Clase.Master();
+        Clase.Accesos accesos = new Clase.Accesos();
 
         protected void Page_Init(object sender, EventArgs e)
         {
-            string Usuario = Page.User.Identity.Name;
-            if (master.ValidarCatalogo(Usuario))
+            if (!IsPostBack)
+            {
+                ValidarAccesos();
+            }
+
+        }
+
+        public void ValidarAccesos()
+        {
+            int IdUsuario = Convert.ToInt32((this.Master as SAM.Site1).IDUsuario.ToString());
+            if (accesos.ValidarArea(IdUsuario))
             {
 
             }
@@ -23,6 +32,8 @@ namespace SAM.Catalogo.Area
             {
                 Response.Redirect("~/Inicio.aspx");
             }
+
+
         }
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -50,8 +61,9 @@ namespace SAM.Catalogo.Area
         public void LlenarDrop()
         {
             int IdSuscripcion = Convert.ToInt32((this.Master as SAM.Site1).IdSuscripcion);
-            string Usuario = Page.User.Identity.Name;
-            ddl_Instalacion.DataSource = objIns.MostrarInstalacion(IdSuscripcion,Usuario);
+            int IdUsuario = Convert.ToInt32((this.Master as SAM.Site1).IDUsuario);
+
+            ddl_Instalacion.DataSource = objIns.MostrarInstalacion(IdSuscripcion, IdUsuario);
             ddl_Instalacion.DataBind();
             ddl_Instalacion.Items.Insert(0, new ListItem("[Seleccionar]"));
 

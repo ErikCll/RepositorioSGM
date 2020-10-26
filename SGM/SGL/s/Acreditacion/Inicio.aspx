@@ -13,7 +13,7 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="Content" runat="server">
     <div class="col-lg-12">
         <div class="row">
-            <div class="col-sm-12 col-md-6 col-lg-4" runat="server" id="infraestructura" visible="true">
+            <div class="col-sm-12 col-md-6 col-lg-4" runat="server" id="ema" visible="false">
                 <div class="card card-default shadow-sm">
                     <div class="card-header">
                         <h3 class="card-title font-weight-bold">EMA </h3>
@@ -59,7 +59,7 @@
 
             </div>
 
-               <div class="col-sm-12 col-md-6 col-lg-4" runat="server" id="Div1" visible="true">
+               <div class="col-sm-12 col-md-6 col-lg-4" runat="server" id="cre" visible="false">
                 <div class="card card-default shadow-sm">
                     <div class="card-header">
                         <h3 class="card-title font-weight-bold">CRE </h3>

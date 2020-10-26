@@ -10,12 +10,21 @@ namespace SAM.Catalogo.Instalacion
     public partial class Editar : System.Web.UI.Page
     {
         Clase.Instalacion objIns = new Clase.Instalacion();
-        Clase.Master master = new Clase.Master();
+        Clase.Accesos accesos = new Clase.Accesos();
 
         protected void Page_Init(object sender, EventArgs e)
         {
-            string Usuario = Page.User.Identity.Name;
-            if (master.ValidarCatalogo(Usuario))
+            if (!IsPostBack)
+            {
+                ValidarAccesos();
+            }
+
+        }
+
+        public void ValidarAccesos()
+        {
+            int IdUsuario = Convert.ToInt32((this.Master as SAM.Site1).IDUsuario.ToString());
+            if (accesos.ValidarInstalacion(IdUsuario))
             {
 
             }
@@ -23,6 +32,8 @@ namespace SAM.Catalogo.Instalacion
             {
                 Response.Redirect("~/Inicio.aspx");
             }
+
+
         }
         protected void Page_Load(object sender, EventArgs e)
         {

@@ -27,8 +27,9 @@ namespace Operacion.s
 
             if (login.AutenticarUsuario(Usuario, Contrasena))
             {
-
-                if (login.ValidarOperacion(Usuario))
+                login.LeerDatosUsuario(Usuario);
+                int IdUsuario = Convert.ToInt32(login.IdUsuario);
+                if (login.ValidarOperacion(IdUsuario))
                 {
                     FormsAuthentication.RedirectFromLoginPage(Login1.UserName, Login1.RememberMeSet);
 

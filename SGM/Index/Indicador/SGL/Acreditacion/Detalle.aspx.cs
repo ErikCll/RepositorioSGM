@@ -9,8 +9,31 @@ namespace SAM.Indicador.SGL.Acreditacion
 {
     public partial class Detalle : System.Web.UI.Page
     {
-        Clase.Acreditacion acreditacion = new Clase.Acreditacion();
+        Clase.IndicadorSGL indicadorSGL = new Clase.IndicadorSGL();
 
+        protected void Page_Init(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                ValidarAccesos();
+            }
+
+        }
+
+        public void ValidarAccesos()
+        {
+            int IdUsuario = Convert.ToInt32((this.Master as SAM.Site1).IDUsuario.ToString());
+            if (indicadorSGL.ValidarAcreditacion(IdUsuario))
+            {
+
+            }
+            else
+            {
+                Response.Redirect("~/Inicio.aspx");
+            }
+
+
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
             Page.Form.DefaultButton = btnBuscar.UniqueID;
@@ -27,7 +50,7 @@ namespace SAM.Indicador.SGL.Acreditacion
         {
 
             int IdSuscripcion = Convert.ToInt32((this.Master as SAM.Site1).IdSuscripcion);
-            gridInstalacion.DataSource = acreditacion.Mostrar(txtSearch.Text.Trim(), IdSuscripcion);
+            gridInstalacion.DataSource = indicadorSGL.MostrarDetalleAcreditacion(txtSearch.Text.Trim(), IdSuscripcion);
             gridInstalacion.DataBind();
         }
 

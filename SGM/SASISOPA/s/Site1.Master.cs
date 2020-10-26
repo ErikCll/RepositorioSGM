@@ -56,6 +56,8 @@ namespace SASISOPA.s
             {
                 string Usuario = Page.User.Identity.Name;
                 master.LeerDatosUsuario(Usuario);
+                lblIdUsuario.Text = master.IdUsuario;
+
                 lblIdSuscripcion.Text = master.IdSuscripcion;
                 lblTitulo.Text = master.Nombre;
                 lblUsuario.Text = Usuario;
@@ -63,8 +65,9 @@ namespace SASISOPA.s
                 if (RadInstalacion.Items.Count == 1)
                 {
                     int IdSuscripcion = Convert.ToInt32(lblIdSuscripcion.Text);
+                    int IdUsuario = Convert.ToInt32(lblIdUsuario.Text);
 
-                    master.LeerDatosInstalacion(IdSuscripcion, Usuario);
+                    master.LeerDatosInstalacion(IdSuscripcion, IdUsuario);
                     RadInstalacion.SelectedValue = master.IdInstalacion;
                     lblIDInstalacion.Text = master.IdInstalacion;
                     RadInstalacion.Enabled = false;
@@ -108,18 +111,44 @@ namespace SASISOPA.s
 
                 }
 
+                else if (activepage.Contains("/RequisitoLegal/Inicio.aspx") || activepage.Contains("/RequisitoLegal/Regulador/Index.aspx") || activepage.Contains("/RequisitoLegal/Regulador/Crear.aspx") || activepage.Contains("/RequisitoLegal/Regulador/Editar.aspx") || activepage.Contains("/RequisitoLegal/DocRegulador/Index.aspx") || activepage.Contains("/RequisitoLegal/DocRegulador/Crear.aspx") || activepage.Contains("/RequisitoLegal/DocRegulador/Editar.aspx") || activepage.Contains("/RequisitoLegal/Requisito/Index.aspx") || activepage.Contains("/RequisitoLegal/Requisito/Crear.aspx") || activepage.Contains("/RequisitoLegal/Requisito/Editar.aspx"))
+                {
+                    menu_requisito.Attributes.Add("class", "  nav-item has-treeview menu-open");
+                    requisito.Attributes.Add("class", "nav-link active");
+                    //catact.Attributes.Add("class", "nav-link active");
+
+                }
 
 
-           
 
 
-            
-          
+
+
+
+
 
 
             }
 
         }
+
+        public string IDUsuario
+        {
+
+            set
+            {
+                lblIdUsuario.Text = value;
+            }
+
+            get
+            {
+
+                return lblIdUsuario.Text;
+            }
+
+
+        }
+
         public string IdInstalacion
         {
             get
@@ -155,9 +184,8 @@ namespace SASISOPA.s
         public void LlenarDrop()
         {
             int IdSuscripcion = Convert.ToInt32(lblIdSuscripcion.Text);
-            string Usuario = Page.User.Identity.Name;
-
-            RadInstalacion.DataSource = master.MostrarInstalacion(IdSuscripcion,Usuario);
+            int IdUsuario = Convert.ToInt32(lblIdUsuario.Text);
+            RadInstalacion.DataSource = master.MostrarInstalacion(IdSuscripcion, IdUsuario);
             RadInstalacion.DataBind();
 
         }

@@ -13,13 +13,13 @@ namespace SGL.s {
     public partial class Inicio {
         
         /// <summary>
-        /// Control infraestructura.
+        /// Control acreditacion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl infraestructura;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl acreditacion;
         
         /// <summary>
         /// Control lblPorcentaje.
@@ -40,13 +40,13 @@ namespace SGL.s {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divprogress1;
         
         /// <summary>
-        /// Control Div1.
+        /// Control procedimientoinstructivo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div1;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl procedimientoinstructivo;
         
         /// <summary>
         /// Control Label1.
@@ -67,13 +67,13 @@ namespace SGL.s {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl div2;
         
         /// <summary>
-        /// Control Div3.
+        /// Control competencia.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div3;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl competencia;
         
         /// <summary>
         /// Control Label2.

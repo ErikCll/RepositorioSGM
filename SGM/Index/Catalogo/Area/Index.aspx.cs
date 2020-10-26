@@ -11,24 +11,16 @@ namespace SAM.Catalogo.Area
     public partial class Index : System.Web.UI.Page
     {
         Clase.Area area = new Clase.Area();
-        Clase.Master master = new Clase.Master();
+        Clase.Accesos accesos = new Clase.Accesos();
 
         protected void Page_Init(object sender, EventArgs e)
         {
-            string Usuario = Page.User.Identity.Name;
-            if (master.ValidarCatalogo(Usuario))
+            if (!IsPostBack)
             {
-
+                ValidarAccesos();
             }
-            else
-            {
-                Response.Redirect("~/Inicio.aspx");
-            }
-
-
             if (Request.QueryString["url"] == null)
             {
-                //Response.Redirect("~/Inicio.aspx");
 
             }
             else
@@ -37,6 +29,22 @@ namespace SAM.Catalogo.Area
                 Session["url"] = url;
             }
         }
+
+        public void ValidarAccesos()
+        {
+            int IdUsuario = Convert.ToInt32((this.Master as SAM.Site1).IDUsuario.ToString());
+            if (accesos.ValidarArea(IdUsuario))
+            {
+               
+            }
+            else
+            {
+                Response.Redirect("~/Inicio.aspx");
+            }
+
+         
+        }
+    
         protected void Page_Load(object sender, EventArgs e)
         {
             Page.Form.DefaultButton = btnBuscar.UniqueID;

@@ -1720,6 +1720,7 @@
     <Content Include="s\ControlAct\CensoAct\Index.aspx" />
     <Content Include="s\Competencia\Inicio.aspx" />
     <Content Include="s\ControlDoc\Inicio.aspx" />
+    <Content Include="s\Error.aspx" />
     <Content Include="s\FuncionRes\Inicio.aspx" />
     <Content Include="s\FuncionRes\MatrizCatAct\Agregar.aspx" />
     <Content Include="s\FuncionRes\MatrizCatAct\Detalle.aspx" />
@@ -1748,7 +1749,16 @@
     <Content Include="s\Politica\Inicio.aspx" />
     <Content Include="s\Politica\Programa\Index.aspx" />
     <Content Include="s\PreEvaluacion.aspx" />
+    <Content Include="s\RequisitoLegal\DocRegulador\Crear.aspx" />
+    <Content Include="s\RequisitoLegal\DocRegulador\Editar.aspx" />
+    <Content Include="s\RequisitoLegal\DocRegulador\Index.aspx" />
     <Content Include="s\RequisitoLegal\Inicio.aspx" />
+    <Content Include="s\RequisitoLegal\Regulador\Crear.aspx" />
+    <Content Include="s\RequisitoLegal\Regulador\Editar.aspx" />
+    <Content Include="s\RequisitoLegal\Regulador\Index.aspx" />
+    <Content Include="s\RequisitoLegal\Requisito\Crear.aspx" />
+    <Content Include="s\RequisitoLegal\Requisito\Editar.aspx" />
+    <Content Include="s\RequisitoLegal\Requisito\Index.aspx" />
     <Content Include="s\Respuesta\Inicio.aspx" />
     <Content Include="s\Revision\Inicio.aspx" />
     <Content Include="s\Riesgo\Inicio.aspx" />
@@ -1760,11 +1770,15 @@
     <Compile Include="Clase\ActividadControl.cs" />
     <Compile Include="Clase\CategoriaActividad.cs" />
     <Compile Include="Clase\CategoriaEmpleado.cs" />
+    <Compile Include="Clase\Correo.cs" />
+    <Compile Include="Clase\DocRegulador.cs" />
     <Compile Include="Clase\Evaluacion.cs" />
     <Compile Include="Clase\InstalacionActividad.cs" />
     <Compile Include="Clase\Login.cs" />
     <Compile Include="Clase\Master.cs" />
     <Compile Include="Clase\ProgramaCapacitacion.cs" />
+    <Compile Include="Clase\Regulador.cs" />
+    <Compile Include="Clase\Requisito.cs" />
     <Compile Include="Clase\ResultadoEvaluacion.cs" />
     <Compile Include="Conexion.cs" />
     <Compile Include="Global.asax.cs">
@@ -1903,6 +1917,13 @@
     </Compile>
     <Compile Include="s\ControlDoc\Inicio.aspx.designer.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="s\Error.aspx.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="s\Error.aspx.designer.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
     </Compile>
     <Compile Include="s\FuncionRes\Inicio.aspx.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>
@@ -2100,12 +2121,75 @@
     <Compile Include="s\PreEvaluacion.aspx.designer.cs">
       <DependentUpon>PreEvaluacion.aspx</DependentUpon>
     </Compile>
+    <Compile Include="s\RequisitoLegal\DocRegulador\Crear.aspx.cs">
+      <DependentUpon>Crear.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="s\RequisitoLegal\DocRegulador\Crear.aspx.designer.cs">
+      <DependentUpon>Crear.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="s\RequisitoLegal\DocRegulador\Editar.aspx.cs">
+      <DependentUpon>Editar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="s\RequisitoLegal\DocRegulador\Editar.aspx.designer.cs">
+      <DependentUpon>Editar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="s\RequisitoLegal\DocRegulador\Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="s\RequisitoLegal\DocRegulador\Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
     <Compile Include="s\RequisitoLegal\Inicio.aspx.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="s\RequisitoLegal\Inicio.aspx.designer.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="s\RequisitoLegal\Regulador\Crear.aspx.cs">
+      <DependentUpon>Crear.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="s\RequisitoLegal\Regulador\Crear.aspx.designer.cs">
+      <DependentUpon>Crear.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="s\RequisitoLegal\Regulador\Editar.aspx.cs">
+      <DependentUpon>Editar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="s\RequisitoLegal\Regulador\Editar.aspx.designer.cs">
+      <DependentUpon>Editar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="s\RequisitoLegal\Regulador\Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="s\RequisitoLegal\Regulador\Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="s\RequisitoLegal\Requisito\Crear.aspx.cs">
+      <DependentUpon>Crear.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="s\RequisitoLegal\Requisito\Crear.aspx.designer.cs">
+      <DependentUpon>Crear.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="s\RequisitoLegal\Requisito\Editar.aspx.cs">
+      <DependentUpon>Editar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="s\RequisitoLegal\Requisito\Editar.aspx.designer.cs">
+      <DependentUpon>Editar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="s\RequisitoLegal\Requisito\Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="s\RequisitoLegal\Requisito\Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
     </Compile>
     <Compile Include="s\Respuesta\Inicio.aspx.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>

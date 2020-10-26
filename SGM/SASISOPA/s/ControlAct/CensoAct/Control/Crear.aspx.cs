@@ -21,7 +21,7 @@ namespace SASISOPA.s.ControlAct.CensoAct.Control
                 (this.Master as SASISOPA.s.Site1).OcultarLabel = false;
                 checkSin.Checked = true;
                 chckNo.Checked = true;
-
+               
                 string decodedString = System.Text.ASCIIEncoding.ASCII.GetString(Convert.FromBase64String(Request.QueryString["id"]));
                 int IdActividad = Convert.ToInt32(decodedString);
 

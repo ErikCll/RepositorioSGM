@@ -13,13 +13,13 @@ namespace Operacion.s.Infraestructura {
     public partial class Inicio {
         
         /// <summary>
-        /// Control infraestructura.
+        /// Control disponibilidadequipos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl infraestructura;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl disponibilidadequipos;
         
         /// <summary>
         /// Control lblPorcentaje.

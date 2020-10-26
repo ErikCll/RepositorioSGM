@@ -29,7 +29,9 @@ namespace SAM
 
             if (login.AutenticarUsuario(Usuario, Contrasena))
             {
-                if (login.ValidarSAM(Usuario))
+                login.LeerDatosUsuario(Usuario);
+                int IdSuscripcion = Convert.ToInt32(login.IdSuscripcion);
+                if (login.ValidarSAM(IdSuscripcion))
                 {
                     FormsAuthentication.RedirectFromLoginPage(Login1.UserName, Login1.RememberMeSet);
 

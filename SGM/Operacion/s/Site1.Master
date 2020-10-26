@@ -44,7 +44,8 @@
 
 <%--  <nav class="main-header navbar navbar-expand navbar-white navbar-light ">--%>
           <nav class="main-header navbar navbar-expand  navbar-dark navbar-lightblue ">
-                                                    <asp:Label runat="server" ID="lblIdSuscripcion" Visible="false"></asp:Label>
+            <asp:Label runat="server" ID="lblIdSuscripcion" Visible="false"></asp:Label>
+              <asp:Label runat="server" ID="lblIdUsuario" Visible="false"></asp:Label>
 
 
     <!-- Left navbar links -->

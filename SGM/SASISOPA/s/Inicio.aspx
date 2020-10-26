@@ -25,7 +25,7 @@
                             <div class="col-sm-8 col-md-8 col-lg-8">
 
 
-                                   <label class=" text-sm font-weight-normal">Difusión: </label><asp:Label runat="server" ID="Label5" CssClass="text-sm ml-1 text-bold"></asp:Label>
+                                   <label class=" text-sm font-weight-normal">Difusión: </label><asp:Label runat="server" ID="Label5" CssClass="text-sm ml-1 text-bold" Text="92%"></asp:Label>
                        
   
 
@@ -36,7 +36,7 @@
                             </div>  
                             <div class="col-sm-4 col-md-4 col-lg-4 mt-1">
 
-                                  <div class="progress"><div class="progress-bar"  id="Div1" runat="server"></div></div> 
+                                  <div class="progress"><div class="progress-bar"  id="Div1" runat="server" style="width:92%"></div></div> 
                             </div>
 
                         
@@ -44,12 +44,12 @@
                            
                                                         <div class="col-sm-8 col-md-8 col-lg-8">
 
- <label class="text-sm font-weight-normal">Evaluación: </label><asp:Label runat="server" ID="Label9" CssClass="text-sm ml-1 text-bold"></asp:Label>
+ <label class="text-sm font-weight-normal">Evaluación: </label><asp:Label runat="server" ID="Label9" CssClass="text-sm ml-1 text-bold" Text="100%"></asp:Label>
 
 </div>
                                 <div class="col-sm-4 col-md-4 col-lg-4 mt-1">
 
-                                  <div class="progress"><div class="progress-bar" id="Div2" runat="server"></div></div> 
+                                  <div class="progress"><div class="progress-bar" id="Div2" runat="server" style="width:100%"></div></div> 
                             </div>
                            <%--    <div class="col-sm-6 col-md-6 col-lg-6">
                                                  <i class="fas fa-graduation-cap fa-4x text-black-50 float-right"></i>
@@ -110,15 +110,46 @@
                         <h3 class="card-title font-weight-bold">3. Requisitos Legales</h3>
                         <i class="fas fa-balance-scale fa-2x text-black-50 float-right"></i>
                     </div>
-                    <div class="card-body" style="display: block;">
+                             <div class="card-body" style="display: block;">
                         <div class="row">
-                            <div class="col-sm-12 col-md-6 col-lg-12">
-                                <h3>
-                                    <asp:Label runat="server" ID="Label2"></asp:Label><label class="font-weight-normal">  </label>
-                                    
-                                </h3>
 
+                            <div class="col-sm-8 col-md-8 col-lg-8">
+
+
+                                   <label class=" text-sm font-weight-normal">Reguladores: </label><asp:Label runat="server" ID="Label2" CssClass="text-sm ml-1 text-bold" Text="5"></asp:Label>
+                       
+  
+
+                                                               
+<%--<br />
+                                    <label class="text-sm">Promedio: </label><asp:Label runat="server" ID="lblPromedio" Text="87.50%" CssClass="text-sm"></asp:Label>--%>
+                                                                                       
+                            </div>  
+                            <div class="col-sm-4 col-md-4 col-lg-4 mt-1">
+
+                                  <div class="progress"><div class="progress-bar"  id="Div12" runat="server"></div></div> 
                             </div>
+
+                        
+                         
+                           
+                                                        <div class="col-sm-8 col-md-8 col-lg-8">
+
+ <label class="text-sm font-weight-normal">Cumplimiento requisitos: </label><asp:Label runat="server" ID="Label23" CssClass="text-sm ml-1 text-bold" Text="100%"></asp:Label>
+
+</div>
+                                <div class="col-sm-4 col-md-4 col-lg-4 mt-1">
+
+                                  <div class="progress"><div class="progress-bar" id="Div13" runat="server" style="width:100%"></div></div> 
+                            </div>
+                           <%--    <div class="col-sm-6 col-md-6 col-lg-6">
+                                                 <i class="fas fa-graduation-cap fa-4x text-black-50 float-right"></i>
+                                       </div>         --%>       
+                           
+                                    
+
+
+
 
                         </div>
 
@@ -494,7 +525,7 @@
                             <div class="col-sm-8 col-md-8 col-lg-8">
 
 
-                                   <label class=" text-sm font-weight-normal">Programa de simulacros: </label><asp:Label runat="server" ID="Label12" CssClass="text-sm ml-1 text-bold"></asp:Label>
+                                   <label class=" text-sm font-weight-normal">Programa de simulacros: </label><asp:Label runat="server" ID="Label12" CssClass="text-sm ml-1 text-bold" Text="85%"></asp:Label>
                        
   
 
@@ -505,7 +536,7 @@
                             </div>  
                             <div class="col-sm-4 col-md-4 col-lg-4 mt-1">
 
-                                  <div class="progress"><div class="progress-bar"  id="Div3" runat="server"></div></div> 
+                                  <div class="progress"><div class="progress-bar"  id="Div3" runat="server" style="width:85%"></div></div> 
                             </div>
 
                         
@@ -513,12 +544,12 @@
                            
                                                         <div class="col-sm-8 col-md-8 col-lg-8">
 
- <label class="text-sm font-weight-normal">Plan de Emergencias: </label><asp:Label runat="server" ID="Label18" CssClass="text-sm ml-1 text-bold"></asp:Label>
+ <label class="text-sm font-weight-normal">Plan de Emergencias: </label><asp:Label runat="server" ID="Label18" CssClass="text-sm ml-1 text-bold" Text="100%"></asp:Label>
 
 </div>
                                 <div class="col-sm-4 col-md-4 col-lg-4 mt-1">
 
-                                  <div class="progress"><div class="progress-bar" id="Div4" runat="server"></div></div> 
+                                  <div class="progress"><div class="progress-bar" id="Div4" runat="server" style="width:100%"></div></div> 
                             </div>
                            <%--    <div class="col-sm-6 col-md-6 col-lg-6">
                                                  <i class="fas fa-graduation-cap fa-4x text-black-50 float-right"></i>
@@ -554,7 +585,7 @@
                             <div class="col-sm-8 col-md-8 col-lg-8">
 
 
-                                   <label class=" text-sm font-weight-normal">Programa  Reuniones: </label><asp:Label runat="server" ID="Label13" CssClass="text-sm ml-1 text-bold"></asp:Label>
+                                   <label class=" text-sm font-weight-normal">Programa  Reuniones: </label><asp:Label runat="server" ID="Label13" CssClass="text-sm ml-1 text-bold" Text="80%"></asp:Label>
                        
   
 
@@ -565,7 +596,7 @@
                             </div>  
                             <div class="col-sm-4 col-md-4 col-lg-4 mt-1">
 
-                                  <div class="progress"><div class="progress-bar"  id="Div5" runat="server"></div></div> 
+                                  <div class="progress"><div class="progress-bar"  id="Div5" runat="server" style="width:80%"></div></div> 
                             </div>
 
                         
@@ -573,12 +604,12 @@
                            
                                                         <div class="col-sm-8 col-md-8 col-lg-8">
 
- <label class="text-sm font-weight-normal">Atención de acuerdos: </label><asp:Label runat="server" ID="Label19" CssClass="text-sm ml-1 text-bold"></asp:Label>
+ <label class="text-sm font-weight-normal">Atención de acuerdos: </label><asp:Label runat="server" ID="Label19" CssClass="text-sm ml-1 text-bold" Text="100%"></asp:Label>
 
 </div>
                                 <div class="col-sm-4 col-md-4 col-lg-4 mt-1">
 
-                                  <div class="progress"><div class="progress-bar" id="Div6" runat="server"></div></div> 
+                                  <div class="progress"><div class="progress-bar" id="Div6" runat="server" style="width:100%"></div></div> 
                             </div>
                            <%--    <div class="col-sm-6 col-md-6 col-lg-6">
                                                  <i class="fas fa-graduation-cap fa-4x text-black-50 float-right"></i>
@@ -614,7 +645,7 @@
                             <div class="col-sm-8 col-md-8 col-lg-8">
 
 
-                                   <label class=" text-sm font-weight-normal">Programa Auditorías: </label><asp:Label runat="server" ID="Label14" CssClass="text-sm ml-1 text-bold"></asp:Label>
+                                   <label class=" text-sm font-weight-normal">Programa Auditorías: </label><asp:Label runat="server" ID="Label14" CssClass="text-sm ml-1 text-bold" Text="100%"></asp:Label>
                        
   
 
@@ -625,7 +656,7 @@
                             </div>  
                             <div class="col-sm-4 col-md-4 col-lg-4 mt-1">
 
-                                  <div class="progress"><div class="progress-bar"  id="Div7" runat="server"></div></div> 
+                                  <div class="progress"><div class="progress-bar"  id="Div7" runat="server" style="width:100%"></div></div> 
                             </div>
 
                         
@@ -633,12 +664,12 @@
                            
                                                         <div class="col-sm-8 col-md-8 col-lg-8">
 
- <label class="text-sm font-weight-normal">Atención de hallazgos: </label><asp:Label runat="server" ID="Label20" CssClass="text-sm ml-1 text-bold"></asp:Label>
+ <label class="text-sm font-weight-normal">Atención de hallazgos: </label><asp:Label runat="server" ID="Label20" CssClass="text-sm ml-1 text-bold" Text="70%"></asp:Label>
 
 </div>
                                 <div class="col-sm-4 col-md-4 col-lg-4 mt-1">
 
-                                  <div class="progress"><div class="progress-bar" id="Div8" runat="server"></div></div> 
+                                  <div class="progress"><div class="progress-bar" id="Div8" runat="server" style="width:70%"></div></div> 
                             </div>
                            <%--    <div class="col-sm-6 col-md-6 col-lg-6">
                                                  <i class="fas fa-graduation-cap fa-4x text-black-50 float-right"></i>
@@ -674,7 +705,7 @@
                             <div class="col-sm-8 col-md-8 col-lg-8">
 
 
-                                   <label class=" text-sm font-weight-normal">Incidentes: </label><asp:Label runat="server" ID="Label15" CssClass="text-sm ml-1 text-bold"></asp:Label>
+                                   <label class=" text-sm font-weight-normal">Incidentes: </label><asp:Label runat="server" ID="Label15" CssClass="text-sm ml-1 text-bold" Text="3"></asp:Label>
                        
   
 
@@ -693,23 +724,23 @@
                            
                                                         <div class="col-sm-8 col-md-8 col-lg-8">
 
- <label class="text-sm font-weight-normal">Difusión incidentes: </label><asp:Label runat="server" ID="Label21" CssClass="text-sm ml-1 text-bold"></asp:Label>
+ <label class="text-sm font-weight-normal">Difusión incidentes: </label><asp:Label runat="server" ID="Label21" CssClass="text-sm ml-1 text-bold" Text="80%"></asp:Label>
 
 </div>
                                 <div class="col-sm-4 col-md-4 col-lg-4 mt-1">
 
-                                  <div class="progress"><div class="progress-bar" id="Div10" runat="server"></div></div> 
+                                  <div class="progress"><div class="progress-bar" id="Div10" runat="server" style="width:80%"></div></div> 
                             </div>
 
                                              
                                                         <div class="col-sm-8 col-md-8 col-lg-8">
 
- <label class="text-sm font-weight-normal">Elaboración de ACR: </label><asp:Label runat="server" ID="Label22" CssClass="text-sm ml-1 text-bold"></asp:Label>
+ <label class="text-sm font-weight-normal">Elaboración de ACR: </label><asp:Label runat="server" ID="Label22" CssClass="text-sm ml-1 text-bold" Text="50%"></asp:Label>
 
 </div>
                                 <div class="col-sm-4 col-md-4 col-lg-4 mt-1">
 
-                                  <div class="progress"><div class="progress-bar" id="Div11" runat="server"></div></div> 
+                                  <div class="progress"><div class="progress-bar" id="Div11" runat="server" style="width:50%"></div></div> 
                             </div>
                            <%--    <div class="col-sm-6 col-md-6 col-lg-6">
                                                  <i class="fas fa-graduation-cap fa-4x text-black-50 float-right"></i>

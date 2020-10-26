@@ -23,13 +23,13 @@ namespace SAM
 
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
-            string Correo = Page.User.Identity.Name;
+            int Idusuario = Convert.ToInt32((this.Master as SAM.Site1).IDUsuario);
             string ContrasenaActual = txtActual.Text;
             string ContrasenaNueva = txtNueva.Text;
 
-            if (usuario.ValidarContrasena(Correo, ContrasenaActual))
+            if (usuario.ValidarContrasena(Idusuario, ContrasenaActual))
             {
-                if (usuario.EditarContrasena(Correo, ContrasenaNueva, ContrasenaActual))
+                if (usuario.EditarContrasena(Idusuario, ContrasenaNueva, ContrasenaActual))
                 {
                     string txtJS = String.Format("<script>alert('{0}');</script>", "Se cambió la contraseña correctamente.");
                     ScriptManager.RegisterClientScriptBlock(litControl, litControl.GetType(), "script", txtJS, false);

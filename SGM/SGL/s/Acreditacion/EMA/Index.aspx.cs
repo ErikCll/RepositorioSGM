@@ -10,7 +10,29 @@ namespace SGL.s.Acreditacion.EMA
     public partial class Index : System.Web.UI.Page
     {
         Clase.EMA ema = new Clase.EMA();
+        Clase.Accesos accesos = new Clase.Accesos();
+        protected void Page_Init(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                ValidarAccesos();
+            }
 
+        }
+
+        public void ValidarAccesos()
+        {
+            int IdUsuario = Convert.ToInt32((this.Master as SGL.s.Site1).IDUsuario.ToString());
+            if (accesos.ValidarEma(IdUsuario))
+            {
+
+            }
+            else
+            {
+                Response.Redirect("~/s/Inicio.aspx");
+            }
+
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
             Page.Form.DefaultButton = btnBuscar.UniqueID;
@@ -79,7 +101,7 @@ namespace SGL.s.Acreditacion.EMA
                 int IdAcreditacion = (int)gridAcreditacion.DataKeys[row.RowIndex].Value;
                 string encodedString = (Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(IdAcreditacion.ToString())));
 
-                Response.Redirect("Control/Index.aspx?id=" + encodedString + "");
+                Response.Redirect("Archivo/Index.aspx?id=" + encodedString + "");
             }
         }
 

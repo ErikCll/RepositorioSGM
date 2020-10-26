@@ -10,6 +10,30 @@ namespace SAM.Usuario
     public partial class Index : System.Web.UI.Page
     {
         Clase.Usuario usuario = new Clase.Usuario();
+        Clase.Accesos accesos = new Clase.Accesos();
+
+        protected void Page_Init(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                ValidarAccesos();
+            }
+        }
+
+        public void ValidarAccesos()
+        {
+            int IdUsuario = Convert.ToInt32((this.Master as SAM.Site1).IDUsuario.ToString());
+            if (accesos.ValidarUsuario(IdUsuario))
+            {
+
+            }
+            else
+            {
+                Response.Redirect("~/Inicio.aspx");
+            }
+
+
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -83,6 +107,16 @@ namespace SAM.Usuario
                 string encodedString = (Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(IdUsuario.ToString())));
 
                 Response.Redirect("Agregar.aspx?id=" + encodedString + "");
+            }
+
+            else if (e.CommandName == "Accesos")
+            {
+                GridViewRow row = ((Control)e.CommandSource).Parent.Parent as GridViewRow;
+
+                int IdUsuario = (int)gridUsuario.DataKeys[row.RowIndex].Value;
+                string encodedString = (Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(IdUsuario.ToString())));
+
+                Response.Redirect("Acceso.aspx?id=" + encodedString + "");
             }
 
         }

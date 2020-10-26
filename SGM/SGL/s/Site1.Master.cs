@@ -13,7 +13,7 @@ namespace SGL.s
     {
         Clase.Master master = new Clase.Master();
         Clase.Login login = new Clase.Login();
-
+        Clase.Accesos accesos = new Clase.Accesos();
 
 
 
@@ -23,18 +23,7 @@ namespace SGL.s
             if (HttpContext.Current.User.Identity.IsAuthenticated)
 
             {
-                string Usuario = Page.User.Identity.Name;
-                if (login.ValidarSGL(Usuario))
-                {
-                    
-
-
-                }
-                else
-                {
-                    FormsAuthentication.SignOut();
-                    Response.Redirect(Request.UrlReferrer.ToString());
-                }
+             
 
             }
             else
@@ -62,20 +51,55 @@ namespace SGL.s
             {
                 string Usuario = Page.User.Identity.Name;
                 master.LeerDatosUsuario(Usuario);
+                lblIdUsuario.Text = master.IdUsuario;
+
                 lblIdSuscripcion.Text = master.IdSuscripcion;
                 lblTitulo.Text = master.Nombre;
                 lblUsuario.Text = Usuario;
+                ValidarAccesos();
+
                 LlenarDrop();
                 if (RadInstalacion.Items.Count == 1)
                 {
                     int IdSuscripcion = Convert.ToInt32(lblIdSuscripcion.Text);
-                    master.LeerDatosInstalacion(IdSuscripcion, Usuario);
+                    int IdUsuario = Convert.ToInt32(lblIdUsuario.Text);
+
+                    master.LeerDatosInstalacion(IdSuscripcion, IdUsuario);
                     RadInstalacion.SelectedValue = master.IdInstalacion;
                     lblIDInstalacion.Text = master.IdInstalacion;
                     RadInstalacion.Enabled = false;
                 }
             }
 
+        }
+
+        public void ValidarAccesos()
+        {
+            int IdUsuario = Convert.ToInt32(lblIdUsuario.Text);
+            if (login.ValidarSGL(IdUsuario))
+            {
+
+                if (accesos.ValidarAcreditacion(IdUsuario))
+                {
+                    menu_acreditacion.Visible = true;
+                }
+                if (accesos.ValidarProcedimientoInstructivo(IdUsuario))
+                {
+                    menu_procedimiento.Visible = true;
+                }
+
+                if (accesos.ValidarCompetencia(IdUsuario))
+                {
+                    menu_competencia.Visible = true;
+                }
+            }
+            else
+            {
+                Response.Redirect("http://orygon.azurewebsites.net/Inicio.aspx");
+
+                //FormsAuthentication.SignOut();
+                //Response.Redirect(Request.UrlReferrer.ToString());
+            }
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -116,6 +140,24 @@ namespace SGL.s
             }
 
         }
+
+        public string IDUsuario
+        {
+
+            set
+            {
+                lblIdUsuario.Text = value;
+            }
+
+            get
+            {
+
+                return lblIdUsuario.Text;
+            }
+
+
+        }
+
         public string IdInstalacion
         {
             get
@@ -151,9 +193,9 @@ namespace SGL.s
         public void LlenarDrop()
         {
             int IdSuscripcion = Convert.ToInt32(lblIdSuscripcion.Text);
-            string Usuario = Page.User.Identity.Name;
+            int IdUsuario = Convert.ToInt32(lblIdUsuario.Text);
 
-            RadInstalacion.DataSource = master.MostrarInstalacion(IdSuscripcion,Usuario);
+            RadInstalacion.DataSource = master.MostrarInstalacion(IdSuscripcion,IdUsuario);
             RadInstalacion.DataBind();
 
         }

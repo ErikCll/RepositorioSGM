@@ -14,6 +14,9 @@ namespace Operacion.Clase
         SqlDataAdapter da;
         SqlDataReader dr;
         public string Nombre { get; set; }
+        public string IdUsuario { get; set; }
+
+        public string IdSuscripcion { get; set; }
 
         public bool AutenticarUsuario(string Usuario,string Contrasena)
         {
@@ -41,17 +44,13 @@ namespace Operacion.Clase
         }
 
 
-       
 
-
-  
-
-        public bool ValidarOperacion(string Usuario)
+        public bool ValidarOperacion(int IdUsuario)
         {
             comm.Connection = conexion.AbrirConexion();
-            comm.CommandText = "SELECT COUNT(*) FROM Suscripcion sus JOIN Usuario us on sus.Id_Suscripcion = us.Id_Suscripcion JOIN UsuarioSistema ussis on us.Id_usuario = ussis.Id_Usuario JOIN Sistema sis on ussis.Id_Sistema = sis.Id_Sistema WHERE us.Activado IS NULL AND sus.Activado IS NULL AND us.Acceso = @Usuario AND sis.Nombre = 'Operacion'";
+            comm.CommandText = "SELECT COUNT(*) FROM MenuSubMenu Nav JOIN(SELECT Id_SubMenu FROM UsuarioSubMenu WHERE Id_Usuario = @IdUsuario) ussubmenu on Nav.Id_SubMenu = ussubmenu.Id_SubMenu JOIN SistemaMenu sismenu on nav.Id_Menu = sismenu.Id_Menu WHERE sismenu.Id_Sistema = 3 AND Nav.Activado IS NULL AND sismenu.Activado IS NULL";
             comm.CommandType = CommandType.Text;
-            comm.Parameters.AddWithValue("@Usuario", Usuario);
+            comm.Parameters.AddWithValue("@IdUsuario", IdUsuario);
             int i = (int)comm.ExecuteScalar();
             comm.Parameters.Clear();
             conexion.CerrarConexion();
@@ -65,7 +64,27 @@ namespace Operacion.Clase
 
         }
 
-      
-    
+        public void LeerDatosUsuario(string Correo)
+        {
+            comm.Connection = conexion.AbrirConexion();
+            comm.CommandText = "SELECT Id_Usuario,Id_Suscripcion FROM Usuario WHERE Acceso=@Correoo";
+            comm.CommandType = CommandType.Text;
+            comm.Parameters.AddWithValue("@Correoo", Correo);
+
+            dr = comm.ExecuteReader();
+            dr.Read();
+            IdUsuario = dr["Id_Usuario"].ToString();
+            IdSuscripcion = dr["Id_Suscripcion"].ToString();
+
+
+            dr.Close();
+            comm.Connection = conexion.CerrarConexion();
+
+
+
+        }
+
+
+
     }
 }

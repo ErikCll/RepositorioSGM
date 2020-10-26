@@ -1666,6 +1666,7 @@
     <Content Include="s\Catalogo\Material\Editar.aspx" />
     <Content Include="s\Catalogo\Material\Index.aspx" />
     <Content Include="s\Catalogo\Material\Prueba.aspx" />
+    <Content Include="s\Error.aspx" />
     <Content Include="s\Inicio.aspx" />
     <Content Include="s\Login.aspx" />
     <Content Include="s\Personal\ControlAsist\Detalle.aspx" />
@@ -1674,6 +1675,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Clase\ControlAsistencia.cs" />
+    <Compile Include="Clase\Correo.cs" />
     <Compile Include="Clase\InventarioMaterial.cs" />
     <Compile Include="Clase\Login.cs" />
     <Compile Include="Clase\Master.cs" />
@@ -1724,6 +1726,13 @@
     </Compile>
     <Compile Include="s\Catalogo\Material\Prueba.aspx.designer.cs">
       <DependentUpon>Prueba.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="s\Error.aspx.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="s\Error.aspx.designer.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
     </Compile>
     <Compile Include="s\Inicio.aspx.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>

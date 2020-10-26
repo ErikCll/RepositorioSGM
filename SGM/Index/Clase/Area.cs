@@ -40,15 +40,15 @@ namespace SAM.Clase
 
         }
 
-        public DataTable MostrarInstalacion(int IdSuscripcion,string Correo)
+        public DataTable MostrarInstalacion(int IdSuscripcion,int IdUsuario)
         {
 
 
             comm.Connection = conexion.AbrirConexion();
-            comm.CommandText = "SELECT Nav.Id_instalacion, Nav.Nombre  FROM Cat_Instalacion Nav  JOIN(SELECT Id_Instalacion FROM Op_UsIns op JOIN Usuario us on op.Id_Usuario = us.Id_usuario WHERE us.Acceso = @Correo)UsAct on Nav.Id_instalacion = UsAct.Id_Instalacion WHERE nav.Activado IS NULL AND nav.Id_Suscripcion = @IdSuscripcionn ORDER BY nav.Id_instalacion DESC";
+            comm.CommandText = "SELECT Nav.Id_instalacion, Nav.Nombre  FROM Cat_Instalacion Nav  JOIN(SELECT Id_Instalacion FROM Op_UsIns WHERE Id_Usuario=@IdUsuario)UsAct on Nav.Id_instalacion = UsAct.Id_Instalacion WHERE nav.Activado IS NULL AND nav.Id_Suscripcion = @IdSuscripcionn ORDER BY nav.Id_instalacion DESC";
             comm.CommandType = CommandType.Text;
             comm.Parameters.AddWithValue("@IdSuscripcionn", IdSuscripcion);
-            comm.Parameters.AddWithValue("@Correo", Correo);
+            comm.Parameters.AddWithValue("@IdUsuario", IdUsuario);
 
             da = new SqlDataAdapter(comm);
             dt = new DataTable();

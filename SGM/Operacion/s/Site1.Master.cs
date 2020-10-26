@@ -13,6 +13,7 @@ namespace Operacion.s
     {
         Clase.Master master = new Clase.Master();
         Clase.Login login = new Clase.Login();
+        Clase.Accesos accesos = new Clase.Accesos();
 
 
         protected void Page_Init(object sender, EventArgs e)
@@ -20,27 +21,7 @@ namespace Operacion.s
             if (HttpContext.Current.User.Identity.IsAuthenticated)
 
             {
-                string Usuario = Page.User.Identity.Name;
-                if (login.ValidarOperacion(Usuario))
-                {
-                    //if (master.ValidarCatalogo(Usuario))
-                    //{
-                    //    menu_catalogo.Visible = true;
-                    //}
-                    if (master.ValidarInfraestructura(Usuario))
-                    {
-                        menu_infraestructura.Visible = true;
-                    }
-                    if (master.ValidarProduccion(Usuario))
-                    {
-                        menu_produccion.Visible = true;
-                    }
-                }
-                else
-                {
-                    FormsAuthentication.SignOut();
-                    Response.Redirect(Request.UrlReferrer.ToString());
-                }
+                
 
             }
             else
@@ -69,15 +50,20 @@ namespace Operacion.s
             {
                 string Usuario = Page.User.Identity.Name;
                 master.LeerDatosUsuario(Usuario);
+                lblIdUsuario.Text = master.IdUsuario;
+
                 lblIdSuscripcion.Text = master.IdSuscripcion;
                 lblTitulo.Text = master.Nombre;
                 lblUsuario.Text = Usuario;
+                ValidarAccesos();
+
                 LlenarDrop();
                 if (RadInstalacion.Items.Count == 1)
                 {
                     int IdSuscripcion = Convert.ToInt32(lblIdSuscripcion.Text);
+                    int IdUsuario = Convert.ToInt32(lblIdUsuario.Text);
 
-                    master.LeerDatosInstalacion(IdSuscripcion,Usuario);
+                    master.LeerDatosInstalacion(IdSuscripcion, IdUsuario);
                     RadInstalacion.SelectedValue = master.IdInstalacion;
                     lblIDInstalacion.Text = master.IdInstalacion;
                     RadInstalacion.Enabled = false;
@@ -88,6 +74,29 @@ namespace Operacion.s
 
         }
 
+        public void ValidarAccesos()
+        {
+            int IdUsuario = Convert.ToInt32(lblIdUsuario.Text);
+            if (login.ValidarOperacion(IdUsuario))
+            {
+               
+                if (accesos.ValidarInfraestructura(IdUsuario))
+                {
+                    menu_infraestructura.Visible = true;
+                }
+                if (accesos.ValidarProduccion(IdUsuario))
+                {
+                    menu_produccion.Visible = true;
+                }
+            }
+            else
+            {
+                Response.Redirect("http://orygon.azurewebsites.net/Inicio.aspx");
+
+                //FormsAuthentication.SignOut();
+                //Response.Redirect(Request.UrlReferrer.ToString());
+            }
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -122,6 +131,24 @@ namespace Operacion.s
             }
         }
 
+        public string IDUsuario
+        {
+
+            set
+            {
+                lblIdUsuario.Text = value;
+            }
+
+            get
+            {
+
+                return lblIdUsuario.Text;
+            }
+
+
+        }
+
+
         public string IdInstalacion
         {
             get
@@ -149,8 +176,9 @@ namespace Operacion.s
 
             int IdSuscripcion = Convert.ToInt32(lblIdSuscripcion.Text);
             string Usuario = Page.User.Identity.Name;
+            int IdUsuario = Convert.ToInt32(lblIdUsuario.Text);
 
-            RadInstalacion.DataSource = master.MostrarInstalacion(IdSuscripcion,Usuario);
+            RadInstalacion.DataSource = master.MostrarInstalacion(IdSuscripcion,IdUsuario);
             RadInstalacion.DataBind();
           
         }

@@ -10,19 +10,29 @@ namespace Operacion.s
     public partial class Inicio : System.Web.UI.Page
     {
         Clase.Disponibilidad disponibilidad = new Clase.Disponibilidad();
-        Clase.Master master = new Clase.Master();
         Clase.Resumen resumen = new Clase.Resumen();
+        Clase.Accesos accesos = new Clase.Accesos();
 
         protected void Page_Init(object sender, EventArgs e)
         {
-            string Usuario = Page.User.Identity.Name;
-            if (master.ValidarInfraestructura(Usuario))
+            if (!IsPostBack)
+            {
+                ValidarAccesos();
+            }
+        }
+
+        public void ValidarAccesos()
+        {
+            int IdUsuario = Convert.ToInt32((this.Master as Operacion.s.Site1).IDUsuario.ToString());
+            if (accesos.ValidarInfraestructura(IdUsuario))
             {
                 infraestructura.Visible = true;
+                IndicadorInfraestructura();
             }
-            if (master.ValidarProduccion(Usuario))
+            if (accesos.ValidarProduccion(IdUsuario))
             {
                 produccion.Visible = true;
+                IndicadorProduccion();
             }
         }
         protected void Page_Load(object sender, EventArgs e)
@@ -30,11 +40,10 @@ namespace Operacion.s
             if (!IsPostBack)
             {
 
-                IndicadorInfraestructura();
-                IndicadorProduccion();
             }
         }
 
+       
         public void IndicadorInfraestructura()
         {
             int IdInstalacion = Convert.ToInt32((this.Master as Operacion.s.Site1).IdInstalacion.ToString());
