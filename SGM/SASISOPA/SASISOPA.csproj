@@ -135,6 +135,7 @@
     <Content Include="dist\css\alt\adminlte.pages.min.css" />
     <Content Include="dist\css\alt\adminlte.plugins.css" />
     <Content Include="dist\css\alt\adminlte.plugins.min.css" />
+    <Content Include="dist\img\pdficon.svg" />
     <Content Include="dist\img\s.jpg" />
     <Content Include="dist\js\adminlte.js" />
     <Content Include="dist\js\adminlte.min.js" />
@@ -1766,6 +1767,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Clase\Accesos.cs" />
     <Compile Include="Clase\Actividad.cs" />
     <Compile Include="Clase\ActividadControl.cs" />
     <Compile Include="Clase\CategoriaActividad.cs" />

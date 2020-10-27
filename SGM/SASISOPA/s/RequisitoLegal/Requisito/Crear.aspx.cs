@@ -10,6 +10,29 @@ namespace SASISOPA.s.RequisitoLegal.Requisito
     public partial class Crear : System.Web.UI.Page
     {
         Clase.Requisito requisito = new Clase.Requisito();
+        Clase.Accesos accesos = new Clase.Accesos();
+        protected void Page_Init(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                ValidarAccesos();
+            }
+
+        }
+
+        public void ValidarAccesos()
+        {
+            int IdUsuario = Convert.ToInt32((this.Master as SASISOPA.s.Site1).IDUsuario.ToString());
+            if (accesos.ValidarRequisito3(IdUsuario))
+            {
+
+            }
+            else
+            {
+                Response.Redirect("~/s/Inicio.aspx");
+            }
+
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)

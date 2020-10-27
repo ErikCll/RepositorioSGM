@@ -24,8 +24,9 @@ namespace SASISOPA.s
 
             if (login.AutenticarUsuario(Usuario, Contrasena))
             {
-
-                if (login.ValidarSASISOPA(Usuario))
+                login.LeerDatosUsuario(Usuario);
+                int IdUsuario = Convert.ToInt32(login.IdUsuario);
+                if (login.ValidarSASISOPA(IdUsuario))
                 {
                     FormsAuthentication.RedirectFromLoginPage(Login1.UserName, Login1.RememberMeSet);
 

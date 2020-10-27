@@ -13,13 +13,13 @@ namespace SASISOPA.s.RequisitoLegal {
     public partial class Inicio {
         
         /// <summary>
-        /// Control Div1.
+        /// Control regulador.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div1;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl regulador;
         
         /// <summary>
         /// Control Label1.
@@ -58,13 +58,13 @@ namespace SASISOPA.s.RequisitoLegal {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl div2;
         
         /// <summary>
-        /// Control Div3.
+        /// Control documentoregulador.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div3;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl documentoregulador;
         
         /// <summary>
         /// Control Label4.
@@ -103,13 +103,13 @@ namespace SASISOPA.s.RequisitoLegal {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl div4;
         
         /// <summary>
-        /// Control Div5.
+        /// Control requisito.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div5;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl requisito;
         
         /// <summary>
         /// Control Label7.

@@ -157,13 +157,13 @@ namespace SASISOPA.s {
         protected global::System.Web.UI.WebControls.Label lblUsuario;
         
         /// <summary>
-        /// Control Li2.
+        /// Control menu_politica.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Li2;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl menu_politica;
         
         /// <summary>
         /// Control A3.
@@ -175,13 +175,13 @@ namespace SASISOPA.s {
         protected global::System.Web.UI.HtmlControls.HtmlAnchor A3;
         
         /// <summary>
-        /// Control Li3.
+        /// Control menu_riesgo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Li3;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl menu_riesgo;
         
         /// <summary>
         /// Control A2.
@@ -211,13 +211,13 @@ namespace SASISOPA.s {
         protected global::System.Web.UI.HtmlControls.HtmlAnchor requisito;
         
         /// <summary>
-        /// Control Li5.
+        /// Control menu_meta.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Li5;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl menu_meta;
         
         /// <summary>
         /// Control A5.
@@ -229,13 +229,13 @@ namespace SASISOPA.s {
         protected global::System.Web.UI.HtmlControls.HtmlAnchor A5;
         
         /// <summary>
-        /// Control menu_funciones.
+        /// Control menu_funcion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl menu_funciones;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl menu_funcion;
         
         /// <summary>
         /// Control funciones.
@@ -265,13 +265,13 @@ namespace SASISOPA.s {
         protected global::System.Web.UI.HtmlControls.HtmlAnchor competencia;
         
         /// <summary>
-        /// Control Li7.
+        /// Control menu_comunicacion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Li7;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl menu_comunicacion;
         
         /// <summary>
         /// Control A7.
@@ -283,13 +283,13 @@ namespace SASISOPA.s {
         protected global::System.Web.UI.HtmlControls.HtmlAnchor A7;
         
         /// <summary>
-        /// Control Li8.
+        /// Control menu_controldoc.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Li8;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl menu_controldoc;
         
         /// <summary>
         /// Control A8.
@@ -301,13 +301,13 @@ namespace SASISOPA.s {
         protected global::System.Web.UI.HtmlControls.HtmlAnchor A8;
         
         /// <summary>
-        /// Control Li9.
+        /// Control menu_practica.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Li9;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl menu_practica;
         
         /// <summary>
         /// Control A9.
@@ -337,13 +337,13 @@ namespace SASISOPA.s {
         protected global::System.Web.UI.HtmlControls.HtmlAnchor controlact;
         
         /// <summary>
-        /// Control Li11.
+        /// Control menu_integridad.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Li11;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl menu_integridad;
         
         /// <summary>
         /// Control A11.
@@ -355,13 +355,13 @@ namespace SASISOPA.s {
         protected global::System.Web.UI.HtmlControls.HtmlAnchor A11;
         
         /// <summary>
-        /// Control Li12.
+        /// Control menu_seguridad.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Li12;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl menu_seguridad;
         
         /// <summary>
         /// Control A12.
@@ -373,13 +373,13 @@ namespace SASISOPA.s {
         protected global::System.Web.UI.HtmlControls.HtmlAnchor A12;
         
         /// <summary>
-        /// Control Li13.
+        /// Control menu_respuesta.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Li13;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl menu_respuesta;
         
         /// <summary>
         /// Control A13.
@@ -391,13 +391,13 @@ namespace SASISOPA.s {
         protected global::System.Web.UI.HtmlControls.HtmlAnchor A13;
         
         /// <summary>
-        /// Control Li14.
+        /// Control menu_monitoreo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Li14;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl menu_monitoreo;
         
         /// <summary>
         /// Control A14.
@@ -409,13 +409,13 @@ namespace SASISOPA.s {
         protected global::System.Web.UI.HtmlControls.HtmlAnchor A14;
         
         /// <summary>
-        /// Control Li15.
+        /// Control menu_auditoria.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Li15;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl menu_auditoria;
         
         /// <summary>
         /// Control A15.
@@ -427,13 +427,13 @@ namespace SASISOPA.s {
         protected global::System.Web.UI.HtmlControls.HtmlAnchor A15;
         
         /// <summary>
-        /// Control Li16.
+        /// Control menu_investigacion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Li16;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl menu_investigacion;
         
         /// <summary>
         /// Control A16.
@@ -445,13 +445,13 @@ namespace SASISOPA.s {
         protected global::System.Web.UI.HtmlControls.HtmlAnchor A16;
         
         /// <summary>
-        /// Control Li17.
+        /// Control menu_revision.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Li17;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl menu_revision;
         
         /// <summary>
         /// Control A17.
@@ -463,13 +463,13 @@ namespace SASISOPA.s {
         protected global::System.Web.UI.HtmlControls.HtmlAnchor A17;
         
         /// <summary>
-        /// Control Li18.
+        /// Control menu_informe.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Li18;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl menu_informe;
         
         /// <summary>
         /// Control A18.

@@ -13,13 +13,13 @@ namespace SASISOPA.s.FuncionRes {
     public partial class Inicio {
         
         /// <summary>
-        /// Control infraestructura.
+        /// Control categoriaactividad.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl infraestructura;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl categoriaactividad;
         
         /// <summary>
         /// Control lblPorcentaje.
@@ -58,13 +58,13 @@ namespace SASISOPA.s.FuncionRes {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divprogress1;
         
         /// <summary>
-        /// Control Div1.
+        /// Control categoriaempleado.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div1;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl categoriaempleado;
         
         /// <summary>
         /// Control Label1.

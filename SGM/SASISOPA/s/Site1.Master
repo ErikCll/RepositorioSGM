@@ -141,7 +141,7 @@
                             <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
 
-                            <li class="nav-item" id="Li2" runat="server">
+                            <li class="nav-item" id="menu_politica" runat="server" visible="false">
 
                                 <a href="~/s/Politica/Inicio.aspx" class="nav-link" id="A3" runat="server">
                                     <i class="nav-icon fas fa-university"></i>
@@ -154,7 +154,7 @@
                             </li>
 
 
-                            <li class="nav-item" id="Li3" runat="server">
+                            <li class="nav-item" id="menu_riesgo" runat="server" visible="false">
 
                                 <a href="~/s/Riesgo/Inicio.aspx" class="nav-link" id="A2" runat="server">
                                     <i class="nav-icon fas fa-exclamation-triangle"></i>
@@ -166,7 +166,7 @@
                                 </a>
                             </li>
 
-                            <li class="nav-item" id="menu_requisito" runat="server">
+                            <li class="nav-item" id="menu_requisito" runat="server" visible="false">
 
                                 <a href="~/s/RequisitoLegal/Inicio.aspx" class="nav-link" id="requisito" runat="server">
                                     <i class="nav-icon fas fa-balance-scale	"></i>
@@ -179,7 +179,7 @@
                             </li>
 
 
-                            <li class="nav-item" id="Li5" runat="server">
+                            <li class="nav-item" id="menu_meta" runat="server" visible="false">
 
                                 <a href="~/s/MetaObjetivo/Inicio.aspx" class="nav-link" id="A5" runat="server">
                                     <i class="nav-icon fas fa-chart-line"></i>
@@ -191,7 +191,7 @@
                                 </a>
                             </li>
 
-                            <li class="nav-item" id="menu_funciones" runat="server">
+                            <li class="nav-item" id="menu_funcion" runat="server" visible="false">
 
                                 <a href="~/s/FuncionRes/Inicio.aspx" class="nav-link" id="funciones" runat="server">
                                     <i class="nav-icon fas fa-user-check"></i>
@@ -204,7 +204,7 @@
                             </li>
 
 
-                            <li class="nav-item" id="menu_competencia" runat="server">
+                            <li class="nav-item" id="menu_competencia" runat="server" visible="false">
 
 
                                 <a href="~/s/Competencia/Inicio.aspx" class="nav-link" id="competencia" runat="server">
@@ -259,7 +259,7 @@
                             </li>
 
 
-                            <li class="nav-item" id="Li7" runat="server">
+                            <li class="nav-item" id="menu_comunicacion" runat="server" visible="false">
 
                                 <a href="~/s/Comunicacion/Inicio.aspx" class="nav-link" id="A7" runat="server">
                                     <i class="nav-icon fas fa-bullhorn"></i>
@@ -272,7 +272,7 @@
                             </li>
 
 
-                            <li class="nav-item" id="Li8" runat="server">
+                            <li class="nav-item" id="menu_controldoc" runat="server" visible="false">
 
                                 <a href="~/s/ControlDoc/Inicio.aspx" class="nav-link" id="A8" runat="server">
                                     <i class="nav-icon far fa-file-alt"></i>
@@ -284,7 +284,7 @@
                                 </a>
                             </li>
 
-                            <li class="nav-item" id="Li9" runat="server">
+                            <li class="nav-item" id="menu_practica" runat="server" visible="false">
 
                                 <a href="~/s/MPractica/Inicio.aspx" class="nav-link" id="A9" runat="server">
                                     <i class="nav-icon fas fa-check-square"></i>
@@ -297,7 +297,7 @@
                             </li>
 
 
-                            <li class="nav-item" id="menu_controlact" runat="server">
+                            <li class="nav-item" id="menu_controlact" runat="server" visible="false">
 
                                 <a href="~/s/ControlAct/Inicio.aspx" class="nav-link" id="controlact" runat="server">
                                     <i class="nav-icon fas fa-calendar-check"></i>
@@ -309,7 +309,7 @@
                                 </a>
                             </li>
 
-                            <li class="nav-item" id="Li11" runat="server">
+                            <li class="nav-item" id="menu_integridad" runat="server" visible="false">
 
                                 <a href="~/s/IntegridadMec/Inicio.aspx" class="nav-link" id="A11" runat="server">
                                     <i class="nav-icon fas fa-wrench"></i>
@@ -321,7 +321,7 @@
                                 </a>
                             </li>
 
-                            <li class="nav-item" id="Li12" runat="server">
+                            <li class="nav-item" id="menu_seguridad" runat="server" visible="false">
 
                                 <a href="~/s/Seguridad/Inicio.aspx" class="nav-link" id="A12" runat="server">
                                     <i class="nav-icon fas fa-user-shield"></i>
@@ -333,7 +333,7 @@
                                 </a>
                             </li>
 
-                            <li class="nav-item" id="Li13" runat="server">
+                            <li class="nav-item" id="menu_respuesta" runat="server" visible="false">
 
                                 <a href="~/s/Respuesta/Inicio.aspx" class="nav-link" id="A13" runat="server">
                                     <i class="nav-icon fas fa-ambulance"></i>
@@ -345,7 +345,7 @@
                                 </a>
                             </li>
 
-                            <li class="nav-item" id="Li14" runat="server">
+                            <li class="nav-item" id="menu_monitoreo" runat="server" visible="false">
 
                                 <a href="~/s/Monitoreo/Inicio.aspx" class="nav-link" id="A14" runat="server">
                                     <i class="nav-icon fas fa-desktop"></i>
@@ -357,7 +357,7 @@
                                 </a>
                             </li>
 
-                            <li class="nav-item" id="Li15" runat="server">
+                            <li class="nav-item" id="menu_auditoria" runat="server" visible="false">
 
                                 <a href="~/s/Auditoria/Inicio.aspx" class="nav-link" id="A15" runat="server">
                                     <i class="nav-icon fas fa-search"></i>
@@ -369,7 +369,7 @@
                                 </a>
                             </li>
 
-                            <li class="nav-item" id="Li16" runat="server">
+                            <li class="nav-item" id="menu_investigacion" runat="server" visible="false">
 
                                 <a href="~/s/Investigacion/Inicio.aspx" class="nav-link" id="A16" runat="server">
                                     <i class="nav-icon fas fa-book-reader"></i>
@@ -381,7 +381,7 @@
                                 </a>
                             </li>
 
-                            <li class="nav-item" id="Li17" runat="server">
+                            <li class="nav-item" id="menu_revision" runat="server" visible="false">
 
                                 <a href="~/s/Revision/Inicio.aspx" class="nav-link" id="A17" runat="server">
                                     <i class="nav-icon fas fa-clipboard-list"></i>
@@ -393,7 +393,7 @@
                                 </a>
                             </li>
 
-                            <li class="nav-item" id="Li18" runat="server">
+                            <li class="nav-item" id="menu_informe" runat="server" visible="false">
 
                                 <a href="~/s/Informe/Inicio.aspx" class="nav-link" id="A18" runat="server">
                                     <i class="nav-icon fas fa-file-signature"></i>

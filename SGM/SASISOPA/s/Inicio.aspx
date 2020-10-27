@@ -13,7 +13,7 @@
     <div class="col-lg-12">
         <div class="row">
 
-                        <div class="col-sm-12 col-md-6 col-lg-4" runat="server">
+                        <div class="col-sm-12 col-md-6 col-lg-4" id="politica" runat="server" visible="false" >
                 <div class="card card-default shadow-sm">
                     <div class="card-header">
                         <h3 class="card-title font-weight-bold">1. Política</h3>
@@ -74,7 +74,7 @@
             </div>
 
 
-              <div class="col-sm-12 col-md-6 col-lg-4" runat="server">
+              <div class="col-sm-12 col-md-6 col-lg-4" id="riesgo" runat="server" visible="false">
                 <div class="card card-default shadow-sm">
                     <div class="card-header">
                         <h3 class="card-title font-weight-bold">2. Riesgos</h3>
@@ -104,7 +104,7 @@
             </div>
 
 
-               <div class="col-sm-12 col-md-6 col-lg-4" runat="server">
+               <div class="col-sm-12 col-md-6 col-lg-4" id="requisito" runat="server" visible="false">
                 <div class="card card-default shadow-sm">
                     <div class="card-header">
                         <h3 class="card-title font-weight-bold">3. Requisitos Legales</h3>
@@ -166,7 +166,7 @@
 
 
 
-                  <div class="col-sm-12 col-md-6 col-lg-4" runat="server">
+                  <div class="col-sm-12 col-md-6 col-lg-4" id="meta" runat="server" visible="false">
                 <div class="card card-default shadow-sm">
                     <div class="card-header">
                         <h3 class="card-title font-weight-bold">4. Metas, Objetivos e Indicadores</h3>
@@ -195,7 +195,7 @@
 
             </div>
 
-                   <div class="col-sm-12 col-md-6 col-lg-4 " runat="server">
+                   <div class="col-sm-12 col-md-6 col-lg-4" id="funcion" runat="server" visible="false">
                 <div class="card card-default shadow-sm">
                     <div class="card-header">
                         <h3 class="card-title font-weight-bold">5. Funciones, Responsabilidad</h3>
@@ -224,10 +224,10 @@
 
             </div>
 
-              <div class="col-sm-12 col-md-6 col-lg-4" runat="server">
+              <div class="col-sm-12 col-md-6 col-lg-4" id="competencia" runat="server" visible="false">
                 <div class="card card-default shadow-sm">
                     <div class="card-header">
-                        <h3 class="card-title font-weight-bold mt-1">6. Competencia y Formación   </h3>
+                        <h3 class="card-title font-weight-bold mt-1">6. Competencia y Formación</h3>
                 <i class="fas fa-graduation-cap fa-2x text-black-50 float-right"></i>
                     </div>
                     <div class="card-body" style="display: block;">
@@ -285,7 +285,7 @@
             </div>
 
 
-              <div class="col-sm-12 col-md-6 col-lg-4" runat="server">
+              <div class="col-sm-12 col-md-6 col-lg-4" id="comunicacion" runat="server" visible="false">
                 <div class="card card-default shadow-sm">
                     <div class="card-header">
                         <h3 class="card-title font-weight-bold">7. Comunicación</h3>
@@ -315,7 +315,7 @@
             </div>
 
 
-               <div class="col-sm-12 col-md-6 col-lg-4" runat="server">
+               <div class="col-sm-12 col-md-6 col-lg-4" id="controldoc" runat="server" visible="false">
                 <div class="card card-default shadow-sm ">
                     <div class="card-header">
                         <h3 class="card-title font-weight-bold">8. Control de Documentos</h3>
@@ -345,7 +345,7 @@
             </div>
 
 
-               <div class="col-sm-12 col-md-6 col-lg-4" runat="server">
+               <div class="col-sm-12 col-md-6 col-lg-4" id="practica"  runat="server" visible="false">
                 <div class="card card-default shadow-sm ">
                     <div class="card-header">
                         <h3 class="card-title font-weight-bold">9. Mejores Prácticas</h3>
@@ -374,7 +374,7 @@
 
             </div>
 
-              <div class="col-sm-12 col-md-6 col-lg-4" runat="server">
+              <div class="col-sm-12 col-md-6 col-lg-4" id="controlact" runat="server" visible="false">
                 <div class="card card-default shadow-sm">
                     <div class="card-header">
                         <h3 class="card-title font-weight-bold">10. Control de Actividades</h3>
@@ -455,7 +455,7 @@
 
             </div>
 
-            <div class="col-sm-12 col-md-6 col-lg-4" runat="server">
+            <div class="col-sm-12 col-md-6 col-lg-4" id="integridad" runat="server" visible="false">
                 <div class="card card-default shadow-sm">
                     <div class="card-header">
                         <h3 class="card-title font-weight-bold">11. Integridad Mecánica</h3>
@@ -484,7 +484,7 @@
 
             </div>
 
-            <div class="col-sm-12 col-md-6 col-lg-4" runat="server">
+            <div class="col-sm-12 col-md-6 col-lg-4" id="seguridad" runat="server" visible="false">
                 <div class="card card-default shadow-sm">
                     <div class="card-header">
                         <h3 class="card-title font-weight-bold">12. Seguridad para Contratistas</h3>
@@ -513,7 +513,7 @@
 
             </div>
 
-              <div class="col-sm-12 col-md-6 col-lg-4" runat="server">
+              <div class="col-sm-12 col-md-6 col-lg-4" id="respuesta" runat="server" visible="false">
                 <div class="card card-default shadow-sm">
                     <div class="card-header">
                         <h3 class="card-title font-weight-bold">13. Respuesta a Emergencias</h3>
@@ -573,7 +573,7 @@
 
             </div>
 
-              <div class="col-sm-12 col-md-6 col-lg-4" runat="server">
+              <div class="col-sm-12 col-md-6 col-lg-4" id="monitoreo" runat="server" visible="false">
                 <div class="card card-default shadow-sm">
                     <div class="card-header">
                         <h3 class="card-title font-weight-bold">14. Monitoreo, Verificación</h3>
@@ -633,7 +633,7 @@
 
             </div>
 
-             <div class="col-sm-12 col-md-6 col-lg-4" runat="server">
+             <div class="col-sm-12 col-md-6 col-lg-4" id="auditoria" runat="server" visible="false">
                 <div class="card card-default shadow-sm ">
                     <div class="card-header">
                         <h3 class="card-title font-weight-bold">15. Auditoría</h3>
@@ -693,7 +693,7 @@
 
             </div>
 
-             <div class="col-sm-12 col-md-6 col-lg-4" runat="server">
+             <div class="col-sm-12 col-md-6 col-lg-4" id="investigacion" runat="server" visible="false">
                 <div class="card card-default shadow-sm">
                     <div class="card-header">
                         <h3 class="card-title font-weight-bold">16. Investigación de Incidentes</h3>
@@ -764,7 +764,7 @@
 
             </div>
 
-              <div class="col-sm-12 col-md-6 col-lg-4" runat="server">
+              <div class="col-sm-12 col-md-6 col-lg-4" id="revision" runat="server" visible="false">
                 <div class="card card-default shadow-sm">
                     <div class="card-header">
                         <h3 class="card-title font-weight-bold">17. Revisión de resultados</h3>
@@ -793,7 +793,7 @@
 
             </div>
 
-              <div class="col-sm-12 col-md-6 col-lg-4" runat="server">
+              <div class="col-sm-12 col-md-6 col-lg-4" id="informe" runat="server" visible="false">
                 <div class="card card-default shadow-sm">
                     <div class="card-header">
                         <h3 class="card-title font-weight-bold">18. Informe de Desempeño</h3>

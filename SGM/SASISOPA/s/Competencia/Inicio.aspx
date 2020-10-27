@@ -19,7 +19,7 @@
 
             
 
-               <div class="col-sm-12 col-md-6 col-lg-4" runat="server" id="Div3" visible="true">
+               <div class="col-sm-12 col-md-6 col-lg-4" runat="server" id="programacapacitacion" visible="false">
                 <div class="card card-default shadow-sm">
                     <div class="card-header">
                         <h3 class="card-title font-weight-bold">Programa de Capacitación</h3>
@@ -66,7 +66,7 @@
 
             </div>
 
-               <div class="col-sm-12 col-md-6 col-lg-4" runat="server" id="Div1" visible="true">
+               <div class="col-sm-12 col-md-6 col-lg-4" runat="server" id="resultadoevaluacion" visible="false">
                 <div class="card card-default shadow-sm">
                     <div class="card-header">
                         <h3 class="card-title font-weight-bold">Resultados de evaluación</h3>

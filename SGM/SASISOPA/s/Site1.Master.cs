@@ -13,23 +13,14 @@ namespace SASISOPA.s
     {
         Clase.Master master = new Clase.Master();
         Clase.Login login = new Clase.Login();
-
+        Clase.Accesos accesos = new Clase.Accesos();
         protected void Page_Init(object sender, EventArgs e)
         {
 
             if (HttpContext.Current.User.Identity.IsAuthenticated)
 
             {
-                string Usuario = Page.User.Identity.Name;
-                if (login.ValidarSASISOPA(Usuario))
-                {
-
-                }
-                else
-                {
-                    FormsAuthentication.SignOut();
-                    Response.Redirect(Request.UrlReferrer.ToString());
-                }
+            
 
             }
             else
@@ -61,6 +52,8 @@ namespace SASISOPA.s
                 lblIdSuscripcion.Text = master.IdSuscripcion;
                 lblTitulo.Text = master.Nombre;
                 lblUsuario.Text = Usuario;
+                ValidarAccesos();
+
                 LlenarDrop();
                 if (RadInstalacion.Items.Count == 1)
                 {
@@ -74,6 +67,112 @@ namespace SASISOPA.s
                 }
             }
 
+        }
+
+        public void ValidarAccesos()
+        {
+            int IdUsuario = Convert.ToInt32(lblIdUsuario.Text);
+            if (login.ValidarSASISOPA(IdUsuario))
+            {
+
+                if (accesos.ValidarPolitica(IdUsuario))
+                {
+                    menu_politica.Visible = true;
+                  
+                }
+
+                if (accesos.ValidarRiesgo(IdUsuario))
+                {
+                    menu_riesgo.Visible = true;
+                }
+
+                if (accesos.ValidarRequisito(IdUsuario))
+                {
+                    menu_requisito.Visible = true;
+                }
+
+                if (accesos.ValidarMeta(IdUsuario))
+                {
+                    menu_meta.Visible = true;
+                }
+
+                if (accesos.ValidarFuncion(IdUsuario))
+                {
+                    menu_funcion.Visible = true;
+                }
+
+                if (accesos.ValidarCompetencia(IdUsuario))
+                {
+                    menu_competencia.Visible = true;
+                }
+
+                if (accesos.ValidarComunicacion(IdUsuario))
+                {
+                    menu_comunicacion.Visible = true;
+                }
+
+                if (accesos.ValidarControlDocumento(IdUsuario))
+                {
+                    menu_controldoc.Visible = true;
+                }
+
+                if (accesos.ValidarPractica(IdUsuario))
+                {
+                    menu_practica.Visible = true;
+                }
+
+                if (accesos.ValidarControlActividad(IdUsuario))
+                {
+                    menu_controlact.Visible = true;
+                }
+
+                if (accesos.ValidarIntegridad(IdUsuario))
+                {
+                    menu_integridad.Visible = true;
+                }
+
+                if (accesos.ValidarSeguridad(IdUsuario))
+                {
+                    menu_seguridad.Visible = true;
+                }
+
+                if (accesos.ValidarRespuesta(IdUsuario))
+                {
+                    menu_respuesta.Visible = true;
+                }
+
+                if (accesos.ValidarMonitoreo(IdUsuario))
+                {
+                    menu_monitoreo.Visible = true;
+                }
+
+                if (accesos.ValidarAuditoria(IdUsuario))
+                {
+                    menu_auditoria.Visible = true;
+                }
+
+                if (accesos.ValidarInvestigacion(IdUsuario))
+                {
+                    menu_investigacion.Visible = true;
+                }
+
+                if (accesos.ValidarRevision(IdUsuario))
+                {
+                    menu_revision.Visible = true;
+                }
+
+                if (accesos.ValidarInforme(IdUsuario))
+                {
+                    menu_informe.Visible = true;
+                }
+            }
+            else
+            {
+                Response.Redirect("http://orygon.azurewebsites.net/Inicio.aspx");
+
+                //FormsAuthentication.SignOut();
+                //Response.Redirect(Request.UrlReferrer.ToString());
+            }
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -97,7 +196,7 @@ namespace SASISOPA.s
 
                 else if (activepage.Contains("/FuncionRes/Inicio.aspx") || activepage.Contains("/FuncionRes/MatrizCatAct/Index.aspx") || activepage.Contains("/FuncionRes/MatrizCatAct/Agregar.aspx") || activepage.Contains("/FuncionRes/MatrizCatAct/Detalle.aspx") || activepage.Contains("/FuncionRes/MatrizCatEmp/Index.aspx") || activepage.Contains("/FuncionRes/MatrizCatEmp/Agregar.aspx") || activepage.Contains("/FuncionRes/MatrizCatEmp/Detalle.aspx"))
                 {
-                    menu_funciones.Attributes.Add("class", "  nav-item has-treeview menu-open");
+                    menu_funcion.Attributes.Add("class", "  nav-item has-treeview menu-open");
                     funciones.Attributes.Add("class", "nav-link active");
                     //catact.Attributes.Add("class", "nav-link active");
 
@@ -118,14 +217,6 @@ namespace SASISOPA.s
                     //catact.Attributes.Add("class", "nav-link active");
 
                 }
-
-
-
-
-
-
-
-
 
 
             }

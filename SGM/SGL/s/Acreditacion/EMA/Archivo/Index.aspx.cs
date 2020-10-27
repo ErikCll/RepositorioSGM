@@ -47,10 +47,10 @@ namespace SGL.s.Acreditacion.EMA.Archivo
 
         public void MostrarGrid()
         {
-            string decodedString = System.Text.ASCIIEncoding.ASCII.GetString(Convert.FromBase64String(Request.QueryString["id"]));
-            int IdAcreditacion = Convert.ToInt32(decodedString);
-            gridAcreditacion.DataSource = ema.Mostrar(txtSearch.Text.Trim(), IdInstalacion);
-            gridAcreditacion.DataBind();
+            //string decodedString = System.Text.ASCIIEncoding.ASCII.GetString(Convert.FromBase64String(Request.QueryString["id"]));
+            //int IdAcreditacion = Convert.ToInt32(decodedString);
+            //gridAcreditacion.DataSource = ema.Mostrar(txtSearch.Text.Trim(), IdInstalacion);
+            //gridAcreditacion.DataBind();
         }
 
         protected void gridAcreditacion_PageIndexChanging(object sender, GridViewPageEventArgs e)

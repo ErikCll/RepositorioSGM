@@ -14,7 +14,7 @@
         <div class="col-lg-12">
         <div class="row">
 
-                  <div class="col-sm-12 col-md-6 col-lg-4" runat="server" id="Div1" visible="true">
+                  <div class="col-sm-12 col-md-6 col-lg-4" runat="server" id="regulador" visible="false">
                 <div class="card card-default shadow-sm">
                     <div class="card-header">
                         <h3 class="card-title font-weight-bold">Regulador</h3>
@@ -60,7 +60,7 @@
                 </div>
 
             </div>
-                      <div class="col-sm-12 col-md-6 col-lg-4" runat="server" id="Div3" visible="true">
+                      <div class="col-sm-12 col-md-6 col-lg-4" runat="server" id="documentoregulador" visible="false">
                 <div class="card card-default shadow-sm">
                     <div class="card-header">
                         <h3 class="card-title font-weight-bold">Documento Regulador</h3>
@@ -106,7 +106,7 @@
                 </div>
 
             </div>
-                       <div class="col-sm-12 col-md-6 col-lg-4" runat="server" id="Div5" visible="true">
+                       <div class="col-sm-12 col-md-6 col-lg-4" runat="server" id="requisito" visible="false">
                 <div class="card card-default shadow-sm">
                     <div class="card-header">
                         <h3 class="card-title font-weight-bold">Requisito</h3>

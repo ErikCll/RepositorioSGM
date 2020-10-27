@@ -13,13 +13,13 @@ namespace SASISOPA.s.ControlAct {
     public partial class Inicio {
         
         /// <summary>
-        /// Control infraestructura.
+        /// Control censoactividad.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl infraestructura;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl censoactividad;
         
         /// <summary>
         /// Control graficaAct.
@@ -31,13 +31,13 @@ namespace SASISOPA.s.ControlAct {
         protected global::Telerik.Web.UI.RadHtmlChart graficaAct;
         
         /// <summary>
-        /// Control Div1.
+        /// Control instalacionactividad.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div1;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl instalacionactividad;
         
         /// <summary>
         /// Control Label1.

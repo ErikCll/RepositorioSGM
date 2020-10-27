@@ -13,13 +13,13 @@ namespace SASISOPA.s.Politica {
     public partial class Inicio {
         
         /// <summary>
-        /// Control Div1.
+        /// Control controlversion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div1;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl controlversion;
         
         /// <summary>
         /// Control Label1.
@@ -58,13 +58,13 @@ namespace SASISOPA.s.Politica {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl div2;
         
         /// <summary>
-        /// Control Div3.
+        /// Control programaevaluacion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div3;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl programaevaluacion;
         
         /// <summary>
         /// Control Label4.
