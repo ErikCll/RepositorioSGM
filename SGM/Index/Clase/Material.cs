@@ -20,15 +20,18 @@ namespace SAM.Clase
         public string NumParte { get; set; }
         public string Costo { get; set; }
         public string TipoUnidad { get; set; }
+        public string Tipo { get; set; }
+        public string NoPasada { get; set; }
+
 
 
         public DataTable Mostrar(string txtSearch, int IdSuscripcion)
         {
 
-            string query = "SELECT Id_Material,Nombre,Codigo,NumParte,'$' +CONVERT(varchar,CAST(costo as money),1) 'Costo',Unidad FROM Cat_Material WHERE Id_Suscripcion = @IdSuscripcion AND Activado IS NULL ORDER BY Id_Material DESC";
+            string query = "SELECT Id_Material,Nombre,Codigo,NumParte,'$' +CONVERT(varchar,CAST(costo as money),1) 'Costo',Unidad,Tipo,CONVERT(varchar,CAST(NoPasada as money),1) 'NoPasada' FROM Cat_Material WHERE Id_Suscripcion = @IdSuscripcion AND Activado IS NULL ORDER BY Id_Material DESC";
             if (!String.IsNullOrEmpty(txtSearch.Trim()))
             {
-                query = "SELECT Id_Material,Nombre,Codigo,NumParte,'$' +CONVERT(varchar,CAST(costo as money),1) 'Costo',Unidad FROM Cat_Material WHERE Id_Suscripcion = @IdSuscripcion AND Activado IS NULL AND Nombre LIKE '%'+@txtSearch+'%' ORDER BY Id_Material DESC";
+                query = "SELECT Id_Material,Nombre,Codigo,NumParte,'$' +CONVERT(varchar,CAST(costo as money),1) 'Costo',Unidad,Tipo,CONVERT(varchar,CAST(NoPasada as money),1) 'NoPasada' FROM Cat_Material WHERE Id_Suscripcion = @IdSuscripcion AND Activado IS NULL AND Nombre LIKE '%'+@txtSearch+'%' ORDER BY Id_Material DESC";
             }
 
             comm.Connection = conexion.AbrirConexion();
@@ -44,10 +47,10 @@ namespace SAM.Clase
 
         }
 
-        public bool Insertar(string Nombre, string Codigo, string NumParte, int IdSuscripcion, string Costo, string TipoUnidad)
+        public bool Insertar(string Nombre, string Codigo, string NumParte, int IdSuscripcion, string Costo, string TipoUnidad,string Tipo,string NoPasada)
         {
             comm.Connection = conexion.AbrirConexion();
-            comm.CommandText = "INSERT INTO [Cat_Material] (Nombre,Codigo,NumParte,Id_Suscripcion,Costo,Unidad) VALUES(@Nombre,@Codigo,@NumParte,@IdSuscripcion,@Costo,@Unidad)";
+            comm.CommandText = "INSERT INTO [Cat_Material] (Nombre,Codigo,NumParte,Id_Suscripcion,Costo,Unidad,Tipo,NoPasada) VALUES(@Nombre,@Codigo,@NumParte,@IdSuscripcion,@Costo,@Unidad,@Tipo,@NoPasada)";
             comm.CommandType = CommandType.Text;
             comm.Parameters.AddWithValue("@Nombre", Nombre);
             comm.Parameters.AddWithValue("@Codigo", Codigo);
@@ -56,6 +59,10 @@ namespace SAM.Clase
             comm.Parameters.AddWithValue("@Costo", Costo);
 
             comm.Parameters.AddWithValue("@Unidad", TipoUnidad);
+
+            comm.Parameters.AddWithValue("@Tipo", Tipo);
+            comm.Parameters.AddWithValue("@NoPasada", NoPasada);
+
 
             int i = comm.ExecuteNonQuery();
             comm.Parameters.Clear();
@@ -73,10 +80,10 @@ namespace SAM.Clase
 
         }
 
-        public bool Editar(int IdMaterial, string Nombre, string Codigo, string NumParte, string Costo, string TipoUnidad)
+        public bool Editar(int IdMaterial, string Nombre, string Codigo, string NumParte, string Costo, string TipoUnidad,string Tipo,string NoPasada)
         {
             comm.Connection = conexion.AbrirConexion();
-            comm.CommandText = "UPDATE Cat_Material SET Nombre = @Nombre, Codigo = @Codigo, NumParte = @NumParte, Costo=@Costo, Unidad=@TipoUnidad WHERE Id_Material = @Id_Material";
+            comm.CommandText = "UPDATE Cat_Material SET Nombre = @Nombre, Codigo = @Codigo, NumParte = @NumParte, Costo=@Costo, Unidad=@TipoUnidad,Tipo=@Tipo,NoPasada=@NoPasada WHERE Id_Material = @Id_Material";
             comm.CommandType = CommandType.Text;
             comm.Parameters.AddWithValue("@Id_Material", IdMaterial);
             comm.Parameters.AddWithValue("@Nombre", Nombre);
@@ -84,6 +91,9 @@ namespace SAM.Clase
             comm.Parameters.AddWithValue("@NumParte", NumParte);
             comm.Parameters.AddWithValue("@Costo", Costo);
             comm.Parameters.AddWithValue("@TipoUnidad", TipoUnidad);
+            comm.Parameters.AddWithValue("@Tipo", Tipo);
+            comm.Parameters.AddWithValue("@NoPasada", NoPasada);
+
 
 
             int i = comm.ExecuteNonQuery();
@@ -128,7 +138,7 @@ namespace SAM.Clase
         public void LeerDatos(int IdMaterial)
         {
             comm.Connection = conexion.AbrirConexion();
-            comm.CommandText = "SELECT Nombre,Codigo,NumParte,REPLACE(costo,',','.') 'Costo',Unidad FROM Cat_Material WHERE Id_Material=@Id_Material";
+            comm.CommandText = "SELECT Nombre,Codigo,NumParte,REPLACE(costo,',','.') 'Costo',Unidad,Tipo,REPLACE(NoPasada,',','.') 'NoPasada' FROM Cat_Material WHERE Id_Material=@Id_Material";
             comm.CommandType = CommandType.Text;
             comm.Parameters.AddWithValue("@Id_Material", IdMaterial);
 
@@ -140,6 +150,10 @@ namespace SAM.Clase
             Costo = dr["Costo"].ToString();
 
             TipoUnidad = dr["Unidad"].ToString();
+            Tipo = dr["tipo"].ToString();
+            NoPasada = dr["NoPasada"].ToString();
+
+
 
             dr.Close();
             comm.Connection = conexion.CerrarConexion();

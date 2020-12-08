@@ -42,6 +42,7 @@ namespace SAM.Catalogo.Material
                 (this.Master as SAM.Site1).OcultarDrop = false;
                 (this.Master as SAM.Site1).OcultarLabel = false;
                 LlenarDrop();
+                LlenarDropTipo();
             }
         }
 
@@ -61,6 +62,19 @@ namespace SAM.Catalogo.Material
 
         }
 
+        public void LlenarDropTipo()
+        {
+
+            ddl_Tipo.Items.Insert(0, new ListItem("[Seleccionar]"));
+            ddl_Tipo.Items.Insert(1, new ListItem("Insumo"));
+            ddl_Tipo.Items.Insert(2, new ListItem("Terminado"));
+    
+
+
+
+
+        }
+
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
             string Nombre = txtNombre.Text;
@@ -70,9 +84,10 @@ namespace SAM.Catalogo.Material
             //string Costo = String.Format("{0:C}", decimalMoneyValue);
             string Costo = txtCosto.Text;
             string TipoUnidad = ddl_TipoUnidad.SelectedValue;
-
+            string Tipo = ddl_Tipo.SelectedValue;
+            string NoPadasa = txtNoPasada.Text;
             int IdSuscripcion = Convert.ToInt32((this.Master as SAM.Site1).IdSuscripcion.ToString());
-            if (material.Insertar(Nombre, Codigo, NumParte, IdSuscripcion, Costo, TipoUnidad))
+            if (material.Insertar(Nombre, Codigo, NumParte, IdSuscripcion, Costo, TipoUnidad,Tipo,NoPadasa))
             {
                 string script = "alert('Registro creado exitosamente.'); window.location.href= 'Index.aspx';";
 

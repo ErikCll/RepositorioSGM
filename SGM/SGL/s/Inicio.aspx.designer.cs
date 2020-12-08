@@ -76,21 +76,39 @@ namespace SGL.s {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl competencia;
         
         /// <summary>
-        /// Control Label2.
+        /// Control lblAvanceCapacitacion6.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label2;
+        protected global::System.Web.UI.WebControls.Label lblAvanceCapacitacion6;
         
         /// <summary>
-        /// Control div4.
+        /// Control progressCapacitacion6.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div4;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl progressCapacitacion6;
+        
+        /// <summary>
+        /// Control lblPromedioResultado6.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblPromedioResultado6;
+        
+        /// <summary>
+        /// Control progressPromedioResultado6.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl progressPromedioResultado6;
     }
 }

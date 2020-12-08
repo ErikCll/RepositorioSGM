@@ -12,12 +12,20 @@ namespace SGM.Competencia.CensoAct
     public partial class CrearControl : System.Web.UI.Page
     {
         Clase.ActividadControl control = new Clase.ActividadControl();
-        Clase.Master master = new Clase.Master();
-
+        Clase.Accesos accesos = new Clase.Accesos();
         protected void Page_Init(object sender, EventArgs e)
         {
-            string Usuario = Page.User.Identity.Name;
-            if (master.ValidarCompetencia(Usuario))
+            if (!IsPostBack)
+            {
+                ValidarAccesos();
+            }
+
+        }
+
+        public void ValidarAccesos()
+        {
+            int IdUsuario = Convert.ToInt32((this.Master as SGM.s.Site1).IDUsuario.ToString());
+            if (accesos.ValidarCensoActividad(IdUsuario))
             {
 
             }
@@ -25,6 +33,7 @@ namespace SGM.Competencia.CensoAct
             {
                 Response.Redirect("~/s/Inicio.aspx");
             }
+
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -149,8 +158,8 @@ namespace SGM.Competencia.CensoAct
                                 StorageCredentials creds = new StorageCredentials(AccountName, AccountKey);
                                 var account = CloudStorageAccount.Parse("DefaultEndpointsProtocol=https;AccountName=" + AccountName + ";AccountKey=" + AccountKey);
                                 CloudBlobClient client = account.CreateCloudBlobClient();
-                                CloudBlobContainer sampleContainer = client.GetContainerReference("controlvers");
-                                sampleContainer.CreateIfNotExists();
+                                CloudBlobContainer sampleContainer = client.GetContainerReference("sgm/Competencia");
+                                //sampleContainer.CreateIfNotExists();
 
 
                                 CloudBlockBlob blob = sampleContainer.GetBlockBlobReference("" + control.IdControl + ".pdf");

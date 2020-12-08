@@ -157,7 +157,7 @@
                 <i class="right fas fa-angle-left" style="margin-right: -9px"></i>
                                     </p>
                                 </a>
-                                <ul class="nav nav-treeview">
+                         <%--       <ul class="nav nav-treeview">
 
 
                                     <li class="nav-item">
@@ -169,7 +169,7 @@
 
 
 
-                                </ul>
+                                </ul>--%>
                             </li>
 
                             <li class="nav-item has-treeview" id="menu_personal" runat="server" visible="false">
@@ -183,7 +183,7 @@
                 <i class="right fas fa-angle-left" style="margin-right: -9px"></i>
                                     </p>
                                 </a>
-                                <ul class="nav nav-treeview">
+                        <%--        <ul class="nav nav-treeview">
 
 
                                     <li class="nav-item">
@@ -195,7 +195,7 @@
 
 
 
-                                </ul>
+                                </ul>--%>
                             </li>
 
 
@@ -212,7 +212,7 @@
                 <i class="right fas fa-angle-left" style="margin-right: -9px"></i>
                                     </p>
                                 </a>
-                                <ul class="nav nav-treeview">
+                        <%--        <ul class="nav nav-treeview">
 
 
                                     <li class="nav-item">
@@ -224,7 +224,7 @@
 
 
 
-                                </ul>
+                                </ul>--%>
                             </li>
 
 

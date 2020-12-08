@@ -13,19 +13,35 @@
     <asp:UpdatePanel runat="server" UpdateMode="Conditional">
         <ContentTemplate>
             <asp:Literal ID="litControl" runat="server"></asp:Literal>
-            <div class="col-lg-12">
+           <div class="col-lg-12">
                 <div class="row">
-                    <div class="container col-12">
-                        <asp:LinkButton runat="server" CssClass="text-sm"  OnClick="CrearVersion"><span class=" ion-plus" ></span>Agregar</asp:LinkButton>
-                        <br />
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+
+                        <div class="card ">
+                            <div class="card-body">
+
+                                <div class="row">
+
+                                                                        <div class="col-sm-4 col-md-4 col-lg-8">
+
+                                                                                                    <asp:LinkButton runat="server" CssClass="text-sm"  OnClick="CrearVersion"><span class=" ion-plus" ></span>Agregar</asp:LinkButton>
+
+                                                                            </div>
+                                                                        <div class=" input-group col-sm-8 col-md-8 col-lg-4">
+
+                                                                            </div>
+                                     <div class="container col-12">
                         <br />
                         <div class=" table-responsive">
                             <div style="overflow: auto; height: auto">
                                 <asp:GridView ID="gridControl"
                                     runat="server"
                                     AutoGenerateColumns="false"
-                                    CssClass=" table table-striped table-sm border-light"
-                                    GridLines="Vertical"
+                                    CssClass=" table table-bordered table-striped  table-sm"
+                                                    HeaderStyle-BackColor="#343a40"
+                                                    HeaderStyle-CssClass=" text-white"
+                                                    GridLines="Horizontal"
+                                                    HeaderStyle-HorizontalAlign="Center"
                                     EmptyDataText="Sin registro de control de veriones."
                                     PageSize="10"
                                     DataKeyNames="Id_Control"
@@ -76,7 +92,7 @@
                                </asp:TemplateField>
                                         <asp:TemplateField HeaderText="Archivo" ItemStyle-HorizontalAlign="Center">
                                             <ItemTemplate>
-                                                <asp:HyperLink runat="server" ID="lnk" CssClass="ion-android-document" Target="_blank"></asp:HyperLink>
+                                                <asp:HyperLink runat="server" ID="lnk" ImageUrl="~/dist/img/pdficon.svg" ImageHeight="17px" ImageWidth="17px" Target="_blank"></asp:HyperLink>
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                         <asp:TemplateField HeaderText="Tiene Evaluación" ItemStyle-HorizontalAlign="Center" Visible="false">
@@ -102,6 +118,19 @@
 
                         </div>
                     </div>
+                                    </div>
+
+
+                                </div>
+
+
+                            </div>
+
+
+                        </div>
+
+                    
+                   
                 </div>
             </div>
 

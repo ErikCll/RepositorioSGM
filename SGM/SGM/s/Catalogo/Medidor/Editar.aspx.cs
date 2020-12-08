@@ -10,12 +10,20 @@ namespace SGM.Catalogo.Medidor
     public partial class Editar : System.Web.UI.Page
     {
         Clase.Medidor medidor = new Clase.Medidor();
-        Clase.Master master = new Clase.Master();
-
+        Clase.Accesos accesos = new Clase.Accesos();
         protected void Page_Init(object sender, EventArgs e)
         {
-            string Usuario = Page.User.Identity.Name;
-            if (master.ValidarCatalogo(Usuario))
+            if (!IsPostBack)
+            {
+                ValidarAccesos();
+            }
+
+        }
+
+        public void ValidarAccesos()
+        {
+            int IdUsuario = Convert.ToInt32((this.Master as SGM.s.Site1).IDUsuario.ToString());
+            if (accesos.ValidarMedidor(IdUsuario))
             {
 
             }
@@ -23,6 +31,7 @@ namespace SGM.Catalogo.Medidor
             {
                 Response.Redirect("~/s/Inicio.aspx");
             }
+
         }
 
         protected void Page_Load(object sender, EventArgs e)

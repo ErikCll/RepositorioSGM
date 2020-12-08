@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/s/Site1.Master" AutoEventWireup="true" CodeBehind="CrearCuestionario.aspx.cs" Inherits="SGM.Competencia.CensoAct.CrearPreg" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/s/Site1.Master" AutoEventWireup="true" CodeBehind="CrearCuestionario.aspx.cs" Inherits="SGM.s.Competencia.CensoAct.Evaluacion.CrearCuestionario" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     Crear cuestionario (Paso 2)<br />
      <label class="font-weight-normal text small">Evaluacion para el control de versión: </label> <asp:Label runat="server" CssClass="font-weight-bold text small" ID="lblVersion"></asp:Label>
@@ -17,13 +17,16 @@
             <div class="col-lg-12">
                 <div class="row">
                                    <div class=" col-sm-8 col-md-12 col-lg-8">
-                  <div class="card shadow-none border-top border-dark" >
+                  <div class="card" >
+                         <div class="card-header">
+                        <h4>Agregar Pregunta</h4>
+                    </div>
                 <div class="card-body">
+                 
                     <div class="row">
-                           <div class="col-sm-12 col-md-12 col-lg-12">
-                            <h4>Agregar Pregunta:</h4>
+                          
+                            
                                <label runat="server" id="lblContador"></label>
-                        </div>
                         <div class="col-8 col-md-8 col-lg-8">
                             <div class="form-group">
                                       <textarea runat="server" CssClass="form-control form-control-lg" ID="txtPregunta" onkeypress="return AllowAlphabet(event)" MaxLength="250" style="height:100px;width:330px"></textarea>
@@ -86,22 +89,32 @@
                       </div>
             </div>
             <div class="col-sm-4 col-md-12 col-lg-4">
-                  <div class="card shadow-none border-top border-primary" >
+                  <div class="card " >
+                      <div class="card-header">
+ <h4>Lista de Preguntas</h4>
+                      </div>
                 <div class="card-body">
                     <div class="row">
-                           <div class="col-sm-12 col-md-12 col-lg-12">
-                            <h4>Lista de Preguntas</h4>
-                        </div>
+                    
+                        <ol id="ordered" class="col-sm-12 col-md-12 col-lg-12">
 
-                        <ol id="ordered">
-   <asp:ListView runat="server" ID="lstPreguntas" >
+  <asp:ListView runat="server" ID="lstPreguntas" >
                             <ItemTemplate>
                                 
                                 <asp:Label runat="server" ID="lblIdPregunta" Text='<%# Eval("Id_Pregunta") %>' Visible="false"></asp:Label>
-                           <li><asp:LinkButton runat="server" CssClass="ion-android-cancel text-red" OnClick="Eliminar"></asp:LinkButton> <label class=" font-weight-bold"><%# Eval("Pregunta") %></label> </li>  
+                                
+   <li class="mb-3">            
+                 <asp:LinkButton runat="server" CssClass="ion-android-cancel text-red" OnClick="Eliminar"></asp:LinkButton>
+                                   <span class=" font-weight-bold ml-1"><%# Eval("Pregunta") %></span> 
+                                                            
+
+           
+ </li>  
 
                             </ItemTemplate>
                         </asp:ListView>
+
+ 
                         </ol>
                        
                      

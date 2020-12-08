@@ -27,8 +27,9 @@ namespace Administracion.s
 
             if (login.AutenticarUsuario(Usuario, Contrasena))
             {
-
-                if (login.ValidarAdministracion(Usuario))
+                login.LeerDatosUsuario(Usuario);
+                int IdUsuario = Convert.ToInt32(login.IdUsuario);
+                if (login.ValidarAdministracion(IdUsuario))
                 {
                     FormsAuthentication.RedirectFromLoginPage(Login1.UserName, Login1.RememberMeSet);
 

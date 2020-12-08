@@ -16,7 +16,9 @@
         <ContentTemplate>
             <asp:Literal runat="server" ID="litControl"></asp:Literal>
             <div class="col-lg-12">
-                  <div class="card shadow-none border-top border-dark" >
+                <div class="row">
+                         <div class="col-sm-12 col-md-12 col-lg-12">
+                                 <div class="card" >
                 <div class="card-body">
                     <div class="row">
                         
@@ -41,10 +43,14 @@
                                                                             <div style="overflow: auto; height: 400px">
                                                                             <asp:GridView ID="gridActividad" runat="server"
                                                             AutoGenerateColumns="false" 
-                                                             CssClass=" table table-striped table-sm border-light"
-                                                             GridLines="Vertical"
+                                                              CssClass=" table table-bordered table-striped table-sm"
+                                                              HeaderStyle-BackColor="#343a40"
+                                     HeaderStyle-CssClass=" text-white"
+                                                GridLines="Horizontal"
                                                             EmptyDataText="Sin registro de actividades."
                                                             DataKeyNames="Id_Actividad"
+                                                                                                                                                                 HeaderStyle-HorizontalAlign="Center"
+
                                                               OnRowDataBound="gridActividad_RowDataBound"  >                                                                     
                                                             <Columns>
                                                                 
@@ -90,6 +96,11 @@
                         </div>
                     </div>
                       </div>
+                             </div>
+
+                    </div>
+
+              
             </div>
         </ContentTemplate>
            <Triggers>

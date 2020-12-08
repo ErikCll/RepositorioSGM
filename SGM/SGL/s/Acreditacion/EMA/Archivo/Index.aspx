@@ -1,7 +1,12 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/s/Site1.Master" AutoEventWireup="true" CodeBehind="Index.aspx.cs" Inherits="SGL.s.Acreditacion.EMA.Archivo.Index" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    Documento estatus <br />
+    <label class="font-weight-normal text small">Acreditación: </label>
+    <asp:Label runat="server" ID="lblAcreditacion" CssClass=" font-weight-bold text small"></asp:Label>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="mapeo" runat="server">
+     <li class="breadcrumb-item active"><a href="../Index.aspx">EMA</a></li>
+    <li class="breadcrumb-item "><a>Documento estatus</a>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Content" runat="server">
           <asp:UpdatePanel runat="server">
@@ -15,13 +20,10 @@
                     <div class="card-body">
                         <div class="row">
                               <div class="col-sm-4 col-md-4 col-lg-8">
-                                     <asp:LinkButton runat="server" CssClass="text-sm" PostBackUrl="~/s/Acreditacion/EMA/Archivo/Crear.aspx"><span class=" ion-plus" ></span>Agregar</asp:LinkButton>
+                                     <asp:LinkButton runat="server" CssClass="text-sm" OnClick="CrearDocumento" ><span class=" ion-plus" ></span>Agregar</asp:LinkButton>
                                   </div>
 
-                            <div class=" input-group float-right col-sm-4 col-md-4 col-lg-4">
-                                     <asp:TextBox ID="txtSearch" runat="server" CssClass="form-control form-control-sm"></asp:TextBox>
-<asp:Button ID="btnBuscar" Text="Buscar" runat="server"  OnClick="Buscar"  CssClass="btn btn-default btn-sm" />
-                                </div>
+                    
 
                                  <div class="container col-12">
                         
@@ -42,27 +44,28 @@
                                      PageSize="10"
                                      OnPageIndexChanging="gridAcreditacion_PageIndexChanging"
                                      AllowPaging="true"
-                                 DataKeyNames="Id_Acreditacion"
-                                     OnRowCommand="gridAcreditacion_RowCommand"
+                                 DataKeyNames="Id_Status"
+                                  
+                                   OnRowCommand="gridAcreditacion_RowCommand"
                                      OnRowDataBound="gridAcreditacion_RowDataBound"
                                     >
                                     <Columns>
                                         <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="260px" ItemStyle-Width="260px" ControlStyle-Width="76px">
                                             <ItemTemplate>
-                                               <asp:Button runat="server" Text="Editar" CssClass="btn btn-outline-secondary" CommandName="Editar" />
+<%--                                               <asp:Button runat="server" Text="Editar" CssClass="btn btn-outline-secondary" CommandName="Editar" />--%>
 
                                                <asp:Button runat="server" Text="Eliminar" CssClass="btn btn-outline-danger" CommandName="Eliminar" OnClientClick="javascript:if(!confirm('¿Desea borrar el registro?'))return false" />
 
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                    
-                                 <asp:BoundField HeaderText="Fecha" DataField="Fecha" />
-                                 <asp:BoundField HeaderText="Estatus" DataField="Status" />
+                                 <asp:BoundField HeaderText="Fecha" DataField="FechaStatus" ItemStyle-HorizontalAlign="Center" />
+                                 <asp:BoundField HeaderText="Estatus" DataField="Estatus" ItemStyle-HorizontalAlign="Center" />
                                      
                                            <asp:TemplateField HeaderText="Archivo" ItemStyle-HorizontalAlign="Center">
                                             <ItemTemplate>
                                                 <asp:Label runat="server" ID="lblArchivo" Text='<%# Eval("Id_status") %>' Visible="false" ></asp:Label>
-                                                <asp:HyperLink runat="server" CssClass="ion-android-document" ID="lnkArchivo" Target="_blank" ></asp:HyperLink>
+                                                <asp:HyperLink runat="server"  ID="lnkArchivo" Target="_blank" ImageUrl="~/dist/img/pdficon.svg" ImageHeight="17px" ImageWidth="17px"></asp:HyperLink>
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                     </Columns>

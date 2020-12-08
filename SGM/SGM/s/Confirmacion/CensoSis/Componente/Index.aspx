@@ -12,19 +12,30 @@
       <asp:UpdatePanel runat="server" UpdateMode="Conditional">
         <ContentTemplate>
             <asp:Literal ID="litControl" runat="server"></asp:Literal>
-            <div class="col-lg-12">
+                 <div class="col-lg-12">
                 <div class="row">
-                    <div class="container col-12">
-                        <asp:LinkButton runat="server" CssClass="text-sm"  OnClick="CrearComponente"><span class=" ion-plus" ></span>Agregar</asp:LinkButton>
-                        <br />
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+
+                        <div class="card ">
+                            <div class="card-body">
+
+                                <div class="row">
+                                    <div class="col-sm-4 col-md-4 col-lg-8">
+                                                                <asp:LinkButton runat="server" CssClass="text-sm"  OnClick="CrearComponente"><span class=" ion-plus" ></span>Agregar</asp:LinkButton>
+
+                                        </div>
+                                        <div class="container col-12">
                         <br />
                         <div class=" table-responsive">
                             <div style="overflow: auto; height: auto">
                                 <asp:GridView ID="gridComponente"
                                     runat="server"
                                     AutoGenerateColumns="false"
-                                    CssClass=" table table-striped table-sm border-light"
-                                    GridLines="Vertical"
+                                      CssClass=" table table-bordered table-striped  table-sm"
+                                                    HeaderStyle-BackColor="#343a40"
+                                                    HeaderStyle-CssClass=" text-white"
+                                                    GridLines="Horizontal"
+                                                    HeaderStyle-HorizontalAlign="Center"
                                     EmptyDataText="Sin registro de componentes."
                                     PageSize="10"
                                     DataKeyNames="Id_Componente"
@@ -55,6 +66,20 @@
 
                         </div>
                     </div>
+                                    </div>
+
+
+                                </div>
+
+
+                            </div>
+
+
+                        </div>
+
+
+                    
+                
                 </div>
             </div>
 

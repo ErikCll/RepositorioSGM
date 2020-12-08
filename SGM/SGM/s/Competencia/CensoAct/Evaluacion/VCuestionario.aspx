@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/s/Site1.Master" AutoEventWireup="true" CodeBehind="VCuestionario.aspx.cs" Inherits="SGM.Competencia.CensoAct.VCuestionario" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/s/Site1.Master" AutoEventWireup="true" CodeBehind="VCuestionario.aspx.cs" Inherits="SGM.s.Competencia.CensoAct.Evaluacion.VCuestionario" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     Validar Cuestionario (Paso 3)
 </asp:Content>
@@ -12,7 +12,7 @@
         .RBL label
 {
     margin-left:3px;
-
+    display:inline;
         }
 
     </style>
@@ -21,29 +21,28 @@
             <asp:Literal runat="server" ID="litControl"></asp:Literal>
                         <div class="col-lg-12">
                 <div class="row">
-                    <ol class="col-12">
+                    <ol class="col-sm-12 col-md-12 col-lg-12 ">
                                                      <asp:ListView runat="server" ID="lstPreguntas" OnItemDataBound="lstPreguntas_ItemDataBound">
                         <ItemTemplate>
                                                                 <div class=" container col-8">
                        <div class=" col-sm-12 col-md-12 col-lg-12">
-                  <div class="card shadow border-top border-dark" >
+  
+                  <div class="card" >
                 <div class="card-body">
-                    <div class="row">
-                        <div class="col-sm-12 col-md-12 col-lg-12">
-                             <li>
-              <label class=" font-weight-bold"><%# Eval("Pregunta") %></label>  <asp:LinkButton runat="server" CssClass="ion-edit ml-1" ToolTip="Editar" OnClick="Editar"></asp:LinkButton> <asp:LinkButton runat="server" CssClass="ion-android-delete text-red ml-1" ToolTip="Eliminar" OnClick="Eliminar"></asp:LinkButton>  
+                             <li >
+                                  <asp:LinkButton runat="server" CssClass="ion-edit ml-1" ToolTip="Editar" OnClick="Editar"></asp:LinkButton> <asp:LinkButton runat="server" CssClass="ion-android-delete text-red ml-1" ToolTip="Eliminar" OnClick="Eliminar"></asp:LinkButton>    
+                                   <span class="font-weight-bold "><%# Eval("Pregunta") %>  </span>  
                                                                  <asp:Label runat="server" ID="lblIdPregunta" Text='<%# Eval("Id_Pregunta") %>' Visible="false"></asp:Label>
                                                                  <asp:Label runat="server" ID="lblTipoPregunta" Text='<%# Eval("TipoPregunta") %>' Visible="false"></asp:Label>
+             
 
-<asp:RadioButtonList runat="server" ID="radioList" DataTextField="Respuesta" DataValueField="Respuesta" TextAlign="Right" CssClass="RBL" Enabled="false"> </asp:RadioButtonList>
+<asp:RadioButtonList runat="server" ID="radioList" DataTextField="Respuesta" DataValueField="Respuesta" TextAlign="Right" CssClass="RBL mt-2" Enabled="false" CellPadding="4"> </asp:RadioButtonList>
 
                       </li>
                             
-                        </div>
                      
                                    
                      
-                        </div>
                     </div>
                       </div>
             </div>

@@ -133,6 +133,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="dist\img\pdficon.svg" />
+    <Content Include="s\Catalogo\Inicio.aspx" />
     <Content Include="s\Catalogo\Medidor\Crear.aspx" />
     <Content Include="s\Catalogo\Medidor\Detalle.aspx" />
     <Content Include="s\Catalogo\Medidor\Editar.aspx" />
@@ -150,6 +152,7 @@
     <Content Include="s\Competencia\CensoAct\Evaluacion\EvPrueba.aspx" />
     <Content Include="s\Competencia\CensoAct\Evaluacion\VCuestionario.aspx" />
     <Content Include="s\Competencia\CensoAct\Index.aspx" />
+    <Content Include="s\Competencia\Inicio.aspx" />
     <Content Include="s\Competencia\MatrizCatAct\Agregar.aspx" />
     <Content Include="s\Competencia\MatrizCatAct\Detalle.aspx" />
     <Content Include="s\Competencia\MatrizCatAct\Index.aspx" />
@@ -161,6 +164,7 @@
     <Content Include="s\Competencia\Programa\DetalleEv.aspx" />
     <Content Include="s\Competencia\Programa\Editar.aspx" />
     <Content Include="s\Competencia\Programa\Index.aspx" />
+    <Content Include="s\Confirmacion\Inicio.aspx" />
     <Content Include="s\Error.aspx" />
     <Content Include="s\Evaluacion.aspx" />
     <Content Include="s\Inicio.aspx" />
@@ -1753,8 +1757,16 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Clase\Accesos.cs" />
     <Compile Include="Clase\Correo.cs" />
     <Compile Include="Clase\Login.cs" />
+    <Compile Include="s\Catalogo\Inicio.aspx.cs">
+      <DependentUpon>Inicio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="s\Catalogo\Inicio.aspx.designer.cs">
+      <DependentUpon>Inicio.aspx</DependentUpon>
+    </Compile>
     <Compile Include="s\Catalogo\Medidor\Crear.aspx.cs">
       <DependentUpon>Crear.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1874,6 +1886,13 @@
     <Compile Include="s\Competencia\CensoAct\Index.aspx.designer.cs">
       <DependentUpon>Index.aspx</DependentUpon>
     </Compile>
+    <Compile Include="s\Competencia\Inicio.aspx.cs">
+      <DependentUpon>Inicio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="s\Competencia\Inicio.aspx.designer.cs">
+      <DependentUpon>Inicio.aspx</DependentUpon>
+    </Compile>
     <Compile Include="s\Competencia\MatrizCatAct\Agregar.aspx.cs">
       <DependentUpon>Agregar.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1960,6 +1979,13 @@
     <Compile Include="Clase\ProgramaCapacitacion.cs" />
     <Compile Include="Clase\SistemaComponente.cs" />
     <Compile Include="Clase\SistemaMed.cs" />
+    <Compile Include="s\Confirmacion\Inicio.aspx.cs">
+      <DependentUpon>Inicio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="s\Confirmacion\Inicio.aspx.designer.cs">
+      <DependentUpon>Inicio.aspx</DependentUpon>
+    </Compile>
     <Compile Include="s\Error.aspx.cs">
       <DependentUpon>Error.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

@@ -10,22 +10,33 @@
        <asp:UpdatePanel runat="server" UpdateMode="Conditional">
 
         <ContentTemplate>
-
-            <div class="col-lg-12">
+    <div class="col-lg-12">
                 <div class="row">
-                    <div class="container col-12">
 
-                          <div class="input-group float-right col-sm-4 col-md-4 col-lg-4">
-                <div class="input-group btn">
-                   <asp:TextBox ID="txtSearch" runat="server" CssClass="form-control form-control-sm"></asp:TextBox>
+                      <div class="col-sm-12 col-md-12 col-lg-12">
+
+                        <div class="card ">
+                            <div class="card-body">
+                                   <div class="row">
+                                           <div class="col-sm-4 col-md-4 col-lg-8">
+
+
+                                </div>
+
+                                       <div class=" input-group float-right col-sm-4 col-md-4 col-lg-4">
+                                           <asp:TextBox ID="txtSearch" runat="server" CssClass="form-control form-control-sm"></asp:TextBox>
 <asp:Button ID="btnBuscar" Text="Buscar" runat="server"  OnClick="Buscar"  CssClass="btn btn-default btn-sm" />
-                </div>
-            </div>
+                                           </div>
+                                       <div class="container col-12">
+                        <br />
+             
                         <div class=" table-responsive">
                             <div style="overflow:auto ;height:auto">
                                 <asp:GridView runat="server" 
-                                 CssClass=" table table-striped table-sm border-light"
-                                   GridLines="Vertical"
+                                 CssClass=" table table-bordered table-striped table-sm"
+                                    HeaderStyle-BackColor="#343a40"
+                                     HeaderStyle-CssClass=" text-white"
+                                                GridLines="Horizontal"
                                    id="gridActividad"
                                     AutoGenerateColumns="false"
                                      EmptyDataText="Sin registro de actividad."
@@ -34,6 +45,7 @@
                                      AllowPaging="true"
                                  DataKeyNames="Id_Actividad"
                                      OnRowCommand="gridActividad_RowCommand"
+                                     HeaderStyle-HorizontalAlign="Center"
                                  OnRowDataBound="gridActividad_RowDataBound"
                                     >
                                     <Columns>
@@ -45,6 +57,7 @@
                                         </asp:TemplateField>
                                        
                                         <asp:BoundField HeaderText="Versión" DataField="Codigo" />
+<%--                                        <asp:BoundField HeaderText="Área" DataField="Area" />--%>
                                         <asp:TemplateField Visible="false">
                                             <ItemTemplate>
                                                 <asp:Label runat="server" ID="lblIdEvaluacion" Text='<%# Eval("Id_Evaluacion") %>'></asp:Label>
@@ -58,6 +71,16 @@
                             </div>
                         </div>
                     </div>
+                                       </div>
+
+
+                                </div>
+
+
+                            </div>
+
+                          </div>
+                    
                 </div>
             </div>
         </ContentTemplate>

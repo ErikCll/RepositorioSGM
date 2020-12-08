@@ -82,11 +82,13 @@ namespace Operacion.s.Infraestructura.Disponibilidad
                 ListViewDataItem item = (ListViewDataItem)e.Item;
 
                 Label lblIdEquipo = (Label)item.FindControl("lblIdEquipo");
-
+                Label lblFecha= (Label)item.FindControl("lblFecha");
                 int IdEquipo = Convert.ToInt32(lblIdEquipo.Text);
                 string encodedString = (Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(IdEquipo.ToString())));
+                string encodedString2 = (Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(lblFecha.Text.ToString())));
 
-                Response.Redirect("Bitacora/Index.aspx?id=" + encodedString + "");
+
+                Response.Redirect("Bitacora/Index.aspx?id=" + encodedString + "&fec="+encodedString2+"");
             }
         }
 

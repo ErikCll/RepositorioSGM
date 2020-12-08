@@ -113,7 +113,7 @@ namespace SGL.s
 
                 string activepage = Request.RawUrl;
 
-                if (activepage.Contains("/Acreditacion/Inicio.aspx"))
+                if (activepage.Contains("/Acreditacion/Inicio.aspx") || activepage.Contains("/Acreditacion/EMA/Index.aspx") || activepage.Contains("/Acreditacion/EMA/Crear.aspx") || activepage.Contains("/Acreditacion/EMA/Editar.aspx") || activepage.Contains("/Acreditacion/EMA/Archivo/Index.aspx") || activepage.Contains("/Acreditacion/EMA/Archivo/Crear.aspx"))
                 {
                     menu_acreditacion.Attributes.Add("class", "  nav-item has-treeview menu-open");
                     acreditacion.Attributes.Add("class", "nav-link active");

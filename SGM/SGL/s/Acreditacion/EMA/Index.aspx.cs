@@ -95,7 +95,7 @@ namespace SGL.s.Acreditacion.EMA
 
 
 
-            else if (e.CommandName == "AgregarVer")
+            else if (e.CommandName == "AgregarAcre")
             {
                 GridViewRow row = ((LinkButton)e.CommandSource).Parent.Parent as GridViewRow;
                 int IdAcreditacion = (int)gridAcreditacion.DataKeys[row.RowIndex].Value;

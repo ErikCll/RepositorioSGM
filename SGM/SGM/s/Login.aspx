@@ -75,9 +75,9 @@ font-size:20px;
                                         <div class="card-body">
                                             <div class="form-group">
 
-                                                <label>Usuario</label>
+                                                <label>Correo electrónico</label>
                                                 <div class="input-group">
-                                                    <asp:TextBox runat="server" ID="UserName" MaxLength="20" class="form-control" onkeypress="return AllowAlphabet(event)"></asp:TextBox>
+                                                    <asp:TextBox runat="server" ID="UserName" MaxLength="100" class="form-control" onkeypress="return AllowAlphabet(event)"></asp:TextBox>
                                                  <span class="input-group-append bg-white border-left-0">
                                                         <span class="input-group-text bg-transparent">
                                                             <i class=" fas fa-user-alt"></i>
@@ -91,7 +91,7 @@ font-size:20px;
                                                 <label>Contraseña</label>  
 
                                                 <div class="input-group">
-                                                    <asp:TextBox runat="server" ID="Password" TextMode="Password" class="form-control" onkeypress="return AllowAlphabet(event)" ClientIDMode="Static" MaxLength="15"></asp:TextBox>
+                                                    <asp:TextBox runat="server" ID="Password" TextMode="Password" class="form-control" onkeypress="return AllowAlphabet(event)" ClientIDMode="Static" MaxLength="16"></asp:TextBox>
 
                                                          <span class="input-group-append bg-white border-left-0">
                                                         <span class="input-group-text bg-transparent">

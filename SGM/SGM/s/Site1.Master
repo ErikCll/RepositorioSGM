@@ -142,101 +142,28 @@
 
               <li class="nav-item has-treeview" id="menu_catalogo" runat="server" visible="false">
              
-            <a href="#" class="nav-link" id="catalogo" runat="server">
+            <a href="~/s/Catalogo/Inicio.aspx" class="nav-link" id="catalogo" runat="server">
                 <i class="nav-icon fas fa-circle"></i>
 
               <p>
                Catálogo
 
-                <i class="right fas fa-angle-left"style="margin-right:-9px"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview">
-              <%--<li class="nav-item">
-                <a href="~/s/Catalogo/Instalacion/Index.aspx" class="nav-link" id="instalacion" runat="server">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Instalación</p>
-                </a>
-              </li>
-                 <li class="nav-item">
-                <a  href="~/s/Catalogo/Area/Index.aspx" class="nav-link" id="area" runat="server">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Área</p>
-                </a>
-              </li>
-
-                   <li class="nav-item">
-                <a  href="~/s/Catalogo/Categoria/Index.aspx" class="nav-link" id="categoria" runat="server">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Categoría</p>
-                </a>
-              </li>
-
-              
-
-                  <li class="nav-item">
-                <a  href="~/s/Catalogo/Empleado/Index.aspx" class="nav-link" id="empleado" runat="server">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Empleado</p>
-                </a>
-              </li>--%>
-
-                 <li class="nav-item">
-                <a  href="~/s/Catalogo/Medidor/Index.aspx" class="nav-link" id="medidor" runat="server">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Medidores</p>
-                </a>
-              </li>
-            
-            
-              
-            </ul>
+           
           </li>
 
            <li class="nav-item has-treeview" id="menu_competencia" runat="server" visible="false">
              
-            <a href="#" class="nav-link" id="competencia" runat="server">
+            <a href="~/s/Competencia/Inicio.aspx" class="nav-link" id="competencia" runat="server">
                 <i class="nav-icon fas fa-circle"></i>
 
               <p>
                Competencia y formación
 
-                <i class="right fas fa-angle-left"style="margin-right:-9px"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview">
-         
-               
-                <li class="nav-item">
-                <a  href="~/s/Competencia/CensoAct/Index.aspx" class="nav-link" id="actividad" runat="server">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Censo de actividad</p>
-                </a>
-              </li>
-
-                <li class="nav-item">
-                <a  href="~/s/Competencia/MatrizCatAct/Index.aspx" class="nav-link" id="catact" runat="server">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Matriz Categoría-Actividad</p>
-                </a>
-              </li>
-
-                <li class="nav-item">
-                <a  href="~/s/Competencia/MatrizCatEmp/Index.aspx" class="nav-link" id="catemp" runat="server">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Matriz Categoría-Empleado</p>
-                </a>
-              </li>
-              
-                 <li class="nav-item">
-                <a  href="~/s/Competencia/Programa/Index.aspx" class="nav-link" id="prog" runat="server">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Programa de capacitación</p>
-                </a>
-              </li>
-              
-              
-            </ul>
+          
           </li>
 
 
@@ -244,44 +171,18 @@
 
               <li class="nav-item has-treeview" id="menu_confirmacion" runat="server" visible="false">
              
-            <a href="#" class="nav-link" id="confirmacion" runat="server">
+            <a href="~/s/Confirmacion/Inicio.aspx" class="nav-link" id="confirmacion" runat="server">
                 <i class="nav-icon fas fa-circle"></i>
 
               <p>
                Confirmación metrológica
 
-                <i class="right fas fa-angle-left"style="margin-right:-9px"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview">
-         
-               
-                <li class="nav-item">
-                <a  href="~/s/Confirmacion/CensoSis/Index.aspx" class="nav-link" id="sistema" runat="server">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Censo sistemas de medición</p>
-                </a>
-              </li>
-
-              
-
-              
-            </ul>
+       
           </li>
 
-              <li class="nav-item has-treeview" id="menu_indicador" runat="server" visible="false">
-             
-            <a href="#" class="nav-link" id="A1">
-                <i class="nav-icon fas fa-circle"></i>
-
-              <p>
-               Indicadores
-
-                <i class="right fas fa-angle-left"style="margin-right:-9px"></i>
-              </p>
-            </a>
-     
-          </li>
+          
 
 
        <%--   <li class="nav-item has-treeview">

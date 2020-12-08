@@ -75,7 +75,7 @@ namespace Operacion.s.Infraestructura.Disponibilidad.Bitacora
 
         protected void Regresar(Object sender, EventArgs e)
         {
-            Response.Redirect("Index.aspx?id=" + Request.QueryString["id"] + "");
+            Response.Redirect("Index.aspx?id=" + Request.QueryString["id"] + "&fec="+ Request.QueryString["fec"] + "");
         }
 
         protected void ddl_TipoFalla_SelectedIndexChanged(object sender, EventArgs e)

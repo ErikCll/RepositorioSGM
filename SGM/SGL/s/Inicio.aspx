@@ -105,28 +105,50 @@ Sistema de Gestión para Laboratorios
                   </button>
                 </div>
               </div>
-              <div class="card-body" style="display: block;">
-                  <div class="row">
-                           <div class="col-sm-12 col-md-6 col-lg-12">
-                <h3><asp:Label runat="server" ID="Label2"></asp:Label><label class="font-weight-normal">   </label><i class="fas fa-fw fa-tachometer-alt fa-2x text-black-50 float-right"></i>
-</h3>
-                              
-                  </div>
-        
-                      <div class="col-sm-12 col-md-12 col-lg-12">
-<%--                                        <p><asp:Label runat="server" ID="lblOperando"></asp:Label> de <asp:Label runat="server"  ID="lblTotal"></asp:Label></p>--%>
+       <div class="card-body" style="display: block;">
+                        <div class="row">
 
-                      </div>
-                  </div>
-             
+                            <div class="col-sm-8 col-md-8 col-lg-8">
 
-               
-         
-           <div class="progress">
-                        <div class="progress-bar" runat="server" id="div4">
+
+                                   <label class=" text-sm font-weight-normal">Programa de capacitación: </label><asp:Label runat="server" ID="lblAvanceCapacitacion6" CssClass="text-sm ml-1 text-bold"></asp:Label>
+                       
+  
+
+                                                               
+<%--<br />
+                                    <label class="text-sm">Promedio: </label><asp:Label runat="server" ID="lblPromedio" Text="87.50%" CssClass="text-sm"></asp:Label>--%>
+                                                                                       
+                            </div>  
+                            <div class="col-sm-4 col-md-4 col-lg-4 mt-1">
+
+                                  <div class="progress"><div class="progress-bar" style="width:75%" id="progressCapacitacion6" runat="server"></div></div> 
+                            </div>
+
+                        
+                         
+                           
+                                                        <div class="col-sm-8 col-md-8 col-lg-8">
+
+ <label class="text-sm font-weight-normal">Resultados de evaluación: </label><asp:Label runat="server" ID="lblPromedioResultado6" CssClass="text-sm ml-1 text-bold"></asp:Label>
+
+</div>
+                                <div class="col-sm-4 col-md-4 col-lg-4 mt-1">
+
+                                  <div class="progress"><div class="progress-bar" style="width:75%" id="progressPromedioResultado6" runat="server"></div></div> 
+                            </div>
+                           <%--    <div class="col-sm-6 col-md-6 col-lg-6">
+                                                 <i class="fas fa-graduation-cap fa-4x text-black-50 float-right"></i>
+                                       </div>         --%>       
+                           
+                                    
+
+
+
+
                         </div>
-              </div>
-  </div>
+
+                    </div>
             
     <!-- /.card-body -->
      <div class="card-footer mt-2">

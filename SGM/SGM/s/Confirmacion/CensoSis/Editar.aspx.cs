@@ -11,12 +11,20 @@ namespace SGM.Confirmacion.CensoSis
     {
 
         Clase.SistemaMed sistema = new Clase.SistemaMed();
-        Clase.Master master = new Clase.Master();
-
+        Clase.Accesos accesos = new Clase.Accesos();
         protected void Page_Init(object sender, EventArgs e)
         {
-            string Usuario = Page.User.Identity.Name;
-            if (master.ValidarConfirmacion(Usuario))
+            if (!IsPostBack)
+            {
+                ValidarAccesos();
+            }
+
+        }
+
+        public void ValidarAccesos()
+        {
+            int IdUsuario = Convert.ToInt32((this.Master as SGM.s.Site1).IDUsuario.ToString());
+            if (accesos.ValidarCensoSistema(IdUsuario))
             {
 
             }
@@ -24,6 +32,7 @@ namespace SGM.Confirmacion.CensoSis
             {
                 Response.Redirect("~/s/Inicio.aspx");
             }
+
         }
         protected void Page_Load(object sender, EventArgs e)
         {

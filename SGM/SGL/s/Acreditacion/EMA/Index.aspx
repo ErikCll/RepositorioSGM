@@ -62,14 +62,14 @@
 
                                             </ItemTemplate>
                                         </asp:TemplateField>
-                                        <asp:TemplateField HeaderText="No">
+                                        <asp:TemplateField HeaderText="No" ItemStyle-HorizontalAlign="Center">
                                             <ItemTemplate>
-                                                <asp:LinkButton runat="server" ID="lnkNombre" Text='<%# Eval("No") %>' CommandName="AgregarAcre" ToolTip="Agregar archivo de acreditación"></asp:LinkButton>
+                                                <asp:LinkButton runat="server" ID="lnkNombre" Text='<%# Eval("No") %>' CommandName="AgregarAcre" ToolTip="Agregar documento de acreditación"></asp:LinkButton>
                                             </ItemTemplate>
                                         </asp:TemplateField>
-                                 <asp:BoundField HeaderText="Referencia" DataField="Referencia" />
-                                 <asp:BoundField HeaderText="Fecha" DataField="Fecha" />
-                                        <asp:BoundField HeaderText="Estatus" DataField="Status" />
+                                 <asp:BoundField HeaderText="Referencia" DataField="Referencia" ItemStyle-HorizontalAlign="Center"/>
+                                 <asp:BoundField HeaderText="Fecha" DataField="Fecha" ItemStyle-HorizontalAlign="Center" />
+                                        <asp:BoundField HeaderText="Estatus" DataField="Status" ItemStyle-HorizontalAlign="Center"/>
                                      
                                            <asp:TemplateField HeaderText="Archivo" ItemStyle-HorizontalAlign="Center">
                                             <ItemTemplate>

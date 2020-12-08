@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/s/Site1.Master" AutoEventWireup="true" CodeBehind="Crear.aspx.cs" Inherits="SGM.Competencia.CensoAct.CrearEv" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/s/Site1.Master" AutoEventWireup="true" CodeBehind="Crear.aspx.cs" Inherits="SGM.s.Competencia.CensoAct.Evaluacion.Crear" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     Crear Evaluación (Paso 1)<br />
         <label class="font-weight-normal text small">Control de versión: </label> <asp:Label runat="server" ID="lblCodigo" CssClass=" font-weight-bold text small"></asp:Label><br />
@@ -16,12 +16,13 @@
                         <asp:Literal runat="server" ID="litControl"></asp:Literal>
 
             <div class="col-lg-12">
-                  <div class="card shadow-none border-top border-dark" >
+                  <div class="card" >
+                      <div class="card-header">
+                          <h4>Datos de la evaluación</h4>
+                      </div>
                 <div class="card-body">
                     <div class="row" runat="server" id="rowCaptura" visible="false">
-                           <div class="col-sm-12 col-md-12 col-lg-12">
-                            <h4>Datos de la evaluación</h4>
-                        </div>
+                         
                         <div class="col-12 col-md-12 col-lg-4">
                             <div class="form-group">
                                 <label>Cantidad de reactivos:</label>
@@ -56,9 +57,7 @@
                         </div>
 
                     <div class="row" runat="server" id="rowGrid" visible="false">
-                           <div class="col-sm-12 col-md-12 col-lg-12">
-                            <h4>Datos de la evaluación</h4>
-                        </div>
+                      
                     <div class="container col-12">
                      
                         <div class=" table-responsive">
@@ -66,8 +65,12 @@
                                 <asp:GridView ID="gridEvaluacion"
                                     runat="server"
                                     AutoGenerateColumns="false"
-                                    CssClass=" table table-striped table-sm border-light"
-                                    GridLines="Vertical"
+                                    CssClass=" table table-bordered table-striped table-sm"
+                                    HeaderStyle-BackColor="#343a40"
+                                     HeaderStyle-CssClass=" text-white"
+                                            GridLines="Horizontal"
+                                     HeaderStyle-HorizontalAlign="Center"
+                                     RowStyle-HorizontalAlign="Center"
                                     EmptyDataText="Sin registro de evaluación."
                                     DataKeyNames="Id_Evaluacion"
                                  OnRowCommand="gridEvaluacion_RowCommand"
@@ -84,7 +87,8 @@
 
                                             </ItemTemplate>
                                         </asp:TemplateField>
-                                        <asp:BoundField DataField="CantidadReactivos" HeaderText="Cantidad de reactivos"/>
+                                        <asp:BoundField DataField="CantidadReactivos" HeaderText="Reactivos evaluación"/>
+                                        <asp:BoundField DataField="TotalReactivos" HeaderText="Reactivos capturados" />
                                         <asp:BoundField DataField="CalificacionMinima" HeaderText="Calificación mínima" />
                                         <asp:BoundField DataField="Estatus" HeaderText="Estatus" />
 

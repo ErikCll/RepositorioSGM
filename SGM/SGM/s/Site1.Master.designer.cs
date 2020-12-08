@@ -139,15 +139,6 @@ namespace SGM.s {
         protected global::System.Web.UI.HtmlControls.HtmlAnchor catalogo;
         
         /// <summary>
-        /// Control medidor.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor medidor;
-        
-        /// <summary>
         /// Control menu_competencia.
         /// </summary>
         /// <remarks>
@@ -166,42 +157,6 @@ namespace SGM.s {
         protected global::System.Web.UI.HtmlControls.HtmlAnchor competencia;
         
         /// <summary>
-        /// Control actividad.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor actividad;
-        
-        /// <summary>
-        /// Control catact.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor catact;
-        
-        /// <summary>
-        /// Control catemp.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor catemp;
-        
-        /// <summary>
-        /// Control prog.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor prog;
-        
-        /// <summary>
         /// Control menu_confirmacion.
         /// </summary>
         /// <remarks>
@@ -218,24 +173,6 @@ namespace SGM.s {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlAnchor confirmacion;
-        
-        /// <summary>
-        /// Control sistema.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor sistema;
-        
-        /// <summary>
-        /// Control menu_indicador.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl menu_indicador;
         
         /// <summary>
         /// Control head.

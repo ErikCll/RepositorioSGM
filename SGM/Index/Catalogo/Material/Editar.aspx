@@ -65,6 +65,27 @@
                                     ErrorMessage="Costo requerido." ForeColor="Red" ValidationGroup="btnGuardar"></asp:RequiredFieldValidator>
                             </div>
                         </div>
+
+                               <div class="col-sm-12 col-md-12 col-lg-2">
+                            <div class="form-group">
+
+                                <label>Tipo:</label>
+                                             <asp:DropDownList runat="server" ID="ddl_Tipo" CssClass="form-control" ></asp:DropDownList>
+                                 <asp:RequiredFieldValidator runat="server" ID="RequiredFieldValidator6" ControlToValidate="ddl_Tipo"
+                                    ErrorMessage="Tipo requerido." ForeColor="Red" ValidationGroup="btnGuardar" InitialValue="[Seleccionar]"></asp:RequiredFieldValidator>
+                            </div>
+                        </div>
+
+                    
+                           <div class="col-sm-12 col-md-12 col-lg-4">
+                            <div class="form-group">
+                                <label>No. Pasadas:</label>
+                                 <asp:TextBox ID="txtNoPasada" runat="server" CssClass="form-control" onkeypress="return isDecimalNumber(event,this);" MaxLength="11">
+                </asp:TextBox>  
+                                
+                            </div>
+                        </div>
+
                         <div class="col-sm-12 col-md-12 col-lg-12"></div>
                         <div class="col-sm-12 col-md-12 col-lg-6">
                             <div class="form-group">

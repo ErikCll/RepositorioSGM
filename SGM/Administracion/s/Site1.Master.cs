@@ -14,36 +14,13 @@ namespace Administracion.s
 
         Clase.Master master = new Clase.Master();
         Clase.Login login = new Clase.Login();
-
+        Clase.Accesos accesos = new Clase.Accesos();
         protected void Page_Init(object sender, EventArgs e)
         {
             if (HttpContext.Current.User.Identity.IsAuthenticated)
 
             {
-                string Usuario = Page.User.Identity.Name;
-                if (login.ValidarAdministracion(Usuario))
-                {
-                    if (master.ValidarCatalogo(Usuario))
-                    {
-                        menu_catalogo.Visible = true;
-
-                    }
-
-                    if (master.ValidarPersonal(Usuario))
-                    {
-                        menu_personal.Visible = true;
-                    }
-
-                    if (master.ValidarAlmacen(Usuario))
-                    {
-                        menu_almacen.Visible = true;
-                    }
-                }
-                else
-                {
-                    FormsAuthentication.SignOut();
-                    Response.Redirect(Request.UrlReferrer.ToString());
-                }
+               
 
             }
             else
@@ -76,6 +53,8 @@ namespace Administracion.s
                 lblIdSuscripcion.Text = master.IdSuscripcion;
                 lblTitulo.Text = master.Nombre;
                 lblUsuario.Text = Usuario;
+                ValidarAccesos();
+
                 LlenarDrop();
                 if (RadInstalacion.Items.Count == 1)
                 {
@@ -91,6 +70,35 @@ namespace Administracion.s
 
         }
 
+        public void ValidarAccesos()
+        {
+            int IdUsuario = Convert.ToInt32(lblIdUsuario.Text);
+            if (login.ValidarAdministracion(IdUsuario))
+            {
+
+                if (accesos.ValidarCatalogo(IdUsuario))
+                {
+                    menu_catalogo.Visible = true;
+                }
+                if (accesos.ValidarPersonal(IdUsuario))
+                {
+                    menu_personal.Visible = true;
+                }
+
+                if (accesos.ValidarAlmacen(IdUsuario))
+                {
+                    menu_almacen.Visible = true;
+                }
+            }
+            else
+            {
+                Response.Redirect("http://orygon.azurewebsites.net/Inicio.aspx");
+
+                //FormsAuthentication.SignOut();
+                //Response.Redirect(Request.UrlReferrer.ToString());
+            }
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -103,7 +111,6 @@ namespace Administracion.s
                 {
                     menu_personal.Attributes.Add("class", "  nav-item has-treeview menu-open");
                     personal.Attributes.Add("class", "nav-link active");
-                    controlasist.Attributes.Add("class", "nav-link active");
 
                 }
 
@@ -111,7 +118,6 @@ namespace Administracion.s
                 {
                     menu_catalogo.Attributes.Add("class", "  nav-item has-treeview menu-open");
                     catalogo.Attributes.Add("class", "nav-link active");
-                    material.Attributes.Add("class", "nav-link active");
 
                 }
 
@@ -119,7 +125,6 @@ namespace Administracion.s
                 {
                     menu_almacen.Attributes.Add("class", "  nav-item has-treeview menu-open");
                     almacen.Attributes.Add("class", "nav-link active");
-                    inventario.Attributes.Add("class", "nav-link active");
 
                 }
 

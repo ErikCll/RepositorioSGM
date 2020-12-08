@@ -4,7 +4,11 @@
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="mapeo" runat="server">
-    
+      <li class="breadcrumb-item active"><asp:LinkButton runat="server" OnClick="IrSAM">SAM</asp:LinkButton></li>
+                  <li class="breadcrumb-item "><a href="../../Inicio.aspx">SGM (Inicio)</a></li>
+                      <li class="breadcrumb-item "><a href="../Inicio.aspx">Competencia y formación</a></li>
+
+                     <li class="breadcrumb-item "><a> Matriz Categoría-Actividad</a></li>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Content" runat="server">
     <style>
@@ -13,32 +17,51 @@
     }
 </style>
 
-      <div class="col-lg-12">
+       <div class="col-lg-12">
 
-                <div class="row">
-                    <div class="container col-12">
-                    <a href="Detalle.aspx" class="float-left">Detalle Matriz Categoría-Actividad
-</a>
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12">
 
-                   
-                        <div class=" table-responsive">
-                            <div style="overflow:auto ;height:auto">
-                                <asp:GridView runat="server" 
-                                 CssClass=" table table-striped table-sm border-light"
-                                   GridLines="Vertical"
-                                   id="gridMatriz"
-                                    AutoGenerateColumns="true"
-                                     EmptyDataText="Sin registros."
-                               OnRowDataBound="gridMatriz_RowDataBound"
-                                   
-                                    >
-                             
-                                </asp:GridView>
+                <div class="card ">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-4 col-md-4 col-lg-8">
+                                <a href="Detalle.aspx" class="float-left">Detalle Matriz Categoría-Actividad</a>
+
+                            </div>
+
+                            <div class="container col-12">
+
+                                <br />
+                                <div class=" table-responsive">
+                                    <div style="overflow: auto; height: auto">
+                                        <asp:GridView runat="server"
+                                            CssClass=" table table-bordered table-striped table-sm"
+                                            HeaderStyle-BackColor="#343a40"
+                                     HeaderStyle-CssClass=" text-white"
+                                            GridLines="Horizontal" 
+                                            ID="gridMatriz"
+                                            AutoGenerateColumns="true"
+                                            EmptyDataText="Sin registros."
+                                             HeaderStyle-HorizontalAlign="Center"
+                                            OnRowDataBound="gridMatriz_RowDataBound">
+                                        </asp:GridView>
+                              <asp:Button runat="server" CssClass="btn btn-default" ID="btnRegresar" PostBackUrl="~/s/Competencia/Inicio.aspx" Text="Regresar" />
+                                    </div>
+                                </div>
                             </div>
                         </div>
+
+
                     </div>
+
                 </div>
+
             </div>
+
+
+        </div>
+    </div>  
      <script type="text/javascript">
 
               Sys.WebForms.PageRequestManager.getInstance().add_beginRequest(BeginRequestHandler);

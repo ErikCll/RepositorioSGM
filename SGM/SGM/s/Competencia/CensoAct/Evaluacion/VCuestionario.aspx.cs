@@ -5,17 +5,25 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace SGM.Competencia.CensoAct
+namespace SGM.s.Competencia.CensoAct.Evaluacion
 {
     public partial class VCuestionario : System.Web.UI.Page
     {
         Clase.Evaluacion evaluacion = new Clase.Evaluacion();
-        Clase.Master master = new Clase.Master();
-
+        Clase.Accesos accesos = new Clase.Accesos();
         protected void Page_Init(object sender, EventArgs e)
         {
-            string Usuario = Page.User.Identity.Name;
-            if (master.ValidarCompetencia(Usuario))
+            if (!IsPostBack)
+            {
+                ValidarAccesos();
+            }
+
+        }
+
+        public void ValidarAccesos()
+        {
+            int IdUsuario = Convert.ToInt32((this.Master as SGM.s.Site1).IDUsuario.ToString());
+            if (accesos.ValidarCensoActividad(IdUsuario))
             {
 
             }
@@ -23,6 +31,7 @@ namespace SGM.Competencia.CensoAct
             {
                 Response.Redirect("~/s/Inicio.aspx");
             }
+
         }
         protected void Page_Load(object sender, EventArgs e)
         {

@@ -14,14 +14,14 @@
            <asp:UpdatePanel runat="server" UpdateMode="Conditional" >
         <ContentTemplate>
             <asp:Literal runat="server" ID="litControl"></asp:Literal>
-            <div class="col-lg-12">
-                  <div class="card shadow-none border-top border-dark" >
-                <div class="card-body">
-                    <div class="row">
-                        
-                           
-                     
-                        <div class="col-sm-12 col-md-12 col-lg-12"></div>
+          <div class="col-lg-12">
+                   <div class="row">
+                         <div class="col-sm-12 col-md-12 col-lg-12">
+
+                        <div class="card ">
+                            <div class="card-body">
+                                   <div class="row">
+                                         <div class="col-sm-12 col-md-12 col-lg-12"></div>
                         <div class="col-sm-6 col-md-6 col-lg-6">
                             <div class="form-group custom-control-inline">
                                                             <h4>Empleados:</h4>
@@ -33,17 +33,20 @@
                         <div class="col-sm-6 col-md-6 col-lg-6">
                               <div class="form-group float-right">
                                 <asp:Button runat="server" CssClass="btn btn-primary" Text="Guardar" ID="btnGuardar" OnClick="btnGuardar_Click"/>
-                                  <asp:Button runat="server" ID="btnRegresar" CssClass="btn btn-default" Text="Regresar" PostBackUrl="~/s/Competencia/MatrizCatEmp/Detalle.aspx" />
+                                  <asp:Button runat="server" ID="btnRegresar" CssClass="btn btn-default" Text="Regresar" PostBackUrl="~/s/FuncionRes/MatrizCatEmp/Detalle.aspx" />
                             </div>
                         </div>
                                    <div class="table-responsive">
                                                                             <div style="overflow: auto; height: 400px">
                                                                             <asp:GridView ID="gridEmpleado" runat="server"
                                                             AutoGenerateColumns="false" 
-                                                             CssClass=" table table-striped table-sm border-light" 
-                                                             GridLines="Vertical"
+                                                             CssClass=" table table-bordered table-striped table-sm" 
+                                                             HeaderStyle-BackColor="#343a40"
+                                     HeaderStyle-CssClass=" text-white"
+                                                GridLines="Horizontal"
                                                             EmptyDataText="Sin registro de empleados."
                                                             DataKeyNames="Id_Empleado"
+                                                                                 HeaderStyle-HorizontalAlign="Center"
                                                               OnRowDataBound="gridEmpleado_RowDataBound"  >                                                                     
                                                             <Columns>
                                                                 
@@ -82,6 +85,16 @@
 </div>
 
                                                         </div>
+                                       </div>
+
+
+                                </div>
+
+                           
+                        
+                           
+                     
+                      
                      
                        
                               

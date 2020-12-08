@@ -13,6 +13,15 @@ namespace SGL.s.Acreditacion.EMA.Archivo {
     public partial class Index {
         
         /// <summary>
+        /// Control lblAcreditacion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblAcreditacion;
+        
+        /// <summary>
         /// Control litControl.
         /// </summary>
         /// <remarks>
@@ -20,24 +29,6 @@ namespace SGL.s.Acreditacion.EMA.Archivo {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal litControl;
-        
-        /// <summary>
-        /// Control txtSearch.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSearch;
-        
-        /// <summary>
-        /// Control btnBuscar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnBuscar;
         
         /// <summary>
         /// Control gridAcreditacion.

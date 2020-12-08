@@ -42,7 +42,7 @@ namespace SASISOPA.s
 
 
 
-                int min = 1 * 60;
+                int min = 1 * 30;
                 TimeAllSecondes = min;
 
                 //foreach (ListViewItem itm in lstPreguntas.Items)

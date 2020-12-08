@@ -26,8 +26,9 @@ namespace SGM.s
 
             if (login.AutenticarUsuario(Usuario, Contrasena))
             {
-
-                if (login.ValidarSGM(Usuario))
+                login.LeerDatosUsuario(Usuario);
+                int IdUsuario = Convert.ToInt32(login.IdUsuario);
+                if (login.ValidarSGM(IdUsuario))
                 {
                     FormsAuthentication.RedirectFromLoginPage(Login1.UserName, Login1.RememberMeSet);
 

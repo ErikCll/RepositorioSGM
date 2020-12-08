@@ -42,6 +42,7 @@ namespace SAM.Catalogo.Material
                 (this.Master as SAM.Site1).OcultarDrop = false;
                 (this.Master as SAM.Site1).OcultarLabel = false;
                 LlenarDrop();
+                LlenarDropTipo();
                 string decodedString = System.Text.ASCIIEncoding.ASCII.GetString(Convert.FromBase64String(Request.QueryString["id"]));
                 int IdMaterial = Convert.ToInt32(decodedString);
                 material.LeerDatos(IdMaterial);
@@ -50,6 +51,8 @@ namespace SAM.Catalogo.Material
                 txtNumParte.Text = material.NumParte;
                 txtCosto.Text = material.Costo;
                 ddl_TipoUnidad.SelectedValue = material.TipoUnidad;
+                ddl_Tipo.SelectedValue = material.Tipo;
+                txtNoPasada.Text = material.NoPasada;
 
             }
         }
@@ -69,6 +72,19 @@ namespace SAM.Catalogo.Material
 
 
         }
+
+        public void LlenarDropTipo()
+        {
+
+            ddl_Tipo.Items.Insert(0, new ListItem("[Seleccionar]"));
+            ddl_Tipo.Items.Insert(1, new ListItem("Insumo"));
+            ddl_Tipo.Items.Insert(2, new ListItem("Terminado"));
+
+
+
+
+
+        }
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
             string decodedString = System.Text.ASCIIEncoding.ASCII.GetString(Convert.FromBase64String(Request.QueryString["id"]));
@@ -78,7 +94,9 @@ namespace SAM.Catalogo.Material
             string NumParte = txtNumParte.Text;
             string Costo = txtCosto.Text;
             string TipoUnidad = ddl_TipoUnidad.SelectedValue;
-            if (material.Editar(IdMaterial, Nombre, Codigo, NumParte, Costo, TipoUnidad))
+            string Tipo = ddl_Tipo.SelectedValue;
+            string NoPasada = txtNoPasada.Text;
+            if (material.Editar(IdMaterial, Nombre, Codigo, NumParte, Costo, TipoUnidad,Tipo,NoPasada))
             {
                 string txtJS = String.Format("<script>alert('{0}');</script>", "Se actualizaron correctamente los datos.");
                 ScriptManager.RegisterClientScriptBlock(litControl, litControl.GetType(), "script", txtJS, false);

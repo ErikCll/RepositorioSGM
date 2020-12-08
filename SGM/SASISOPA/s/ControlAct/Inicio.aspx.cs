@@ -51,7 +51,6 @@ namespace SASISOPA.s.ControlAct
         {
             if (!IsPostBack)
             {
-                MostrarGraficaAct();
             }
         }
 

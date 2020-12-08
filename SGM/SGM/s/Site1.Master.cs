@@ -14,7 +14,7 @@ namespace SGM.s
 
         Clase.Master master = new Clase.Master();
         Clase.Login login = new Clase.Login();
-       
+        Clase.Accesos accesos = new Clase.Accesos();
     
    
 
@@ -24,36 +24,7 @@ namespace SGM.s
             if (HttpContext.Current.User.Identity.IsAuthenticated)
 
             {
-                string Usuario = Page.User.Identity.Name;
-                if (login.ValidarSGM(Usuario))
-                {
-                    if (master.ValidarCatalogo(Usuario))
-                    {
-                        menu_catalogo.Visible = true;
-                    }
-
-                    if (master.ValidarCompetencia(Usuario))
-                    {
-                        menu_competencia.Visible = true;
-                    }
-
-                    if (master.ValidarConfirmacion(Usuario))
-                    {
-                        menu_confirmacion.Visible = true;
-                    }
-
-                    if (master.ValidarIndicadores(Usuario))
-                    {
-                        menu_indicador.Visible = true;
-                    }
-
-
-                }
-                else
-                {
-                    FormsAuthentication.SignOut();
-                    Response.Redirect(Request.UrlReferrer.ToString());
-                }
+                
 
             }
             else
@@ -86,6 +57,8 @@ namespace SGM.s
                 lblIdSuscripcion.Text = master.IdSuscripcion;
                 lblTitulo.Text = master.Nombre;
                 lblUsuario.Text = Usuario;
+                ValidarAccesos();
+
                 LlenarDrop();
                 if (RadInstalacion.Items.Count == 1)
                 {
@@ -99,6 +72,35 @@ namespace SGM.s
                 }
             }
 
+        }
+
+        public void ValidarAccesos()
+        {
+            int IdUsuario = Convert.ToInt32(lblIdUsuario.Text);
+            if (login.ValidarSGM(IdUsuario))
+            {
+
+                if (accesos.ValidarCatalogo(IdUsuario))
+                {
+                    menu_catalogo.Visible = true;
+                }
+                if (accesos.ValidarCompetencia(IdUsuario))
+                {
+                    menu_competencia.Visible = true;
+                }
+
+                if (accesos.ValidarConfirmacion(IdUsuario))
+                {
+                    menu_confirmacion.Visible = true;
+                }
+            }
+            else
+            {
+                Response.Redirect("http://orygon.azurewebsites.net/Inicio.aspx");
+
+                //FormsAuthentication.SignOut();
+                //Response.Redirect(Request.UrlReferrer.ToString());
+            }
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -145,50 +147,26 @@ namespace SGM.s
 
                 //}
 
-                 if (activepage.Contains("/Catalogo/Medidor/Index.aspx") || activepage.Contains("/Catalogo/Medidor/Crear.aspx") || activepage.Contains("/Catalogo/Medidor/Detalle.aspx") || activepage.Contains("/Catalogo/Medidor/Editar.aspx"))
+                 if (activepage.Contains("/Catalogo/Inicio.aspx") ||  activepage.Contains("/Catalogo/Medidor/Index.aspx") || activepage.Contains("/Catalogo/Medidor/Crear.aspx") || activepage.Contains("/Catalogo/Medidor/Detalle.aspx") || activepage.Contains("/Catalogo/Medidor/Editar.aspx"))
                 {
                     menu_catalogo.Attributes.Add("class", "  nav-item has-treeview menu-open");
                     catalogo.Attributes.Add("class", "nav-link active");
-                    medidor.Attributes.Add("class", "nav-link active");
 
                 }
 
-                else if (activepage.Contains("/Competencia/CensoAct/Index.aspx") || activepage.Contains("/Competencia/CensoAct/Crear.aspx") || activepage.Contains("/Competencia/CensoAct/Detalle.aspx") || activepage.Contains("/Competencia/CensoAct/Editar.aspx") || activepage.Contains("/Competencia/CensoAct/Control/Index.aspx") || activepage.Contains("/Competencia/CensoAct/Control/Crear.aspx") || activepage.Contains("/Competencia/CensoAct/Control/Editar.aspx") || activepage.Contains("/Competencia/CensoAct/Evaluacion/Crear.aspx") || activepage.Contains("/Competencia/CensoAct/Evaluacion/CrearCuestionario.aspx") || activepage.Contains("/Competencia/CensoAct/Evaluacion/Editar.aspx") || activepage.Contains("/Competencia/CensoAct/Evaluacion/EditarCuestionario.aspx") || activepage.Contains("/Competencia/CensoAct/Evaluacion/VCuestionario.aspx"))
+                else if (activepage.Contains("/Competencia/Inicio.aspx") ||  activepage.Contains("/Competencia/CensoAct/Index.aspx") || activepage.Contains("/Competencia/CensoAct/Crear.aspx") || activepage.Contains("/Competencia/CensoAct/Detalle.aspx") || activepage.Contains("/Competencia/CensoAct/Editar.aspx") || activepage.Contains("/Competencia/CensoAct/Control/Index.aspx") || activepage.Contains("/Competencia/CensoAct/Control/Crear.aspx") || activepage.Contains("/Competencia/CensoAct/Control/Editar.aspx") || activepage.Contains("/Competencia/CensoAct/Evaluacion/Crear.aspx") || activepage.Contains("/Competencia/CensoAct/Evaluacion/CrearCuestionario.aspx") || activepage.Contains("/Competencia/CensoAct/Evaluacion/Editar.aspx") || activepage.Contains("/Competencia/CensoAct/Evaluacion/EditarCuestionario.aspx") || activepage.Contains("/Competencia/CensoAct/Evaluacion/VCuestionario.aspx") || activepage.Contains("/Competencia/MatrizCatAct/Index.aspx") || activepage.Contains("/Competencia/MatrizCatAct/Agregar.aspx") || activepage.Contains("/Competencia/MatrizCatAct/Detalle.aspx") || activepage.Contains("/Competencia/Programa/Index.aspx") || activepage.Contains("/Competencia/Programa/Agregar.aspx") || activepage.Contains("/Competencia/Programa/Detalle.aspx") || activepage.Contains("/Competencia/Programa/DetalleEv.aspx") || activepage.Contains("/Competencia/Programa/Editar.aspx") || activepage.Contains("/Competencia/MatrizCatEmp/Index.aspx") || activepage.Contains("/Competencia/MatrizCatEmp/Agregar.aspx") || activepage.Contains("/Competencia/MatrizCatEmp/Detalle.aspx"))
                 {
                     menu_competencia.Attributes.Add("class", "  nav-item has-treeview menu-open");
                     competencia.Attributes.Add("class", "nav-link active");
-                    actividad.Attributes.Add("class", "nav-link active");
 
                 }
-                else if (activepage.Contains("/Competencia/MatrizCatAct/Index.aspx") || activepage.Contains("/Competencia/MatrizCatAct/Agregar.aspx") || activepage.Contains("/Competencia/MatrizCatAct/Detalle.aspx"))
-                {
-                    menu_competencia.Attributes.Add("class", "  nav-item has-treeview menu-open");
-                    competencia.Attributes.Add("class", "nav-link active");
-                    catact.Attributes.Add("class", "nav-link active");
-                  
-                }
-                else if (activepage.Contains("/Competencia/Programa/Index.aspx") || activepage.Contains("/Competencia/Programa/Agregar.aspx") || activepage.Contains("/Competencia/Programa/Detalle.aspx") || activepage.Contains("/Competencia/Programa/DetalleEv.aspx") || activepage.Contains("/Competencia/Programa/Editar.aspx"))
-                {
-                    menu_competencia.Attributes.Add("class", "  nav-item has-treeview menu-open");
-                    competencia.Attributes.Add("class", "nav-link active");
-                    prog.Attributes.Add("class", "nav-link active");
-
-                }
-
-                else if (activepage.Contains("/Competencia/MatrizCatEmp/Index.aspx") || activepage.Contains("/Competencia/MatrizCatEmp/Agregar.aspx") || activepage.Contains("/Competencia/MatrizCatEmp/Detalle.aspx"))
-                {
-                    menu_competencia.Attributes.Add("class", "  nav-item has-treeview menu-open");
-                    competencia.Attributes.Add("class", "nav-link active");
-                    catemp.Attributes.Add("class", "nav-link active");
-
-                }
+            
 
 
-                else if (activepage.Contains("/Confirmacion/CensoSis/Index.aspx") || activepage.Contains("/Confirmacion/CensoSis/Crear.aspx") || activepage.Contains("/Confirmacion/CensoSis/Editar.aspx") || activepage.Contains("/Confirmacion/CensoSis/Componente/Index.aspx") || activepage.Contains("/Confirmacion/CensoSis/Componente/Editar.aspx") || activepage.Contains("/Confirmacion/CensoSis/Componente/Crear.aspx"))
+                else if (activepage.Contains("/Confirmacion/Inicio.aspx") || activepage.Contains("/Confirmacion/CensoSis/Index.aspx") || activepage.Contains("/Confirmacion/CensoSis/Crear.aspx") || activepage.Contains("/Confirmacion/CensoSis/Editar.aspx") || activepage.Contains("/Confirmacion/CensoSis/Componente/Index.aspx") || activepage.Contains("/Confirmacion/CensoSis/Componente/Editar.aspx") || activepage.Contains("/Confirmacion/CensoSis/Componente/Crear.aspx"))
                 {
                     menu_confirmacion.Attributes.Add("class", "  nav-item has-treeview menu-open");
                     confirmacion.Attributes.Add("class", "nav-link active");
-                    sistema.Attributes.Add("class", "nav-link active");
 
                 }
 

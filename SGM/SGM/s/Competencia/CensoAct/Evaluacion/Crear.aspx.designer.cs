@@ -7,10 +7,10 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace SGM.Competencia.CensoAct {
+namespace SGM.s.Competencia.CensoAct.Evaluacion {
     
     
-    public partial class CrearEv {
+    public partial class Crear {
         
         /// <summary>
         /// Control lblCodigo.

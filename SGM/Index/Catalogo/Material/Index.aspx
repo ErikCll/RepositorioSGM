@@ -61,6 +61,9 @@
                                         <asp:BoundField HeaderText="No. Parte" DataField="NumParte" />
                                         <asp:BoundField HeaderText="Tipo de unidad" DataField="Unidad" />
                                         <asp:BoundField HeaderText="Costo" DataField="Costo" />
+                                        <asp:BoundField HeaderText="Tipo" DataField="Tipo" />
+                                        <asp:BoundField HeaderText="No. Pasada" DataField="NoPasada" />
+
                                     </Columns>
                                             <PagerStyle HorizontalAlign = "Center" CssClass="" />
                                 </asp:GridView>

@@ -10,12 +10,20 @@ namespace SGM.Competencia.MatrizCatEmp
     public partial class Index : System.Web.UI.Page
     {
         Clase.CategoriaEmpleado categoriaEmp = new Clase.CategoriaEmpleado();
-        Clase.Master master = new Clase.Master();
-
+        Clase.Accesos accesos = new Clase.Accesos();
         protected void Page_Init(object sender, EventArgs e)
         {
-            string Usuario = Page.User.Identity.Name;
-            if (master.ValidarCompetencia(Usuario))
+            if (!IsPostBack)
+            {
+                ValidarAccesos();
+            }
+
+        }
+
+        public void ValidarAccesos()
+        {
+            int IdUsuario = Convert.ToInt32((this.Master as SGM.s.Site1).IDUsuario.ToString());
+            if (accesos.ValidarCategoriaEmpleado(IdUsuario))
             {
 
             }
@@ -23,6 +31,7 @@ namespace SGM.Competencia.MatrizCatEmp
             {
                 Response.Redirect("~/s/Inicio.aspx");
             }
+
         }
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -70,6 +79,11 @@ namespace SGM.Competencia.MatrizCatEmp
                 }
             }
 
+        }
+        protected void IrSAM(Object sender, EventArgs e)
+        {
+            Session.RemoveAll();
+            Response.Redirect("http://orygon.azurewebsites.net/Inicio.aspx");
         }
 
     }

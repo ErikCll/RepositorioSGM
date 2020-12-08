@@ -7,9 +7,9 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="mapeo" runat="server">
     <li class="breadcrumb-item active">
         <asp:LinkButton runat="server" OnClick="IrSAM">SAM</asp:LinkButton></li>
-               <li class="breadcrumb-item "><a href="../../Inicio.aspx">SASISOPA (Inicio)</a></li>
+               <li class="breadcrumb-item "><a href="../../Inicio.aspx">SGL (Inicio)</a></li>
 
-    <li class="breadcrumb-item "><a href="../Inicio.aspx">5. Funciones, Responsabilidad</a></li>
+    <li class="breadcrumb-item "><a href="../Inicio.aspx">Procedimiento e Instructivos</a></li>
     <li class="breadcrumb-item "><a>Matriz Categoría-Actividad</a></li>
 
 </asp:Content>

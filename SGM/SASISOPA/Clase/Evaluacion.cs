@@ -63,11 +63,11 @@ namespace SASISOPA.Clase
 
 
 
-        public DataTable MostrarPregunta (int IdEvaluacion)
+        public DataTable MostrarPregunta(int IdEvaluacion)
         {
 
             string query = "SELECT Id_Pregunta,Pregunta,TipoPregunta FROM Ev_Pregunta WHERE Id_Evaluacion=@IdEvaluacion AND Activado IS NULL";
-     
+
 
             comm.Connection = conexion.AbrirConexion();
             comm.CommandText = query;
@@ -84,7 +84,7 @@ namespace SASISOPA.Clase
 
         }
 
-        public DataTable MostrarPreguntaAleatoria(int IdEvaluacion,int TotalReactivos)
+        public DataTable MostrarPreguntaAleatoria(int IdEvaluacion, int TotalReactivos)
         {
 
             string query = "  SELECT row_number() OVER (ORDER BY (select null)) 'ORDEN',* FROM(SELECT TOP(@TotalReactivos) Id_Pregunta, Pregunta, TipoPregunta FROM Ev_Pregunta WHERE Id_Evaluacion = @IddEvaluacion AND Activado IS NULL ORDER BY NEWID()) a";
@@ -149,7 +149,7 @@ namespace SASISOPA.Clase
         }
 
 
-        public bool Insertar(int IdControl, int Cantidad,int Estatus,int CalMinima)
+        public bool Insertar(int IdControl, int Cantidad, int Estatus, int CalMinima)
         {
             comm.Connection = conexion.AbrirConexion();
             comm.CommandText = "INSERT INTO [Evaluacion] (Id_Control,CantidadReactivos,Estatus,CalificacionMinima) VALUES(@Id_Control,@Cantidad,@Estatus,@CalMinima)";
@@ -206,7 +206,7 @@ namespace SASISOPA.Clase
 
 
         }
-        public bool InsertarRespuestaMultiple(int IdPregunta, string Respuesta,string EsRespuesta,int Orden)
+        public bool InsertarRespuestaMultiple(int IdPregunta, string Respuesta, string EsRespuesta, int Orden)
         {
             comm.Connection = conexion.AbrirConexion();
             if (EsRespuesta == "1")
@@ -314,7 +314,7 @@ namespace SASISOPA.Clase
 
         }
 
-        public bool ModificarEvaluacion(int IdEvaluacion, int Cantidad,int CalMinima)
+        public bool ModificarEvaluacion(int IdEvaluacion, int Cantidad, int CalMinima)
         {
             comm.Connection = conexion.AbrirConexion();
             comm.CommandText = "UPDATE Evaluacion SET CantidadReactivos=@CantidadReactivos,CalificacionMinima=@CalMinima WHERE Id_Evaluacion=@IdEvaluaciion";
@@ -338,7 +338,7 @@ namespace SASISOPA.Clase
 
         }
 
-        public bool ModificarEstatus(int IdEvaluacion,int Estatus)
+        public bool ModificarEstatus(int IdEvaluacion, int Estatus)
         {
             comm.Connection = conexion.AbrirConexion();
             comm.CommandText = "UPDATE Evaluacion SET Estatus=@Estatus WHERE Id_Evaluacion=@IdEvaluaciion";
@@ -407,7 +407,7 @@ namespace SASISOPA.Clase
 
         }
 
-        public bool ModificarRespuestaToF(int IdRespuesta,int EsRespuesta)
+        public bool ModificarRespuestaToF(int IdRespuesta, int EsRespuesta)
         {
             comm.Connection = conexion.AbrirConexion();
             comm.CommandText = "UPDATE Ev_Respuesta SET EsRespuesta=@EsRespuesta  WHERE Id_Respuesta=@IdRespuesta";
@@ -451,7 +451,7 @@ namespace SASISOPA.Clase
 
         }
 
-       
+
         public void ObtenerIdEvaluacion(int IdControl)
         {
             comm.Connection = conexion.AbrirConexion();

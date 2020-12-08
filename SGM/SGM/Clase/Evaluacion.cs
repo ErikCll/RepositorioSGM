@@ -39,11 +39,10 @@ namespace SGM.Clase
         public string CalMinima { get; set; }
         public string Estatus { get; set; }
 
-
         public DataTable MostrarEvaluacion(int IdControl)
         {
 
-            string query = "SELECT Id_Evaluacion,CantidadReactivos,CalificacionMinima,CASE WHEN Estatus=1 THEN 'Pendiente de capturar' WHEN Estatus=2 THEN 'Capturado' END 'Estatus' FROM Evaluacion WHERE Id_Control = @IdCoontrol AND Activado IS NULL";
+            string query = "SELECT ev.Id_Evaluacion,ev.CantidadReactivos,preg.TotalReactivos,ev.CalificacionMinima, CASE WHEN ev.Estatus = 1 THEN 'Pendiente de capturar' WHEN ev.Estatus = 2 THEN 'Capturado' END 'Estatus' FROM Evaluacion ev JOIN(SELECT Id_Evaluacion, COUNT(*) 'TotalReactivos' FROM Ev_Pregunta WHERE  Activado IS NULL GROUP BY Id_Evaluacion) preg on ev.Id_Evaluacion = preg.Id_Evaluacion WHERE ev.Id_Control = @IdCoontrol AND ev.Activado IS NULL";
 
 
             comm.Connection = conexion.AbrirConexion();
@@ -63,11 +62,11 @@ namespace SGM.Clase
 
 
 
-        public DataTable MostrarPregunta (int IdEvaluacion)
+        public DataTable MostrarPregunta(int IdEvaluacion)
         {
 
             string query = "SELECT Id_Pregunta,Pregunta,TipoPregunta FROM Ev_Pregunta WHERE Id_Evaluacion=@IdEvaluacion AND Activado IS NULL";
-     
+
 
             comm.Connection = conexion.AbrirConexion();
             comm.CommandText = query;
@@ -84,7 +83,7 @@ namespace SGM.Clase
 
         }
 
-        public DataTable MostrarPreguntaAleatoria(int IdEvaluacion,int TotalReactivos)
+        public DataTable MostrarPreguntaAleatoria(int IdEvaluacion, int TotalReactivos)
         {
 
             string query = "  SELECT row_number() OVER (ORDER BY (select null)) 'ORDEN',* FROM(SELECT TOP(@TotalReactivos) Id_Pregunta, Pregunta, TipoPregunta FROM Ev_Pregunta WHERE Id_Evaluacion = @IddEvaluacion AND Activado IS NULL ORDER BY NEWID()) a";
@@ -149,7 +148,7 @@ namespace SGM.Clase
         }
 
 
-        public bool Insertar(int IdControl, int Cantidad,int Estatus,int CalMinima)
+        public bool Insertar(int IdControl, int Cantidad, int Estatus, int CalMinima)
         {
             comm.Connection = conexion.AbrirConexion();
             comm.CommandText = "INSERT INTO [Evaluacion] (Id_Control,CantidadReactivos,Estatus,CalificacionMinima) VALUES(@Id_Control,@Cantidad,@Estatus,@CalMinima)";
@@ -206,7 +205,7 @@ namespace SGM.Clase
 
 
         }
-        public bool InsertarRespuestaMultiple(int IdPregunta, string Respuesta,string EsRespuesta,int Orden)
+        public bool InsertarRespuestaMultiple(int IdPregunta, string Respuesta, string EsRespuesta, int Orden)
         {
             comm.Connection = conexion.AbrirConexion();
             if (EsRespuesta == "1")
@@ -314,7 +313,7 @@ namespace SGM.Clase
 
         }
 
-        public bool ModificarEvaluacion(int IdEvaluacion, int Cantidad,int CalMinima)
+        public bool ModificarEvaluacion(int IdEvaluacion, int Cantidad, int CalMinima)
         {
             comm.Connection = conexion.AbrirConexion();
             comm.CommandText = "UPDATE Evaluacion SET CantidadReactivos=@CantidadReactivos,CalificacionMinima=@CalMinima WHERE Id_Evaluacion=@IdEvaluaciion";
@@ -338,7 +337,7 @@ namespace SGM.Clase
 
         }
 
-        public bool ModificarEstatus(int IdEvaluacion,int Estatus)
+        public bool ModificarEstatus(int IdEvaluacion, int Estatus)
         {
             comm.Connection = conexion.AbrirConexion();
             comm.CommandText = "UPDATE Evaluacion SET Estatus=@Estatus WHERE Id_Evaluacion=@IdEvaluaciion";
@@ -407,7 +406,7 @@ namespace SGM.Clase
 
         }
 
-        public bool ModificarRespuestaToF(int IdRespuesta,int EsRespuesta)
+        public bool ModificarRespuestaToF(int IdRespuesta, int EsRespuesta)
         {
             comm.Connection = conexion.AbrirConexion();
             comm.CommandText = "UPDATE Ev_Respuesta SET EsRespuesta=@EsRespuesta  WHERE Id_Respuesta=@IdRespuesta";
@@ -451,7 +450,7 @@ namespace SGM.Clase
 
         }
 
-       
+
         public void ObtenerIdEvaluacion(int IdControl)
         {
             comm.Connection = conexion.AbrirConexion();

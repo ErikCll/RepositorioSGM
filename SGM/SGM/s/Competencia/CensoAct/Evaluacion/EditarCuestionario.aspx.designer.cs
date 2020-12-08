@@ -7,7 +7,7 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace SGM.Competencia.CensoAct.Evaluacion {
+namespace SGM.s.Competencia.CensoAct.Evaluacion {
     
     
     public partial class EditarCuestionario {

@@ -42,19 +42,26 @@ namespace Operacion.s.Infraestructura.Disponibilidad.Bitacora
             {
                 (this.Master as Operacion.s.Site1).OcultarDrop = false;
                 (this.Master as Operacion.s.Site1).OcultarLabel = false;
+                string FechaFalla = System.Text.ASCIIEncoding.ASCII.GetString(Convert.FromBase64String(Request.QueryString["fec"]));
+
+                txtFecha.Text = FechaFalla;
                 MostrarGrid();
                 string decodedString = System.Text.ASCIIEncoding.ASCII.GetString(Convert.FromBase64String(Request.QueryString["id"]));
                 int IdEquipo = Convert.ToInt32(decodedString);
                 bitacora.LeerDatos(IdEquipo);
                 lblEquipo.Text = bitacora.Nombre;
+               
             }
         }
 
         public void MostrarGrid()
         {
+
             string decodedString = System.Text.ASCIIEncoding.ASCII.GetString(Convert.FromBase64String(Request.QueryString["id"]));
             int IdEquipo = Convert.ToInt32(decodedString);
-            gridBitacora.DataSource = bitacora.Mostrar(txtFecha.Text.Trim(), IdEquipo);
+            string FechaActual = txtFecha.Text;
+
+            gridBitacora.DataSource = bitacora.Mostrar(txtFecha.Text.Trim(), IdEquipo, FechaActual);
             gridBitacora.DataBind();
 
         }
@@ -102,7 +109,7 @@ namespace Operacion.s.Infraestructura.Disponibilidad.Bitacora
                 int IdBitacora = (int)gridBitacora.DataKeys[row.RowIndex].Value;
                 string encodedString = (Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(IdBitacora.ToString())));
 
-                Response.Redirect("Editar.aspx?idbit=" + encodedString + "&id=" + Request.QueryString["id"] + "");
+                Response.Redirect("Editar.aspx?idbit=" + encodedString + "&id=" + Request.QueryString["id"] + "&fec="+ Request.QueryString["fec"] +"");
             }
         }
     }

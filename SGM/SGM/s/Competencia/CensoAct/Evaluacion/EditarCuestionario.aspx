@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/s/Site1.Master" AutoEventWireup="true" CodeBehind="EditarCuestionario.aspx.cs" Inherits="SGM.Competencia.CensoAct.Evaluacion.EditarCuestionario" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/s/Site1.Master" AutoEventWireup="true" CodeBehind="EditarCuestionario.aspx.cs" Inherits=SGM.s.Competencia.CensoAct.Evaluacion.EditarCuestionario %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     Editar Cuestionario
 </asp:Content>
@@ -11,13 +11,14 @@
             <div class="col-lg-12">
                 <div class="row">
                                    <div class=" col-sm-8 col-md-12 col-lg-8">
-                  <div class="card shadow-none border-top border-dark" >
+                  <div class="card" >
+                      <div class="card-header">
+                          <h4>Pregunta</h4>
+                      </div>
                 <div class="card-body">
                     <div class="row">
-                           <div class="col-sm-12 col-md-12 col-lg-12">
-                            <h4>Pregunta:</h4>
+                            
                                <label runat="server" id="lblContador"></label>
-                        </div>
                         <div class="col-8 col-md-8 col-lg-8">
                             <div class="form-group">
                                       <textarea runat="server" CssClass="form-control form-control-lg" ID="txtPregunta" onkeypress="return AllowAlphabet(event)" MaxLength="250" style="height:100px;width:330px"></textarea>

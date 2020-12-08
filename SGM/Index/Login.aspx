@@ -76,9 +76,9 @@ font-size:20px;
                                         <div class="card-body">
                                             <div class="form-group">
 
-                                                <label>Correo electrónico:</label>
+                                                <label>Correo electrónico</label>
                                                 <div class="input-group">
-                                                    <asp:TextBox runat="server" ID="UserName" MaxLength="50" class="form-control" onkeypress="return AllowAlphabet(event)"></asp:TextBox>
+                                                    <asp:TextBox runat="server" ID="UserName" MaxLength="100" class="form-control" onkeypress="return AllowAlphabet(event)"></asp:TextBox>
 
                                                     <span class="input-group-append bg-white border-left-0">
                                                         <span class="input-group-text bg-transparent">

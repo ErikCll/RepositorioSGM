@@ -68,7 +68,7 @@
 
 
                       <br />
-                  <label class="text-dark font-weight-normal text-sm">Fecha:</label><label class="font-weight-bold text-dark text-sm"><%#Eval("Fecha")%></label>
+                  <label class="text-dark font-weight-normal text-sm">Fecha:</label><asp:Label runat="server" ID="lblFecha" class="font-weight-bold text-dark text-sm" Text='<%#Eval("Fecha")%>'></asp:Label>
                                  <label class="text-dark font-weight-normal text-sm">, Hora:</label><label class="font-weight-bold text-dark text-sm"><%#Eval("Hora")%></label>
                                                                                            <label class="text-dark font-weight-normal text-sm ">Fuera de operación:</label><label class="font-weight-bold text-dark text-sm ml-1"> <%#Eval("Transcurrido")%></label>
 

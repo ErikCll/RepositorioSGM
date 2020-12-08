@@ -139,15 +139,6 @@ namespace Administracion.s {
         protected global::System.Web.UI.HtmlControls.HtmlAnchor catalogo;
         
         /// <summary>
-        /// Control material.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor material;
-        
-        /// <summary>
         /// Control menu_personal.
         /// </summary>
         /// <remarks>
@@ -166,15 +157,6 @@ namespace Administracion.s {
         protected global::System.Web.UI.HtmlControls.HtmlAnchor personal;
         
         /// <summary>
-        /// Control controlasist.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor controlasist;
-        
-        /// <summary>
         /// Control menu_almacen.
         /// </summary>
         /// <remarks>
@@ -191,15 +173,6 @@ namespace Administracion.s {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlAnchor almacen;
-        
-        /// <summary>
-        /// Control inventario.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor inventario;
         
         /// <summary>
         /// Control head.

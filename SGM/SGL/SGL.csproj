@@ -1702,15 +1702,25 @@
     <Content Include="plugins\toastr\toastr.css" />
     <Content Include="plugins\toastr\toastr.min.css" />
     <Content Include="plugins\toastr\toastr.min.js" />
+    <Content Include="s\Acreditacion\EMA\Archivo\Crear.aspx" />
     <Content Include="s\Acreditacion\EMA\Archivo\Index.aspx" />
     <Content Include="s\Acreditacion\EMA\Crear.aspx" />
     <Content Include="s\Acreditacion\EMA\Editar.aspx" />
     <Content Include="s\Acreditacion\EMA\Index.aspx" />
     <Content Include="s\Acreditacion\Inicio.aspx" />
     <Content Include="s\Competencia\Inicio.aspx" />
+    <Content Include="s\Competencia\Programa\Agregar.aspx" />
+    <Content Include="s\Competencia\Programa\Detalle.aspx" />
+    <Content Include="s\Competencia\Programa\DetalleEv.aspx" />
+    <Content Include="s\Competencia\Programa\Editar.aspx" />
+    <Content Include="s\Competencia\Programa\Index.aspx" />
+    <Content Include="s\Competencia\ResultadoEv\Detalle.aspx" />
+    <Content Include="s\Competencia\ResultadoEv\Index.aspx" />
     <Content Include="s\Error.aspx" />
+    <Content Include="s\Evaluacion.aspx" />
     <Content Include="s\Inicio.aspx" />
     <Content Include="s\Login.aspx" />
+    <Content Include="s\PreEvaluacion.aspx" />
     <Content Include="s\Procedimiento\CensoAct\Control\Crear.aspx" />
     <Content Include="s\Procedimiento\CensoAct\Control\Editar.aspx" />
     <Content Include="s\Procedimiento\CensoAct\Control\Index.aspx" />
@@ -1748,11 +1758,20 @@
     <Compile Include="Clase\InstalacionActividad.cs" />
     <Compile Include="Clase\Login.cs" />
     <Compile Include="Clase\Master.cs" />
+    <Compile Include="Clase\ProgramaCapacitacion.cs" />
+    <Compile Include="Clase\ResultadoEvaluacion.cs" />
     <Compile Include="Conexion.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="s\Acreditacion\EMA\Archivo\Crear.aspx.cs">
+      <DependentUpon>Crear.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="s\Acreditacion\EMA\Archivo\Crear.aspx.designer.cs">
+      <DependentUpon>Crear.aspx</DependentUpon>
+    </Compile>
     <Compile Include="s\Acreditacion\EMA\Archivo\Index.aspx.cs">
       <DependentUpon>Index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1795,12 +1814,68 @@
     <Compile Include="s\Competencia\Inicio.aspx.designer.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>
     </Compile>
+    <Compile Include="s\Competencia\Programa\Agregar.aspx.cs">
+      <DependentUpon>Agregar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="s\Competencia\Programa\Agregar.aspx.designer.cs">
+      <DependentUpon>Agregar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="s\Competencia\Programa\Detalle.aspx.cs">
+      <DependentUpon>Detalle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="s\Competencia\Programa\Detalle.aspx.designer.cs">
+      <DependentUpon>Detalle.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="s\Competencia\Programa\DetalleEv.aspx.cs">
+      <DependentUpon>DetalleEv.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="s\Competencia\Programa\DetalleEv.aspx.designer.cs">
+      <DependentUpon>DetalleEv.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="s\Competencia\Programa\Editar.aspx.cs">
+      <DependentUpon>Editar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="s\Competencia\Programa\Editar.aspx.designer.cs">
+      <DependentUpon>Editar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="s\Competencia\Programa\Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="s\Competencia\Programa\Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="s\Competencia\ResultadoEv\Detalle.aspx.cs">
+      <DependentUpon>Detalle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="s\Competencia\ResultadoEv\Detalle.aspx.designer.cs">
+      <DependentUpon>Detalle.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="s\Competencia\ResultadoEv\Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="s\Competencia\ResultadoEv\Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
     <Compile Include="s\Error.aspx.cs">
       <DependentUpon>Error.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="s\Error.aspx.designer.cs">
       <DependentUpon>Error.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="s\Evaluacion.aspx.cs">
+      <DependentUpon>Evaluacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="s\Evaluacion.aspx.designer.cs">
+      <DependentUpon>Evaluacion.aspx</DependentUpon>
     </Compile>
     <Compile Include="s\Inicio.aspx.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>
@@ -1815,6 +1890,13 @@
     </Compile>
     <Compile Include="s\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="s\PreEvaluacion.aspx.cs">
+      <DependentUpon>PreEvaluacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="s\PreEvaluacion.aspx.designer.cs">
+      <DependentUpon>PreEvaluacion.aspx</DependentUpon>
     </Compile>
     <Compile Include="s\Procedimiento\CensoAct\Control\Crear.aspx.cs">
       <DependentUpon>Crear.aspx</DependentUpon>
