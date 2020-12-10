@@ -7,10 +7,10 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace SAM.Indicador.SGL.Acreditacion {
+namespace SGL.s.Acreditacion.CRE {
     
     
-    public partial class Detalle {
+    public partial class Index {
         
         /// <summary>
         /// Control litControl.
@@ -20,15 +20,6 @@ namespace SAM.Indicador.SGL.Acreditacion {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal litControl;
-        
-        /// <summary>
-        /// Control ddl_Acreditador.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddl_Acreditador;
         
         /// <summary>
         /// Control txtSearch.
@@ -49,13 +40,13 @@ namespace SAM.Indicador.SGL.Acreditacion {
         protected global::System.Web.UI.WebControls.Button btnBuscar;
         
         /// <summary>
-        /// Control gridInstalacion.
+        /// Control gridAcreditacion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gridInstalacion;
+        protected global::System.Web.UI.WebControls.GridView gridAcreditacion;
         
         /// <summary>
         /// Control btnRegresar.

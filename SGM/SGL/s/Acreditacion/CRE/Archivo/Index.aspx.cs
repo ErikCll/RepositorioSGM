@@ -5,11 +5,11 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace SGL.s.Acreditacion.EMA
+namespace SGL.s.Acreditacion.CRE.Archivo
 {
     public partial class Index : System.Web.UI.Page
     {
-        Clase.EMA ema = new Clase.EMA();
+        Clase.Archivo archivo = new Clase.Archivo();
         Clase.Accesos accesos = new Clase.Accesos();
         protected void Page_Init(object sender, EventArgs e)
         {
@@ -23,7 +23,7 @@ namespace SGL.s.Acreditacion.EMA
         public void ValidarAccesos()
         {
             int IdUsuario = Convert.ToInt32((this.Master as SGL.s.Site1).IDUsuario.ToString());
-            if (accesos.ValidarEma(IdUsuario))
+            if (accesos.ValidarCre(IdUsuario))
             {
 
             }
@@ -35,19 +35,25 @@ namespace SGL.s.Acreditacion.EMA
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-            Page.Form.DefaultButton = btnBuscar.UniqueID;
-
             if (!IsPostBack)
             {
-              
+                (this.Master as SGL.s.Site1).OcultarDrop = false;
+                (this.Master as SGL.s.Site1).OcultarLabel = false;
                 MostrarGrid();
+                string decodedString = System.Text.ASCIIEncoding.ASCII.GetString(Convert.FromBase64String(Request.QueryString["id"]));
+                int IdAcreditacion = Convert.ToInt32(decodedString);
+                archivo.LeerDatosAcreditacion(IdAcreditacion);
+                lblAcreditacion.Text = archivo.NoAcreditacion;
+                //LlenarDrop();
+
             }
         }
 
         public void MostrarGrid()
         {
-            int IdInstalacion = Convert.ToInt32((this.Master as SGL.s.Site1).IdInstalacion.ToString());
-            gridAcreditacion.DataSource = ema.Mostrar(txtSearch.Text.Trim(), IdInstalacion);
+            string decodedString = System.Text.ASCIIEncoding.ASCII.GetString(Convert.FromBase64String(Request.QueryString["id"]));
+            int IdAcreditacion = Convert.ToInt32(decodedString);
+            gridAcreditacion.DataSource = archivo.Mostrar(IdAcreditacion);
             gridAcreditacion.DataBind();
         }
 
@@ -66,14 +72,13 @@ namespace SGL.s.Acreditacion.EMA
         protected void gridAcreditacion_RowCommand(object sender, GridViewCommandEventArgs e)
         {
 
-
             if (e.CommandName == "Eliminar")
             {
                 //GridViewRow row = (GridViewRow)(((LinkButton)e.CommandSource).NamingContainer);
                 GridViewRow row = ((Button)e.CommandSource).Parent.Parent as GridViewRow;
 
-                int IdAcreditacion = (int)gridAcreditacion.DataKeys[row.RowIndex].Value;
-                if (ema.Eliminar(IdAcreditacion))
+                int IdStatus = (int)gridAcreditacion.DataKeys[row.RowIndex].Value;
+                if (archivo.Eliminar(IdStatus))
                 {
                     MostrarGrid();
                     string txtJS = String.Format("<script>alert('{0}');</script>", "Se eliminó correctamente el dato.");
@@ -87,22 +92,12 @@ namespace SGL.s.Acreditacion.EMA
             {
                 GridViewRow row = ((Button)e.CommandSource).Parent.Parent as GridViewRow;
 
-                int IdAcreditacion = (int)gridAcreditacion.DataKeys[row.RowIndex].Value;
-                string encodedString = (Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(IdAcreditacion.ToString())));
+                int IdStatus = (int)gridAcreditacion.DataKeys[row.RowIndex].Value;
+                string encodedString = (Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(IdStatus.ToString())));
 
                 Response.Redirect("Editar.aspx?id=" + encodedString + "");
             }
 
-
-
-            else if (e.CommandName == "AgregarAcre")
-            {
-                GridViewRow row = ((LinkButton)e.CommandSource).Parent.Parent as GridViewRow;
-                int IdAcreditacion = (int)gridAcreditacion.DataKeys[row.RowIndex].Value;
-                string encodedString = (Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(IdAcreditacion.ToString())));
-
-                Response.Redirect("Archivo/Index.aspx?id=" + encodedString + "");
-            }
         }
 
         protected void gridAcreditacion_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -110,26 +105,21 @@ namespace SGL.s.Acreditacion.EMA
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
                 Label IdArchivo = e.Row.FindControl("lblArchivo") as Label;
-           
-      
+
+
                 HyperLink lnk = e.Row.FindControl("lnkArchivo") as HyperLink;
                 if (Convert.ToInt32(IdArchivo.Text) == 0)
                 {
                     lnk.Visible = false;
                 }
-
-
                 string encodedString = (Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(IdArchivo.Text)));
                 lnk.NavigateUrl = "~/s/Acreditacion/Doc.aspx?id=" + encodedString;
-
-
-
             }
         }
-        protected void IrSAM(Object sender, EventArgs e)
+
+        protected void CrearDocumento(Object sender, EventArgs e)
         {
-            Session.RemoveAll();
-            Response.Redirect("http://orygon.azurewebsites.net/Inicio.aspx");
+            Response.Redirect("Crear.aspx?id=" + Request.QueryString["id"] + "");
         }
     }
 }

@@ -5,11 +5,11 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace SGL.s.Acreditacion.EMA
+namespace SGL.s.Acreditacion.CRE
 {
     public partial class Index : System.Web.UI.Page
     {
-        Clase.EMA ema = new Clase.EMA();
+        Clase.CRE cre = new Clase.CRE();
         Clase.Accesos accesos = new Clase.Accesos();
         protected void Page_Init(object sender, EventArgs e)
         {
@@ -23,7 +23,7 @@ namespace SGL.s.Acreditacion.EMA
         public void ValidarAccesos()
         {
             int IdUsuario = Convert.ToInt32((this.Master as SGL.s.Site1).IDUsuario.ToString());
-            if (accesos.ValidarEma(IdUsuario))
+            if (accesos.ValidarCre(IdUsuario))
             {
 
             }
@@ -39,7 +39,7 @@ namespace SGL.s.Acreditacion.EMA
 
             if (!IsPostBack)
             {
-              
+
                 MostrarGrid();
             }
         }
@@ -47,7 +47,7 @@ namespace SGL.s.Acreditacion.EMA
         public void MostrarGrid()
         {
             int IdInstalacion = Convert.ToInt32((this.Master as SGL.s.Site1).IdInstalacion.ToString());
-            gridAcreditacion.DataSource = ema.Mostrar(txtSearch.Text.Trim(), IdInstalacion);
+            gridAcreditacion.DataSource = cre.Mostrar(txtSearch.Text.Trim(), IdInstalacion);
             gridAcreditacion.DataBind();
         }
 
@@ -73,7 +73,7 @@ namespace SGL.s.Acreditacion.EMA
                 GridViewRow row = ((Button)e.CommandSource).Parent.Parent as GridViewRow;
 
                 int IdAcreditacion = (int)gridAcreditacion.DataKeys[row.RowIndex].Value;
-                if (ema.Eliminar(IdAcreditacion))
+                if (cre.Eliminar(IdAcreditacion))
                 {
                     MostrarGrid();
                     string txtJS = String.Format("<script>alert('{0}');</script>", "Se eliminó correctamente el dato.");
@@ -110,8 +110,8 @@ namespace SGL.s.Acreditacion.EMA
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
                 Label IdArchivo = e.Row.FindControl("lblArchivo") as Label;
-           
-      
+
+
                 HyperLink lnk = e.Row.FindControl("lnkArchivo") as HyperLink;
                 if (Convert.ToInt32(IdArchivo.Text) == 0)
                 {
@@ -121,6 +121,7 @@ namespace SGL.s.Acreditacion.EMA
 
                 string encodedString = (Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(IdArchivo.Text)));
                 lnk.NavigateUrl = "~/s/Acreditacion/Doc.aspx?id=" + encodedString;
+
 
 
 

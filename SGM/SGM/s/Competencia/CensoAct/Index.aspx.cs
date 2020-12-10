@@ -123,10 +123,11 @@ namespace SGM.Competencia.CensoAct
                 {
                     lnk.Visible = false;
                 }
-                lnk.NavigateUrl = "https://er2020.blob.core.windows.net/sgm/Competencia/" + IdArchivo.Text.ToString() + ".pdf";
+
+                string encodedString = (Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(IdArchivo.Text)));
+                lnk.NavigateUrl = "~/s/Competencia/Doc.aspx?id=" + encodedString;
 
 
-            
 
                 if (Meses.Text!="0")
                 {

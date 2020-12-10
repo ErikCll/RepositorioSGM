@@ -7,10 +7,19 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace SAM.Indicador.SGL.Acreditacion {
+namespace SGL.s.Acreditacion.CRE.Archivo {
     
     
-    public partial class Detalle {
+    public partial class Index {
+        
+        /// <summary>
+        /// Control lblAcreditacion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblAcreditacion;
         
         /// <summary>
         /// Control litControl.
@@ -22,40 +31,13 @@ namespace SAM.Indicador.SGL.Acreditacion {
         protected global::System.Web.UI.WebControls.Literal litControl;
         
         /// <summary>
-        /// Control ddl_Acreditador.
+        /// Control gridAcreditacion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddl_Acreditador;
-        
-        /// <summary>
-        /// Control txtSearch.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSearch;
-        
-        /// <summary>
-        /// Control btnBuscar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnBuscar;
-        
-        /// <summary>
-        /// Control gridInstalacion.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gridInstalacion;
+        protected global::System.Web.UI.WebControls.GridView gridAcreditacion;
         
         /// <summary>
         /// Control btnRegresar.

@@ -29,6 +29,10 @@ namespace SGL.s.Acreditacion
                     ema.Visible = true;
 
                 }
+                if (accesos.ValidarCre(IdUsuario))
+                {
+                    cre.Visible = true;
+                }
             }
             else
             {

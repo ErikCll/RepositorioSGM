@@ -87,7 +87,7 @@
                                </asp:TemplateField>
                                         <asp:TemplateField HeaderText="Archivo" ItemStyle-HorizontalAlign="Center">
                                             <ItemTemplate>
-                                                <asp:HyperLink runat="server" ID="lnk" CssClass="ion-android-document" Target="_blank"></asp:HyperLink>
+                                                <asp:HyperLink runat="server" ID="lnk" Target="_blank" ImageUrl="~/dist/img/pdficon.svg" ImageHeight="17px" ImageWidth="17px"></asp:HyperLink>
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                         <asp:TemplateField HeaderText="Tiene Evaluación" ItemStyle-HorizontalAlign="Center" Visible="false">

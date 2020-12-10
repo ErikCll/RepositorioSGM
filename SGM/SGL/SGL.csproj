@@ -1702,6 +1702,12 @@
     <Content Include="plugins\toastr\toastr.css" />
     <Content Include="plugins\toastr\toastr.min.css" />
     <Content Include="plugins\toastr\toastr.min.js" />
+    <Content Include="s\Acreditacion\CRE\Archivo\Crear.aspx" />
+    <Content Include="s\Acreditacion\CRE\Archivo\Index.aspx" />
+    <Content Include="s\Acreditacion\CRE\Crear.aspx" />
+    <Content Include="s\Acreditacion\CRE\Editar.aspx" />
+    <Content Include="s\Acreditacion\CRE\Index.aspx" />
+    <Content Include="s\Acreditacion\Doc.aspx" />
     <Content Include="s\Acreditacion\EMA\Archivo\Crear.aspx" />
     <Content Include="s\Acreditacion\EMA\Archivo\Index.aspx" />
     <Content Include="s\Acreditacion\EMA\Crear.aspx" />
@@ -1734,6 +1740,7 @@
     <Content Include="s\Procedimiento\CensoAct\Evaluacion\EvPrueba.aspx" />
     <Content Include="s\Procedimiento\CensoAct\Evaluacion\VCuestionario.aspx" />
     <Content Include="s\Procedimiento\CensoAct\Index.aspx" />
+    <Content Include="s\Procedimiento\Doc.aspx" />
     <Content Include="s\Procedimiento\Inicio.aspx" />
     <Content Include="s\Procedimiento\MatrizCatAct\Agregar.aspx" />
     <Content Include="s\Procedimiento\MatrizCatAct\Detalle.aspx" />
@@ -1753,6 +1760,7 @@
     <Compile Include="Clase\CategoriaActividad.cs" />
     <Compile Include="Clase\CategoriaEmpleado.cs" />
     <Compile Include="Clase\Correo.cs" />
+    <Compile Include="Clase\CRE.cs" />
     <Compile Include="Clase\EMA.cs" />
     <Compile Include="Clase\Evaluacion.cs" />
     <Compile Include="Clase\InstalacionActividad.cs" />
@@ -1765,6 +1773,48 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="s\Acreditacion\CRE\Archivo\Crear.aspx.cs">
+      <DependentUpon>Crear.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="s\Acreditacion\CRE\Archivo\Crear.aspx.designer.cs">
+      <DependentUpon>Crear.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="s\Acreditacion\CRE\Archivo\Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="s\Acreditacion\CRE\Archivo\Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="s\Acreditacion\CRE\Crear.aspx.cs">
+      <DependentUpon>Crear.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="s\Acreditacion\CRE\Crear.aspx.designer.cs">
+      <DependentUpon>Crear.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="s\Acreditacion\CRE\Editar.aspx.cs">
+      <DependentUpon>Editar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="s\Acreditacion\CRE\Editar.aspx.designer.cs">
+      <DependentUpon>Editar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="s\Acreditacion\CRE\Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="s\Acreditacion\CRE\Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="s\Acreditacion\Doc.aspx.cs">
+      <DependentUpon>Doc.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="s\Acreditacion\Doc.aspx.designer.cs">
+      <DependentUpon>Doc.aspx</DependentUpon>
+    </Compile>
     <Compile Include="s\Acreditacion\EMA\Archivo\Crear.aspx.cs">
       <DependentUpon>Crear.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1988,6 +2038,13 @@
     </Compile>
     <Compile Include="s\Procedimiento\CensoAct\Index.aspx.designer.cs">
       <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="s\Procedimiento\Doc.aspx.cs">
+      <DependentUpon>Doc.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="s\Procedimiento\Doc.aspx.designer.cs">
+      <DependentUpon>Doc.aspx</DependentUpon>
     </Compile>
     <Compile Include="s\Procedimiento\Inicio.aspx.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>

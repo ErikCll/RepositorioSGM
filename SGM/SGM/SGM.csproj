@@ -152,6 +152,7 @@
     <Content Include="s\Competencia\CensoAct\Evaluacion\EvPrueba.aspx" />
     <Content Include="s\Competencia\CensoAct\Evaluacion\VCuestionario.aspx" />
     <Content Include="s\Competencia\CensoAct\Index.aspx" />
+    <Content Include="s\Competencia\Doc.aspx" />
     <Content Include="s\Competencia\Inicio.aspx" />
     <Content Include="s\Competencia\MatrizCatAct\Agregar.aspx" />
     <Content Include="s\Competencia\MatrizCatAct\Detalle.aspx" />
@@ -1885,6 +1886,13 @@
     </Compile>
     <Compile Include="s\Competencia\CensoAct\Index.aspx.designer.cs">
       <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="s\Competencia\Doc.aspx.cs">
+      <DependentUpon>Doc.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="s\Competencia\Doc.aspx.designer.cs">
+      <DependentUpon>Doc.aspx</DependentUpon>
     </Compile>
     <Compile Include="s\Competencia\Inicio.aspx.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>

@@ -96,7 +96,7 @@
                                            <asp:TemplateField HeaderText="Archivo" ItemStyle-HorizontalAlign="Center">
                                             <ItemTemplate>
                                                 <asp:Label runat="server" ID="lblArchivo" Text='<%# Eval("Archivo") %>' Visible="false" ></asp:Label>
-                                                <asp:HyperLink runat="server" CssClass="ion-android-document" ID="lnkArchivo" Target="_blank" ></asp:HyperLink>
+                                                <asp:HyperLink runat="server"  ID="lnkArchivo" Target="_blank" ImageUrl="~/dist/img/pdficon.svg" ImageHeight="17px" ImageWidth="17px" ></asp:HyperLink>
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                     </Columns>

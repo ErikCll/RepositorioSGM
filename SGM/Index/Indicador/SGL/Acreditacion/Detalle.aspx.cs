@@ -42,7 +42,9 @@ namespace SAM.Indicador.SGL.Acreditacion
             {
                 (this.Master as SAM.Site1).OcultarDrop = false;
                 (this.Master as SAM.Site1).OcultarLabel = false;
+                LlenarDrop();
                 MostrarGrid();
+               
             }
         }
 
@@ -50,8 +52,23 @@ namespace SAM.Indicador.SGL.Acreditacion
         {
 
             int IdSuscripcion = Convert.ToInt32((this.Master as SAM.Site1).IdSuscripcion);
-            gridInstalacion.DataSource = indicadorSGL.MostrarDetalleAcreditacion(txtSearch.Text.Trim(), IdSuscripcion);
-            gridInstalacion.DataBind();
+            string Acreditador = ddl_Acreditador.SelectedValue;
+    
+                gridInstalacion.DataSource = indicadorSGL.MostrarDetalleAcreditacion(txtSearch.Text.Trim(), IdSuscripcion, Acreditador);
+                gridInstalacion.DataBind();
+            
+       
+        }
+        public void LlenarDrop()
+        {
+
+            ddl_Acreditador.Items.Insert(0, new ListItem("EMA"));
+            ddl_Acreditador.Items.Insert(1, new ListItem("CRE"));
+
+
+
+
+
         }
 
         protected void gridInstalacion_PageIndexChanging(object sender, GridViewPageEventArgs e)
@@ -80,10 +97,16 @@ namespace SAM.Indicador.SGL.Acreditacion
                 {
                     lnk.Visible = false;
                 }
-                lnk.NavigateUrl = "https://er2020.blob.core.windows.net/sgl/Acreditacion/" + IdArchivo.Text.ToString() + ".pdf";
 
+                string encodedString = (Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(IdArchivo.Text)));
+                lnk.NavigateUrl = "Doc.aspx?id=" + encodedString;
 
             }
+        }
+
+        protected void ddl_Acreditador_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            MostrarGrid();
         }
     }
 }

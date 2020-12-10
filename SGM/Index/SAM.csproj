@@ -144,6 +144,7 @@
     <Content Include="img\thumbnail_terminal .jpg" />
     <Content Include="Indicador\SASISOPA\Inicio.aspx" />
     <Content Include="Indicador\SGL\Acreditacion\Detalle.aspx" />
+    <Content Include="Indicador\SGL\Acreditacion\Doc.aspx" />
     <Content Include="Indicador\SGL\Inicio.aspx" />
     <Content Include="Inicio.aspx" />
     <Content Include="Login.aspx" />
@@ -1941,6 +1942,13 @@
     </Compile>
     <Compile Include="Indicador\SGL\Acreditacion\Detalle.aspx.designer.cs">
       <DependentUpon>Detalle.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Indicador\SGL\Acreditacion\Doc.aspx.cs">
+      <DependentUpon>Doc.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Indicador\SGL\Acreditacion\Doc.aspx.designer.cs">
+      <DependentUpon>Doc.aspx</DependentUpon>
     </Compile>
     <Compile Include="Indicador\SGL\Inicio.aspx.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>

@@ -1,13 +1,13 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/s/Site1.Master" AutoEventWireup="true" CodeBehind="Index.aspx.cs" Inherits="SGL.s.Acreditacion.EMA.Index" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/s/Site1.Master" AutoEventWireup="true" CodeBehind="Index.aspx.cs" Inherits="SGL.s.Acreditacion.CRE.Index" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    EMA
+    CRE
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="mapeo" runat="server">
       <li class="breadcrumb-item active"><asp:LinkButton runat="server" OnClick="IrSAM">SAM</asp:LinkButton></li>
                   <li class="breadcrumb-item "><a href="../../Inicio.aspx">SGL (Inicio)</a></li>
                       <li class="breadcrumb-item "><a href="../Inicio.aspx">Acreditaciones</a></li>
 
-                     <li class="breadcrumb-item "><a>EMA</a></li>
+                     <li class="breadcrumb-item "><a>CRE</a></li>
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="Content" runat="server">
@@ -22,7 +22,7 @@
                     <div class="card-body">
                         <div class="row">
                               <div class="col-sm-4 col-md-4 col-lg-8">
-                                     <asp:LinkButton runat="server" CssClass="text-sm" PostBackUrl="~/s/Acreditacion/EMA/Crear.aspx"><span class=" ion-plus" ></span>Agregar</asp:LinkButton>
+                                     <asp:LinkButton runat="server" CssClass="text-sm" PostBackUrl="~/s/Acreditacion/CRE/Crear.aspx"><span class=" ion-plus" ></span>Agregar</asp:LinkButton>
                                   </div>
 
                             <div class=" input-group float-right col-sm-4 col-md-4 col-lg-4">

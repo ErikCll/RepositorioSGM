@@ -92,7 +92,24 @@ namespace SGL.Clase
                 return false;
 
         }
+        public bool ValidarCre(int IdUsuario)
+        {
+            comm.Connection = conexion.AbrirConexion();
+            comm.CommandText = "SELECT COUNT(*) FROM MenuSubMenu Nav JOIN(SELECT Id_SubMenu FROM UsuarioSubMenu WHERE Id_Usuario = @IdUsuario) ussubmenu on Nav.Id_SubMenu = ussubmenu.Id_SubMenu JOIN SistemaMenu sismenu on nav.Id_Menu = sismenu.Id_Menu WHERE nav.Activado IS NULL AND nav.Id_SubMenu = 40";
+            comm.CommandType = CommandType.Text;
+            comm.Parameters.AddWithValue("@IdUsuario", IdUsuario);
+            int i = (int)comm.ExecuteScalar();
+            comm.Parameters.Clear();
+            conexion.CerrarConexion();
 
+            if (i > 0)
+            {
+                return true;
+            }
+            else
+                return false;
+
+        }
 
         public bool ValidarCensoActividad(int IdUsuario)
         {

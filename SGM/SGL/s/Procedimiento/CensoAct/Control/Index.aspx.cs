@@ -84,7 +84,9 @@ namespace SGL.s.Procedimiento.CensoAct.Control
                 HtmlControl Vig = e.Row.FindControl("Vigente") as HtmlControl;
                 HtmlControl Ven = e.Row.FindControl("Vencido") as HtmlControl;
                 HyperLink lnk = e.Row.FindControl("lnk") as HyperLink;
-                lnk.NavigateUrl = "https://er2020.blob.core.windows.net/sgl/Procedimiento/" + IdControl.ToString() + ".pdf";
+                string encodedString = (Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(IdControl.ToString())));
+                lnk.NavigateUrl = "~/s/Procedimiento/Doc.aspx?id=" + encodedString;
+
                 HtmlControl Vig2 = e.Row.FindControl("Vigente") as HtmlControl;
 
             

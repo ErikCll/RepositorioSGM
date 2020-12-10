@@ -130,7 +130,7 @@
                                     </div>
 
                                     <asp:RequiredFieldValidator runat="server" ID="RequiredFieldValidator3" ControlToValidate="txtContrasena"
-                                        ErrorMessage="Contraseña nueva requerida." ForeColor="Red" ValidationGroup="btnGuardar"></asp:RequiredFieldValidator>
+                                        ErrorMessage="Contraseña requerida." ForeColor="Red" ValidationGroup="btnGuardar"></asp:RequiredFieldValidator>
                                 </div>
 
                             </div>

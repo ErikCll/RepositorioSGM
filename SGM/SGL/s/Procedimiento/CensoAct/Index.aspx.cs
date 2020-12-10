@@ -126,10 +126,10 @@ namespace SGL.s.Procedimiento.CensoAct
                 {
                     lnk.Visible = false;
                 }
-                lnk.NavigateUrl = "https://er2020.blob.core.windows.net/sgl/Procedimiento/" + IdArchivo.Text.ToString() + ".pdf";
 
+                string encodedString = (Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(IdArchivo.Text)));
+                lnk.NavigateUrl = "~/s/Procedimiento/Doc.aspx?id=" + encodedString;
 
-            
 
                 if (Meses.Text!="0")
                 {

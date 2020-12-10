@@ -98,7 +98,7 @@
 
                     <!-- /.card-body -->
                     <div class="card-footer mt-2">
-                        <a href="#" class="float-right">Más información <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="CRE/Index.aspx" class="float-right">Más información <i class="fas fa-arrow-circle-right"></i></a>
 
                     </div>
                 </div>

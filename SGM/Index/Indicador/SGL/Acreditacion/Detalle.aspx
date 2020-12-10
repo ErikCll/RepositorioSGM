@@ -7,7 +7,12 @@
                   <li class="breadcrumb-item "><a>Acreditación</a></li>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Content" runat="server">
-
+    <style>
+        .form-group.col-lg-12{
+    display: flex;
+    align-items: center;
+}
+    </style>
     <asp:UpdatePanel runat="server" UpdateMode="Conditional">
 
         <ContentTemplate>
@@ -21,9 +26,14 @@
                     <div class="card-body">
 
                             <div class="row">
-                                           <div class="col-sm-4 col-md-4 col-lg-8">
-
+                                           <div class="col-sm-4 col-md-4 col-lg-3">
+                                         
+                                                   <asp:DropDownList runat="server" CssClass="form-control form-control-sm" ID="ddl_Acreditador" AutoPostBack="true" OnSelectedIndexChanged="ddl_Acreditador_SelectedIndexChanged"></asp:DropDownList>
+                                                 
                                 </div>
+                                                                           <div class="col-sm-4 col-md-4 col-lg-5">
+
+                                                                               </div>
                                           <div class=" input-group col-sm-8 col-md-8 col-lg-4">
                    <asp:TextBox ID="txtSearch" runat="server" CssClass="form-control form-control-sm"></asp:TextBox>
 <asp:Button ID="btnBuscar" Text="Buscar" runat="server"  OnClick="Buscar"  CssClass="btn btn-default btn-sm" />
@@ -72,6 +82,8 @@
                                                 <asp:HyperLink runat="server" ID="lnkArchivo" Target="_blank" ImageUrl="~/img/pdficon.svg" ImageHeight="17px" ImageWidth="17px" ></asp:HyperLink>
                                             </ItemTemplate>
                                         </asp:TemplateField>
+                                      <asp:BoundField HeaderText="Acreditador" DataField="Acreditador"  ItemStyle-HorizontalAlign="Center"/>
+
 <%--                                        <asp:BoundField HeaderText="Región" DataField="Region" />--%>
                                     </Columns>
                                             <PagerStyle HorizontalAlign = "Center"  />

@@ -112,8 +112,8 @@ namespace SGL.s.Acreditacion.EMA.Archivo
                 {
                     lnk.Visible = false;
                 }
-                lnk.NavigateUrl = "https://er2020.blob.core.windows.net/sgl/Acreditacion/" + IdArchivo.Text.ToString() + ".pdf";
-
+                string encodedString = (Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(IdArchivo.Text)));
+                lnk.NavigateUrl = "~/s/Acreditacion/Doc.aspx?id=" + encodedString;
             }
         }
 
