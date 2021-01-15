@@ -17,6 +17,10 @@
                     <div class="row">
                       
                         <div class="col-sm-12 col-md-12 col-lg-4">
+                                <div class="form-group">
+                                <label class="font-weight-normal">No. Empleado:</label>
+                                <asp:Label runat="server" CssClass="font-weight-bold" ID="lblNoEmpleado"></asp:Label>
+                            </div>
                             <div class="form-group">
                                 <label class="font-weight-normal">Nombre:</label>
                                 <asp:Label runat="server" CssClass="font-weight-bold" ID="lblNombre"></asp:Label>
@@ -26,24 +30,39 @@
                                 <label class="font-weight-normal">Apellido Paterno:</label>
                                  <asp:Label runat="server" CssClass="font-weight-bold" ID="lblApellidoPaterno"></asp:Label>
                             </div>
-                            <div class="form-group">
+                         
+                       
+                            </div>
+                        <div class="col-sm-12 col-md-12 col-lg-4">
+                               <div class="form-group">
                                 <label class="font-weight-normal">Apellido Materno:</label>
                                  <asp:Label runat="server" CssClass="font-weight-bold" ID="lblApellidoMaterno"></asp:Label>
                             </div>
-                            <div class="form-group">
-                                 <label class="font-weight-normal">Fecha de creación:</label>
-                                <asp:Label runat="server" ID="lblCreacionFecha" CssClass=" font-weight-bold"></asp:Label>
+                               <div class="form-group">
+                                <label class="font-weight-normal">Sexo:</label>
+                                 <asp:Label runat="server" CssClass="font-weight-bold" ID="lblSexo"></asp:Label>
                             </div>
-                            </div>
-                        <div class="col-sm-12 col-md-12 col-lg-4">
-                            <div class="form-group">
-                                <label class="font-weight-normal">Instalación:</label>
-                                <asp:Label runat="server" ID="lblInstalacion" CssClass=" font-weight-bold"></asp:Label>
+                              <div class="form-group">
+                                <label class="font-weight-normal">Fecha de nacimiento:</label>
+                                 <asp:Label runat="server" CssClass="font-weight-bold" ID="lblFechaNacimiento"></asp:Label>
                             </div>
 
                             
                         </div>
                         <div class="col-sm-12 col-md-12 col-lg-4">
+                                  <div class="form-group">
+                                <label class="font-weight-normal">Dirección:</label>
+                                <asp:Label runat="server" ID="lblDireccion" CssClass=" font-weight-bold"></asp:Label>
+                            </div>
+                                <div class="form-group">
+                                <label class="font-weight-normal">Instalación:</label>
+                                <asp:Label runat="server" ID="lblInstalacion" CssClass=" font-weight-bold"></asp:Label>
+                            </div>
+
+                                 <div class="form-group">
+                                 <label class="font-weight-normal">Fecha de creación:</label>
+                                <asp:Label runat="server" ID="lblCreacionFecha" CssClass=" font-weight-bold"></asp:Label>
+                            </div>
                         </div>
                       
                         <div class="col-sm-12 col-md-12 col-lg-6">

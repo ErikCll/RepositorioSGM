@@ -27,14 +27,14 @@
                             </div>
                         </div>
                      
-                            <div class="col-12 col-md-12 col-lg-4">
+                      <%--      <div class="col-12 col-md-12 col-lg-4">
                             <div class="form-group">
                                 <label>Referencia:</label>
                                                <asp:TextBox runat="server" CssClass="form-control" ID="txtReferencia" onkeypress="return AllowAlphabet(event)" MaxLength="200"></asp:TextBox>
                                   <asp:RequiredFieldValidator runat="server" ID="RequiredFieldValidator1" ControlToValidate="txtReferencia"
                                     ErrorMessage="Referencia requerida." ForeColor="Red" ValidationGroup="btnGuardar"></asp:RequiredFieldValidator>
                             </div>
-                        </div>
+                        </div>--%>
                                            
                            <div class="col-sm-12 col-md-12 col-lg-4">
                             <div class="form-group">

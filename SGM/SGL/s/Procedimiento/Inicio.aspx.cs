@@ -25,6 +25,8 @@ namespace SGL.s.Procedimiento
             int IdUsuario = Convert.ToInt32((this.Master as SGL.s.Site1).IDUsuario.ToString());
             if (accesos.ValidarProcedimientoInstructivo(IdUsuario))
             {
+                int contador = 0;
+
                 if (accesos.ValidarCensoActividad(IdUsuario))
                 {
                     censoactividad.Visible = true;
@@ -33,13 +35,17 @@ namespace SGL.s.Procedimiento
                 }
                 if (accesos.ValidarInstalacionActividad(IdUsuario))
                 {
-                    instalacionactividad.Visible = true;
+                    //instalacionactividad.Visible = true;
+                    lnkInstalacionActividad.Visible = true;
+                    contador++;
 
                 }
 
                 if (accesos.ValidarCategoriaActividad(IdUsuario))
                 {
-                    categoriaactividad.Visible = true;
+                    //categoriaactividad.Visible = true;
+                    lnkCategoriaActividad.Visible = true;
+                    contador++;
 
                 }
 
@@ -47,6 +53,14 @@ namespace SGL.s.Procedimiento
                 {
                     categoriaempleado.Visible = true;
 
+                }
+                if (contador > 0)
+                {
+                    configuracion.Visible = true;
+                }
+                else
+                {
+                    configuracion.Visible = false;
                 }
             }
             else

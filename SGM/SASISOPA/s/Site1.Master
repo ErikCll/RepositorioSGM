@@ -127,7 +127,11 @@
                     <span class="brand-text font-weight-light">SASISOPA</span>
                 </a>
 
-
+                 
+                    <a href="#" class="brand-link">
+                    <span class="brand-image fas fa-chart-bar mt-2" style="opacity: .8"></span>
+                    <span class="brand-text font-weight-light">Indicadores</span>
+                </a>
 
 
                 <!-- Sidebar -->
@@ -140,6 +144,9 @@
                         <ul class="nav nav-pills nav-sidebar flex-column text-sm " data-widget="treeview" role="menu" data-accordion="true">
                             <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
+
+                          
+                    
 
                             <li class="nav-item" id="menu_politica" runat="server" visible="false">
 

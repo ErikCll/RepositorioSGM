@@ -137,6 +137,13 @@ namespace SGL.s
 
                 }
 
+                else if (activepage.Contains("/Confirmacion/Inicio.aspx") || activepage.Contains("/Confirmacion/Calibracion/Index.aspx")|| activepage.Contains("/Confirmacion/Equipo/Index.aspx")|| activepage.Contains("/Confirmacion/Equipo/Editar.aspx")|| activepage.Contains("/Confirmacion/Equipo/Crear.aspx")|| activepage.Contains("/Confirmacion/Equipo/Detalle.aspx")|| activepage.Contains("/Confirmacion/Medidor/Index.aspx")|| activepage.Contains("/Confirmacion/Medidor/Editar.aspx")|| activepage.Contains("/Confirmacion/Medidor/Detalle.aspx")|| activepage.Contains("/Confirmacion/Medidor/Crear.aspx")|| activepage.Contains("/Confirmacion/Verificacion/Index.aspx") || activepage.Contains("/Confirmacion/Variable/Index.aspx") || activepage.Contains("/Confirmacion/Criterio/Index.aspx"))
+                {
+                    menu_confirmacion.Attributes.Add("class", "  nav-item has-treeview menu-open");
+                    confirmacion.Attributes.Add("class", "nav-link active");
+                    //actividad.Attributes.Add("class", "nav-link active");
+
+                }
             }
 
         }

@@ -13,6 +13,42 @@ namespace SASISOPA.s.Competencia {
     public partial class Inicio {
         
         /// <summary>
+        /// Control configuracion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl configuracion;
+        
+        /// <summary>
+        /// Control lnkCursoTaller.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lnkCursoTaller;
+        
+        /// <summary>
+        /// Control lnkInstructor.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lnkInstructor;
+        
+        /// <summary>
+        /// Control lnkMatrizCurIns.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lnkMatrizCurIns;
+        
+        /// <summary>
         /// Control programacapacitacion.
         /// </summary>
         /// <remarks>

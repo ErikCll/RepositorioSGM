@@ -22,22 +22,13 @@ namespace SGL.s {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl acreditacion;
         
         /// <summary>
-        /// Control lblPorcentaje.
+        /// Control gridAcreditacion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblPorcentaje;
-        
-        /// <summary>
-        /// Control divprogress1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divprogress1;
+        protected global::System.Web.UI.WebControls.GridView gridAcreditacion;
         
         /// <summary>
         /// Control procedimientoinstructivo.
@@ -110,5 +101,32 @@ namespace SGL.s {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl progressPromedioResultado6;
+        
+        /// <summary>
+        /// Control confirmacion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl confirmacion;
+        
+        /// <summary>
+        /// Control Label2.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label2;
+        
+        /// <summary>
+        /// Control div3.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div3;
     }
 }

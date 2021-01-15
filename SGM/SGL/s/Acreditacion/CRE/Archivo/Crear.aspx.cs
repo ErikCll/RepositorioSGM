@@ -57,6 +57,7 @@ namespace SGL.s.Acreditacion.CRE.Archivo
             int s = now.Second;
             string Fecha = txtFecha.Text;
             string Estatus = ddl_Estatus.SelectedValue;
+            string Referencia = txtReferencia.Text;
             string fileExt = System.IO.Path.GetExtension(File1.FileName);
             string AccountName = "er2020";
             string AccountKey = "yhDHxitC9NvUx5p3vLHwUJWxWx7rdLw47/PI88KVsS8/2EIdN2ZAM+ATi8PWKyB7zXGEXE2mFAAgw1MHw3z/JA==";
@@ -67,7 +68,7 @@ namespace SGL.s.Acreditacion.CRE.Archivo
                 {
 
 
-                    if (archivo.Insertar(IdAcreditacion, Fecha + ' ' + h + ':' + m + ':' + s, Estatus))
+                    if (archivo.Insertar(IdAcreditacion, Fecha + ' ' + h + ':' + m + ':' + s, Estatus,Referencia))
                     {
                         archivo.LeerId(IdAcreditacion);
 

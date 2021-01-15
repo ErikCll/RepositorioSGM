@@ -1,6 +1,5 @@
 ﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
-  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -115,11 +114,6 @@
     </Reference>
     <Reference Include="Telerik.Web.UI.Skins">
       <HintPath>..\..\..\..\..\Desktop\Erik\Admins\Admins\bin\Telerik.Web.UI.Skins.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
-      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -1703,6 +1697,9 @@
     <Content Include="plugins\toastr\toastr.min.css" />
     <Content Include="plugins\toastr\toastr.min.js" />
     <Content Include="s\Auditoria\Inicio.aspx" />
+    <Content Include="s\Competencia\CursoTaller\Index.aspx" />
+    <Content Include="s\Competencia\InstructorIn\Index.aspx" />
+    <Content Include="s\Competencia\MatrizCurIns\Index.aspx" />
     <Content Include="s\Competencia\ResultadoEv\Detalle.aspx" />
     <Content Include="s\Competencia\ResultadoEv\Index.aspx" />
     <Content Include="s\Comunicacion\Inicio.aspx" />
@@ -1720,6 +1717,7 @@
     <Content Include="s\ControlAct\CensoAct\Evaluacion\VCuestionario.aspx" />
     <Content Include="s\ControlAct\CensoAct\Index.aspx" />
     <Content Include="s\Competencia\Inicio.aspx" />
+    <Content Include="s\ControlAct\Doc.aspx" />
     <Content Include="s\ControlDoc\Inicio.aspx" />
     <Content Include="s\Error.aspx" />
     <Content Include="s\FuncionRes\Inicio.aspx" />
@@ -1754,6 +1752,7 @@
     <Content Include="s\RequisitoLegal\DocRegulador\Editar.aspx" />
     <Content Include="s\RequisitoLegal\DocRegulador\Index.aspx" />
     <Content Include="s\RequisitoLegal\Inicio.aspx" />
+    <Content Include="s\RequisitoLegal\MatrizReqIns\Index.aspx" />
     <Content Include="s\RequisitoLegal\Regulador\Crear.aspx" />
     <Content Include="s\RequisitoLegal\Regulador\Editar.aspx" />
     <Content Include="s\RequisitoLegal\Regulador\Index.aspx" />
@@ -1793,6 +1792,27 @@
     </Compile>
     <Compile Include="s\Auditoria\Inicio.aspx.designer.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="s\Competencia\CursoTaller\Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="s\Competencia\CursoTaller\Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="s\Competencia\InstructorIn\Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="s\Competencia\InstructorIn\Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="s\Competencia\MatrizCurIns\Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="s\Competencia\MatrizCurIns\Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
     </Compile>
     <Compile Include="s\Competencia\ResultadoEv\Detalle.aspx.cs">
       <DependentUpon>Detalle.aspx</DependentUpon>
@@ -1912,6 +1932,13 @@
     </Compile>
     <Compile Include="s\Competencia\Inicio.aspx.designer.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="s\ControlAct\Doc.aspx.cs">
+      <DependentUpon>Doc.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="s\ControlAct\Doc.aspx.designer.cs">
+      <DependentUpon>Doc.aspx</DependentUpon>
     </Compile>
     <Compile Include="s\ControlDoc\Inicio.aspx.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>
@@ -2151,6 +2178,13 @@
     <Compile Include="s\RequisitoLegal\Inicio.aspx.designer.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>
     </Compile>
+    <Compile Include="s\RequisitoLegal\MatrizReqIns\Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="s\RequisitoLegal\MatrizReqIns\Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
     <Compile Include="s\RequisitoLegal\Regulador\Crear.aspx.cs">
       <DependentUpon>Crear.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2357,12 +2391,6 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>Este proyecto hace referencia a los paquetes NuGet que faltan en este equipo. Use la restauración de paquetes NuGet para descargarlos. Para obtener más información, consulte http://go.microsoft.com/fwlink/?LinkID=322105. El archivo que falta es {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
-  </Target>
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
   <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
     <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />

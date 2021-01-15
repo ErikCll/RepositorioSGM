@@ -60,10 +60,9 @@ namespace SGL.s.Acreditacion.EMA
         {
 
             string No = txtNo.Text;
-            string Referencia = txtReferencia.Text;
             int IdInstalacion = Convert.ToInt32(ddl_Instalacion.SelectedValue);
 
-            if (ema.Insertar(IdInstalacion, No, Referencia))
+            if (ema.Insertar(IdInstalacion, No))
             {
                 string script = "alert('Registro creado exitosamente.'); window.location.href= 'Index.aspx';";
 

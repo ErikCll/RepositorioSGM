@@ -23,25 +23,60 @@ Sistema de Gestión para Laboratorios
               </div>
               <div class="card-body" style="display: block;">
                   <div class="row">
-                           <div class="col-sm-12 col-md-6 col-lg-12">
+           <%--                <div class="col-sm-12 col-md-6 col-lg-12">
                 <h3><asp:Label runat="server" ID="lblPorcentaje"></asp:Label><label class="font-weight-normal">   </label><i class="fas fa-fw fa-tachometer-alt fa-2x text-black-50 float-right"></i>
 </h3>
                               
-                  </div>
+                  </div>--%>
         
                       <div class="col-sm-12 col-md-12 col-lg-12">
 <%--                                        <p><asp:Label runat="server" ID="lblOperando"></asp:Label> de <asp:Label runat="server"  ID="lblTotal"></asp:Label></p>--%>
 
                       </div>
+
+                                    <div class="container col-12">
+                                                                       <div class=" table-responsive">
+                            <div style="overflow:auto ;height:auto">
+
+                                   <asp:GridView runat="server" 
+                                 CssClass=" table table-bordered table-striped table-sm"
+                                  
+                                   id="gridAcreditacion"
+                                     HeaderStyle-BackColor="#343a40"
+                                     HeaderStyle-CssClass=" text-white"
+                                            GridLines="Horizontal"
+                                    AutoGenerateColumns="false"
+                                     HeaderStyle-HorizontalAlign="Center"
+                                     EmptyDataText="Sin registro de acreditaciones."
+                                 DataKeyNames="Id_Acreditacion"
+                                     OnRowDataBound="gridAcreditacion_RowDataBound"
+                                    >
+                                    <Columns>
+                                     <asp:BoundField HeaderText="Acreditador" DataField="Acreditador" ItemStyle-HorizontalAlign="Center" />
+     
+                                 <asp:BoundField HeaderText="Fecha" DataField="Fecha" ItemStyle-HorizontalAlign="Center" />
+                                        <asp:BoundField HeaderText="Estatus" DataField="Status" ItemStyle-HorizontalAlign="Center"/>
+                                     
+                                           <asp:TemplateField HeaderText="Archivo" ItemStyle-HorizontalAlign="Center">
+                                            <ItemTemplate>
+                                                <asp:Label runat="server" ID="lblArchivo" Text='<%# Eval("Id_status") %>' Visible="false" ></asp:Label>
+                                                <asp:HyperLink runat="server" ID="lnkArchivo" Target="_blank" ImageUrl="~/dist/img/pdficon.svg" ImageHeight="17px" ImageWidth="17px" ></asp:HyperLink>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                    </Columns>
+                                  
+                                </asp:GridView>
+                                </div>
+
+                                                                           </div>
+
+                                                                 </div>
                   </div>
              
 
                
          
-           <div class="progress">
-                        <div class="progress-bar" runat="server" id="divprogress1">
-                        </div>
-              </div>
+       
   </div>
             
     <!-- /.card-body -->
@@ -158,6 +193,49 @@ Sistema de Gestión para Laboratorios
             </div>
      
            </div>
+
+                 <div class="col-sm-12 col-md-6 col-lg-4" id="confirmacion" runat="server" visible="true">
+                <div class="card card-default shadow-sm">
+                    <div class="card-header">
+                        <h3 class="card-title font-weight-bold">Confirmación metrológica</h3>
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body" style="display: block;">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-6 col-lg-12">
+                                <h3>
+                                    <asp:Label runat="server" ID="Label2"></asp:Label><label class="font-weight-normal">   </label>
+                                    <i class="fas fa-fw fa-tachometer-alt fa-2x text-black-50 float-right"></i>
+                                </h3>
+
+                            </div>
+
+                            <div class="col-sm-12 col-md-12 col-lg-12">
+                                <%--                                        <p><asp:Label runat="server" ID="lblOperando"></asp:Label> de <asp:Label runat="server"  ID="lblTotal"></asp:Label></p>--%>
+                            </div>
+                        </div>
+
+
+
+
+                        <div class="progress">
+                            <div class="progress-bar" runat="server" id="div3">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- /.card-body -->
+                    <div class="card-footer">
+                        <a href="Confirmacion/Inicio.aspx" class="float-right">Más información <i class="fas fa-arrow-circle-right"></i></a>
+
+                    </div>
+                </div>
+
+            </div>
            </div>
 
 

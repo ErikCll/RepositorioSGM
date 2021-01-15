@@ -21,7 +21,7 @@
                       
                         <div class="col-12 col-md-12 col-lg-4">
                             <div class="form-group">
-                                <label>Nombre:</label>
+                                <label>Nombre del Requisito:</label>
                                                             <asp:TextBox runat="server" CssClass="form-control" ID="txtNombre" onkeypress="return AllowAlphabet(event)" MaxLength="200"></asp:TextBox>
                                   <asp:RequiredFieldValidator runat="server" ID="RequiredFieldValidator2" ControlToValidate="txtNombre"
                                     ErrorMessage="Nombre requerido." ForeColor="Red" ValidationGroup="btnGuardar"></asp:RequiredFieldValidator>

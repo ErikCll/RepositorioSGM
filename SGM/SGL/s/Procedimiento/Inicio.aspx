@@ -14,6 +14,40 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="Content" runat="server">
          <div class="col-lg-12">
         <div class="row">
+                 <div class="col-sm-12 col-md-6 col-lg-4" runat="server" id="configuracion" visible="false">
+                <div class="card card-default shadow-sm">
+                    <div class="card-header bg-gray">
+                        <h3 class="card-title font-weight-bold ">Configuración del elemento</h3>
+
+                        <div class="card-tools">
+                                <i class="fas fa-cog"></i>
+                        </div>
+                    </div>
+                    <div class="card-body " style="display: block;">
+                        <div class="row">
+ 
+                                                        <div class="col-sm-12 col-md-12 col-lg-12" runat="server" id="lnkInstalacionActividad" visible="false">
+                                                            
+                        <a href="MatrizInsAct/Index.aspx" >Matriz Instalación-Actividad <i class="fas fa-arrow-circle-right"></i></a>
+                                                            </div>
+                            <div class="col-sm-12 col-md-12 col-lg-12 mt-2" runat="server" id="lnkCategoriaActividad" visible="false">
+                                                            
+                        <a href="MatrizCatAct/Index.aspx" >Matriz Categoría-Actividad <i class="fas fa-arrow-circle-right"></i></a>
+                                                            </div>
+                                                 
+                         
+                          
+                        </div>
+
+
+
+                   
+                    </div>
+
+             
+                </div>
+
+            </div>
             <div class="col-sm-12 col-md-6 col-lg-4" runat="server" id="censoactividad" visible="false">
                 <div class="card card-default shadow-sm">
                     <div class="card-header">

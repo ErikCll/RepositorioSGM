@@ -45,7 +45,6 @@ namespace SGL.s.Acreditacion.EMA
                 int IdAcreditacion = Convert.ToInt32(decodedString);
                 ema.LeerDatos(IdAcreditacion);
                 txtNo.Text = ema.No;
-                txtReferencia.Text = ema.Referencia;
                 ddl_Instalacion.SelectedValue = ema.IdInstalacion;
             }
         }
@@ -65,9 +64,8 @@ namespace SGL.s.Acreditacion.EMA
             string decodedString = System.Text.ASCIIEncoding.ASCII.GetString(Convert.FromBase64String(Request.QueryString["id"]));
             int IdAcreditacion = Convert.ToInt32(decodedString);
             string No = txtNo.Text;
-            string Referencia = txtReferencia.Text;
             int IdInstalacion = Convert.ToInt32(ddl_Instalacion.SelectedValue);
-            if (ema.Editar(IdAcreditacion,No,Referencia, IdInstalacion))
+            if (ema.Editar(IdAcreditacion,No, IdInstalacion))
             {
                 string txtJS = String.Format("<script>alert('{0}');</script>", "Se actualizaron correctamente los datos.");
                 ScriptManager.RegisterClientScriptBlock(litControl, litControl.GetType(), "script", txtJS, false);

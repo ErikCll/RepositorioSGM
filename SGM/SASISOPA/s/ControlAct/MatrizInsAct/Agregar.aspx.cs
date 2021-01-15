@@ -102,6 +102,20 @@ namespace SASISOPA.s.ControlAct.MatrizInsAct
             {
                 ((CheckBox)e.Row.FindControl("checkall") as CheckBox).Attributes.Add("onclick", "javascript:SelectAll('" + ((CheckBox)e.Row.FindControl("checkall") as CheckBox).ClientID + "')");
             }
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                Label IdArchivo = e.Row.FindControl("lblArchivo") as Label;
+
+                HyperLink lnk = e.Row.FindControl("lnkArchivo") as HyperLink;
+                if (Convert.ToInt32(IdArchivo.Text) == 0)
+                {
+                    lnk.Visible = false;
+                }
+
+                string encodedString = (Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(IdArchivo.Text)));
+                lnk.NavigateUrl = "~/s/ControlAct/Doc.aspx?id=" + encodedString;
+
+            }
 
 
         }
@@ -114,8 +128,8 @@ namespace SASISOPA.s.ControlAct.MatrizInsAct
                 {
                     int IdInstalacion = Convert.ToInt32(ddl_Instalacion.SelectedValue);
                     bool isChecked = row.Cells[0].Controls.OfType<CheckBox>().FirstOrDefault().Checked;
-                    int IdActividad = Convert.ToInt32(row.Cells[2].Controls.OfType<Label>().FirstOrDefault().Text);
-                    int IdRegistro = Convert.ToInt32(row.Cells[3].Controls.OfType<Label>().FirstOrDefault().Text);
+                    int IdActividad = Convert.ToInt32(row.Cells[3].Controls.OfType<Label>().FirstOrDefault().Text);
+                    int IdRegistro = Convert.ToInt32(row.Cells[4].Controls.OfType<Label>().FirstOrDefault().Text);
 
                     if (isChecked == true && IdActividad != IdRegistro)
                     {

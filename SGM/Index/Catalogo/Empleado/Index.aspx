@@ -54,9 +54,13 @@
 
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
+                                                      <asp:BoundField HeaderText="No. Empleado" DataField="NoEmpleado" />
+
                                                     <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
                                                     <asp:BoundField HeaderText="Apellido Paterno" DataField="ApellidoPaterno" />
                                                     <asp:BoundField HeaderText="Apellido Materno" DataField="ApellidoMaterno" />
+                                                     <asp:BoundField HeaderText="Sexo" DataField="Sexo" ItemStyle-HorizontalAlign="Center" />
+
                                                     <asp:BoundField HeaderText="Instalación" DataField="Instalacion" />
 
                                                 </Columns>

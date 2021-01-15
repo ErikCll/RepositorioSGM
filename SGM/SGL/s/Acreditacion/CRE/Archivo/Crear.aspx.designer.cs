@@ -85,6 +85,24 @@ namespace SGL.s.Acreditacion.CRE.Archivo {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator5;
         
         /// <summary>
+        /// Control txtReferencia.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtReferencia;
+        
+        /// <summary>
+        /// Control RequiredFieldValidator11.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator11;
+        
+        /// <summary>
         /// Control btnGuardar.
         /// </summary>
         /// <remarks>

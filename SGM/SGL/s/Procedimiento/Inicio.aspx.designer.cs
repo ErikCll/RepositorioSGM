@@ -13,6 +13,33 @@ namespace SGL.s.Procedimiento {
     public partial class Inicio {
         
         /// <summary>
+        /// Control configuracion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl configuracion;
+        
+        /// <summary>
+        /// Control lnkInstalacionActividad.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lnkInstalacionActividad;
+        
+        /// <summary>
+        /// Control lnkCategoriaActividad.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lnkCategoriaActividad;
+        
+        /// <summary>
         /// Control censoactividad.
         /// </summary>
         /// <remarks>

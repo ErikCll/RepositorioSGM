@@ -180,6 +180,20 @@
             </a>
       
           </li>
+
+                  <li class="nav-item has-treeview" id="menu_confirmacion" runat="server" visible="true">
+             
+            <a href="~/s/Confirmacion/Inicio.aspx" class="nav-link" id="confirmacion" runat="server">
+                <i class="nav-icon fas fa-circle"></i>
+
+              <p>
+               Confirmación Metrológica
+
+
+              </p>
+            </a>
+      
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/s/Site1.Master" AutoEventWireup="true" CodeBehind="Index.aspx.cs" Inherits="SGL.s.Acreditacion.EMA.Index" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    EMA
+    Control de Acreditaciones
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="mapeo" runat="server">
       <li class="breadcrumb-item active"><asp:LinkButton runat="server" OnClick="IrSAM">SAM</asp:LinkButton></li>
@@ -62,12 +62,13 @@
 
                                             </ItemTemplate>
                                         </asp:TemplateField>
+                                        <asp:BoundField DataField="Acreditador" HeaderText="Acreditador" ItemStyle-HorizontalAlign="Center" />
                                         <asp:TemplateField HeaderText="No" ItemStyle-HorizontalAlign="Center">
                                             <ItemTemplate>
                                                 <asp:LinkButton runat="server" ID="lnkNombre" Text='<%# Eval("No") %>' CommandName="AgregarAcre" ToolTip="Agregar documento de acreditación"></asp:LinkButton>
                                             </ItemTemplate>
                                         </asp:TemplateField>
-                                 <asp:BoundField HeaderText="Referencia" DataField="Referencia" ItemStyle-HorizontalAlign="Center"/>
+<%--                                 <asp:BoundField HeaderText="Referencia" DataField="Referencia" ItemStyle-HorizontalAlign="Center"/>--%>
                                  <asp:BoundField HeaderText="Fecha" DataField="Fecha" ItemStyle-HorizontalAlign="Center" />
                                         <asp:BoundField HeaderText="Estatus" DataField="Status" ItemStyle-HorizontalAlign="Center"/>
                                      

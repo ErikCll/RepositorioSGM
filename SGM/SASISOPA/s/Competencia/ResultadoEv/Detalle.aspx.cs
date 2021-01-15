@@ -53,7 +53,9 @@ namespace SASISOPA.s.Competencia.ResultadoEv
 
             string decodedString = System.Text.ASCIIEncoding.ASCII.GetString(Convert.FromBase64String(Request.QueryString["id"]));
             int IdEmpleado = Convert.ToInt32(decodedString);
-            gridResultadoDetalle.DataSource = resultado.MostrarDetalle(IdEmpleado);
+            int IdInstalacion = Convert.ToInt32((this.Master as SASISOPA.s.Site1).IdInstalacion.ToString());
+
+            gridResultadoDetalle.DataSource = resultado.MostrarDetalle(IdEmpleado,IdInstalacion);
             gridResultadoDetalle.DataBind();
         }
 

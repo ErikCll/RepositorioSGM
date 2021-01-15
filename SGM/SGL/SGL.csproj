@@ -1,6 +1,6 @@
 ﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -56,6 +56,9 @@
     </Reference>
     <Reference Include="Microsoft.Azure.KeyVault.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Azure.KeyVault.Core.1.0.0\lib\net40\Microsoft.Azure.KeyVault.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Data.Edm, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -115,11 +118,6 @@
     </Reference>
     <Reference Include="Telerik.Web.UI.Skins">
       <HintPath>..\..\..\..\..\Desktop\Erik\Admins\Admins\bin\Telerik.Web.UI.Skins.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
-      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -1713,6 +1711,7 @@
     <Content Include="s\Acreditacion\EMA\Crear.aspx" />
     <Content Include="s\Acreditacion\EMA\Editar.aspx" />
     <Content Include="s\Acreditacion\EMA\Index.aspx" />
+    <Content Include="s\Acreditacion\Entidad\Index.aspx" />
     <Content Include="s\Acreditacion\Inicio.aspx" />
     <Content Include="s\Competencia\Inicio.aspx" />
     <Content Include="s\Competencia\Programa\Agregar.aspx" />
@@ -1722,6 +1721,19 @@
     <Content Include="s\Competencia\Programa\Index.aspx" />
     <Content Include="s\Competencia\ResultadoEv\Detalle.aspx" />
     <Content Include="s\Competencia\ResultadoEv\Index.aspx" />
+    <Content Include="s\Confirmacion\Calibracion\Index.aspx" />
+    <Content Include="s\Confirmacion\Criterio\Index.aspx" />
+    <Content Include="s\Confirmacion\Equipo\Crear.aspx" />
+    <Content Include="s\Confirmacion\Equipo\Detalle.aspx" />
+    <Content Include="s\Confirmacion\Equipo\Editar.aspx" />
+    <Content Include="s\Confirmacion\Equipo\Index.aspx" />
+    <Content Include="s\Confirmacion\Inicio.aspx" />
+    <Content Include="s\Confirmacion\Medidor\Crear.aspx" />
+    <Content Include="s\Confirmacion\Medidor\Detalle.aspx" />
+    <Content Include="s\Confirmacion\Medidor\Editar.aspx" />
+    <Content Include="s\Confirmacion\Medidor\Index.aspx" />
+    <Content Include="s\Confirmacion\Variable\Index.aspx" />
+    <Content Include="s\Confirmacion\Verificacion\Index.aspx" />
     <Content Include="s\Error.aspx" />
     <Content Include="s\Evaluacion.aspx" />
     <Content Include="s\Inicio.aspx" />
@@ -1762,10 +1774,12 @@
     <Compile Include="Clase\Correo.cs" />
     <Compile Include="Clase\CRE.cs" />
     <Compile Include="Clase\EMA.cs" />
+    <Compile Include="Clase\Equipo.cs" />
     <Compile Include="Clase\Evaluacion.cs" />
     <Compile Include="Clase\InstalacionActividad.cs" />
     <Compile Include="Clase\Login.cs" />
     <Compile Include="Clase\Master.cs" />
+    <Compile Include="Clase\Medidor.cs" />
     <Compile Include="Clase\ProgramaCapacitacion.cs" />
     <Compile Include="Clase\ResultadoEvaluacion.cs" />
     <Compile Include="Conexion.cs" />
@@ -1850,6 +1864,13 @@
     <Compile Include="s\Acreditacion\EMA\Index.aspx.designer.cs">
       <DependentUpon>Index.aspx</DependentUpon>
     </Compile>
+    <Compile Include="s\Acreditacion\Entidad\Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="s\Acreditacion\Entidad\Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
     <Compile Include="s\Acreditacion\Inicio.aspx.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1911,6 +1932,97 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="s\Competencia\ResultadoEv\Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="s\Confirmacion\Calibracion\Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="s\Confirmacion\Calibracion\Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="s\Confirmacion\Criterio\Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="s\Confirmacion\Criterio\Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="s\Confirmacion\Equipo\Crear.aspx.cs">
+      <DependentUpon>Crear.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="s\Confirmacion\Equipo\Crear.aspx.designer.cs">
+      <DependentUpon>Crear.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="s\Confirmacion\Equipo\Detalle.aspx.cs">
+      <DependentUpon>Detalle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="s\Confirmacion\Equipo\Detalle.aspx.designer.cs">
+      <DependentUpon>Detalle.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="s\Confirmacion\Equipo\Editar.aspx.cs">
+      <DependentUpon>Editar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="s\Confirmacion\Equipo\Editar.aspx.designer.cs">
+      <DependentUpon>Editar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="s\Confirmacion\Equipo\Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="s\Confirmacion\Equipo\Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="s\Confirmacion\Inicio.aspx.cs">
+      <DependentUpon>Inicio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="s\Confirmacion\Inicio.aspx.designer.cs">
+      <DependentUpon>Inicio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="s\Confirmacion\Medidor\Crear.aspx.cs">
+      <DependentUpon>Crear.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="s\Confirmacion\Medidor\Crear.aspx.designer.cs">
+      <DependentUpon>Crear.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="s\Confirmacion\Medidor\Detalle.aspx.cs">
+      <DependentUpon>Detalle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="s\Confirmacion\Medidor\Detalle.aspx.designer.cs">
+      <DependentUpon>Detalle.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="s\Confirmacion\Medidor\Editar.aspx.cs">
+      <DependentUpon>Editar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="s\Confirmacion\Medidor\Editar.aspx.designer.cs">
+      <DependentUpon>Editar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="s\Confirmacion\Medidor\Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="s\Confirmacion\Medidor\Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="s\Confirmacion\Variable\Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="s\Confirmacion\Variable\Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="s\Confirmacion\Verificacion\Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="s\Confirmacion\Verificacion\Index.aspx.designer.cs">
       <DependentUpon>Index.aspx</DependentUpon>
     </Compile>
     <Compile Include="s\Error.aspx.cs">
@@ -2208,7 +2320,9 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="e\" />
+  </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="plugins\fullcalendar-bootstrap\main.d.ts" />
     <TypeScriptCompile Include="plugins\fullcalendar-daygrid\main.d.ts" />
@@ -2245,16 +2359,16 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
+    <Error Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
+  </Target>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>Este proyecto hace referencia a los paquetes NuGet que faltan en este equipo. Use la restauración de paquetes NuGet para descargarlos. Para obtener más información, consulte http://go.microsoft.com/fwlink/?LinkID=322105. El archivo que falta es {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
-  </Target>
-  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
-  <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
-    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
-    <Error Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
   </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

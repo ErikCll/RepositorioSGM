@@ -42,6 +42,7 @@ namespace SAM.Catalogo.Empleado
                 (this.Master as SAM.Site1).OcultarDrop = false;
                 (this.Master as SAM.Site1).OcultarLabel = false;
                 LlenarDrop();
+                LlenarDropSexo();
             }
         }
 
@@ -51,7 +52,11 @@ namespace SAM.Catalogo.Empleado
             string ApellidoPaterno = txtApellidoPaterno.Text;
             string ApellidoMaterno = txtApellidoMaterno.Text;
             int IdInstalacion = Convert.ToInt32(ddl_Instalacion.SelectedValue);
-            if (empleado.Insertar(IdInstalacion, Nombre, ApellidoPaterno,ApellidoMaterno))
+            string NoEmpleado = txtNoEmpleado.Text;
+            string FechaNacimiento = txtFecha.Text;
+            string Sexo = ddl_Sexo.SelectedValue;
+            string Direccion = txtDireccion.Text;
+            if (empleado.Insertar(IdInstalacion, Nombre, ApellidoPaterno,ApellidoMaterno,NoEmpleado,FechaNacimiento,Sexo,Direccion))
             {
                 string script = "alert('Registro creado exitosamente.'); window.location.href= 'Index.aspx';";
 
@@ -66,6 +71,20 @@ namespace SAM.Catalogo.Empleado
             ddl_Instalacion.DataSource = empleado.MostrarInstalacion(IdSuscripcion,IdUsuario);
             ddl_Instalacion.DataBind();
             ddl_Instalacion.Items.Insert(0, new ListItem("[Seleccionar]"));
+
+        }
+
+
+        public void LlenarDropSexo()
+        {
+
+            ddl_Sexo.Items.Insert(0, new ListItem("[Seleccionar]"));
+            ddl_Sexo.Items.Insert(1, new ListItem("M"));
+            ddl_Sexo.Items.Insert(1, new ListItem("F"));
+
+
+
+
 
         }
 

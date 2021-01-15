@@ -87,8 +87,8 @@ namespace SAM
             }
             if (login.ValidarOperacion(IdUsuario))
             {
-                //Operacion.Visible = true;
-                //menu_indicador.Visible = true;
+                Operacion.Visible = true;
+                menu_indicador.Visible = true;
 
 
             }

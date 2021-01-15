@@ -13,6 +13,15 @@ namespace SAM.Catalogo.Empleado {
     public partial class Detalle {
         
         /// <summary>
+        /// Control lblNoEmpleado.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblNoEmpleado;
+        
+        /// <summary>
         /// Control lblNombre.
         /// </summary>
         /// <remarks>
@@ -40,13 +49,31 @@ namespace SAM.Catalogo.Empleado {
         protected global::System.Web.UI.WebControls.Label lblApellidoMaterno;
         
         /// <summary>
-        /// Control lblCreacionFecha.
+        /// Control lblSexo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCreacionFecha;
+        protected global::System.Web.UI.WebControls.Label lblSexo;
+        
+        /// <summary>
+        /// Control lblFechaNacimiento.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblFechaNacimiento;
+        
+        /// <summary>
+        /// Control lblDireccion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblDireccion;
         
         /// <summary>
         /// Control lblInstalacion.
@@ -56,6 +83,15 @@ namespace SAM.Catalogo.Empleado {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblInstalacion;
+        
+        /// <summary>
+        /// Control lblCreacionFecha.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCreacionFecha;
         
         /// <summary>
         /// Control btnRegresar.

@@ -13,6 +13,93 @@
 
         <div class="col-lg-12">
         <div class="row">
+              <div class="col-sm-12 col-md-6 col-lg-4" runat="server" id="configuracion" visible="false">
+                <div class="card card-default shadow-sm">
+                    <div class="card-header bg-gray">
+                        <h3 class="card-title font-weight-bold ">Configuración del elemento</h3>
+
+                        <div class="card-tools">
+                                <i class="fas fa-cog"></i>
+                        </div>
+                    </div>
+                    <div class="card-body " style="display: block;">
+                        <div class="row">
+                                                        <div class="col-sm-12 col-md-12 col-lg-12" runat="server" id="lnkRegulador" visible="false">
+                                                            
+                        <a href="Regulador/Index.aspx" >Regulador <i class="fas fa-arrow-circle-right"></i></a>
+                                                            </div>
+
+                                                        <div class="col-sm-12 col-md-12 col-lg-12 mt-2" runat="server" id="lnkDocRegulador" visible="false">
+                                                                                                                    <a href="DocRegulador/Index.aspx" >Documento Regulador <i class="fas fa-arrow-circle-right"></i></a><br />
+
+                                                            </div>
+                            <div class="col-sm-12 col-md-12 col-lg-12 mt-2" runat="server" id="lnkRequisito" visible="false">
+                                
+                        <a href="Requisito/Index.aspx" >Requisito <i class="fas fa-arrow-circle-right"></i></a>
+
+                            </div>
+                             <div class="col-sm-12 col-md-12 col-lg-12 mt-2" runat="server" id="Div1" visible="true">
+                                                            
+                        <a href="MatrizReqIns/Index.aspx" >Matriz Requisitos-Instalación  <i class="fas fa-arrow-circle-right"></i></a>
+                                                            </div>
+                        </div>
+
+
+
+                   
+                    </div>
+
+             
+                </div>
+
+            </div>
+            
+               <div class="col-sm-12 col-md-6 col-lg-4" runat="server" id="controlrequisito" visible="true">
+                <div class="card card-default shadow-sm">
+                    <div class="card-header">
+                        <h3 class="card-title font-weight-bold">Control de Requisitos</h3>
+
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body" style="display: block;">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-6 col-lg-12">
+                                <h3>
+                                    <asp:Label runat="server" ID="Label10"></asp:Label><label class="font-weight-normal">  </label><i class="fas fa-fw fa-tachometer-alt fa-2x text-black-50 float-right"></i>
+                                </h3>
+
+                            </div>
+
+                            <div class="col-sm-12 col-md-12 col-lg-12">
+                                <p>
+                                    <asp:Label runat="server" ID="Label11"></asp:Label>
+                                    
+
+                                    <asp:Label runat="server" ID="Label12"></asp:Label></p>
+
+                            </div>
+                        </div>
+
+
+
+                        <div class="progress">
+                            <div class="progress-bar" runat="server" id="div3">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- /.card-body -->
+                    <div class="card-footer mt-2">
+                        <a href="#" class="float-right">Más información <i class="fas fa-arrow-circle-right"></i></a>
+
+                    </div>
+                </div>
+
+            </div>
 
                   <div class="col-sm-12 col-md-6 col-lg-4" runat="server" id="regulador" visible="false">
                 <div class="card card-default shadow-sm">

@@ -50,9 +50,10 @@ namespace SASISOPA.Competencia.Programa
 
         public void MostrarGrid()
         {
+            int IdInstalacion = Convert.ToInt32((this.Master as SASISOPA.s.Site1).IdInstalacion.ToString());
             string decodedString = System.Text.ASCIIEncoding.ASCII.GetString(Convert.FromBase64String(Request.QueryString["ev"]));
             int IdEvaluacion = Convert.ToInt32(decodedString);
-            gridPrograma.DataSource = programa.MostrarEvaluaciones(IdEvaluacion, txtSearch.Text.Trim());
+            gridPrograma.DataSource = programa.MostrarEvaluaciones(IdEvaluacion, txtSearch.Text.Trim(), IdInstalacion);
             gridPrograma.DataBind();
         }
 
@@ -73,8 +74,8 @@ namespace SASISOPA.Competencia.Programa
             int IdEvaluacion = Convert.ToInt32(decodedString);
             int IdEmpleado = Convert.ToInt32(ddl_Empleado.SelectedValue);
             string FechaEvaluacion = txtFecha.Text;
-
-            if (programa.Insertar(IdEvaluacion, IdEmpleado, FechaEvaluacion))
+            int IdInstalacion = Convert.ToInt32((this.Master as SASISOPA.s.Site1).IdInstalacion.ToString());
+            if (programa.Insertar(IdEvaluacion, IdEmpleado, FechaEvaluacion, IdInstalacion))
             {
                 programa.ObtenerIdPrograma(IdEvaluacion, IdEmpleado);
                 int IdPrograma = Convert.ToInt32(programa.Id_Programa);
@@ -98,13 +99,15 @@ namespace SASISOPA.Competencia.Programa
                 Label Estatus = e.Row.FindControl("lblEstatus") as Label;
                 Label Calificacion = e.Row.FindControl("lblCalificacion") as Label;
 
+                Label Calificacion2 = e.Row.FindControl("lblCalificacion2") as Label;
+
                 Label CalMinima = e.Row.FindControl("lblCalMinima") as Label;
 
                 Button btnEditar = e.Row.FindControl("btnEditar") as Button;
 
-                if (Calificacion.Text != "" && CalMinima.Text!="")
+                if (Calificacion2.Text != "" && CalMinima.Text!="")
                 {
-                    decimal CalificacionFinal = decimal.Parse(Calificacion.Text);
+                    double CalificacionFinal = Convert.ToDouble(Calificacion2.Text);
                     int CalMinimaFinal = Convert.ToInt32(CalMinima.Text);
 
                     if (CalificacionFinal >= CalMinimaFinal)

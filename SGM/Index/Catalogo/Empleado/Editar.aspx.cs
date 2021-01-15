@@ -44,6 +44,7 @@ namespace SAM.Catalogo.Empleado
                 (this.Master as SAM.Site1).OcultarDrop = false;
                 (this.Master as SAM.Site1).OcultarLabel = false;
                 LlenarDrop();
+                LlenarDropSexo();
                 string decodedString = System.Text.ASCIIEncoding.ASCII.GetString(Convert.FromBase64String(Request.QueryString["id"]));
                 int IdEmpleado = Convert.ToInt32(decodedString);
                 empleado.LeerDatos(IdEmpleado);
@@ -51,6 +52,10 @@ namespace SAM.Catalogo.Empleado
                 txtApellidoPaterno.Text = empleado.ApellidoPaterno;
                 txtApellidoMaterno.Text = empleado.ApellidoMaterno;
                 ddl_Instalacion.SelectedValue = empleado.IdInstalacion;
+                txtNoEmpleado.Text = empleado.NoEmpleado;
+                txtFecha.Text = empleado.FechaNacimiento;
+                ddl_Sexo.SelectedValue = empleado.Sexo;
+                txtDireccion.Text = empleado.Direccion;
             }
         }
 
@@ -65,6 +70,19 @@ namespace SAM.Catalogo.Empleado
 
         }
 
+        public void LlenarDropSexo()
+        {
+
+            ddl_Sexo.Items.Insert(0, new ListItem("[Seleccionar]"));
+            ddl_Sexo.Items.Insert(1, new ListItem("M"));
+            ddl_Sexo.Items.Insert(1, new ListItem("F"));
+
+
+
+
+
+        }
+
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
             string decodedString = System.Text.ASCIIEncoding.ASCII.GetString(Convert.FromBase64String(Request.QueryString["id"]));
@@ -74,7 +92,11 @@ namespace SAM.Catalogo.Empleado
             string ApellidoMaterno = txtApellidoMaterno.Text;
 
             int IdInstalacion = Convert.ToInt32(ddl_Instalacion.SelectedValue);
-            if (empleado.Editar(IdEmpleado, Nombre, ApellidoPaterno, ApellidoMaterno,IdInstalacion))
+            string NoEmpleado = txtNoEmpleado.Text;
+            string FechaNacimiento = txtFecha.Text;
+            string Sexo = ddl_Sexo.SelectedValue;
+            string Direccion = txtDireccion.Text;
+            if (empleado.Editar(IdEmpleado, Nombre, ApellidoPaterno, ApellidoMaterno, IdInstalacion, NoEmpleado, FechaNacimiento, Sexo, Direccion))
             {
                 string txtJS = String.Format("<script>alert('{0}');</script>", "Se actualizaron correctamente los datos.");
                 ScriptManager.RegisterClientScriptBlock(litControl, litControl.GetType(), "script", txtJS, false);

@@ -1,6 +1,6 @@
 ﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -45,6 +45,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Web.DataVisualization" />
     <Reference Include="System.Web.DynamicData" />
@@ -68,11 +71,6 @@
     </Reference>
     <Reference Include="Telerik.Web.UI.Skins">
       <HintPath>..\..\..\..\..\Desktop\Erik\Admins\Admins\bin\Telerik.Web.UI.Skins.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
-      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -1667,6 +1665,8 @@
     <Content Include="s\Inicio.aspx" />
     <Content Include="s\Login.aspx" />
     <Content Include="s\Produccion\Inicio.aspx" />
+    <Content Include="s\Produccion\Parametro\Editar.aspx" />
+    <Content Include="s\Produccion\Parametro\Index.aspx" />
     <Content Include="s\Produccion\Resumen\Detalle.aspx" />
     <Content Include="s\Produccion\Resumen\Index.aspx" />
     <Content Include="Web.config" />
@@ -1679,6 +1679,7 @@
     <Compile Include="Clase\Equipo.cs" />
     <Compile Include="Clase\Login.cs" />
     <Compile Include="Clase\Master.cs" />
+    <Compile Include="Clase\Parametro.cs" />
     <Compile Include="Clase\Resumen.cs" />
     <Compile Include="Conexion.cs" />
     <Compile Include="Global.asax.cs">
@@ -1776,6 +1777,20 @@
     <Compile Include="s\Produccion\Inicio.aspx.designer.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>
     </Compile>
+    <Compile Include="s\Produccion\Parametro\Editar.aspx.cs">
+      <DependentUpon>Editar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="s\Produccion\Parametro\Editar.aspx.designer.cs">
+      <DependentUpon>Editar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="s\Produccion\Parametro\Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="s\Produccion\Parametro\Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
     <Compile Include="s\Produccion\Resumen\Detalle.aspx.cs">
       <DependentUpon>Detalle.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1813,7 +1828,6 @@
     <Content Include="dist\css\alt\adminlte.plugins.min.css.map" />
     <Content Include="dist\js\adminlte.js.map" />
     <Content Include="dist\js\adminlte.min.js.map" />
-    <None Include="packages.config" />
     <Content Include="s\Site1.Master" />
     <Content Include="plugins\.npmignore" />
     <Content Include="plugins\bootstrap-colorpicker\css\bootstrap-colorpicker.css.map" />
@@ -1879,6 +1893,7 @@
     <Content Include="plugins\summernote\summernote.js.map" />
     <Content Include="plugins\sweetalert2-theme-bootstrap-4\bootstrap-4.scss" />
     <Content Include="plugins\toastr\toastr.js.map" />
+    <None Include="packages.config" />
     <None Include="Properties\PublishProfiles\orygon - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\orygon - ReadOnly - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\orygon - Web Deploy Operacion.pubxml" />

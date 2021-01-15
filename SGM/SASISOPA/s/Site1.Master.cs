@@ -185,7 +185,7 @@ namespace SASISOPA.s
                 string activepage = Request.RawUrl;
 
 
-                if (activepage.Contains("/Competencia/Inicio.aspx") || activepage.Contains("/Competencia/Programa/Index.aspx") || activepage.Contains("/Competencia/Programa/Agregar.aspx") || activepage.Contains("/Competencia/Programa/Detalle.aspx") || activepage.Contains("/Competencia/Programa/DetalleEv.aspx") || activepage.Contains("/Competencia/Programa/Editar.aspx") || activepage.Contains("/Competencia/ResultadoEv/Index.aspx") || activepage.Contains("/Competencia/ResultadoEv/Detalle.aspx"))
+                if (activepage.Contains("/Competencia/Inicio.aspx") || activepage.Contains("/Competencia/Programa/Index.aspx") || activepage.Contains("/Competencia/Programa/Agregar.aspx") || activepage.Contains("/Competencia/Programa/Detalle.aspx") || activepage.Contains("/Competencia/Programa/DetalleEv.aspx") || activepage.Contains("/Competencia/Programa/Editar.aspx") || activepage.Contains("/Competencia/ResultadoEv/Index.aspx") || activepage.Contains("/Competencia/ResultadoEv/Detalle.aspx") || activepage.Contains("/Competencia/CursoTaller/Index.aspx") || activepage.Contains("/Competencia/InstructorIn/Index.aspx") || activepage.Contains("/Competencia/MatrizCurIns/Index.aspx"))
                 {
                     menu_competencia.Attributes.Add("class", "  nav-item has-treeview menu-open");
                     competencia.Attributes.Add("class", "nav-link active");
@@ -210,7 +210,7 @@ namespace SASISOPA.s
 
                 }
 
-                else if (activepage.Contains("/RequisitoLegal/Inicio.aspx") || activepage.Contains("/RequisitoLegal/Regulador/Index.aspx") || activepage.Contains("/RequisitoLegal/Regulador/Crear.aspx") || activepage.Contains("/RequisitoLegal/Regulador/Editar.aspx") || activepage.Contains("/RequisitoLegal/DocRegulador/Index.aspx") || activepage.Contains("/RequisitoLegal/DocRegulador/Crear.aspx") || activepage.Contains("/RequisitoLegal/DocRegulador/Editar.aspx") || activepage.Contains("/RequisitoLegal/Requisito/Index.aspx") || activepage.Contains("/RequisitoLegal/Requisito/Crear.aspx") || activepage.Contains("/RequisitoLegal/Requisito/Editar.aspx"))
+                else if (activepage.Contains("/RequisitoLegal/Inicio.aspx") || activepage.Contains("/RequisitoLegal/Regulador/Index.aspx") || activepage.Contains("/RequisitoLegal/Regulador/Crear.aspx") || activepage.Contains("/RequisitoLegal/Regulador/Editar.aspx") || activepage.Contains("/RequisitoLegal/DocRegulador/Index.aspx") || activepage.Contains("/RequisitoLegal/DocRegulador/Crear.aspx") || activepage.Contains("/RequisitoLegal/DocRegulador/Editar.aspx") || activepage.Contains("/RequisitoLegal/Requisito/Index.aspx") || activepage.Contains("/RequisitoLegal/Requisito/Crear.aspx") || activepage.Contains("/RequisitoLegal/Requisito/Editar.aspx") || activepage.Contains("/RequisitoLegal/MatrizReqIns/Index.aspx"))
                 {
                     menu_requisito.Attributes.Add("class", "  nav-item has-treeview menu-open");
                     requisito.Attributes.Add("class", "nav-link active");

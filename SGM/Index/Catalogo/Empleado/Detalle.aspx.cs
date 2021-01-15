@@ -49,6 +49,10 @@ namespace SAM.Catalogo.Empleado
                 lblApellidoMaterno.Text = empleado.ApellidoMaterno.ToString();
                 lblInstalacion.Text = empleado.Instalacion.ToString();
                 lblCreacionFecha.Text = empleado.CreacionFecha.ToString();
+                lblNoEmpleado.Text = empleado.NoEmpleado;
+                lblFechaNacimiento.Text = empleado.FechaNacimiento;
+                lblSexo.Text = empleado.Sexo;
+                lblDireccion.Text = empleado.Direccion;
             }
         }
     }

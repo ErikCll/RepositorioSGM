@@ -19,6 +19,7 @@ namespace SGL.s
         static int expirado = 0;
         static int contador = 0;
         static DataTable data;
+        static int EsRespuestaRepetida = 0;
 
         static int estatus = 0;
 
@@ -42,7 +43,7 @@ namespace SGL.s
 
 
 
-                int min = 1 * 30;
+                int min = 1 * 60;
                 TimeAllSecondes = min;
 
                 //foreach (ListViewItem itm in lstPreguntas.Items)
@@ -112,7 +113,7 @@ namespace SGL.s
                     {
                         btnFinalizar.Visible = true;
                         btnFinalizar_Click(null, null);
-                         
+
                     }
 
                     else
@@ -123,7 +124,7 @@ namespace SGL.s
 
 
                 }
-             
+
             }
         }
 
@@ -174,13 +175,13 @@ namespace SGL.s
 
             foreach (ListViewItem itm in lstPreguntas.Items)
             {
-                 
+
                 RadioButtonList radioList = (RadioButtonList)itm.FindControl("radioList");
                 Label Id_Respuesta = (Label)itm.FindControl("lblIdRespuesta");
 
                 string ValorSeleccionado = radioList.SelectedValue;
                 string IdRespuesta = Id_Respuesta.Text;
-                if (ValorSeleccionado == "" && expirado!=1)
+                if (ValorSeleccionado == "" && expirado != 1)
                 {
                     expirado = 0;
                     string txtJS = String.Format("<script>alert('{0}');</script>", "Seleccionar una respuesta.");
@@ -192,16 +193,33 @@ namespace SGL.s
                 {
                     if (ValorSeleccionado == IdRespuesta)
                     {
-                        TimeAllSecondes = 60;
-                        expirado = 0;
+                        if (EsRespuestaRepetida == Convert.ToInt32(IdRespuesta))
+                        {
+                            TimeAllSecondes = 60;
+                            expirado = 0;
 
-                        cal++;
+                            EsRespuestaRepetida = 0;
 
-                        string txtJS = String.Format("<script>alert('{0}');</script>", "La respuesta es correcta.");
-                        ScriptManager.RegisterClientScriptBlock(litControl, litControl.GetType(), "script", txtJS, false);
-                        DataPager1.SetPageProperties(e.StartRowIndex, e.MaximumRows, false);
-                        lstPreguntas.DataSource = data;
-                        lstPreguntas.DataBind();
+                            string txtJS = String.Format("<script>alert('{0}');</script>", "La respuesta es correcta.");
+                            ScriptManager.RegisterClientScriptBlock(litControl, litControl.GetType(), "script", txtJS, false);
+                            DataPager1.SetPageProperties(e.StartRowIndex, e.MaximumRows, false);
+                            lstPreguntas.DataSource = data;
+                            lstPreguntas.DataBind();
+                        }
+                        else
+                        {
+                            TimeAllSecondes = 60;
+                            expirado = 0;
+                            EsRespuestaRepetida = Convert.ToInt32(IdRespuesta);
+                            cal++;
+                            string txtJS = String.Format("<script>alert('{0}');</script>", "La respuesta es correcta.");
+                            ScriptManager.RegisterClientScriptBlock(litControl, litControl.GetType(), "script", txtJS, false);
+                            DataPager1.SetPageProperties(e.StartRowIndex, e.MaximumRows, false);
+                            lstPreguntas.DataSource = data;
+                            lstPreguntas.DataBind();
+                        }
+
+
                     }
                     else
                     {
@@ -244,7 +262,7 @@ namespace SGL.s
 
         }
 
-       
+
 
         //protected void DataPager1_PreRender(object sender, EventArgs e)
         //{
@@ -282,7 +300,7 @@ namespace SGL.s
 
                 string ValorSeleccionado = radioList.SelectedValue;
                 string IdRespuesta = Id_Respuesta.Text;
-                if (ValorSeleccionado == "" && expirado !=1)
+                if (ValorSeleccionado == "" && expirado != 1)
                 {
 
                     string txtJS = String.Format("<script>alert('{0}');</script>", "Seleccionar una respuesta.");
@@ -293,12 +311,27 @@ namespace SGL.s
                 {
                     if (ValorSeleccionado == IdRespuesta)
                     {
-                        cal++;
+                        if (EsRespuestaRepetida == Convert.ToInt32(IdRespuesta))
+                        {
+                            EsRespuestaRepetida = 0;
 
-                        string txtJS = String.Format("<script>alert('{0}');</script>", "La respuesta es correcta.");
-                        ScriptManager.RegisterClientScriptBlock(litControl, litControl.GetType(), "script", txtJS, false);
-                        lstPreguntas.DataSource = data;
-                        lstPreguntas.DataBind();
+
+                            string txtJS = String.Format("<script>alert('{0}');</script>", "La respuesta es correcta.");
+                            ScriptManager.RegisterClientScriptBlock(litControl, litControl.GetType(), "script", txtJS, false);
+                            lstPreguntas.DataSource = data;
+                            lstPreguntas.DataBind();
+                        }
+                        else
+                        {
+                            cal++;
+                            EsRespuestaRepetida = Convert.ToInt32(IdRespuesta);
+                            string txtJS = String.Format("<script>alert('{0}');</script>", "La respuesta es correcta.");
+                            ScriptManager.RegisterClientScriptBlock(litControl, litControl.GetType(), "script", txtJS, false);
+                            lstPreguntas.DataSource = data;
+                            lstPreguntas.DataBind();
+                        }
+
+
                     }
                     else
                     {

@@ -38,7 +38,10 @@
                                                     </asp:RegularExpressionValidator>
 
                             </div>
+                                                        <div class="col-sm-12 col-md-12 col-lg-12">
 
+                                                            
+                                                            </div>
                             <div class="col-sm-12 col-md-12 col-lg-4">
                                 <div class="form-group">
                                     <label class="font-weight-bold">Fecha:</label>
@@ -62,7 +65,15 @@
                                 </div>
                             </div>
 
-
+                                   <div class="col-12 col-md-12 col-lg-4">
+                            <div class="form-group">
+                                <label>Referencia:</label>
+                                               <asp:TextBox runat="server" CssClass="form-control" ID="txtReferencia" onkeypress="return AllowAlphabet(event)" MaxLength="200"></asp:TextBox>
+                                  <asp:RequiredFieldValidator runat="server" ID="RequiredFieldValidator11" ControlToValidate="txtReferencia"
+                                    ErrorMessage="Referencia requerida." ForeColor="Red" ValidationGroup="btnGuardar"></asp:RequiredFieldValidator>
+                            </div>
+                        </div>
+                    
                             <div class="col-sm-12 col-md-12 col-lg-12"></div>
 
 

@@ -46,7 +46,7 @@ namespace SGM.Clase
 
 
             comm.Connection = conexion.AbrirConexion();
-            comm.CommandText = "SELECT Id_Medidor,Nombre FROM Cat_Medidor WHERE Activado IS NULL AND Id_Suscripcion=@IdSuscripcion ORDER BY Id_Medidor DESC";
+            comm.CommandText = "SELECT Id_Medidor,Nombre FROM Cat_Medidor WHERE Activado IS NULL AND Id_Suscripcion=@IdSuscripcion AND TipoSistema='SGM' ORDER BY Id_Medidor DESC";
             comm.CommandType = CommandType.Text;
             comm.Parameters.AddWithValue("@IdSuscripcion", IdSuscripcion);
 

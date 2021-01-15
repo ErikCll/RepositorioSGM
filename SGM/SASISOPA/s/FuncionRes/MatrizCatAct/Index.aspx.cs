@@ -74,8 +74,26 @@ namespace SASISOPA.FuncionRes.MatrizCatAct
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-               
-                for (int i = 1; i < e.Row.Cells.Count; i++)
+                e.Row.Cells[1].HorizontalAlign = HorizontalAlign.Center;
+                string IdArchivo = e.Row.Cells[1].Text;
+
+                HyperLink lnk = new HyperLink();
+
+
+                lnk.Target = "_blank";
+                lnk.ImageUrl = "~/dist/img/pdficon.svg";
+                lnk.ImageHeight = 17;
+                lnk.ImageWidth = 17;
+                e.Row.Cells[1].Controls.Add(lnk);
+                if (Convert.ToInt32(IdArchivo) == 0)
+                {
+                    lnk.Visible = false;
+                }
+
+                string encodedString = (Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(IdArchivo)));
+                lnk.NavigateUrl = "~/s/ControlAct/Doc.aspx?id=" + encodedString;
+
+                for (int i = 2; i < e.Row.Cells.Count; i++)
                 {
                     string celda = e.Row.Cells[i].Text;
                     if (celda != "&nbsp;")
@@ -83,17 +101,17 @@ namespace SASISOPA.FuncionRes.MatrizCatAct
                     {
 
                         e.Row.Cells[i].Text = "✔";
-                        e.Row.Cells[i].Attributes.Add("class","text-green");
+                        e.Row.Cells[i].Attributes.Add("class", "text-green");
                         e.Row.Cells[i].HorizontalAlign = HorizontalAlign.Center;
                     }
-                 
+
 
                 }
             }
 
             if (e.Row.RowType == DataControlRowType.Header)
             {
-                for (int i = 1; i < e.Row.Cells.Count; i++)
+                for (int i = 2; i < e.Row.Cells.Count; i++)
                 {
                     e.Row.Cells[i].Text = "<div class=\"VerticalHeaderText\">" + e.Row.Cells[i].Text + "</div>";
                 }

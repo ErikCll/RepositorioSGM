@@ -9,10 +9,6 @@ namespace SASISOPA
     public class Conexion
     {
         private SqlConnection Conexionn = new SqlConnection("Server=tcp:jcol.database.windows.net,1433;Initial Catalog=orygon;Persist Security Info=False;User ID=jcol;Password=Sopenco21;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
-
-
-
-
         public SqlConnection AbrirConexion()
         {
             if (Conexionn.State == ConnectionState.Closed)

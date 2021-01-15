@@ -38,15 +38,17 @@ namespace SGL.Clase
 
         }
 
-        public bool Insertar(int IdAcreditacion, string Fecha, string Estatus)
+        public bool Insertar(int IdAcreditacion, string Fecha, string Estatus,string Referencia)
         {
             comm.Connection = conexion.AbrirConexion();
-            comm.CommandText = "INSERT [Op_AcreditacionStatus] (Id_Acreditacion,Fecha,Status) VALUES(@IdAcreditacionn,CONVERT(datetime,@Fecha,103),@Status)";
+            comm.CommandText = "INSERT [Op_AcreditacionStatus] (Id_Acreditacion,Fecha,Status,Referencia) VALUES(@IdAcreditacionn,CONVERT(datetime,@Fecha,103),@Status,@Referencia)";
             comm.CommandType = CommandType.Text;
 
             comm.Parameters.AddWithValue("@IdAcreditacionn", IdAcreditacion);
             comm.Parameters.AddWithValue("@Fecha", Fecha);
             comm.Parameters.AddWithValue("@Status", Estatus);
+            comm.Parameters.AddWithValue("@Referencia", Referencia);
+
 
             int i = comm.ExecuteNonQuery();
             comm.Parameters.Clear();

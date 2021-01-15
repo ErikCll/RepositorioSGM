@@ -29,7 +29,7 @@
   
                   <div class="card" >
                 <div class="card-body">
-                             <li >
+                             <li class="ml-1" >
                                   <asp:LinkButton runat="server" CssClass="ion-edit ml-1" ToolTip="Editar" OnClick="Editar"></asp:LinkButton> <asp:LinkButton runat="server" CssClass="ion-android-delete text-red ml-1" ToolTip="Eliminar" OnClick="Eliminar"></asp:LinkButton>    
                                    <span class="font-weight-bold "><%# Eval("Pregunta") %>  </span>  
                                                                  <asp:Label runat="server" ID="lblIdPregunta" Text='<%# Eval("Id_Pregunta") %>' Visible="false"></asp:Label>

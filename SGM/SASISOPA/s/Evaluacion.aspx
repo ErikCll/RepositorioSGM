@@ -131,7 +131,7 @@
                         <Fields>
 
 
-                            <asp:NextPreviousPagerField ButtonCssClass="btn btn-primary" ButtonType="Button" ShowLastPageButton="false" ShowFirstPageButton="false" ShowNextPageButton="true" ShowPreviousPageButton="false" NextPageText="Siguiente"/>
+                            <asp:NextPreviousPagerField  ButtonCssClass="btn btn-primary" ButtonType="Button" ShowLastPageButton="false" ShowFirstPageButton="false" ShowNextPageButton="true" ShowPreviousPageButton="false" NextPageText="Siguiente"/>
                             <asp:NumericPagerField Visible="false"  />
                             
 
@@ -140,7 +140,7 @@
                     </asp:DataPager>
                                 <asp:Button runat="server" CssClass="btn btn-success" Text="Finalizar" ID="btnFinalizar" Visible="false" OnClick="btnFinalizar_Click" />
                                 <asp:Label runat="server" ID="lblCal"></asp:Label>
-
+                                <asp:Button  runat="server"/>
                             </div>
 
                         </div>
@@ -206,10 +206,15 @@
         Sys.WebForms.PageRequestManager.getInstance().add_pageLoaded(function () {
 
 
-
-
+       
 
         });
+    <%--             function RefreshParentPage() {
+       document.getElementById("<%=DataPager1.ClientID%>").click();
+
+
+        }--%>
+
         function DisableButton() {
             document.getElementById("<%= btnFinalizar.ClientID %>").disabled = true;
                   document.getElementById("<%= btnFinalizar.ClientID %>").value = "Cargando...";

@@ -13,6 +13,7 @@ namespace SGL.s
         Clase.Accesos accesos = new Clase.Accesos();
         Clase.ProgramaCapacitacion programa = new Clase.ProgramaCapacitacion();
         Clase.ResultadoEvaluacion resultado = new Clase.ResultadoEvaluacion();
+        Clase.CRE objacreditacion = new Clase.CRE();
         protected void Page_Init(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -27,6 +28,8 @@ namespace SGL.s
             if (accesos.ValidarAcreditacion(IdUsuario))
             {
                 acreditacion.Visible = true;
+                IndicadorAcreditacion();
+
             }
             if (accesos.ValidarProcedimientoInstructivo(IdUsuario))
             {
@@ -43,6 +46,35 @@ namespace SGL.s
 
         }
 
+        public void IndicadorAcreditacion()
+        {
+            int IdInstalacion = Convert.ToInt32((this.Master as SGL.s.Site1).IdInstalacion.ToString());
+            gridAcreditacion.DataSource = objacreditacion.MostrarCreEma(IdInstalacion);
+            gridAcreditacion.DataBind();
+        }
+
+        protected void gridAcreditacion_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                Label IdArchivo = e.Row.FindControl("lblArchivo") as Label;
+
+
+                HyperLink lnk = e.Row.FindControl("lnkArchivo") as HyperLink;
+                if (Convert.ToInt32(IdArchivo.Text) == 0)
+                {
+                    lnk.Visible = false;
+                }
+
+
+                string encodedString = (Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(IdArchivo.Text)));
+                lnk.NavigateUrl = "~/s/Acreditacion/Doc.aspx?id=" + encodedString;
+
+
+
+
+            }
+        }
 
         public void IndicadorCompetencia()
         {

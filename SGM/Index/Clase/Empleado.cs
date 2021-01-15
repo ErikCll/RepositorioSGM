@@ -20,14 +20,19 @@ namespace SAM.Clase
         public string CreacionFecha { get; set; }
         public string IdInstalacion { get; set; }
         public string Instalacion { get; set; }
+        public string NoEmpleado { get; set; }
+        public string FechaNacimiento { get; set; }
+        public string Sexo { get; set; }
+        public string Direccion { get; set; }
+
 
         public DataTable Mostrar(string txtSearch,int IdInstalacion)
         {
 
-            string query = "SELECT emp.Id_empleado, emp.Nombre,emp.ApellidoPaterno, emp.ApellidoMaterno,CONVERT(nvarchar, emp.CreacionFecha, 105) CreacionFecha,ins.Nombre 'Instalacion' FROM Cat_Empleado emp JOIN Cat_Instalacion ins on emp.Id_instalacion = ins.Id_instalacion WHERE emp.Activado IS NULL AND ins.Id_Instalacion=@IdInstalacion ORDER BY emp.Id_empleado DESC";
+            string query = "SELECT emp.NoEmpleado,emp.Id_empleado, emp.Nombre,emp.ApellidoPaterno, emp.ApellidoMaterno,CONVERT(nvarchar, emp.CreacionFecha, 105) CreacionFecha,emp.Sexo,ins.Nombre 'Instalacion' FROM Cat_Empleado emp JOIN Cat_Instalacion ins on emp.Id_instalacion = ins.Id_instalacion WHERE emp.Activado IS NULL AND ins.Id_Instalacion=@IdInstalacion ORDER BY emp.Id_empleado DESC";
             if (!String.IsNullOrEmpty(txtSearch.Trim()))
             {
-                query = "SELECT emp.Id_empleado, emp.Nombre,emp.ApellidoPaterno, emp.ApellidoMaterno,CONVERT(nvarchar, emp.CreacionFecha, 105) CreacionFecha,ins.Nombre 'Instalacion' FROM Cat_Empleado emp JOIN Cat_Instalacion ins on emp.Id_instalacion = ins.Id_instalacion WHERE emp.Activado IS NULL AND emp.Nombre LIKE '%'+@txtSearch+'%' OR emp.ApellidoPaterno LIKE '%'+@txtSearch+'%' AND ins.Id_Instalacion=@IdInstalacion ORDER BY emp.Id_empleado DESC";
+                query = "SELECT emp.NoEmpleado,emp.Id_empleado, emp.Nombre,emp.ApellidoPaterno, emp.ApellidoMaterno,CONVERT(nvarchar, emp.CreacionFecha, 105) CreacionFecha,emp.Sexo,ins.Nombre 'Instalacion' FROM Cat_Empleado emp JOIN Cat_Instalacion ins on emp.Id_instalacion = ins.Id_instalacion WHERE emp.Activado IS NULL AND emp.Nombre LIKE '%'+@txtSearch+'%' OR emp.ApellidoPaterno LIKE '%'+@txtSearch+'% AND ins.Id_Instalacion=@IdInstalacion ORDER BY emp.Id_empleado DESC";
             }
 
             comm.Connection = conexion.AbrirConexion();
@@ -61,15 +66,20 @@ namespace SAM.Clase
 
         }
 
-        public bool Insertar(int IdInstalacion, string Nombre, string ApellidoPaterno,string ApellidoMaterno)
+        public bool Insertar(int IdInstalacion, string Nombre, string ApellidoPaterno,string ApellidoMaterno,string NoEmpleado,string FechaNacimiento,string Sexo,string Direccion)
         {
             comm.Connection = conexion.AbrirConexion();
-            comm.CommandText = "INSERT INTO [Cat_Empleado] (Id_Instalacion,Nombre,ApellidoPaterno,ApellidoMaterno,CreacionFecha) VALUES(@Id_Instalacion,@Nombre,@ApellidoPaterno,@ApellidoMaterno,GETDATE())";
+            comm.CommandText = "INSERT INTO [Cat_Empleado] (Id_Instalacion,Nombre,ApellidoPaterno,ApellidoMaterno,CreacionFecha,NoEmpleado,FechaNacimiento,Sexo,Direccion) VALUES(@Id_Instalacion,@Nombre,@ApellidoPaterno,@ApellidoMaterno,GETDATE(),@NoEmpleado,CONVERT(date,@FechaNacimiento,103),@Sexo,@Direccion)";
             comm.CommandType = CommandType.Text;
             comm.Parameters.AddWithValue("@Id_Instalacion", IdInstalacion);
             comm.Parameters.AddWithValue("@Nombre", Nombre);
             comm.Parameters.AddWithValue("@ApellidoPaterno", ApellidoPaterno);
             comm.Parameters.AddWithValue("@ApellidoMaterno", ApellidoMaterno);
+            comm.Parameters.AddWithValue("@NoEmpleado", NoEmpleado);
+            comm.Parameters.AddWithValue("@FechaNacimiento", FechaNacimiento);
+            comm.Parameters.AddWithValue("@Sexo", Sexo);
+            comm.Parameters.AddWithValue("@Direccion", Direccion);
+
             int i = comm.ExecuteNonQuery();
             comm.Parameters.Clear();
             conexion.CerrarConexion();
@@ -86,17 +96,20 @@ namespace SAM.Clase
 
         }
 
-        public bool Editar(int IdEmpleado, string Nombre, string ApellidoPaterno,string ApellidoMaterno, int IdInstalacion)
+        public bool Editar(int IdEmpleado, string Nombre, string ApellidoPaterno,string ApellidoMaterno, int IdInstalacion,string NoEmpleado,string FechaNacimiento,string Sexo,string Direccion)
         {
             comm.Connection = conexion.AbrirConexion();
-            comm.CommandText = "UPDATE Cat_Empleado SET Nombre = @Nombre, ApellidoPaterno = @ApellidoPaterno, ApellidoMaterno = @ApellidoMaterno,Id_Instalacion=@Id_Instalacion WHERE Id_Empleado = @Id_Empleado";
+            comm.CommandText = "UPDATE Cat_Empleado SET Nombre = @Nombre, ApellidoPaterno = @ApellidoPaterno, ApellidoMaterno = @ApellidoMaterno,Id_Instalacion=@Id_Instalacion,NoEmpleado=@NoEmpleado,FechaNacimiento=CONVERT(date,@FechaNacimiento,103),Sexo=@Sexo,Direccion=@Direccion WHERE Id_Empleado = @Id_Empleado";
             comm.CommandType = CommandType.Text;
             comm.Parameters.AddWithValue("@Id_Empleado", IdEmpleado);
             comm.Parameters.AddWithValue("@Nombre", Nombre);
             comm.Parameters.AddWithValue("@ApellidoPaterno", ApellidoPaterno);
             comm.Parameters.AddWithValue("@ApellidoMaterno", ApellidoMaterno);
             comm.Parameters.AddWithValue("@Id_Instalacion", IdInstalacion);
-
+            comm.Parameters.AddWithValue("@NoEmpleado", NoEmpleado);
+            comm.Parameters.AddWithValue("@FechaNacimiento", FechaNacimiento);
+            comm.Parameters.AddWithValue("@Sexo", Sexo);
+            comm.Parameters.AddWithValue("@Direccion", Direccion);
             int i = comm.ExecuteNonQuery();
             comm.Parameters.Clear();
             conexion.CerrarConexion();
@@ -140,7 +153,7 @@ namespace SAM.Clase
         public void LeerDatos(int IdEmpleado)
         {
             comm.Connection = conexion.AbrirConexion();
-            comm.CommandText = "SELECT emp.Id_Empleado, emp.Nombre,emp.ApellidoPaterno, emp.ApellidoMaterno,CONVERT(nvarchar,emp.CreacionFecha,105) CreacionFecha,ins.Id_Instalacion, ins.Nombre 'Instalacion' FROM Cat_Empleado emp JOIN Cat_Instalacion ins on emp.Id_instalacion = ins.Id_instalacion WHERE emp.Id_empleado = @Id_Emplado";
+            comm.CommandText = "SELECT emp.Id_Empleado, emp.Nombre,emp.ApellidoPaterno, emp.ApellidoMaterno,CONVERT(nvarchar,emp.CreacionFecha,105) CreacionFecha,ins.Id_Instalacion, ins.Nombre 'Instalacion',CONVERT(nvarchar,emp.FechaNacimiento,105) FechaNacimiento,emp.NoEmpleado,emp.Sexo,emp.Direccion FROM Cat_Empleado emp JOIN Cat_Instalacion ins on emp.Id_instalacion = ins.Id_instalacion WHERE emp.Id_empleado = @Id_Emplado";
             comm.CommandType = CommandType.Text;
             comm.Parameters.AddWithValue("@Id_Emplado", IdEmpleado);
 
@@ -152,6 +165,13 @@ namespace SAM.Clase
             CreacionFecha = dr["CreacionFecha"].ToString();
             IdInstalacion = dr["Id_Instalacion"].ToString();
             Instalacion = dr["Instalacion"].ToString();
+            NoEmpleado = dr["NoEmpleado"].ToString();
+            FechaNacimiento = dr["FechaNacimiento"].ToString();
+            Sexo = dr["Sexo"].ToString();
+            Direccion = dr["Direccion"].ToString();
+
+
+
 
             dr.Close();
             comm.Connection = conexion.CerrarConexion();

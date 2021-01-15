@@ -39,6 +39,26 @@ namespace SGL.Clase
 
         }
 
+        public DataTable MostrarCreEma(int IdInstalacion)
+        {
+
+            string query = "SELECT acre.Id_Acreditacion,acre.Acreditador, CONVERT(NVARCHAR, sta2.Fecha, 105) 'Fecha', sta2.Status,ISNULL(sta2.Id_status, 0) 'Id_status' FROM Op_Acreditacion acre JOIN(SELECT MAX(Fecha) 'Fecha', Id_acreditacion FROM Op_AcreditacionStatus WHERE Activado IS NULL GROUP BY Id_Acreditacion) sta on acre.Id_Acreditacion = sta.Id_Acreditacion JOIN Op_AcreditacionStatus sta2 on sta.Id_Acreditacion = sta2.Id_Acreditacion and sta.Fecha = sta2.Fecha WHERE acre.Id_Instalacion = @IdInstalacionn AND acre.Activado IS NULL AND acre.Acreditador = 'EMA' AND sta2.Fecha = (SELECT MAX(Fecha) FROM Op_AcreditacionStatus WHERE id_status = sta2.Id_Status)  UNION ALL SELECT acre.Id_Acreditacion,acre.Acreditador, CONVERT(NVARCHAR, sta2.Fecha, 105) 'Fecha', sta2.Status,ISNULL(sta2.Id_status, 0) 'Id_status' FROM Op_Acreditacion acre JOIN(SELECT MAX(Fecha) 'Fecha', Id_acreditacion FROM Op_AcreditacionStatus WHERE Activado IS NULL GROUP BY Id_Acreditacion) sta on acre.Id_Acreditacion = sta.Id_Acreditacion JOIN Op_AcreditacionStatus sta2 on sta.Id_Acreditacion = sta2.Id_Acreditacion and sta.Fecha = sta2.Fecha WHERE acre.Id_Instalacion = @IdInstalacionn AND acre.Activado IS NULL AND acre.Acreditador = 'CRE' AND sta2.Fecha = (SELECT MAX(Fecha) FROM Op_AcreditacionStatus WHERE id_status = sta2.Id_Status) ";
+
+
+
+            comm.Connection = conexion.AbrirConexion();
+            comm.CommandText = query;
+            comm.CommandType = CommandType.Text;
+            comm.Parameters.AddWithValue("@IdInstalacionn", IdInstalacion);
+            da = new SqlDataAdapter(comm);
+            dt = new DataTable();
+            da.Fill(dt);
+            conexion.CerrarConexion();
+            return dt;
+
+        }
+
+
         public DataTable MostrarInstalacion(int IdSuscripcion)
         {
 

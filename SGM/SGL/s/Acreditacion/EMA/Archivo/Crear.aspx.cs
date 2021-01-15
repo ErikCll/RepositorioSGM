@@ -57,6 +57,7 @@ namespace SGL.s.Acreditacion.EMA.Archivo
             int s = now.Second;
             string Fecha = txtFecha.Text;
             string Estatus = ddl_Estatus.SelectedValue;
+            string Referencia = txtReferencia.Text;
             string fileExt = System.IO.Path.GetExtension(File1.FileName);
             string AccountName = "er2020";
             string AccountKey = "yhDHxitC9NvUx5p3vLHwUJWxWx7rdLw47/PI88KVsS8/2EIdN2ZAM+ATi8PWKyB7zXGEXE2mFAAgw1MHw3z/JA==";
@@ -67,7 +68,7 @@ namespace SGL.s.Acreditacion.EMA.Archivo
                 {
 
 
-                    if (archivo.Insertar(IdAcreditacion, Fecha+' '+h+':'+m+':'+s, Estatus))
+                    if (archivo.Insertar(IdAcreditacion, Fecha+' '+h+':'+m+':'+s, Estatus,Referencia))
                     {
                         archivo.LeerId(IdAcreditacion);
 
@@ -117,7 +118,12 @@ namespace SGL.s.Acreditacion.EMA.Archivo
             ddl_Estatus.Items.Insert(0, new ListItem("[Seleccionar]"));
             ddl_Estatus.Items.Insert(1, new ListItem("Inicio"));
             ddl_Estatus.Items.Insert(2, new ListItem("Actualización"));
-         
+            ddl_Estatus.Items.Insert(3, new ListItem("Notificación"));
+            ddl_Estatus.Items.Insert(4, new ListItem("Suspensión"));
+            ddl_Estatus.Items.Insert(5, new ListItem("Cancelación"));
+
+
+
 
 
 

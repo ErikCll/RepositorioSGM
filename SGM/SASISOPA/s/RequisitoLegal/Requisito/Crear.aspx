@@ -18,23 +18,15 @@
                       </div>
                 <div class="card-body">
                     <div class="row">
-                      
-                        <div class="col-12 col-md-12 col-lg-4">
-                            <div class="form-group">
-                                <label>Nombre:</label>
-                                                            <asp:TextBox runat="server" CssClass="form-control" ID="txtNombre" onkeypress="return AllowAlphabet(event)" MaxLength="200"></asp:TextBox>
-                                  <asp:RequiredFieldValidator runat="server" ID="RequiredFieldValidator2" ControlToValidate="txtNombre"
-                                    ErrorMessage="Nombre requerido." ForeColor="Red" ValidationGroup="btnGuardar"></asp:RequiredFieldValidator>
-                            </div>
-                        </div>
-                     
-                           <div class="col-12 col-md-4 col-lg-4">
+                            <div class="col-12 col-md-4 col-lg-4">
                             <div class="form-group">
                                 <label>Regulador:</label>
                               <asp:DropDownList CssClass="form-control "   runat="server" ID="ddl_Regulador" DataTextField="Nombre" DataValueField="Id_Regulador" AutoPostBack="true" OnSelectedIndexChanged="ddl_Regulador_SelectedIndexChanged"></asp:DropDownList>
                                    
                             </div>
                         </div>
+                
+                     
                          <div class="col-sm-12 col-md-4 col-lg-4">
                            <div class="form-group">
                                 <label>Documento Regulador:</label>
@@ -43,6 +35,15 @@
                                     ErrorMessage="Documento Regulador requerido" ForeColor="Red" InitialValue="0" ValidationGroup="btnGuardar"></asp:RequiredFieldValidator>
                             </div>
                         </div>
+                                <div class="col-12 col-md-12 col-lg-4">
+                            <div class="form-group">
+                                <label>Nombre del Requisito:</label>
+                                                            <asp:TextBox runat="server" CssClass="form-control" ID="txtNombre" onkeypress="return AllowAlphabet(event)" MaxLength="200"></asp:TextBox>
+                                  <asp:RequiredFieldValidator runat="server" ID="RequiredFieldValidator2" ControlToValidate="txtNombre"
+                                    ErrorMessage="Nombre requerido." ForeColor="Red" ValidationGroup="btnGuardar"></asp:RequiredFieldValidator>
+                            </div>
+                        </div>
+                     
                                        <div class="col-sm-12 col-md-5 col-lg-5">
                 <div class="form-group">
                     <label class="font-weight-bold">Sin vigencia:</label>

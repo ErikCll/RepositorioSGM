@@ -23,10 +23,10 @@ namespace SGM.Clase
         public DataTable Mostrar(string txtSearch, int IdSuscripcion)
         {
 
-            string query = "SELECT Id_Medidor,Nombre, VariableMedir, PeriodoCalibracion, PeriodoVerificacion FROM Cat_Medidor WHERE Activado IS NULL AND Id_Suscripcion=@IdSuscripcion ORDER BY Id_Medidor DESC";
+            string query = "SELECT Id_Medidor,Nombre, VariableMedir, PeriodoCalibracion, PeriodoVerificacion FROM Cat_Medidor WHERE Activado IS NULL AND Id_Suscripcion=@IdSuscripcion AND TipoSistema='SGM' ORDER BY Id_Medidor DESC";
             if (!String.IsNullOrEmpty(txtSearch.Trim()))
             {
-                query = "SELECT Id_Medidor,Nombre, VariableMedir, PeriodoCalibracion, PeriodoVerificacion FROM Cat_Medidor WHERE Activado IS NULL AND Id_Suscripcion=@IdSuscripcion AND Nombre LIKE '%'+@txtSearch+'%' ORDER BY Id_Medidor DESC ";
+                query = "SELECT Id_Medidor,Nombre, VariableMedir, PeriodoCalibracion, PeriodoVerificacion FROM Cat_Medidor WHERE Activado IS NULL AND Id_Suscripcion=@IdSuscripcion AND Nombre LIKE '%'+@txtSearch+'%' AND TipoSistema='SGM' ORDER BY Id_Medidor DESC ";
             }
 
             comm.Connection = conexion.AbrirConexion();
@@ -46,7 +46,7 @@ namespace SGM.Clase
         public bool Insertar(string Nombre, string Variable, int PeriodoCalibracion, int PeriodoVerificacion,int IdSuscripcion)
         {
             comm.Connection = conexion.AbrirConexion();
-            comm.CommandText = "INSERT INTO [Cat_Medidor] (Nombre,VariableMedir,PeriodoCalibracion,PeriodoVerificacion,Id_Suscripcion) VALUES(@Nombre,@VariableMedir,@PeriodoCalibracion,@PeriodoVerificacion,@IdSuscripcionn)";
+            comm.CommandText = "INSERT INTO [Cat_Medidor] (Nombre,VariableMedir,PeriodoCalibracion,PeriodoVerificacion,Id_Suscripcion,TipoSistema) VALUES(@Nombre,@VariableMedir,@PeriodoCalibracion,@PeriodoVerificacion,@IdSuscripcionn,'SGM')";
             comm.CommandType = CommandType.Text;
             comm.Parameters.AddWithValue("@Nombre", Nombre);
             comm.Parameters.AddWithValue("@VariableMedir", Variable);

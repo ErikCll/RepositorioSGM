@@ -87,7 +87,8 @@ namespace SASISOPA.s.ControlAct.CensoAct.Control
                 lnk.NavigateUrl = "https://er2020.blob.core.windows.net/sasisopa/10/" + IdControl.ToString() + ".pdf";
                 HtmlControl Vig2 = e.Row.FindControl("Vigente") as HtmlControl;
 
-            
+                string encodedString = (Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(IdControl.ToString())));
+                lnk.NavigateUrl = "~/s/ControlAct/Doc.aspx?id=" + encodedString;
 
                 if (TieneVigencia.Text == "1")
                 {

@@ -110,6 +110,8 @@
                                    <asp:TemplateField  ItemStyle-HorizontalAlign="Center" HeaderText="Calificación">
                                             <ItemTemplate>
                                                 <asp:Label runat="server" ID="lblCalificacion" Text='<%# Eval("Calificacion") %>' ></asp:Label>
+                                                <asp:Label runat="server" ID="lblCalificacion2" Text='<%# Eval("Calificacion2") %>' Visible="false" ></asp:Label>
+
                                             </ItemTemplate>
                                         </asp:TemplateField>
 
@@ -126,8 +128,8 @@
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                         
-                                     
-
+                                     <asp:BoundField DataField="ReactivosTotales" HeaderText="Reactivos totales" ItemStyle-HorizontalAlign="Center"/>
+                                        <asp:BoundField DataField="ReactivosCorrectos" HeaderText="Reactivos correctos" ItemStyle-HorizontalAlign="Center" />
                                     </Columns>
 
                                 </asp:GridView>

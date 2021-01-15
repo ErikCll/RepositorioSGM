@@ -9,6 +9,14 @@
               <li class="breadcrumb-item "><a>Detalle</a></li>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Content" runat="server">
+        <style>
+        .RBL label
+{
+    margin-left:3px;
+    display:inline;
+        }
+
+    </style>
      <div class="col-lg-12">
                   <div class="card" >
                       <div class="card-header">
@@ -61,6 +69,52 @@
                         </div>
                     </div>
                       </div>
+
+            <div class="row">
+                    <ol class="col-sm-12 col-md-12 col-lg-12 ">
+                                                     <asp:ListView runat="server" ID="lstPreguntas" OnItemDataBound="lstPreguntas_ItemDataBound">
+                        <ItemTemplate>
+                                                                <div class=" container col-8">
+                       <div class=" col-sm-12 col-md-12 col-lg-12">
+  
+                  <div class="card" >
+                <div class="card-body">
+                             <li class="ml-1" >
+                                   <span class="font-weight-bold "><%# Eval("Pregunta") %>  </span>  
+                                                                 <asp:Label runat="server" ID="lblIdPregunta" Text='<%# Eval("Id_Pregunta") %>' Visible="false"></asp:Label>
+                                                                 <asp:Label runat="server" ID="lblTipoPregunta" Text='<%# Eval("TipoPregunta") %>' Visible="false"></asp:Label>
+             
+
+<asp:RadioButtonList runat="server" ID="radioList" DataTextField="Respuesta" DataValueField="Id_Respuesta" TextAlign="Right" CssClass="RBL mt-2" Enabled="false" CellPadding="4"> </asp:RadioButtonList>
+
+                      </li>
+                            
+                     
+                                   
+                     
+                    </div>
+                      </div>
+            </div>
+                    </div>
+
+                        </ItemTemplate>
+                    </asp:ListView>
+
+                    </ol>
+                    <div class="container">
+                                 <div class="col-sm-12 col-md-12 col-lg-12">
+                       <div class="form-group float-right">
+                <%--                <asp:Button runat="server" CssClass="btn btn-success" Text="Finalizar" ID="btnFinalizar" Visible="false" OnClick="Finalizar" />
+                       <asp:Button runat="server" CssClass="btn btn-default" Text="Regresar" OnClick="Regresar" ID="Button1" />--%>
+
+                       </div>
+                 
+                   </div>
+                    </div>
+          
+                
+          
+                </div>
         </div>
        <script type="text/javascript">
 

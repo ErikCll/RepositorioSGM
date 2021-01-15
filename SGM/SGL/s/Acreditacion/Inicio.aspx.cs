@@ -10,7 +10,7 @@ namespace SGL.s.Acreditacion
     public partial class Inicio : System.Web.UI.Page
     {
         Clase.Accesos accesos = new Clase.Accesos();
-
+        Clase.CRE acreditacion = new Clase.CRE();
         protected void Page_Init(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -45,6 +45,8 @@ namespace SGL.s.Acreditacion
         {
 
         }
+
+      
 
         protected void IrSAM(Object sender, EventArgs e)
         {

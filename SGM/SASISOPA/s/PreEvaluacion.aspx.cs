@@ -14,6 +14,8 @@ namespace SASISOPA.s
         static int Id_EmpleadoG;
         static int Id_EvaluacionG;
         static string FechaEvaluacionG;
+        static int IdInstalacionG;
+
         Clase.ProgramaCapacitacion programa = new Clase.ProgramaCapacitacion();
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -40,6 +42,7 @@ namespace SASISOPA.s
                 Id_EmpleadoG = Convert.ToInt32(programa.Id_Empleado);
                 Id_EvaluacionG = Convert.ToInt32(programa.Id_Evaluacion);
                 FechaEvaluacionG = programa.FechaEvaluacion;
+                IdInstalacionG =Convert.ToInt32(programa.IdInstalacion);
 
                 btnValidar2_Click(null, null);
 
@@ -66,7 +69,7 @@ namespace SASISOPA.s
             if (programa.ValidarRealizado(Id_programaG))
             {
                 programa.EliminarValidacion(Id_programaG);
-                if (programa.Insertar(Id_EvaluacionG, Id_EmpleadoG, FechaEvaluacionG))
+                if (programa.Insertar(Id_EvaluacionG, Id_EmpleadoG, FechaEvaluacionG,IdInstalacionG))
                 {
 
                     programa.ObtenerIdPrograma(Id_EvaluacionG, Id_EmpleadoG);

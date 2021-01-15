@@ -16,7 +16,7 @@
             <asp:Literal runat="server" ID="litControl"></asp:Literal>
             <div class="col-lg-12">
                 <div class="row">
-                                   <div class=" col-sm-8 col-md-12 col-lg-8">
+                                   <div class=" col-sm-12 col-md-12 col-lg-6">
                   <div class="card" >
                          <div class="card-header">
                         <h4>Agregar Pregunta</h4>
@@ -88,7 +88,7 @@
                     </div>
                       </div>
             </div>
-            <div class="col-sm-4 col-md-12 col-lg-4">
+            <div class="col-sm-12 col-md-12 col-lg-6">
                   <div class="card " >
                       <div class="card-header">
  <h4>Lista de Preguntas</h4>
@@ -96,7 +96,7 @@
                 <div class="card-body">
                     <div class="row">
                     
-                        <ol id="ordered" class="col-sm-12 col-md-12 col-lg-12">
+                        <ol id="ordered" class="col-sm-12 col-md-12 col-lg-12 ml-1">
 
   <asp:ListView runat="server" ID="lstPreguntas" >
                             <ItemTemplate>

@@ -78,6 +78,8 @@ namespace SASISOPA.FuncionRes.MatrizCatAct
             {
                 if(row.RowType==DataControlRowType.DataRow)
                 {
+                    int IdInstalacion = Convert.ToInt32((this.Master as SASISOPA.s.Site1).IdInstalacion.ToString());
+
                     string decodedString = System.Text.ASCIIEncoding.ASCII.GetString(Convert.FromBase64String(Request.QueryString["id"]));
                     int IdCategoria = Convert.ToInt32(decodedString);
                     bool isChecked = row.Cells[0].Controls.OfType<CheckBox>().FirstOrDefault().Checked;
@@ -86,7 +88,7 @@ namespace SASISOPA.FuncionRes.MatrizCatAct
 
                     if (isChecked==true && IdActividad != IdRegistro) {
 
-                        if (categoriaAct.Insertar(IdCategoria, IdActividad))
+                        if (categoriaAct.Insertar(IdCategoria, IdActividad, IdInstalacion))
                         {
                             string txtJS = String.Format("<script>alert('{0}');</script>", "Se actualizaron las actividades.");
                             ScriptManager.RegisterClientScriptBlock(litControl, litControl.GetType(), "script", txtJS, false);

@@ -125,10 +125,8 @@ namespace SASISOPA.s.ControlAct.CensoAct
                 {
                     lnk.Visible = false;
                 }
-                lnk.NavigateUrl = "https://er2020.blob.core.windows.net/sasisopa/10/" + IdArchivo.Text.ToString() + ".pdf";
-
-
-            
+                string encodedString = (Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(IdArchivo.Text)));
+                lnk.NavigateUrl = "~/s/ControlAct/Doc.aspx?id=" + encodedString;
 
                 if (Meses.Text!="0")
                 {

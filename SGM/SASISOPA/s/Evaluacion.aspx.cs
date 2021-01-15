@@ -19,6 +19,9 @@ namespace SASISOPA.s
         static int expirado = 0;
         static int contador = 0;
         static DataTable data;
+        static int EsRespuestaRepetida = 0;
+        static int EsRespuestaRepetida2 = 0;
+
 
         static int estatus = 0;
 
@@ -42,7 +45,7 @@ namespace SASISOPA.s
 
 
 
-                int min = 1 * 30;
+                int min = 1 * 60;
                 TimeAllSecondes = min;
 
                 //foreach (ListViewItem itm in lstPreguntas.Items)
@@ -110,6 +113,10 @@ namespace SASISOPA.s
 
                     if (Contador.Text == totalItems)
                     {
+                        TimeAllSecondes = 60;
+
+                        expirado = 0;
+
                         btnFinalizar.Visible = true;
                         btnFinalizar_Click(null, null);
                          
@@ -117,6 +124,10 @@ namespace SASISOPA.s
 
                     else
                     {
+                        TimeAllSecondes = 60;
+
+                        expirado = 0;
+
                         lstPreguntas_PagePropertiesChanging(null, new PagePropertiesChangingEventArgs(contador, 1));
 
                     }
@@ -171,10 +182,14 @@ namespace SASISOPA.s
 
         protected void lstPreguntas_PagePropertiesChanging(object sender, PagePropertiesChangingEventArgs e)
         {
-
+            string decodedString = System.Text.ASCIIEncoding.ASCII.GetString(Convert.FromBase64String(Request.QueryString["prog"]));
+            int IdPrograma = Convert.ToInt32(decodedString);
+          
             foreach (ListViewItem itm in lstPreguntas.Items)
             {
-                 
+                Label Id_Pregunta = (Label)itm.FindControl("lblIdPregunta");
+                int IdPregunta = Convert.ToInt32(Id_Pregunta.Text);
+
                 RadioButtonList radioList = (RadioButtonList)itm.FindControl("radioList");
                 Label Id_Respuesta = (Label)itm.FindControl("lblIdRespuesta");
 
@@ -192,29 +207,67 @@ namespace SASISOPA.s
                 {
                     if (ValorSeleccionado == IdRespuesta)
                     {
-                        TimeAllSecondes = 60;
-                        expirado = 0;
+                        if (EsRespuestaRepetida==Convert.ToInt32(IdRespuesta))
+                        {
+                            TimeAllSecondes = 60;
+                            expirado = 0;
 
-                        cal++;
+                            EsRespuestaRepetida = 0;
 
-                        string txtJS = String.Format("<script>alert('{0}');</script>", "La respuesta es correcta.");
-                        ScriptManager.RegisterClientScriptBlock(litControl, litControl.GetType(), "script", txtJS, false);
-                        DataPager1.SetPageProperties(e.StartRowIndex, e.MaximumRows, false);
-                        lstPreguntas.DataSource = data;
-                        lstPreguntas.DataBind();
+                            string txtJS = String.Format("<script>alert('{0}');</script>", "La respuesta es correcta.");
+                            ScriptManager.RegisterClientScriptBlock(litControl, litControl.GetType(), "script", txtJS, false);
+                            DataPager1.SetPageProperties(e.StartRowIndex, e.MaximumRows, false);
+                            lstPreguntas.DataSource = data;
+                            lstPreguntas.DataBind();
+                        }
+                        else
+                        {
+                            TimeAllSecondes = 60;
+                            expirado = 0;
+                            EsRespuestaRepetida = Convert.ToInt32(IdRespuesta);
+                            cal++;
+                            programa.InsertarRespuestaEvaluacion(IdPrograma, IdPregunta, Convert.ToInt32(ValorSeleccionado),1);
+                            string txtJS = String.Format("<script>alert('{0}');</script>", "La respuesta es correcta.");
+                            ScriptManager.RegisterClientScriptBlock(litControl, litControl.GetType(), "script", txtJS, false);
+                            DataPager1.SetPageProperties(e.StartRowIndex, e.MaximumRows, false);
+                            lstPreguntas.DataSource = data;
+                            lstPreguntas.DataBind();
+                        }
+                     
+                   
                     }
                     else
                     {
-                        TimeAllSecondes = 60;
-                        expirado = 0;
+                        if (EsRespuestaRepetida2 == Convert.ToInt32(IdRespuesta))
+                        {
+                            TimeAllSecondes = 60;
+                            expirado = 0;
 
-                        radioList.SelectedValue = IdRespuesta;
-                        string txtJS = String.Format("<script>alert('{0}');</script>", "La respuesta es incorrecta. La respuesta correcta es: " + radioList.SelectedItem.ToString() + "");
-                        ScriptManager.RegisterClientScriptBlock(litControl, litControl.GetType(), "script", txtJS, false);
+                            radioList.SelectedValue = IdRespuesta;
+                            string txtJS = String.Format("<script>alert('{0}');</script>", "La respuesta es incorrecta. La respuesta correcta es: " + radioList.SelectedItem.ToString() + "");
+                            ScriptManager.RegisterClientScriptBlock(litControl, litControl.GetType(), "script", txtJS, false);
 
-                        DataPager1.SetPageProperties(e.StartRowIndex, e.MaximumRows, false);
-                        lstPreguntas.DataSource = data;
-                        lstPreguntas.DataBind();
+                            DataPager1.SetPageProperties(e.StartRowIndex, e.MaximumRows, false);
+                            lstPreguntas.DataSource = data;
+                            lstPreguntas.DataBind();
+                        }
+                        else
+                        {
+                            TimeAllSecondes = 60;
+                            expirado = 0;
+                            EsRespuestaRepetida2 = Convert.ToInt32(IdRespuesta);
+
+                            radioList.SelectedValue = IdRespuesta;
+                            programa.InsertarRespuestaEvaluacion(IdPrograma, IdPregunta, Convert.ToInt32(ValorSeleccionado),0);
+
+                            string txtJS = String.Format("<script>alert('{0}');</script>", "La respuesta es incorrecta. La respuesta correcta es: " + radioList.SelectedItem.ToString() + "");
+                            ScriptManager.RegisterClientScriptBlock(litControl, litControl.GetType(), "script", txtJS, false);
+
+                            DataPager1.SetPageProperties(e.StartRowIndex, e.MaximumRows, false);
+                            lstPreguntas.DataSource = data;
+                            lstPreguntas.DataBind();
+                        }
+                    
                     }
                 }
 
@@ -274,9 +327,14 @@ namespace SASISOPA.s
 
         protected void btnFinalizar_Click(object sender, EventArgs e)
         {
-            Timer2.Enabled = false;
+            string decodedString = System.Text.ASCIIEncoding.ASCII.GetString(Convert.FromBase64String(Request.QueryString["prog"]));
+            int IdPrograma = Convert.ToInt32(decodedString);
+          
             foreach (ListViewItem itm in lstPreguntas.Items)
             {
+                Label Id_Pregunta = (Label)itm.FindControl("lblIdPregunta");
+                int IdPregunta = Convert.ToInt32(Id_Pregunta.Text);
+
                 RadioButtonList radioList = (RadioButtonList)itm.FindControl("radioList");
                 Label Id_Respuesta = (Label)itm.FindControl("lblIdRespuesta");
 
@@ -293,32 +351,77 @@ namespace SASISOPA.s
                 {
                     if (ValorSeleccionado == IdRespuesta)
                     {
-                        cal++;
+                        if (EsRespuestaRepetida == Convert.ToInt32(IdRespuesta))
+                        {
+                            EsRespuestaRepetida = 0;
 
-                        string txtJS = String.Format("<script>alert('{0}');</script>", "La respuesta es correcta.");
-                        ScriptManager.RegisterClientScriptBlock(litControl, litControl.GetType(), "script", txtJS, false);
-                        lstPreguntas.DataSource = data;
-                        lstPreguntas.DataBind();
+
+                            string txtJS = String.Format("<script>alert('{0}');</script>", "La respuesta es correcta.");
+                            ScriptManager.RegisterClientScriptBlock(litControl, litControl.GetType(), "script", txtJS, false);
+                            lstPreguntas.DataSource = data;
+                            lstPreguntas.DataBind();
+                            Timer2.Enabled = false;
+
+                        }
+                        else
+                        {
+                            cal++;
+                            EsRespuestaRepetida = Convert.ToInt32(IdRespuesta);
+                            programa.InsertarRespuestaEvaluacion(IdPrograma, IdPregunta, Convert.ToInt32(ValorSeleccionado),1);
+
+                            string txtJS = String.Format("<script>alert('{0}');</script>", "La respuesta es correcta.");
+                            ScriptManager.RegisterClientScriptBlock(litControl, litControl.GetType(), "script", txtJS, false);
+                            lstPreguntas.DataSource = data;
+                            lstPreguntas.DataBind();
+                            Timer2.Enabled = false;
+
+                        }
+
+
                     }
                     else
                     {
-                        radioList.SelectedValue = IdRespuesta;
-                        string txtJS = String.Format("<script>alert('{0}');</script>", "La respuesta es incorrecta. La respuesta correcta es: " + radioList.SelectedItem.ToString() + "");
-                        ScriptManager.RegisterClientScriptBlock(litControl, litControl.GetType(), "script", txtJS, false);
+                       
 
-                        lstPreguntas.DataSource = data;
-                        lstPreguntas.DataBind();
+                        if (EsRespuestaRepetida2 == Convert.ToInt32(IdRespuesta))
+                        {
+                          
+                            radioList.SelectedValue = IdRespuesta;
+                            string txtJS = String.Format("<script>alert('{0}');</script>", "La respuesta es incorrecta. La respuesta correcta es: " + radioList.SelectedItem.ToString() + "");
+                            ScriptManager.RegisterClientScriptBlock(litControl, litControl.GetType(), "script", txtJS, false);
+
+                            lstPreguntas.DataSource = data;
+                            lstPreguntas.DataBind();
+                            Timer2.Enabled = false;
+
+                        }
+                        else
+                        {
+                          
+
+                            radioList.SelectedValue = IdRespuesta;
+                            programa.InsertarRespuestaEvaluacion(IdPrograma, IdPregunta, Convert.ToInt32(ValorSeleccionado),0);
+
+                            string txtJS = String.Format("<script>alert('{0}');</script>", "La respuesta es incorrecta. La respuesta correcta es: " + radioList.SelectedItem.ToString() + "");
+                            ScriptManager.RegisterClientScriptBlock(litControl, litControl.GetType(), "script", txtJS, false);
+
+                            lstPreguntas.DataSource = data;
+                            lstPreguntas.DataBind();
+                            Timer2.Enabled = false;
+
+                        }
                     }
 
                     decimal cantidadPreguntas = Convert.ToDecimal(lblTotal.Text);
+                    programa.LeerTotalCorrectas(IdPrograma);
+                   int TotalCorrectas =Convert.ToInt32( programa.TotalCorrectas);
 
-
-                    decimal calificacion = (cal / cantidadPreguntas) * 10;
+                    decimal calificacion = (TotalCorrectas / cantidadPreguntas) * 10;
 
                     decimal calFinal = Math.Round(calificacion, 2);
 
-                    string decodedString = System.Text.ASCIIEncoding.ASCII.GetString(Convert.FromBase64String(Request.QueryString["prog"]));
-                    int IdPrograma = Convert.ToInt32(decodedString);
+                    //string decodedString = System.Text.ASCIIEncoding.ASCII.GetString(Convert.FromBase64String(Request.QueryString["prog"]));
+                    //int IdPrograma = Convert.ToInt32(decodedString);
 
                     programa.EditarProgramaEv(IdPrograma, calFinal);
 

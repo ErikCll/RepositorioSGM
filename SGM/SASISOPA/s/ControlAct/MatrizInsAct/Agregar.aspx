@@ -63,7 +63,12 @@
                                                     </asp:TemplateField>
 
                                                     <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
-
+                                                                        <asp:TemplateField HeaderText="Archivo" ItemStyle-HorizontalAlign="Center">
+                                            <ItemTemplate>
+                                                <asp:Label runat="server" ID="lblArchivo" Text='<%# Eval("Archivo") %>' Visible="false" ></asp:Label>
+                                                <asp:HyperLink runat="server"  ID="lnkArchivo" Target="_blank" ImageUrl="~/dist/img/pdficon.svg" ImageHeight="17px" ImageWidth="17px" ></asp:HyperLink>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
                                                     <asp:TemplateField Visible="false">
                                                         <ItemTemplate>
                                                             <asp:Label ID="Label1" runat="server" Text='<%#Eval("Id_Actividad") %>'></asp:Label>

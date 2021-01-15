@@ -54,6 +54,8 @@
                                         </asp:TemplateField>
                                        
                                         <asp:BoundField HeaderText="Área" DataField="Area" />
+                                        <asp:BoundField DataField="TotalAct" HeaderText="Total Actividades" ItemStyle-HorizontalAlign="Center"/>
+                                        <asp:BoundField DataField="TotalActCat" HeaderText="Total Asociadas" ItemStyle-HorizontalAlign="Center" />
                                     </Columns>
                                             <PagerStyle HorizontalAlign = "Center" CssClass="" />
                                 </asp:GridView>

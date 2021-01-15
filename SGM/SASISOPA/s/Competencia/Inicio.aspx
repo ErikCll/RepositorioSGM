@@ -17,7 +17,44 @@
         <div class="row">
            
 
-            
+               <div class="col-sm-12 col-md-6 col-lg-4" runat="server" id="configuracion" visible="true">
+                <div class="card card-default shadow-sm">
+                    <div class="card-header bg-gray">
+                        <h3 class="card-title font-weight-bold ">Configuración del elemento</h3>
+
+                        <div class="card-tools">
+                                <i class="fas fa-cog"></i>
+                        </div>
+                    </div>
+                    <div class="card-body " style="display: block;">
+                        <div class="row">
+
+
+                                                        <div class="col-sm-12 col-md-12 col-lg-12" runat="server" id="lnkCursoTaller" visible="true">
+                                                            
+                        <a href="CursoTaller/Index.aspx" >Cursos y Talleres <i class="fas fa-arrow-circle-right"></i></a>
+                                                            </div>
+                               <div class="col-sm-12 col-md-12 col-lg-12 mt-2" runat="server" id="lnkInstructor" visible="true">
+                                                            
+                        <a href="InstructorIn/Index.aspx" >Instructores internos <i class="fas fa-arrow-circle-right"></i></a>
+                                                            </div>
+
+ <div class="col-sm-12 col-md-12 col-lg-12 mt-2" runat="server" id="lnkMatrizCurIns" visible="true">
+                                                            
+                        <a href="MatrizCurIns/Index.aspx" >Matriz Curso-Instalación <i class="fas fa-arrow-circle-right"></i></a>
+                                                            </div>
+                         
+                        </div>
+
+
+
+                   
+                    </div>
+
+             
+                </div>
+
+            </div>
 
                <div class="col-sm-12 col-md-6 col-lg-4" runat="server" id="programacapacitacion" visible="false">
                 <div class="card card-default shadow-sm">

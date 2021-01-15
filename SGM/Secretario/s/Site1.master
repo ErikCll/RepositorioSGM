@@ -1,0 +1,249 @@
+﻿
+<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Site1.master.cs" Inherits="s_Site1" %>
+
+<%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>SGL</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Font Awesome -->
+    <link href="../../../../../plugins/fontawesome-free/css/all.min.css" rel="stylesheet" />
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Tempusdominus Bbootstrap 4 -->
+    <link href="../../../../../plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+  <!-- Theme style -->
+    <link href="../../../../dist/css/adminlte.min.css" rel="stylesheet" />
+
+  <!-- overlayScrollbars -->
+    <link href="../../../../../plugins/overlayScrollbars/css/OverlayScrollbars.min.css" rel="stylesheet" />
+
+  <!-- Google Font: Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+                  <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
+    <style>
+        @media screen and (max-width: 650px) {
+            .ocultar-div {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<%--    hold-transition sidebar-mini layout-fixed--%>
+<body class="sidebar-mini layout-fixed sidebar-collapse" style="height: auto;">
+<form runat="server">
+                            <asp:ScriptManager runat="server"></asp:ScriptManager>
+    
+    <div class="wrapper">
+  <!-- Navbar -->
+
+<%--  <nav class="main-header navbar navbar-expand navbar-white navbar-light ">--%>
+          <nav class="main-header navbar navbar-expand navbar-dark navbar-lightblue">
+                                                    <asp:Label runat="server" ID="lblIdSuscripcion" Visible="false"></asp:Label>
+              <asp:Label runat="server" ID="lblIdUsuario" Visible="false"></asp:Label>
+
+    <!-- Left navbar links -->
+  <ul class=" nav navbar-nav flex-fill  w-100 flex-nowrap">
+                    <li class="nav-item">
+                        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+                    </li>
+                    <li class="nav-item d-none d-sm-inline-block"></li>
+                    <li class="nav-item mt-2">
+                        <div class=" custom-control-inline">
+
+<%--                            <label class="text-white font-weight-normal" runat="server" id="lblInstalacion">Instalación:</label>--%>
+
+
+                            <telerik:RadComboBox Visible="false" Style="margin-top: 2px" CssClass="ml-1 " runat="server" InputCssClass="font-weight-bold" AutoPostBack="true" ID="RadInstalacion" OnSelectedIndexChanged="RadInstalacion_SelectedIndexChanged"
+                                MarkFirstMatch="true" EmptyMessage="[Seleccionar]" DataTextField="Nombre" DataValueField="Id_Instalacion" RenderMode="Lightweight" Filter="StartsWith" ForeColor="#1d1d1d">
+                            </telerik:RadComboBox>
+                            <asp:Label runat="server" ID="lblIDInstalacion" ForeColor="White" Visible="false"></asp:Label>
+<%--                                                        <asp:Label ID="IdTipoSistema" runat="server" Text="3" Visible="false"></asp:Label>--%>
+
+                        </div>
+
+
+                    </li>
+
+
+
+                </ul>
+               <ul class=" nav navbar-nav flex-fill w-100 justify-content-center ocultar-div">
+                    <li class="nav-item text-center">
+                                <asp:Label runat="server" class=" text-white  font-weight-normal " ID="lblTitulo"></asp:Label><br />
+
+                    </li>
+                </ul>
+
+                <ul class=" nav navbar-nav flex-fill w-100  justify-content-end ">
+
+                    <li class="nav-item dropdown text-sm ">
+                        <a class="nav-link dropdown-toggle  ion-android-person" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
+                        <div class="dropdown-menu dropdown-menu-right text-center" aria-labelledby="navbarDropdown">
+                                                            <asp:Label runat="server" ID="lblUsuario" CssClass=" text-sm font-weight-bold"></asp:Label>
+
+                            <%--                                <a class="dropdown-item  ion-ios-unlocked" href="Contrasena.aspx"> Cambiar contraseña</a>--%>
+                            <asp:HyperLink runat="server" class="dropdown-item ion-android-document text-blue" href="../docs/ManualDeUsuario.pdf" Target="_blank"> Manual de usuario</asp:HyperLink>
+                            <div class="dropdown-divider"></div>
+                            <asp:LinkButton runat="server" CssClass="dropdown-item ion-android-exit" Text=" Cerrar sesión" ></asp:LinkButton>
+                        </div>
+                    </li>
+                </ul>
+ 
+  </nav>
+  <!-- /.navbar -->
+
+  <!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-dark-lightblue elevation-4  ">
+    <!-- Brand Logo -->
+       <asp:LinkButton runat="server" PostBackUrl="~/s/Inicio.aspx" class="brand-link">
+      <img src="../../../img/s.jpg" class="brand-image img-circle" style="opacity:.8"/>
+      <span class="brand-text font-weight-light">Secretario</span>
+    </asp:LinkButton>
+
+   
+         
+
+   
+    <!-- Sidebar -->
+    <div class="sidebar ">
+  
+      
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column  text-sm " data-widget="treeview" role="menu" data-accordion="true">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+
+              <li class="nav-item has-treeview" id="menu_acreditacion" runat="server" visible="false">
+             
+            <a href="~/s/Acreditacion/Inicio.aspx" class="nav-link" id="acreditacion" runat="server">
+                <i class="nav-icon fas fa-circle"></i>
+
+              <p>
+               Acreditaciones
+
+              </p>
+            </a>
+      
+          </li>
+
+                <li class="nav-item has-treeview" id="menu_procedimiento" runat="server" visible="false">
+             
+            <a href="~/s/Procedimiento/Inicio.aspx" class="nav-link" id="procedimiento" runat="server">
+                <i class="nav-icon fas fa-circle"></i>
+
+              <p>
+               Procedimientos e Instructivos
+
+              </p>
+            </a>
+      
+          </li>
+
+             <li class="nav-item has-treeview" id="menu_competencia" runat="server" visible="false">
+             
+            <a href="~/s/Competencia/Inicio.aspx" class="nav-link" id="competencia" runat="server">
+                <i class="nav-icon fas fa-circle"></i>
+
+              <p>
+               Competencia y Formación
+
+              </p>
+            </a>
+      
+          </li>
+
+                  <li class="nav-item has-treeview" id="menu_confirmacion" runat="server" visible="true">
+             
+            <a href="~/s/Confirmacion/Inicio.aspx" class="nav-link" id="confirmacion" runat="server">
+                <i class="nav-icon fas fa-circle"></i>
+
+              <p>
+               Ejemplo
+
+
+              </p>
+            </a>
+      
+          </li>
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper" style="min-height: 1589.56px;">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>            <asp:ContentPlaceHolder id="head" runat="server"></asp:ContentPlaceHolder>
+</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+                <asp:ContentPlaceHolder runat="server" id="mapeo"></asp:ContentPlaceHolder>
+<%--              <li class="breadcrumb-item active">Blank Page</li>--%>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+     <asp:ContentPlaceHolder runat="server" ID="Content"></asp:ContentPlaceHolder>
+
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+</aside>
+  <!-- /.control-sidebar -->
+
+    </div>
+</form>
+<!-- ./wrapper -->
+
+<!-- jQuery -->
+<script src="../../../../../plugins/jquery/jquery.min.js"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="../../../../../plugins/jquery-ui/jquery-ui.min.js"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+  $.widget.bridge('uibutton', $.ui.button)
+</script>
+<!-- Bootstrap 4 -->
+<script src="../../../../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+
+<!-- overlayScrollbars -->
+<script src="../../../../../plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<!-- AdminLTE App -->
+<script src="../../../../../dist/js/adminlte.js"></script>
+
+<!-- AdminLTE for demo purposes -->
+<script src="../../../../../dist/js/demo.js"></script>
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+    <script type="text/javascript">
+        
+    </script>
+    </body>
+</html>
