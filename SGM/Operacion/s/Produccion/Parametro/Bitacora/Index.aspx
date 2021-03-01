@@ -1,15 +1,14 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/s/Site1.Master" AutoEventWireup="true" CodeBehind="Index.aspx.cs" Inherits="Operacion.s.Infraestructura.Disponibilidad.Bitacora.Index" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/s/Site1.Master" AutoEventWireup="true" CodeBehind="Index.aspx.cs" Inherits="Operacion.s.Produccion.Parametro.Bitacora.Index" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    Bitácora de fallas
-   
+        Bitácora de parámetros de producción
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="mapeo" runat="server">
-    <li class="breadcrumb-item active"><a href="../Index.aspx">Disponibilidad de equipos</a></li>
+    <li class="breadcrumb-item active"><a href="../Index.aspx">    Parámetros de Producción</a></li>
     <li class="breadcrumb-item "><a>Bitácora</a></li>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Content" runat="server">
-    <asp:UpdatePanel runat="server" UpdateMode="Conditional">
+      <asp:UpdatePanel runat="server" UpdateMode="Conditional">
         <ContentTemplate>
             <asp:Literal ID="litControl" runat="server"></asp:Literal>
             <div class="col-lg-12">
@@ -32,7 +31,7 @@
 
                                                                           <div class=" input-group col-sm-8 col-md-8 col-lg-4">
 
-                                                                              <asp:TextBox runat="server" ID="txtFecha" placeholder="Fecha de inicio"  CssClass="form-control  form-control-sm"></asp:TextBox>
+                                                                              <asp:TextBox runat="server" ID="txtFecha" placeholder="Fecha"  CssClass="form-control  form-control-sm"></asp:TextBox>
                                 <asp:Button ID="btnBuscar" Text="Consultar" runat="server" OnClick="Buscar" CssClass="btn btn-primary btn-sm" />
                                                                               </div>
                                                     <div class="container col-12">
@@ -48,7 +47,7 @@
                                     GridLines="Horizontal"
                                     EmptyDataText="Sin registro de bitácoras."
                                     PageSize="10"
-                                    DataKeyNames="Id_Falla"
+                                    DataKeyNames="Id_Parametro"
                                     OnPageIndexChanging="gridBitacora_PageIndexChanging"
                                     AllowCustomPaging="false"
                                     AllowPaging="true"
@@ -60,28 +59,24 @@
                                           <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="180px" ItemStyle-Width="180px" ControlStyle-Width="76px">
                                             <ItemTemplate>
                                            
-                                                 <asp:Button runat="server" Text="Editar" CssClass="btn btn-outline-secondary" CommandName="Editar" />
-<%--                                               <asp:Button runat="server" Text="Eliminar" CssClass="btn btn-outline-danger" CommandName="Eliminar" OnClientClick="javascript:if(!confirm('¿Desea borrar el registro?'))return false" />--%>
+<%--                                                 <asp:Button runat="server" Text="Editar" CssClass="btn btn-outline-secondary" CommandName="Editar" />--%>
+                                               <asp:Button runat="server" Text="Eliminar" CssClass="btn btn-outline-danger" CommandName="Eliminar" OnClientClick="javascript:if(!confirm('¿Desea borrar el registro?'))return false" />
 
                                             </ItemTemplate>
                                         </asp:TemplateField>
-                                        <asp:BoundField DataField="TipoFalla" HeaderText="Tipo de falla"  ItemStyle-HorizontalAlign="Center" ItemStyle-Width="140px"/>
-                                        <asp:BoundField DataField="Descripcion" HeaderText="Descripción" />
-                                        <asp:BoundField DataField="Inicio" HeaderText="Inicio" ItemStyle-Width="170px" ItemStyle-HorizontalAlign="Center" />
-                                        <asp:BoundField DataField="Fin" HeaderText="Fin" ItemStyle-Width="170px" ItemStyle-HorizontalAlign="Center"      />
-
-
-                                        <asp:BoundField DataField="Total" HeaderText="Duración" ItemStyle-HorizontalAlign="Center"  ItemStyle-Width="120px" />
-
-
-
+                                      
+                                         <asp:BoundField HeaderText="Elasticidad" DataField="Elasticidad" ItemStyle-HorizontalAlign="Center" />
+                                        <asp:BoundField HeaderText="Velocidad" DataField="Velocidad" ItemStyle-HorizontalAlign="Center"/>
+                                        <asp:BoundField HeaderText="No. Pasada" DataField="NoPasada" ItemStyle-HorizontalAlign="Center"/>
+                                        <asp:BoundField HeaderText="Fecha" DataField="Fecha2" ItemStyle-HorizontalAlign="Center" />
+                                        <asp:BoundField HeaderText="Hora" DataField="Hora" ItemStyle-HorizontalAlign="Center"/>
                                      
 
                                     </Columns>
                                     <PagerStyle HorizontalAlign="Center" CssClass="" />
 
                                 </asp:GridView>
-                                <asp:Button runat="server" CssClass="btn btn-default" Text="Regresar" ID="btnRegresar" PostBackUrl="~/s/Infraestructura/Disponibilidad/Index.aspx" />
+                                <asp:Button runat="server" CssClass="btn btn-default" Text="Regresar" ID="btnRegresar" PostBackUrl="~/s/Produccion/Parametro/Index.aspx" />
 
                             </div>
 
@@ -162,6 +157,4 @@
             }
         }
             </script>
-
 </asp:Content>
-

@@ -52,8 +52,10 @@ namespace Operacion.s.Produccion.Parametro
 
                 int IdEquipo = (int)gridEquipo.DataKeys[row.RowIndex].Value;
                 string encodedString = (Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(IdEquipo.ToString())));
+                Label lblFecha = (Label)row.FindControl("lblFecha");
+                string encodedString2 = (Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(lblFecha.Text.ToString())));
 
-                Response.Redirect("Editar.aspx?id=" + encodedString + "");
+                Response.Redirect("Bitacora/Index.aspx?id=" + encodedString + "&fec=" + encodedString2 + "");
             }
 
 

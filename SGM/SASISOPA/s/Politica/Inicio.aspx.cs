@@ -35,6 +35,11 @@ namespace SASISOPA.s.Politica
                     programaevaluacion.Visible = true;
 
                 }
+                if (accesos.Configuracion1(IdUsuario))
+                {
+                    configuracion.Visible = true;
+
+                }
             }
             else
             {

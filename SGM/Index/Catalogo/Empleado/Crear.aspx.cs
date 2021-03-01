@@ -80,7 +80,7 @@ namespace SAM.Catalogo.Empleado
 
             ddl_Sexo.Items.Insert(0, new ListItem("[Seleccionar]"));
             ddl_Sexo.Items.Insert(1, new ListItem("M"));
-            ddl_Sexo.Items.Insert(1, new ListItem("F"));
+            ddl_Sexo.Items.Insert(2, new ListItem("F"));
 
 
 

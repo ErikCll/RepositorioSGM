@@ -41,6 +41,11 @@ namespace SASISOPA.s.Competencia
                 }
 
 
+                if (accesos.Configuracion6(IdUsuario))
+                {
+                    configuracion.Visible = true;
+                }
+
             }
             else
             {

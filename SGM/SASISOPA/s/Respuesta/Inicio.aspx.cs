@@ -9,8 +9,39 @@ namespace SASISOPA.s.Respuesta
 {
     public partial class Inicio : System.Web.UI.Page
     {
+
+        Clase.Accesos accesos = new Clase.Accesos();
+
+        protected void Page_Init(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                ValidarAccesos();
+            }
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
+
+        }
+
+        public void ValidarAccesos()
+        {
+            int IdUsuario = Convert.ToInt32((this.Master as SASISOPA.s.Site1).IDUsuario.ToString());
+            if (accesos.ValidarRespuesta(IdUsuario))
+            {
+                if (accesos.Configuracion13(IdUsuario))
+                {
+                    configuracion.Visible = true;
+
+                }
+
+
+            }
+            else
+            {
+                Response.Redirect("~/s/Inicio.aspx");
+            }
+
 
         }
 

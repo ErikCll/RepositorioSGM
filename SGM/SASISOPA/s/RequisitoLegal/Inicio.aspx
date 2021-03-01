@@ -24,16 +24,16 @@
                     </div>
                     <div class="card-body " style="display: block;">
                         <div class="row">
-                                                        <div class="col-sm-12 col-md-12 col-lg-12" runat="server" id="lnkRegulador" visible="false">
+                                                        <div class="col-sm-12 col-md-12 col-lg-12" runat="server" id="lnkRegulador" visible="true">
                                                             
                         <a href="Regulador/Index.aspx" >Regulador <i class="fas fa-arrow-circle-right"></i></a>
                                                             </div>
 
-                                                        <div class="col-sm-12 col-md-12 col-lg-12 mt-2" runat="server" id="lnkDocRegulador" visible="false">
+                                                        <div class="col-sm-12 col-md-12 col-lg-12 mt-2" runat="server" id="lnkDocRegulador" visible="true">
                                                                                                                     <a href="DocRegulador/Index.aspx" >Documento Regulador <i class="fas fa-arrow-circle-right"></i></a><br />
 
                                                             </div>
-                            <div class="col-sm-12 col-md-12 col-lg-12 mt-2" runat="server" id="lnkRequisito" visible="false">
+                            <div class="col-sm-12 col-md-12 col-lg-12 mt-2" runat="server" id="lnkRequisito" visible="true">
                                 
                         <a href="Requisito/Index.aspx" >Requisito <i class="fas fa-arrow-circle-right"></i></a>
 

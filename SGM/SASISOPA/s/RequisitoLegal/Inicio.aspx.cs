@@ -25,35 +25,12 @@ namespace SASISOPA.s.RequisitoLegal
             int IdUsuario = Convert.ToInt32((this.Master as SASISOPA.s.Site1).IDUsuario.ToString());
             if (accesos.ValidarRequisito(IdUsuario))
             {
-                int contador = 0;
-                if (accesos.ValidarRegulador3(IdUsuario))
-                {
-                    //regulador.Visible = true;
-                    lnkRegulador.Visible = true;
-                    contador++;
-                }
-
-                if (accesos.ValidarDocumentoRegulador3(IdUsuario))
-                {
-                    //documentoregulador.Visible = true;
-                    lnkDocRegulador.Visible = true;
-                    contador++;
-                }
-
-                if (accesos.ValidarRequisito3(IdUsuario))
-                {
-                    //requisito.Visible = true;
-                    lnkRequisito.Visible = true;
-                    contador++;
-                }
-                if (contador>0)
+                if (accesos.Configuracion3(IdUsuario))
                 {
                     configuracion.Visible = true;
+
                 }
-                else
-                {
-                    configuracion.Visible = false;
-                }
+
             }
             else
             {

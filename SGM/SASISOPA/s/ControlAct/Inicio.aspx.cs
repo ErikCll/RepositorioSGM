@@ -38,6 +38,11 @@ namespace SASISOPA.s.ControlAct
                     instalacionactividad.Visible = true;
                 }
 
+                if (accesos.Configuracion10(IdUsuario))
+                {
+                    configuracion.Visible = true;
+                }
+
 
             }
             else

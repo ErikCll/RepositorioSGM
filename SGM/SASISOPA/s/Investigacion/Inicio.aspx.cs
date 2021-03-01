@@ -31,7 +31,12 @@ namespace SASISOPA.s.Investigacion
 
                 }
 
-         
+                if (accesos.Configuracion16(IdUsuario))
+                {
+                    configuracion.Visible = true;
+
+                }
+
 
             }
             else

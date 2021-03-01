@@ -58,8 +58,12 @@
                                         <asp:BoundField HeaderText="Elasticidad" DataField="Elasticidad" ItemStyle-HorizontalAlign="Center" />
                                         <asp:BoundField HeaderText="Velocidad" DataField="Velocidad" ItemStyle-HorizontalAlign="Center"/>
                                         <asp:BoundField HeaderText="No. Pasada" DataField="NoPasada" ItemStyle-HorizontalAlign="Center"/>
-                                        
-                                     
+                                        <asp:TemplateField HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" HeaderText="Fecha">
+                                            <ItemTemplate>
+                                                <asp:Label runat="server" ID="lblFecha" Text='<%#Eval("Fecha")%>'></asp:Label>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                     <asp:BoundField HeaderText="Hora" DataField="Hora" ItemStyle-HorizontalAlign="Center"/>
                                     </Columns>
                                             <PagerStyle HorizontalAlign = "Center"  />
                                 </asp:GridView>

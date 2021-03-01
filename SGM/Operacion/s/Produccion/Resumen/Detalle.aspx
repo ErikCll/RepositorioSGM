@@ -3,10 +3,10 @@
 
 <%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    Detalle horas de producción
+    Detalle eficiencia por turno
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="mapeo" runat="server">
-    <li class="breadcrumb-item active"><a href="Index.aspx">Resumen mensual</a></li>
+    <li class="breadcrumb-item active"><a href="Index.aspx">Eficiencia por turno</a></li>
     <li class="breadcrumb-item "><a>Detalle</a></li>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Content" runat="server">

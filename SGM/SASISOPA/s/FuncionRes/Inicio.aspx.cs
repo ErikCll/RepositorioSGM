@@ -36,8 +36,12 @@ namespace SASISOPA.s.FuncionRes
                     categoriaempleado.Visible = true;
 
                 }
+                if (accesos.Configuracion5(IdUsuario))
+                {
+                    configuracion.Visible = true;
 
-              
+                }
+
             }
             else
             {

@@ -26,7 +26,7 @@ namespace SAM.Clase
             string query = "SELECT Id_Usuario,Nombre, ApellidoPaterno, ApellidoMaterno, Acceso FROM Usuario WHERE Id_Suscripcion = @IdSuscripcion AND Activado IS NULL ORDER BY Id_usuario DESC";
             if (!String.IsNullOrEmpty(txtSearch.Trim()))
             {
-                query = "SELECT Id_Usuario,Nombre, ApellidoPaterno, ApellidoMaterno, Acceso FROM Usuario WHERE Id_Suscripcion = @IdSuscripcion AND Activado IS NULL AND Email LIKE '%'+@txtSearch+'%' ORDER BY Id_usuario DESC";
+                query = "SELECT Id_Usuario,Nombre, ApellidoPaterno, ApellidoMaterno, Acceso FROM Usuario WHERE Id_Suscripcion = @IdSuscripcion AND Activado IS NULL AND Acceso LIKE '%'+@txtSearch+'%' ORDER BY Id_usuario DESC";
             }
 
             comm.Connection = conexion.AbrirConexion();

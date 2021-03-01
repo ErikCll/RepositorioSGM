@@ -1665,6 +1665,8 @@
     <Content Include="s\Inicio.aspx" />
     <Content Include="s\Login.aspx" />
     <Content Include="s\Produccion\Inicio.aspx" />
+    <Content Include="s\Produccion\Parametro\Bitacora\Crear.aspx" />
+    <Content Include="s\Produccion\Parametro\Bitacora\Index.aspx" />
     <Content Include="s\Produccion\Parametro\Editar.aspx" />
     <Content Include="s\Produccion\Parametro\Index.aspx" />
     <Content Include="s\Produccion\Resumen\Detalle.aspx" />
@@ -1776,6 +1778,20 @@
     </Compile>
     <Compile Include="s\Produccion\Inicio.aspx.designer.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="s\Produccion\Parametro\Bitacora\Crear.aspx.cs">
+      <DependentUpon>Crear.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="s\Produccion\Parametro\Bitacora\Crear.aspx.designer.cs">
+      <DependentUpon>Crear.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="s\Produccion\Parametro\Bitacora\Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="s\Produccion\Parametro\Bitacora\Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
     </Compile>
     <Compile Include="s\Produccion\Parametro\Editar.aspx.cs">
       <DependentUpon>Editar.aspx</DependentUpon>

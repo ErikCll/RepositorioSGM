@@ -7,10 +7,10 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace Operacion.s.Produccion.Parametro {
+namespace Operacion.s.Produccion.Parametro.Bitacora {
     
     
-    public partial class Editar {
+    public partial class Crear {
         
         /// <summary>
         /// Control litControl.
@@ -92,6 +92,15 @@ namespace Operacion.s.Produccion.Parametro {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator3;
+        
+        /// <summary>
+        /// Control txtHora.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadTimePicker txtHora;
         
         /// <summary>
         /// Control RequiredFieldValidator4.

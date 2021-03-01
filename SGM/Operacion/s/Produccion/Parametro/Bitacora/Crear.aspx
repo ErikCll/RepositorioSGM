@@ -1,9 +1,13 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/s/Site1.Master" AutoEventWireup="true" CodeBehind="Editar.aspx.cs" Inherits="Operacion.s.Produccion.Parametro.Editar" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-       Editar Parámetros de Producción
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/s/Site1.Master" AutoEventWireup="true" CodeBehind="Crear.aspx.cs" Inherits="Operacion.s.Produccion.Parametro.Bitacora.Crear" %>
+<%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
 
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    Crear bitácora de parametros de producción
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="mapeo" runat="server">
+      <li class="breadcrumb-item active"><a href="../Index.aspx">Parámetros de Producción</a></li>
+                  <li class="breadcrumb-item active"><asp:LinkButton runat="server" OnClick="Regresar">Bitácora</asp:LinkButton></li>
+                      <li class="breadcrumb-item active"><a>Crear</a></li>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Content" runat="server">
       <asp:UpdatePanel runat="server" UpdateMode="Conditional" >
@@ -12,7 +16,7 @@
             <div class="col-lg-12">
                   <div class="card" >
                       <div class="card-header">
-                            <h4>Datos del equipo</h4>
+                            <h4>Datos de la bitácora</h4>
                       </div>
                 <div class="card-body">
                     <div class="row">
@@ -73,8 +77,8 @@
                          
                         <div class="col-sm-12 col-md-12 col-lg-12">
                             <div class="form-group">
-                                <asp:Button runat="server" CssClass="btn btn-primary" Text="Guardar" ID="btnGuardar" OnClick="btnGuardar_Click"  ValidationGroup="btnGuardar"/>
-                                <asp:Button runat="server" ID="btnRegresar" CssClass="btn btn-default" Text="Regresar" PostBackUrl="~/s/Produccion/Parametro/Index.aspx" />
+                                <asp:Button runat="server" CssClass="btn btn-primary" Text="Guardar" ID="btnGuardar" OnClick="btnGuardar_Click"   ValidationGroup="btnGuardar"/>
+                                <asp:Button runat="server" ID="btnRegresar" CssClass="btn btn-default" Text="Regresar" OnClick="Regresar"/>
                             </div>
                         </div>
                         </div>
