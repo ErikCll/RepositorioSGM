@@ -140,7 +140,7 @@
                     </asp:DataPager>
                                 <asp:Button runat="server" CssClass="btn btn-success" Text="Finalizar" ID="btnFinalizar" Visible="false" OnClick="btnFinalizar_Click" />
                                 <asp:Label runat="server" ID="lblCal"></asp:Label>
-                                <asp:Button  runat="server"/>
+<%--                                <asp:Button  runat="server"/>--%>
                             </div>
 
                         </div>

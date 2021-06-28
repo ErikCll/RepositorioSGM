@@ -19,17 +19,17 @@ namespace Operacion.Clase
         public string Elasticidad { get; set; }
         public string Velocidad { get; set; }
         public string Id_Material { get; set; }
-
+        public string Bandas { get; set; }
 
         public DataTable Mostrar(string txtSearch, int IdInstalacion)
         {
 
             //string query = "SELECT equi.Id_Equipo, equi.Nombre, CONVERT(varchar,CAST(pram.Elasticidad as money),1) 'Elasticidad',CONVERT(varchar, CAST(pram.Velocidad as money), 1) 'Velocidad',CONVERT(varchar, CAST(mat.NoPasada as money), 1) 'NoPasada' FROM Op_ParametrosOperacion pram LEFT JOIN Cat_Material mat on pram.Id_Material = mat.Id_Material LEFT JOIN Cat_Equipo equi on pram.Id_Equipo = equi.Id_equipo WHERE equi.Activado IS NULL AND equi.Id_instalacion = @IdInstalacion AND mat.Activado IS NULL";
 
-            string query = "SELECT equi.Id_Equipo, equi.Nombre,CONVERT(varchar, CAST(s.Elasticidad as money), 1) 'Elasticidad', CONVERT(varchar, CAST(s.Velocidad as money), 1) 'Velocidad',CONVERT(varchar, CAST(mat.NoPasada as money), 1) 'NoPasada',CONVERT(nvarchar, r.Fecha, 105) 'Fecha',FORMAT(r.Fecha, 'hh:mm tt') 'Hora' FROM Cat_equipo equi LEFT JOIN(SELECT MAX(Fecha) 'Fecha', Id_Equipo FROM Op_ParametrosOperacion WHERE Activado IS NULL GROUP BY Id_Equipo) r on equi.Id_equipo = r.Id_Equipo LEFT JOIN(SELECT Id_Equipo, Fecha, Elasticidad, Velocidad, Bandas, Id_Material FROM Op_ParametrosOperacion) s on r.Fecha = s.Fecha AND r.Id_Equipo = s.Id_Equipo LEFT JOIN Cat_Material mat on s.Id_Material = mat.Id_Material WHERE equi.Activado IS NULL AND equi.Id_instalacion = @IdInstalacion AND mat.Activado IS NULL";
+            string query = "SELECT equi.Id_Equipo, equi.Nombre,CONVERT(varchar, CAST(s.Elasticidad as money), 1) 'Elasticidad', CONVERT(varchar, CAST(s.Velocidad as money), 1) 'Velocidad',CONVERT(varchar, CAST(mat.NoPasada as money), 1) 'NoPasada',CONVERT(nvarchar, r.Fecha, 105) 'Fecha',FORMAT(r.Fecha, 'hh:mm tt') 'Hora',s.Bandas FROM Cat_equipo equi LEFT JOIN(SELECT MAX(Fecha) 'Fecha', Id_Equipo FROM Op_ParametrosOperacion WHERE Activado IS NULL GROUP BY Id_Equipo) r on equi.Id_equipo = r.Id_Equipo LEFT JOIN(SELECT Id_Equipo, Fecha, Elasticidad, Velocidad, Bandas, Id_Material FROM Op_ParametrosOperacion) s on r.Fecha = s.Fecha AND r.Id_Equipo = s.Id_Equipo LEFT JOIN Cat_Material mat on s.Id_Material = mat.Id_Material WHERE equi.Activado IS NULL AND equi.Id_instalacion = @IdInstalacion AND mat.Activado IS NULL";
             if (!String.IsNullOrEmpty(txtSearch.Trim()))
             {
-                query = "SELECT equi.Id_Equipo, equi.Nombre,CONVERT(varchar, CAST(s.Elasticidad as money), 1) 'Elasticidad', CONVERT(varchar, CAST(s.Velocidad as money), 1) 'Velocidad',CONVERT(varchar, CAST(mat.NoPasada as money), 1) 'NoPasada',CONVERT(nvarchar, r.Fecha, 105) 'Fecha',FORMAT(r.Fecha, 'hh:mm tt') 'Hora' FROM Cat_equipo equi LEFT JOIN(SELECT MAX(Fecha) 'Fecha', Id_Equipo FROM Op_ParametrosOperacion WHERE Activado IS NULL GROUP BY Id_Equipo) r on equi.Id_equipo = r.Id_Equipo LEFT JOIN(SELECT Id_Equipo, Fecha, Elasticidad, Velocidad, Bandas, Id_Material FROM Op_ParametrosOperacion) s on r.Fecha = s.Fecha AND r.Id_Equipo = s.Id_Equipo LEFT JOIN Cat_Material mat on s.Id_Material = mat.Id_Material WHERE equi.Activado IS NULL AND equi.Id_instalacion = @IdInstalacion AND mat.Activado IS NULL AND equi.Nombre LIKE '%'+@txtSearch+'%'";
+                query = "SELECT equi.Id_Equipo, equi.Nombre,CONVERT(varchar, CAST(s.Elasticidad as money), 1) 'Elasticidad', CONVERT(varchar, CAST(s.Velocidad as money), 1) 'Velocidad',CONVERT(varchar, CAST(mat.NoPasada as money), 1) 'NoPasada',CONVERT(nvarchar, r.Fecha, 105) 'Fecha',FORMAT(r.Fecha, 'hh:mm tt') 'Hora',s.Bandas FROM Cat_equipo equi LEFT JOIN(SELECT MAX(Fecha) 'Fecha', Id_Equipo FROM Op_ParametrosOperacion WHERE Activado IS NULL GROUP BY Id_Equipo) r on equi.Id_equipo = r.Id_Equipo LEFT JOIN(SELECT Id_Equipo, Fecha, Elasticidad, Velocidad, Bandas, Id_Material FROM Op_ParametrosOperacion) s on r.Fecha = s.Fecha AND r.Id_Equipo = s.Id_Equipo LEFT JOIN Cat_Material mat on s.Id_Material = mat.Id_Material WHERE equi.Activado IS NULL AND equi.Id_instalacion = @IdInstalacion AND mat.Activado IS NULL AND equi.Nombre LIKE '%'+@txtSearch+'%'";
             }
 
             comm.Connection = conexion.AbrirConexion();
@@ -51,7 +51,7 @@ namespace Operacion.Clase
             //string query = "SELECT equi.Id_Equipo, equi.Nombre, CONVERT(varchar,CAST(pram.Elasticidad as money),1) 'Elasticidad',CONVERT(varchar, CAST(pram.Velocidad as money), 1) 'Velocidad',CONVERT(varchar, CAST(mat.NoPasada as money), 1) 'NoPasada' FROM Op_ParametrosOperacion pram LEFT JOIN Cat_Material mat on pram.Id_Material = mat.Id_Material LEFT JOIN Cat_Equipo equi on pram.Id_Equipo = equi.Id_equipo WHERE equi.Activado IS NULL AND equi.Id_instalacion = @IdInstalacion AND mat.Activado IS NULL";
 
        
-             string  query = "SELECT pram.Id_Parametro, CONVERT(varchar, CAST(pram.Elasticidad as money), 1) 'Elasticidad', CONVERT(varchar, CAST(pram.Velocidad as money), 1) 'Velocidad', CONVERT(varchar, CAST(mat.NoPasada as money), 1) 'NoPasada', CONVERT(nvarchar, pram.Fecha, 105) 'Fecha2', FORMAT(pram.Fecha, 'hh:mm tt') 'Hora', pram.Fecha FROM Op_ParametrosOperacion pram LEFT JOIN Cat_Material mat on pram.Id_Material = mat.Id_Material WHERE pram.Activado IS NULL AND pram.Id_Equipo = @IdEquipo AND CONVERT(NVARCHAR, CAST(pram.Fecha AS Date),105)=@Fecha ORDER BY pram.Fecha DESC";
+             string  query = "SELECT pram.Id_Parametro, CONVERT(varchar, CAST(pram.Elasticidad as money), 1) 'Elasticidad', CONVERT(varchar, CAST(pram.Velocidad as money), 1) 'Velocidad', CONVERT(varchar, CAST(mat.NoPasada as money), 1) 'NoPasada', CONVERT(nvarchar, pram.Fecha, 105) 'Fecha2', FORMAT(pram.Fecha, 'hh:mm tt') 'Hora', pram.Fecha,pram.Bandas FROM Op_ParametrosOperacion pram LEFT JOIN Cat_Material mat on pram.Id_Material = mat.Id_Material WHERE pram.Activado IS NULL AND pram.Id_Equipo = @IdEquipo AND CONVERT(NVARCHAR, CAST(pram.Fecha AS Date),105)=@Fecha ORDER BY pram.Fecha DESC";
             
 
             comm.Connection = conexion.AbrirConexion();
@@ -84,10 +84,10 @@ namespace Operacion.Clase
         }
 
 
-        public bool Insertar(int IdEquipo,string Elasticidad,string Velocidad,int IdMaterial, string FechaHora)
+        public bool Insertar(int IdEquipo,string Elasticidad,string Velocidad,int IdMaterial, string FechaHora,int Banda)
         {
             comm.Connection = conexion.AbrirConexion();
-            comm.CommandText = "INSERT INTO [Op_ParametrosOperacion] (Id_Equipo,Elasticidad,Velocidad,Id_Material,Fecha) VALUES(@Id_Equipo,@Elasticidad,@Velocidad,@IdMaterial,CONVERT(datetime,@FechaHora,103))";
+            comm.CommandText = "INSERT INTO [Op_ParametrosOperacion] (Id_Equipo,Elasticidad,Velocidad,Id_Material,Fecha,Bandas) VALUES(@Id_Equipo,@Elasticidad,@Velocidad,@IdMaterial,CONVERT(datetime,@FechaHora,103),@Bandas)";
             comm.CommandType = CommandType.Text;
             comm.Parameters.AddWithValue("@Id_Equipo", IdEquipo);
             comm.Parameters.AddWithValue("@Elasticidad", Elasticidad);
@@ -95,6 +95,7 @@ namespace Operacion.Clase
             comm.Parameters.AddWithValue("@IdMaterial", IdMaterial);
 
             comm.Parameters.AddWithValue("@FechaHora", FechaHora);
+            comm.Parameters.AddWithValue("@Bandas", Banda);
 
             int i = comm.ExecuteNonQuery();
             comm.Parameters.Clear();
@@ -112,15 +113,16 @@ namespace Operacion.Clase
 
         }
 
-        public bool Editar(int IdEquipo, string Elasticidad, string Velocidad, int IdMaterial)
+        public bool Editar(int IdEquipo, string Elasticidad, string Velocidad, int IdMaterial,int Banda)
         {
             comm.Connection = conexion.AbrirConexion();
-            comm.CommandText = "UPDATE Op_ParametrosOperacion SET Elasticidad = @Elasticidad, Velocidad = @Velocidad, Id_Material = @IdMaterial WHERE Id_Equipo = @Id_Equipo";
+            comm.CommandText = "UPDATE Op_ParametrosOperacion SET Elasticidad = @Elasticidad, Velocidad = @Velocidad, Id_Material = @IdMaterial,Bandas= @Bandas WHERE Id_Equipo = @Id_Equipo";
             comm.CommandType = CommandType.Text;
             comm.Parameters.AddWithValue("@Id_Equipo", IdEquipo);
             comm.Parameters.AddWithValue("@Elasticidad", Elasticidad);
             comm.Parameters.AddWithValue("@Velocidad", Velocidad);
             comm.Parameters.AddWithValue("@IdMaterial", IdMaterial);
+            comm.Parameters.AddWithValue("@Bandas", Banda);
 
 
 
@@ -165,7 +167,7 @@ namespace Operacion.Clase
         public void LeerDatos(int IdEquipo)
         {
             comm.Connection = conexion.AbrirConexion();
-            comm.CommandText = "SELECT CONVERT(varchar,CAST(Elasticidad as money),1) 'Elasticidad',CONVERT(varchar, CAST(Velocidad as money), 1) 'Velocidad', Id_Material FROM Op_ParametrosOperacion WHERE Id_Equipo = @IdEquipoo";
+            comm.CommandText = "SELECT CONVERT(varchar,CAST(Elasticidad as money),1) 'Elasticidad',CONVERT(varchar, CAST(Velocidad as money), 1) 'Velocidad', Id_Material,Bandas FROM Op_ParametrosOperacion WHERE Id_Equipo = @IdEquipoo";
             comm.CommandType = CommandType.Text;
             comm.Parameters.AddWithValue("@IdEquipoo", IdEquipo);
 
@@ -174,6 +176,7 @@ namespace Operacion.Clase
             Elasticidad = dr["Elasticidad"].ToString();
             Velocidad = dr["Velocidad"].ToString();
             Id_Material = dr["Id_Material"].ToString();
+            Bandas = dr["Bandas"].ToString();
 
             dr.Close();
             comm.Connection = conexion.CerrarConexion();

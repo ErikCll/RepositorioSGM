@@ -44,11 +44,11 @@ namespace Operacion.s.Produccion.Parametro
             string Elasticidad = txtElasticidad.Text;
             string Velocidad = txtVelocidad.Text;
             int IdMaterial = Convert.ToInt32(ddl_NoPasada.SelectedValue);
-            if (parametro.Editar(IdEquipo,Elasticidad,Velocidad,IdMaterial))
-            {
-                string txtJS = String.Format("<script>alert('{0}');</script>", "Se actualizaron correctamente los datos.");
-                ScriptManager.RegisterClientScriptBlock(litControl, litControl.GetType(), "script", txtJS, false);
-            }
+            //if (parametro.Editar(IdEquipo,Elasticidad,Velocidad,IdMaterial))
+            //{
+            //    string txtJS = String.Format("<script>alert('{0}');</script>", "Se actualizaron correctamente los datos.");
+            //    ScriptManager.RegisterClientScriptBlock(litControl, litControl.GetType(), "script", txtJS, false);
+            //}
 
         }
     }

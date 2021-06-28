@@ -61,7 +61,9 @@ namespace SASISOPA.Competencia.Programa
         {
             string decodedString = System.Text.ASCIIEncoding.ASCII.GetString(Convert.FromBase64String(Request.QueryString["id"]));
             int IdActividad = Convert.ToInt32(decodedString);
-            ddl_Empleado.DataSource = programa.MostrarEmpleado(IdActividad);
+            int IdInstalacion = Convert.ToInt32((this.Master as SASISOPA.s.Site1).IdInstalacion.ToString());
+
+            ddl_Empleado.DataSource = programa.MostrarEmpleado(IdActividad,IdInstalacion);
             ddl_Empleado.DataBind();
             ddl_Empleado.Items.Insert(0, new ListItem("[Seleccionar]"));
 

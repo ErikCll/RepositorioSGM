@@ -1665,6 +1665,8 @@
     <Content Include="s\Inicio.aspx" />
     <Content Include="s\Login.aspx" />
     <Content Include="s\Produccion\Inicio.aspx" />
+    <Content Include="s\Produccion\Material\Detalle.aspx" />
+    <Content Include="s\Produccion\Material\Index.aspx" />
     <Content Include="s\Produccion\Parametro\Bitacora\Crear.aspx" />
     <Content Include="s\Produccion\Parametro\Bitacora\Index.aspx" />
     <Content Include="s\Produccion\Parametro\Editar.aspx" />
@@ -1683,6 +1685,7 @@
     <Compile Include="Clase\Master.cs" />
     <Compile Include="Clase\Parametro.cs" />
     <Compile Include="Clase\Resumen.cs" />
+    <Compile Include="Clase\ResumenMaterial.cs" />
     <Compile Include="Conexion.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -1778,6 +1781,20 @@
     </Compile>
     <Compile Include="s\Produccion\Inicio.aspx.designer.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="s\Produccion\Material\Detalle.aspx.cs">
+      <DependentUpon>Detalle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="s\Produccion\Material\Detalle.aspx.designer.cs">
+      <DependentUpon>Detalle.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="s\Produccion\Material\Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="s\Produccion\Material\Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
     </Compile>
     <Compile Include="s\Produccion\Parametro\Bitacora\Crear.aspx.cs">
       <DependentUpon>Crear.aspx</DependentUpon>

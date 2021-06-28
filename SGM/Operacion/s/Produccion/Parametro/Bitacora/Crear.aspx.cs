@@ -30,15 +30,33 @@ namespace Operacion.s.Produccion.Parametro.Bitacora
             string Velocidad = txtVelocidad.Text;
             int IdMaterial = Convert.ToInt32(ddl_NoPasada.SelectedValue);
             DateTime Hora = txtHora.SelectedDate.Value;
-            string hora = Hora.ToString("HH:mm:ss");
+          
+            string hora = Hora.ToString("HH:mm");
+            string hora2 = Hora.ToString("HH");
+            //if (hora == "23:00:00")
+            //{
+            //    string hora2 = Hora.AddHours(1).ToString("HH:mm:ss");
+            //    hora = hora2;
+            //}
             string fecha = txtFecha.Text;
             DateTime now = DateTime.Now;
             int s = now.Second;
+            int m=now.Millisecond;
 
-            string FechaHora = fecha + " " + hora + ':' + s;
+            string FechaHora = fecha + " " + hora + ':' + s+"."+m;
+            if (hora2 == "23")
+            {
+                DateTime date = DateTime.ParseExact(FechaHora, "dd-MM-yyyy HH:mm:ss.fff", null).AddHours(1);
+
+                string dd = date.ToString("dd-MM-yyyy HH:mm:ss.fff");
+                string d2 = date.ToString("dd-MM-yyyy");
+
+                FechaHora = dd;
+                fecha = d2;
+            }
             string encodedString2 = (Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(fecha.ToString())));
-
-            if (parametro.Insertar(IdEquipo, Elasticidad, Velocidad, IdMaterial,FechaHora))
+            int Banda = Convert.ToInt32(txtBanda.Text);
+            if (parametro.Insertar(IdEquipo, Elasticidad, Velocidad, IdMaterial,FechaHora,Banda))
             {
                 string script = "alert('Se creó correctamente el registro.'); window.location.href= 'Index.aspx?id=" + Request.QueryString["id"] + "&fec=" + encodedString2 + "'";
 

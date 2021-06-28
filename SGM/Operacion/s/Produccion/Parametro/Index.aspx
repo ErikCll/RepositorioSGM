@@ -3,6 +3,11 @@
     Parámetros de Producción
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="mapeo" runat="server">
+      <li class="breadcrumb-item active">
+        <asp:LinkButton runat="server" OnClick="IrSAM">SAM</asp:LinkButton></li>
+        <li class="breadcrumb-item "><a href="../../Inicio.aspx">Operación (Inicio)</a></li>
+                      <li class="breadcrumb-item "><a href="../Inicio.aspx">Producción</a></li>
+    <li class="breadcrumb-item "><a>Parámetros de Producción</a></li>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Content" runat="server">
       <asp:UpdatePanel runat="server" UpdateMode="Conditional">
@@ -47,7 +52,7 @@
                                      OnRowCommand="gridEquipo_RowCommand"
                                     >
                                     <Columns>
-                                        <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="260px" ItemStyle-Width="260px" ControlStyle-Width="76px">
+                                        <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="220px" ItemStyle-Width="220px" ControlStyle-Width="76px">
                                             <ItemTemplate>
                                                <asp:Button runat="server" Text="Editar" CssClass="btn btn-outline-secondary" CommandName="Editar" />
 
@@ -58,6 +63,7 @@
                                         <asp:BoundField HeaderText="Elasticidad" DataField="Elasticidad" ItemStyle-HorizontalAlign="Center" />
                                         <asp:BoundField HeaderText="Velocidad" DataField="Velocidad" ItemStyle-HorizontalAlign="Center"/>
                                         <asp:BoundField HeaderText="No. Pasada" DataField="NoPasada" ItemStyle-HorizontalAlign="Center"/>
+                                        <asp:BoundField HeaderText="Bandas" DataField="Bandas" ItemStyle-HorizontalAlign="Center"/>
                                         <asp:TemplateField HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" HeaderText="Fecha">
                                             <ItemTemplate>
                                                 <asp:Label runat="server" ID="lblFecha" Text='<%#Eval("Fecha")%>'></asp:Label>
@@ -71,7 +77,10 @@
 <%--                                                         <asp:Button CssClass="btn btn-default" runat="server" ID="btnRegresar" OnClick="btnRegresar_Click" Text="Regresar" />--%>
 
                         </div>
+                                                                                                            <asp:Button runat="server" CssClass="btn btn-default" Text="Regresar" ID="btnRegresar" PostBackUrl="~/s/Produccion/Inicio.aspx" />
+
                     </div>
+
                 </div>
                     </div>
 

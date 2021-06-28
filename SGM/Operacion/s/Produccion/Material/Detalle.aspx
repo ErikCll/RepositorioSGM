@@ -1,16 +1,16 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/s/Site1.Master" AutoEventWireup="true" CodeBehind="Detalle.aspx.cs" Inherits="Operacion.s.Produccion.Resumen.Detalle" %>
-<%@ Register Assembly="System.Web.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" Namespace="System.Web.UI.DataVisualization.Charting" TagPrefix="asp" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/s/Site1.Master" AutoEventWireup="true" CodeBehind="Detalle.aspx.cs" Inherits="Operacion.s.Produccion.Material.Detalle" %>
 
 <%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    Detalle eficiencia por turno
+    Detalle material producido
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="mapeo" runat="server">
-    <li class="breadcrumb-item active"><a href="Index.aspx">Eficiencia por turno</a></li>
+     <li class="breadcrumb-item active"><a href="Index.aspx">Material producido</a></li>
     <li class="breadcrumb-item "><a>Detalle</a></li>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Content" runat="server">
-  <asp:UpdatePanel runat="server" UpdateMode="Conditional">
+
+      <asp:UpdatePanel runat="server" UpdateMode="Conditional">
 
         <ContentTemplate>
                                     <asp:Literal ID="litControl" runat="server"></asp:Literal>
@@ -76,7 +76,7 @@
                                     </Columns>
                                             <PagerStyle HorizontalAlign = "Center" CssClass="" />
                                 </asp:GridView>
-                                                                <asp:Button runat="server" CssClass="btn btn-default" Text="Regresar" ID="btnRegresar" PostBackUrl="~/s/Produccion/Resumen/Index.aspx" />
+                                                                <asp:Button runat="server" CssClass="btn btn-default" Text="Regresar" ID="btnRegresar" PostBackUrl="~/s/Produccion/Material/Index.aspx" />
 
                             </div>
                         </div>
@@ -110,11 +110,11 @@
                     </TitleAppearance>
                 </XAxis>
                 <YAxis AxisCrossingValue="0" Color="black" MajorTickSize="1" MajorTickType="Outside"
-                    MaxValue="10" MinorTickSize="1" MinorTickType="Outside" MinValue="0" Reversed="false"
-                    Step="2">
+                    MaxValue="3000" MinorTickSize="1" MinorTickType="Outside" MinValue="0" Reversed="false"
+                    Step="300">
                     <LabelsAppearance RotationAngle="0" Skip="0" Step="1">
                     </LabelsAppearance>
-                    <TitleAppearance Position="Center" RotationAngle="0" Text="Horas">
+                    <TitleAppearance Position="Center" RotationAngle="0" Text="Metros">
                     </TitleAppearance>
                 </YAxis>
                 <Series>

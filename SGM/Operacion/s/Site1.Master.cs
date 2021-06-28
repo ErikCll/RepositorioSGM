@@ -113,7 +113,7 @@ namespace Operacion.s
 
                 }
 
-                else if (activepage.Contains("/s/Produccion/Resumen/Index.aspx") || activepage.Contains("/s/Produccion/Resumen/Detalle.aspx") || activepage.Contains("/s/Produccion/Inicio.aspx") || activepage.Contains("/s/Produccion/Parametro/Index.aspx") || activepage.Contains("/s/Produccion/Parametro/Bitacora/Index.aspx") || activepage.Contains("/s/Produccion/Parametro/Bitacora/Crear.aspx"))
+                else if (activepage.Contains("/s/Produccion/Resumen/Index.aspx") || activepage.Contains("/s/Produccion/Resumen/Detalle.aspx") || activepage.Contains("/s/Produccion/Inicio.aspx") || activepage.Contains("/s/Produccion/Parametro/Index.aspx") || activepage.Contains("/s/Produccion/Parametro/Bitacora/Index.aspx") || activepage.Contains("/s/Produccion/Parametro/Bitacora/Crear.aspx") || activepage.Contains("/s/Produccion/Material/Detalle.aspx") || activepage.Contains("/s/Produccion/Material/Index.aspx"))
                 {
                     menu_produccion.Attributes.Add("class", "  nav-item has-treeview menu-open");
                     produccion.Attributes.Add("class", "nav-link active");

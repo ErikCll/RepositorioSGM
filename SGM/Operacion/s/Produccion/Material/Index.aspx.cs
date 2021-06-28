@@ -5,11 +5,11 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace Operacion.s.Produccion.Resumen
+namespace Operacion.s.Produccion.Material
 {
     public partial class Index : System.Web.UI.Page
     {
-        Clase.Resumen resumen = new Clase.Resumen();
+        Clase.ResumenMaterial resumenMaterial = new Clase.ResumenMaterial();
         Clase.Accesos accesos = new Clase.Accesos();
         protected void Page_Init(object sender, EventArgs e)
         {
@@ -23,7 +23,7 @@ namespace Operacion.s.Produccion.Resumen
         public void ValidarAccesos()
         {
             int IdUsuario = Convert.ToInt32((this.Master as Operacion.s.Site1).IDUsuario.ToString());
-            if (accesos.ValidarHorasPorTurno(IdUsuario))
+            if (accesos.ValidarMaterialProducido(IdUsuario))
             {
 
             }
@@ -48,19 +48,12 @@ namespace Operacion.s.Produccion.Resumen
 
                 ddl_Mes.SelectedValue = Mes;
                 ddl_Anio.SelectedValue = Anio;
-                //MostrarGrid();
-
-                //MostrarGridProd();
-                //MostrarGridEfic();
+          
                 MostrarGridHora();
-                //int IdInstalacion = Convert.ToInt32((this.Master as Operacion.s.Site1).IdInstalacion.ToString());
-                //int Mess = Convert.ToInt32(ddl_Mes.SelectedValue);
-                //int Anioo = Convert.ToInt32(ddl_Anio.SelectedValue);
-                //LineChart.DataSource = resumen.MostrarGeneral2(IdInstalacion, Anioo, Mess);
-                //LineChart.DataBind();
+            
                 LlenarIndicadores();
 
-             
+
             }
 
         }
@@ -73,57 +66,28 @@ namespace Operacion.s.Produccion.Resumen
             int IdEquipo = Convert.ToInt32(ddl_Equipo.SelectedValue);
             if (IdEquipo == 0)
             {
-                gridHora.DataSource = resumen.MostrarHoras(IdInstalacion, Anio, Mes);
+                gridHora.DataSource = resumenMaterial.MostrarHoras(IdInstalacion, Anio, Mes);
                 gridHora.DataBind();
-                GraficaHora.DataSource = resumen.MostrarHoras(IdInstalacion, Anio, Mes);
+                GraficaHora.DataSource = resumenMaterial.MostrarHoras(IdInstalacion, Anio, Mes);
                 GraficaHora.DataBind();
             }
             else
             {
-                gridHora.DataSource = resumen.MostrarHorasPorEquipo(IdEquipo, Anio, Mes);
+                gridHora.DataSource = resumenMaterial.MostrarHorasPorEquipo(IdEquipo, Anio, Mes);
                 gridHora.DataBind();
-                GraficaHora.DataSource = resumen.MostrarHorasPorEquipo(IdEquipo, Anio, Mes);
+                GraficaHora.DataSource = resumenMaterial.MostrarHorasPorEquipo(IdEquipo, Anio, Mes);
                 GraficaHora.DataBind();
             }
-      
+
 
 
 
         }
-
-        //public void MostrarGrid()
-        //{
-        //    int IdInstalacion = Convert.ToInt32((this.Master as Operacion.s.Site1).IdInstalacion.ToString());
-        //    int Mes = Convert.ToInt32(ddl_Mes.SelectedValue);
-        //    int Anio = Convert.ToInt32(ddl_Anio.SelectedValue);
-        //    gridResumen.DataSource = resumen.MostrarGeneral2(IdInstalacion,Anio,Mes);
-        //    gridResumen.DataBind();
-
-
-
-
-        //}
-
-        //public void MostrarGridProd()
-        //{
-        //    gridProd.DataSource = resumen.MostrarResumenProd();
-        //    gridProd.DataBind();
-
-
-        //}
-
-        public void MostrarGridEfic()
-        {
-            gridEfic.DataSource = resumen.MostrarResumenEfic();
-            gridEfic.DataBind();
-
-
-        }
-
+ 
         public void LlenarDropEquipo()
         {
             int IdInstalacion = Convert.ToInt32((this.Master as Operacion.s.Site1).IdInstalacion.ToString());
-            ddl_Equipo.DataSource = resumen.MostrarEquipo(IdInstalacion);
+            ddl_Equipo.DataSource = resumenMaterial.MostrarEquipo(IdInstalacion);
             ddl_Equipo.DataBind();
             ddl_Equipo.Items.Insert(0, new ListItem("[Todos]", "0"));
 
@@ -152,7 +116,7 @@ namespace Operacion.s.Produccion.Resumen
         {
             int IdInstalacion = Convert.ToInt32((this.Master as Operacion.s.Site1).IdInstalacion.ToString());
 
-            ddl_Anio.DataSource = resumen.MostrarAnios(IdInstalacion);
+            ddl_Anio.DataSource = resumenMaterial.MostrarAnios(IdInstalacion);
             ddl_Anio.DataBind();
             ddl_Anio.Items.Insert(0, new ListItem("[Seleccionar]", "0"));
 
@@ -225,27 +189,27 @@ namespace Operacion.s.Produccion.Resumen
             {
                 Label lblPromedio = e.Row.FindControl("lblPromedio") as Label;
                 int divisor = 0;
-                double Total = 0;    
+                double Total = 0;
                 string T1 = e.Row.Cells[1].Text;
 
                 string T2 = e.Row.Cells[2].Text;
 
                 string T3 = e.Row.Cells[3].Text;
 
-                if(T1 != "&nbsp;" )
+                if (T1 != "&nbsp;")
                 {
                     divisor = divisor + 1;
                     double Turno1 = Convert.ToDouble(e.Row.Cells[1].Text);
                     Total = Turno1;
                     double valor = 6.8;
-                    if (Turno1 < valor)
-                    {
-                        e.Row.Cells[1].Attributes.Add("class", "bg-danger");
-                    }
+                    //if (Turno1 < valor)
+                    //{
+                    //    e.Row.Cells[1].Attributes.Add("class", "bg-danger");
+                    //}
 
-                 
+
                 }
-                
+
 
                 if (T2 != "&nbsp;")
                 {
@@ -254,10 +218,10 @@ namespace Operacion.s.Produccion.Resumen
                     double Turno2 = Convert.ToDouble(e.Row.Cells[2].Text);
                     Total = Total + Turno2;
                     double valor = 6.8;
-                    if (Turno2 < valor)
-                    {
-                        e.Row.Cells[2].Attributes.Add("class", "bg-danger");
-                    }
+                    //if (Turno2 < valor)
+                    //{
+                    //    e.Row.Cells[2].Attributes.Add("class", "bg-danger");
+                    //}
 
 
                 }
@@ -269,14 +233,14 @@ namespace Operacion.s.Produccion.Resumen
                     double Turno3 = Convert.ToDouble(e.Row.Cells[3].Text);
                     Total = Total + Turno3;
                     double valor = 6.8;
-                    if (Turno3 < valor)
-                    {
-                        e.Row.Cells[3].Attributes.Add("class", "bg-danger");
-                    }
+                    //if (Turno3 < valor)
+                    //{
+                    //    e.Row.Cells[3].Attributes.Add("class", "bg-danger");
+                    //}
 
 
                 }
-                if (Total == 0 && divisor == 0)
+                if(Total==0 && divisor == 0)
                 {
                     lblPromedio.Text = "";
                 }
@@ -286,6 +250,7 @@ namespace Operacion.s.Produccion.Resumen
 
                     lblPromedio.Text = Math.Round(Promedio, 2).ToString();
                 }
+            
 
             }
         }
@@ -305,17 +270,17 @@ namespace Operacion.s.Produccion.Resumen
 
             if (IdEquipo == 0)
             {
-                resumen.LeerDatosHorasTurno(IdInstalacion, Anio, Mes);
+                resumenMaterial.LeerDatosHorasTurno(IdInstalacion, Anio, Mes);
 
             }
 
             else
             {
-                resumen.LeerDatosHorasTurnoPorEquipo(IdEquipo, Anio, Mes);
+                resumenMaterial.LeerDatosHorasTurnoPorEquipo(IdEquipo, Anio, Mes);
             }
-            lblTurno1.Text = resumen.Turno1;
+            lblTurno1.Text = resumenMaterial.Turno1;
             double HTurno1 = Convert.ToDouble(lblTurno1.Text);
-            decimal porcentajeHorasTurno1 = (int)((10 * HTurno1) + 20);
+            decimal porcentajeHorasTurno1 = (int)((100 * HTurno1)/3000 );
 
             if (HTurno1.ToString() != "0")
             {
@@ -326,9 +291,9 @@ namespace Operacion.s.Produccion.Resumen
                 progresTurno1.Style.Add("width", "0%");
             }
 
-            lblTurno2.Text = resumen.Turno2;
+            lblTurno2.Text = resumenMaterial.Turno2;
             double HTurno2 = Convert.ToDouble(lblTurno2.Text);
-            decimal porcentajeHorasTurno2 = (int)((10 * HTurno2) + 20);
+            decimal porcentajeHorasTurno2 = (int)((100 * HTurno2)/3000 );
             if (HTurno2.ToString() != "0")
             {
                 progresTurno2.Style.Add("width", porcentajeHorasTurno2.ToString() + "%");
@@ -338,9 +303,9 @@ namespace Operacion.s.Produccion.Resumen
                 progresTurno2.Style.Add("width", "0%");
             }
 
-            lblTurno3.Text = resumen.Turno3;
+            lblTurno3.Text = resumenMaterial.Turno3;
             double HTurno3 = Convert.ToDouble(lblTurno3.Text);
-            decimal porcentajeHorasTurno3 = (int)((10 * HTurno3) + 20);
+            decimal porcentajeHorasTurno3 = (int)((100 * HTurno3)/3000);
             if (HTurno3.ToString() != "0")
             {
                 progresTurno3.Style.Add("width", porcentajeHorasTurno3.ToString() + "%");

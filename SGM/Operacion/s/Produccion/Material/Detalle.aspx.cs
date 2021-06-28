@@ -5,16 +5,18 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace Operacion.s.Produccion.Resumen
+namespace Operacion.s.Produccion.Material
 {
     public partial class Detalle : System.Web.UI.Page
     {
-        Clase.Resumen resumen = new Clase.Resumen();
+        Clase.ResumenMaterial resumenMaterial = new Clase.ResumenMaterial();
         Clase.Accesos accesos = new Clase.Accesos();
         protected void Page_Init(object sender, EventArgs e)
         {
+           
             if (!IsPostBack)
             {
+
                 ValidarAccesos();
             }
 
@@ -23,7 +25,7 @@ namespace Operacion.s.Produccion.Resumen
         public void ValidarAccesos()
         {
             int IdUsuario = Convert.ToInt32((this.Master as Operacion.s.Site1).IDUsuario.ToString());
-            if (accesos.ValidarHorasPorTurno(IdUsuario))
+            if (accesos.ValidarMaterialProducido(IdUsuario))
             {
 
             }
@@ -52,9 +54,9 @@ namespace Operacion.s.Produccion.Resumen
 
             int IdInstalacion = Convert.ToInt32((this.Master as Operacion.s.Site1).IdInstalacion.ToString());
             string Fecha = txtFecha.Text;
-            gridHora.DataSource = resumen.MostrarDetalleHoras(IdInstalacion, Fecha);
+            gridHora.DataSource = resumenMaterial.MostrarDetalleHoras(IdInstalacion, Fecha);
             gridHora.DataBind();
-            graficaHoraDetalle.DataSource = resumen.MostrarDetalleHoras(IdInstalacion, Fecha);
+            graficaHoraDetalle.DataSource = resumenMaterial.MostrarDetalleHoras(IdInstalacion, Fecha);
             graficaHoraDetalle.DataBind();
 
         }

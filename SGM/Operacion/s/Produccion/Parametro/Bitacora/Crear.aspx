@@ -62,12 +62,20 @@
                                 </div>
                               </div>
 
+                           <div class="col-12 col-md-12 col-lg-4">
+                            <div class="form-group">
+                                <label>No. Bandas:</label>
+                               <asp:TextBox runat="server" CssClass="form-control" ID="txtBanda" onkeypress="return soloNumeros(event)" MaxLength="10"></asp:TextBox>
+                         <asp:RequiredFieldValidator runat="server" ID="RequiredFieldValidator5" ControlToValidate="txtBanda"
+                                    ErrorMessage="No. Bandas requerido." ForeColor="Red" ValidationGroup="btnGuardar"></asp:RequiredFieldValidator>
+                            </div>
+                        </div>
                         <div class="col-sm-12 col-md-12 col-lg-4">
                             <div class="form-group">
                                 <label>Hora:</label>
                                 <br />
                                    <telerik:RadTimePicker ID="txtHora" runat="server" TimeView-HeaderText="." DateInput-CssClass="form-control" Width="85px" 
-                                       DateInput-BorderColor="LightGray" Height="35px" DateInput-Font-Size="14px" ShowPopupOnFocus="true" TimePopupButton-Visible="false" TimeView-BorderStyle="None" ></telerik:RadTimePicker>
+                                   Culture="English (United States)"    DateInput-BorderColor="LightGray" Height="35px" DateInput-Font-Size="14px" ShowPopupOnFocus="true" TimePopupButton-Visible="false" TimeView-BorderStyle="None" ></telerik:RadTimePicker>
                                 <br />
                                 <asp:RequiredFieldValidator runat="server" ID="RequiredFieldValidator4" ControlToValidate="txtHora"
                                     ErrorMessage="Hora requerida." ForeColor="Red"  ValidationGroup="btnGuardar"></asp:RequiredFieldValidator>
@@ -154,6 +162,13 @@
             else {
                 return false;
             }
-        }
+                }
+
+                                                    function soloNumeros(e){
+  var key = window.event ? e.which : e.keyCode;
+  if (key < 48 || key > 57) {
+    e.preventDefault();
+  }
+}
             </script> 
 </asp:Content>

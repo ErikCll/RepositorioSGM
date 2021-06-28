@@ -7,81 +7,117 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace Operacion.s.Produccion {
+namespace Operacion.s.Produccion.Material {
     
     
-    public partial class Inicio {
+    public partial class Index {
         
         /// <summary>
-        /// Control configuracion.
+        /// Control ddl_Anio.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl configuracion;
+        protected global::System.Web.UI.WebControls.DropDownList ddl_Anio;
         
         /// <summary>
-        /// Control lnkRegulador.
+        /// Control ddl_Mes.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lnkRegulador;
+        protected global::System.Web.UI.WebControls.DropDownList ddl_Mes;
         
         /// <summary>
-        /// Control horasturno.
+        /// Control ddl_Equipo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl horasturno;
+        protected global::System.Web.UI.WebControls.DropDownList ddl_Equipo;
         
         /// <summary>
-        /// Control lblHoras.
+        /// Control lblTurno1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblHoras;
+        protected global::System.Web.UI.WebControls.Label lblTurno1;
         
         /// <summary>
-        /// Control progresHora.
+        /// Control progresTurno1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl progresHora;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl progresTurno1;
         
         /// <summary>
-        /// Control materialproducido.
+        /// Control lblTurno2.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl materialproducido;
+        protected global::System.Web.UI.WebControls.Label lblTurno2;
         
         /// <summary>
-        /// Control lblMaterial.
+        /// Control progresTurno2.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMaterial;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl progresTurno2;
         
         /// <summary>
-        /// Control progresmaterial.
+        /// Control lblTurno3.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl progresmaterial;
+        protected global::System.Web.UI.WebControls.Label lblTurno3;
+        
+        /// <summary>
+        /// Control progresTurno3.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl progresTurno3;
+        
+        /// <summary>
+        /// Control GraficaHora.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadHtmlChart GraficaHora;
+        
+        /// <summary>
+        /// Control gridHora.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gridHora;
+        
+        /// <summary>
+        /// Control btnRegresar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnRegresar;
     }
 }

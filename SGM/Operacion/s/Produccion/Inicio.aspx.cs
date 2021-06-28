@@ -10,6 +10,7 @@ namespace Operacion.s.Produccion
     public partial class Inicio : System.Web.UI.Page
     {
         Clase.Resumen resumen = new Clase.Resumen();
+        Clase.ResumenMaterial resumenMaterial = new Clase.ResumenMaterial();
         Clase.Accesos accesos = new Clase.Accesos();
         protected void Page_Init(object sender, EventArgs e)
         {
@@ -40,6 +41,16 @@ namespace Operacion.s.Produccion
                     IndicadorHoras();
 
                 }
+                if (accesos.ValidarConfiguracionElemento(IdUsuario))
+                {
+                    configuracion.Visible = true;
+
+                }
+                if (accesos.ValidarMaterialProducido(IdUsuario))
+                {
+                    materialproducido.Visible = true;
+                    IndicadorMaterial();
+                }
             }
             else
             {
@@ -68,6 +79,30 @@ namespace Operacion.s.Produccion
             else
             {
                 progresHora.Style.Add("width", "0%");
+            }
+
+        }
+
+        public void IndicadorMaterial()
+        {
+            int IdInstalacion = Convert.ToInt32((this.Master as Operacion.s.Site1).IdInstalacion.ToString());
+
+            string Mes = DateTime.Now.AddHours(-5).ToString("MM");
+            string Anio = DateTime.Now.AddHours(-5).ToString("yyyy");
+            int Mess = Convert.ToInt32(Mes);
+            int Anioo = Convert.ToInt32(Anio);
+
+            resumenMaterial.LeerDatosHoras(IdInstalacion, Anioo, Mess);
+            lblMaterial.Text = resumenMaterial.PromedioHora;
+            double Horas = Convert.ToDouble(lblMaterial.Text);
+            decimal porcentajeHoras = (int)((100 * Horas)/3000);
+            if (Horas.ToString() != "0")
+            {
+                progresmaterial.Style.Add("width", porcentajeHoras.ToString() + "%");
+            }
+            else
+            {
+                progresmaterial.Style.Add("width", "0%");
             }
 
         }

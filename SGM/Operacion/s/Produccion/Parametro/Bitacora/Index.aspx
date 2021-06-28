@@ -68,6 +68,8 @@
                                          <asp:BoundField HeaderText="Elasticidad" DataField="Elasticidad" ItemStyle-HorizontalAlign="Center" />
                                         <asp:BoundField HeaderText="Velocidad" DataField="Velocidad" ItemStyle-HorizontalAlign="Center"/>
                                         <asp:BoundField HeaderText="No. Pasada" DataField="NoPasada" ItemStyle-HorizontalAlign="Center"/>
+                                        <asp:BoundField HeaderText="Bandas" DataField="Bandas" ItemStyle-HorizontalAlign="Center"/>
+
                                         <asp:BoundField HeaderText="Fecha" DataField="Fecha2" ItemStyle-HorizontalAlign="Center" />
                                         <asp:BoundField HeaderText="Hora" DataField="Hora" ItemStyle-HorizontalAlign="Center"/>
                                      

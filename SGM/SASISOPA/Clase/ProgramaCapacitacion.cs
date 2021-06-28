@@ -62,10 +62,10 @@ namespace SASISOPA.Clase
         public DataTable Mostrar(string txtSearch, int IdInstalacion)
         {
 
-            string query = "SELECT act.Id 'Id_Actividad', act.Nombre,s.Codigo,ins.Nombre 'Instalacion', s.Id_Control,ev.Id_Evaluacion FROM(SELECT InsAct.Id, act.Id_Actividades, act.Nombre, InsAct.Id_Instalacion FROM Op_Ins_Act InsAct JOIN Cat_Actividades act on InsAct.Id_Actividad = act.Id_Actividades WHERE InsAct.Id_Instalacion = @IdInstalacion AND act.Activado IS NULL AND act.TipoSistema = 2) act LEFT JOIN(SELECT Id_Actividad, MAX(Id_Control) max_score FROM Cat_ActividadControl WHERE Activado IS NULL GROUP BY Id_Actividad) r on act.Id_Actividades = r.Id_Actividad LEFT JOIN(SELECT Id_Control, FechaEmision, Codigo, VigenciaMeses FROM Cat_ActividadControl) s on r.max_score = s.Id_Control JOIN Cat_Instalacion ins on act.Id_instalacion = ins.Id_instalacion LEFT JOIN Evaluacion ev on s.Id_Control = ev.Id_Control AND ev.Activado IS NULL AND ev.Estatus = 2 WHERE ins.Id_Instalacion = @IdInstalacion ORDER BY act.Id DESC";
+            string query = "SELECT act.Id_Actividades 'Id_Actividad', act.Nombre,s.Codigo,ins.Nombre 'Instalacion', s.Id_Control,ev.Id_Evaluacion FROM(SELECT InsAct.Id, act.Id_Actividades, act.Nombre, InsAct.Id_Instalacion FROM Op_Ins_Act InsAct JOIN Cat_Actividades act on InsAct.Id_Actividad = act.Id_Actividades WHERE InsAct.Id_Instalacion = @IdInstalacion AND act.Activado IS NULL AND act.TipoSistema = 2) act LEFT JOIN(SELECT Id_Actividad, MAX(Id_Control) max_score FROM Cat_ActividadControl WHERE Activado IS NULL GROUP BY Id_Actividad) r on act.Id_Actividades = r.Id_Actividad LEFT JOIN(SELECT Id_Control, FechaEmision, Codigo, VigenciaMeses FROM Cat_ActividadControl) s on r.max_score = s.Id_Control JOIN Cat_Instalacion ins on act.Id_instalacion = ins.Id_instalacion LEFT JOIN Evaluacion ev on s.Id_Control = ev.Id_Control AND ev.Activado IS NULL AND ev.Estatus = 2 WHERE ins.Id_Instalacion = @IdInstalacion ORDER BY act.Id_Actividades DESC";
             if (!String.IsNullOrEmpty(txtSearch.Trim()))
             {
-                query = "SELECT act.Id 'Id_Actividad', act.Nombre,s.Codigo,ins.Nombre 'Instalacion', s.Id_Control,ev.Id_Evaluacion FROM(SELECT InsAct.Id, act.Id_Actividades, act.Nombre,InsAct.Id_Instalacion FROM Op_Ins_Act InsAct JOIN Cat_Actividades act on InsAct.Id_Actividad = act.Id_Actividades WHERE InsAct.Id_Instalacion = @IdInstalacion AND act.Activado IS NULL AND act.TipoSistema = 2) act LEFT JOIN(SELECT Id_Actividad, MAX(Id_Control) max_score FROM Cat_ActividadControl WHERE Activado IS NULL GROUP BY Id_Actividad) r on act.Id_Actividades = r.Id_Actividad LEFT JOIN(SELECT Id_Control, FechaEmision, Codigo, VigenciaMeses FROM Cat_ActividadControl) s on r.max_score = s.Id_Control JOIN Cat_Instalacion ins on act.Id_instalacion = ins.Id_instalacion LEFT JOIN Evaluacion ev on s.Id_Control = ev.Id_Control AND ev.Activado IS NULL AND ev.Estatus = 2 WHERE ins.Id_Instalacion = @IdInstalacion AND  act.Nombre LIKE '%'+@txtSearch+'%' ORDER BY act.Id DESC";
+                query = "SELECT act.Id_Actividades 'Id_Actividad', act.Nombre,s.Codigo,ins.Nombre 'Instalacion', s.Id_Control,ev.Id_Evaluacion FROM(SELECT InsAct.Id, act.Id_Actividades, act.Nombre,InsAct.Id_Instalacion FROM Op_Ins_Act InsAct JOIN Cat_Actividades act on InsAct.Id_Actividad = act.Id_Actividades WHERE InsAct.Id_Instalacion = @IdInstalacion AND act.Activado IS NULL AND act.TipoSistema = 2) act LEFT JOIN(SELECT Id_Actividad, MAX(Id_Control) max_score FROM Cat_ActividadControl WHERE Activado IS NULL GROUP BY Id_Actividad) r on act.Id_Actividades = r.Id_Actividad LEFT JOIN(SELECT Id_Control, FechaEmision, Codigo, VigenciaMeses FROM Cat_ActividadControl) s on r.max_score = s.Id_Control JOIN Cat_Instalacion ins on act.Id_instalacion = ins.Id_instalacion LEFT JOIN Evaluacion ev on s.Id_Control = ev.Id_Control AND ev.Activado IS NULL AND ev.Estatus = 2 WHERE ins.Id_Instalacion = @IdInstalacion AND  act.Nombre LIKE '%'+@txtSearch+'%' ORDER BY act.Id_Actividades DESC";
             }
 
             comm.Connection = conexion.AbrirConexion();
@@ -168,14 +168,15 @@ namespace SASISOPA.Clase
         }
 
 
-        public DataTable MostrarEmpleado(int IdActividad)
+        public DataTable MostrarEmpleado(int IdActividad,int IdInstalacion)
         {
 
 
             comm.Connection = conexion.AbrirConexion();
-            comm.CommandText = "SELECT emp.Id_Empleado,CONCAT(emp.Nombre,' ',emp.ApellidoPaterno,' ',emp.ApellidoMaterno) 'Empleado' ,catact.Id_Actividad FROM Op_Cat_Act catact JOIN Op_Cat_Emp catemp on catact.Id_Categoria = catemp.Id_Categoria AND catact.Id_Actividad = @IdActividad JOIN Cat_Empleado emp on catemp.Id_Empleado = emp.Id_empleado WHERE emp.Activado IS NULL GROUP BY emp.Id_Empleado,CONCAT(emp.Nombre, ' ', emp.ApellidoPaterno, ' ', emp.ApellidoMaterno) ,catact.Id_Actividad ORDER BY emp.Id_empleado DESC";
+            comm.CommandText = "SELECT emp.Id_Empleado,CONCAT(emp.Nombre,' ',emp.ApellidoPaterno,' ',emp.ApellidoMaterno) 'Empleado' ,catact.Id_Actividad FROM Op_Cat_Act catact JOIN Op_Cat_Emp catemp on catact.Id_Categoria = catemp.Id_Categoria AND catact.Id_Actividad = @IdActividad JOIN Cat_Empleado emp on catemp.Id_Empleado = emp.Id_empleado WHERE emp.Activado IS NULL and emp.Id_instalacion=@IdInstalacion GROUP BY emp.Id_Empleado,CONCAT(emp.Nombre, ' ', emp.ApellidoPaterno, ' ', emp.ApellidoMaterno) ,catact.Id_Actividad ORDER BY emp.Id_empleado DESC";
             comm.CommandType = CommandType.Text;
             comm.Parameters.AddWithValue("@IdActividad", IdActividad);
+            comm.Parameters.AddWithValue("@IdInstalacion", IdInstalacion);
 
             da = new SqlDataAdapter(comm);
             dt = new DataTable();
